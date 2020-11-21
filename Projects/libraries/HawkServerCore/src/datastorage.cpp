@@ -1,6 +1,3 @@
 #include "datastorage.h"
 
-HMDataStorage::HMDataStorage()
-{
-
-}
+#include "datastorageerrors.h"

@@ -1,0 +1,39 @@
+cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
+
+project(HawkConsolServer VERSION 1.0.0 LANGUAGES CXX)
+
+#====================================================================
+set(CMAKE_INCLUDE_CURRENT_DIR ON) # Разрешаем работу с собственной папкой
+#====================================================================
+# Ищим хидеры
+file(GLOB_RECURSE BIN_HEADERS
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/*.h
+)
+#====================================================================
+# Ищим сорцы
+file(GLOB_RECURSE BIN_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
+)
+#====================================================================
+# Ищим используемые библиотеки
+
+#====================================================================
+# Формируем список используемых библиотек
+set(LINCED_LIBRARYES
+    HawkLog
+    HawkServerCore
+    )
+#====================================================================
+# Формируем список подключаемых папок
+set(INCLUDE_DIRS
+    ${LIBRARIES_PATH}/HawkLog/src           # Подключаем библиотеку логирования
+    ${LIBRARIES_PATH}/HawkServerCore/src    # Подключаем библиотеку ядро сервера
+    )
+#====================================================================
+# Создаём бинарь
+add_executable(${PROJECT_NAME} WIN32 ${BIN_HEADERS} ${BIN_SOURCES})
+# Подключаем папки с хидерами
+target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIRS})
+# Линкуем библиотеки
+target_link_libraries(${PROJECT_NAME} PRIVATE ${LINCED_LIBRARYES})
+#====================================================================
