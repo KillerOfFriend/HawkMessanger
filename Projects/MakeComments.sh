@@ -1,3 +1,3 @@
 #!/bin/bash
-./how-to-use-pvs-studio-free -c 3 .
+./how-to-use-pvs-studio-free -c 2 .
 
