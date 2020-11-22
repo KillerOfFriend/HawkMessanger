@@ -39,3 +39,13 @@ target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIRS})
 # Линкуем библиотеки
 target_link_libraries(${PROJECT_NAME} PRIVATE ${LINCED_LIBRARYES})
 #====================================================================
+# Статический анализ
+if (USE_PVS_STUDIO_STATIC_ANALYSIS)
+    pvs_studio_add_target(TARGET ${PROJECT_NAME}.analyze ALL
+                          OUTPUT FORMAT errorfile
+                          ANALYZE ${PROJECT_NAME}
+                          MODE GA:1,2 OP
+                          LOG target.err)
+#                          ARGS -e ${EXCLUDE_PATH})
+endif()
+#====================================================================

@@ -39,3 +39,13 @@ add_library(${PROJECT_NAME} ${LIB_TYPE} ${LIB_HEADERS} ${LIB_SOURCES})
 # Линкуем библиотеки
 target_link_libraries(${PROJECT_NAME} PUBLIC ${LINCED_LIBRARYES})
 #====================================================================
+# Статический анализ
+if (USE_PVS_STUDIO_STATIC_ANALYSIS)
+    pvs_studio_add_target(TARGET ${PROJECT_NAME}.analyze ALL
+                          OUTPUT FORMAT errorfile
+                          ANALYZE ${PROJECT_NAME}
+                          MODE GA:1,2 OP
+                          LOG target.err)
+#                          ARGS -e ${EXCLUDE_PATH})
+endif()
+#====================================================================

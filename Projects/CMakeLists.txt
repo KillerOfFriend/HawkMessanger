@@ -4,7 +4,7 @@ project(HawkMessanger VERSION 1.0.0 LANGUAGES CXX)
 #====================================================================
 # Задаём опции проекта
 option(BUILD_HAWK_TESTS "Собрать тесты модулей системы?" ON)
-option(USE_PVS_STUDIO_STATIC_ANALYSIS "Использовать статический анализатор PVS-STUDIO?" OFF)
+option(USE_PVS_STUDIO_STATIC_ANALYSIS "Использовать статический анализатор PVS-STUDIO?" ON)
 #====================================================================
 # Задаём настройик компиляции
 set(CMAKE_CXX_STANDARD 17)              # Задаём стандарт c++17

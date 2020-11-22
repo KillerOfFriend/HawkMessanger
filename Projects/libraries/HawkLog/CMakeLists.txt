@@ -40,3 +40,13 @@ if (BUILD_HAWK_TESTS)
     add_subdirectory(tests) # Собираем тесты
 endif(BUILD_HAWK_TESTS)
 #====================================================================
+# Статический анализ
+if (USE_PVS_STUDIO_STATIC_ANALYSIS)
+    pvs_studio_add_target(TARGET ${PROJECT_NAME}.analyze ALL
+                          OUTPUT FORMAT errorfile
+                          ANALYZE ${PROJECT_NAME}
+                          MODE GA:1,2 OP
+                          LOG target.err)
+#                          ARGS -e ${EXCLUDE_PATH})
+endif()
+#====================================================================
