@@ -21,12 +21,14 @@ file(GLOB_RECURSE BIN_SOURCES
 # Формируем список используемых библиотек
 set(LINCED_LIBRARYES
     HawkLog
+    HawkCommon
     HawkServerCore
     )
 #====================================================================
 # Формируем список подключаемых папок
 set(INCLUDE_DIRS
     ${LIBRARIES_PATH}/HawkLog/src           # Подключаем библиотеку логирования
+    ${LIBRARIES_PATH}/HawkCommon/src        # Подключаем библиотеку логирования
     ${LIBRARIES_PATH}/HawkServerCore/src    # Подключаем библиотеку ядро сервера
     )
 #====================================================================

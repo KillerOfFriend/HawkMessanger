@@ -19,6 +19,9 @@ file(GLOB_RECURSE LIB_SOURCES
 # Ищим используемые библиотеки
 find_package(Qt6 COMPONENTS Core REQUIRED) # Ищим библиотеки QT
 #====================================================================
+# Автоматизируем Qt сборку
+set(CMAKE_AUTOMOC ON)       # Автоматическая компиляция MOC
+#====================================================================
 # Формируем список используемых библиотек
 set(LINCED_LIBRARYES
     Qt6::Core
@@ -34,5 +37,5 @@ add_library(${PROJECT_NAME} ${LIB_TYPE} ${LIB_HEADERS} ${LIB_SOURCES})
 # Подключаем папки с хидерами
 #target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIRS})
 # Линкуем библиотеки
-target_link_libraries(${PROJECT_NAME} ${LINCED_LIBRARYES} ${LINCED_LIBRARYES})
+target_link_libraries(${PROJECT_NAME} PUBLIC ${LINCED_LIBRARYES})
 #====================================================================

@@ -12,6 +12,8 @@
 #include "user.h"
 #include "group.h"
 
+namespace hmservcommon
+{
 //-----------------------------------------------------------------------------
 /**
  * @brief The HMDataStorage class - Интерфейс, описывающий хранилище данных сервера
@@ -64,14 +66,14 @@ public:
      * @param inUser - Добавляемый пользователь
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code addUser(const std::shared_ptr<HMUser> inUser) = 0;
+    virtual std::error_code addUser(const std::shared_ptr<hmcommon::HMUser> inUser) = 0;
 
     /**
      * @brief updateUser - Метод обновит данные пользователя
      * @param inUser - Обновляемый пользователь
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code updateUser(const std::shared_ptr<HMUser> inUser) = 0;
+    virtual std::error_code updateUser(const std::shared_ptr<hmcommon::HMUser> inUser) = 0;
 
     /**
      * @brief findUserByUUID - Метод найдёт пользователя по его uuid
@@ -79,7 +81,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр пользователя или nullptr
      */
-    virtual std::shared_ptr<HMUser> findUserByUUID(const QUuid& inUserUUID, std::error_code& outErrorCode) = 0;
+    virtual std::shared_ptr<hmcommon::HMUser> findUserByUUID(const QUuid& inUserUUID, std::error_code& outErrorCode) = 0;
 
     /**
      * @brief findUserByAuthentication - Метод найдёт пользователя по его данным аутентификации
@@ -88,7 +90,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр пользователя или nullptr
      */
-    virtual std::shared_ptr<HMUser> findUserByAuthentication(const QString& inLogin, const QByteArray& inPasswordHash, std::error_code& outErrorCode) = 0;
+    virtual std::shared_ptr<hmcommon::HMUser> findUserByAuthentication(const QString& inLogin, const QByteArray& inPasswordHash, std::error_code& outErrorCode) = 0;
 
     // Группы
 
@@ -97,14 +99,14 @@ public:
      * @param inGroup - Добавляемая группа
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code addGroup(const std::shared_ptr<HMGroup> inGroup) = 0;
+    virtual std::error_code addGroup(const std::shared_ptr<hmcommon::HMGroup> inGroup) = 0;
 
     /**
      * @brief updateGroup - Метод обновит данные группы
      * @param inGroup - Обновляемая группа
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code updateGroup(const std::shared_ptr<HMGroup> inGroup) = 0;
+    virtual std::error_code updateGroup(const std::shared_ptr<hmcommon::HMGroup> inGroup) = 0;
 
     /**
      * @brief findGroupByUUID - Метод найдёт пользователя по его uuid
@@ -112,9 +114,10 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр группы или nullptr
      */
-    virtual std::shared_ptr<HMUser> findGroupByUUID(const QUuid& inGroupUUID, std::error_code& outErrorCode) = 0;
+    virtual std::shared_ptr<hmcommon::HMUser> findGroupByUUID(const QUuid& inGroupUUID, std::error_code& outErrorCode) = 0;
 
 };
 //-----------------------------------------------------------------------------
+} // namespace hmservcommon
 
 #endif // DATASTORAGE_H
