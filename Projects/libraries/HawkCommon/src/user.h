@@ -73,6 +73,13 @@ public:
     QString getLogin() const;
 
     /**
+     * @brief setPassword - Метод задаст пароль
+     * @param inPassword - Пароль пользователя
+     * @return Вернёт признак успешности операции
+     */
+    bool setPassword(const QString& inPassword);
+
+    /**
      * @brief setPasswordHash - Метод задаст хеш пароля
      * @param inPasswordHash - Новое значение хеша пароля
      */

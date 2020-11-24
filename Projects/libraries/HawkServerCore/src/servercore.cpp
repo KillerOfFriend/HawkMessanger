@@ -1,4 +1,4 @@
-#include "hmservercore.h"
+#include "servercore.h"
 
 
 HMServerCore::HMServerCore()

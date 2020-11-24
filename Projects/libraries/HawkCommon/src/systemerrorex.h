@@ -14,14 +14,18 @@
 namespace hmcommon
 {
 //-----------------------------------------------------------------------------
+static const std::int32_t C_SYSTEMERROR_START = 200; ///< Начальное значение расширеных ошибок
+//-----------------------------------------------------------------------------
 /**
- * @brief The SystemErrorEx enum - Перечень расширеных системных ошибок
+ * @brief The eSystemErrorEx enum - Перечень расширеных системных ошибок
  */
-enum class SystemErrorEx
+enum class eSystemErrorEx
 {
     seSuccess = 0,                      ///< 0 Не явялется ошибкой
 
-    seInvalidPtr,                       ///< Не валидный указатель
+    seInvalidPtr = C_SYSTEMERROR_START, ///< Не валидный указатель
+    seIncorrecVersion,                  ///< Не корректная версия
+    seIncorretData,                     ///< Не корректные данные
 
     seFileNotExists,                    ///< Файл не существует
     seDirNotExists,                     ///< Директория не существует
@@ -30,6 +34,11 @@ enum class SystemErrorEx
     seFileNotOpen,                      ///< Файл не открыт
     seOpenFileFail,                     ///< Не удалось открыть файл
     seReadFileFail,                     ///< Ошибка при чтении файла
+
+    seContainerEmpty,                   ///< Контейнер пуст
+    seNotInContainer,                   ///< Объект не в контейнере
+    seAlredyInContainer,                ///< Объект уже в контейнере
+    seIndexOutOfContainerRange,         ///< Индекс за пределами контейнера
 
     seCount
 };
@@ -87,7 +96,7 @@ namespace std
 {
 // Сообщаем метапрограммированию C++ 11 STL, что enum
 // зарегистрирован в стандартной системе кодов ошибок
-template <> struct is_error_code_enum<hmcommon::SystemErrorEx> : true_type
+template <> struct is_error_code_enum<hmcommon::eSystemErrorEx> : true_type
 {};
 }
 //-----------------------------------------------------------------------------
@@ -96,7 +105,7 @@ template <> struct is_error_code_enum<hmcommon::SystemErrorEx> : true_type
  * @param inErrCode - Код ошибки
  * @return Вернёт сформированный экемпляр std::error_code
  */
-std::error_code make_error_code(hmcommon::SystemErrorEx inErrCode);
+std::error_code make_error_code(hmcommon::eSystemErrorEx inErrCode);
 //-----------------------------------------------------------------------------
 
 

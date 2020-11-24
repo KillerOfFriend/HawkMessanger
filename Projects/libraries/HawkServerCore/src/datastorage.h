@@ -92,6 +92,13 @@ public:
      */
     virtual std::shared_ptr<hmcommon::HMUser> findUserByAuthentication(const QString& inLogin, const QByteArray& inPasswordHash, std::error_code& outErrorCode) = 0;
 
+    /**
+     * @brief removeUser - Метод удалит пользователя
+     * @param inUserUUID - Uuid удаляемого пользователя
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code removeUser(const QUuid& inUserUUID) = 0;
+
     // Группы
 
     /**
@@ -114,7 +121,15 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр группы или nullptr
      */
-    virtual std::shared_ptr<hmcommon::HMUser> findGroupByUUID(const QUuid& inGroupUUID, std::error_code& outErrorCode) = 0;
+    virtual std::shared_ptr<hmcommon::HMGroup> findGroupByUUID(const QUuid& inGroupUUID, std::error_code& outErrorCode) = 0;
+
+    /**
+     * @brief removeGroup - Метод удалит группу
+     * @param inGroupUUID - Uuid удаляемой группы
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code removeGroup(const QUuid& inGroupUUID) = 0;
+
 
 };
 //-----------------------------------------------------------------------------

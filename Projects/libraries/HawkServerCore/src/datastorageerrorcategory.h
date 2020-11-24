@@ -14,19 +14,21 @@
 namespace hmservcommon
 {
 //-----------------------------------------------------------------------------
+static const std::int32_t C_STORAG_ERROR_START = 300; ///< Начальное значение ошибок хранилища данных
+//-----------------------------------------------------------------------------
 /**
- * @brief The DataStoragError enum - Перечень ошибок хранилища данных
+ * @brief The eDataStoragError enum - Перечень ошибок хранилища данных
  */
-enum class DataStoragError
+enum class eDataStoragError
 {
     dsSuccess = 0,                      ///< 0 Не явялется ошибкой
 
-    dsNotOpen,                          ///< Хранилище не открыто
+    dsNotOpen = C_STORAG_ERROR_START,   ///< Хранилище не открыто
 
     dsUserNotExists,                    ///< Пользователь не существует
     dsUserAlreadyExists,                ///< Пользователь уже существует
     dsUserUUIDCorrupted,                ///< UUID пользователя повреждён
-    dsUserRegistrationDate,             ///< Время регистрации пользователя поврежено
+    dsUserRegistrationDateCorrupted,    ///< Время регистрации пользователя поврежено
     dsUserLoginCorrupted,               ///< Логин пользователя повреждён
     dsUserPasswordHashCorrupted,        ///< Хеш пароля пользователя повреждён
     dsUserNameCorrupted,                ///< Имя пользователя повреждено
@@ -36,6 +38,9 @@ enum class DataStoragError
     dsGroupNotExists,                   ///< Группа не существует
     dsGroupAlreadyExists,               ///< Группа уже существует
     dsGroupUUIDCorrupted,               ///< UUID группы повреждён
+    dsGroupRegistrationDateCorrupted,   ///< Время группы пользователя поврежено
+    dsGroupNameCorrupted,               ///< Имя группы повреждено
+    dsGroupUsersCorrupted,              ///< Пользователи группы повреждены
 
     dsCount
 };
@@ -94,7 +99,7 @@ namespace std
 {
 // Сообщаем метапрограммированию C++ 11 STL, что enum
 // зарегистрирован в стандартной системе кодов ошибок
-template <> struct is_error_code_enum<hmservcommon::DataStoragError> : true_type
+template <> struct is_error_code_enum<hmservcommon::eDataStoragError> : true_type
 {};
 }
 //-----------------------------------------------------------------------------
@@ -103,7 +108,7 @@ template <> struct is_error_code_enum<hmservcommon::DataStoragError> : true_type
  * @param inErrCode - Код ошибки
  * @return Вернёт сформированный экемпляр std::error_code
  */
-std::error_code make_error_code(hmservcommon::DataStoragError inErrCode);
+std::error_code make_error_code(hmservcommon::eDataStoragError inErrCode);
 //-----------------------------------------------------------------------------
 
 #endif // DATASTORAGEERRORCATEGORY_H

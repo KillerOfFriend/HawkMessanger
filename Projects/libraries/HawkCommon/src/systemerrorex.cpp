@@ -20,16 +20,26 @@ std::string SystemErrorExCategory::message(int inCode) const
 {
     std::string Result;
 
-    switch (static_cast<SystemErrorEx>(inCode))
+    switch (static_cast<eSystemErrorEx>(inCode))
     {
-        case SystemErrorEx::seSuccess:          { Result = tr("Успех").toStdString(); break; }
-        case SystemErrorEx::seFileNotExists:    { Result = tr("Файл не существует").toStdString(); break; }
-        case SystemErrorEx::seDirNotExists:     { Result = tr("Директория не существует").toStdString(); break; }
-        case SystemErrorEx::seObjectNotFile:    { Result = tr("Объект не является файлом").toStdString(); break; }
-        case SystemErrorEx::seObjectNotDir:     { Result = tr("Объект не является директорией").toStdString(); break; }
-        case SystemErrorEx::seFileNotOpen:      { Result = tr("Файл не открыт").toStdString(); break; }
-        case SystemErrorEx::seOpenFileFail:     { Result = tr("Не удалость открыть файл").toStdString(); break; }
-        case SystemErrorEx::seReadFileFail:     { Result = tr("При чтении файла произошла ошибка").toStdString(); break; }
+        case eSystemErrorEx::seSuccess:                     { Result = tr("Успех").toStdString(); break; }
+
+        case eSystemErrorEx::seInvalidPtr:                  { Result = tr("Не валидный указатель").toStdString(); break; }
+        case eSystemErrorEx::seIncorrecVersion:             { Result = tr("Версия не соответствует").toStdString(); break; }
+        case eSystemErrorEx::seIncorretData:                { Result = tr("Не корректные данные").toStdString(); break; }
+
+        case eSystemErrorEx::seFileNotExists:               { Result = tr("Файл не существует").toStdString(); break; }
+        case eSystemErrorEx::seDirNotExists:                { Result = tr("Директория не существует").toStdString(); break; }
+        case eSystemErrorEx::seObjectNotFile:               { Result = tr("Объект не является файлом").toStdString(); break; }
+        case eSystemErrorEx::seObjectNotDir:                { Result = tr("Объект не является директорией").toStdString(); break; }
+        case eSystemErrorEx::seFileNotOpen:                 { Result = tr("Файл не открыт").toStdString(); break; }
+        case eSystemErrorEx::seOpenFileFail:                { Result = tr("Не удалость открыть файл").toStdString(); break; }
+        case eSystemErrorEx::seReadFileFail:                { Result = tr("При чтении файла произошла ошибка").toStdString(); break; }
+
+        case eSystemErrorEx::seContainerEmpty:              { Result = tr("Контейнер пуст").toStdString(); break; }
+        case eSystemErrorEx::seNotInContainer:              { Result = tr("Объект не в контейнере").toStdString(); break; }
+        case eSystemErrorEx::seAlredyInContainer:           { Result = tr("Объект уже в контейнере").toStdString(); break; }
+        case eSystemErrorEx::seIndexOutOfContainerRange:    { Result = tr("Индекс за пределами контейнера").toStdString(); break; }
 
 
 
@@ -65,7 +75,7 @@ SYSTEMERREX_API_DECL const hmcommon::SystemErrorExCategory &hmcommon::Conversion
   return category;
 }
 //-----------------------------------------------------------------------------
-std::error_code make_error_code(hmcommon::SystemErrorEx inErrCode)
+std::error_code make_error_code(hmcommon::eSystemErrorEx inErrCode)
 {
   return {static_cast<int>(inErrCode), hmcommon::ConversionErrc_category()};
 }

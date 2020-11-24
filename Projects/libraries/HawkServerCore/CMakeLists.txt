@@ -44,6 +44,10 @@ target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIRS})
 # Линкуем библиотеки
 target_link_libraries(${PROJECT_NAME} PUBLIC ${LINCED_LIBRARYES})
 #====================================================================
+if (BUILD_HAWK_TESTS)
+    add_subdirectory(tests) # Собираем тесты
+endif(BUILD_HAWK_TESTS)
+#====================================================================
 # Статический анализ
 if (USE_PVS_STUDIO_STATIC_ANALYSIS)
     pvs_studio_add_target(TARGET ${PROJECT_NAME}.analyze ALL

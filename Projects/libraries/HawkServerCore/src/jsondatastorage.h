@@ -35,6 +35,12 @@ private:
     std::error_code makeDefault();
 
     /**
+     * @brief checkCorrectStruct - Метод проверит корректность структуры файла
+     * @return Вернёт признак ошибки
+     */
+    std::error_code checkCorrectStruct() const;
+
+    /**
      * @brief write - Метод запишет изменения в JSON файл
      * @return Вернёт признак ошибки
      */
@@ -53,6 +59,38 @@ private:
      * @return Вернёт признак ошибки
      */
     std::error_code checkGroup(const nlohmann::json& inGroupObject) const;
+
+    /**
+     * @brief jsonToUser - Метод преобразует Json объект в экземпляр пользователя
+     * @param inUserObject - Объект Json содержащий пользователя
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт указатель на экземпляр пользователя или nullptr
+     */
+    std::shared_ptr<hmcommon::HMUser> jsonToUser(const nlohmann::json& inUserObject, std::error_code& outErrorCode) const;
+
+    /**
+     * @brief userToJson - Метод преобразует пользователя в объект Json
+     * @param inUser - Указатель на пользователя
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт объект Json
+     */
+    nlohmann::json userToJson(std::shared_ptr<hmcommon::HMUser> inUser, std::error_code& outErrorCode) const;
+
+    /**
+     * @brief jsonToGroup - Метод преобразует Json объект в экземпляр группы
+     * @param inGroupObject - Объект Json содержащий группу
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт указатель на экземпляр группы или nullptr
+     */
+    std::shared_ptr<hmcommon::HMGroup> jsonToGroup(const nlohmann::json& inGroupObject, std::error_code& outErrorCode) const;
+
+    /**
+     * @brief groupToJson - Метод преобразует группу в объект Json
+     * @param inGroup - Указатель на группу
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт объект Json
+     */
+    nlohmann::json groupToJson(std::shared_ptr<hmcommon::HMGroup> inGroup, std::error_code& outErrorCode) const;
 
 public:
 
@@ -120,6 +158,13 @@ public:
      */
     virtual std::shared_ptr<hmcommon::HMUser> findUserByAuthentication(const QString& inLogin, const QByteArray& inPasswordHash, std::error_code& outErrorCode) override;
 
+    /**
+     * @brief removeUser - Метод удалит пользователя
+     * @param inUserUUID - Uuid удаляемого пользователя
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code removeUser(const QUuid& inUserUUID) override;
+
     // Группы
 
     /**
@@ -142,7 +187,14 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр группы или nullptr
      */
-    virtual std::shared_ptr<hmcommon::HMUser> findGroupByUUID(const QUuid& inGroupUUID, std::error_code& outErrorCode) override;
+    virtual std::shared_ptr<hmcommon::HMGroup> findGroupByUUID(const QUuid& inGroupUUID, std::error_code& outErrorCode) override;
+
+    /**
+     * @brief removeGroup - Метод удалит группу
+     * @param inGroupUUID - Uuid удаляемой группы
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code removeGroup(const QUuid& inGroupUUID) override;
 
 };
 //-----------------------------------------------------------------------------

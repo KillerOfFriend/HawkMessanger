@@ -1,5 +1,7 @@
 #include "user.h"
 
+#include <QCryptographicHash>
+
 using namespace hmcommon;
 
 //-----------------------------------------------------------------------------
@@ -15,6 +17,16 @@ void HMUser::setLogin(const QString& inLogin)
 //-----------------------------------------------------------------------------
 QString HMUser::getLogin() const
 { return m_login; }
+//-----------------------------------------------------------------------------
+bool HMUser::setPassword(const QString& inPassword)
+{
+    bool Result = true;
+
+    if (inPassword.isEmpty())
+        m_passwordHash = QCryptographicHash::hash(inPassword.toLocal8Bit(), QCryptographicHash::Algorithm::Sha512);
+
+    return Result;
+}
 //-----------------------------------------------------------------------------
 void HMUser::setPasswordHash(const QByteArray& inPasswordHash)
 { m_passwordHash = inPasswordHash; }
