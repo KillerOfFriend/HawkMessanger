@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 
+#include <thread>
 #include <filesystem>
 
 #include <jsondatastorage.h>
@@ -20,33 +21,58 @@ void clearStorage()
         std::filesystem::remove(C_JSON_PATH, Error);
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMUser> make_user()
+/**
+ * @brief make_user - Метод сформирует пользователя для тестирования
+ * @param inUserUuid - UUID пользователя
+ * @param inUserLogin - Логин пользователя
+ * @param inUserPassword - Пароль пользователя
+ * @param inCreateDate - Дата создания пользователя
+ * @return Вернёт указатель на нового пользователя
+ */
+std::shared_ptr<hmcommon::HMUser> make_user(const QUuid inUserUuid = QUuid::createUuid(), const QString inUserLogin = "UserLogin@login.com",
+                                            const QString inUserPassword = "P@ssworOfUser123", const QDateTime inCreateDate = QDateTime::currentDateTime())//QDateTime(QDate(), QTime::currentTime()))
 {
-    const QUuid UserUuid = QUuid::createUuid();       // Формируем новый UUID
-    const QString UserLogin = "UserLogin@login.com";  // Формируем логин пользователя
-    const QString UserPassword = "P@ssworOfUser123";  // Формируем пароль пользователя
-    const QDateTime CreateDate = QDateTime(QDate(), QTime::currentTime()); //QDateTime::fromString(QDateTime::currentDateTime().toString("dd.MM.yyyy HH:mm:ss:SSS")); // !!!
-
-    // Формируем пользователя, которого нет в хранилище
-    std::shared_ptr<hmcommon::HMUser> NewUser = std::make_shared<hmcommon::HMUser>(UserUuid, CreateDate);
+    // Формируем нового пользователя
+    std::shared_ptr<hmcommon::HMUser> NewUser = std::make_shared<hmcommon::HMUser>(inUserUuid, inCreateDate);
     // Задаём основные параметры
-    NewUser->setLogin(UserLogin);
-    NewUser->setPassword(UserPassword);
+    NewUser->setLogin(inUserLogin);
+    NewUser->setPassword(inUserPassword);
 
     return NewUser;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMGroup> make_group()
+/**
+ * @brief make_group - Метод сформирует группу для тестирования
+ * @param inGroupUuid - UUID группы
+ * @param inGroupName - Имя группы
+ * @param inCreateDate - Дата создания группы
+ * @return Вернёт указатель на новую группу
+ */
+std::shared_ptr<hmcommon::HMGroup> make_group(const QUuid inGroupUuid = QUuid::createUuid(), const QString inGroupName = "New group name",
+                                              const QDateTime inCreateDate = QDateTime::currentDateTime())//QDateTime(QDate(), QTime::currentTime()))
 {
-    const QUuid GroupUuid = QUuid::createUuid();        // Формируем новый UUID
-    const QString GroupName = "New group name";         // Имя группы
-    const QDateTime CreateDate = QDateTime(QDate(), QTime::currentTime()); // QDateTime::fromString(QDateTime::currentDateTime().toString("dd.MM.yyyy HH:mm:ss:SSS")); // !!!
-
     // Формируем новую группу
-    std::shared_ptr<hmcommon::HMGroup> NewGroup = std::make_shared<hmcommon::HMGroup>(GroupUuid, CreateDate);
-    NewGroup->setName(GroupName); // Задаём имя группы
+    std::shared_ptr<hmcommon::HMGroup> NewGroup = std::make_shared<hmcommon::HMGroup>(inGroupUuid, inCreateDate);
+    NewGroup->setName(inGroupName); // Задаём имя группы
 
     return NewGroup;
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief make_groupmessage - Метод сформирует сообщение для тестирования
+ * @param inData - Данные сообщения
+ * @param inUuid - UUID сообщения
+ * @param inGroupUuid - UUID группы, в которую входит сообщение
+ * @param inCreateDate - Дата создания сообщения
+ * @return Вернёт указатель на новое сообщение
+ */
+std::shared_ptr<hmcommon::HMGroupMessage> make_groupmessage(const hmcommon::MsgData& inData, const QUuid inUuid = QUuid::createUuid(), const QUuid inGroupUuid = QUuid::createUuid(),
+                                                            const QDateTime inCreateDate = QDateTime::currentDateTime())
+{
+    std::shared_ptr<hmcommon::HMGroupMessage> NewMessage = std::make_shared<hmcommon::HMGroupMessage>(inUuid, inGroupUuid, inCreateDate);
+    NewMessage->setMessage(inData);
+
+    return NewMessage;
 }
 //-----------------------------------------------------------------------------
 /**
@@ -183,6 +209,147 @@ TEST(JsonDataStorage, FindExistGroup)
 }
 //-----------------------------------------------------------------------------
 /**
+ * @brief TEST - Тест поиска несуществующего сообщения
+ */
+TEST(JsonDataStorage, FindNotExistMessage)
+{
+    std::error_code Error; // Метка ошибки
+    clearStorage(); // Очищаем хранилище
+
+    hmservcommon::HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
+    Error = Storage.open(); // Пытаемся открыть хранилище
+
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(Storage.is_open()); // Хранилище должно считаться открытым
+
+    hmcommon::MsgData TextData(hmcommon::eMsgType::mtText, "Текст сообщения"); // Формируем данные сообщения
+    std::shared_ptr<hmcommon::HMGroupMessage> NewMessage = make_groupmessage(TextData); // Формируем сообщение
+
+    std::shared_ptr<hmcommon::HMGroupMessage> FindRes = Storage.findMessage(NewMessage->m_uuid, Error);
+
+    ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
+    ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmservcommon::eDataStoragError::dsMessageNotExists)); // И метку, что сообщение не существует
+
+    Storage.close();
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест поиска существующего сообщения
+ */
+TEST(JsonDataStorage, FindExistMessage)
+{
+    std::error_code Error; // Метка ошибки
+    clearStorage(); // Очищаем хранилище
+
+    hmservcommon::HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
+    Error = Storage.open(); // Пытаемся открыть хранилище
+
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(Storage.is_open()); // Хранилище должно считаться открытым
+
+    std::shared_ptr<hmcommon::HMGroup> NewGroup = make_group();
+
+    Error = Storage.addGroup(NewGroup); // добавляем группу сообщения
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    hmcommon::MsgData TextData(hmcommon::eMsgType::mtText, "Текст сообщения"); // Формируем данные сообщения
+    std::shared_ptr<hmcommon::HMGroupMessage> NewMessage = make_groupmessage(TextData, QUuid::createUuid(), NewGroup->m_uuid); // Формируем сообщение
+
+    Error = Storage.addMessage(NewMessage); // Добавляем сообщение
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    std::shared_ptr<hmcommon::HMGroupMessage> FindRes = Storage.findMessage(NewMessage->m_uuid, Error);
+
+    ASSERT_NE(FindRes, nullptr); // Должен вернуться валидный указатель
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    Storage.close();
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест поиска не существующих сообщений
+ */
+TEST(JsonDataStorage, FindNotExistMessages)
+{
+    std::error_code Error; // Метка ошибки
+    clearStorage(); // Очищаем хранилище
+
+    hmservcommon::HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
+    Error = Storage.open(); // Пытаемся открыть хранилище
+
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(Storage.is_open()); // Хранилище должно считаться открытым
+
+    hmcommon::MsgData TextData(hmcommon::eMsgType::mtText, "Текст сообщения"); // Формируем данные сообщения
+    std::shared_ptr<hmcommon::HMGroupMessage> NewMessage = make_groupmessage(TextData); // Формируем сообщение
+
+    hmcommon::MsgRange Range(QDateTime::currentDateTime(), QDateTime::currentDateTime());
+    std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> FindRes = Storage.findMessages(NewMessage->m_group, Range, Error);
+
+    ASSERT_EQ(FindRes.empty(), true); // Должен вернуться пустой контейнер
+    ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmservcommon::eDataStoragError::dsMessageNotExists)); // И метку, что сообщение не существует
+
+    Storage.close();
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест поиска существующих сообщений
+ */
+TEST(JsonDataStorage, FindExistMessages)
+{
+    std::error_code Error; // Метка ошибки
+    clearStorage(); // Очищаем хранилище
+
+    hmservcommon::HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
+    Error = Storage.open(); // Пытаемся открыть хранилище
+
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(Storage.is_open()); // Хранилище должно считаться открытым
+
+    std::shared_ptr<hmcommon::HMGroup> NewGroup = make_group();
+
+    Error = Storage.addGroup(NewGroup); // добавляем группу сообщения
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    const size_t MESSAGES = 5;
+    std::array<std::shared_ptr<hmcommon::HMGroupMessage>, MESSAGES> Messages;
+    std::array<QDateTime, MESSAGES> Times;
+
+    for (std::size_t Index = 0; Index < MESSAGES; ++Index)
+    {
+        //QDateTime(QDate(), QTime::currentTime()); // Запоминаем время
+        Times[Index] = QDateTime::currentDateTime();
+        hmcommon::MsgData TextData(hmcommon::eMsgType::mtText, ("Текст сообщения " + QString::number(Index)).toLocal8Bit()); // Формируем данные сообщения
+        Messages[Index] = make_groupmessage(TextData, QUuid::createUuid(), NewGroup->m_uuid, Times[Index]); // Формируем сообщение группы
+
+        Error = Storage.addMessage(Messages[Index]);
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
+    }
+
+    hmcommon::MsgRange TimeRange(Times[0], Times[MESSAGES - 2]); // Выбираем временной интервал со временни первого до времени предпоследнего сообщения
+    std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> FindRes = Storage.findMessages(NewGroup->m_uuid, TimeRange, Error); // Получаем резульата
+
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    EXPECT_EQ(FindRes.size(), MESSAGES - 1); // Результатов должно быть на 1 меньше чем созданых сообщений
+    // Сверяем результаты с исхдными сообщениями (Последовательность должна совпасть!)
+    for (std::size_t Index = 0; Index < std::min(FindRes.size(), MESSAGES); ++Index)
+    {
+        EXPECT_EQ(Messages[Index]->m_uuid, FindRes[Index]->m_uuid);
+        EXPECT_EQ(Messages[Index]->m_group, FindRes[Index]->m_group);
+        EXPECT_EQ(Messages[Index]->m_createTime, FindRes[Index]->m_createTime);
+
+        auto Data1 = Messages[Index]->getMesssage();
+        auto Data2 = FindRes[Index]->getMesssage();
+
+        EXPECT_EQ(Data1.m_type, Data2.m_type);
+        EXPECT_EQ(Data1.m_data, Data2.m_data);
+    }
+
+    Storage.close();
+}
+//-----------------------------------------------------------------------------
+/**
  * @brief TEST - Тест удаления пользователя
  */
 TEST(JsonDataStorage, RemoveUser)
@@ -253,6 +420,47 @@ TEST(JsonDataStorage, RemoveGroup)
 }
 //-----------------------------------------------------------------------------
 /**
+ * @brief TEST - Тест удаления сообщения
+ */
+TEST(JsonDataStorage, RemoveMessage)
+{
+    std::error_code Error; // Метка ошибки
+    clearStorage(); // Очищаем хранилище
+
+    hmservcommon::HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
+    Error = Storage.open(); // Пытаемся открыть хранилище
+
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(Storage.is_open()); // Хранилище должно считаться открытым
+
+    std::shared_ptr<hmcommon::HMGroup> NewGroup = make_group();
+
+    Error = Storage.addGroup(NewGroup); // добавляем группу сообщения
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    hmcommon::MsgData TextData(hmcommon::eMsgType::mtText, "Текст сообщения"); // Формируем данные сообщения
+    std::shared_ptr<hmcommon::HMGroupMessage> NewMessage = make_groupmessage(TextData, QUuid::createUuid(), NewGroup->m_uuid); // Формируем сообщение
+
+    Error = Storage.addMessage(NewMessage); // Добавляем сообщение
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    std::shared_ptr<hmcommon::HMGroupMessage> FindRes = Storage.findMessage(NewMessage->m_uuid, Error);
+
+    ASSERT_NE(FindRes, nullptr); // Должен вернуться валидный указатель
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    Error = Storage.removeMessage(NewMessage->m_uuid, NewMessage->m_group); // Удаляем сообщение
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    FindRes = Storage.findMessage(NewMessage->m_uuid, Error);
+
+    ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
+    ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmservcommon::eDataStoragError::dsMessageNotExists)); // И метку, что сообщение не существует
+
+    Storage.close();
+}
+//-----------------------------------------------------------------------------
+/**
  * @brief TEST - Тест сохранения хранилища в JSON
  */
 TEST(JsonDataStorage, CheckJsonSave)
@@ -276,6 +484,18 @@ TEST(JsonDataStorage, CheckJsonSave)
     ASSERT_FALSE(Error); // Ошибки быть не должно
     Error = Storage.addGroup(NewGroup);
     ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    const size_t MESSAGES = 5;
+    std::array<std::shared_ptr<hmcommon::HMGroupMessage>, MESSAGES> Messages;
+
+    for (std::size_t Index = 0; Index < MESSAGES; ++Index)
+    {
+        hmcommon::MsgData Data(hmcommon::eMsgType::mtText, "ТЕКСТ сообщения");
+        Messages[Index] = make_groupmessage(Data, QUuid::createUuid(), NewGroup->m_uuid);
+
+        Error = Storage.addMessage(Messages[Index]);
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+    }
 
     // Переоткрываем хранилище
     Storage.close();
@@ -314,6 +534,23 @@ TEST(JsonDataStorage, CheckJsonSave)
         EXPECT_FALSE(Error); // Ошибки быть не должно
 
         EXPECT_EQ(Uuid1, Uuid2);
+    }
+
+    for (std::size_t Index = 0; Index < MESSAGES; ++Index)
+    {
+        std::shared_ptr<hmcommon::HMGroupMessage> FindRes = Storage.findMessage(Messages[Index]->m_uuid, Error);
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+        ASSERT_NE(FindGroup, nullptr); // Должен вернуться валидный указатель
+
+        EXPECT_EQ(Messages[Index]->m_uuid, FindRes->m_uuid);
+        EXPECT_EQ(Messages[Index]->m_group, FindRes->m_group);
+        EXPECT_EQ(Messages[Index]->m_createTime, FindRes->m_createTime);
+
+        auto Data1 = Messages[Index]->getMesssage();
+        auto Data2 = FindRes->getMesssage();
+
+        EXPECT_EQ(Data1.m_type, Data2.m_type);
+        EXPECT_EQ(Data1.m_data, Data2.m_data);
     }
 
     Storage.close();

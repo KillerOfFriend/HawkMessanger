@@ -39,7 +39,7 @@ public:
      * @param inUuid - Uuid группы
      * @param inRegistrationDate - Дата регистрации группы
      */
-    HMGroup(const QUuid& inUuid, const QDateTime& inRegistrationDate);
+    HMGroup(const QUuid& inUuid, const QDateTime& inRegistrationDate = QDateTime::currentDateTime());
 
     /**
      * @brief ~HMGroup - Деструктор по умолчанию

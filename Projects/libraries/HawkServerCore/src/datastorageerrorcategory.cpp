@@ -40,7 +40,15 @@ std::string DataStorageErrorCategory::message(int inCode) const
         case eDataStoragError::dsGroupAlreadyExists:                { Result = tr("Группа уже существует").toStdString(); break; }
         case eDataStoragError::dsGroupUUIDCorrupted:                { Result = tr("UUID группы повреждён").toStdString(); break; }
         case eDataStoragError::dsGroupNameCorrupted:                { Result = tr("Имя группы повреждено").toStdString(); break; }
-        case eDataStoragError::dsGroupRegistrationDateCorrupted:    { Result = tr("Дата группы пользователя повреждена").toStdString(); break; }
+        case eDataStoragError::dsGroupRegistrationDateCorrupted:    { Result = tr("Дата группы повреждена").toStdString(); break; }
+
+        case eDataStoragError::dsMessageNotExists:                  { Result = tr("Сообщение не существует").toStdString(); break; }
+        case eDataStoragError::dsMessageAlreadyExists:              { Result = tr("Сообщение уже существует").toStdString(); break; }
+        case eDataStoragError::dsMessageUUIDCorrupted:              { Result = tr("UUID сообщения повреждён").toStdString(); break; }
+        case eDataStoragError::dsMessageGroupUUIDCorrupted:         { Result = tr("UUID группы сообщения повреждён").toStdString(); break; }
+        case eDataStoragError::dsMessageRegistrationDateCorrupted:  { Result = tr("Дата сообщения повреждена").toStdString(); break; }
+        case eDataStoragError::dsMessageTypeCorrupted:              { Result = tr("Тип сообщения повреждён").toStdString(); break; }
+        case eDataStoragError::dsMessageDataCorrupted:              { Result = tr("Ванные сообщения повреждены").toStdString(); break; }
 
         default: Result = ( tr("Не известная ошибка с кодом: ") + QString::number(inCode) ).toStdString();
     }

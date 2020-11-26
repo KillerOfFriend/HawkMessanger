@@ -7,10 +7,12 @@
  */
 
 #include <memory>
+#include <vector>
 #include <system_error>
 
 #include "user.h"
 #include "group.h"
+#include "groupmessage.h"
 
 namespace hmservcommon
 {
@@ -130,6 +132,46 @@ public:
      */
     virtual std::error_code removeGroup(const QUuid& inGroupUUID) = 0;
 
+    // Сообщения
+
+    /**
+     * @brief addMessage - Метод добавит новое сообщение
+     * @param inMessage - Добавляемое сообщение
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code addMessage(const std::shared_ptr<hmcommon::HMGroupMessage> inMessage) = 0;
+
+    /**
+     * @brief updateMessage - Метод обновит данные сообщения
+     * @param inMessage - Обновляемое сообщение
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code updateMessage(const std::shared_ptr<hmcommon::HMGroupMessage> inMessage) = 0;
+
+    /**
+     * @brief findMessages - Метод найдёт сообщение по его uuid
+     * @param inMessageUUID - Uuid сообщения
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт указатель на экземпляр сообщения или nullptr
+     */
+    virtual std::shared_ptr<hmcommon::HMGroupMessage> findMessage(const QUuid inMessageUUID, std::error_code& outErrorCode) = 0;
+
+    /**
+     * @brief findMessages - Метод вернёт перечень сообщений группы за куазаный промежуток времени
+     * @param inGroupUUID - Uuid группы, которой пренадлежат сообщения
+     * @param inRange - Временной диапозон
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт перечень сообщений
+     */
+    virtual std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> findMessages(const QUuid inGroupUUID, const hmcommon::MsgRange& inRange,  std::error_code& outErrorCode) = 0;
+
+    /**
+     * @brief removeMessage - Метод удалит сообщение
+     * @param inMessageUUID - Uuid сообщения
+     * @param inGroupUUID - Uuid группы
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code removeMessage(const QUuid inMessageUUID, const QUuid inGroupUUID) = 0;
 
 };
 //-----------------------------------------------------------------------------

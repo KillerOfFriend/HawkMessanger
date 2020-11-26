@@ -38,9 +38,17 @@ enum class eDataStoragError
     dsGroupNotExists,                   ///< Группа не существует
     dsGroupAlreadyExists,               ///< Группа уже существует
     dsGroupUUIDCorrupted,               ///< UUID группы повреждён
-    dsGroupRegistrationDateCorrupted,   ///< Время группы пользователя поврежено
+    dsGroupRegistrationDateCorrupted,   ///< Время группы поврежено
     dsGroupNameCorrupted,               ///< Имя группы повреждено
     dsGroupUsersCorrupted,              ///< Пользователи группы повреждены
+
+    dsMessageNotExists,                 ///< Сообщение не существует
+    dsMessageAlreadyExists,             ///< Сообщение уже существует
+    dsMessageUUIDCorrupted,             ///< UUID сообщения повреждён
+    dsMessageGroupUUIDCorrupted,        ///< UUID группы сообщения повреждён
+    dsMessageRegistrationDateCorrupted, ///< Время сообщения поврежено
+    dsMessageTypeCorrupted,             ///< Тип сообщения повреждён
+    dsMessageDataCorrupted,             ///< Данные сообщения повреждены
 
     dsCount
 };

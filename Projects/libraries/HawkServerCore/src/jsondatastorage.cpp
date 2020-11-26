@@ -14,23 +14,34 @@
 using namespace hmservcommon;
 
 //-----------------------------------------------------------------------------
-static const std::string FORMAT_VESION      = "0.0.0.1";
+static const std::string FORMAT_VESION          = "0.0.0.1";
+static const std::string UUID                   = "UUID";
+static const std::string REGDATE                = "registration_date";
+static const auto TIME_FORMAT                   = Qt::ISODateWithMs;
 //-----------------------------------------------------------------------------
-static const std::string J_VERSION          = "VERSION";
-static const std::string J_USERS            = "USERS";
-static const std::string J_GROUPS           = "GROUPS";
+static const std::string J_VERSION              = "VERSION";
+static const std::string J_USERS                = "USERS";
+static const std::string J_GROUPS               = "GROUPS";
+static const std::string J_MESSAGES             = "MESSAGES";
 
-static const std::string J_UUID             = "UUID";
-static const std::string J_REGDATE          = "registration_date";
+static const std::string J_USER_UUID            = UUID;
+static const std::string J_USER_REGDATE         = REGDATE;
+static const std::string J_USER_LOGIN           = "login";
+static const std::string J_USER_PASS            = "password_hash";
+static const std::string J_USER_NAME            = "name";
+static const std::string J_USER_SEX             = "sex";
+static const std::string J_USER_BIRTHDAY        = "birthday";
 
-static const std::string J_USER_LOGIN       = "login";
-static const std::string J_USER_PASS        = "password_hash";
-static const std::string J_USER_NAME        = "name";
-static const std::string J_USER_SEX         = "sex";
-static const std::string J_USER_BIRTHDAY    = "birthday";
+static const std::string J_GROUP_UUID           = UUID;
+static const std::string J_GROUP_REGDATE        = REGDATE;
+static const std::string J_GROUP_NAME           = "name";
+static const std::string J_GROUP_USERS          = "users";
 
-static const std::string J_GROUP_NAME       = "name";
-static const std::string J_GROUP_USERS      = "users";
+static const std::string J_MESSAGE_UUID         = UUID;
+static const std::string J_MESSAGE_GROUP_UUID   = "GROUP_" + UUID;
+static const std::string J_MESSAGE_REGDATE      = REGDATE;
+static const std::string J_MESSAGE_TYPE         = "type";
+static const std::string J_MESSAGE_DATA         = "data";
 //-----------------------------------------------------------------------------
 /**
  * @brief jsonToByteArr - Функция преобразует JSON в QByteArray
@@ -193,7 +204,7 @@ std::error_code HMJsonDataStorage::updateUser(const std::shared_ptr<hmcommon::HM
                     return false; // Повреждённый пользователь игнорируется
                 }
                 else
-                    return UserObject[J_UUID].get<std::string>() == UUID; // Сравниваем UUID пользователя с заданым
+                    return UserObject[J_USER_UUID].get<std::string>() == UUID; // Сравниваем UUID пользователя с заданым
             });
 
             if (UserIt == m_json[J_USERS].end()) // Если пользователь не найден
@@ -231,7 +242,7 @@ std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByUUID(const QUuid 
                 return false; // Повреждённый пользователь игнорируется
             }
             else
-                return UserObject[J_UUID].get<std::string>() == UUID; // Сравниваем UUID пользователя с заданым
+                return UserObject[J_USER_UUID].get<std::string>() == UUID; // Сравниваем UUID пользователя с заданым
         });
 
         if (UserIt == m_json[J_USERS].cend()) // Если пользователь не найден
@@ -297,7 +308,7 @@ std::error_code HMJsonDataStorage::removeUser(const QUuid& inUserUUID)
                 return false; // Повреждённый пользователь игнорируется
             }
             else
-                return UserObject[J_UUID].get<std::string>() == UUID; // Сравниваем UUID пользователя с заданым
+                return UserObject[J_USER_UUID].get<std::string>() == UUID; // Сравниваем UUID пользователя с заданым
         });
 
         if (UserIt != m_json[J_USERS].cend()) // Если пользователь существует
@@ -357,7 +368,7 @@ std::error_code HMJsonDataStorage::updateGroup(const std::shared_ptr<hmcommon::H
                     return false; // Повреждённая группа игнорируется
                 }
                 else
-                    return GroupObject[J_UUID].get<std::string>() == UUID; // Сравниваем UUID группы с заданым
+                    return GroupObject[J_GROUP_UUID].get<std::string>() == UUID; // Сравниваем UUID группы с заданым
             });
 
             if (UserIt == m_json[J_GROUPS].end()) // Если группа не найдена
@@ -395,7 +406,7 @@ std::shared_ptr<hmcommon::HMGroup> HMJsonDataStorage::findGroupByUUID(const QUui
                 return false; // Повреждённая группа игнорируется
             }
             else
-                return GroupObject[J_UUID].get<std::string>() == UUID; // Сравниваем UUID группы с заданым
+                return GroupObject[J_GROUP_UUID].get<std::string>() == UUID; // Сравниваем UUID группы с заданым
         });
 
         if (GroupIt == m_json[J_GROUPS].cend()) // Если группа не найдена
@@ -426,7 +437,7 @@ std::error_code HMJsonDataStorage::removeGroup(const QUuid& inGroupUUID)
                 return false; // Повреждённая группа игнорируется
             }
             else
-                return GroupObject[J_UUID].get<std::string>() == UUID; // Сравниваем UUID группы с заданым
+                return GroupObject[J_GROUP_UUID].get<std::string>() == UUID; // Сравниваем UUID группы с заданым
         });
 
         if (UserIt != m_json[J_GROUPS].cend()) // Если группа существует
@@ -437,17 +448,213 @@ std::error_code HMJsonDataStorage::removeGroup(const QUuid& inGroupUUID)
     return Error;
 }
 //-----------------------------------------------------------------------------
+std::error_code HMJsonDataStorage::addMessage(const std::shared_ptr<hmcommon::HMGroupMessage> inMessage)
+{
+    std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+
+    if (!is_open()) // Хранилище должно быть открыто
+        Error = make_error_code(eDataStoragError::dsNotOpen);
+    else
+    {
+        if (!inMessage) // Работаем только с валидным указателем
+            Error = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
+        else
+        {
+            if (findMessage(inMessage->m_uuid, Error)) // Если сообщение с таким UUID уже существует
+                Error = make_error_code(eDataStoragError::dsMessageAlreadyExists);
+            else // Нет такого сообщения
+            {   // Будем добавлять
+                if (findGroupByUUID(inMessage->m_group, Error)) // Добавляем только для существующей группы
+                {
+                    nlohmann::json NewUser = messageToJson(inMessage, Error); // Формируем объект сообщения
+
+                    if (!Error) // Если объект сформирован корректно
+                        m_json[J_MESSAGES].push_back(NewUser); // Добавляем сообщение
+                }
+            }
+        }
+    }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
+std::error_code HMJsonDataStorage::updateMessage(const std::shared_ptr<hmcommon::HMGroupMessage> inMessage)
+{
+    std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+
+    if (!is_open()) // Хранилище должно быть открыто
+        Error = make_error_code(eDataStoragError::dsNotOpen);
+    else
+    {
+        if (!inMessage) // Работаем только с валидным указателем
+            Error = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
+        else
+        {
+            const std::string UUID = inMessage->m_uuid.toString().toStdString(); // Единоразово запоминаем UUID
+            auto MessageIt = std::find_if(m_json[J_MESSAGES].begin(), m_json[J_MESSAGES].end(), [&](const nlohmann::json& MessageObject)
+            {
+                std::error_code Error = checkMessage(MessageObject); // Проверяем валидность объекта сообщения
+                if (Error)
+                {
+                    LOG_WARNING(QString::fromStdString(Error.message()));
+                    return false; // Повреждённное сообщение игнорируется
+                }
+                else
+                    return MessageObject[J_MESSAGE_UUID].get<std::string>() == UUID; // Сравниваем UUID сообщения с заданым
+            });
+
+            if (MessageIt == m_json[J_MESSAGES].end()) // Если сообщение не найдено
+                Error = make_error_code(eDataStoragError::dsMessageNotExists);
+            else // Сообщение найдено
+            {
+                nlohmann::json UpdateMessage = messageToJson(inMessage, Error); // Формируем объект сообщения
+
+                if (!Error) // Если объект сформирован корректно
+                    *MessageIt = UpdateMessage; // Обновляем данные сообщения
+            }
+        }
+    }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
+std::shared_ptr<hmcommon::HMGroupMessage> HMJsonDataStorage::findMessage(const QUuid inMessageUUID, std::error_code& outErrorCode)
+{
+    std::shared_ptr<hmcommon::HMGroupMessage> Result = nullptr;
+    outErrorCode = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+
+    if (!is_open())
+        outErrorCode = make_error_code(eDataStoragError::dsNotOpen);
+    else
+    {
+        const std::string UUID = inMessageUUID.toString().toStdString(); // Единоразово запоминаем UUID
+        // Ищим сообщение
+        auto MessageIt = std::find_if(m_json[J_MESSAGES].cbegin(), m_json[J_MESSAGES].cend(), [&](const nlohmann::json& MessageObject)
+        {
+            std::error_code Error = checkMessage(MessageObject); // Проверяем валидность объекта сообщения
+            if (Error)
+            {
+                LOG_WARNING(QString::fromStdString(Error.message()));
+                return false; // Повреждённное сообщение игнорируется
+            }
+            else
+                return MessageObject[J_MESSAGE_UUID].get<std::string>() == UUID; // Сравниваем UUID сообщения с заданым
+        });
+
+        if (MessageIt == m_json[J_MESSAGES].cend()) // Если сообщение не найдено
+            outErrorCode = make_error_code(eDataStoragError::dsMessageNotExists);
+        else // Сообщение найдено
+            Result = jsonToMessage(*MessageIt, outErrorCode); // Преобразуем JSON объект в сообщение
+    }
+
+    return Result;
+}
+//-----------------------------------------------------------------------------
+std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> HMJsonDataStorage::findMessages(const QUuid inGroupUUID, const hmcommon::MsgRange& inRange,  std::error_code& outErrorCode)
+{
+    std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> Result;
+    outErrorCode = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+
+    if (!is_open())
+        outErrorCode = make_error_code(eDataStoragError::dsNotOpen);
+    else
+    {
+        nlohmann::json FindedMessages = nlohmann::json::array();
+        std::back_insert_iterator< nlohmann::json > InsertBackIt (FindedMessages);
+        const std::string GroupUUID = inGroupUUID.toString().toStdString(); // Единоразово запоминаем UUID
+        // Копируем сообщения группы за указанный период
+        std::copy_if(m_json[J_MESSAGES].cbegin(), m_json[J_MESSAGES].cend(), InsertBackIt, [&](const nlohmann::json& MessageObject)
+        {
+            bool FRes = false;
+
+            std::error_code Error = checkMessage(MessageObject); // Проверяем валидность объекта сообщения
+            if (Error)
+            {
+                LOG_WARNING(QString::fromStdString(Error.message()));
+                FRes = false; // Повреждённное сообщение игнорируется
+            }
+            else
+            {
+                if (MessageObject[J_MESSAGE_GROUP_UUID].get<std::string>() != GroupUUID) // Сообщение не входит в группу
+                    FRes = false;
+                else // Сообщение в группе
+                {
+                    QDateTime TimeBuff = QDateTime::fromString(QString::fromStdString(MessageObject[J_MESSAGE_REGDATE].get<std::string>()), TIME_FORMAT); // Получаем время создания сообщения
+                    FRes = (TimeBuff >= inRange.m_from) && (TimeBuff <= inRange.m_to); // Проверяем что сообщение входит во временной диапазон
+                }
+            }
+
+            return FRes;
+        });
+
+        if (FindedMessages.empty()) // Сообщения не найдены
+            outErrorCode = make_error_code(eDataStoragError::dsMessageNotExists);
+        else // Сообщения найдены
+        {
+            Result.reserve(FindedMessages.size());
+
+            for (auto& Message : FindedMessages.items())
+            {   // Все сообщения в списке гарантированно валидны
+                std::error_code ConvertErr;
+                std::shared_ptr<hmcommon::HMGroupMessage> MSG = jsonToMessage(Message.value(), ConvertErr); // Преобразуем объект в сообщение
+
+                if (ConvertErr)
+                    LOG_WARNING(QString::fromStdString(ConvertErr.message()));
+                else
+                    Result.push_back(MSG); // Помещаем сообщение в итоговый контейнер
+            }
+            // Сортируем результаты по времени
+            std::sort(Result.begin(), Result.end(), [](std::shared_ptr<hmcommon::HMGroupMessage>& PMes1, std::shared_ptr<hmcommon::HMGroupMessage>& PMes2)
+            { return PMes1->m_createTime < PMes2->m_createTime; });
+        }
+    }
+
+    return Result;
+}
+//-----------------------------------------------------------------------------
+std::error_code HMJsonDataStorage::removeMessage(const QUuid inMessageUUID, const QUuid inGroupUUID)
+{
+    std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+
+    if (!is_open()) // Хранилище должно быть открыто
+        Error = make_error_code(eDataStoragError::dsNotOpen);
+    else
+    {
+        const std::string UUID = inMessageUUID.toString().toStdString(); // Единоразово запоминаем UUID
+        const std::string GroupUUID = inGroupUUID.toString().toStdString(); // Единоразово запоминаем UUID группы
+        // Ищим сообщение
+        auto MessageIt = std::find_if(m_json[J_MESSAGES].cbegin(), m_json[J_MESSAGES].cend(), [&](const nlohmann::json& MessageObject)
+        {
+            std::error_code Error = checkMessage(MessageObject); // Проверяем валидность объекта сообщения
+            if (Error)
+            {
+                LOG_WARNING(QString::fromStdString(Error.message()));
+                return false; // Повреждённное сообщение игнорируется
+            }
+            else
+                return ((MessageObject[J_MESSAGE_UUID].get<std::string>() == UUID) && // Сравниваем UUID группы с заданым
+                        (MessageObject[J_MESSAGE_GROUP_UUID].get<std::string>() == GroupUUID));
+        });
+
+        if (MessageIt != m_json[J_MESSAGES].cend()) // Если сообщение существует
+            m_json[J_MESSAGES].erase(MessageIt); // Удаляем сообщение
+        // Если не найден пользователь на удаление то это не ошибка
+    }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
 std::error_code HMJsonDataStorage::makeDefault()
 {
     close();
 
-    m_json[J_VERSION] = FORMAT_VESION;          // Задаём версию формата
-    m_json[J_USERS] = nlohmann::json::array();  // Формируем пользователей
+    m_json[J_VERSION] = FORMAT_VESION;              // Задаём версию формата
+    m_json[J_USERS] = nlohmann::json::array();      // Формируем пользователей
 
     nlohmann::json AdminUser = nlohmann::json::value_t::object;
     // Создаём пользователя "адиминистратора"
-    AdminUser[J_UUID] = QUuid::createUuid().toString().toStdString();
-    AdminUser[J_REGDATE] = QDateTime::currentDateTime().toString().toStdString();
+    AdminUser[J_USER_UUID] = QUuid::createUuid().toString().toStdString();
+    AdminUser[J_USER_REGDATE] = QDateTime::currentDateTime().toString().toStdString();
     AdminUser[J_USER_LOGIN] = "Admin";
 
     QByteArray Hash = QCryptographicHash::hash(QString("password").toLocal8Bit(), QCryptographicHash::Md5);
@@ -459,8 +666,8 @@ std::error_code HMJsonDataStorage::makeDefault()
 
     m_json[J_USERS].push_back(AdminUser);
 
-
-    m_json[J_GROUPS] = nlohmann::json::array(); // Формируем группы
+    m_json[J_GROUPS] = nlohmann::json::array();     // Формируем группы
+    m_json[J_MESSAGES] = nlohmann::json::array();   // Формируем сообщения
 
     return write(); // Пишем сформированный файл
 }
@@ -476,7 +683,7 @@ std::error_code HMJsonDataStorage::checkCorrectStruct() const
         // Проверяем версию
         if (m_json.find(J_VERSION) == m_json.end() || m_json[J_VERSION].is_null() || m_json[J_VERSION].type() != nlohmann::json::value_t::string)
             Error = make_error_code(hmcommon::eSystemErrorEx::seIncorrecVersion);
-
+        // Проверяем пользователей
         if (m_json.find(J_USERS) == m_json.end() || m_json[J_USERS].is_null() || m_json[J_USERS].type() != nlohmann::json::value_t::array)
             Error = make_error_code(hmcommon::eSystemErrorEx::seIncorretData);
         else
@@ -486,13 +693,23 @@ std::error_code HMJsonDataStorage::checkCorrectStruct() const
                 if (Error)
                     break;
             }
-
+        // Проверяем группы
         if (m_json.find(J_GROUPS) == m_json.end() || m_json[J_GROUPS].is_null() || m_json[J_GROUPS].type() != nlohmann::json::value_t::array)
             Error = make_error_code(hmcommon::eSystemErrorEx::seIncorretData);
         else
             for (auto& Group : m_json[J_GROUPS].items()) // Перебиреам пользователей группы
             {
                 Error = checkGroup(Group.value());
+                if (Error)
+                    break;
+            }
+        // Проверяем сообщения
+        if (m_json.find(J_MESSAGES) == m_json.end() || m_json[J_MESSAGES].is_null() || m_json[J_MESSAGES].type() != nlohmann::json::value_t::array)
+            Error = make_error_code(hmcommon::eSystemErrorEx::seIncorretData);
+        else
+            for (auto& Message : m_json[J_MESSAGES].items()) // Перебиреам сообщения
+            {
+                Error = checkMessage(Message.value());
                 if (Error)
                     break;
             }
@@ -525,10 +742,10 @@ std::error_code HMJsonDataStorage::checkUser(const nlohmann::json& inUserObject)
 {
     std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
 
-    if (inUserObject.find(J_UUID) == inUserObject.end() || inUserObject[J_UUID].is_null() || inUserObject[J_UUID].type() != nlohmann::json::value_t::string)
+    if (inUserObject.find(J_USER_UUID) == inUserObject.end() || inUserObject[J_USER_UUID].is_null() || inUserObject[J_USER_UUID].type() != nlohmann::json::value_t::string)
         Error = make_error_code(eDataStoragError::dsUserUUIDCorrupted);
 
-    if (inUserObject.find(J_REGDATE) == inUserObject.end() || inUserObject[J_REGDATE].is_null() || inUserObject[J_REGDATE].type() != nlohmann::json::value_t::string)
+    if (inUserObject.find(J_USER_REGDATE) == inUserObject.end() || inUserObject[J_USER_REGDATE].is_null() || inUserObject[J_USER_REGDATE].type() != nlohmann::json::value_t::string)
         Error = make_error_code(eDataStoragError::dsUserRegistrationDateCorrupted);
 
     if (inUserObject.find(J_USER_LOGIN) == inUserObject.end() || inUserObject[J_USER_LOGIN].is_null() || inUserObject[J_USER_LOGIN].type() != nlohmann::json::value_t::string)
@@ -553,10 +770,10 @@ std::error_code HMJsonDataStorage::checkGroup(const nlohmann::json& inGroupObjec
 {
     std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
 
-    if (inGroupObject.find(J_UUID) == inGroupObject.end() || inGroupObject[J_UUID].is_null() || inGroupObject[J_UUID].type() != nlohmann::json::value_t::string)
+    if (inGroupObject.find(J_GROUP_UUID) == inGroupObject.end() || inGroupObject[J_GROUP_UUID].is_null() || inGroupObject[J_GROUP_UUID].type() != nlohmann::json::value_t::string)
         Error = make_error_code(eDataStoragError::dsGroupUUIDCorrupted);
 
-    if (inGroupObject.find(J_REGDATE) == inGroupObject.end() || inGroupObject[J_REGDATE].is_null() || inGroupObject[J_REGDATE].type() != nlohmann::json::value_t::string)
+    if (inGroupObject.find(J_GROUP_REGDATE) == inGroupObject.end() || inGroupObject[J_GROUP_REGDATE].is_null() || inGroupObject[J_GROUP_REGDATE].type() != nlohmann::json::value_t::string)
         Error = make_error_code(eDataStoragError::dsGroupRegistrationDateCorrupted);
 
     if (inGroupObject.find(J_GROUP_NAME) == inGroupObject.end() || inGroupObject[J_GROUP_NAME].is_null() || inGroupObject[J_GROUP_NAME].type() != nlohmann::json::value_t::string)
@@ -579,6 +796,28 @@ std::error_code HMJsonDataStorage::checkGroup(const nlohmann::json& inGroupObjec
     return Error;
 }
 //-----------------------------------------------------------------------------
+std::error_code HMJsonDataStorage::checkMessage(const nlohmann::json& inMesssageObject) const
+{
+    std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+
+    if (inMesssageObject.find(J_MESSAGE_UUID) == inMesssageObject.end() || inMesssageObject[J_MESSAGE_UUID].is_null() || inMesssageObject[J_MESSAGE_UUID].type() != nlohmann::json::value_t::string)
+        Error = make_error_code(eDataStoragError::dsMessageUUIDCorrupted);
+
+    if (inMesssageObject.find(J_MESSAGE_GROUP_UUID) == inMesssageObject.end() || inMesssageObject[J_MESSAGE_GROUP_UUID].is_null() || inMesssageObject[J_MESSAGE_GROUP_UUID].type() != nlohmann::json::value_t::string)
+        Error = make_error_code(eDataStoragError::dsMessageGroupUUIDCorrupted);
+
+    if (inMesssageObject.find(J_MESSAGE_REGDATE) == inMesssageObject.end() || inMesssageObject[J_MESSAGE_REGDATE].is_null() || inMesssageObject[J_MESSAGE_REGDATE].type() != nlohmann::json::value_t::string)
+        Error = make_error_code(eDataStoragError::dsMessageRegistrationDateCorrupted);
+
+    if (inMesssageObject.find(J_MESSAGE_TYPE) == inMesssageObject.end() || inMesssageObject[J_MESSAGE_TYPE].is_null() || inMesssageObject[J_MESSAGE_TYPE].type() != nlohmann::json::value_t::number_unsigned)
+        Error = make_error_code(eDataStoragError::dsMessageTypeCorrupted);
+
+    if (inMesssageObject.find(J_MESSAGE_DATA) == inMesssageObject.end() || inMesssageObject[J_MESSAGE_DATA].is_null() || inMesssageObject[J_MESSAGE_DATA].type() != nlohmann::json::value_t::array)
+        Error = make_error_code(eDataStoragError::dsMessageDataCorrupted);
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
 std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::jsonToUser(const nlohmann::json& inUserObject, std::error_code& outErrorCode) const
 {
     std::shared_ptr<hmcommon::HMUser> Result = nullptr;
@@ -586,8 +825,8 @@ std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::jsonToUser(const nlohmann::
 
     if (!outErrorCode) // Если объект валиден
     {   // Инициализируем экземпляр класса пользователя
-        Result = std::make_shared<hmcommon::HMUser>(QUuid::fromString(QString::fromStdString(inUserObject[J_UUID].get<std::string>())),
-                                                    QDateTime::fromString(QString::fromStdString(inUserObject[J_REGDATE].get<std::string>())));
+        Result = std::make_shared<hmcommon::HMUser>(QUuid::fromString(QString::fromStdString(inUserObject[J_USER_UUID].get<std::string>())),
+                                                    QDateTime::fromString(QString::fromStdString(inUserObject[J_USER_REGDATE].get<std::string>()), TIME_FORMAT));
 
         Result->setLogin(QString::fromStdString(inUserObject[J_USER_LOGIN].get<std::string>()));
         Result->setPasswordHash(jsonToByteArr(inUserObject[J_USER_PASS]));
@@ -608,8 +847,8 @@ nlohmann::json HMJsonDataStorage::userToJson(std::shared_ptr<hmcommon::HMUser> i
         outErrorCode = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
     else // Объект валиден
     {
-        Result[J_UUID] = inUser->m_uuid.toString().toStdString();
-        Result[J_REGDATE] = inUser->m_registrationDate.toString().toStdString();
+        Result[J_USER_UUID] = inUser->m_uuid.toString().toStdString();
+        Result[J_USER_REGDATE] = inUser->m_registrationDate.toString(TIME_FORMAT).toStdString();
         Result[J_USER_LOGIN] = inUser->getLogin().toStdString();
         Result[J_USER_PASS] = ByteArrToJson(inUser->getPasswordHash());
         Result[J_USER_NAME] = inUser->getName().toStdString();
@@ -632,8 +871,8 @@ std::shared_ptr<hmcommon::HMGroup> HMJsonDataStorage::jsonToGroup(const nlohmann
 
     if (!outErrorCode) // Если объект валиден
     {
-        Result = std::make_shared<hmcommon::HMGroup>(QUuid::fromString(QString::fromStdString(inGroupObject[J_UUID].get<std::string>())),
-                                                     QDateTime::fromString(QString::fromStdString(inGroupObject[J_REGDATE].get<std::string>())));
+        Result = std::make_shared<hmcommon::HMGroup>(QUuid::fromString(QString::fromStdString(inGroupObject[J_GROUP_UUID].get<std::string>())),
+                                                     QDateTime::fromString(QString::fromStdString(inGroupObject[J_GROUP_REGDATE].get<std::string>()), TIME_FORMAT));
 
         Result->setName(QString::fromStdString(inGroupObject[J_GROUP_NAME].get<std::string>()));
 
@@ -653,8 +892,8 @@ nlohmann::json HMJsonDataStorage::groupToJson(std::shared_ptr<hmcommon::HMGroup>
         outErrorCode = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
     else // Объект валиден
     {
-        Result[J_UUID] = inGroup->m_uuid.toString().toStdString();
-        Result[J_REGDATE] = inGroup->m_registrationDate.toString().toStdString();
+        Result[J_GROUP_UUID] = inGroup->m_uuid.toString().toStdString();
+        Result[J_GROUP_REGDATE] = inGroup->m_registrationDate.toString(TIME_FORMAT).toStdString();
         Result[J_GROUP_NAME] = inGroup->getName().toStdString();
         Result[J_GROUP_USERS] = nlohmann::json::value_type::array();
 
@@ -662,6 +901,54 @@ nlohmann::json HMJsonDataStorage::groupToJson(std::shared_ptr<hmcommon::HMGroup>
             Result[J_GROUP_USERS].push_back(inGroup->getUser(Index, outErrorCode).toString().toStdString());
 
         outErrorCode = checkGroup(Result); // Заранее проверяем корректность создаваемой группы
+
+        if (outErrorCode)
+            Result.clear();
+    }
+
+    return Result;
+}
+//-----------------------------------------------------------------------------
+std::shared_ptr<hmcommon::HMGroupMessage> HMJsonDataStorage::jsonToMessage(const nlohmann::json& inMessageObject, std::error_code& outErrorCode) const
+{
+    std::shared_ptr<hmcommon::HMGroupMessage> Result = nullptr;
+    outErrorCode = checkMessage(inMessageObject); // Проверяем валидность сообщения
+
+    if (!outErrorCode) // Если объект валиден
+    {
+        Result = std::make_shared<hmcommon::HMGroupMessage>(QUuid::fromString(QString::fromStdString(inMessageObject[J_MESSAGE_UUID].get<std::string>())),
+                                                            QUuid::fromString(QString::fromStdString(inMessageObject[J_MESSAGE_GROUP_UUID].get<std::string>())),
+                                                            QDateTime::fromString(QString::fromStdString(inMessageObject[J_MESSAGE_REGDATE].get<std::string>()), TIME_FORMAT));
+
+        hmcommon::MsgData Data(inMessageObject[J_MESSAGE_TYPE].get<hmcommon::eMsgType>(), jsonToByteArr(inMessageObject[J_MESSAGE_DATA]));
+        outErrorCode = Result->setMessage(Data);
+
+        if (outErrorCode)
+            Result = nullptr;
+    }
+
+    return Result;
+}
+//-----------------------------------------------------------------------------
+nlohmann::json HMJsonDataStorage::messageToJson(std::shared_ptr<hmcommon::HMGroupMessage> inMessage, std::error_code& outErrorCode) const
+{
+    nlohmann::json Result = nlohmann::json::value_type::object();
+    outErrorCode = make_error_code(hmcommon::eSystemErrorEx::seSuccess);
+
+    if (!inMessage) // Проверяем валидность указателя
+        outErrorCode = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
+    else // Объект валиден
+    {
+        Result[J_MESSAGE_UUID] = inMessage->m_uuid.toString().toStdString();
+        Result[J_MESSAGE_GROUP_UUID] = inMessage->m_group.toString().toStdString();
+        Result[J_MESSAGE_REGDATE] = inMessage->m_createTime.toString(TIME_FORMAT).toStdString();
+
+        hmcommon::MsgData Data = inMessage->getMesssage();
+
+        Result[J_MESSAGE_TYPE] = static_cast<std::uint32_t>(Data.m_type);
+        Result[J_MESSAGE_DATA] = ByteArrToJson(Data.m_data);
+
+        outErrorCode = checkMessage(Result); // Заранее проверяем корректность создаваемого сообщения
 
         if (outErrorCode)
             Result.clear();

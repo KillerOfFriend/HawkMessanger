@@ -53,7 +53,7 @@ public:
      * @param inUuid - Uuid пользователя
      * @param inRegistrationDate - Дата регистрации
      */
-    HMUser(const QUuid& inUuid, const QDateTime& inRegistrationDate);
+    HMUser(const QUuid& inUuid, const QDateTime& inRegistrationDate = QDateTime::currentDateTime());
 
     /**
      * @brief ~HMUser - Деструктор по умолчанию

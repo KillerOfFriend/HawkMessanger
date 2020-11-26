@@ -61,6 +61,13 @@ private:
     std::error_code checkGroup(const nlohmann::json& inGroupObject) const;
 
     /**
+     * @brief checkMessage - Метод проверит валидность JSON объекта сообщения
+     * @param inMesssageObject - Проверяемый объект
+     * @return Вернёт признак ошибки
+     */
+    std::error_code checkMessage(const nlohmann::json& inMesssageObject) const;
+
+    /**
      * @brief jsonToUser - Метод преобразует Json объект в экземпляр пользователя
      * @param inUserObject - Объект Json содержащий пользователя
      * @param outErrorCode - Признак ошибки
@@ -91,6 +98,22 @@ private:
      * @return Вернёт объект Json
      */
     nlohmann::json groupToJson(std::shared_ptr<hmcommon::HMGroup> inGroup, std::error_code& outErrorCode) const;
+
+    /**
+     * @brief jsonToMessage - Метод преобразует Json объект в экземпляр сообщение
+     * @param inMessageObject - Объект Json содержащий сообщение
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт указатель на экземпляр сообщения или nullptr
+     */
+    std::shared_ptr<hmcommon::HMGroupMessage> jsonToMessage(const nlohmann::json& inMessageObject, std::error_code& outErrorCode) const;
+
+    /**
+     * @brief messageToJson - Метод преобразует сообщение в объект Json
+     * @param inMessage - Указатель на сообщение
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт объект Json
+     */
+    nlohmann::json messageToJson(std::shared_ptr<hmcommon::HMGroupMessage> inMessage, std::error_code& outErrorCode) const;
 
 public:
 
@@ -195,6 +218,47 @@ public:
      * @return Вернёт признак ошибки
      */
     virtual std::error_code removeGroup(const QUuid& inGroupUUID) override;
+
+    // Сообщения
+
+    /**
+     * @brief addMessage - Метод добавит новое сообщение
+     * @param inMessage - Добавляемое сообщение
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code addMessage(const std::shared_ptr<hmcommon::HMGroupMessage> inMessage) override;
+
+    /**
+     * @brief updateMessage - Метод обновит данные сообщения
+     * @param inMessage - Обновляемое сообщение
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code updateMessage(const std::shared_ptr<hmcommon::HMGroupMessage> inMessage) override;
+
+    /**
+     * @brief findMessage - Метод найдёт сообщение по его uuid
+     * @param inMessageUUID - Uuid сообщения
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт указатель на экземпляр сообщения или nullptr
+     */
+    virtual std::shared_ptr<hmcommon::HMGroupMessage> findMessage(const QUuid inMessageUUID, std::error_code& outErrorCode) override;
+
+    /**
+     * @brief findMessages - Метод вернёт перечень сообщений группы за куазаный промежуток времени
+     * @param inGroupUUID - Uuid группы, которой пренадлежат сообщения
+     * @param inRange - Временной диапозон
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт перечень сообщений
+     */
+    virtual std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> findMessages(const QUuid inGroupUUID, const hmcommon::MsgRange& inRange,  std::error_code& outErrorCode) override;
+
+    /**
+     * @brief removeMessage - Метод удалит сообщение
+     * @param inMessageUUID - Uuid сообщения
+     * @param inGroupUUID - Uuid группы
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code removeMessage(const QUuid inMessageUUID, const QUuid inGroupUUID) override;
 
 };
 //-----------------------------------------------------------------------------
