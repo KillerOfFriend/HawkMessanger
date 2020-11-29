@@ -23,6 +23,8 @@ bool HMUser::setPassword(const QString& inPassword)
     bool Result = true;
 
     if (inPassword.isEmpty())
+        Result = false;
+    else
         m_passwordHash = QCryptographicHash::hash(inPassword.toLocal8Bit(), QCryptographicHash::Algorithm::Sha512);
 
     return Result;

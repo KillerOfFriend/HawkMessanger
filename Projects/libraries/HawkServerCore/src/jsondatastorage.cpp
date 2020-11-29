@@ -595,7 +595,7 @@ std::error_code HMJsonDataStorage::makeDefault()
     AdminUser[J_USER_PASS] = m_validator.byteArrToJson(Hash);
 
     AdminUser[J_USER_NAME] = "Admin";
-    AdminUser[J_USER_SEX] = hmcommon::eSex::SNotSpecified;
+    AdminUser[J_USER_SEX] = hmcommon::eSex::sNotSpecified;
     AdminUser[J_USER_BIRTHDAY] = "";
 
     m_json[J_USERS].push_back(AdminUser);

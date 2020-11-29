@@ -20,7 +20,7 @@ namespace hmcommon
  */
 enum class eSex
 {
-    SNotSpecified,  ///< Пол не указан
+    sNotSpecified,  ///< Пол не указан
     sMale,          ///< Мужской
     sFemale         ///< Женский
 };
@@ -39,7 +39,7 @@ private:
     QByteArray m_passwordHash;          ///< Хеш пароля пользователя
 
     QString m_name;                     ///< Реальное имя пользователя
-    eSex m_sex = eSex::SNotSpecified;   ///< Пол пользователя
+    eSex m_sex = eSex::sNotSpecified;   ///< Пол пользователя
 
     QDate m_birthday;                   ///< Дата рождения пользователя
 

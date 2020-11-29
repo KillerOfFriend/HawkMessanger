@@ -22,5 +22,5 @@ add_executable(${Test1} ${CMAKE_CURRENT_SOURCE_DIR}/JsonDataStorage/main.cpp)
 target_include_directories(${Test1} PRIVATE ${TESTS_INCLUDE_DIRS})
 target_link_libraries(${Test1} PRIVATE ${TESTS_LINCED_LIBRARYES})
 
-add_test(NAME HawkServerCore_Test1 COMMAND JsonDataStorage)
+add_test(NAME HawkServerCore_Test1 COMMAND JsonDataStorageTest)
 #====================================================================
