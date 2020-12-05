@@ -23,6 +23,7 @@ static const std::string J_USER_PASS            = "password_hash";
 static const std::string J_USER_NAME            = "name";
 static const std::string J_USER_SEX             = "sex";
 static const std::string J_USER_BIRTHDAY        = "birthday";
+static const std::string J_USER_CONTACTS        = "contacts";
 
 static const std::string J_GROUP_UUID           = UUID;
 static const std::string J_GROUP_REGDATE        = REGDATE;

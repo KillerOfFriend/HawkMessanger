@@ -1,5 +1,7 @@
 #include "contactlist.h"
 
+#include <assert.h>
+
 #include "user.h"
 #include "systemerrorex.h"
 
@@ -8,9 +10,18 @@ using namespace hmcommon;
 //-----------------------------------------------------------------------------
 // ContactHashCompare
 //-----------------------------------------------------------------------------
-size_t ContactHashCompare::operator() (const std::shared_ptr<HMUser> &inUser) const
+size_t ContactMakeHash::operator() (const std::shared_ptr<HMUser> &inContact) const noexcept
 {
-    return std::hash<std::string>()(inUser->m_uuid.toString().toStdString());
+    assert(inContact != nullptr);
+    return std::hash<std::string>()(inContact->m_uuid.toString().toStdString());
+}
+//-----------------------------------------------------------------------------
+// ContactCheckEqual
+//-----------------------------------------------------------------------------
+bool ContactCheckEqual::operator()(const std::shared_ptr<HMUser>& inLeftContact, const std::shared_ptr<HMUser>& inRightContact) const noexcept
+{
+    assert((inLeftContact != nullptr) && (inRightContact != nullptr));
+    return inLeftContact->m_uuid == inRightContact->m_uuid;
 }
 //-----------------------------------------------------------------------------
 // HMContactList
@@ -63,9 +74,7 @@ std::shared_ptr<HMUser> HMContactList::getContact(const QUuid inContactUuid, std
     std::shared_ptr<HMUser> Result = nullptr;
     outErrorCode = make_error_code(eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
 
-    Result = std::make_shared<HMUser>(inContactUuid); // Формируем пользователя для поиска по UUID
-    auto FindRes = m_contacts.find(Result);
-    Result = nullptr; // Сбрасывам пользователя
+    auto FindRes = m_contacts.find(std::make_shared<HMUser>(inContactUuid));
 
     if (FindRes == m_contacts.end())
         outErrorCode = make_error_code(eSystemErrorEx::seNotInContainer);

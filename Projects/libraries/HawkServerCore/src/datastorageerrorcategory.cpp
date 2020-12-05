@@ -34,7 +34,8 @@ std::string DataStorageErrorCategory::message(int inCode) const
         case eDataStoragError::dsUserPasswordHashCorrupted:         { Result = tr("Хеш пароля пользователя повреждён").toStdString(); break; }
         case eDataStoragError::dsUserNameCorrupted:                 { Result = tr("Имя пользователя повреждено").toStdString(); break; }
         case eDataStoragError::dsUserSexCorrupted:                  { Result = tr("Пол пользователя повреждён").toStdString(); break; }
-        case eDataStoragError::dsUserBirthday:                      { Result = tr("День рождения пользователя повреждён").toStdString(); break; }
+        case eDataStoragError::dsUserBirthdayCorrupted:             { Result = tr("День рождения пользователя повреждён").toStdString(); break; }
+        case eDataStoragError::dsUserContactsCorrupted:             { Result = tr("Контакты пользователя повреждены").toStdString(); break; }
 
         case eDataStoragError::dsGroupNotExists:                    { Result = tr("Группа не существует").toStdString(); break; }
         case eDataStoragError::dsGroupAlreadyExists:                { Result = tr("Группа уже существует").toStdString(); break; }

@@ -156,7 +156,7 @@ std::error_code HMJsonDataStorage::updateUser(const std::shared_ptr<hmcommon::HM
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByUUID(const QUuid &inUserUUID, std::error_code &outErrorCode)
+std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByUUID(const QUuid &inUserUUID, std::error_code &outErrorCode, const bool inWithContacts)
 {
     std::shared_ptr<hmcommon::HMUser> Result = nullptr;
     outErrorCode = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
@@ -182,13 +182,23 @@ std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByUUID(const QUuid 
         if (UserIt == m_json[J_USERS].cend()) // Если пользователь не найден
             outErrorCode = make_error_code(eDataStoragError::dsUserNotExists);
         else // Пользователь найден
+        {
             Result = m_validator.jsonToUser(*UserIt, outErrorCode); // Преобразуем JSON объект в пользователя
+
+            if (inWithContacts) // Если требуется подготовить контакты для пользователя
+            {
+                outErrorCode = buildUserContacts(*UserIt, Result);
+
+                if (outErrorCode)
+                    Result = nullptr;
+            }
+        }
     }
 
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByAuthentication(const QString &inLogin, const QByteArray &inPasswordHash, std::error_code &outErrorCode)
+std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByAuthentication(const QString &inLogin, const QByteArray &inPasswordHash, std::error_code &outErrorCode, const bool inWithContacts)
 {
     std::shared_ptr<hmcommon::HMUser> Result = nullptr;
     outErrorCode = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
@@ -217,7 +227,17 @@ std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByAuthentication(co
         if (UserIt == m_json[J_USERS].cend()) // Если пользователь не найден
             outErrorCode = make_error_code(eDataStoragError::dsUserNotExists);
         else // Пользователь найден
+        {
             Result = m_validator.jsonToUser(*UserIt, outErrorCode); // Преобразуем JSON объект в пользователя
+
+            if (inWithContacts) // Если требуется подготовить контакты для пользователя
+            {
+                outErrorCode = buildUserContacts(*UserIt, Result);
+
+                if (outErrorCode)
+                    Result = nullptr;
+            }
+        }
     }
 
     return Result;
@@ -667,6 +687,38 @@ std::error_code HMJsonDataStorage::write() const
         outFile << m_json; // Пишем JSON в файл
         outFile.flush();
         outFile.close();
+    }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
+std::error_code HMJsonDataStorage::buildUserContacts(const nlohmann::json& inJsonUser, std::shared_ptr<hmcommon::HMUser> outUser)
+{
+    std::error_code Error = m_validator.checkUser(inJsonUser);
+
+    if (!Error) // Если объект JSON валиден
+    {
+        if (!outUser) // Проверяем валидность указателя на возвращаемый объект
+            Error = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
+        else
+        {
+            for (auto& ContactUUID : inJsonUser[J_USER_CONTACTS].items()) // Перебираем все контакты пользователя
+            {
+                std::error_code ContactError = make_error_code(hmservcommon::eDataStoragError::dsSuccess);
+
+                QUuid Uuid(QString::fromStdString(ContactUUID.value().get<std::string>())); // Получаем UUID пользователя
+                std::shared_ptr<hmcommon::HMUser> Contact = findUserByUUID(Uuid, ContactError, false); // Запрашиваем пользователя БЕЗ КОНТАКТОВ
+
+                if (ContactError) // Проверяем каждый полученый контакт
+                    LOG_ERROR(QString::fromStdString(ContactError.message())); // Невалидные контакты будут проигнорированны
+                else
+                {
+                    ContactError = outUser->m_contactList.addContact(Contact); // Добавляем контакт пользователю
+                    if (ContactError)
+                        LOG_ERROR(QString::fromStdString(ContactError.message()));
+                }
+            }
+        }
     }
 
     return Error;

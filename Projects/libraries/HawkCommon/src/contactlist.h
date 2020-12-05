@@ -18,16 +18,24 @@ namespace hmcommon
 class HMUser;
 //-----------------------------------------------------------------------------
 /**
- * @brief The ContactCompare struct - Компаратор пользователей для перечня контактов
+ * @brief The ContactMakeHash struct - Структура, реализующая оператор взятия хеша от контакта
  */
-struct ContactHashCompare
+struct ContactMakeHash
 {
     /**
      * @brief operator () - Оператор сравнения пользователей
-     * @param inUser - Указатель на пользователя
+     * @param inContact - Указатель на контакт
      * @return Вернёт результат хеш функции сравнения
      */
-    std::size_t operator() (const std::shared_ptr<HMUser>& inUser) const;
+    std::size_t operator() (const std::shared_ptr<HMUser>& inContact) const noexcept;
+};
+//-----------------------------------------------------------------------------
+/**
+ * @brief The ContactCheckEqual struct - Структура, реализующая оператор сравнения контактов
+ */
+struct ContactCheckEqual
+{
+    bool operator()(const std::shared_ptr<HMUser>& inLeftContact, const std::shared_ptr<HMUser>& inRightContact) const noexcept;
 };
 //-----------------------------------------------------------------------------
 /**
@@ -40,7 +48,7 @@ class HMContactList
 {
 private:
 
-    std::unordered_set<std::shared_ptr<HMUser>, ContactHashCompare> m_contacts; ///< Контейнер, содержащий перечень контактов
+    std::unordered_set<std::shared_ptr<HMUser>, ContactMakeHash, ContactCheckEqual> m_contacts; ///< Контейнер, содержащий перечень контактов
 
 public:
 

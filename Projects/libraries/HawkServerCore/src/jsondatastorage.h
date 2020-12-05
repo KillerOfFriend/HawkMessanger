@@ -48,6 +48,14 @@ private:
      */
     std::error_code write() const;
 
+    /**
+     * @brief buildUserContacts - Метод инициализирует контакты пользователя
+     * @param inJsonUser - Объект Json содержащий пользователя
+     * @param outUser - Пользоваетль, для которого инициализируются контакты
+     * @return Вернёт признак ошибки
+     */
+    std::error_code buildUserContacts(const nlohmann::json& inJsonUser, std::shared_ptr<hmcommon::HMUser> outUser);
+
 
 public:
 
@@ -102,18 +110,20 @@ public:
      * @brief findUserByUUID - Метод найдёт пользователя по его uuid
      * @param inUserUUID - Uuid пользователя
      * @param outErrorCode - Признак ошибки
+     * @param inWithContacts - Флаг "Вернуть со списокм контактов"
      * @return Вернёт указатель на экземпляр пользователя или nullptr
      */
-    virtual std::shared_ptr<hmcommon::HMUser> findUserByUUID(const QUuid& inUserUUID, std::error_code& outErrorCode) override;
+    virtual std::shared_ptr<hmcommon::HMUser> findUserByUUID(const QUuid& inUserUUID, std::error_code& outErrorCode, const bool inWithContacts = true) override;
 
     /**
      * @brief findUserByAuthentication - Метод найдёт пользователя по его данным аутентификации
      * @param inLogin - Логин пользователя
      * @param inPasswordHash - Хеш пароля пользователя
      * @param outErrorCode - Признак ошибки
+     * @param inWithContacts - Флаг "Вернуть со списокм контактов"
      * @return Вернёт указатель на экземпляр пользователя или nullptr
      */
-    virtual std::shared_ptr<hmcommon::HMUser> findUserByAuthentication(const QString& inLogin, const QByteArray& inPasswordHash, std::error_code& outErrorCode) override;
+    virtual std::shared_ptr<hmcommon::HMUser> findUserByAuthentication(const QString& inLogin, const QByteArray& inPasswordHash, std::error_code& outErrorCode, const bool inWithContacts = true) override;
 
     /**
      * @brief removeUser - Метод удалит пользователя

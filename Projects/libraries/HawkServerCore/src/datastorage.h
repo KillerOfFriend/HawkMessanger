@@ -81,18 +81,20 @@ public:
      * @brief findUserByUUID - Метод найдёт пользователя по его uuid
      * @param inUserUUID - Uuid пользователя
      * @param outErrorCode - Признак ошибки
+     * @param inWithContacts - Флаг "Вернуть со списокм контактов"
      * @return Вернёт указатель на экземпляр пользователя или nullptr
      */
-    virtual std::shared_ptr<hmcommon::HMUser> findUserByUUID(const QUuid& inUserUUID, std::error_code& outErrorCode) = 0;
+    virtual std::shared_ptr<hmcommon::HMUser> findUserByUUID(const QUuid& inUserUUID, std::error_code& outErrorCode, const bool inWithContacts = true) = 0;
 
     /**
      * @brief findUserByAuthentication - Метод найдёт пользователя по его данным аутентификации
      * @param inLogin - Логин пользователя
      * @param inPasswordHash - Хеш пароля пользователя
      * @param outErrorCode - Признак ошибки
+     * @param inWithContacts - Флаг "Вернуть со списокм контактов"
      * @return Вернёт указатель на экземпляр пользователя или nullptr
      */
-    virtual std::shared_ptr<hmcommon::HMUser> findUserByAuthentication(const QString& inLogin, const QByteArray& inPasswordHash, std::error_code& outErrorCode) = 0;
+    virtual std::shared_ptr<hmcommon::HMUser> findUserByAuthentication(const QString& inLogin, const QByteArray& inPasswordHash, std::error_code& outErrorCode, const bool inWithContacts = true) = 0;
 
     /**
      * @brief removeUser - Метод удалит пользователя

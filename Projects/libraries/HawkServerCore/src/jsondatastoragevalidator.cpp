@@ -31,7 +31,10 @@ std::error_code HMJsonDataStorageValidator::checkUser(const nlohmann::json& inUs
         Error = make_error_code(eDataStoragError::dsUserSexCorrupted);
 
     if (inUserObject.find(J_USER_BIRTHDAY) == inUserObject.end() || /*inUserObject[J_USER_BIRTHDAY].is_null() ||*/ inUserObject[J_USER_BIRTHDAY].type() != nlohmann::json::value_t::string)
-        Error = make_error_code(eDataStoragError::dsUserBirthday);
+        Error = make_error_code(eDataStoragError::dsUserBirthdayCorrupted);
+
+    if (inUserObject.find(J_USER_CONTACTS) == inUserObject.end() || inUserObject[J_USER_CONTACTS].type() != nlohmann::json::value_t::array)
+        Error = make_error_code(eDataStoragError::dsUserContactsCorrupted);
 
     return Error;
 }
@@ -124,6 +127,19 @@ nlohmann::json HMJsonDataStorageValidator::userToJson(std::shared_ptr<hmcommon::
         Result[J_USER_NAME] = inUser->getName().toStdString();
         Result[J_USER_SEX] = static_cast<std::uint32_t>(inUser->getSex());
         Result[J_USER_BIRTHDAY] = inUser->getBirthday().toString().toStdString();
+
+        Result[J_USER_CONTACTS] = nlohmann::json::array(); // Формируем список контактов
+        if (!inUser->m_contactList.isEmpty()) // Если список не пуст
+        {
+            std::error_code ContactError = make_error_code(hmcommon::eSystemErrorEx::seSuccess);
+            for (std::size_t ContactIndex = 0; ContactIndex < inUser->m_contactList.contactsCount(); ++ContactIndex)
+            {
+                std::shared_ptr<hmcommon::HMUser> Contact = inUser->m_contactList.getContact(ContactIndex, ContactError);
+
+                if (!ContactError && Contact) // Если получен валидный контакт без ошибок
+                    Result[J_USER_CONTACTS].push_back(Contact->m_uuid.toString().toStdString()); // Пишем UUID контакта
+            }
+        }
 
         outErrorCode = checkUser(Result); // Заранее проверяем корректность создаваемого пользователя
 

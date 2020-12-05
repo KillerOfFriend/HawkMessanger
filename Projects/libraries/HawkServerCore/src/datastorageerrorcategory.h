@@ -33,7 +33,8 @@ enum class eDataStoragError
     dsUserPasswordHashCorrupted,        ///< Хеш пароля пользователя повреждён
     dsUserNameCorrupted,                ///< Имя пользователя повреждено
     dsUserSexCorrupted,                 ///< Пол пользователя поврежден
-    dsUserBirthday,                     ///< День рождения пользователя повреждён
+    dsUserBirthdayCorrupted,            ///< День рождения пользователя повреждён
+    dsUserContactsCorrupted,            ///< Контакты пользователя повреждены
 
     dsGroupNotExists,                   ///< Группа не существует
     dsGroupAlreadyExists,               ///< Группа уже существует
