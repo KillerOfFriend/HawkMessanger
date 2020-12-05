@@ -18,7 +18,7 @@ void HMGroup::setName(const QString& inName)
 QString HMGroup::getName() const
 { return m_name; }
 //-----------------------------------------------------------------------------
-bool HMGroup::isUsersEnpty() const
+bool HMGroup::isUsersEmpty() const
 { return  m_users.empty(); }
 //-----------------------------------------------------------------------------
 std::size_t HMGroup::usersCount() const
@@ -55,7 +55,7 @@ QUuid HMGroup::getUser(const std::size_t inIndex, std::error_code& outErrorCode)
     QUuid Result;
     outErrorCode = make_error_code(eSystemErrorEx::seSuccess);
 
-    if (isUsersEnpty())
+    if (isUsersEmpty())
         outErrorCode = make_error_code(eSystemErrorEx::seContainerEmpty);
     else
     {

@@ -34,7 +34,7 @@ TEST(Group, CheckParams)
     Group.setName(GroupName);
     EXPECT_EQ(Group.getName(), GroupName);
 
-    EXPECT_EQ(Group.isUsersEnpty(), true);
+    EXPECT_EQ(Group.isUsersEmpty(), true);
 
     for (std::size_t Index = 0; Index < GroupUserCount; ++Index)
     {
@@ -44,7 +44,7 @@ TEST(Group, CheckParams)
         EXPECT_EQ(Group.usersCount(), Index + 1);
     }
 
-    EXPECT_EQ(Group.isUsersEnpty(), false);
+    EXPECT_EQ(Group.isUsersEmpty(), false);
 
     Error = Group.addUser(Users[0]);
     ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmcommon::eSystemErrorEx::seAlredyInContainer));
@@ -67,7 +67,7 @@ TEST(Group, CheckParams)
         EXPECT_EQ(Group.usersCount(), GroupUserCount - (Index + 1));
     }
 
-    EXPECT_EQ(Group.isUsersEnpty(), true);
+    EXPECT_EQ(Group.isUsersEmpty(), true);
 }
 //-----------------------------------------------------------------------------
 /**

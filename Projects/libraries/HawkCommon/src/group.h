@@ -62,7 +62,7 @@ public:
      * @brief isUsersEnpty - Метод вернёт признак того, что в группе нет пользователей
      * @return Вернёт признак того, что в группе нет пользователей
      */
-    bool isUsersEnpty() const;
+    bool isUsersEmpty() const;
 
     /**
      * @brief usersCount - Метод вернёт количество пользователей в группе
