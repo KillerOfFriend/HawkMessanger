@@ -6,7 +6,6 @@
  * @brief Содержит описание класса, контролирующего JSON для HMJsonDataStorage
  */
 
-
 #include <nlohmann/json.hpp>
 
 #include "datastorage.h"

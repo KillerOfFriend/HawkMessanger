@@ -16,7 +16,7 @@ using namespace hmservcommon;
 
 //-----------------------------------------------------------------------------
 HMJsonDataStorage::HMJsonDataStorage(const std::filesystem::path &inJsonPath) :
-    HMDataStorage(),
+    HMAbstractDataStorageFunctional(true), // Инициализируем предка с гарантированным хешированием
     m_jsonPath(inJsonPath)
 {
 
@@ -101,9 +101,9 @@ std::error_code HMJsonDataStorage::addUser(const std::shared_ptr<hmcommon::HMUse
             Error = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
         else
         {
-            if (findUserByUUID(inUser->m_uuid, Error)) // Если пользователь с таким UUID уже существует
-                Error = make_error_code(eDataStoragError::dsUserAlreadyExists);
-            else // Нет такого пользователя
+            Error = checkNewUserUnique(inUser); // Проверяем пользователья на уникальность
+
+            if (!Error) // Если проверка на уникальность прошла успешно
             {   // Будем добавлять
                 nlohmann::json NewUser = m_validator.userToJson(inUser, Error); // Формируем объект пользователя
 
@@ -156,7 +156,7 @@ std::error_code HMJsonDataStorage::updateUser(const std::shared_ptr<hmcommon::HM
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByUUID(const QUuid &inUserUUID, std::error_code &outErrorCode, const bool inWithContacts)
+std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByUUID(const QUuid &inUserUUID, std::error_code &outErrorCode, const bool inWithContacts) const
 {
     std::shared_ptr<hmcommon::HMUser> Result = nullptr;
     outErrorCode = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
@@ -198,7 +198,7 @@ std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByUUID(const QUuid 
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByAuthentication(const QString &inLogin, const QByteArray &inPasswordHash, std::error_code &outErrorCode, const bool inWithContacts)
+std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByAuthentication(const QString &inLogin, const QByteArray &inPasswordHash, std::error_code &outErrorCode, const bool inWithContacts) const
 {
     std::shared_ptr<hmcommon::HMUser> Result = nullptr;
     outErrorCode = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
@@ -285,9 +285,9 @@ std::error_code HMJsonDataStorage::addGroup(const std::shared_ptr<hmcommon::HMGr
             Error = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
         else
         {
-            if (findGroupByUUID(inGroup->m_uuid, Error)) // Если группа с таким UUID уже существует
-                Error = make_error_code(eDataStoragError::dsGroupAlreadyExists);
-            else // Нет такого пользователя
+            Error = checkNewGroupUnique(inGroup); // Проверяем группу на уникальность
+
+            if (!Error) // Если проверка на уникальность прошла успешно
             {   // Будем добавлять
                 nlohmann::json NewGroup = m_validator.groupToJson(inGroup, Error); // Формируем объект группы
 
@@ -340,7 +340,7 @@ std::error_code HMJsonDataStorage::updateGroup(const std::shared_ptr<hmcommon::H
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMGroup> HMJsonDataStorage::findGroupByUUID(const QUuid &inGroupUUID, std::error_code &outErrorCode)
+std::shared_ptr<hmcommon::HMGroup> HMJsonDataStorage::findGroupByUUID(const QUuid &inGroupUUID, std::error_code &outErrorCode) const
 {
     std::shared_ptr<hmcommon::HMGroup> Result = nullptr;
     outErrorCode = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
@@ -472,7 +472,7 @@ std::error_code HMJsonDataStorage::updateMessage(const std::shared_ptr<hmcommon:
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMGroupMessage> HMJsonDataStorage::findMessage(const QUuid inMessageUUID, std::error_code& outErrorCode)
+std::shared_ptr<hmcommon::HMGroupMessage> HMJsonDataStorage::findMessage(const QUuid inMessageUUID, std::error_code& outErrorCode) const
 {
     std::shared_ptr<hmcommon::HMGroupMessage> Result = nullptr;
     outErrorCode = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
@@ -504,7 +504,7 @@ std::shared_ptr<hmcommon::HMGroupMessage> HMJsonDataStorage::findMessage(const Q
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> HMJsonDataStorage::findMessages(const QUuid inGroupUUID, const hmcommon::MsgRange& inRange,  std::error_code& outErrorCode)
+std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> HMJsonDataStorage::findMessages(const QUuid inGroupUUID, const hmcommon::MsgRange& inRange,  std::error_code& outErrorCode) const
 {
     std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> Result;
     outErrorCode = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
@@ -598,34 +598,6 @@ std::error_code HMJsonDataStorage::removeMessage(const QUuid inMessageUUID, cons
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMJsonDataStorage::makeDefault()
-{
-    close();
-
-    m_json[J_VERSION] = FORMAT_VESION;              // Задаём версию формата
-    m_json[J_USERS] = nlohmann::json::array();      // Формируем пользователей
-
-    nlohmann::json AdminUser = nlohmann::json::value_t::object;
-    // Создаём пользователя "адиминистратора"
-    AdminUser[J_USER_UUID] = QUuid::createUuid().toString().toStdString();
-    AdminUser[J_USER_REGDATE] = QDateTime::currentDateTime().toString().toStdString();
-    AdminUser[J_USER_LOGIN] = "Admin";
-
-    QByteArray Hash = QCryptographicHash::hash(QString("password").toLocal8Bit(), QCryptographicHash::Md5);
-    AdminUser[J_USER_PASS] = m_validator.byteArrToJson(Hash);
-
-    AdminUser[J_USER_NAME] = "Admin";
-    AdminUser[J_USER_SEX] = hmcommon::eSex::sNotSpecified;
-    AdminUser[J_USER_BIRTHDAY] = "";
-
-    m_json[J_USERS].push_back(AdminUser);
-
-    m_json[J_GROUPS] = nlohmann::json::array();     // Формируем группы
-    m_json[J_MESSAGES] = nlohmann::json::array();   // Формируем сообщения
-
-    return write(); // Пишем сформированный файл
-}
-//-----------------------------------------------------------------------------
 std::error_code HMJsonDataStorage::checkCorrectStruct() const
 {
     std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
@@ -692,7 +664,7 @@ std::error_code HMJsonDataStorage::write() const
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMJsonDataStorage::buildUserContacts(const nlohmann::json& inJsonUser, std::shared_ptr<hmcommon::HMUser> outUser)
+std::error_code HMJsonDataStorage::buildUserContacts(const nlohmann::json& inJsonUser, std::shared_ptr<hmcommon::HMUser> outUser) const
 {
     std::error_code Error = m_validator.checkUser(inJsonUser);
 
@@ -722,5 +694,33 @@ std::error_code HMJsonDataStorage::buildUserContacts(const nlohmann::json& inJso
     }
 
     return Error;
+}
+//-----------------------------------------------------------------------------
+std::error_code HMJsonDataStorage::makeDefault()
+{
+    close();
+
+    m_json[J_VERSION] = FORMAT_VESION;              // Задаём версию формата
+    m_json[J_USERS] = nlohmann::json::array();      // Формируем пользователей
+
+    nlohmann::json AdminUser = nlohmann::json::value_t::object;
+    // Создаём пользователя "адиминистратора"
+    AdminUser[J_USER_UUID] = QUuid::createUuid().toString().toStdString();
+    AdminUser[J_USER_REGDATE] = QDateTime::currentDateTime().toString().toStdString();
+    AdminUser[J_USER_LOGIN] = "Admin";
+
+    QByteArray Hash = QCryptographicHash::hash(QString("password").toLocal8Bit(), QCryptographicHash::Md5);
+    AdminUser[J_USER_PASS] = m_validator.byteArrToJson(Hash);
+
+    AdminUser[J_USER_NAME] = "Admin";
+    AdminUser[J_USER_SEX] = hmcommon::eSex::sNotSpecified;
+    AdminUser[J_USER_BIRTHDAY] = "";
+
+    m_json[J_USERS].push_back(AdminUser);
+
+    m_json[J_GROUPS] = nlohmann::json::array();     // Формируем группы
+    m_json[J_MESSAGES] = nlohmann::json::array();   // Формируем сообщения
+
+    return write(); // Пишем сформированный файл
 }
 //-----------------------------------------------------------------------------

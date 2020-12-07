@@ -179,7 +179,8 @@ TEST(JsonDataStorage, FindUserWithContacts)
 
     for (std::size_t Index = 0; Index < ContactsCount; ++Index)
     {
-        Contacts[Index] = make_user();
+        QString ContactLogin = "Contact@login." + QString::number(Index); // У каждого пользователья должен быть уникальный UUID и логин
+        Contacts[Index] = make_user(QUuid::createUuid(), ContactLogin);
         Contacts[Index]->setName("User " + QString::number(Index));
         // Добавляем контакт в хранилище (Потому что контакт должен существовать)
         Error = Storage.addUser(Contacts[Index]);
@@ -535,7 +536,8 @@ TEST(JsonDataStorage, CheckJsonSave)
 
     for (std::size_t Index = 0; Index < ContactsCount; ++Index)
     {
-        Contacts[Index] = make_user(); // Создаём контакт
+        QString ContactLogin = "Contact@login." + QString::number(Index); // У каждого пользователья должен быть уникальный UUID и логин
+        Contacts[Index] = make_user(QUuid::createUuid(), ContactLogin);
         Contacts[Index]->setName("User contact " + QString::number(Index));
         // Добавляем контакт в хранилище (Потому что контакт должен существовать)
         Error = Storage.addUser(Contacts[Index]);

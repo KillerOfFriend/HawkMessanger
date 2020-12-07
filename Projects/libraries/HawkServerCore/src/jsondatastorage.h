@@ -11,6 +11,7 @@
 #include <nlohmann/json.hpp>
 
 #include "jsondatastoragevalidator.h"
+#include "abstractdatastoragefunctional.h"
 
 namespace hmservcommon
 {
@@ -21,7 +22,7 @@ namespace hmservcommon
  * @authors Alekseev_s
  * @date 21.11.2020
  */
-class HMJsonDataStorage : public HMDataStorage
+class HMJsonDataStorage : public HMAbstractDataStorageFunctional
 {
 private:
 
@@ -29,12 +30,6 @@ private:
     nlohmann::json m_json;                  ///< json файл
 
     HMJsonDataStorageValidator m_validator; ///< Валидатор формата данных
-
-    /**
-     * @brief makeDefault - Метод сформирует дефолтную структуру файла
-     * @return Вернёт признак ошибки
-     */
-    std::error_code makeDefault();
 
     /**
      * @brief checkCorrectStruct - Метод проверит корректность структуры файла
@@ -54,7 +49,7 @@ private:
      * @param outUser - Пользоваетль, для которого инициализируются контакты
      * @return Вернёт признак ошибки
      */
-    std::error_code buildUserContacts(const nlohmann::json& inJsonUser, std::shared_ptr<hmcommon::HMUser> outUser);
+    std::error_code buildUserContacts(const nlohmann::json& inJsonUser, std::shared_ptr<hmcommon::HMUser> outUser) const;
 
 
 public:
@@ -113,7 +108,7 @@ public:
      * @param inWithContacts - Флаг "Вернуть со списокм контактов"
      * @return Вернёт указатель на экземпляр пользователя или nullptr
      */
-    virtual std::shared_ptr<hmcommon::HMUser> findUserByUUID(const QUuid& inUserUUID, std::error_code& outErrorCode, const bool inWithContacts = true) override;
+    virtual std::shared_ptr<hmcommon::HMUser> findUserByUUID(const QUuid& inUserUUID, std::error_code& outErrorCode, const bool inWithContacts = true) const override;
 
     /**
      * @brief findUserByAuthentication - Метод найдёт пользователя по его данным аутентификации
@@ -123,7 +118,7 @@ public:
      * @param inWithContacts - Флаг "Вернуть со списокм контактов"
      * @return Вернёт указатель на экземпляр пользователя или nullptr
      */
-    virtual std::shared_ptr<hmcommon::HMUser> findUserByAuthentication(const QString& inLogin, const QByteArray& inPasswordHash, std::error_code& outErrorCode, const bool inWithContacts = true) override;
+    virtual std::shared_ptr<hmcommon::HMUser> findUserByAuthentication(const QString& inLogin, const QByteArray& inPasswordHash, std::error_code& outErrorCode, const bool inWithContacts = true) const override;
 
     /**
      * @brief removeUser - Метод удалит пользователя
@@ -154,7 +149,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр группы или nullptr
      */
-    virtual std::shared_ptr<hmcommon::HMGroup> findGroupByUUID(const QUuid& inGroupUUID, std::error_code& outErrorCode) override;
+    virtual std::shared_ptr<hmcommon::HMGroup> findGroupByUUID(const QUuid& inGroupUUID, std::error_code& outErrorCode) const override;
 
     /**
      * @brief removeGroup - Метод удалит группу
@@ -185,7 +180,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр сообщения или nullptr
      */
-    virtual std::shared_ptr<hmcommon::HMGroupMessage> findMessage(const QUuid inMessageUUID, std::error_code& outErrorCode) override;
+    virtual std::shared_ptr<hmcommon::HMGroupMessage> findMessage(const QUuid inMessageUUID, std::error_code& outErrorCode) const override;
 
     /**
      * @brief findMessages - Метод вернёт перечень сообщений группы за куазаный промежуток времени
@@ -194,7 +189,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт перечень сообщений
      */
-    virtual std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> findMessages(const QUuid inGroupUUID, const hmcommon::MsgRange& inRange,  std::error_code& outErrorCode) override;
+    virtual std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> findMessages(const QUuid inGroupUUID, const hmcommon::MsgRange& inRange,  std::error_code& outErrorCode) const override;
 
     /**
      * @brief removeMessage - Метод удалит сообщение
@@ -203,6 +198,15 @@ public:
      * @return Вернёт признак ошибки
      */
     virtual std::error_code removeMessage(const QUuid inMessageUUID, const QUuid inGroupUUID) override;
+
+
+protected:
+
+    /**
+     * @brief makeDefault - Метод сформирует дефолтную структуру хранилища
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code makeDefault() override;
 
 };
 //-----------------------------------------------------------------------------

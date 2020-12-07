@@ -25,6 +25,8 @@ enum class eDataStoragError
 
     dsNotOpen = C_STORAG_ERROR_START,   ///< Хранилище не открыто
 
+    dsUserUUIDAlreadyRegistered,        ///< В хранилище уже зарегистрирован пользователь с таким UUID
+    dsUserLoginAlreadyRegistered,       ///< В хранилище уже зарегистрирован пользователь с таким логином
     dsUserNotExists,                    ///< Пользователь не существует
     dsUserAlreadyExists,                ///< Пользователь уже существует
     dsUserUUIDCorrupted,                ///< UUID пользователя повреждён
@@ -36,6 +38,7 @@ enum class eDataStoragError
     dsUserBirthdayCorrupted,            ///< День рождения пользователя повреждён
     dsUserContactsCorrupted,            ///< Контакты пользователя повреждены
 
+    dsGroupUUIDAlreadyRegistered,       ///< В хранилище уже зарегистрирована группа с таким UUID
     dsGroupNotExists,                   ///< Группа не существует
     dsGroupAlreadyExists,               ///< Группа уже существует
     dsGroupUUIDCorrupted,               ///< UUID группы повреждён

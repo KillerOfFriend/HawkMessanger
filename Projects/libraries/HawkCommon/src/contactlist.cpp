@@ -1,6 +1,6 @@
 #include "contactlist.h"
 
-#include <assert.h>
+#include <cassert>
 
 #include "user.h"
 #include "systemerrorex.h"

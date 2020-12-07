@@ -26,6 +26,8 @@ std::string DataStorageErrorCategory::message(int inCode) const
 
         case eDataStoragError::dsNotOpen:                           { Result = tr("Хранилище не открыто").toStdString(); break; }
 
+        case eDataStoragError::dsUserUUIDAlreadyRegistered:         { Result = tr("Пользователь с таким UUID уже зарегистрирован").toStdString(); break; }
+        case eDataStoragError::dsUserLoginAlreadyRegistered:        { Result = tr("Пользователь с таким логином уже зарегистрирован").toStdString(); break; }
         case eDataStoragError::dsUserNotExists:                     { Result = tr("Пользователь не существует").toStdString(); break; }
         case eDataStoragError::dsUserAlreadyExists:                 { Result = tr("Пользователь уже существует").toStdString(); break; }
         case eDataStoragError::dsUserUUIDCorrupted:                 { Result = tr("UUID пользователя повреждён").toStdString(); break; }
@@ -37,6 +39,7 @@ std::string DataStorageErrorCategory::message(int inCode) const
         case eDataStoragError::dsUserBirthdayCorrupted:             { Result = tr("День рождения пользователя повреждён").toStdString(); break; }
         case eDataStoragError::dsUserContactsCorrupted:             { Result = tr("Контакты пользователя повреждены").toStdString(); break; }
 
+        case eDataStoragError::dsGroupUUIDAlreadyRegistered:        { Result = tr("Группа с таким UUID уже зарегистрирована").toStdString(); break; }
         case eDataStoragError::dsGroupNotExists:                    { Result = tr("Группа не существует").toStdString(); break; }
         case eDataStoragError::dsGroupAlreadyExists:                { Result = tr("Группа уже существует").toStdString(); break; }
         case eDataStoragError::dsGroupUUIDCorrupted:                { Result = tr("UUID группы повреждён").toStdString(); break; }
