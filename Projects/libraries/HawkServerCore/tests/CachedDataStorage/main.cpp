@@ -103,6 +103,32 @@ TEST(CachedDataStorage, AddUser)
 }
 //-----------------------------------------------------------------------------
 /**
+ * @brief TEST - Тест проверит обновление пользователя
+ */
+TEST(CachedDataStorage, updateUser)
+{
+    std::error_code Error;
+    hmservcommon::HMCachedDataStorage CachedStorage;
+
+    Error = CachedStorage.open();
+
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
+
+    std::shared_ptr<hmcommon::HMUser> NewUser = make_user();
+
+    Error = CachedStorage.addUser(NewUser); // Пытаемся добавить пользователя
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    NewUser->setName("New User Name");
+
+    Error = CachedStorage.updateUser(NewUser); // Пытаемся обновить пользователя
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    CachedStorage.close();
+}
+//-----------------------------------------------------------------------------
+/**
  * @brief TEST - Тест проверит поиск пользователья по UUID
  */
 TEST(CachedDataStorage, findUserByUUID)
@@ -184,8 +210,195 @@ TEST(CachedDataStorage, findUserByAuthentication)
     CachedStorage.close();
 }
 //-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест проверит удаление пользователя из кеша
+ */
+TEST(CachedDataStorage, removeUser)
+{
+    std::error_code Error;
+    hmservcommon::HMCachedDataStorage CachedStorage;
 
+    Error = CachedStorage.open();
 
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
+
+    std::shared_ptr<hmcommon::HMUser> NewUser = make_user();
+
+    Error = CachedStorage.addUser(NewUser); // Пытаемся добавить пользователя в кеш
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    Error = CachedStorage.removeUser(NewUser->m_uuid); // Пытаемся удалить добавленного пользователя
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    std::shared_ptr<hmcommon::HMUser> FindRes = CachedStorage.findUserByUUID(NewUser->m_uuid, Error); // Попытка получить удалённого пользователя
+
+    ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(hmservcommon::eDataStoragError::dsUserNotExists)); // И метку, что пользователь не хеширован
+
+    CachedStorage.close();
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест проверит добавление группы
+ */
+TEST(CachedDataStorage, addGroup)
+{
+    std::error_code Error;
+    hmservcommon::HMCachedDataStorage CachedStorage;
+
+    Error = CachedStorage.open();
+
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
+
+    std::shared_ptr<hmcommon::HMGroup> NewGroup = make_group();
+
+    Error = CachedStorage.addGroup(NewGroup);
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    Error = CachedStorage.addGroup(NewGroup);
+    EXPECT_EQ(Error.value(), static_cast<int32_t>(hmservcommon::eDataStoragError::dsGroupAlreadyExists)); // Должны получить сообщение что группа уже хеширована
+
+    CachedStorage.close();
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест проверит обновление группы
+ */
+TEST(CachedDataStorage, updateGroup)
+{
+    std::error_code Error;
+    hmservcommon::HMCachedDataStorage CachedStorage;
+
+    Error = CachedStorage.open();
+
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
+
+    std::shared_ptr<hmcommon::HMGroup> NewGroup = make_group();
+
+    Error = CachedStorage.addGroup(NewGroup);
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    NewGroup->setName("New Group Name");
+
+    Error = CachedStorage.updateGroup(NewGroup);
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    CachedStorage.close();
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест проверит поиск группы по UUID
+ */
+TEST(CachedDataStorage, findGroupByUUID)
+{
+    std::error_code Error;
+    hmservcommon::HMCachedDataStorage CachedStorage;
+
+    Error = CachedStorage.open();
+
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
+
+    std::shared_ptr<hmcommon::HMGroup> NewGroup = make_group();
+
+    std::shared_ptr<hmcommon::HMGroup> FindRes = CachedStorage.findGroupByUUID(NewGroup->m_uuid, Error); // Попытка получить не существующую группу
+
+    ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(hmservcommon::eDataStoragError::dsGroupNotExists)); // И метку, что группа не хеширована
+
+    Error = CachedStorage.addGroup(NewGroup); // Пытаемся добавить группу в кеш
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    const size_t SilCount = 5; // Добавим некоторое количество левых групп
+    for (size_t Index = 0; Index < SilCount; ++Index)
+    {
+        QString TrashGroupName = "TrashGroup" + QString::number(Index); // Логины мусорных пользователей должны быть уникальными
+        Error = CachedStorage.addGroup(make_group(QUuid::createUuid(), TrashGroupName)); // Пытаемся добавить группу
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+    }
+
+    FindRes = CachedStorage.findGroupByUUID(NewGroup->m_uuid, Error);
+
+    ASSERT_NE(FindRes, nullptr); // Должен вернуться валидный указатель
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    EXPECT_EQ(FindRes, NewGroup); // Проводим сравнение указателей (КОНЦЕПЦИЯ ХЕША: Объект всегда хранится под одним указателем)
+
+    CachedStorage.close();
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест проверит удаление группы
+ */
+TEST(CachedDataStorage, removeGroup)
+{
+    std::error_code Error;
+    hmservcommon::HMCachedDataStorage CachedStorage;
+
+    Error = CachedStorage.open();
+
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
+
+    std::shared_ptr<hmcommon::HMGroup> NewGroup = make_group();
+
+    Error = CachedStorage.addGroup(NewGroup); // Пытаемся добавить группу в кеш
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    Error = CachedStorage.removeGroup(NewGroup->m_uuid); // Пытаемся удалить группу пользователя
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    std::shared_ptr<hmcommon::HMGroup> FindRes = CachedStorage.findGroupByUUID(NewGroup->m_uuid, Error); // Попытка получить удалённую группу
+
+    ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(hmservcommon::eDataStoragError::dsGroupNotExists)); // И метку, что группа не хеширована
+
+    CachedStorage.close();
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест проверит добовление сообщения
+ */
+TEST(CachedDataStorage, addMessage)
+{
+    ASSERT_TRUE(true); // Кеширование сообщений не поддерживается
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест проверит обновление сообщения
+ */
+TEST(CachedDataStorage, updateMessage)
+{
+    ASSERT_TRUE(true); // Кеширование сообщений не поддерживается
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест проверит поиск сообщения по UUID
+ */
+TEST(CachedDataStorage, findMessage)
+{
+    ASSERT_TRUE(true); // Кеширование сообщений не поддерживается
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест проверит поиск перечня сообщений по временному промежутку
+ */
+TEST(CachedDataStorage, findMessages)
+{
+    ASSERT_TRUE(true); // Кеширование сообщений не поддерживается
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест проверит удаление сообщения
+ */
+TEST(CachedDataStorage, removeMessage)
+{
+    ASSERT_TRUE(true); // Кеширование сообщений не поддерживается
+}
+//-----------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------
 /**
