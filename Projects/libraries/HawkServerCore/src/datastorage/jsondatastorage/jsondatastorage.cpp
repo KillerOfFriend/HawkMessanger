@@ -8,11 +8,11 @@
 #include <systemerrorex.h>
 
 #include "jsondatastorageconst.h"
-#include "datastorageerrorcategory.h"
+#include "datastorage/datastorageerrorcategory.h"
 
 #include <QCryptographicHash>
 
-using namespace hmservcommon;
+using namespace hmservcommon::datastorage;
 
 //-----------------------------------------------------------------------------
 HMJsonDataStorage::HMJsonDataStorage(const std::filesystem::path &inJsonPath) :
@@ -29,7 +29,7 @@ HMJsonDataStorage::~HMJsonDataStorage()
 //-----------------------------------------------------------------------------
 std::error_code HMJsonDataStorage::open()
 {
-    std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     close();
 
@@ -91,10 +91,10 @@ void HMJsonDataStorage::close()
 //-----------------------------------------------------------------------------
 std::error_code HMJsonDataStorage::addUser(const std::shared_ptr<hmcommon::HMUser> inUser)
 {
-    std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
-        Error = make_error_code(eDataStoragError::dsNotOpen);
+        Error = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
         if (!inUser) // Работаем только с валидным указателем
@@ -118,10 +118,10 @@ std::error_code HMJsonDataStorage::addUser(const std::shared_ptr<hmcommon::HMUse
 //-----------------------------------------------------------------------------
 std::error_code HMJsonDataStorage::updateUser(const std::shared_ptr<hmcommon::HMUser> inUser)
 {
-    std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
-        Error = make_error_code(eDataStoragError::dsNotOpen);
+        Error = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
         if (!inUser) // Работаем только с валидным указателем
@@ -142,7 +142,7 @@ std::error_code HMJsonDataStorage::updateUser(const std::shared_ptr<hmcommon::HM
             });
 
             if (UserIt == m_json[J_USERS].end()) // Если пользователь не найден
-                Error = make_error_code(eDataStoragError::dsUserNotExists);
+                Error = make_error_code(eDataStorageError::dsUserNotExists);
             else // Пользователь найден
             {
                 nlohmann::json UpdateUser = m_validator.userToJson(inUser, Error); // Формируем объект пользователя
@@ -159,10 +159,10 @@ std::error_code HMJsonDataStorage::updateUser(const std::shared_ptr<hmcommon::HM
 std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByUUID(const QUuid &inUserUUID, std::error_code &outErrorCode, const bool inWithContacts) const
 {
     std::shared_ptr<hmcommon::HMUser> Result = nullptr;
-    outErrorCode = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+    outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open())
-        outErrorCode = make_error_code(eDataStoragError::dsNotOpen);
+        outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
         const std::string UUID = inUserUUID.toString().toStdString(); // Единоразово запоминаем UUID
@@ -180,7 +180,7 @@ std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByUUID(const QUuid 
         });
 
         if (UserIt == m_json[J_USERS].cend()) // Если пользователь не найден
-            outErrorCode = make_error_code(eDataStoragError::dsUserNotExists);
+            outErrorCode = make_error_code(eDataStorageError::dsUserNotExists);
         else // Пользователь найден
         {
             Result = m_validator.jsonToUser(*UserIt, outErrorCode); // Преобразуем JSON объект в пользователя
@@ -201,10 +201,10 @@ std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByUUID(const QUuid 
 std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByAuthentication(const QString &inLogin, const QByteArray &inPasswordHash, std::error_code &outErrorCode, const bool inWithContacts) const
 {
     std::shared_ptr<hmcommon::HMUser> Result = nullptr;
-    outErrorCode = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+    outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open())
-        outErrorCode = make_error_code(eDataStoragError::dsNotOpen);
+        outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
         const std::string Login = inLogin.toStdString(); // Единоразово запоминаем Login
@@ -225,7 +225,7 @@ std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByAuthentication(co
         });
 
         if (UserIt == m_json[J_USERS].cend()) // Если пользователь не найден
-            outErrorCode = make_error_code(eDataStoragError::dsUserNotExists);
+            outErrorCode = make_error_code(eDataStorageError::dsUserNotExists);
         else // Пользователь найден
         {
             Result = m_validator.jsonToUser(*UserIt, outErrorCode); // Преобразуем JSON объект в пользователя
@@ -245,10 +245,10 @@ std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByAuthentication(co
 //-----------------------------------------------------------------------------
 std::error_code HMJsonDataStorage::removeUser(const QUuid& inUserUUID)
 {
-    std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
-        Error = make_error_code(eDataStoragError::dsNotOpen);
+        Error = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
         const std::string UUID = inUserUUID.toString().toStdString(); // Единоразово запоминаем UUID
@@ -275,10 +275,10 @@ std::error_code HMJsonDataStorage::removeUser(const QUuid& inUserUUID)
 //-----------------------------------------------------------------------------
 std::error_code HMJsonDataStorage::addGroup(const std::shared_ptr<hmcommon::HMGroup> inGroup)
 {
-    std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
-        Error = make_error_code(eDataStoragError::dsNotOpen);
+        Error = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
         if (!inGroup) // Работаем только с валидным указателем
@@ -302,10 +302,10 @@ std::error_code HMJsonDataStorage::addGroup(const std::shared_ptr<hmcommon::HMGr
 //-----------------------------------------------------------------------------
 std::error_code HMJsonDataStorage::updateGroup(const std::shared_ptr<hmcommon::HMGroup> inGroup)
 {
-    std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
-        Error = make_error_code(eDataStoragError::dsNotOpen);
+        Error = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
         if (!inGroup) // Работаем только с валидным указателем
@@ -326,7 +326,7 @@ std::error_code HMJsonDataStorage::updateGroup(const std::shared_ptr<hmcommon::H
             });
 
             if (UserIt == m_json[J_GROUPS].end()) // Если группа не найдена
-                Error = make_error_code(eDataStoragError::dsGroupNotExists);
+                Error = make_error_code(eDataStorageError::dsGroupNotExists);
             else // Пользователь найден
             {
                 nlohmann::json UpdateGroup = m_validator.groupToJson(inGroup, Error); // Формируем объект группы
@@ -343,10 +343,10 @@ std::error_code HMJsonDataStorage::updateGroup(const std::shared_ptr<hmcommon::H
 std::shared_ptr<hmcommon::HMGroup> HMJsonDataStorage::findGroupByUUID(const QUuid &inGroupUUID, std::error_code &outErrorCode) const
 {
     std::shared_ptr<hmcommon::HMGroup> Result = nullptr;
-    outErrorCode = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+    outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open())
-        outErrorCode = make_error_code(eDataStoragError::dsNotOpen);
+        outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
         const std::string UUID = inGroupUUID.toString().toStdString(); // Единоразово запоминаем UUID
@@ -364,7 +364,7 @@ std::shared_ptr<hmcommon::HMGroup> HMJsonDataStorage::findGroupByUUID(const QUui
         });
 
         if (GroupIt == m_json[J_GROUPS].cend()) // Если группа не найдена
-            outErrorCode = make_error_code(eDataStoragError::dsGroupNotExists);
+            outErrorCode = make_error_code(eDataStorageError::dsGroupNotExists);
         else // Пользователь найден
             Result = m_validator.jsonToGroup(*GroupIt, outErrorCode); // Преобразуем JSON объект в группы
     }
@@ -374,10 +374,10 @@ std::shared_ptr<hmcommon::HMGroup> HMJsonDataStorage::findGroupByUUID(const QUui
 //-----------------------------------------------------------------------------
 std::error_code HMJsonDataStorage::removeGroup(const QUuid& inGroupUUID)
 {
-    std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
-        Error = make_error_code(eDataStoragError::dsNotOpen);
+        Error = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
         const std::string UUID = inGroupUUID.toString().toStdString(); // Единоразово запоминаем UUID
@@ -404,10 +404,10 @@ std::error_code HMJsonDataStorage::removeGroup(const QUuid& inGroupUUID)
 //-----------------------------------------------------------------------------
 std::error_code HMJsonDataStorage::addMessage(const std::shared_ptr<hmcommon::HMGroupMessage> inMessage)
 {
-    std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
-        Error = make_error_code(eDataStoragError::dsNotOpen);
+        Error = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
         if (!inMessage) // Работаем только с валидным указателем
@@ -415,7 +415,7 @@ std::error_code HMJsonDataStorage::addMessage(const std::shared_ptr<hmcommon::HM
         else
         {
             if (findMessage(inMessage->m_uuid, Error)) // Если сообщение с таким UUID уже существует
-                Error = make_error_code(eDataStoragError::dsMessageAlreadyExists);
+                Error = make_error_code(eDataStorageError::dsMessageAlreadyExists);
             else // Нет такого сообщения
             {   // Будем добавлять
                 if (findGroupByUUID(inMessage->m_group, Error)) // Добавляем только для существующей группы
@@ -434,10 +434,10 @@ std::error_code HMJsonDataStorage::addMessage(const std::shared_ptr<hmcommon::HM
 //-----------------------------------------------------------------------------
 std::error_code HMJsonDataStorage::updateMessage(const std::shared_ptr<hmcommon::HMGroupMessage> inMessage)
 {
-    std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
-        Error = make_error_code(eDataStoragError::dsNotOpen);
+        Error = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
         if (!inMessage) // Работаем только с валидным указателем
@@ -458,7 +458,7 @@ std::error_code HMJsonDataStorage::updateMessage(const std::shared_ptr<hmcommon:
             });
 
             if (MessageIt == m_json[J_MESSAGES].end()) // Если сообщение не найдено
-                Error = make_error_code(eDataStoragError::dsMessageNotExists);
+                Error = make_error_code(eDataStorageError::dsMessageNotExists);
             else // Сообщение найдено
             {
                 nlohmann::json UpdateMessage = m_validator.messageToJson(inMessage, Error); // Формируем объект сообщения
@@ -475,10 +475,10 @@ std::error_code HMJsonDataStorage::updateMessage(const std::shared_ptr<hmcommon:
 std::shared_ptr<hmcommon::HMGroupMessage> HMJsonDataStorage::findMessage(const QUuid inMessageUUID, std::error_code& outErrorCode) const
 {
     std::shared_ptr<hmcommon::HMGroupMessage> Result = nullptr;
-    outErrorCode = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+    outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open())
-        outErrorCode = make_error_code(eDataStoragError::dsNotOpen);
+        outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
         const std::string UUID = inMessageUUID.toString().toStdString(); // Единоразово запоминаем UUID
@@ -496,7 +496,7 @@ std::shared_ptr<hmcommon::HMGroupMessage> HMJsonDataStorage::findMessage(const Q
         });
 
         if (MessageIt == m_json[J_MESSAGES].cend()) // Если сообщение не найдено
-            outErrorCode = make_error_code(eDataStoragError::dsMessageNotExists);
+            outErrorCode = make_error_code(eDataStorageError::dsMessageNotExists);
         else // Сообщение найдено
             Result = m_validator.jsonToMessage(*MessageIt, outErrorCode); // Преобразуем JSON объект в сообщение
     }
@@ -507,10 +507,10 @@ std::shared_ptr<hmcommon::HMGroupMessage> HMJsonDataStorage::findMessage(const Q
 std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> HMJsonDataStorage::findMessages(const QUuid inGroupUUID, const hmcommon::MsgRange& inRange,  std::error_code& outErrorCode) const
 {
     std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> Result;
-    outErrorCode = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+    outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open())
-        outErrorCode = make_error_code(eDataStoragError::dsNotOpen);
+        outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
         nlohmann::json FindedMessages = nlohmann::json::array();
@@ -542,7 +542,7 @@ std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> HMJsonDataStorage::findMe
         });
 
         if (FindedMessages.empty()) // Сообщения не найдены
-            outErrorCode = make_error_code(eDataStoragError::dsMessageNotExists);
+            outErrorCode = make_error_code(eDataStorageError::dsMessageNotExists);
         else // Сообщения найдены
         {
             Result.reserve(FindedMessages.size());
@@ -568,10 +568,10 @@ std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> HMJsonDataStorage::findMe
 //-----------------------------------------------------------------------------
 std::error_code HMJsonDataStorage::removeMessage(const QUuid inMessageUUID, const QUuid inGroupUUID)
 {
-    std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
-        Error = make_error_code(eDataStoragError::dsNotOpen);
+        Error = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
         const std::string UUID = inMessageUUID.toString().toStdString(); // Единоразово запоминаем UUID
@@ -600,10 +600,10 @@ std::error_code HMJsonDataStorage::removeMessage(const QUuid inMessageUUID, cons
 //-----------------------------------------------------------------------------
 std::error_code HMJsonDataStorage::checkCorrectStruct() const
 {
-    std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
-        Error = make_error_code(eDataStoragError::dsNotOpen);
+        Error = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
         // Проверяем версию
@@ -646,7 +646,7 @@ std::error_code HMJsonDataStorage::checkCorrectStruct() const
 //-----------------------------------------------------------------------------
 std::error_code HMJsonDataStorage::write() const
 {
-    std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально метим как успех
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (std::filesystem::is_directory(m_jsonPath, Error))
     {
@@ -676,7 +676,7 @@ std::error_code HMJsonDataStorage::buildUserContacts(const nlohmann::json& inJso
         {
             for (auto& ContactUUID : inJsonUser[J_USER_CONTACTS].items()) // Перебираем все контакты пользователя
             {
-                std::error_code ContactError = make_error_code(hmservcommon::eDataStoragError::dsSuccess);
+                std::error_code ContactError = make_error_code(eDataStorageError::dsSuccess);
 
                 QUuid Uuid(QString::fromStdString(ContactUUID.value().get<std::string>())); // Получаем UUID пользователя
                 std::shared_ptr<hmcommon::HMUser> Contact = findUserByUUID(Uuid, ContactError, false); // Запрашиваем пользователя БЕЗ КОНТАКТОВ

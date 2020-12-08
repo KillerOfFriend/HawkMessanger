@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 project(HawkCommon VERSION 1.0.0 LANGUAGES CXX)
 
 #====================================================================
-set(CMAKE_INCLUDE_CURRENT_DIR ON)           # Разрешаем работу с собственной папкой
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)    # Разрешаем автоматический экспорт всех символов
 #====================================================================
 # Ищим хидеры

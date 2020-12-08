@@ -11,9 +11,9 @@
 #include <QTime>
 
 #include "cached.h"
-#include "abstractdatastoragefunctional.h"
+#include "datastorage/interface/abstractdatastoragefunctional.h"
 
-namespace hmservcommon
+namespace hmservcommon::datastorage
 {
 //-----------------------------------------------------------------------------
 /**
@@ -189,6 +189,6 @@ protected:
 
 };
 //-----------------------------------------------------------------------------
-} // namespace hmservcommon
+} // namespace hmservcommon::datastorage
 
 #endif // HMCACHEDDATASTORAGE_H

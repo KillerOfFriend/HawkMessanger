@@ -3,9 +3,10 @@
 #include <thread>
 #include <filesystem>
 
-#include <jsondatastorage.h>
 #include <systemerrorex.h>
-#include <datastorageerrorcategory.h>
+#include <datastorage/DataStorage.h>
+
+using namespace hmservcommon::datastorage;
 
 //-----------------------------------------------------------------------------
 const std::filesystem::path C_JSON_PATH = std::filesystem::current_path() / "DataStorage.json";
@@ -88,7 +89,7 @@ TEST(JsonDataStorage, OpenFailPath)
     std::filesystem::create_directory(DirPath, Error); // Создаём временную папку
     ASSERT_FALSE(Error);
 
-    hmservcommon::HMJsonDataStorage Storage(DirPath); // Создаём JSON хранилище с путём к директории
+    HMJsonDataStorage Storage(DirPath); // Создаём JSON хранилище с путём к директории
     Error = Storage.open(); // Пытаемся открыть по невалидному пути
 
     // Результат должен вернуть ошибку не соответствия пути файлу
@@ -106,7 +107,7 @@ TEST(JsonDataStorage, FindNotExistUser)
     std::error_code Error; // Метка ошибки
     clearStorage(); // Очищаем хранилище
 
-    hmservcommon::HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
+    HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
     Error = Storage.open(); // Пытаемся открыть хранилище
 
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -116,12 +117,12 @@ TEST(JsonDataStorage, FindNotExistUser)
     std::shared_ptr<hmcommon::HMUser> FindRes = Storage.findUserByUUID(NewUser->m_uuid, Error, false); // Ищим несуществующего пользователя по UUID
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmservcommon::eDataStoragError::dsUserNotExists)); // И метку, что пользователь не существует
+    ASSERT_TRUE(Error.value() == static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // И метку, что пользователь не существует
 
     FindRes = Storage.findUserByAuthentication(NewUser->getLogin(), NewUser->getPasswordHash(), Error, false); // Ищим несуществующего пользователя по данным аутентификации
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmservcommon::eDataStoragError::dsUserNotExists)); // И метку, что пользователь не существует
+    ASSERT_TRUE(Error.value() == static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // И метку, что пользователь не существует
 
     Storage.close(); // Закрываем хранилище
 }
@@ -134,7 +135,7 @@ TEST(JsonDataStorage, FindExistUser)
     std::error_code Error; // Метка ошибки
     clearStorage(); // Очищаем хранилище
 
-    hmservcommon::HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
+    HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
     Error = Storage.open(); // Пытаемся открыть хранилище
 
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -166,7 +167,7 @@ TEST(JsonDataStorage, FindUserWithContacts)
     std::error_code Error; // Метка ошибки
     clearStorage(); // Очищаем хранилище
 
-    hmservcommon::HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
+    HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
     Error = Storage.open(); // Пытаемся открыть хранилище
 
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -220,7 +221,7 @@ TEST(JsonDataStorage, FindNotExistGroup)
     std::error_code Error; // Метка ошибки
     clearStorage(); // Очищаем хранилище
 
-    hmservcommon::HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
+    HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
     Error = Storage.open(); // Пытаемся открыть хранилище
 
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -230,7 +231,7 @@ TEST(JsonDataStorage, FindNotExistGroup)
     std::shared_ptr<hmcommon::HMGroup> FindRes = Storage.findGroupByUUID(NewGroup->m_uuid, Error); // Ищим несуществующую группу по UUID
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmservcommon::eDataStoragError::dsGroupNotExists)); // И метку, что группа не существует
+    ASSERT_TRUE(Error.value() == static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // И метку, что группа не существует
 
     Storage.close(); // Закрываем хранилище
 }
@@ -243,7 +244,7 @@ TEST(JsonDataStorage, FindExistGroup)
     std::error_code Error; // Метка ошибки
     clearStorage(); // Очищаем хранилище
 
-    hmservcommon::HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
+    HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
     Error = Storage.open(); // Пытаемся открыть хранилище
 
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -270,7 +271,7 @@ TEST(JsonDataStorage, FindNotExistMessage)
     std::error_code Error; // Метка ошибки
     clearStorage(); // Очищаем хранилище
 
-    hmservcommon::HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
+    HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
     Error = Storage.open(); // Пытаемся открыть хранилище
 
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -282,7 +283,7 @@ TEST(JsonDataStorage, FindNotExistMessage)
     std::shared_ptr<hmcommon::HMGroupMessage> FindRes = Storage.findMessage(NewMessage->m_uuid, Error);
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmservcommon::eDataStoragError::dsMessageNotExists)); // И метку, что сообщение не существует
+    ASSERT_TRUE(Error.value() == static_cast<int32_t>(eDataStorageError::dsMessageNotExists)); // И метку, что сообщение не существует
 
     Storage.close();
 }
@@ -295,7 +296,7 @@ TEST(JsonDataStorage, FindExistMessage)
     std::error_code Error; // Метка ошибки
     clearStorage(); // Очищаем хранилище
 
-    hmservcommon::HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
+    HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
     Error = Storage.open(); // Пытаемся открыть хранилище
 
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -328,7 +329,7 @@ TEST(JsonDataStorage, FindNotExistMessages)
     std::error_code Error; // Метка ошибки
     clearStorage(); // Очищаем хранилище
 
-    hmservcommon::HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
+    HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
     Error = Storage.open(); // Пытаемся открыть хранилище
 
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -341,7 +342,7 @@ TEST(JsonDataStorage, FindNotExistMessages)
     std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> FindRes = Storage.findMessages(NewMessage->m_group, Range, Error);
 
     ASSERT_EQ(FindRes.empty(), true); // Должен вернуться пустой контейнер
-    ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmservcommon::eDataStoragError::dsMessageNotExists)); // И метку, что сообщение не существует
+    ASSERT_TRUE(Error.value() == static_cast<int32_t>(eDataStorageError::dsMessageNotExists)); // И метку, что сообщение не существует
 
     Storage.close();
 }
@@ -354,7 +355,7 @@ TEST(JsonDataStorage, FindExistMessages)
     std::error_code Error; // Метка ошибки
     clearStorage(); // Очищаем хранилище
 
-    hmservcommon::HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
+    hmservcommon::datastorage::HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
     Error = Storage.open(); // Пытаемся открыть хранилище
 
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -411,7 +412,7 @@ TEST(JsonDataStorage, RemoveUser)
     std::error_code Error; // Метка ошибки
     clearStorage(); // Очищаем хранилище
 
-    hmservcommon::HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
+    HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
     Error = Storage.open(); // Пытаемся открыть хранилище
 
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -433,7 +434,7 @@ TEST(JsonDataStorage, RemoveUser)
     FindRes = Storage.findUserByUUID(NewUser->m_uuid, Error, false); // Ищим удалённого пользователя по UUID
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmservcommon::eDataStoragError::dsUserNotExists)); // И метку, что пользователь не существует
+    ASSERT_TRUE(Error.value() == static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // И метку, что пользователь не существует
 
     Storage.close();
 }
@@ -446,7 +447,7 @@ TEST(JsonDataStorage, RemoveGroup)
     std::error_code Error; // Метка ошибки
     clearStorage(); // Очищаем хранилище
 
-    hmservcommon::HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
+    HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
     Error = Storage.open(); // Пытаемся открыть хранилище
 
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -468,7 +469,7 @@ TEST(JsonDataStorage, RemoveGroup)
     FindRes = Storage.findGroupByUUID(NewGroup->m_uuid, Error); // Ищим удалённую группу по UUID
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmservcommon::eDataStoragError::dsGroupNotExists)); // И метку, что группы не существует
+    ASSERT_TRUE(Error.value() == static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // И метку, что группы не существует
 
     Storage.close();
 }
@@ -481,7 +482,7 @@ TEST(JsonDataStorage, RemoveMessage)
     std::error_code Error; // Метка ошибки
     clearStorage(); // Очищаем хранилище
 
-    hmservcommon::HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
+    HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
     Error = Storage.open(); // Пытаемся открыть хранилище
 
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -509,7 +510,7 @@ TEST(JsonDataStorage, RemoveMessage)
     FindRes = Storage.findMessage(NewMessage->m_uuid, Error);
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmservcommon::eDataStoragError::dsMessageNotExists)); // И метку, что сообщение не существует
+    ASSERT_TRUE(Error.value() == static_cast<int32_t>(eDataStorageError::dsMessageNotExists)); // И метку, что сообщение не существует
 
     Storage.close();
 }
@@ -522,7 +523,7 @@ TEST(JsonDataStorage, CheckJsonSave)
     std::error_code Error; // Метка ошибки
     clearStorage(); // Очищаем хранилище
 
-    hmservcommon::HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
+    HMJsonDataStorage Storage(C_JSON_PATH); // Создаём JSON хранилище с путём к директории
     Error = Storage.open(); // Пытаемся открыть хранилище
 
     ASSERT_FALSE(Error); // Ошибки быть не должно

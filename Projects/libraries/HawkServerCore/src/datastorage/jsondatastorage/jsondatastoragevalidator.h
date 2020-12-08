@@ -8,9 +8,11 @@
 
 #include <nlohmann/json.hpp>
 
-#include "datastorage.h"
+#include "user.h"
+#include "group.h"
+#include "groupmessage.h"
 
-namespace hmservcommon
+namespace hmservcommon::datastorage
 {
 //-----------------------------------------------------------------------------
 /**
@@ -117,6 +119,6 @@ public:
 
 };
 //-----------------------------------------------------------------------------
-}
+} // namespace hmservcommon::datastorage
 
 #endif // HMJSONDATASTORAGEVALIDATOR_H

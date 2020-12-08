@@ -8,9 +8,9 @@
 
 #include <memory>
 
-#include "datastorage.h"
+#include "datastorageinterface.h"
 
-namespace hmservcommon
+namespace hmservcommon::datastorage
 {
 //-----------------------------------------------------------------------------
 /**
@@ -67,6 +67,6 @@ private:
 
 };
 //-----------------------------------------------------------------------------
-} // namespace hmservcommon
+} // namespace hmservcommon::datastorage
 
 #endif // HMABSTRACTDATASTORAGEFUNCTIONAL_H

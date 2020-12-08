@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 project(HawkServerCore VERSION 1.0.0 LANGUAGES CXX)
 
 #====================================================================
-set(CMAKE_INCLUDE_CURRENT_DIR ON)           # Разрешаем работу с собственной папкой
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)    # Разрешаем автоматический экспорт всех символов
 #====================================================================
 # Ищим хидеры
@@ -32,6 +31,7 @@ set(LINCED_LIBRARYES
 #====================================================================
 # Формируем список подключаемых папок
 set(INCLUDE_DIRS
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/        # Подключаем собственный корневой каталог
     ${DIR_THIRDPARTY_PATH}/HPP/json/include # Подключаем библиотеку JSON
     ${LIBRARIES_PATH}/HawkCommon/src        # Подключаем общую библиотеку
     ${LIBRARIES_PATH}/HawkLog/src           # Подключаем библиотеку логирования

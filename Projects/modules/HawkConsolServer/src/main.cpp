@@ -1,6 +1,7 @@
 #include <QCoreApplication>
 
 #include <HawkLog.h>
+#include <HawkServerCore.h>
 
 //-----------------------------------------------------------------------------
 void initLogSystem()
@@ -17,19 +18,7 @@ int main(int argc, char *argv[])
 
     initLogSystem();
 
-    LOG_TEXT("LOG_TEXT");
-    LOG_INFO("LOG_INFO");
-    LOG_WARNING("LOG_WARNING");
-    LOG_ERROR("LOG_ERROR");
-    LOG_DEBUG("LOG_DEBUG");
-
-    hmlog::HMEventSystem::getInstance().setHandler(hmlog::eCapturedEvents::ceInteractiveAttention, []() -> void
-    {
-        LOG_INFO("User Handle Success!");
-    });
-
-    int* i = nullptr;
-    *i = 5;
+    hmservcommon::HMServerCore ServerCore;
 
     return a.exec();
 }

@@ -11,15 +11,15 @@
 
 #include <QObject>
 
-namespace hmservcommon
+namespace hmservcommon::datastorage
 {
 //-----------------------------------------------------------------------------
 static const std::int32_t C_STORAG_ERROR_START = 300; ///< Начальное значение ошибок хранилища данных
 //-----------------------------------------------------------------------------
 /**
- * @brief The eDataStoragError enum - Перечень ошибок хранилища данных
+ * @brief The eDataStorageError enum - Перечень ошибок хранилища данных
  */
-enum class eDataStoragError
+enum class eDataStorageError
 {
     dsSuccess = 0,                      ///< 0 Не явялется ошибкой
 
@@ -105,13 +105,13 @@ public:
 //DATASTORAGE_API_DECL
 const DataStorageErrorCategory &ConversionErrc_category();
 //-----------------------------------------------------------------------------
-} // namespace hmservcommon
+} // namespace hmservcommon::datastorage
 //-----------------------------------------------------------------------------
 namespace std
 {
 // Сообщаем метапрограммированию C++ 11 STL, что enum
 // зарегистрирован в стандартной системе кодов ошибок
-template <> struct is_error_code_enum<hmservcommon::eDataStoragError> : true_type
+template <> struct is_error_code_enum<hmservcommon::datastorage::eDataStorageError> : true_type
 {};
 }
 //-----------------------------------------------------------------------------
@@ -120,7 +120,7 @@ template <> struct is_error_code_enum<hmservcommon::eDataStoragError> : true_typ
  * @param inErrCode - Код ошибки
  * @return Вернёт сформированный экемпляр std::error_code
  */
-std::error_code make_error_code(hmservcommon::eDataStoragError inErrCode);
+std::error_code make_error_code(hmservcommon::datastorage::eDataStorageError inErrCode);
 //-----------------------------------------------------------------------------
 
 #endif // DATASTORAGEERRORCATEGORY_H

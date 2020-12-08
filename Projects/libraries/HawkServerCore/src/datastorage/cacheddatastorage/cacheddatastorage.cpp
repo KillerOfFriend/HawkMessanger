@@ -3,10 +3,11 @@
 #include <cassert>
 
 #include <HawkLog.h>
-#include "systemerrorex.h"
-#include "datastorageerrorcategory.h"
 
-using namespace hmservcommon;
+#include "systemerrorex.h"
+#include "datastorage/datastorageerrorcategory.h"
+
+using namespace hmservcommon::datastorage;
 
 //-----------------------------------------------------------------------------
 HMCachedDataStorage::HMCachedDataStorage() :
@@ -26,7 +27,7 @@ HMCachedDataStorage::~HMCachedDataStorage()
 std::error_code HMCachedDataStorage::open()
 {
     close();
-    return make_error_code(eDataStoragError::dsSuccess); // Кеширующее хранилище всегда открывается успешно
+    return make_error_code(eDataStorageError::dsSuccess); // Кеширующее хранилище всегда открывается успешно
 }
 //-----------------------------------------------------------------------------
 bool HMCachedDataStorage::is_open() const
@@ -41,14 +42,14 @@ void HMCachedDataStorage::close()
 //-----------------------------------------------------------------------------
 std::error_code HMCachedDataStorage::addUser(const std::shared_ptr<hmcommon::HMUser> inUser)
 {
-    std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально помечаем как успех
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально помечаем как успех
 
     if (!inUser) // Проверяем указатель на валидность
         Error = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
     else
     {
        if (!m_cachedUsers.emplace(HMCachedUser(inUser)).second) // Если пользователь не удалось закинуть в хеш
-           Error = make_error_code(eDataStoragError::dsUserAlreadyExists);
+           Error = make_error_code(eDataStorageError::dsUserAlreadyExists);
     }
 
     return Error;
@@ -56,7 +57,7 @@ std::error_code HMCachedDataStorage::addUser(const std::shared_ptr<hmcommon::HMU
 //-----------------------------------------------------------------------------
 std::error_code HMCachedDataStorage::updateUser(const std::shared_ptr<hmcommon::HMUser> inUser)
 {
-    std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально помечаем как успех
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально помечаем как успех
 
     if (!inUser) // Проверяем указатель на валидность
         Error = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
@@ -78,12 +79,12 @@ std::shared_ptr<hmcommon::HMUser> HMCachedDataStorage::findUserByUUID(const QUui
     Q_UNUSED(inWithContacts);
 
     std::shared_ptr<hmcommon::HMUser> Result = nullptr;
-    outErrorCode = make_error_code(eDataStoragError::dsSuccess); // Изначально помечаем как успех
+    outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально помечаем как успех
 
     auto FindRes = m_cachedUsers.find(HMCachedUser(std::make_shared<hmcommon::HMUser>(inUserUUID))); // Ищим пользователя в хеше
 
     if (FindRes == m_cachedUsers.end()) // Нет пользователя в хеше
-        outErrorCode = make_error_code(eDataStoragError::dsUserNotExists);
+        outErrorCode = make_error_code(eDataStorageError::dsUserNotExists);
     else // Пользователь хеширован
     {
         Result = FindRes->m_user; // Вернём указатель на хешированного пользователя
@@ -98,7 +99,7 @@ std::shared_ptr<hmcommon::HMUser> HMCachedDataStorage::findUserByAuthentication(
      Q_UNUSED(inWithContacts);
 
     std::shared_ptr<hmcommon::HMUser> Result = nullptr;
-    outErrorCode = make_error_code(eDataStoragError::dsSuccess); // Изначально помечаем как успех
+    outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально помечаем как успех
 
     // Ничего не поделаешь, перебираем
     auto FindRes = std::find_if(m_cachedUsers.cbegin(), m_cachedUsers.cend(), [&inLogin, &inPasswordHash](const HMCachedUser& CachedUser)
@@ -110,7 +111,7 @@ std::shared_ptr<hmcommon::HMUser> HMCachedDataStorage::findUserByAuthentication(
     });
 
     if (FindRes == m_cachedUsers.end()) // Нет пользователя в хеше
-        outErrorCode = make_error_code(eDataStoragError::dsUserNotExists);
+        outErrorCode = make_error_code(eDataStorageError::dsUserNotExists);
     else // Пользователь хеширован
     {
         Result = FindRes->m_user; // Вернём указатель на хешированного пользователя
@@ -127,19 +128,19 @@ std::error_code HMCachedDataStorage::removeUser(const QUuid& inUserUUID)
     if (FindRes != m_cachedUsers.end()) // Если пользователь найден
         m_cachedUsers.erase(FindRes); // Удаляем его из хеша
 
-    return make_error_code(eDataStoragError::dsSuccess); // Наплевать, был пользователь в хеше или нет
+    return make_error_code(eDataStorageError::dsSuccess); // Наплевать, был пользователь в хеше или нет
 }
 //-----------------------------------------------------------------------------
 std::error_code HMCachedDataStorage::addGroup(const std::shared_ptr<hmcommon::HMGroup> inGroup)
 {
-    std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально помечаем как успех
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально помечаем как успех
 
     if (!inGroup) // Проверяем указатель на валидность
         Error = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
     else
     {
         if (!m_cachedGroups.emplace(HMCachedGroup(inGroup)).second)
-            Error = make_error_code(eDataStoragError::dsGroupAlreadyExists);
+            Error = make_error_code(eDataStorageError::dsGroupAlreadyExists);
     }
 
     return Error;
@@ -147,7 +148,7 @@ std::error_code HMCachedDataStorage::addGroup(const std::shared_ptr<hmcommon::HM
 //-----------------------------------------------------------------------------
 std::error_code HMCachedDataStorage::updateGroup(const std::shared_ptr<hmcommon::HMGroup> inGroup)
 {
-    std::error_code Error = make_error_code(eDataStoragError::dsSuccess); // Изначально помечаем как успех
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально помечаем как успех
 
     if (!inGroup) // Проверяем указатель на валидность
         Error = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
@@ -167,12 +168,12 @@ std::error_code HMCachedDataStorage::updateGroup(const std::shared_ptr<hmcommon:
 std::shared_ptr<hmcommon::HMGroup> HMCachedDataStorage::findGroupByUUID(const QUuid& inGroupUUID, std::error_code& outErrorCode) const
 {
     std::shared_ptr<hmcommon::HMGroup> Result = nullptr;
-    outErrorCode = make_error_code(eDataStoragError::dsSuccess); // Изначально помечаем как успех
+    outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально помечаем как успех
 
     auto FindRes = m_cachedGroups.find(HMCachedGroup(std::make_shared<hmcommon::HMGroup>(inGroupUUID))); // Ищим группу в хеше
 
     if (FindRes == m_cachedGroups.end()) // Нет группы в хеше
-        outErrorCode = make_error_code(eDataStoragError::dsGroupNotExists);
+        outErrorCode = make_error_code(eDataStorageError::dsGroupNotExists);
     else // Группа хеширована
     {
         Result = FindRes->m_group; // Вернём указатель на хешированную группу
@@ -189,7 +190,7 @@ std::error_code HMCachedDataStorage::removeGroup(const QUuid& inGroupUUID)
     if (FindRes != m_cachedGroups.end()) // Если группа найдена
         m_cachedGroups.erase(FindRes); // Удаляем её из хеша
 
-    return make_error_code(eDataStoragError::dsSuccess); // Наплевать, была группа в хеше или нет
+    return make_error_code(eDataStorageError::dsSuccess); // Наплевать, была группа в хеше или нет
 }
 //-----------------------------------------------------------------------------
 std::error_code HMCachedDataStorage::addMessage(const std::shared_ptr<hmcommon::HMGroupMessage> inMessage)
@@ -223,13 +224,13 @@ std::error_code HMCachedDataStorage::removeMessage(const QUuid inMessageUUID, co
 {
     Q_UNUSED(inMessageUUID);
     Q_UNUSED(inGroupUUID);
-    return make_error_code(eDataStoragError::dsSuccess); // Наплевать, было сообщение в хеше или нет
+    return make_error_code(eDataStorageError::dsSuccess); // Наплевать, было сообщение в хеше или нет
 }
 //-----------------------------------------------------------------------------
 std::error_code HMCachedDataStorage::makeDefault()
 {
     clearCached();
-    return make_error_code(eDataStoragError::dsSuccess); // Кеширующее хранилище не требует создания структуры
+    return make_error_code(eDataStorageError::dsSuccess); // Кеширующее хранилище не требует создания структуры
 }
 //-----------------------------------------------------------------------------
 void HMCachedDataStorage::clearCached()
