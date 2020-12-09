@@ -155,16 +155,23 @@ public:
 
 #endif
 
+// Простой текст
 #define LOG_TEXT(inMessage) ( LOG_SYSTEM.logText(inMessage) )
+// Информационное сообщение
 #define LOG_INFO(inMessage) ( LOG_SYSTEM.logInfo(inMessage) )
-#define LOG_WARNING(inMessage) ( LOG_SYSTEM.logWarning(inMessage) )
-#define LOG_ERROR(inMessage) ( LOG_SYSTEM.logError(inMessage) )
-#ifdef NDEBUG
-    #define LOG_DEBUG(inMessage)
-    #define LOG_DEBUG_EX(inMessage, inFrom)
+// Предупреждения
+#define LOG_WARNING(inMessage)              ( LOG_SYSTEM.logWarning(inMessage) )
+#define LOG_WARNING_EX(inMessage, inClass)  ( LOG_WARNING(inMessage + " " + SENDER_DATA(inClass)) )
+// Ошибки
+#define LOG_ERROR(inMessage)                ( LOG_SYSTEM.logError(inMessage) )
+#define LOG_ERROR_EX(inMessage, inClass)    ( LOG_ERROR(inMessage + " " + SENDER_DATA(inClass)) )
+// Дебаг
+#ifndef NDEBUG
+    #define LOG_DEBUG(inMessage)                ( LOG_SYSTEM.logDebug(inMessage) )
+    #define LOG_DEBUG_EX(inMessage, inClass)    ( LOG_DEBUG(inMessage + " " + SENDER_DATA(inClass)) )
 #else
-    #define LOG_DEBUG(inMessage) ( LOG_SYSTEM.logDebug(inMessage) )
-    #define LOG_DEBUG_EX(inMessage, inClass) ( LOG_SYSTEM.logDebug(inMessage + " " + SENDER_DATA(inClass)) )
+    #define LOG_DEBUG(inMessage)
+    #define LOG_DEBUG_EX(inMessage, inClass)
 #endif // NDEBUG
 
 #endif // LOGSYSTEM_H
