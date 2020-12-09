@@ -6,6 +6,9 @@
  * @brief Содержит описание класса кеширующего хранилища данных
  */
 
+#include <thread>
+#include <atomic>
+#include <shared_mutex>
 #include <unordered_set>
 
 #include <QTime>
@@ -26,13 +29,24 @@ class HMCachedDataStorage : public HMAbstractDataStorageFunctional
 {
 private:
 
+    mutable std::shared_mutex m_usersDefender;                  ///< Мьютекс, защищающий пользовтаелей
     std::unordered_set<HMCachedUser> m_cachedUsers;     ///< Кешированные пользоватили
+
+    mutable std::shared_mutex m_groupsDefender;                 ///< Мьютекс, защищающий группы
     std::unordered_set<HMCachedGroup> m_cachedGroups;   ///< Кешированные группы
+
+    std::atomic_bool m_threadWork;                      ///< Флаг работы потока
+    std::thread m_watchdogThread;                       ///< Поток контроля кеша
 
     /**
      * @brief clearCached - Метод очистит закешированные данные
      */
     void clearCached();
+
+    /**
+     * @brief watchdogTreadFunc - Метод контроля кеша
+     */
+    void watchdogThreadFunc();
 
 public:
 
