@@ -817,17 +817,20 @@ std::error_code HMJsonDataStorage::buildUserContacts(const nlohmann::json& inJso
             for (auto& ContactUUID : inJsonUser[J_USER_CONTACTS].items()) // Перебираем все контакты пользователя
             {
                 std::error_code ContactError = make_error_code(eDataStorageError::dsSuccess);
-
                 QUuid Uuid(QString::fromStdString(ContactUUID.value().get<std::string>())); // Получаем UUID пользователя
-                std::shared_ptr<hmcommon::HMUser> Contact = findUserByUUID(Uuid, ContactError, false); // Запрашиваем пользователя БЕЗ КОНТАКТОВ
 
-                if (ContactError) // Проверяем каждый полученый контакт
-                    LOG_ERROR_EX(QString::fromStdString(ContactError.message()), this); // Невалидные контакты будут проигнорированны
-                else
+                if (!outUser->m_contactList.contain(Uuid)) // Если пользователь ещё не хранит в себе контакт
                 {
-                    ContactError = outUser->m_contactList.addContact(Contact); // Добавляем контакт пользователю
-                    if (ContactError)
-                        LOG_ERROR_EX(QString::fromStdString(ContactError.message()), this);
+                    std::shared_ptr<hmcommon::HMUser> Contact = findUserByUUID(Uuid, ContactError, false); // Запрашиваем пользователя БЕЗ КОНТАКТОВ
+
+                    if (ContactError) // Проверяем каждый полученый контакт
+                        LOG_ERROR_EX(QString::fromStdString(ContactError.message()), this); // Невалидные контакты будут проигнорированны
+                    else
+                    {
+                        ContactError = outUser->m_contactList.addContact(Contact); // Добавляем контакт пользователю
+                        if (ContactError)
+                            LOG_ERROR_EX(QString::fromStdString(ContactError.message()), this);
+                    }
                 }
             }
         }

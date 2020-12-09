@@ -75,6 +75,20 @@ public:
     std::size_t contactsCount() const;
 
     /**
+     * @brief contain - Метод проверит существование контакта по UUID
+     * @param inContactUUID - UUID контакта
+     * @return Вернёт признак существования контакта
+     */
+    bool contain(const QUuid& inContactUUID) const;
+
+    /**
+     * @brief contain - Метод проверит существование контакта
+     * @param inContact - Контакт
+     * @return Вернёт признак существования контакта
+     */
+    bool contain(const std::shared_ptr<HMUser> inContact) const;
+
+    /**
      * @brief addContact - Метод добавит новый контакт в перечень
      * @param inNewContact - Новый контакт
      * @return Вернёт признак ошибки

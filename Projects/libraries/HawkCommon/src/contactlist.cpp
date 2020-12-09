@@ -32,6 +32,19 @@ bool HMContactList::isEmpty() const
 std::size_t HMContactList::contactsCount() const
 { return m_contacts.size(); }
 //-----------------------------------------------------------------------------
+bool HMContactList::contain(const QUuid& inContactUUID) const
+{
+    return m_contacts.find(std::make_shared<HMUser>(inContactUUID)) != m_contacts.end();;
+}
+//-----------------------------------------------------------------------------
+bool HMContactList::contain(const std::shared_ptr<HMUser> inContact) const
+{
+    if (!inContact)
+        return false;
+    else
+        return m_contacts.find(inContact) != m_contacts.end();
+}
+//-----------------------------------------------------------------------------
 std::error_code HMContactList::addContact(const std::shared_ptr<HMUser> inNewContact)
 {
     std::error_code Error = make_error_code(eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
