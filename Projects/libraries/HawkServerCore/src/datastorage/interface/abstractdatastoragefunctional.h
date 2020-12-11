@@ -26,7 +26,7 @@ public:
     /**
      * @brief HMAbstractDataStorageFunctional - Конструктор по умолчанию
      */
-    HMAbstractDataStorageFunctional(const bool inMakeCache);
+    HMAbstractDataStorageFunctional();
 
     /**
      * @brief ~HMAbstractDataStorageFunctional - Виртуальный деструктор по умолчанию
@@ -42,12 +42,6 @@ protected:
     virtual std::error_code makeDefault() = 0;
 
     /**
-     * @brief cache - Метод вернёт указатель на кеширующее хранилище
-     * @return Вернёт указатель на кеш
-     */
-    virtual std::shared_ptr<HMDataStorage> cache() const;
-
-    /**
      * @brief checkNewUserUnique - Метод проверит необходимую уникальность параметров нового пользователя
      * @param inUser - Проверяемый пользователь
      * @return Вернёт признак ошибки
@@ -61,9 +55,6 @@ protected:
      */
     virtual std::error_code checkNewGroupUnique(const std::shared_ptr<hmcommon::HMGroup> inGroup) const;
 
-private:
-
-    std::shared_ptr<HMDataStorage> m_cache = nullptr; ///< Кешированные данные хранилища
 
 };
 //-----------------------------------------------------------------------------

@@ -12,7 +12,7 @@ using namespace hmservcommon::datastorage;
 
 //-----------------------------------------------------------------------------
 HMCachedDataStorage::HMCachedDataStorage() :
-    HMAbstractDataStorageFunctional(false) // Инициализируем предка и запрещаем его создавать хеш (ВО ИЗБЕЩАНИИ ФАТАЛЬНОЙ РЕКУРСИИ ПРИ ИНИЦИАЛИЗАЦИИ)
+    HMAbstractDataStorageFunctional() // Инициализируем предка
 {
     std::error_code Error = makeDefault();
 
@@ -75,7 +75,7 @@ std::error_code HMCachedDataStorage::updateUser(const std::shared_ptr<hmcommon::
     {
         // ЕСЛИ КОНЦЕПЦИЯ ОДНОГО ОБЪЕКТА РАБОТАЕТ ТО И ОБНОВЛЕНИЕ НА УРОВНЕ ХЕША УЖЕ ДОЛЖНО ПРОИЗОЙТИ
         // Достаточно проверить что этот объект уже в кеше и указатели равны
-        std::shared_ptr<hmcommon::HMUser> FindRes = findUserByUUID(inUser->m_uuid, Error, true);
+        std::shared_ptr<hmcommon::HMUser> FindRes = findUserByUUID(inUser->m_uuid, Error);
 
         if (FindRes != inUser)
             Error = make_error_code(hmcommon::eSystemErrorEx::seIncorretData);
@@ -84,10 +84,8 @@ std::error_code HMCachedDataStorage::updateUser(const std::shared_ptr<hmcommon::
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMUser> HMCachedDataStorage::findUserByUUID(const QUuid& inUserUUID, std::error_code& outErrorCode, const bool inWithContacts) const
+std::shared_ptr<hmcommon::HMUser> HMCachedDataStorage::findUserByUUID(const QUuid& inUserUUID, std::error_code& outErrorCode) const
 {
-    Q_UNUSED(inWithContacts);
-
     std::shared_ptr<hmcommon::HMUser> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально помечаем как успех
 
@@ -106,10 +104,8 @@ std::shared_ptr<hmcommon::HMUser> HMCachedDataStorage::findUserByUUID(const QUui
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMUser> HMCachedDataStorage::findUserByAuthentication(const QString& inLogin, const QByteArray& inPasswordHash, std::error_code& outErrorCode, const bool inWithContacts) const
+std::shared_ptr<hmcommon::HMUser> HMCachedDataStorage::findUserByAuthentication(const QString& inLogin, const QByteArray& inPasswordHash, std::error_code& outErrorCode) const
 {
-     Q_UNUSED(inWithContacts);
-
     std::shared_ptr<hmcommon::HMUser> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально помечаем как успех
 

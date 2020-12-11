@@ -114,12 +114,12 @@ TEST(JsonDataStorage, FindNotExistUser)
     ASSERT_TRUE(Storage.is_open()); // Хранилище должно считаться открытым
 
     std::shared_ptr<hmcommon::HMUser> NewUser = make_user(); // Формируем пользователя, которого нет в хранилище
-    std::shared_ptr<hmcommon::HMUser> FindRes = Storage.findUserByUUID(NewUser->m_uuid, Error, false); // Ищим несуществующего пользователя по UUID
+    std::shared_ptr<hmcommon::HMUser> FindRes = Storage.findUserByUUID(NewUser->m_uuid, Error); // Ищим несуществующего пользователя по UUID
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
     ASSERT_TRUE(Error.value() == static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // И метку, что пользователь не существует
 
-    FindRes = Storage.findUserByAuthentication(NewUser->getLogin(), NewUser->getPasswordHash(), Error, false); // Ищим несуществующего пользователя по данным аутентификации
+    FindRes = Storage.findUserByAuthentication(NewUser->getLogin(), NewUser->getPasswordHash(), Error); // Ищим несуществующего пользователя по данным аутентификации
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
     ASSERT_TRUE(Error.value() == static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // И метку, что пользователь не существует
@@ -146,12 +146,12 @@ TEST(JsonDataStorage, FindExistUser)
     Error = Storage.addUser(NewUser); // Добавляем пользователья в хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    std::shared_ptr<hmcommon::HMUser> FindRes = Storage.findUserByUUID(NewUser->m_uuid, Error, false); // Ищим существующего пользователя по UUID
+    std::shared_ptr<hmcommon::HMUser> FindRes = Storage.findUserByUUID(NewUser->m_uuid, Error); // Ищим существующего пользователя по UUID
 
     ASSERT_NE(FindRes, nullptr); // Должен вернуться валидный указатель
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    FindRes = Storage.findUserByAuthentication(NewUser->getLogin(), NewUser->getPasswordHash(), Error, false); // Ищим существующего пользователя по данным аутентификации
+    FindRes = Storage.findUserByAuthentication(NewUser->getLogin(), NewUser->getPasswordHash(), Error); // Ищим существующего пользователя по данным аутентификации
 
     ASSERT_NE(FindRes, nullptr); // Должен вернуться валидный указатель
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -180,34 +180,34 @@ TEST(JsonDataStorage, FindUserWithContacts)
 
     for (std::size_t Index = 0; Index < ContactsCount; ++Index)
     {
-        QString ContactLogin = "Contact@login." + QString::number(Index); // У каждого пользователья должен быть уникальный UUID и логин
-        Contacts[Index] = make_user(QUuid::createUuid(), ContactLogin);
-        Contacts[Index]->setName("User " + QString::number(Index));
-        // Добавляем контакт в хранилище (Потому что контакт должен существовать)
-        Error = Storage.addUser(Contacts[Index]);
-        EXPECT_FALSE(Error);
-        // Добавляем контакт пользователю
-        Error = NewUser->m_contactList.addContact(Contacts[Index]);
-        EXPECT_FALSE(Error);
+//        QString ContactLogin = "Contact@login." + QString::number(Index); // У каждого пользователья должен быть уникальный UUID и логин
+//        Contacts[Index] = make_user(QUuid::createUuid(), ContactLogin);
+//        Contacts[Index]->setName("User " + QString::number(Index));
+//        // Добавляем контакт в хранилище (Потому что контакт должен существовать)
+//        Error = Storage.addUser(Contacts[Index]);
+//        EXPECT_FALSE(Error);
+//        // Добавляем контакт пользователю
+//        Error = NewUser->m_contactList.addContact(Contacts[Index]);
+//        EXPECT_FALSE(Error);
     }
 
     Error = Storage.addUser(NewUser); // Добавляем пользователя в хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    std::shared_ptr<hmcommon::HMUser> FindRes = Storage.findUserByUUID(NewUser->m_uuid, Error, true); // Ищим пользователя по UUID
+    std::shared_ptr<hmcommon::HMUser> FindRes = Storage.findUserByUUID(NewUser->m_uuid, Error); // Ищим пользователя по UUID
 
     ASSERT_NE(FindRes, nullptr); // Должен вернуться валидный указатель
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     for (std::size_t Index = 0; Index < ContactsCount; ++Index) // Проверяем контакты пользователя
     {
-        std::shared_ptr<hmcommon::HMUser> Contact = FindRes->m_contactList.getContact(Contacts[Index]->m_uuid, Error);
+//        std::shared_ptr<hmcommon::HMUser> Contact = FindRes->m_contactList.getContact(Contacts[Index]->m_uuid, Error);
 
-        ASSERT_NE(Contact, nullptr); // Должен вернуться валидный указатель
-        ASSERT_FALSE(Error); // Ошибки быть не должно
+//        ASSERT_NE(Contact, nullptr); // Должен вернуться валидный указатель
+//        ASSERT_FALSE(Error); // Ошибки быть не должно
 
-        EXPECT_EQ(Contacts[Index]->m_uuid, Contact->m_uuid);
-        EXPECT_EQ(Contacts[Index]->getName(), Contact->getName());
+//        EXPECT_EQ(Contacts[Index]->m_uuid, Contact->m_uuid);
+//        EXPECT_EQ(Contacts[Index]->getName(), Contact->getName());
     }
 
     Storage.close(); // Закрываем хранилище
@@ -423,7 +423,7 @@ TEST(JsonDataStorage, RemoveUser)
     Error = Storage.addUser(NewUser); // Добавляем пользователя
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    std::shared_ptr<hmcommon::HMUser> FindRes = Storage.findUserByUUID(NewUser->m_uuid, Error, false); // Ищим существующего пользователя по UUID
+    std::shared_ptr<hmcommon::HMUser> FindRes = Storage.findUserByUUID(NewUser->m_uuid, Error); // Ищим существующего пользователя по UUID
 
     ASSERT_NE(FindRes, nullptr); // Должен вернуться валидный указатель
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -431,7 +431,7 @@ TEST(JsonDataStorage, RemoveUser)
     Error = Storage.removeUser(NewUser->m_uuid);
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    FindRes = Storage.findUserByUUID(NewUser->m_uuid, Error, false); // Ищим удалённого пользователя по UUID
+    FindRes = Storage.findUserByUUID(NewUser->m_uuid, Error); // Ищим удалённого пользователя по UUID
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
     ASSERT_TRUE(Error.value() == static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // И метку, что пользователь не существует
@@ -537,15 +537,15 @@ TEST(JsonDataStorage, CheckJsonSave)
 
     for (std::size_t Index = 0; Index < ContactsCount; ++Index)
     {
-        QString ContactLogin = "Contact@login." + QString::number(Index); // У каждого пользователья должен быть уникальный UUID и логин
-        Contacts[Index] = make_user(QUuid::createUuid(), ContactLogin);
-        Contacts[Index]->setName("User contact " + QString::number(Index));
-        // Добавляем контакт в хранилище (Потому что контакт должен существовать)
-        Error = Storage.addUser(Contacts[Index]);
-        EXPECT_FALSE(Error);
-        // Добавляем контакт пользователю
-        Error = NewUser->m_contactList.addContact(Contacts[Index]);
-        EXPECT_FALSE(Error);
+//        QString ContactLogin = "Contact@login." + QString::number(Index); // У каждого пользователья должен быть уникальный UUID и логин
+//        Contacts[Index] = make_user(QUuid::createUuid(), ContactLogin);
+//        Contacts[Index]->setName("User contact " + QString::number(Index));
+//        // Добавляем контакт в хранилище (Потому что контакт должен существовать)
+//        Error = Storage.addUser(Contacts[Index]);
+//        EXPECT_FALSE(Error);
+//        // Добавляем контакт пользователю
+//        Error = NewUser->m_contactList.addContact(Contacts[Index]);
+//        EXPECT_FALSE(Error);
     }
 
     std::shared_ptr<hmcommon::HMGroup> NewGroup = make_group(); // Формируем новую группу
@@ -577,7 +577,7 @@ TEST(JsonDataStorage, CheckJsonSave)
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(Storage.is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUser> FindUser = Storage.findUserByUUID(NewUser->m_uuid, Error, true);
+    std::shared_ptr<hmcommon::HMUser> FindUser = Storage.findUserByUUID(NewUser->m_uuid, Error);
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_NE(FindUser, nullptr); // Должен вернуться валидный указатель
 
@@ -596,17 +596,17 @@ TEST(JsonDataStorage, CheckJsonSave)
 
     for (std::size_t Index = 0; Index < MESSAGES; ++Index)
     {
-        std::shared_ptr<hmcommon::HMUser> Contact = FindUser->m_contactList.getContact(Contacts[Index]->m_uuid, Error); // Запрашиваем контакт пользователя по UUID
-        ASSERT_FALSE(Error); // Ошибки быть не должно
-        ASSERT_NE(FindGroup, nullptr); // Должен вернуться валидный указатель
+//        std::shared_ptr<hmcommon::HMUser> Contact = FindUser->m_contactList.getContact(Contacts[Index]->m_uuid, Error); // Запрашиваем контакт пользователя по UUID
+//        ASSERT_FALSE(Error); // Ошибки быть не должно
+//        ASSERT_NE(FindGroup, nullptr); // Должен вернуться валидный указатель
 
-        EXPECT_EQ(Contacts[Index]->m_uuid, Contact->m_uuid);
-        EXPECT_EQ(Contacts[Index]->m_registrationDate, Contact->m_registrationDate);
-        EXPECT_EQ(Contacts[Index]->getName(), Contact->getName());
-        EXPECT_EQ(Contacts[Index]->getLogin(), Contact->getLogin());
-        EXPECT_EQ(Contacts[Index]->getPasswordHash(), Contact->getPasswordHash());
-        EXPECT_EQ(Contacts[Index]->getSex(), Contact->getSex());
-        EXPECT_EQ(Contacts[Index]->getBirthday(), Contact->getBirthday());
+//        EXPECT_EQ(Contacts[Index]->m_uuid, Contact->m_uuid);
+//        EXPECT_EQ(Contacts[Index]->m_registrationDate, Contact->m_registrationDate);
+//        EXPECT_EQ(Contacts[Index]->getName(), Contact->getName());
+//        EXPECT_EQ(Contacts[Index]->getLogin(), Contact->getLogin());
+//        EXPECT_EQ(Contacts[Index]->getPasswordHash(), Contact->getPasswordHash());
+//        EXPECT_EQ(Contacts[Index]->getSex(), Contact->getSex());
+//        EXPECT_EQ(Contacts[Index]->getBirthday(), Contact->getBirthday());
     }
 
     EXPECT_EQ(NewGroup->m_uuid, FindGroup->m_uuid);

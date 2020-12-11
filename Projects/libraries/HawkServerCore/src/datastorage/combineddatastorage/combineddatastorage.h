@@ -1,64 +1,44 @@
-#ifndef HMCACHEDDATASTORAGE_H
-#define HMCACHEDDATASTORAGE_H
+#ifndef HMCOMBINEDDATASTORAGE_H
+#define HMCOMBINEDDATASTORAGE_H
 
 /**
- * @file cacheddatastorage.h
- * @brief Содержит описание класса кеширующего хранилища данных
+ * @file combineddatastorage.h
+ * @brief Содержит описание комбинированного хранилища данных (физическое\хешированное)
  */
 
-#include <thread>
-#include <atomic>
-#include <shared_mutex>
-#include <unordered_set>
+#include <memory>
 
-#include <QTime>
-
-#include "cached.h"
-#include "datastorage/interface/abstractdatastoragefunctional.h"
+#include "datastorage/interface/datastorageinterface.h"
 
 namespace hmservcommon::datastorage
 {
 //-----------------------------------------------------------------------------
 /**
- * @brief The HMCachedDataStorage class - Класс, описывающий кеширующее хранилище данных
+ * @brief The HMCombinedDataStorage class - Класс, описывающий комбинированное хранилище данных (физическое\хешированное)
  *
  * @authors Alekseev_s
- * @date 06.12.2020
+ * @date 11.12.2020
  */
-class HMCachedDataStorage : public HMAbstractDataStorageFunctional
+class HMCombinedDataStorage : public HMDataStorage
 {
 private:
 
-    mutable std::shared_mutex m_usersDefender;                  ///< Мьютекс, защищающий пользовтаелей
-    std::unordered_set<HMCachedUser> m_cachedUsers;     ///< Кешированные пользоватили
-
-    mutable std::shared_mutex m_groupsDefender;                 ///< Мьютекс, защищающий группы
-    std::unordered_set<HMCachedGroup> m_cachedGroups;   ///< Кешированные группы
-
-    std::atomic_bool m_threadWork;                      ///< Флаг работы потока
-    std::thread m_watchdogThread;                       ///< Поток контроля кеша
-
-    /**
-     * @brief clearCached - Метод очистит закешированные данные
-     */
-    void clearCached();
-
-    /**
-     * @brief watchdogTreadFunc - Метод контроля кеша
-     */
-    void watchdogThreadFunc();
+    std::shared_ptr<HMDataStorage> m_HardStorage = nullptr;     ///< Физическое хранилище данных
+    std::shared_ptr<HMDataStorage> m_CacheStorage = nullptr;    ///< Кеширующее хранилище данных
 
 public:
 
     /**
-     * @brief HMCachedDataStorage - Конструктор по умолчанию
+     * @brief HMCombinedDataStorage - Инициализирующий конструктор
+     * @param inHardStorage - Физическое хранилище данных
+     * @param inCacheStorage - Кеширующее хранилище данных
      */
-    HMCachedDataStorage();
+    HMCombinedDataStorage(const std::shared_ptr<HMDataStorage> inHardStorage, const std::shared_ptr<HMDataStorage> inCacheStorage = nullptr);
 
     /**
-     * @brief ~HMCachedDataStorage - Виртуальный деструктор
+     * @brief ~HMCombinedDataStorage - Виртуальный деструктор по умолчанию
      */
-    virtual ~HMCachedDataStorage();
+    virtual ~HMCombinedDataStorage() override = default;
 
     // Хранилище
 
@@ -108,6 +88,7 @@ public:
      * @param inLogin - Логин пользователя
      * @param inPasswordHash - Хеш пароля пользователя
      * @param outErrorCode - Признак ошибки
+     * @param inWithContacts - Флаг "Вернуть со списокм контактов"
      * @return Вернёт указатель на экземпляр пользователя или nullptr
      */
     virtual std::shared_ptr<hmcommon::HMUser> findUserByAuthentication(const QString& inLogin, const QByteArray& inPasswordHash, std::error_code& outErrorCode) const override;
@@ -191,16 +172,8 @@ public:
      */
     virtual std::error_code removeMessage(const QUuid inMessageUUID, const QUuid inGroupUUID) override;
 
-protected:
-
-    /**
-     * @brief makeDefault - Метод сформирует дефолтную структуру хранилища
-     * @return Вернёт признак ошибки
-     */
-    virtual std::error_code makeDefault() override;
-
 };
 //-----------------------------------------------------------------------------
 } // namespace hmservcommon::datastorage
 
-#endif // HMCACHEDDATASTORAGE_H
+#endif // HMCOMBINEDDATASTORAGE_H

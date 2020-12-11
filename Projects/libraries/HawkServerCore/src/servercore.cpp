@@ -6,7 +6,9 @@ using namespace hmservcommon;
 
 //-----------------------------------------------------------------------------
 HMServerCore::HMServerCore() :
-    m_dataStorage(std::make_unique<datastorage::HMJsonDataStorage>(std::filesystem::path("Storage.JSON")))
+    m_dataStorage(std::make_unique<datastorage::HMCombinedDataStorage>(
+                      std::make_shared<datastorage::HMJsonDataStorage>(std::filesystem::path("Storage.JSON")),
+                      std::make_shared<datastorage::HMCachedDataStorage>()))
 {
     if (m_dataStorage)
     {

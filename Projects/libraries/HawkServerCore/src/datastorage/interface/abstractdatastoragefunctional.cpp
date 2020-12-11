@@ -7,16 +7,11 @@
 using namespace hmservcommon::datastorage;
 
 //-----------------------------------------------------------------------------
-HMAbstractDataStorageFunctional::HMAbstractDataStorageFunctional(const bool inMakeCache) :
+HMAbstractDataStorageFunctional::HMAbstractDataStorageFunctional() :
     HMDataStorage() // Инициализируем предок-интерфейс
-
 {
-    if (inMakeCache) // Если создание хеша разрешено
-        m_cache = std::make_shared<HMCachedDataStorage>(); // Инициализируем хеширующее хранилище
+
 }
-//-----------------------------------------------------------------------------
-std::shared_ptr<HMDataStorage> HMAbstractDataStorageFunctional::cache() const
-{ return m_cache; }
 //-----------------------------------------------------------------------------
 std::error_code HMAbstractDataStorageFunctional::checkNewUserUnique(const std::shared_ptr<hmcommon::HMUser> inUser) const
 {   // ДАННЫЙ МЕТОД НЕ ДОЛЖЕН ПРОВЕРЯТЬ КЕШ!

@@ -4,6 +4,7 @@
 #include "datastorageerrorcategory.h"
 #include "datastorage/interface/datastorageinterface.h"
 #include "datastorage/interface/abstractdatastoragefunctional.h"
+#include "datastorage/combineddatastorage/combineddatastorage.h"
 #include "datastorage/cacheddatastorage/cacheddatastorage.h"
 #include "datastorage/jsondatastorage/jsondatastorage.h"
 

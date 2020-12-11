@@ -12,8 +12,6 @@
 #include <QDateTime>
 #include <QByteArray>
 
-#include "contactlist.h"
-
 namespace hmcommon
 {
 //-----------------------------------------------------------------------------
@@ -49,7 +47,6 @@ public:
 
     const QUuid m_uuid;                 ///< UUID пользователя
     const QDateTime m_registrationDate; ///< Дата регистрации пользователя
-    HMContactList m_contactList;        ///< Список контактов пользователя
 
     /**
      * @brief HMUser - Инициализирующий конструктор
