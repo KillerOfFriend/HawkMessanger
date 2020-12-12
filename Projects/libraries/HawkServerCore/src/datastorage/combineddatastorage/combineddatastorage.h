@@ -8,7 +8,8 @@
 
 #include <memory>
 
-#include "datastorage/interface/datastorageinterface.h"
+#include "datastorage/interface/abstractharddatastorage.h"
+#include "datastorage/interface/abstractcahcedatastorage.h"
 
 namespace hmservcommon::datastorage
 {
@@ -23,8 +24,8 @@ class HMCombinedDataStorage : public HMDataStorage
 {
 private:
 
-    std::shared_ptr<HMDataStorage> m_HardStorage = nullptr;     ///< Физическое хранилище данных
-    std::shared_ptr<HMDataStorage> m_CacheStorage = nullptr;    ///< Кеширующее хранилище данных
+    std::shared_ptr<HMAbstractHardDataStorage> m_HardStorage = nullptr;     ///< Физическое хранилище данных
+    std::shared_ptr<HMAbstractCahceDataStorage> m_CacheStorage = nullptr;   ///< Кеширующее хранилище данных
 
 public:
 
@@ -33,7 +34,7 @@ public:
      * @param inHardStorage - Физическое хранилище данных
      * @param inCacheStorage - Кеширующее хранилище данных
      */
-    HMCombinedDataStorage(const std::shared_ptr<HMDataStorage> inHardStorage, const std::shared_ptr<HMDataStorage> inCacheStorage = nullptr);
+    HMCombinedDataStorage(const std::shared_ptr<HMAbstractHardDataStorage> inHardStorage, const std::shared_ptr<HMAbstractCahceDataStorage> inCacheStorage = nullptr);
 
     /**
      * @brief ~HMCombinedDataStorage - Виртуальный деструктор по умолчанию
@@ -171,6 +172,24 @@ public:
      * @return Вернёт признак ошибки
      */
     virtual std::error_code removeMessage(const QUuid inMessageUUID, const QUuid inGroupUUID) override;
+
+    // Связи
+
+    /**
+     * @brief getUserContactsIDList - Метод вернёт контакты пользователя в виде перечня UUID
+     * @param inUserUUID - UUID пользователя
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт перечент контактов в виде списка UUID
+     */
+    virtual std::vector<QUuid> getUserContactsIDList(const QUuid inUserUUID,  std::error_code& outErrorCode) const override;
+
+    /**
+     * @brief getGroupUserIDList - Метод вернёт пользователей группы в виде перечня UUID
+     * @param inGroupUUID - UUID группы
+     * @param outErrorCode - Признак ошибки
+     * @return  Вернёт перечент пользователей в виде списка UUID
+     */
+    virtual std::vector<QUuid> getGroupUserIDList(const QUuid inGroupUUID,  std::error_code& outErrorCode) const override;
 
 };
 //-----------------------------------------------------------------------------

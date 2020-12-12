@@ -9,7 +9,7 @@
 using namespace hmservcommon::datastorage;
 
 //-----------------------------------------------------------------------------
-HMCombinedDataStorage::HMCombinedDataStorage(const std::shared_ptr<HMDataStorage> inHardStorage, const std::shared_ptr<HMDataStorage> inCacheStorage) :
+HMCombinedDataStorage::HMCombinedDataStorage(const std::shared_ptr<HMAbstractHardDataStorage> inHardStorage, const std::shared_ptr<HMAbstractCahceDataStorage> inCacheStorage) :
     m_HardStorage(inHardStorage),
     m_CacheStorage(inCacheStorage)
 {
@@ -459,5 +459,17 @@ std::error_code HMCombinedDataStorage::removeMessage(const QUuid inMessageUUID, 
     }
 
     return Error;
+}
+//-----------------------------------------------------------------------------
+std::vector<QUuid> HMCombinedDataStorage::getUserContactsIDList(const QUuid inUserUUID,  std::error_code& outErrorCode) const
+{
+    // Кеширующие контейнеры не поддерживают данную операцию!
+    return m_HardStorage->getUserContactsIDList(inUserUUID, outErrorCode); // По этому сразу стучимся в физический
+}
+//-----------------------------------------------------------------------------
+std::vector<QUuid> HMCombinedDataStorage::getGroupUserIDList(const QUuid inGroupUUID,  std::error_code& outErrorCode) const
+{
+    // Кеширующие контейнеры не поддерживают данную операцию!
+    return m_HardStorage->getUserContactsIDList(inGroupUUID, outErrorCode); // По этому сразу стучимся в физический
 }
 //-----------------------------------------------------------------------------

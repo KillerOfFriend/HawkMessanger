@@ -17,12 +17,12 @@ set(TESTS_INCLUDE_DIRS
     ${DIR_THIRDPARTY_PATH}/Building/googletest/googletest/include/
     )
 #====================================================================
-set(Test1 CachedDataStorage_Test)
-add_executable(${Test1} ${CMAKE_CURRENT_SOURCE_DIR}/CachedDataStorage/main.cpp)
+set(Test1 CachedMemoryDataStorage_Test)
+add_executable(${Test1} ${CMAKE_CURRENT_SOURCE_DIR}/CachedMemoryDataStorage/main.cpp)
 target_include_directories(${Test1} PRIVATE ${TESTS_INCLUDE_DIRS})
 target_link_libraries(${Test1} PRIVATE ${TESTS_LINCED_LIBRARYES})
 
-add_test(NAME HawkServerCore_Test1 COMMAND CachedDataStorageTest)
+add_test(NAME HawkServerCore_Test1 COMMAND CachedMemoryDataStorageTest)
 #====================================================================
 set(Test2 JsonDataStorage_Test)
 add_executable(${Test2} ${CMAKE_CURRENT_SOURCE_DIR}/JsonDataStorage/main.cpp)

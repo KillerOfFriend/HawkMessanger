@@ -11,7 +11,7 @@
 #include <nlohmann/json.hpp>
 
 #include "jsondatastoragevalidator.h"
-#include "datastorage/interface/abstractdatastoragefunctional.h"
+#include "datastorage/interface/abstractharddatastorage.h"
 
 namespace hmservcommon::datastorage
 {
@@ -22,12 +22,13 @@ namespace hmservcommon::datastorage
  * @authors Alekseev_s
  * @date 21.11.2020
  */
-class HMJsonDataStorage : public HMAbstractDataStorageFunctional
+class HMJsonDataStorage : public HMAbstractHardDataStorage
 {
 private:
 
-    const std::filesystem::path m_jsonPath; ///< Путь к json файлу
-    nlohmann::json m_json;                  ///< json файл
+    const std::filesystem::path m_jsonPath;                     ///< Путь к json файлу
+    nlohmann::json m_json;                                      ///< json файл
+    nlohmann::json m_invalidObject = nlohmann::json::object();  ///< Не валидный json объект
 
     HMJsonDataStorageValidator m_validator; ///< Валидатор формата данных
 
@@ -38,19 +39,40 @@ private:
     std::error_code checkCorrectStruct() const;
 
     /**
+     * @brief checkUsers - Метод проверит корректность структуры пользователей
+     * @return Вернёт признак ошибки
+     */
+    std::error_code checkUsers() const;
+
+    /**
+     * @brief checkGroups - Метод проверит корректность структуры групп
+     * @return Вернёт признак ошибки
+     */
+    std::error_code checkGroups() const;
+
+    /**
+     * @brief checkMessages - Метод проверит корректность структуры сообщений
+     * @return Вернёт признак ошибки
+     */
+    std::error_code checkMessages() const;
+
+    /**
+     * @brief checkRelationsUC - Метод проверит корректность структуры связей пользователь-контакты
+     * @return Вернёт признак ошибки
+     */
+    std::error_code checkRelationsUC() const;
+
+    /**
+     * @brief checkRelationsGU - Метод проверит корректность структуры связй группа-пользователи
+     * @return Вернёт признак ошибки
+     */
+    std::error_code checkRelationsGU() const;
+
+    /**
      * @brief write - Метод запишет изменения в JSON файл
      * @return Вернёт признак ошибки
      */
     std::error_code write() const;
-
-    /**
-     * @brief buildUserContacts - Метод инициализирует контакты пользователя
-     * @param inJsonUser - Объект Json содержащий пользователя
-     * @param outUser - Пользоваетль, для которого инициализируются контакты
-     * @return Вернёт признак ошибки
-     */
-    std::error_code buildUserContacts(const nlohmann::json& inJsonUser, std::shared_ptr<hmcommon::HMUser> outUser) const;
-
 
 public:
 
@@ -197,6 +219,24 @@ public:
      * @return Вернёт признак ошибки
      */
     virtual std::error_code removeMessage(const QUuid inMessageUUID, const QUuid inGroupUUID) override;
+
+    // Связи
+
+    /**
+     * @brief getUserContactsIDList - Метод вернёт контакты пользователя в виде перечня UUID
+     * @param inUserUUID - UUID пользователя
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт перечент контактов в виде списка UUID
+     */
+    virtual std::vector<QUuid> getUserContactsIDList(const QUuid inUserUUID,  std::error_code& outErrorCode) const override;
+
+    /**
+     * @brief getGroupUserIDList - Метод вернёт пользователей группы в виде перечня UUID
+     * @param inGroupUUID - UUID группы
+     * @param outErrorCode - Признак ошибки
+     * @return  Вернёт перечент пользователей в виде списка UUID
+     */
+    virtual std::vector<QUuid> getGroupUserIDList(const QUuid inGroupUUID,  std::error_code& outErrorCode) const override;
 
 
 protected:

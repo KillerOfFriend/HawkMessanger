@@ -27,6 +27,10 @@ std::string SystemErrorExCategory::message(int inCode) const
         case eSystemErrorEx::seInvalidPtr:                  { Result = tr("Не валидный указатель").toStdString(); break; }
         case eSystemErrorEx::seIncorrecVersion:             { Result = tr("Версия не соответствует").toStdString(); break; }
         case eSystemErrorEx::seIncorretData:                { Result = tr("Не корректные данные").toStdString(); break; }
+        case eSystemErrorEx::seOperationNotSupported:       { Result = tr("Операция не поддерживается").toStdString(); break; }
+
+        case eSystemErrorEx::seInputOperationFail:          { Result = tr("Во время операции чтения произошла ошибка").toStdString(); break; }
+        case eSystemErrorEx::seOutputOperationFail:         { Result = tr("Во время операции записи произошла ошибка").toStdString(); break; }
 
         case eSystemErrorEx::seFileNotExists:               { Result = tr("Файл не существует").toStdString(); break; }
         case eSystemErrorEx::seDirNotExists:                { Result = tr("Директория не существует").toStdString(); break; }

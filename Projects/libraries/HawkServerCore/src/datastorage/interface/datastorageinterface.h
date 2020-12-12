@@ -173,6 +173,24 @@ public:
      */
     virtual std::error_code removeMessage(const QUuid inMessageUUID, const QUuid inGroupUUID) = 0;
 
+    // Связи
+
+    /**
+     * @brief getUserContactsIDList - Метод вернёт контакты пользователя в виде перечня UUID
+     * @param inUserUUID - UUID пользователя
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт перечент контактов в виде списка UUID
+     */
+    virtual std::vector<QUuid> getUserContactsIDList(const QUuid inUserUUID,  std::error_code& outErrorCode) const = 0;
+
+    /**
+     * @brief getGroupUserIDList - Метод вернёт пользователей группы в виде перечня UUID
+     * @param inGroupUUID - UUID группы
+     * @param outErrorCode - Признак ошибки
+     * @return  Вернёт перечент пользователей в виде списка UUID
+     */
+    virtual std::vector<QUuid> getGroupUserIDList(const QUuid inGroupUUID,  std::error_code& outErrorCode) const = 0;
+
 };
 //-----------------------------------------------------------------------------
 } // namespace hmservcommon::datastorage

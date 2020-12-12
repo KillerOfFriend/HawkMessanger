@@ -12,6 +12,18 @@ HMGroup::HMGroup(const QUuid &inUuid, const QDateTime& inRegistrationDate) :
 
 }
 //-----------------------------------------------------------------------------
+bool HMGroup::operator== (const HMGroup& inOther) const
+{
+    if (&inOther == this) // Если это один экземпляр объекта
+        return true;
+    else
+    {   // ПОЛНОЕ сравнение объекта
+        return this->m_uuid == inOther.m_uuid &&
+                this->m_registrationDate == inOther.m_registrationDate &&
+                this->m_name == inOther.m_name;
+    }
+}
+//-----------------------------------------------------------------------------
 void HMGroup::setName(const QString& inName)
 { m_name = inName; }
 //-----------------------------------------------------------------------------

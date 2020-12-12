@@ -61,6 +61,13 @@ public:
     ~HMUser() = default;
 
     /**
+     * @brief operator == - Оператор сравнения
+     * @param inOther - Сравниваемый объект
+     * @return - Вернёт оператор сравнения
+     */
+    bool operator== (const HMUser& inOther) const;
+
+    /**
      * @brief setLogin - Метод задаст логин
      * @param inLogin - Новое значение логина
      */

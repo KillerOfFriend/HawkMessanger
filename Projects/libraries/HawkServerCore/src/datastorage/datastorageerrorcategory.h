@@ -22,11 +22,12 @@ static const std::int32_t C_STORAG_ERROR_START = 300; ///< Начальное з
 enum class eDataStorageError
 {
     dsSuccess = 0,                      ///< 0 Не явялется ошибкой
-
+    // Хранилище
     dsNotOpen = C_STORAG_ERROR_START,   ///< Хранилище не открыто
-
+    // Пользователи
     dsUserUUIDAlreadyRegistered,        ///< В хранилище уже зарегистрирован пользователь с таким UUID
     dsUserLoginAlreadyRegistered,       ///< В хранилище уже зарегистрирован пользователь с таким логином
+    dsUserPasswordIncorrect,            ///< Не корректный пароль пользователя
     dsUserNotExists,                    ///< Пользователь не существует
     dsUserAlreadyExists,                ///< Пользователь уже существует
     dsUserUUIDCorrupted,                ///< UUID пользователя повреждён
@@ -37,7 +38,7 @@ enum class eDataStorageError
     dsUserSexCorrupted,                 ///< Пол пользователя поврежден
     dsUserBirthdayCorrupted,            ///< День рождения пользователя повреждён
     dsUserContactsCorrupted,            ///< Контакты пользователя повреждены
-
+    // Группы
     dsGroupUUIDAlreadyRegistered,       ///< В хранилище уже зарегистрирована группа с таким UUID
     dsGroupNotExists,                   ///< Группа не существует
     dsGroupAlreadyExists,               ///< Группа уже существует
@@ -45,7 +46,7 @@ enum class eDataStorageError
     dsGroupRegistrationDateCorrupted,   ///< Время группы поврежено
     dsGroupNameCorrupted,               ///< Имя группы повреждено
     dsGroupUsersCorrupted,              ///< Пользователи группы повреждены
-
+    // Собщения
     dsMessageNotExists,                 ///< Сообщение не существует
     dsMessageAlreadyExists,             ///< Сообщение уже существует
     dsMessageUUIDCorrupted,             ///< UUID сообщения повреждён
@@ -53,6 +54,22 @@ enum class eDataStorageError
     dsMessageRegistrationDateCorrupted, ///< Время сообщения поврежено
     dsMessageTypeCorrupted,             ///< Тип сообщения повреждён
     dsMessageDataCorrupted,             ///< Данные сообщения повреждены
+    // Связи
+    dsRelationsCorrupted,               ///< ВСЕ связи повреждены
+    // Связи пользователь-контакт
+    dsRelationUCAlreadyExists,          ///< Связь пользвоатель-контакты уже существует
+    dsRelationUCNotExists,              ///< Связь пользвоатель-контакты не существует
+    dsRelationUCCorrupted,              ///< Связи пользвоатель-контакты повреждены
+    dsRelationUCUserUUIDCorrupted,      ///< В связи пользователь-контакты повреждён UUID пользователя
+    dsRelationUCContactsCorrupted,      ///< В связи пользователь-контакты повреждён список контактов
+    dsRelationUCContactUUIDCorrupted,   ///< В связи пользователь-контакты повреждён UUID контакта
+    // Связи группа-пользователь
+    dsRelationGUAlreadyExists,          ///< Связь группа-пользвоатели уже существует
+    dsRelationGUNotExists,              ///< Связь группа-пользвоатели не существует
+    dsRelationGUCorrupted,              ///< Связи группа-пользвоатели повреждены
+    dsRelationGUGroupUUIDCorrupted,     ///< В связи группа-пользвоатели повреждён UUID группы
+    dsRelationGUUsersCorrupted,         ///< В связи группа-пользвоатели повреждён список пользователей
+    dsRelationGUUserUUIDCorrupted,      ///< В связи группа-пользвоатели повреждён UUID пользователя
 
     dsCount
 };

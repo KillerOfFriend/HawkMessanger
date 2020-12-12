@@ -12,6 +12,22 @@ HMUser::HMUser(const QUuid &inUuid, const QDateTime& inRegistrationDate)
 
 }
 //-----------------------------------------------------------------------------
+bool HMUser::operator== (const HMUser& inOther) const
+{
+    if (&inOther == this) // Если это один экземпляр объекта
+        return true;
+    else
+    {   // ПОЛНОЕ сравнение объекта
+        return this->m_uuid == inOther.m_uuid &&
+                this->m_registrationDate == inOther.m_registrationDate &&
+                this->m_login == inOther.m_login &&
+                this->m_passwordHash == inOther.m_passwordHash &&
+                this->m_name == inOther.m_name &&
+                this->m_sex == inOther.m_sex &&
+                this->m_birthday == inOther.m_birthday;
+    }
+}
+//-----------------------------------------------------------------------------
 void HMUser::setLogin(const QString& inLogin)
 { m_login = inLogin; }
 //-----------------------------------------------------------------------------

@@ -47,6 +47,13 @@ public:
     ~HMGroup() = default;
 
     /**
+     * @brief operator == - Оператор сравнения
+     * @param inOther - Сравниваемый объект
+     * @return - Вернёт оператор сравнения
+     */
+    bool operator== (const HMGroup& inOther) const;
+
+    /**
      * @brief setName - Метод задаст имя группы
      * @param inName - Новое имя группы
      */

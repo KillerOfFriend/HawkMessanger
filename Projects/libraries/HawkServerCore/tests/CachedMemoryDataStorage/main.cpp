@@ -66,10 +66,10 @@ std::shared_ptr<hmcommon::HMGroupMessage> make_groupmessage(const hmcommon::MsgD
 /**
  * @brief TEST - Тест проверит попытку открытия хранилища
  */
-TEST(CachedDataStorage, Open)
+TEST(CachedMemoryDataStorage, Open)
 {
     std::error_code Error;
-    HMCachedDataStorage CachedStorage;
+    HMCachedMemoryDataStorage CachedStorage;
 
     Error = CachedStorage.open();
 
@@ -82,10 +82,10 @@ TEST(CachedDataStorage, Open)
 /**
  * @brief TEST - Тест проверит добавление пользователя
  */
-TEST(CachedDataStorage, AddUser)
+TEST(CachedMemoryDataStorage, AddUser)
 {
     std::error_code Error;
-    HMCachedDataStorage CachedStorage;
+    HMCachedMemoryDataStorage CachedStorage;
 
     Error = CachedStorage.open();
 
@@ -106,10 +106,10 @@ TEST(CachedDataStorage, AddUser)
 /**
  * @brief TEST - Тест проверит обновление пользователя
  */
-TEST(CachedDataStorage, updateUser)
+TEST(CachedMemoryDataStorage, updateUser)
 {
     std::error_code Error;
-    HMCachedDataStorage CachedStorage;
+    HMCachedMemoryDataStorage CachedStorage;
 
     Error = CachedStorage.open();
 
@@ -132,10 +132,10 @@ TEST(CachedDataStorage, updateUser)
 /**
  * @brief TEST - Тест проверит поиск пользователья по UUID
  */
-TEST(CachedDataStorage, findUserByUUID)
+TEST(CachedMemoryDataStorage, findUserByUUID)
 {
     std::error_code Error;
-    HMCachedDataStorage CachedStorage;
+    HMCachedMemoryDataStorage CachedStorage;
 
     Error = CachedStorage.open();
 
@@ -173,10 +173,10 @@ TEST(CachedDataStorage, findUserByUUID)
 /**
  * @brief TEST - Тест проверит поиск пользователья по данным аутентификации
  */
-TEST(CachedDataStorage, findUserByAuthentication)
+TEST(CachedMemoryDataStorage, findUserByAuthentication)
 {
     std::error_code Error;
-    HMCachedDataStorage CachedStorage;
+    HMCachedMemoryDataStorage CachedStorage;
 
     Error = CachedStorage.open();
 
@@ -214,10 +214,10 @@ TEST(CachedDataStorage, findUserByAuthentication)
 /**
  * @brief TEST - Тест проверит удаление пользователя из кеша
  */
-TEST(CachedDataStorage, removeUser)
+TEST(CachedMemoryDataStorage, removeUser)
 {
     std::error_code Error;
-    HMCachedDataStorage CachedStorage;
+    HMCachedMemoryDataStorage CachedStorage;
 
     Error = CachedStorage.open();
 
@@ -243,10 +243,10 @@ TEST(CachedDataStorage, removeUser)
 /**
  * @brief TEST - Тест проверит добавление группы
  */
-TEST(CachedDataStorage, addGroup)
+TEST(CachedMemoryDataStorage, addGroup)
 {
     std::error_code Error;
-    HMCachedDataStorage CachedStorage;
+    HMCachedMemoryDataStorage CachedStorage;
 
     Error = CachedStorage.open();
 
@@ -267,10 +267,10 @@ TEST(CachedDataStorage, addGroup)
 /**
  * @brief TEST - Тест проверит обновление группы
  */
-TEST(CachedDataStorage, updateGroup)
+TEST(CachedMemoryDataStorage, updateGroup)
 {
     std::error_code Error;
-    HMCachedDataStorage CachedStorage;
+    HMCachedMemoryDataStorage CachedStorage;
 
     Error = CachedStorage.open();
 
@@ -293,10 +293,10 @@ TEST(CachedDataStorage, updateGroup)
 /**
  * @brief TEST - Тест проверит поиск группы по UUID
  */
-TEST(CachedDataStorage, findGroupByUUID)
+TEST(CachedMemoryDataStorage, findGroupByUUID)
 {
     std::error_code Error;
-    HMCachedDataStorage CachedStorage;
+    HMCachedMemoryDataStorage CachedStorage;
 
     Error = CachedStorage.open();
 
@@ -334,10 +334,10 @@ TEST(CachedDataStorage, findGroupByUUID)
 /**
  * @brief TEST - Тест проверит удаление группы
  */
-TEST(CachedDataStorage, removeGroup)
+TEST(CachedMemoryDataStorage, removeGroup)
 {
     std::error_code Error;
-    HMCachedDataStorage CachedStorage;
+    HMCachedMemoryDataStorage CachedStorage;
 
     Error = CachedStorage.open();
 
@@ -363,7 +363,7 @@ TEST(CachedDataStorage, removeGroup)
 /**
  * @brief TEST - Тест проверит добовление сообщения
  */
-TEST(CachedDataStorage, addMessage)
+TEST(CachedMemoryDataStorage, addMessage)
 {
     ASSERT_TRUE(true); // Кеширование сообщений не поддерживается
 }
@@ -371,7 +371,7 @@ TEST(CachedDataStorage, addMessage)
 /**
  * @brief TEST - Тест проверит обновление сообщения
  */
-TEST(CachedDataStorage, updateMessage)
+TEST(CachedMemoryDataStorage, updateMessage)
 {
     ASSERT_TRUE(true); // Кеширование сообщений не поддерживается
 }
@@ -379,7 +379,7 @@ TEST(CachedDataStorage, updateMessage)
 /**
  * @brief TEST - Тест проверит поиск сообщения по UUID
  */
-TEST(CachedDataStorage, findMessage)
+TEST(CachedMemoryDataStorage, findMessage)
 {
     ASSERT_TRUE(true); // Кеширование сообщений не поддерживается
 }
@@ -387,7 +387,7 @@ TEST(CachedDataStorage, findMessage)
 /**
  * @brief TEST - Тест проверит поиск перечня сообщений по временному промежутку
  */
-TEST(CachedDataStorage, findMessages)
+TEST(CachedMemoryDataStorage, findMessages)
 {
     ASSERT_TRUE(true); // Кеширование сообщений не поддерживается
 }
@@ -395,7 +395,7 @@ TEST(CachedDataStorage, findMessages)
 /**
  * @brief TEST - Тест проверит удаление сообщения
  */
-TEST(CachedDataStorage, removeMessage)
+TEST(CachedMemoryDataStorage, removeMessage)
 {
     ASSERT_TRUE(true); // Кеширование сообщений не поддерживается
 }
@@ -403,7 +403,7 @@ TEST(CachedDataStorage, removeMessage)
 
 //-----------------------------------------------------------------------------
 /**
- * @brief main - Входная точка тестировани функционала HMCachedDataStorage
+ * @brief main - Входная точка тестировани функционала HMCachedMemoryDataStorage
  * @param argc - Количество аргументов
  * @param argv - Перечень аргументов
  * @return Вернёт признак успешности тестирования

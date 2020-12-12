@@ -54,6 +54,20 @@ public:
     std::error_code checkMessage(const nlohmann::json& inMesssageObject) const;
 
     /**
+     * @brief checkUserContactsRelation - Метод проверит валидность JSON объекта связи пользователь-контакты
+     * @param inUCRelation - Проверяемый объект
+     * @return Вернёт признак ошибки
+     */
+    std::error_code checkUserContactsRelation(const nlohmann::json& inUCRelation) const;
+
+    /**
+     * @brief checkUserContactRelations - Метод проверит валидность JSON объекта связи группа-пользователи
+     * @param inGURelation - Проверяемый объект
+     * @return Вернёт признак ошибки
+     */
+    std::error_code checkGroupUsersRelation(const nlohmann::json& inGURelation) const;
+
+    /**
      * @brief jsonToUser - Метод преобразует Json объект в экземпляр пользователя
      * @param inUserObject - Объект Json содержащий пользователя
      * @param outErrorCode - Признак ошибки

@@ -16,7 +16,7 @@ using namespace hmservcommon::datastorage;
 
 //-----------------------------------------------------------------------------
 HMJsonDataStorage::HMJsonDataStorage(const std::filesystem::path &inJsonPath) :
-    HMAbstractDataStorageFunctional(), // Инициализируем предка
+    HMAbstractHardDataStorage(), // Инициализируем предка
     m_jsonPath(inJsonPath)
 {
 
@@ -43,7 +43,15 @@ std::error_code HMJsonDataStorage::open()
         if (!std::filesystem::exists(m_jsonPath, Error)) // Проверяем что файл вообще существует
         {
             if (!Error) // Не зарегестрирована внутренняя ошибка filesystem
-                makeDefault(); // Создадим пустой файл
+            {
+                Error = makeDefault(); // Создадим пустой файл
+                if (!Error) // Создание структуры прошло без ошибок
+                {
+                    Error = checkCorrectStruct(); // Проверяем корректность созданной структуры
+                    if (Error) // Если структура не прошла проверку
+                        m_json.clear(); // Сносим структуру
+                }
+            }
         }
         else // Файл существует
         {
@@ -108,7 +116,7 @@ std::error_code HMJsonDataStorage::addUser(const std::shared_ptr<hmcommon::HMUse
         {
             Error = checkNewUserUnique(inUser); // Проверяем пользователья на уникальность
 
-            if (!Error) // Если проверка на уникальность прошла успешно
+            if (!Error) // Если проверка на уникальность прошла успешно о том
             {   // Будем добавлять
                 nlohmann::json NewUser = m_validator.userToJson(inUser, Error); // Формируем объект пользователя
 
@@ -186,16 +194,8 @@ std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByUUID(const QUuid 
 
         if (UserIt == m_json[J_USERS].cend()) // Если пользователь не найден
             outErrorCode = make_error_code(eDataStorageError::dsUserNotExists);
-        else // Пользователь найден
-        {
+        else // Пользователь успешно найден
             Result = m_validator.jsonToUser(*UserIt, outErrorCode); // Преобразуем JSON объект в пользователя
-
-//                if (inWithContacts) // Если требуется подготовить контакты для пользователя
-//                    outErrorCode = buildUserContacts(*UserIt, Result);
-
-            if (outErrorCode) // Если ошибка построения пользователя
-                Result = nullptr;
-        }
     }
 
     return Result;
@@ -221,23 +221,22 @@ std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByAuthentication(co
                 return false; // Повреждённый пользователь игнорируется
             }
             else
-            {
-                return UserObject[J_USER_LOGIN].get<std::string>() == Login &&      // Сравниваем Login пользователя с заданым
-                        m_validator.jsonToByteArr(UserObject[J_USER_PASS]) == inPasswordHash;   // Срваниваем PasswordHash с заданным
-            }
+                return UserObject[J_USER_LOGIN].get<std::string>() == Login; // Сравниваем Login пользователя с заданым
         });
 
         if (UserIt == m_json[J_USERS].cend()) // Если пользователь не найден
             outErrorCode = make_error_code(eDataStorageError::dsUserNotExists);
         else // Пользователь найден
         {
-            Result = m_validator.jsonToUser(*UserIt, outErrorCode); // Преобразуем JSON объект в пользователя
+            if (m_validator.jsonToByteArr((*UserIt)[J_USER_PASS]) != inPasswordHash)   // Срваниваем PasswordHash с заданным
+                outErrorCode = make_error_code(eDataStorageError::dsUserPasswordIncorrect); // Хеш пароля не совпал
+            else // Хеш пароля совпал
+            {
+                Result = m_validator.jsonToUser(*UserIt, outErrorCode); // Преобразуем JSON объект в пользователя
 
-//                if (inWithContacts) // Если требуется подготовить контакты для пользователя
-//                    outErrorCode = buildUserContacts(*UserIt, Result);
-
-            if (outErrorCode)
-                Result = nullptr;
+                if (outErrorCode)
+                    Result = nullptr;
+            }
         }
     }
 
@@ -425,7 +424,9 @@ std::error_code HMJsonDataStorage::addMessage(const std::shared_ptr<hmcommon::HM
                 Error = make_error_code(eDataStorageError::dsMessageAlreadyExists);
             else // Нет такого сообщения
             {   // Будем добавлять
-                if (findGroupByUUID(inMessage->m_group, Error)) // Добавляем только для существующей группы
+                if (!findGroupByUUID(inMessage->m_group, Error)) // Добавляем только для существующей группы
+                    Error = make_error_code(eDataStorageError::dsGroupNotExists);
+                else
                 {
                     nlohmann::json NewMessage = m_validator.messageToJson(inMessage, Error); // Формируем объект сообщения
 
@@ -614,6 +615,62 @@ std::error_code HMJsonDataStorage::removeMessage(const QUuid inMessageUUID, cons
     return Error;
 }
 //-----------------------------------------------------------------------------
+std::vector<QUuid> HMJsonDataStorage::getUserContactsIDList(const QUuid inUserUUID,  std::error_code& outErrorCode) const
+{
+    std::vector<QUuid> Result;
+    outErrorCode = make_error_code(eDataStorageError::dsSuccess);
+
+    const std::string UUID = inUserUUID.toString().toStdString(); // Единоразово запоминаем UUID
+    // Ищим связи пользователя по UUID
+    auto RelationIt = std::find_if(m_json[J_RELATIONS][J_REL_USER_CONTACTS].cbegin(), m_json[J_RELATIONS][J_REL_USER_CONTACTS].cend(), [&](const nlohmann::json& UserRelationObject)
+    {
+        std::error_code Error = m_validator.checkUserContactsRelation(UserRelationObject);
+        if (Error)
+        {
+            LOG_WARNING_EX(QString::fromStdString(Error.message()), this);
+            return false; // Повреждённая связь игнорируется
+        }
+        else
+            return UserRelationObject[J_REL_UC_USER_UUID].get<std::string>() == UUID;
+    });
+
+    if (RelationIt == m_json[J_RELATIONS][J_REL_USER_CONTACTS].cend()) // Связь не найдена
+        outErrorCode = make_error_code(eDataStorageError::dsRelationUCNotExists);
+    else // Связь найдена
+        for (const auto& Contact : RelationIt->items()) // Перебираем все контакты связи
+            Result.emplace_back(QUuid::fromString(QString::fromStdString(Contact.value().get<std::string>())));
+
+    return Result;
+}
+//-----------------------------------------------------------------------------
+std::vector<QUuid> HMJsonDataStorage::getGroupUserIDList(const QUuid inGroupUUID,  std::error_code& outErrorCode) const
+{
+    std::vector<QUuid> Result;
+    outErrorCode = make_error_code(eDataStorageError::dsSuccess);
+
+    const std::string UUID = inGroupUUID.toString().toStdString(); // Единоразово запоминаем UUID
+    // Ищим связи пользователя по UUID
+    auto RelationIt = std::find_if(m_json[J_RELATIONS][J_REL_GROUP_USERS].cbegin(), m_json[J_RELATIONS][J_REL_GROUP_USERS].cend(), [&](const nlohmann::json& GroupRelationObject)
+    {
+        std::error_code Error = m_validator.checkGroupUsersRelation(GroupRelationObject);
+        if (Error)
+        {
+            LOG_WARNING_EX(QString::fromStdString(Error.message()), this);
+            return false; // Повреждённая связь игнорируется
+        }
+        else
+            return GroupRelationObject[J_REL_GU_GROUP_UUID].get<std::string>() == UUID;
+    });
+
+    if (RelationIt == m_json[J_RELATIONS][J_REL_GROUP_USERS].cend()) // Связь не найдена
+        outErrorCode = make_error_code(eDataStorageError::dsRelationGUNotExists);
+    else // Связь найдена
+        for (const auto& User : RelationIt->items()) // Перебираем всех поьльзователей связи
+            Result.emplace_back(QUuid::fromString(QString::fromStdString(User.value().get<std::string>())));
+
+    return Result;
+}
+//-----------------------------------------------------------------------------
 std::error_code HMJsonDataStorage::checkCorrectStruct() const
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
@@ -625,36 +682,134 @@ std::error_code HMJsonDataStorage::checkCorrectStruct() const
         // Проверяем версию
         if (m_json.find(J_VERSION) == m_json.end() || m_json[J_VERSION].is_null() || m_json[J_VERSION].type() != nlohmann::json::value_t::string)
             Error = make_error_code(hmcommon::eSystemErrorEx::seIncorrecVersion);
-        // Проверяем пользователей
-        if (m_json.find(J_USERS) == m_json.end() || m_json[J_USERS].is_null() || m_json[J_USERS].type() != nlohmann::json::value_t::array)
-            Error = make_error_code(hmcommon::eSystemErrorEx::seIncorretData);
         else
-            for (auto& User : m_json[J_USERS].items()) // Перебиреам пользователей группы
+        {
+            Error = checkUsers(); // Проверяем структуру пользователей
+            if (!Error)
             {
-                Error = m_validator.checkUser(User.value());
-                if (Error)
-                    break;
+                Error = checkGroups(); // Проверяем структуру групп
+                if (!Error)
+                {
+                    Error = checkMessages(); // Проверяем структуру сообщений
+                    if (!Error)
+                    {
+                        Error = checkRelationsUC(); // Проверяем структуру связей пользователи-контакты
+                        if (!Error)
+                            Error = checkRelationsGU(); // Проверяем структуру связей группа-пользователи
+                    }
+                }
             }
-        // Проверяем группы
-        if (m_json.find(J_GROUPS) == m_json.end() || m_json[J_GROUPS].is_null() || m_json[J_GROUPS].type() != nlohmann::json::value_t::array)
-            Error = make_error_code(hmcommon::eSystemErrorEx::seIncorretData);
-        else
-            for (auto& Group : m_json[J_GROUPS].items()) // Перебиреам пользователей группы
+        }
+    }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
+std::error_code HMJsonDataStorage::checkUsers() const
+{
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess);
+
+    // Проверяем пользователей
+    if (m_json.find(J_USERS) == m_json.end() || m_json[J_USERS].is_null() || m_json[J_USERS].type() != nlohmann::json::value_t::array)
+        Error = make_error_code(hmcommon::eSystemErrorEx::seIncorretData);
+    else
+        for (auto& User : m_json[J_USERS].items()) // Перебиреам пользователей группы
+        {
+            Error = m_validator.checkUser(User.value());
+            if (Error)
+                break;
+        }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
+std::error_code HMJsonDataStorage::checkGroups() const
+{
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess);
+
+    // Проверяем группы
+    if (m_json.find(J_GROUPS) == m_json.end() || m_json[J_GROUPS].is_null() || m_json[J_GROUPS].type() != nlohmann::json::value_t::array)
+        Error = make_error_code(hmcommon::eSystemErrorEx::seIncorretData);
+    else
+        for (auto& Group : m_json[J_GROUPS].items()) // Перебиреам пользователей группы
+        {
+            Error = m_validator.checkGroup(Group.value());
+            if (Error)
+                break;
+        }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
+std::error_code HMJsonDataStorage::checkMessages() const
+{
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess);
+
+    // Проверяем сообщения
+    if (m_json.find(J_MESSAGES) == m_json.end() || m_json[J_MESSAGES].is_null() || m_json[J_MESSAGES].type() != nlohmann::json::value_t::array)
+        Error = make_error_code(hmcommon::eSystemErrorEx::seIncorretData);
+    else
+        for (auto& Message : m_json[J_MESSAGES].items()) // Перебиреам сообщения
+        {
+            Error = m_validator.checkMessage(Message.value());
+            if (Error)
+                break;
+        }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
+std::error_code HMJsonDataStorage::checkRelationsUC() const
+{
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess);
+
+    // Проверяем связи
+    if (m_json.find(J_RELATIONS) == m_json.end() || m_json[J_RELATIONS].is_null() || m_json[J_RELATIONS].type() != nlohmann::json::value_t::object)
+        Error = make_error_code(eDataStorageError::dsRelationsCorrupted);
+    else
+    {
+        // Проверяем связи пользователь-контакты
+        if (m_json[J_RELATIONS].find(J_REL_USER_CONTACTS) == m_json[J_RELATIONS].end() ||
+                m_json[J_RELATIONS][J_REL_USER_CONTACTS].is_null() ||
+                m_json[J_RELATIONS][J_REL_USER_CONTACTS].type() != nlohmann::json::value_t::array)
+            Error = make_error_code(eDataStorageError::dsRelationUCCorrupted);
+        else // Проверяем структуру связи пользователь-контакты
+        {
+            for (const auto& User : m_json[J_RELATIONS][J_REL_USER_CONTACTS].items())
             {
-                Error = m_validator.checkGroup(Group.value());
-                if (Error)
-                    break;
+                Error = m_validator.checkUserContactsRelation(User.value()); // Проверяем валидность связи
+                if (Error) // Если произошла ошибка
+                    break; // Остальных не смотрим
             }
-        // Проверяем сообщения
-        if (m_json.find(J_MESSAGES) == m_json.end() || m_json[J_MESSAGES].is_null() || m_json[J_MESSAGES].type() != nlohmann::json::value_t::array)
-            Error = make_error_code(hmcommon::eSystemErrorEx::seIncorretData);
-        else
-            for (auto& Message : m_json[J_MESSAGES].items()) // Перебиреам сообщения
+        }
+    }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
+std::error_code HMJsonDataStorage::checkRelationsGU() const
+{
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess);
+
+    // Проверяем связи
+    if (m_json.find(J_RELATIONS) == m_json.end() || m_json[J_RELATIONS].is_null() || m_json[J_RELATIONS].type() != nlohmann::json::value_t::object)
+        Error = make_error_code(eDataStorageError::dsRelationsCorrupted);
+    else
+    {
+        // Проверяем связи группа-пользователи
+        if (m_json[J_RELATIONS].find(J_REL_GROUP_USERS) == m_json[J_RELATIONS].end() ||
+                m_json[J_RELATIONS][J_REL_GROUP_USERS].is_null() ||
+                m_json[J_RELATIONS][J_REL_GROUP_USERS].type() != nlohmann::json::value_t::array)
+            Error = make_error_code(eDataStorageError::dsRelationGUCorrupted);
+        else // Проверяем структуру связи группа-пользователи
+        {
+            for (const auto& Group : m_json[J_RELATIONS][J_REL_GROUP_USERS].items())
             {
-                Error = m_validator.checkMessage(Message.value());
-                if (Error)
-                    break;
+                Error = m_validator.checkGroupUsersRelation(Group.value()); // Проверяем валидность связи
+                if (Error) // Если произошла ошибка
+                    break; // Остальных не смотрим
             }
+        }
     }
 
     return Error;
@@ -666,54 +821,25 @@ std::error_code HMJsonDataStorage::write() const
 
     if (std::filesystem::is_directory(m_jsonPath, Error))
     {
-        if (!Error) // Не зарегестрирована внутренняя ошибка filesystem
+        if (!Error) // Не не зарегестрирована внутренняя ошибка filesystem
             Error = make_error_code(hmcommon::eSystemErrorEx::seObjectNotFile); // Задаём свою (Путь указывает не на является файлом)
     }
     else // Объект файл
     {
         std::ofstream outFile(m_jsonPath, std::ios_base::out);
         outFile << m_json; // Пишем JSON в файл
+
+        if (outFile.bad())
+            Error = make_error_code(hmcommon::eSystemErrorEx::seOutputOperationFail); // Помечаем как ошибку
+        else
+            Error = make_error_code(eDataStorageError::dsSuccess); // Помечаем как успешную запись
+
         outFile.flush();
         outFile.close();
     }
 
     return Error;
 }
-//-----------------------------------------------------------------------------
-//std::error_code HMJsonDataStorage::buildUserContacts(const nlohmann::json& inJsonUser, std::shared_ptr<hmcommon::HMUser> outUser) const
-//{
-//    std::error_code Error = m_validator.checkUser(inJsonUser);
-
-//    if (!Error) // Если объект JSON валиден
-//    {
-//        if (!outUser) // Проверяем валидность указателя на возвращаемый объект
-//            Error = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
-//        else
-//        {
-//            for (auto& ContactUUID : inJsonUser[J_USER_CONTACTS].items()) // Перебираем все контакты пользователя
-//            {
-//                std::error_code ContactError = make_error_code(eDataStorageError::dsSuccess);
-//                QUuid Uuid(QString::fromStdString(ContactUUID.value().get<std::string>())); // Получаем UUID пользователя
-
-//                if (!outUser->m_contactList.contain(Uuid)) // Если пользователь ещё не хранит в себе контакт
-//                {
-//                    std::shared_ptr<hmcommon::HMUser> Contact = findUserByUUID(Uuid, ContactError, false); // Запрашиваем пользователя БЕЗ КОНТАКТОВ
-
-//                    if (ContactError) // Проверяем каждый полученый контакт
-//                        LOG_ERROR_EX(QString::fromStdString(ContactError.message()), this); // Невалидные контакты будут проигнорированны
-//                    else
-//                    {
-//                        ContactError = outUser->m_contactList.addContact(Contact); // Добавляем контакт пользователю
-//                        if (ContactError)
-//                            LOG_ERROR_EX(QString::fromStdString(ContactError.message()), this);
-//                    }
-//                }
-//            }
-//        }
-//    }
-
-//    return Error;
-//}
 //-----------------------------------------------------------------------------
 std::error_code HMJsonDataStorage::makeDefault()
 {
@@ -732,13 +858,56 @@ std::error_code HMJsonDataStorage::makeDefault()
     AdminUser[J_USER_PASS] = m_validator.byteArrToJson(Hash);
 
     AdminUser[J_USER_NAME] = "Admin";
-    AdminUser[J_USER_SEX] = hmcommon::eSex::sNotSpecified;
+    AdminUser[J_USER_SEX] = static_cast<std::uint32_t>(hmcommon::eSex::sNotSpecified);
     AdminUser[J_USER_BIRTHDAY] = "";
 
     m_json[J_USERS].push_back(AdminUser);
 
     m_json[J_GROUPS] = nlohmann::json::array();     // Формируем группы
     m_json[J_MESSAGES] = nlohmann::json::array();   // Формируем сообщения
+
+    m_json[J_RELATIONS] = nlohmann::json::object(); // Формируем связи
+    m_json[J_RELATIONS][J_REL_USER_CONTACTS] = nlohmann::json::array(); // Формируем связи пользователь-контакты
+    m_json[J_RELATIONS][J_REL_GROUP_USERS] = nlohmann::json::array(); // Формируем связи группа-пользователи
+
+
+//    nlohmann::json TR1 = nlohmann::json::object();
+//    TR1[J_REL_UC_USER_UUID] = "UUID ПОЛЬЗОВАТЕЛЯ";
+//    TR1[J_REL_UC_CONTACTS] = nlohmann::json::array();
+
+//    TR1[J_REL_UC_CONTACTS].push_back("UUID КОНТАКТА_1");
+//    TR1[J_REL_UC_CONTACTS].push_back("UUID КОНТАКТА_2");
+//    TR1[J_REL_UC_CONTACTS].push_back("UUID КОНТАКТА_3");
+
+//    nlohmann::json TR2 = nlohmann::json::object();
+//    TR2[J_REL_UC_USER_UUID] = "UUID ПОЛЬЗОВАТЕЛЯ";
+//    TR2[J_REL_UC_CONTACTS] = nlohmann::json::array();
+
+//    TR2[J_REL_UC_CONTACTS].push_back("UUID КОНТАКТА_1");
+//    TR2[J_REL_UC_CONTACTS].push_back("UUID КОНТАКТА_2");
+//    TR2[J_REL_UC_CONTACTS].push_back("UUID КОНТАКТА_3");
+
+//    m_json[J_RELATIONS][J_REL_USER_CONTACTS].push_back(TR1);
+//    m_json[J_RELATIONS][J_REL_USER_CONTACTS].push_back(TR2);
+
+//    nlohmann::json GU1 = nlohmann::json::object();
+//    GU1[J_REL_GU_GROUP_UUID] = "UUID ГРУППЫ";
+//    GU1[J_REL_GU_USERS] = nlohmann::json::array();
+
+//    GU1[J_REL_GU_USERS].push_back("UUID ПОЛЬЗОВАТЕЛЯ_1");
+//    GU1[J_REL_GU_USERS].push_back("UUID ПОЛЬЗОВАТЕЛЯ_2");
+//    GU1[J_REL_GU_USERS].push_back("UUID ПОЛЬЗОВАТЕЛЯ_3");
+
+//    nlohmann::json GU2 = nlohmann::json::object();
+//    GU2[J_REL_GU_GROUP_UUID] = "UUID ГРУППЫ";
+//    GU2[J_REL_GU_USERS] = nlohmann::json::array();
+
+//    GU2[J_REL_GU_USERS].push_back("UUID ПОЛЬЗОВАТЕЛЯ_1");
+//    GU2[J_REL_GU_USERS].push_back("UUID ПОЛЬЗОВАТЕЛЯ_2");
+//    GU2[J_REL_GU_USERS].push_back("UUID ПОЛЬЗОВАТЕЛЯ_3");
+
+//    m_json[J_RELATIONS][J_REL_GROUP_USERS].push_back(GU1);
+//    m_json[J_RELATIONS][J_REL_GROUP_USERS].push_back(GU2);
 
     return write(); // Пишем сформированный файл
 }

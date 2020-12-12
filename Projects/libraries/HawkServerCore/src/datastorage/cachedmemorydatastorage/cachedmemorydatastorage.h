@@ -2,7 +2,7 @@
 #define HMCACHEDDATASTORAGE_H
 
 /**
- * @file cacheddatastorage.h
+ * @file cachedmemorydatastorage.h
  * @brief Содержит описание класса кеширующего хранилища данных
  */
 
@@ -14,18 +14,18 @@
 #include <QTime>
 
 #include "cached.h"
-#include "datastorage/interface/abstractdatastoragefunctional.h"
+#include "datastorage/interface/abstractcahcedatastorage.h"
 
 namespace hmservcommon::datastorage
 {
 //-----------------------------------------------------------------------------
 /**
- * @brief The HMCachedDataStorage class - Класс, описывающий кеширующее хранилище данных
+ * @brief The HMCachedMemoryDataStorage class - Класс, описывающий кеширующее хранилище данных в оперативной памяти
  *
  * @authors Alekseev_s
  * @date 06.12.2020
  */
-class HMCachedDataStorage : public HMAbstractDataStorageFunctional
+class HMCachedMemoryDataStorage : public HMAbstractCahceDataStorage
 {
 private:
 
@@ -53,12 +53,12 @@ public:
     /**
      * @brief HMCachedDataStorage - Конструктор по умолчанию
      */
-    HMCachedDataStorage();
+    HMCachedMemoryDataStorage();
 
     /**
      * @brief ~HMCachedDataStorage - Виртуальный деструктор
      */
-    virtual ~HMCachedDataStorage();
+    virtual ~HMCachedMemoryDataStorage() override;
 
     // Хранилище
 
@@ -190,14 +190,6 @@ public:
      * @return Вернёт признак ошибки
      */
     virtual std::error_code removeMessage(const QUuid inMessageUUID, const QUuid inGroupUUID) override;
-
-protected:
-
-    /**
-     * @brief makeDefault - Метод сформирует дефолтную структуру хранилища
-     * @return Вернёт признак ошибки
-     */
-    virtual std::error_code makeDefault() override;
 
 };
 //-----------------------------------------------------------------------------

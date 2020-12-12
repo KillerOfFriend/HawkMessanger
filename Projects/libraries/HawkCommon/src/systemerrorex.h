@@ -26,6 +26,10 @@ enum class eSystemErrorEx
     seInvalidPtr = C_SYSTEMERROR_START, ///< Не валидный указатель
     seIncorrecVersion,                  ///< Не корректная версия
     seIncorretData,                     ///< Не корректные данные
+    seOperationNotSupported,            ///< Операция не поддерживается
+
+    seInputOperationFail,               ///< Операция ввода прошла с ошибкой
+    seOutputOperationFail,              ///< Операция вывода прошла с ошибкой
 
     seFileNotExists,                    ///< Файл не существует
     seDirNotExists,                     ///< Директория не существует

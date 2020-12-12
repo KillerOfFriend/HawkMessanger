@@ -36,12 +36,6 @@ public:
 protected:
 
     /**
-     * @brief makeDefault - Метод сформирует дефолтную структуру хранилища
-     * @return Вернёт признак ошибки
-     */
-    virtual std::error_code makeDefault() = 0;
-
-    /**
      * @brief checkNewUserUnique - Метод проверит необходимую уникальность параметров нового пользователя
      * @param inUser - Проверяемый пользователь
      * @return Вернёт признак ошибки
