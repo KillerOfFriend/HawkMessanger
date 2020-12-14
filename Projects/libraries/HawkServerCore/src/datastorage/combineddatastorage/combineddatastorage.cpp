@@ -363,7 +363,7 @@ std::error_code HMCombinedDataStorage::updateMessage(const std::shared_ptr<hmcom
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMGroupMessage> HMCombinedDataStorage::findMessage(const QUuid inMessageUUID, std::error_code& outErrorCode) const
+std::shared_ptr<hmcommon::HMGroupMessage> HMCombinedDataStorage::findMessage(const QUuid& inMessageUUID, std::error_code& outErrorCode) const
 {
     std::shared_ptr<hmcommon::HMGroupMessage> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
@@ -400,7 +400,7 @@ std::shared_ptr<hmcommon::HMGroupMessage> HMCombinedDataStorage::findMessage(con
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> HMCombinedDataStorage::findMessages(const QUuid inGroupUUID, const hmcommon::MsgRange& inRange,  std::error_code& outErrorCode) const
+std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> HMCombinedDataStorage::findMessages(const QUuid& inGroupUUID, const hmcommon::MsgRange& inRange,  std::error_code& outErrorCode) const
 {
     std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> Result;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
@@ -440,7 +440,7 @@ std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> HMCombinedDataStorage::fi
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::removeMessage(const QUuid inMessageUUID, const QUuid inGroupUUID)
+std::error_code HMCombinedDataStorage::removeMessage(const QUuid& inMessageUUID, const QUuid& inGroupUUID)
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
@@ -461,13 +461,13 @@ std::error_code HMCombinedDataStorage::removeMessage(const QUuid inMessageUUID, 
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::vector<QUuid> HMCombinedDataStorage::getUserContactsIDList(const QUuid inUserUUID,  std::error_code& outErrorCode) const
+std::vector<QUuid> HMCombinedDataStorage::getUserContactsIDList(const QUuid& inUserUUID,  std::error_code& outErrorCode) const
 {
     // Кеширующие контейнеры не поддерживают данную операцию!
     return m_HardStorage->getUserContactsIDList(inUserUUID, outErrorCode); // По этому сразу стучимся в физический
 }
 //-----------------------------------------------------------------------------
-std::vector<QUuid> HMCombinedDataStorage::getGroupUserIDList(const QUuid inGroupUUID,  std::error_code& outErrorCode) const
+std::vector<QUuid> HMCombinedDataStorage::getGroupUserIDList(const QUuid& inGroupUUID,  std::error_code& outErrorCode) const
 {
     // Кеширующие контейнеры не поддерживают данную операцию!
     return m_HardStorage->getUserContactsIDList(inGroupUUID, outErrorCode); // По этому сразу стучимся в физический

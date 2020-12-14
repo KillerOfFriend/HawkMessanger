@@ -154,7 +154,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр сообщения или nullptr
      */
-    virtual std::shared_ptr<hmcommon::HMGroupMessage> findMessage(const QUuid inMessageUUID, std::error_code& outErrorCode) const = 0;
+    virtual std::shared_ptr<hmcommon::HMGroupMessage> findMessage(const QUuid& inMessageUUID, std::error_code& outErrorCode) const = 0;
 
     /**
      * @brief findMessages - Метод вернёт перечень сообщений группы за куазаный промежуток времени
@@ -163,7 +163,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт перечень сообщений
      */
-    virtual std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> findMessages(const QUuid inGroupUUID, const hmcommon::MsgRange& inRange,  std::error_code& outErrorCode) const = 0;
+    virtual std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> findMessages(const QUuid& inGroupUUID, const hmcommon::MsgRange& inRange, std::error_code& outErrorCode) const = 0;
 
     /**
      * @brief removeMessage - Метод удалит сообщение
@@ -171,7 +171,7 @@ public:
      * @param inGroupUUID - Uuid группы
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code removeMessage(const QUuid inMessageUUID, const QUuid inGroupUUID) = 0;
+    virtual std::error_code removeMessage(const QUuid& inMessageUUID, const QUuid& inGroupUUID) = 0;
 
     // Связи
 
@@ -181,7 +181,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт перечент контактов в виде списка UUID
      */
-    virtual std::vector<QUuid> getUserContactsIDList(const QUuid inUserUUID,  std::error_code& outErrorCode) const = 0;
+    virtual std::vector<QUuid> getUserContactsIDList(const QUuid& inUserUUID, std::error_code& outErrorCode) const = 0;
 
     /**
      * @brief getGroupUserIDList - Метод вернёт пользователей группы в виде перечня UUID
@@ -189,7 +189,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return  Вернёт перечент пользователей в виде списка UUID
      */
-    virtual std::vector<QUuid> getGroupUserIDList(const QUuid inGroupUUID,  std::error_code& outErrorCode) const = 0;
+    virtual std::vector<QUuid> getGroupUserIDList(const QUuid& inGroupUUID, std::error_code& outErrorCode) const = 0;
 
 };
 //-----------------------------------------------------------------------------

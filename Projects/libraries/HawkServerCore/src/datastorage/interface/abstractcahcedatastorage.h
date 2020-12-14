@@ -39,7 +39,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт перечент контактов в виде списка UUID
      */
-    virtual std::vector<QUuid> getUserContactsIDList(const QUuid inUserUUID,  std::error_code& outErrorCode) const override;
+    virtual std::vector<QUuid> getUserContactsIDList(const QUuid& inUserUUID, std::error_code& outErrorCode) const override;
 
     /**
      * @brief getGroupUserIDList - Метод вернёт пользователей группы в виде перечня UUID
@@ -47,7 +47,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return  Вернёт перечент пользователей в виде списка UUID
      */
-    virtual std::vector<QUuid> getGroupUserIDList(const QUuid inGroupUUID,  std::error_code& outErrorCode) const override;
+    virtual std::vector<QUuid> getGroupUserIDList(const QUuid& inGroupUUID, std::error_code& outErrorCode) const override;
 };
 //-----------------------------------------------------------------------------
 } // namespace hmservcommon::datastorage

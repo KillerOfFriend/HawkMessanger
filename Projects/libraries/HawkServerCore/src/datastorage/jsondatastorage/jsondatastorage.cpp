@@ -480,7 +480,7 @@ std::error_code HMJsonDataStorage::updateMessage(const std::shared_ptr<hmcommon:
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMGroupMessage> HMJsonDataStorage::findMessage(const QUuid inMessageUUID, std::error_code& outErrorCode) const
+std::shared_ptr<hmcommon::HMGroupMessage> HMJsonDataStorage::findMessage(const QUuid& inMessageUUID, std::error_code& outErrorCode) const
 {
     std::shared_ptr<hmcommon::HMGroupMessage> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
@@ -517,7 +517,7 @@ std::shared_ptr<hmcommon::HMGroupMessage> HMJsonDataStorage::findMessage(const Q
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> HMJsonDataStorage::findMessages(const QUuid inGroupUUID, const hmcommon::MsgRange& inRange,  std::error_code& outErrorCode) const
+std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> HMJsonDataStorage::findMessages(const QUuid& inGroupUUID, const hmcommon::MsgRange& inRange,  std::error_code& outErrorCode) const
 {
     std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> Result;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
@@ -582,7 +582,7 @@ std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> HMJsonDataStorage::findMe
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMJsonDataStorage::removeMessage(const QUuid inMessageUUID, const QUuid inGroupUUID)
+std::error_code HMJsonDataStorage::removeMessage(const QUuid& inMessageUUID, const QUuid& inGroupUUID)
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
@@ -615,7 +615,7 @@ std::error_code HMJsonDataStorage::removeMessage(const QUuid inMessageUUID, cons
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::vector<QUuid> HMJsonDataStorage::getUserContactsIDList(const QUuid inUserUUID,  std::error_code& outErrorCode) const
+std::vector<QUuid> HMJsonDataStorage::getUserContactsIDList(const QUuid& inUserUUID,  std::error_code& outErrorCode) const
 {
     std::vector<QUuid> Result;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess);
@@ -643,7 +643,7 @@ std::vector<QUuid> HMJsonDataStorage::getUserContactsIDList(const QUuid inUserUU
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::vector<QUuid> HMJsonDataStorage::getGroupUserIDList(const QUuid inGroupUUID,  std::error_code& outErrorCode) const
+std::vector<QUuid> HMJsonDataStorage::getGroupUserIDList(const QUuid& inGroupUUID,  std::error_code& outErrorCode) const
 {
     std::vector<QUuid> Result;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess);

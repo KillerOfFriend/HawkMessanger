@@ -215,14 +215,14 @@ std::error_code HMCachedMemoryDataStorage::updateMessage(const std::shared_ptr<h
     return make_error_code(hmcommon::eSystemErrorEx::seSuccess); // Много чести хешировать сообщения
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMGroupMessage> HMCachedMemoryDataStorage::findMessage(const QUuid inMessageUUID, std::error_code& outErrorCode) const
+std::shared_ptr<hmcommon::HMGroupMessage> HMCachedMemoryDataStorage::findMessage(const QUuid& inMessageUUID, std::error_code& outErrorCode) const
 {
     Q_UNUSED(inMessageUUID);
     outErrorCode = make_error_code(eDataStorageError::dsMessageNotExists); // Чесно говорим, что сообщение не кешировано
     return nullptr;
 }
 //-----------------------------------------------------------------------------
-std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> HMCachedMemoryDataStorage::findMessages(const QUuid inGroupUUID, const hmcommon::MsgRange& inRange,  std::error_code& outErrorCode) const
+std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> HMCachedMemoryDataStorage::findMessages(const QUuid& inGroupUUID, const hmcommon::MsgRange& inRange,  std::error_code& outErrorCode) const
 {
     Q_UNUSED(inGroupUUID);
     Q_UNUSED(inRange);
@@ -230,7 +230,7 @@ std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> HMCachedMemoryDataStorage
     return std::vector<std::shared_ptr<hmcommon::HMGroupMessage>>();
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCachedMemoryDataStorage::removeMessage(const QUuid inMessageUUID, const QUuid inGroupUUID)
+std::error_code HMCachedMemoryDataStorage::removeMessage(const QUuid& inMessageUUID, const QUuid& inGroupUUID)
 {
     Q_UNUSED(inMessageUUID);
     Q_UNUSED(inGroupUUID);
