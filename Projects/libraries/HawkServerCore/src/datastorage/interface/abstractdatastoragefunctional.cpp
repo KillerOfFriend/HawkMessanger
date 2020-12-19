@@ -114,3 +114,39 @@ std::error_code HMAbstractDataStorageFunctional::checkNewGroupUnique(const std::
     return Error;
 }
 //-----------------------------------------------------------------------------
+std::error_code HMAbstractDataStorageFunctional::checkUserContactsUnique(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMContactList> inContacts) const
+{   // ДАННЫЙ МЕТОД НЕ ДОЛЖЕН ПРОВЕРЯТЬ КЕШ!
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+
+    if (!is_open()) // Хранилище должно быть открыто
+        Error = make_error_code(eDataStorageError::dsNotOpen);
+    else
+    {
+        if (!inContacts) // Работаем только с валидным указателем
+            Error = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
+        else
+        {
+            std::error_code ErrorFindByUUID = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+            std::shared_ptr<hmcommon::HMContactList> FindRes = getUserContactList(inUserUUID, ErrorFindByUUID); // Ищим связь по UUID
+
+            // I) getUserContactList Вернёт либо:
+            // 1) Связь найдена == Success из любой категории (функция должна вернуть eDataStorageError::dsRelationUCAlreadyExists)
+            // 2) Связь не найдена (функция должна вернуть dlSuccess)
+            // 3) Одна из многих ошибок парсинга (функция должна вернуть эту ошибку)
+
+            switch (ErrorFindByUUID.value()) // I
+            {
+                // Ситуация I (1)
+                case 0: { Error = make_error_code(eDataStorageError::dsRelationUCAlreadyExists); break; };
+                // Ситуация I (2)
+                case static_cast<int32_t>(eDataStorageError::dsRelationUCNotExists):
+                { Error = make_error_code(eDataStorageError::dsSuccess); break; }
+                // Ситуация I (3)
+                default: { Error = ErrorFindByUUID; break; }
+            }
+        }
+    }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------

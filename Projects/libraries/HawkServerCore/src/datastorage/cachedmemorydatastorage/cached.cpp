@@ -5,16 +5,16 @@ using namespace hmservcommon;
 //-----------------------------------------------------------------------------
 //HMCachedUser
 //-----------------------------------------------------------------------------
-HMCachedUser::HMCachedUser(const std::shared_ptr<hmcommon::HMUser> inUser, const QTime& inCreateTime) :
+HMCachedUser::HMCachedUser(const std::shared_ptr<hmcommon::HMUser> inUser) :
     m_user(inUser),
-    m_lastRequest(inCreateTime)
+    m_lastRequest(QTime::currentTime())
 {
     assert(m_user != nullptr);
 }
 //-----------------------------------------------------------------------------
 HMCachedUser::HMCachedUser(HMCachedUser&& inOther) :
     m_user(inOther.m_user),
-    m_lastRequest(inOther.m_lastRequest)
+    m_lastRequest(std::move(inOther.m_lastRequest))
 {
     inOther.m_user = nullptr;
     inOther.m_lastRequest = QTime();
@@ -28,11 +28,36 @@ bool HMCachedUser::operator== (const HMCachedUser& inOther) const noexcept
         return inOther.m_user->m_uuid == this->m_user->m_uuid;
 }
 //-----------------------------------------------------------------------------
+// HMCachedUserContacts
+//-----------------------------------------------------------------------------
+HMCachedUserContacts::HMCachedUserContacts(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMContactList> inContactList) :
+    m_userUUID(inUserUUID),
+    m_contactList(inContactList),
+    m_lastRequest(QTime::currentTime())
+{
+    assert(m_contactList != nullptr);
+}
+//-----------------------------------------------------------------------------
+HMCachedUserContacts::HMCachedUserContacts(HMCachedUserContacts&& inOther) :
+    m_userUUID(inOther.m_userUUID),
+    m_contactList(inOther.m_contactList),
+    m_lastRequest(inOther.m_lastRequest)
+{
+    inOther.m_userUUID = QUuid();
+    inOther.m_contactList = nullptr;
+    inOther.m_lastRequest = QTime();
+}
+//-----------------------------------------------------------------------------
+bool HMCachedUserContacts::operator == (const HMCachedUserContacts& inOther) const noexcept
+{
+    return this->m_userUUID == inOther.m_userUUID;
+}
+//-----------------------------------------------------------------------------
 // HMCachedGroup
 //-----------------------------------------------------------------------------
-HMCachedGroup::HMCachedGroup(const std::shared_ptr<hmcommon::HMGroup> inGroup, const QTime& inCreateTime) :
+HMCachedGroup::HMCachedGroup(const std::shared_ptr<hmcommon::HMGroup> inGroup) :
     m_group(inGroup),
-    m_lastRequest(inCreateTime)
+    m_lastRequest(QTime::currentTime())
 {
     assert(m_group != nullptr);
 }

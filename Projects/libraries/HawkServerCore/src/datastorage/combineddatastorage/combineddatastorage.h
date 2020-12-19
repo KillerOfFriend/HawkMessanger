@@ -173,23 +173,46 @@ public:
      */
     virtual std::error_code removeMessage(const QUuid& inMessageUUID, const QUuid& inGroupUUID) override;
 
-    // Связи
+    // Связи [Пользователь]
 
     /**
-     * @brief getUserContactsIDList - Метод вернёт контакты пользователя в виде перечня UUID
-     * @param inUserUUID - UUID пользователя
-     * @param outErrorCode - Признак ошибки
-     * @return Вернёт перечент контактов в виде списка UUID
+     * @brief setUserContacts - Метод задаст пользователю список контактов
+     * @param inUserUUID - Uuid пользователья
+     * @param inContacts - Список контактов
+     * @return Вернёт признак ошибки
      */
-    virtual std::vector<QUuid> getUserContactsIDList(const QUuid& inUserUUID, std::error_code& outErrorCode) const override;
+    virtual std::error_code setUserContacts(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMContactList> inContacts) override;
 
     /**
-     * @brief getGroupUserIDList - Метод вернёт пользователей группы в виде перечня UUID
-     * @param inGroupUUID - UUID группы
-     * @param outErrorCode - Признак ошибки
-     * @return  Вернёт перечент пользователей в виде списка UUID
+     * @brief addUserContact - Метод добавит контакт пользователю
+     * @param inUserUUID - Uuid пользователя
+     * @param inContact - Новый контакт
+     * @return Вернёт признак ошибки
      */
-    virtual std::vector<QUuid> getGroupUserIDList(const QUuid& inGroupUUID, std::error_code& outErrorCode) const override;
+    virtual std::error_code addUserContact(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUser> inContact) override;
+
+    /**
+     * @brief removeUserContact - Метод удалит контакт пользователя
+     * @param inUserUUID - Uuid пользователя
+     * @param inContactUUID - Uuid контакта
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code removeUserContact(const QUuid& inUserUUID, const QUuid& inContactUUID) override;
+
+    /**
+     * @brief removeUserContacts - Метод удалит контакты пользователя
+     * @param inUserUUID - Uuid пользователя
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code removeUserContacts(const QUuid& inUserUUID) override;
+
+    /**
+     * @brief getUserContactList - Метод вернёт список контактов пользователя
+     * @param inUserUUID - Uuid пользователя
+     * @param inContactUUID - Uuid контакта
+     * @return Вернёт признак ошибки
+     */
+    virtual std::shared_ptr<hmcommon::HMContactList> getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const override;
 
 };
 //-----------------------------------------------------------------------------

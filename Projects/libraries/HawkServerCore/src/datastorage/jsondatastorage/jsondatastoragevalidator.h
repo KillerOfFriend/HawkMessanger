@@ -11,6 +11,7 @@
 #include "user.h"
 #include "group.h"
 #include "groupmessage.h"
+#include "contactlist.h"
 
 namespace hmservcommon::datastorage
 {
@@ -54,6 +55,13 @@ public:
     std::error_code checkMessage(const nlohmann::json& inMesssageObject) const;
 
     /**
+     * @brief checkRelationUC - Метод проверит валидность JSON объекта связи пользователь-контакты
+     * @param inRelationUCObject - Проверяемый объект
+     * @return Вернёт признак ошибки
+     */
+    std::error_code checkRelationUC(const nlohmann::json& inRelationUCObject) const;
+
+    /**
      * @brief checkUserContactsRelation - Метод проверит валидность JSON объекта связи пользователь-контакты
      * @param inUCRelation - Проверяемый объект
      * @return Вернёт признак ошибки
@@ -66,56 +74,6 @@ public:
      * @return Вернёт признак ошибки
      */
     std::error_code checkGroupUsersRelation(const nlohmann::json& inGURelation) const;
-
-    /**
-     * @brief jsonToUser - Метод преобразует Json объект в экземпляр пользователя
-     * @param inUserObject - Объект Json содержащий пользователя
-     * @param outErrorCode - Признак ошибки
-     * @return Вернёт указатель на экземпляр пользователя или nullptr
-     */
-    std::shared_ptr<hmcommon::HMUser> jsonToUser(const nlohmann::json& inUserObject, std::error_code& outErrorCode) const;
-
-    /**
-     * @brief userToJson - Метод преобразует пользователя в объект Json
-     * @param inUser - Указатель на пользователя
-     * @param outErrorCode - Признак ошибки
-     * @return Вернёт объект Json
-     */
-    nlohmann::json userToJson(std::shared_ptr<hmcommon::HMUser> inUser, std::error_code& outErrorCode) const;
-
-    /**
-     * @brief jsonToGroup - Метод преобразует Json объект в экземпляр группы
-     * @param inGroupObject - Объект Json содержащий группу
-     * @param outErrorCode - Признак ошибки
-     * @return Вернёт указатель на экземпляр группы или nullptr
-     */
-    std::shared_ptr<hmcommon::HMGroup> jsonToGroup(const nlohmann::json& inGroupObject, std::error_code& outErrorCode) const;
-
-    /**
-     * @brief groupToJson - Метод преобразует группу в объект Json
-     * @param inGroup - Указатель на группу
-     * @param outErrorCode - Признак ошибки
-     * @return Вернёт объект Json
-     */
-    nlohmann::json groupToJson(std::shared_ptr<hmcommon::HMGroup> inGroup, std::error_code& outErrorCode) const;
-
-    /**
-     * @brief jsonToMessage - Метод преобразует Json объект в экземпляр сообщение
-     * @param inMessageObject - Объект Json содержащий сообщение
-     * @param outErrorCode - Признак ошибки
-     * @return Вернёт указатель на экземпляр сообщения или nullptr
-     */
-    std::shared_ptr<hmcommon::HMGroupMessage> jsonToMessage(const nlohmann::json& inMessageObject, std::error_code& outErrorCode) const;
-
-    /**
-     * @brief messageToJson - Метод преобразует сообщение в объект Json
-     * @param inMessage - Указатель на сообщение
-     * @param outErrorCode - Признак ошибки
-     * @return Вернёт объект Json
-     */
-    nlohmann::json messageToJson(std::shared_ptr<hmcommon::HMGroupMessage> inMessage, std::error_code& outErrorCode) const;
-
-
 
     /**
      * @brief jsonToByteArr - Функция преобразует JSON в QByteArray

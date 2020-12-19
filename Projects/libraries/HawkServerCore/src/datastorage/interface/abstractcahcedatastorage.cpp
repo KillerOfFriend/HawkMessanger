@@ -1,21 +1,68 @@
 #include "abstractcahcedatastorage.h"
 
+#include "HawkLog.h"
 #include "systemerrorex.h"
+#include "datastorage/datastorageerrorcategory.h"
 
 using namespace hmservcommon::datastorage;
 
-//-----------------------------------------------------------------------------
-std::vector<QUuid> HMAbstractCahceDataStorage::getUserContactsIDList(const QUuid& inUserUUID,  std::error_code& outErrorCode) const
+HMAbstractCahceDataStorage::HMAbstractCahceDataStorage() : HMAbstractDataStorageFunctional()
 {
-    Q_UNUSED(inUserUUID);
-    outErrorCode = make_error_code(hmcommon::eSystemErrorEx::seOperationNotSupported); // Кеширующмй контейнер не поддерживает данную операцию
-    return {};
+    std::atomic_init(&m_threadWork, false); // По умолчанию не разрешаем работу потока
 }
 //-----------------------------------------------------------------------------
-std::vector<QUuid> HMAbstractCahceDataStorage::getGroupUserIDList(const QUuid& inGroupUUID,  std::error_code& outErrorCode) const
+std::error_code HMAbstractCahceDataStorage::open()
 {
-    Q_UNUSED(inGroupUUID);
-    outErrorCode = make_error_code(hmcommon::eSystemErrorEx::seOperationNotSupported); // Кеширующмй контейнер не поддерживает данную операцию
-    return {};
+    return startCacheWatchdogThread(); // Запускаем поток
+}
+//-----------------------------------------------------------------------------
+bool HMAbstractCahceDataStorage::is_open() const
+{
+    return m_threadWork && m_watchdogThread.joinable();
+}
+//-----------------------------------------------------------------------------
+void HMAbstractCahceDataStorage::close()
+{
+    stopCacheWatchdogThread(); // Останавливаем поток
+}
+//-----------------------------------------------------------------------------
+std::error_code HMAbstractCahceDataStorage::startCacheWatchdogThread()
+{
+    stopCacheWatchdogThread(); // Убедимся, что поток стоит
+
+    m_threadWork = true; // Разрешаем запуск потока
+    m_watchdogThread = std::thread(std::bind(&HMAbstractCahceDataStorage::cacheWatchdogThreadFunc, this)); // Запускаем поток-надзиратель
+
+    if (!m_watchdogThread.joinable())
+    {
+        stopCacheWatchdogThread();
+        return make_error_code(hmcommon::eSystemErrorEx::seIncorretData);
+    }
+    else
+        return make_error_code(eDataStorageError::dsSuccess);
+}
+//-----------------------------------------------------------------------------
+void HMAbstractCahceDataStorage::stopCacheWatchdogThread()
+{
+    if (m_threadWork)
+    {
+        m_threadWork.store(false); // Останавливаем поток
+
+        if (m_watchdogThread.joinable())
+            m_watchdogThread.join(); // Ожидаем завершения потока
+    }
+}
+//-----------------------------------------------------------------------------
+void HMAbstractCahceDataStorage::cacheWatchdogThreadFunc()
+{
+    LOG_DEBUG_EX(QString("cacheWatchdogThreadFunc Started"), this);
+
+    while (m_threadWork)
+    {
+        processCacheInThread(); // Обрабатываем кеш
+        std::this_thread::sleep_for(std::chrono::milliseconds(50)); // Замораживаем поток
+    }
+
+    LOG_DEBUG_EX(QString("cacheWatchdogThreadFunc Finished"), this);
 }
 //-----------------------------------------------------------------------------

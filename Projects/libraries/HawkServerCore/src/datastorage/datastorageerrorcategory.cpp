@@ -58,6 +58,8 @@ std::string DataStorageErrorCategory::message(int inCode) const
         // Связи пользователь-контакт
         case eDataStorageError::dsRelationUCAlreadyExists:          { Result = tr("Связь пользвоатель-контакты уже существует").toStdString(); break; }
         case eDataStorageError::dsRelationUCNotExists:              { Result = tr("Связь пользвоатель-контакты не существует").toStdString(); break; }
+        case eDataStorageError::dsRelationUCContactAlredyExists:    { Result = tr("Контакт уже существует в связи пользвоатель-контакты").toStdString(); break; }
+        case eDataStorageError::dsRelationUCContactNotExists:       { Result = tr("Контакт не существует в связи пользвоатель-контакты").toStdString(); break; }
         case eDataStorageError::dsRelationUCCorrupted:              { Result = tr("Связи пользвоатель-контакты повреждены").toStdString(); break; }
         case eDataStorageError::dsRelationUCUserUUIDCorrupted:      { Result = tr("В связи пользователь-контакты повреждён UUID пользователя").toStdString(); break; }
         case eDataStorageError::dsRelationUCContactsCorrupted:      { Result = tr("В связи пользователь-контакты повреждён список контактов").toStdString(); break; }
@@ -65,6 +67,8 @@ std::string DataStorageErrorCategory::message(int inCode) const
         // Связи группа-пользователь
         case eDataStorageError::dsRelationGUAlreadyExists:          { Result = tr("Связь группа-пользвоатели уже существует").toStdString(); break; }
         case eDataStorageError::dsRelationGUNotExists:              { Result = tr("Связь группа-пользвоатели не существует").toStdString(); break; }
+        case eDataStorageError::dsRelationGUUserAlredyExists:       { Result = tr("Пользователь уже существует в связи группа-пользвоатели").toStdString(); break; }
+        case eDataStorageError::dsRelationGUUserNotExists:          { Result = tr("Пользователь не существует в  связи группа-пользвоатели").toStdString(); break; }
         case eDataStorageError::dsRelationGUCorrupted:              { Result = tr("Связи группа-пользвоатели повреждены").toStdString(); break; }
         case eDataStorageError::dsRelationGUGroupUUIDCorrupted:     { Result = tr("В связи группа-пользвоатели повреждён UUID группы").toStdString(); break; }
         case eDataStorageError::dsRelationGUUsersCorrupted:         { Result = tr("В связи группа-пользвоатели повреждён список пользователей").toStdString(); break; }

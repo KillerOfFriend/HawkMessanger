@@ -6,8 +6,6 @@
  * @brief Содержит описание класса кеширующего хранилища данных
  */
 
-#include <thread>
-#include <atomic>
 #include <shared_mutex>
 #include <unordered_set>
 
@@ -29,24 +27,19 @@ class HMCachedMemoryDataStorage : public HMAbstractCahceDataStorage
 {
 private:
 
-    mutable std::shared_mutex m_usersDefender;                  ///< Мьютекс, защищающий пользовтаелей
-    std::unordered_set<HMCachedUser> m_cachedUsers;     ///< Кешированные пользоватили
+    mutable std::shared_mutex m_usersDefender;                      ///< Мьютекс, защищающий пользовтаелей
+    std::unordered_set<HMCachedUser> m_cachedUsers;                 ///< Кешированные пользоватили
 
-    mutable std::shared_mutex m_groupsDefender;                 ///< Мьютекс, защищающий группы
-    std::unordered_set<HMCachedGroup> m_cachedGroups;   ///< Кешированные группы
+    mutable std::shared_mutex m_groupsDefender;                     ///< Мьютекс, защищающий группы
+    std::unordered_set<HMCachedGroup> m_cachedGroups;               ///< Кешированные группы
 
-    std::atomic_bool m_threadWork;                      ///< Флаг работы потока
-    std::thread m_watchdogThread;                       ///< Поток контроля кеша
+    mutable std::shared_mutex m_userContactsDefender;               ///< Мьютекс, защищающий связь пользователь-контакт
+    std::unordered_set<HMCachedUserContacts> m_cachedUserContacts;  ///< Кешированные связи пользователь-контакт
 
     /**
      * @brief clearCached - Метод очистит закешированные данные
      */
     void clearCached();
-
-    /**
-     * @brief watchdogTreadFunc - Метод контроля кеша
-     */
-    void watchdogThreadFunc();
 
 public:
 
@@ -191,6 +184,53 @@ public:
      */
     virtual std::error_code removeMessage(const QUuid& inMessageUUID, const QUuid& inGroupUUID) override;
 
+    // Связи [Пользователь]
+
+    /**
+     * @brief setUserContacts - Метод задаст пользователю список контактов
+     * @param inUserUUID - Uuid пользователья
+     * @param inContacts - Список контактов
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code setUserContacts(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMContactList> inContacts) override;
+
+    /**
+     * @brief addUserContact - Метод добавит контакт пользователю
+     * @param inUserUUID - Uuid пользователя
+     * @param inContact - Новый контакт
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code addUserContact(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUser> inContact) override;
+
+    /**
+     * @brief removeUserContact - Метод удалит контакт пользователя
+     * @param inUserUUID - Uuid пользователя
+     * @param inContactUUID - Uuid контакта
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code removeUserContact(const QUuid& inUserUUID, const QUuid& inContactUUID) override;
+
+    /**
+     * @brief removeUserContacts - Метод удалит контакты пользователя
+     * @param inUserUUID - Uuid пользователя
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code removeUserContacts(const QUuid& inUserUUID) override;
+
+    /**
+     * @brief getUserContactList - Метод вернёт список контактов пользователя
+     * @param inUserUUID - Uuid пользователя
+     * @param inContactUUID - Uuid контакта
+     * @return Вернёт признак ошибки
+     */
+    virtual std::shared_ptr<hmcommon::HMContactList> getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const override;
+
+protected:
+
+    /**
+     * @brief processCacheInThread - Метод обработки кеша в потоке
+     */
+    virtual void processCacheInThread() override;
 };
 //-----------------------------------------------------------------------------
 } // namespace hmservcommon::datastorage

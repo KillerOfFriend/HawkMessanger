@@ -6,6 +6,9 @@
  * @brief Содержит описание абстрактного класса кеширующего хранилища данных
  */
 
+#include <thread>
+#include <atomic>
+
 #include "datastorage/interface/abstractdatastoragefunctional.h"
 
 namespace hmservcommon::datastorage
@@ -19,35 +22,67 @@ namespace hmservcommon::datastorage
  */
 class HMAbstractCahceDataStorage : public HMAbstractDataStorageFunctional
 {
+private:
+
+    std::atomic_bool m_threadWork;      ///< Флаг работы потока
+    std::thread m_watchdogThread;       ///< Поток контроля кеша
+
 public:
 
     /**
      * @brief HMAbstractCahceDataStorage - Конструктор по умолчанию
      */
-    HMAbstractCahceDataStorage() = default;
+    HMAbstractCahceDataStorage();
 
     /**
      * @brief ~HMAbstractCahceDataStorage - Виртуальный деструктор по умолчанию
      */
     virtual ~HMAbstractCahceDataStorage() override = default;
 
-    // Связи
+    // Хранилище
 
     /**
-     * @brief getUserContactsIDList - Метод вернёт контакты пользователя в виде перечня UUID
-     * @param inUserUUID - UUID пользователя
-     * @param outErrorCode - Признак ошибки
-     * @return Вернёт перечент контактов в виде списка UUID
+     * @brief open - Метод откроет хранилище данных
+     * @return Вернёт признак ошибки
      */
-    virtual std::vector<QUuid> getUserContactsIDList(const QUuid& inUserUUID, std::error_code& outErrorCode) const override;
+    virtual std::error_code open() override;
 
     /**
-     * @brief getGroupUserIDList - Метод вернёт пользователей группы в виде перечня UUID
-     * @param inGroupUUID - UUID группы
-     * @param outErrorCode - Признак ошибки
-     * @return  Вернёт перечент пользователей в виде списка UUID
+     * @brief is_open - Метод вернёт признак открытости хранилища данных
+     * @return Вернёт признак открытости
      */
-    virtual std::vector<QUuid> getGroupUserIDList(const QUuid& inGroupUUID, std::error_code& outErrorCode) const override;
+    virtual bool is_open() const override;
+
+    /**
+     * @brief close - Метод закроет хранилище данных
+     */
+    virtual void close() override;
+
+protected:
+
+    /**
+     * @brief startCacheWatchdogThread - Метод запустит поток, котролирующий объекты кеша
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code startCacheWatchdogThread();
+
+    /**
+     * @brief stopCacheWatchdogThread - Метод остановит поток, котролирующий объекты кеша
+     */
+    virtual void stopCacheWatchdogThread();
+
+    /**
+     * @brief processCacheInThread - Метод обработки кеша в потоке
+     */
+    virtual void processCacheInThread() = 0;
+
+private:
+
+    /**
+     * @brief cacheWatchdogThreadFunc - Метод потока, обрабатывающего кеш
+     */
+    void cacheWatchdogThreadFunc();
+
 };
 //-----------------------------------------------------------------------------
 } // namespace hmservcommon::datastorage

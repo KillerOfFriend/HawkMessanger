@@ -59,6 +59,8 @@ enum class eDataStorageError
     // Связи пользователь-контакт
     dsRelationUCAlreadyExists,          ///< Связь пользвоатель-контакты уже существует
     dsRelationUCNotExists,              ///< Связь пользвоатель-контакты не существует
+    dsRelationUCContactAlredyExists,    ///< Контакт уже существует в связи пользвоатель-контакты
+    dsRelationUCContactNotExists,       ///< Контакт не существует в связи пользвоатель-контакты
     dsRelationUCCorrupted,              ///< Связи пользвоатель-контакты повреждены
     dsRelationUCUserUUIDCorrupted,      ///< В связи пользователь-контакты повреждён UUID пользователя
     dsRelationUCContactsCorrupted,      ///< В связи пользователь-контакты повреждён список контактов
@@ -66,6 +68,8 @@ enum class eDataStorageError
     // Связи группа-пользователь
     dsRelationGUAlreadyExists,          ///< Связь группа-пользвоатели уже существует
     dsRelationGUNotExists,              ///< Связь группа-пользвоатели не существует
+    dsRelationGUUserAlredyExists,       ///< Пользователь уже существует в связи группа-пользвоатели
+    dsRelationGUUserNotExists,          ///< Пользователь не существует в  связи группа-пользвоатели
     dsRelationGUCorrupted,              ///< Связи группа-пользвоатели повреждены
     dsRelationGUGroupUUIDCorrupted,     ///< В связи группа-пользвоатели повреждён UUID группы
     dsRelationGUUsersCorrupted,         ///< В связи группа-пользвоатели повреждён список пользователей

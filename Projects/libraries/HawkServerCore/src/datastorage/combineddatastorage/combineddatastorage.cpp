@@ -461,15 +461,135 @@ std::error_code HMCombinedDataStorage::removeMessage(const QUuid& inMessageUUID,
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::vector<QUuid> HMCombinedDataStorage::getUserContactsIDList(const QUuid& inUserUUID,  std::error_code& outErrorCode) const
+std::error_code HMCombinedDataStorage::setUserContacts(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMContactList> inContacts)
 {
-    // Кеширующие контейнеры не поддерживают данную операцию!
-    return m_HardStorage->getUserContactsIDList(inUserUUID, outErrorCode); // По этому сразу стучимся в физический
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+
+    if (!is_open()) // Хранилище должно быть открыто
+        Error = make_error_code(eDataStorageError::dsNotOpen);
+    else
+    {
+        if (!inContacts) // Работаем только с валидным указателем
+            Error = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
+        else
+        {
+            Error = m_HardStorage->setUserContacts(inUserUUID, inContacts); // Пытаемся добавить связь в физическое хранилище
+
+            if (!Error && m_CacheStorage) // Если связь успешно добавлена в физическое хранилище и доступен кеш
+            {
+                std::error_code CacheError = m_CacheStorage->setUserContacts(inUserUUID, inContacts); // Добавляем связь в кеш
+                if (CacheError) // Ошибки кеша обрабатывам отдельно
+                    LOG_WARNING_EX(QString::fromStdString(CacheError.message()), this);
+            }
+        }
+    }
+
+    return Error;
 }
 //-----------------------------------------------------------------------------
-std::vector<QUuid> HMCombinedDataStorage::getGroupUserIDList(const QUuid& inGroupUUID,  std::error_code& outErrorCode) const
+std::error_code HMCombinedDataStorage::addUserContact(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUser> inContact)
 {
-    // Кеширующие контейнеры не поддерживают данную операцию!
-    return m_HardStorage->getUserContactsIDList(inGroupUUID, outErrorCode); // По этому сразу стучимся в физический
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+
+    if (!is_open()) // Хранилище должно быть открыто
+        Error = make_error_code(eDataStorageError::dsNotOpen);
+    else
+    {
+        if (!inContact) // Работаем только с валидным указателем
+            Error = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
+        else
+        {
+            Error = m_HardStorage->addUserContact(inUserUUID, inContact); // Пытаемся добавить контакт в связь в физического хранилища
+
+            if (!Error && m_CacheStorage) // Если контакт успешно добавлен в связь физического хранилища и доступен кеш
+            {
+                std::error_code CacheError = m_CacheStorage->addUserContact(inUserUUID, inContact); // Добавляем контакт в связь в кеше
+                if (CacheError) // Ошибки кеша обрабатывам отдельно
+                    LOG_WARNING_EX(QString::fromStdString(CacheError.message()), this);
+            }
+        }
+    }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
+std::error_code HMCombinedDataStorage::removeUserContact(const QUuid& inUserUUID, const QUuid& inContactUUID)
+{
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+
+    if (!is_open()) // Хранилище должно быть открыто
+        Error = make_error_code(eDataStorageError::dsNotOpen);
+    else
+    {
+        Error = m_HardStorage->removeUserContact(inUserUUID, inContactUUID); // Пытаемся удалить контакт из связи в физическом хранилище
+
+        if (!Error && m_CacheStorage) // Если контакт успешно удалён из связи в физическом хранилище и доступен кеш
+        {
+            std::error_code CacheError = m_CacheStorage->removeUserContact(inUserUUID, inContactUUID); // Удаляем контакт из связи в кеше
+            if (CacheError) // Ошибки кеша обрабатывам отдельно
+                LOG_WARNING_EX(QString::fromStdString(CacheError.message()), this);
+        }
+    }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
+std::error_code HMCombinedDataStorage::removeUserContacts(const QUuid& inUserUUID)
+{
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+
+    if (!is_open()) // Хранилище должно быть открыто
+        Error = make_error_code(eDataStorageError::dsNotOpen);
+    else
+    {
+        Error = m_HardStorage->removeUserContacts(inUserUUID); // Пытаемся удалить связь в физическом хранилище
+
+        if (!Error && m_CacheStorage) // Если связь удалена в физическом хранилище и доступен кеш
+        {
+            std::error_code CacheError = m_CacheStorage->removeUserContacts(inUserUUID); // Удаляем связь в кеше
+            if (CacheError) // Ошибки кеша обрабатывам отдельно
+                LOG_WARNING_EX(QString::fromStdString(CacheError.message()), this);
+        }
+    }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
+std::shared_ptr<hmcommon::HMContactList> HMCombinedDataStorage::getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const
+{
+    std::shared_ptr<hmcommon::HMContactList> Result = nullptr;
+    outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+
+    if (!is_open()) // Хранилище должно быть открыто
+        outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
+    else
+    {
+        std::error_code CacheError = make_error_code(eDataStorageError::dsSuccess); // Отдельный результат для поиска в кеше
+
+        if (!m_CacheStorage) // Если не доступен кеш
+            CacheError = make_error_code(eDataStorageError::dsRelationUCAlreadyExists); // Помечаем результат поиска в кеше как ошибку
+        else // Если доступен кеш
+            Result = m_CacheStorage->getUserContactList(inUserUUID, CacheError); // Сначала ищим сообщения в кеше
+
+        if (CacheError.value() == static_cast<int32_t>(eDataStorageError::dsMessageNotExists)) // Если в кеше не удалось найти сообщения
+        {   // Ищим в физическом хранилище
+            Result = m_HardStorage->getUserContactList(inUserUUID, outErrorCode);
+
+            if (!outErrorCode && m_CacheStorage) // Если список окнтактов успешно найден в физическом хранилище и доступен кеш
+            {
+                CacheError = m_CacheStorage->setUserContacts(inUserUUID, Result); // Добавим его в кеш
+
+                if (CacheError) // Ошибки кеша обрабатывам отдельно
+                    LOG_WARNING_EX(QString::fromStdString(CacheError.message()), this);
+            }
+        }   // Поиск в самом хранилище
+        else // В кеше встретелось что-то внезапное
+            outErrorCode = CacheError; // Вернём ошибку из кеширующего хранилища
+
+        if (outErrorCode) // Если ошибка поиска сообщения
+            Result = nullptr; // На всякий случай сбросим результат
+    }
+
+    return Result;
 }
 //-----------------------------------------------------------------------------

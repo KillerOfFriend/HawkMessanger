@@ -55,7 +55,7 @@ static const std::string J_REL_UC_CONTACTS          = "contacts";
 // Группы-пользователи
 static const std::string J_REL_GROUP_USERS          = "GROUP_USERS";
 static const std::string J_REL_GU_GROUP_UUID        = "group_" + UUID;
-static const std::string J_REL_GU_USERS         = "users";
+static const std::string J_REL_GU_USERS             = "users";
 //-----------------------------------------------------------------------------
 
 #endif // JSONDATASTORAGECONST_H
