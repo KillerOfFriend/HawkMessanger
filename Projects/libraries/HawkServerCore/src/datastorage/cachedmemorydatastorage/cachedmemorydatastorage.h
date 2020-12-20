@@ -46,7 +46,7 @@ public:
     /**
      * @brief HMCachedDataStorage - Конструктор по умолчанию
      */
-    HMCachedMemoryDataStorage();
+    HMCachedMemoryDataStorage() = default;
 
     /**
      * @brief ~HMCachedDataStorage - Виртуальный деструктор

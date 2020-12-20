@@ -122,10 +122,11 @@ std::error_code HMJsonDataStorage::addUser(const std::shared_ptr<hmcommon::HMUse
 
                 if (!Error) // Если объект сформирован корректно
                 {
+                    m_json[J_USERS].push_back(NewUser); // Добавляем пользователя в конец
                     Error = setUserContacts(inUser->m_uuid, std::make_shared<hmcommon::HMContactList>()); // Пытаемся сформировать пустой список контактов пользователя
 
-                    if (!Error) // Если пустой список контактов добавлен корректно
-                        m_json[J_USERS].push_back(NewUser); // Добавляем пользователя
+                    if (Error) // Если при создании списка контактов поисходит ошибка
+                        m_json[J_USERS].erase(m_json[J_USERS].size() - 1); // Удаляем полседнего добавленного пользователя
                 }
             }
         }
@@ -637,14 +638,19 @@ std::error_code HMJsonDataStorage::setUserContacts(const QUuid& inUserUUID, cons
             Error = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
         else
         {
-            Error = checkUserContactsUnique(inUserUUID, inContacts); // Проверяем уникальность списка контактов
+            std::shared_ptr<hmcommon::HMUser> User = findUserByUUID(inUserUUID, Error); // Ищим пользователя, для которого добавляем связь
 
-            if (!Error) // Если подтвержена уникальность связи
+            if (!Error) // Если пользователь найден
             {
-                nlohmann::json NewContactList = relationUCToJson(inUserUUID, inContacts, Error); // Формируем Json объект
+                Error = checkUserContactsUnique(inUserUUID, inContacts); // Проверяем уникальность списка контактов
 
-                if (!Error) // Если  Json объект успешно софрмирован
-                    m_json[J_RELATIONS][J_REL_USER_CONTACTS].push_back(NewContactList); // Добавялем список контактов
+                if (!Error) // Если подтвержена уникальность связи
+                {
+                    nlohmann::json NewContactList = relationUCToJson(inUserUUID, inContacts, Error); // Формируем Json объект
+
+                    if (!Error) // Если  Json объект успешно софрмирован
+                        m_json[J_RELATIONS][J_REL_USER_CONTACTS].push_back(NewContactList); // Добавялем список контактов
+                }
             }
         }
     }
@@ -654,7 +660,7 @@ std::error_code HMJsonDataStorage::setUserContacts(const QUuid& inUserUUID, cons
 //-----------------------------------------------------------------------------
 std::error_code HMJsonDataStorage::addUserContact(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUser> inContact)
 {
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успе
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
         Error = make_error_code(eDataStorageError::dsNotOpen);
@@ -664,31 +670,19 @@ std::error_code HMJsonDataStorage::addUserContact(const QUuid& inUserUUID, const
             Error = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
         else
         {
-            const std::string UUID = inUserUUID.toString().toStdString(); // Единоразово запоминаем UUID
-            auto FindRes = std::find_if(m_json[J_RELATIONS][J_REL_USER_CONTACTS].begin(), m_json[J_RELATIONS][J_REL_USER_CONTACTS].end(),
-                                        [&](const nlohmann::json& UserContactsObject)
+            if (inUserUUID == inContact->m_uuid) // Если пользователю пытаемся добавить в контакты его самого
+                Error = make_error_code(hmcommon::eSystemErrorEx::seIncorretData);
+            else // UUID'ы пользователя
             {
-                std::error_code ValidError = m_validator.checkRelationUC(UserContactsObject); // Проверяем валидность объекта связи
-                if (ValidError)
+                Error = addContactUC(inUserUUID, inContact->m_uuid); // Связываем пользователя с контактом
+
+                if (!Error) // Связали успешно
                 {
-                    LOG_WARNING_EX(QString::fromStdString(ValidError.message()), this);
-                    return false; // Повреждённное сообщение игнорируется
+                    Error = addContactUC(inContact->m_uuid, inUserUUID); // Связываем контакт с пользователем
+
+                    if (Error) // Если вторая связь прошла с ошибкой
+                        Error = removeContactUC(inUserUUID, inContact->m_uuid); // Рвём ПЕРВУЮ успешную связь
                 }
-                else
-                    return UserContactsObject[J_REL_UC_USER_UUID].get<std::string>() == UUID; // Сравниваем UUID связи с заданым
-            });
-
-            if (FindRes == m_json[J_RELATIONS][J_REL_USER_CONTACTS].end()) // Связь не найдена
-                Error = make_error_code(eDataStorageError::dsRelationUCNotExists);
-            else // Связь найдена
-            {
-                std::string StringUUID = inContact->m_uuid.toString().toStdString();
-                auto FindContact = std::find(FindRes->cbegin(), FindRes->cend(), StringUUID);
-
-                if (FindContact != FindRes->cend())
-                    Error = make_error_code(eDataStorageError::dsRelationUCContactAlredyExists); // Контакт уже в списке
-                else
-                    FindRes.value().push_back(StringUUID); // Добавляем UUID в список контактов
             }
         }
     }
@@ -704,31 +698,14 @@ std::error_code HMJsonDataStorage::removeUserContact(const QUuid& inUserUUID, co
         Error = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
-        const std::string UUID = inUserUUID.toString().toStdString(); // Единоразово запоминаем UUID
-        auto FindRes = std::find_if(m_json[J_RELATIONS][J_REL_USER_CONTACTS].begin(), m_json[J_RELATIONS][J_REL_USER_CONTACTS].end(),
-                                    [&](const nlohmann::json& UserContactsObject)
-        {
-            std::error_code ValidError = m_validator.checkRelationUC(UserContactsObject); // Проверяем валидность объекта связи
-            if (ValidError)
-            {
-                LOG_WARNING_EX(QString::fromStdString(ValidError.message()), this);
-                return false; // Повреждённное сообщение игнорируется
-            }
-            else
-                return UserContactsObject[J_REL_UC_USER_UUID].get<std::string>() == UUID; // Сравниваем UUID связи с заданым
-        });
+        Error = removeContactUC(inUserUUID, inContactUUID); // Удаляем связь пользователя с контактом
 
-        if (FindRes == m_json[J_RELATIONS][J_REL_USER_CONTACTS].end()) // Связь не найдена
-            Error = make_error_code(eDataStorageError::dsRelationUCNotExists);
-        else // Связь найдена
+        if (!Error) // Связь разорвана успешно
         {
-            std::string StringUUID = inContactUUID.toString().toStdString();
-            auto FindContact = std::find(FindRes->cbegin(), FindRes->cend(), StringUUID);
+            Error = removeContactUC(inContactUUID, inUserUUID); // Удаляем связь контакта с пользователем
 
-            if (FindContact == FindRes->cend()) // Не удалось найти пользователя
-                Error = make_error_code(eDataStorageError::dsRelationUCContactNotExists); // Контакт отсутствует в списке
-            else
-                FindRes->erase(FindContact); // Удаляем контакт из списка
+            if (Error) // Если второе удаление связи прошло с ошибкой
+                Error = addContactUC(inUserUUID, inContactUUID); // Восстанавливаем ПЕРВУЮ успешную связь
         }
     }
 
@@ -886,6 +863,89 @@ std::error_code HMJsonDataStorage::makeDefault()
 //    m_json[J_RELATIONS][J_REL_GROUP_USERS].push_back(GU2);
 
     return write(); // Пишем сформированный файл
+}
+//-----------------------------------------------------------------------------
+std::error_code HMJsonDataStorage::addContactUC(const QUuid& inUserUUID, const QUuid& inContactUUID)
+{
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+
+    if (!is_open()) // Хранилище должно быть открыто
+        Error = make_error_code(eDataStorageError::dsNotOpen);
+    else
+    {
+        const std::string StringUserUUID = inUserUUID.toString().toStdString(); // Единоразово запоминаем UUID
+        auto FindRes = std::find_if(m_json[J_RELATIONS][J_REL_USER_CONTACTS].begin(), m_json[J_RELATIONS][J_REL_USER_CONTACTS].end(),
+                                    [&](const nlohmann::json& UserContactsObject)
+        {
+            std::error_code ValidError = m_validator.checkRelationUC(UserContactsObject); // Проверяем валидность объекта связи
+            if (ValidError)
+            {
+                LOG_WARNING_EX(QString::fromStdString(ValidError.message()), this);
+                return false; // Повреждённное сообщение игнорируется
+            }
+            else
+                return UserContactsObject[J_REL_UC_USER_UUID].get<std::string>() == StringUserUUID; // Сравниваем UUID связи с заданым
+        });
+
+        if (FindRes == m_json[J_RELATIONS][J_REL_USER_CONTACTS].end()) // Связь не найдена
+            Error = make_error_code(eDataStorageError::dsRelationUCNotExists);
+        else // Связь найдена
+        {
+            std::shared_ptr<hmcommon::HMUser> Contact = findUserByUUID(inContactUUID, Error); // Пытаемся найти пользователя-контакт
+
+            if (!Error) // Если не удалось найти контакт среди пользователей
+            {
+                const std::string StringContactUUID = inContactUUID.toString().toStdString();
+                auto FindContact = std::find(FindRes.value()[J_REL_UC_CONTACTS].cbegin(), FindRes.value()[J_REL_UC_CONTACTS].cend(), StringContactUUID); // Ищим контакт в списке контактов
+
+                if (FindContact != FindRes.value()[J_REL_UC_CONTACTS].cend()) // Если контакт уже добавлен в список
+                    Error = make_error_code(eDataStorageError::dsRelationUCContactAlredyExists); // Контакт уже в списке
+                else
+                    FindRes.value()[J_REL_UC_CONTACTS].push_back(StringContactUUID); // Добавляем UUID в список контактов
+            }
+        }
+    }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
+std::error_code HMJsonDataStorage::removeContactUC(const QUuid& inUserUUID, const QUuid& inContactUUID)
+{
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+
+    if (!is_open()) // Хранилище должно быть открыто
+        Error = make_error_code(eDataStorageError::dsNotOpen);
+    else
+    {
+        const std::string StringUserUUID = inUserUUID.toString().toStdString(); // Единоразово запоминаем UUID
+        auto FindRes = std::find_if(m_json[J_RELATIONS][J_REL_USER_CONTACTS].begin(), m_json[J_RELATIONS][J_REL_USER_CONTACTS].end(),
+                                    [&](const nlohmann::json& UserContactsObject)
+        {
+            std::error_code ValidError = m_validator.checkRelationUC(UserContactsObject); // Проверяем валидность объекта связи
+            if (ValidError)
+            {
+                LOG_WARNING_EX(QString::fromStdString(ValidError.message()), this);
+                return false; // Повреждённное сообщение игнорируется
+            }
+            else
+                return UserContactsObject[J_REL_UC_USER_UUID].get<std::string>() == StringUserUUID; // Сравниваем UUID связи с заданым
+        });
+
+        if (FindRes == m_json[J_RELATIONS][J_REL_USER_CONTACTS].end()) // Связь не найдена
+            Error = make_error_code(eDataStorageError::dsRelationUCNotExists);
+        else // Связь найдена
+        {
+            const std::string StringContactUUID = inContactUUID.toString().toStdString();
+            auto FindContact = std::find(FindRes.value()[J_REL_UC_CONTACTS].cbegin(), FindRes.value()[J_REL_UC_CONTACTS].cend(), StringContactUUID); // Ищим контакт в списке контактов
+
+            if (FindContact == FindRes.value()[J_REL_UC_CONTACTS].cend()) // Не удалось найти пользователя
+                Error = make_error_code(eDataStorageError::dsRelationUCContactNotExists); // Контакт отсутствует в списке
+            else
+                FindRes.value()[J_REL_UC_CONTACTS].erase(FindContact); // Удаляем контакт из списка
+        }
+    }
+
+    return Error;
 }
 //-----------------------------------------------------------------------------
 std::error_code HMJsonDataStorage::checkCorrectStruct() const

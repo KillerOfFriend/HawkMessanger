@@ -230,6 +230,22 @@ protected:
 private:
 
     /**
+     * @brief addContactUC - Метод добавит контакт пользователю
+     * @param inUserUUID - Uuid пользователя
+     * @param inContactUUID - Uuid контакта
+     * @return Вернёт признак ошибки
+     */
+    std::error_code addContactUC(const QUuid& inUserUUID, const QUuid& inContactUUID);
+
+    /**
+     * @brief removeContactUC - Метод удалит контакт пользователя
+     * @param inUserUUID - Uuid пользователя
+     * @param inContactUUID - Uuid контакта
+     * @return Вернёт признак ошибки
+     */
+    std::error_code removeContactUC(const QUuid& inUserUUID, const QUuid& inContactUUID);
+
+    /**
      * @brief checkCorrectStruct - Метод проверит корректность структуры файла
      * @return Вернёт признак ошибки
      */

@@ -11,12 +11,6 @@
 using namespace hmservcommon::datastorage;
 
 //-----------------------------------------------------------------------------
-HMCachedMemoryDataStorage::HMCachedMemoryDataStorage() :
-    HMAbstractCahceDataStorage() // Инициализируем предка
-{
-
-}
-//-----------------------------------------------------------------------------
 HMCachedMemoryDataStorage::~HMCachedMemoryDataStorage()
 {
     close();
