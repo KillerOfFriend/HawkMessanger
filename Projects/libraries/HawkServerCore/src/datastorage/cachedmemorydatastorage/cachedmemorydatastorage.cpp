@@ -250,15 +250,20 @@ std::error_code HMCachedMemoryDataStorage::addUserContact(const QUuid& inUserUUI
         Error = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
     else
     {
-        std::shared_lock sl(m_userContactsDefender); // Публично блокируем связи пользователь-контакты
-        auto FindRes = m_cachedUserContacts.find(HMCachedUserContacts(inUserUUID, std::make_shared<hmcommon::HMContactList>())); // Ищим связь в кеше
-
-        if (FindRes == m_cachedUserContacts.end()) // Нет связи в кеше
-            Error = make_error_code(eDataStorageError::dsGroupNotExists);
-        else // Связь кеширована
+        if (inUserUUID == inContact->m_uuid) // Попытка добавить связь с самим собой
+            Error = make_error_code(hmcommon::eSystemErrorEx::seIncorretData);
+        else
         {
-            Error = FindRes->m_contactList->addContact(inContact); // Добавляем контакт
-            FindRes->m_lastRequest = QTime::currentTime(); // Помечаем время последнего запроса
+            std::shared_lock sl(m_userContactsDefender); // Публично блокируем связи пользователь-контакты
+            auto FindRes = m_cachedUserContacts.find(HMCachedUserContacts(inUserUUID, std::make_shared<hmcommon::HMContactList>())); // Ищим связь в кеше
+
+            if (FindRes == m_cachedUserContacts.end()) // Нет связи в кеше
+                Error = make_error_code(eDataStorageError::dsRelationUCNotExists);
+            else // Связь кеширована
+            {
+                Error = FindRes->m_contactList->addContact(inContact); // Добавляем контакт
+                FindRes->m_lastRequest = QTime::currentTime(); // Помечаем время последнего запроса
+            }
         }
     }
 
@@ -273,7 +278,7 @@ std::error_code HMCachedMemoryDataStorage::removeUserContact(const QUuid& inUser
     auto FindRes = m_cachedUserContacts.find(HMCachedUserContacts(inUserUUID, std::make_shared<hmcommon::HMContactList>())); // Ищим связь в кеше
 
     if (FindRes == m_cachedUserContacts.end()) // Нет связи в кеше
-        Error = make_error_code(eDataStorageError::dsGroupNotExists);
+        Error = make_error_code(eDataStorageError::dsRelationUCNotExists);
     else // Связь кеширована
     {
         Error = FindRes->m_contactList->removeContact(inContactUUID); // Удаляем контакт
@@ -303,7 +308,7 @@ std::shared_ptr<hmcommon::HMContactList> HMCachedMemoryDataStorage::getUserConta
     auto FindRes = m_cachedUserContacts.find(HMCachedUserContacts(inUserUUID, std::make_shared<hmcommon::HMContactList>())); // Ищим связь в кеше
 
     if (FindRes == m_cachedUserContacts.end()) // Нет связи в кеше
-        outErrorCode = make_error_code(eDataStorageError::dsGroupNotExists);
+        outErrorCode = make_error_code(eDataStorageError::dsRelationUCNotExists);
     else // Связь кеширована
     {
         Result = FindRes->m_contactList; // Вернём указатель на кешированную связь

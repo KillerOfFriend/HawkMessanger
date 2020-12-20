@@ -400,7 +400,194 @@ TEST(CachedMemoryDataStorage, removeMessage)
     ASSERT_TRUE(true); // Кеширование сообщений не поддерживается
 }
 //-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест проверит создание связи пользователь-контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ)
+ */
+TEST(CachedMemoryDataStorage, setUserContacts)
+{
+    std::error_code Error;
 
+    HMCachedMemoryDataStorage CachedStorage;
+
+    Error = CachedStorage.open();
+
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
+
+    std::shared_ptr<hmcommon::HMUser> NewUser = make_user(QUuid::createUuid(), "TestUser@login.com");
+    std::shared_ptr<hmcommon::HMUser> NewContact1 = make_user(QUuid::createUuid(), "TestContact1@login.com");
+    std::shared_ptr<hmcommon::HMUser> NewContact2 = make_user(QUuid::createUuid(), "TestContact2@login.com");
+
+    std::shared_ptr<hmcommon::HMContactList> NewContactList = std::make_shared<hmcommon::HMContactList>();
+
+    NewContactList->addContact(NewContact1);
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    NewContactList->addContact(NewContact2);
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    Error = CachedStorage.setUserContacts(NewUser->m_uuid, NewContactList); // Пытаемся добавить список контактов без добавления пользователя
+    ASSERT_FALSE(Error); // Ошибки быть не должно (Наличие пользователя в кеше не обязательно)
+
+    Error = CachedStorage.setUserContacts(NewUser->m_uuid, NewContactList); // Повторно добавляем список
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsRelationUCAlreadyExists)); // Должны получить сообщение о том, что связь уже существует
+
+    CachedStorage.close();
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест проверит добавление контакта пользователю
+ */
+TEST(CachedMemoryDataStorage, addUserContact)
+{
+    std::error_code Error;
+
+    HMCachedMemoryDataStorage CachedStorage;
+
+    Error = CachedStorage.open();
+
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
+
+    std::shared_ptr<hmcommon::HMUser> NewUser = make_user(QUuid::createUuid(), "TestUser@login.com");
+    std::shared_ptr<hmcommon::HMUser> NewContact = make_user(QUuid::createUuid(), "TestContact@login.com");
+
+    Error = CachedStorage.addUserContact(NewUser->m_uuid, NewContact);
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsRelationUCNotExists)); // Должны получить сообщение о том, что связь не существует
+
+    std::shared_ptr<hmcommon::HMContactList> NewContactList = std::make_shared<hmcommon::HMContactList>();
+
+    Error = CachedStorage.setUserContacts(NewUser->m_uuid, NewContactList); // Добавляем пустой список контактов
+    ASSERT_FALSE(Error); // Ошибки быть не должно (Наличие пользователя в кеше не обязательно)
+
+    Error = CachedStorage.addUserContact(NewUser->m_uuid, NewContact); // Добавляем контакт
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    Error = CachedStorage.addUserContact(NewUser->m_uuid, NewContact); // Повторно добавляем контакт
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(hmcommon::eSystemErrorEx::seAlredyInContainer)); // Должны получить сообщение о том, что контакт уже в кеше
+
+    CachedStorage.close();
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест проверит удаление контакта пользователя
+ */
+TEST(CachedMemoryDataStorage, removeUserContact)
+{
+    std::error_code Error;
+
+    HMCachedMemoryDataStorage CachedStorage;
+
+    Error = CachedStorage.open();
+
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
+
+    std::shared_ptr<hmcommon::HMUser> NewUser = make_user(QUuid::createUuid(), "TestUser@login.com");
+    std::shared_ptr<hmcommon::HMUser> NewContact = make_user(QUuid::createUuid(), "TestContact@login.com");
+
+    Error = CachedStorage.removeUserContact(NewUser->m_uuid, NewContact->m_uuid); // Пытаемся удалсть не существующий контакт
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsRelationUCNotExists)); // Должны получить сообщение о том, что связи не существует
+
+    std::shared_ptr<hmcommon::HMContactList> NewContactList = std::make_shared<hmcommon::HMContactList>();
+
+    Error = CachedStorage.setUserContacts(NewUser->m_uuid, NewContactList); // Добавляем пустой список контактов
+    ASSERT_FALSE(Error); // Ошибки быть не должно (Наличие пользователя в кеше не обязательно)
+
+    Error = CachedStorage.addUserContact(NewUser->m_uuid, NewContact); // И добавляем контакт пользователю
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    Error = CachedStorage.removeUserContact(NewUser->m_uuid, NewContact->m_uuid); // И наконец штатно удаляем связь
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    CachedStorage.close();
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест проверит удаление связи пользователь-контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ)
+ */
+TEST(CachedMemoryDataStorage, removeUserContacts)
+{
+    std::error_code Error;
+
+    HMCachedMemoryDataStorage CachedStorage;
+
+    Error = CachedStorage.open();
+
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
+
+    std::shared_ptr<hmcommon::HMUser> NewUser = make_user(QUuid::createUuid(), "TestUser@login.com");
+    std::shared_ptr<hmcommon::HMUser> NewContact1 = make_user(QUuid::createUuid(), "TestContact1@login.com");
+    std::shared_ptr<hmcommon::HMUser> NewContact2 = make_user(QUuid::createUuid(), "TestContact2@login.com");
+
+    Error = CachedStorage.removeUserContacts(NewUser->m_uuid); // Пытаемся удалить не сущестующую связь
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsSuccess)); // Вне зависимости от наличия в кеше, удаление валидно
+
+    std::shared_ptr<hmcommon::HMContactList> NewContactList = std::make_shared<hmcommon::HMContactList>();
+
+    Error = CachedStorage.setUserContacts(NewUser->m_uuid, NewContactList); // Добавляем пустой список контактов
+    ASSERT_FALSE(Error); // Ошибки быть не должно (Наличие пользователя в кеше не обязательно)
+
+    Error = CachedStorage.addUserContact(NewUser->m_uuid, NewUser); // Пытаемся добавить в список контактов самого себя
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(hmcommon::eSystemErrorEx::seIncorretData)); // Должны получить сообщение о том, что данные не корректны
+
+    Error = CachedStorage.addUserContact(NewUser->m_uuid, NewContact1); // И добавляем контакт1 пользователю
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    Error = CachedStorage.addUserContact(NewUser->m_uuid, NewContact2); // И добавляем контакт2 пользователю
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    Error = CachedStorage.removeUserContacts(NewUser->m_uuid); // Удаляем связь
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    CachedStorage.close();
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест проверит получение списка контатков пользователя
+ */
+TEST(CachedMemoryDataStorage, getUserContactList)
+{
+    std::error_code Error;
+
+    HMCachedMemoryDataStorage CachedStorage;
+
+    Error = CachedStorage.open();
+
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
+
+    std::shared_ptr<hmcommon::HMUser> NewUser = make_user(QUuid::createUuid(), "TestUser@login.com");
+    std::shared_ptr<hmcommon::HMUser> NewContact1 = make_user(QUuid::createUuid(), "TestContact1@login.com");
+    std::shared_ptr<hmcommon::HMUser> NewContact2 = make_user(QUuid::createUuid(), "TestContact2@login.com");
+
+    std::shared_ptr<hmcommon::HMContactList> FindRes = CachedStorage.getUserContactList(NewUser->m_uuid, Error); // Пытаемся получить список контактов не существующего пользователя
+
+    ASSERT_EQ(FindRes, nullptr); // Должен вернуться валидный указатель
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsRelationUCNotExists)); // Должны получить сообщение о том, что связь не существует
+
+    std::shared_ptr<hmcommon::HMContactList> NewContactList = std::make_shared<hmcommon::HMContactList>();
+
+    Error = CachedStorage.setUserContacts(NewUser->m_uuid, NewContactList); // Добавляем пустой список контактов
+    ASSERT_FALSE(Error); // Ошибки быть не должно (Наличие пользователя в кеше не обязательно)
+
+    Error = CachedStorage.addUserContact(NewUser->m_uuid, NewContact1); // И добавляем контакт1 пользователю
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    Error = CachedStorage.addUserContact(NewUser->m_uuid, NewContact2); // И добавляем контакт2 пользователю
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    FindRes = CachedStorage.getUserContactList(NewUser->m_uuid, Error); // Теперь пытваемся получить список контактов пользователя
+
+    ASSERT_NE(FindRes, nullptr); // Должен вернуться валидный указатель
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    EXPECT_TRUE(FindRes->contain(NewContact1)); // Должен содержать первый контакт
+    EXPECT_TRUE(FindRes->contain(NewContact2)); // Должен содержать второй контакт
+
+    CachedStorage.close();
+}
 //-----------------------------------------------------------------------------
 /**
  * @brief main - Входная точка тестировани функционала HMCachedMemoryDataStorage
