@@ -210,8 +210,8 @@ public:
     /**
      * @brief getUserContactList - Метод вернёт список контактов пользователя
      * @param inUserUUID - Uuid пользователя
-     * @param inContactUUID - Uuid контакта
-     * @return Вернёт признак ошибки
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт список контактов пользователя
      */
     virtual std::shared_ptr<hmcommon::HMContactList> getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const = 0;
 

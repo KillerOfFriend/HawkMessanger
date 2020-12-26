@@ -123,7 +123,7 @@ std::error_code HMJsonDataStorage::addUser(const std::shared_ptr<hmcommon::HMUse
                 if (!Error) // Если объект сформирован корректно
                 {
                     m_json[J_USERS].push_back(NewUser); // Добавляем пользователя в конец
-                    Error = setUserContacts(inUser->m_uuid, std::make_shared<hmcommon::HMContactList>()); // Пытаемся сформировать пустой список контактов пользователя
+                    Error = onCreateUser(inUser->m_uuid);
 
                     if (Error) // Если при создании списка контактов поисходит ошибка
                         m_json[J_USERS].erase(m_json[J_USERS].size() - 1); // Удаляем полседнего добавленного пользователя
@@ -273,7 +273,7 @@ std::error_code HMJsonDataStorage::removeUser(const QUuid& inUserUUID)
 
         if (UserIt != m_json[J_USERS].cend()) // Если пользователь существует
         {
-            Error = removeUserContacts(inUserUUID); // Пытаемся удалить списокконтактов пользователя
+            Error = onRemoveUser(inUserUUID);
 
             if (!Error) // Если список контактов пользователей корректо удалён
                 m_json[J_USERS].erase(UserIt); // Удаляем пользователя
@@ -792,6 +792,54 @@ std::shared_ptr<hmcommon::HMContactList> HMJsonDataStorage::getUserContactList(c
     }
 
     return Result;
+}
+//-----------------------------------------------------------------------------
+std::error_code HMJsonDataStorage::onCreateUser(const QUuid &inUserUUID)
+{
+    /*
+     * При создании пользователя требуется:
+     * 1) Сформировать пустой список контактов
+     */
+
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+
+    Error = setUserContacts(inUserUUID, std::make_shared<hmcommon::HMContactList>()); // Пытаемся сформировать пустой список контактов пользователя
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
+std::error_code HMJsonDataStorage::onRemoveUser(const QUuid &inUserUUID)
+{
+    /*
+     * При удалении пользователя требуется:
+     * 1) Удалить список контактов (и пользователя из контактов контактов =) )
+     * 2) Удалить пользователя из всех групп, в которых он соcтоит
+     */
+
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+
+    std::shared_ptr<hmcommon::HMContactList> ContactList = getUserContactList(inUserUUID, Error); // Получаем список контактов
+
+    if (Error) // Если не удалось получить список контактов
+        LOG_WARNING_EX(QString::fromStdString(Error.message()), this);
+    else // Список контактов успешно плучен
+    {
+        for (size_t Index = 0; Index < ContactList->contactsCount(); ++Index) // Перебираем все контакты пользователя
+        {
+            std::shared_ptr<hmcommon::HMUser> Contact = ContactList->getContact(Index, Error); // Получаем контакт
+            if (Error) // Если не удалось получить контакт
+                LOG_WARNING_EX(QString::fromStdString(Error.message()), this);
+            else // Контакт успешно получен
+                Error = removeUserContact(inUserUUID, Contact->m_uuid); // Удаляем контакт (с обеих сторон)
+        }
+    }
+
+    Error = removeUserContacts(inUserUUID); // Пытаемся удалить список контактов пользователя
+
+    // TODO Реализовать получение всех групп, в которых пользователь состоит
+    // TODO Реализовать удаление пользователя из групп, в которых он состоит
+
+    return Error;
 }
 //-----------------------------------------------------------------------------
 std::error_code HMJsonDataStorage::makeDefault()

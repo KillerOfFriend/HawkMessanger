@@ -214,8 +214,8 @@ public:
     /**
      * @brief getUserContactList - Метод вернёт список контактов пользователя
      * @param inUserUUID - Uuid пользователя
-     * @param inContactUUID - Uuid контакта
-     * @return Вернёт признак ошибки
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт список контактов пользователя
      */
     virtual std::shared_ptr<hmcommon::HMContactList> getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const override;
 
@@ -228,6 +228,20 @@ protected:
     virtual std::error_code makeDefault() override;
 
 private:
+
+    /**
+     * @brief onCreateUser - Метод выполнится при создании пользователя
+     * @param inUserUUID - Uuid пользователя
+     * @return Вернёт признак ошибки
+     */
+    std::error_code onCreateUser(const QUuid &inUserUUID);
+
+    /**
+     * @brief onRemoveUser - Метод выполнится при удалении пользователя
+     * @param inUserUUID - Uuid пользователя
+     * @return Вернёт признак ошибки
+     */
+    std::error_code onRemoveUser(const QUuid &inUserUUID);
 
     /**
      * @brief addContactUC - Метод добавит контакт пользователю
