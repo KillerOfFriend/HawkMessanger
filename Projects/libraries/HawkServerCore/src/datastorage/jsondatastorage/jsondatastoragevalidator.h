@@ -8,10 +8,7 @@
 
 #include <nlohmann/json.hpp>
 
-#include "user.h"
-#include "group.h"
-#include "groupmessage.h"
-#include "contactlist.h"
+#include <HawkCommon.h>
 
 namespace hmservcommon::datastorage
 {

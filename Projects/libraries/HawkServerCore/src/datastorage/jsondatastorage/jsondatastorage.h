@@ -186,7 +186,7 @@ public:
      * @param inContacts - Список контактов
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code setUserContacts(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMContactList> inContacts) override;
+    virtual std::error_code setUserContacts(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUserList> inContacts) override;
 
     /**
      * @brief addUserContact - Метод добавит контакт пользователю
@@ -217,7 +217,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт список контактов пользователя
      */
-    virtual std::shared_ptr<hmcommon::HMContactList> getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const override;
+    virtual std::shared_ptr<hmcommon::HMUserList> getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const override;
 
 protected:
 
@@ -355,7 +355,7 @@ private:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт объект Json
      */
-    std::shared_ptr<hmcommon::HMContactList> jsonToRelationUC(const nlohmann::json& inRelationUCObject, std::error_code& outErrorCode) const;
+    std::shared_ptr<hmcommon::HMUserList> jsonToRelationUC(const nlohmann::json& inRelationUCObject, std::error_code& outErrorCode) const;
 
     /**
      * @brief relationUCToJson - Метод преобразует связь пользователь-контакты в объект Json
@@ -364,7 +364,7 @@ private:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт объект Json
      */
-    nlohmann::json relationUCToJson(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMContactList> inRelationUC, std::error_code& outErrorCode) const;
+    nlohmann::json relationUCToJson(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUserList> inRelationUC, std::error_code& outErrorCode) const;
 
 };
 //-----------------------------------------------------------------------------

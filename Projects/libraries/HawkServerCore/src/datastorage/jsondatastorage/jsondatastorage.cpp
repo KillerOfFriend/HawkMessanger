@@ -626,7 +626,7 @@ std::error_code HMJsonDataStorage::removeMessage(const QUuid& inMessageUUID, con
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMJsonDataStorage::setUserContacts(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMContactList> inContacts)
+std::error_code HMJsonDataStorage::setUserContacts(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUserList> inContacts)
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
@@ -743,9 +743,9 @@ std::error_code HMJsonDataStorage::removeUserContacts(const QUuid& inUserUUID)
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMContactList> HMJsonDataStorage::getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const
+std::shared_ptr<hmcommon::HMUserList> HMJsonDataStorage::getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const
 {
-    std::shared_ptr<hmcommon::HMContactList> Result = nullptr;
+    std::shared_ptr<hmcommon::HMUserList> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
@@ -770,7 +770,7 @@ std::shared_ptr<hmcommon::HMContactList> HMJsonDataStorage::getUserContactList(c
             outErrorCode = make_error_code(eDataStorageError::dsRelationUCNotExists);
         else // Связь найдена
         {
-            Result = std::make_shared<hmcommon::HMContactList>();
+            Result = std::make_shared<hmcommon::HMUserList>();
             for (auto ContactUUID : FindRes.value()[J_REL_UC_CONTACTS].items())
             {
                 std::shared_ptr<hmcommon::HMUser> Contact = findUserByUUID(QUuid::fromString(QString::fromStdString(ContactUUID.value().get<std::string>())), outErrorCode);
@@ -779,7 +779,7 @@ std::shared_ptr<hmcommon::HMContactList> HMJsonDataStorage::getUserContactList(c
                     break;
                 else // Контакт найден
                 {
-                    outErrorCode = Result->addContact(Contact); // Добавляем контакт в список
+                    outErrorCode = Result->add(Contact); // Добавляем контакт в список
 
                     if (outErrorCode) // Контакт не найден
                         break;
@@ -803,7 +803,7 @@ std::error_code HMJsonDataStorage::onCreateUser(const QUuid &inUserUUID)
 
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
-    Error = setUserContacts(inUserUUID, std::make_shared<hmcommon::HMContactList>()); // Пытаемся сформировать пустой список контактов пользователя
+    Error = setUserContacts(inUserUUID, std::make_shared<hmcommon::HMUserList>()); // Пытаемся сформировать пустой список контактов пользователя
 
     return Error;
 }
@@ -818,15 +818,15 @@ std::error_code HMJsonDataStorage::onRemoveUser(const QUuid &inUserUUID)
 
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
-    std::shared_ptr<hmcommon::HMContactList> ContactList = getUserContactList(inUserUUID, Error); // Получаем список контактов
+    std::shared_ptr<hmcommon::HMUserList> ContactList = getUserContactList(inUserUUID, Error); // Получаем список контактов
 
     if (Error) // Если не удалось получить список контактов
         LOG_WARNING_EX(QString::fromStdString(Error.message()), this);
     else // Список контактов успешно плучен
     {
-        for (size_t Index = 0; Index < ContactList->contactsCount(); ++Index) // Перебираем все контакты пользователя
+        for (size_t Index = 0; Index < ContactList->count(); ++Index) // Перебираем все контакты пользователя
         {
-            std::shared_ptr<hmcommon::HMUser> Contact = ContactList->getContact(Index, Error); // Получаем контакт
+            std::shared_ptr<hmcommon::HMUser> Contact = ContactList->get(Index, Error); // Получаем контакт
             if (Error) // Если не удалось получить контакт
                 LOG_WARNING_EX(QString::fromStdString(Error.message()), this);
             else // Контакт успешно получен
@@ -1224,8 +1224,8 @@ std::shared_ptr<hmcommon::HMGroup> HMJsonDataStorage::jsonToGroup(const nlohmann
 
         Result->setName(QString::fromStdString(inGroupObject[J_GROUP_NAME].get<std::string>()));
 
-        for (auto& UserUUID : inGroupObject[J_GROUP_USERS].items()) // Перебиреам пользователей группы
-            Result->addUser(QUuid::fromString(QString::fromStdString(UserUUID.value().get<std::string>()))); // Добавляем пользователя в группу
+//        for (auto& UserUUID : inGroupObject[J_GROUP_USERS].items()) // Перебиреам пользователей группы
+//            Result->addUser(QUuid::fromString(QString::fromStdString(UserUUID.value().get<std::string>()))); // Добавляем пользователя в группу
     }
 
     return Result;
@@ -1243,10 +1243,10 @@ nlohmann::json HMJsonDataStorage::groupToJson(std::shared_ptr<hmcommon::HMGroup>
         Result[J_GROUP_UUID] = inGroup->m_uuid.toString().toStdString();
         Result[J_GROUP_REGDATE] = inGroup->m_registrationDate.toString(TIME_FORMAT).toStdString();
         Result[J_GROUP_NAME] = inGroup->getName().toStdString();
-        Result[J_GROUP_USERS] = nlohmann::json::value_type::array();
+//        Result[J_GROUP_USERS] = nlohmann::json::value_type::array();
 
-        for (std::size_t Index = 0; Index < inGroup->usersCount(); ++Index)
-            Result[J_GROUP_USERS].push_back(inGroup->getUser(Index, outErrorCode).toString().toStdString());
+//        for (std::size_t Index = 0; Index < inGroup->usersCount(); ++Index)
+//            Result[J_GROUP_USERS].push_back(inGroup->getUser(Index, outErrorCode)->m_uuid.toString().toStdString());
 
         outErrorCode = m_validator.checkGroup(Result); // Заранее проверяем корректность создаваемой группы
 
@@ -1305,14 +1305,14 @@ nlohmann::json HMJsonDataStorage::messageToJson(std::shared_ptr<hmcommon::HMGrou
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMContactList> HMJsonDataStorage::jsonToRelationUC(const nlohmann::json& inRelationUCObject, std::error_code& outErrorCode) const
+std::shared_ptr<hmcommon::HMUserList> HMJsonDataStorage::jsonToRelationUC(const nlohmann::json& inRelationUCObject, std::error_code& outErrorCode) const
 {
-    std::shared_ptr<hmcommon::HMContactList> Result = nullptr;
+    std::shared_ptr<hmcommon::HMUserList> Result = nullptr;
     outErrorCode = m_validator.checkRelationUC(inRelationUCObject); // Проверяем валидность связи
 
     if (!outErrorCode) // Если связь валидна
     {
-        Result = std::make_shared<hmcommon::HMContactList>();
+        Result = std::make_shared<hmcommon::HMUserList>();
 
         for (auto& ContactUUID : inRelationUCObject[J_REL_UC_CONTACTS].items())
         {   // Перебираем все UUID'ы контактов
@@ -1322,7 +1322,7 @@ std::shared_ptr<hmcommon::HMContactList> HMJsonDataStorage::jsonToRelationUC(con
                 break; // Сбрасываем перебор
             else // Контакт успешно получен
             {
-                outErrorCode = Result->addContact(Contact); // Добавляем контакт в список
+                outErrorCode = Result->add(Contact); // Добавляем контакт в список
 
                 if (outErrorCode) // Если не удалось добавить контакт
                     break; // Сбрасываем перебор
@@ -1336,7 +1336,7 @@ std::shared_ptr<hmcommon::HMContactList> HMJsonDataStorage::jsonToRelationUC(con
     return Result;
 }
 //-----------------------------------------------------------------------------
-nlohmann::json HMJsonDataStorage::relationUCToJson(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMContactList> inRelationUC, std::error_code& outErrorCode) const
+nlohmann::json HMJsonDataStorage::relationUCToJson(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUserList> inRelationUC, std::error_code& outErrorCode) const
 {
     nlohmann::json Result = nlohmann::json::value_type::object();
     outErrorCode = make_error_code(hmcommon::eSystemErrorEx::seSuccess);
@@ -1348,9 +1348,9 @@ nlohmann::json HMJsonDataStorage::relationUCToJson(const QUuid& inUserUUID, cons
         Result[J_REL_UC_USER_UUID] = inUserUUID.toString().toStdString(); // Задаём UUID владельца
         Result[J_REL_UC_CONTACTS] = nlohmann::json::array(); // Создаём перечень контактов
 
-        for (std::size_t Index = 0; Index < inRelationUC->contactsCount(); ++Index)
+        for (std::size_t Index = 0; Index < inRelationUC->count(); ++Index)
         {
-            std::shared_ptr<hmcommon::HMUser> Contact = inRelationUC->getContact(Index, outErrorCode); // Пытаемся получит контакт
+            std::shared_ptr<hmcommon::HMUser> Contact = inRelationUC->get(Index, outErrorCode); // Пытаемся получит контакт
 
             if (outErrorCode)
                 break;

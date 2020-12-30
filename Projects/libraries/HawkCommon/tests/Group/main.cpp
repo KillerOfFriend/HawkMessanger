@@ -3,6 +3,8 @@
 #include <group.h>
 #include <systemerrorex.h>
 
+#include <HawkCommonTestUtils.hpp>
+
 //-----------------------------------------------------------------------------
 /**
  * @brief TEST - Тест создания группы
@@ -27,7 +29,7 @@ TEST(Group, CheckParams)
 
     const QString GroupName = "New_Group_Name";
     const std::size_t GroupUserCount = 5;
-    std::array<QUuid, GroupUserCount> Users;
+    std::array<std::shared_ptr<hmcommon::HMUser>, GroupUserCount> Users;
 
     hmcommon::HMGroup Group(QUuid::createUuid());
 
@@ -38,7 +40,7 @@ TEST(Group, CheckParams)
 
     for (std::size_t Index = 0; Index < GroupUserCount; ++Index)
     {
-        Users[Index] = QUuid::createUuid();
+        Users[Index] = testscommon::make_user();
         Error = Group.addUser(Users[Index]);
         ASSERT_FALSE(Error); // Ошибки быть не должно
         EXPECT_EQ(Group.usersCount(), Index + 1);
@@ -51,19 +53,19 @@ TEST(Group, CheckParams)
 
     for (std::size_t Index = 0; Index < GroupUserCount; ++Index)
     {
-        ASSERT_TRUE(Group.contain(Users[Index]));
+        ASSERT_TRUE(Group.contain(Users[Index]->m_uuid));
 
-        QUuid User = Group.getUser(Index, Error);
+        std::shared_ptr<hmcommon::HMUser> User = Group.getUser(Index, Error);
         ASSERT_FALSE(Error); // Ошибки быть не должно
         EXPECT_EQ(User, Users[Index]); // И UUID пользователя должен совпадать
     }
 
     for (std::size_t Index = 0; Index < GroupUserCount; ++Index)
     {
-        Error = Group.removeUser(Users[Index]);
+        Error = Group.removeUser(Users[Index]->m_uuid);
         ASSERT_FALSE(Error); // Ошибки быть не должно
 
-        ASSERT_FALSE(Group.contain(Users[Index]));
+        ASSERT_FALSE(Group.contain(Users[Index]->m_uuid));
         EXPECT_EQ(Group.usersCount(), GroupUserCount - (Index + 1));
     }
 

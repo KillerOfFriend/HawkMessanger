@@ -9,8 +9,6 @@
 #include <vector>
 #include <system_error>
 
-#include <QUuid>
-
 #include "user.h"
 
 namespace hmcommon
@@ -26,8 +24,8 @@ class HMGroup
 {
 private:
 
-    QString m_name;                     ///< Имя группы
-    std::vector<QUuid> m_users;         ///< Перечень пользователей группы
+    QString m_name;                                 ///< Имя группы
+    std::vector<std::shared_ptr<HMUser>> m_users;   ///< Перечень пользователей группы
 
 public:
 
@@ -79,10 +77,10 @@ public:
 
     /**
      * @brief addUser - Метод добавит пользователя в группу
-     * @param inUserUuid - UUID добавляемого пользователя
+     * @param inUser - UUID добавляемого пользователя
      * @return Вернёт признак ошибки
      */
-    std::error_code addUser(const QUuid& inUserUuid);
+    std::error_code addUser(const std::shared_ptr<HMUser> inUser);
 
     /**
      * @brief removeUser - Метод удалит польоваетля из группы
@@ -94,9 +92,9 @@ public:
     /**
      * @brief getUser - Метод вернёт пользователя по его порядковому номеру
      * @param outErrorCode - Признак ошибки
-     * @return Вернёт UUID пользователя
+     * @return Вернёт пользователя или nullptr
      */
-    QUuid getUser(const std::size_t inIndex, std::error_code& outErrorCode);
+    std::shared_ptr<HMUser> getUser(const std::size_t inIndex, std::error_code& outErrorCode);
 
     /**
      * @brief contain - Метод проверит, содержит ли группа пользователя

@@ -15,14 +15,15 @@ set(TESTS_LINCED_LIBRARYES
 set(TESTS_INCLUDE_DIRS
     ${LIBRARIES_PATH}/HawkCommon/src
     ${DIR_THIRDPARTY_PATH}/Building/googletest/googletest/include/
+    ${LIBRARIES_PATH}/HawkCommon/tests/TestsCommon
     )
 #====================================================================
-set(HC_Test1 HawkCommon_ContactList)
-add_executable(${HC_Test1} ${CMAKE_CURRENT_SOURCE_DIR}/ContactList/main.cpp)
+set(HC_Test1 HawkCommon_UserList)
+add_executable(${HC_Test1} ${CMAKE_CURRENT_SOURCE_DIR}/UserList/main.cpp)
 target_include_directories(${HC_Test1} PRIVATE ${TESTS_INCLUDE_DIRS})
 target_link_libraries(${HC_Test1} PRIVATE ${TESTS_LINCED_LIBRARYES})
 
-add_test(NAME HawkServerCore_Test1 COMMAND UserTest)
+add_test(NAME HawkServerCore_Test1 COMMAND UserListTest)
 #====================================================================
 set(HC_Test2 HawkCommon_UserTest)
 add_executable(${HC_Test2} ${CMAKE_CURRENT_SOURCE_DIR}/User/main.cpp)

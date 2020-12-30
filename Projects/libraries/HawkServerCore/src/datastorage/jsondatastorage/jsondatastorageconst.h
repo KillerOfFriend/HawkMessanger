@@ -36,7 +36,7 @@ static const std::string J_USER_BIRTHDAY            = "birthday";
 static const std::string J_GROUP_UUID               = UUID;
 static const std::string J_GROUP_REGDATE            = REGDATE;
 static const std::string J_GROUP_NAME               = "name";
-static const std::string J_GROUP_USERS              = "users";
+//static const std::string J_GROUP_USERS              = "users";
 //-----------------------------------------------------------------------------
 // Сообщения
 //-----------------------------------------------------------------------------

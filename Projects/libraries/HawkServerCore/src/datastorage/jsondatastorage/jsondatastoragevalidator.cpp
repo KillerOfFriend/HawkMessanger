@@ -49,19 +49,19 @@ std::error_code HMJsonDataStorageValidator::checkGroup(const nlohmann::json& inG
     if (inGroupObject.find(J_GROUP_NAME) == inGroupObject.end() || inGroupObject[J_GROUP_NAME].is_null() || inGroupObject[J_GROUP_NAME].type() != nlohmann::json::value_t::string)
         Error = make_error_code(eDataStorageError::dsGroupNameCorrupted);
 
-    if (inGroupObject.find(J_GROUP_USERS) == inGroupObject.end() || inGroupObject[J_GROUP_USERS].is_null() || inGroupObject[J_GROUP_USERS].type() != nlohmann::json::value_t::array)
-        Error = make_error_code(eDataStorageError::dsGroupUsersCorrupted);
-    else // Список пользователей группы валиден
-    {
-        for (auto& UserUUID : inGroupObject[J_GROUP_USERS].items())
-        {   // Перебираем всех пользователй группы
-            if (UserUUID.value().is_null() || UserUUID.value().type() != nlohmann::json::value_t::string)
-            {   // Если хоть один повреждён, метим группу как повреждённую
-                Error = make_error_code(eDataStorageError::dsGroupUsersCorrupted);
-                break;
-            }
-        }
-    }
+//    if (inGroupObject.find(J_GROUP_USERS) == inGroupObject.end() || inGroupObject[J_GROUP_USERS].is_null() || inGroupObject[J_GROUP_USERS].type() != nlohmann::json::value_t::array)
+//        Error = make_error_code(eDataStorageError::dsGroupUsersCorrupted);
+//    else // Список пользователей группы валиден
+//    {
+//        for (auto& UserUUID : inGroupObject[J_GROUP_USERS].items())
+//        {   // Перебираем всех пользователй группы
+//            if (UserUUID.value().is_null() || UserUUID.value().type() != nlohmann::json::value_t::string)
+//            {   // Если хоть один повреждён, метим группу как повреждённую
+//                Error = make_error_code(eDataStorageError::dsGroupUsersCorrupted);
+//                break;
+//            }
+//        }
+//    }
 
     return Error;
 }

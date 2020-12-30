@@ -10,10 +10,7 @@
 #include <vector>
 #include <system_error>
 
-#include "user.h"
-#include "group.h"
-#include "groupmessage.h"
-#include "contactlist.h"
+#include <HawkCommon.h>
 
 namespace hmservcommon::datastorage
 {
@@ -182,7 +179,7 @@ public:
      * @param inContacts - Список контактов
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code setUserContacts(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMContactList> inContacts) = 0;
+    virtual std::error_code setUserContacts(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUserList> inContacts) = 0;
 
     /**
      * @brief addUserContact - Метод добавит контакт пользователю
@@ -213,7 +210,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт список контактов пользователя
      */
-    virtual std::shared_ptr<hmcommon::HMContactList> getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const = 0;
+    virtual std::shared_ptr<hmcommon::HMUserList> getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const = 0;
 
     // Связи [Группа]
 

@@ -461,7 +461,7 @@ std::error_code HMCombinedDataStorage::removeMessage(const QUuid& inMessageUUID,
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::setUserContacts(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMContactList> inContacts)
+std::error_code HMCombinedDataStorage::setUserContacts(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUserList> inContacts)
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
@@ -555,9 +555,9 @@ std::error_code HMCombinedDataStorage::removeUserContacts(const QUuid& inUserUUI
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMContactList> HMCombinedDataStorage::getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const
+std::shared_ptr<hmcommon::HMUserList> HMCombinedDataStorage::getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const
 {
-    std::shared_ptr<hmcommon::HMContactList> Result = nullptr;
+    std::shared_ptr<hmcommon::HMUserList> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто

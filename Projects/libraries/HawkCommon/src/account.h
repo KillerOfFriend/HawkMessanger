@@ -11,7 +11,7 @@
 
 #include "user.h"
 #include "group.h"
-#include "contactlist.h"
+#include "userlist.h"
 
 namespace hmcommon
 {
@@ -30,7 +30,7 @@ public:
     ~HMAccount() = default;
 
     std::shared_ptr<HMUser> m_userInfo = nullptr;           ///< Данные пользователя
-    std::shared_ptr<HMContactList> m_cotacts = nullptr;     ///< Контакты пользователя
+    std::shared_ptr<HMUserList> m_cotacts = nullptr;        ///< Контакты пользователя
 
     std::vector<std::shared_ptr<HMGroup>> m_groups;         ///< Группы пользователя
 

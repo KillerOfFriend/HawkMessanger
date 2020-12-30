@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 
 #include <user.h>
-#include <contactlist.h>
+#include <userlist.h>
 #include <systemerrorex.h>
 
 //-----------------------------------------------------------------------------
@@ -28,50 +28,50 @@ std::shared_ptr<hmcommon::HMUser> make_user(const QUuid inUserUuid = QUuid::crea
 /**
  * @brief TEST - Тест создания списка контактов
  */
-TEST(ContactList, Create)
+TEST(UsertList, Create)
 {
-    hmcommon::HMContactList ContactList;
+    hmcommon::HMUserList UsertList;
 
-    EXPECT_TRUE(ContactList.isEmpty());
-    EXPECT_EQ(ContactList.contactsCount(), 0);
+    EXPECT_TRUE(UsertList.isEmpty());
+    EXPECT_EQ(UsertList.count(), 0);
 }
 //-----------------------------------------------------------------------------
 /**
  * @brief TEST - Тест добавления контакта
  */
-TEST(ContactList, CheckAddContact)
+TEST(UsertList, CheckAddContact)
 {
     std::error_code Error; // Метка ошибки
-    hmcommon::HMContactList ContactList; // Список контактов
+    hmcommon::HMUserList UsertList; // Список контактов
 
     std::shared_ptr<hmcommon::HMUser> NewContact = make_user();
 
-    EXPECT_TRUE(ContactList.isEmpty());
-    EXPECT_EQ(ContactList.contactsCount(), 0);
+    EXPECT_TRUE(UsertList.isEmpty());
+    EXPECT_EQ(UsertList.count(), 0);
 
-    Error = ContactList.addContact(NewContact); // Добавляем новый контакт
+    Error = UsertList.add(NewContact); // Добавляем новый контакт
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    EXPECT_FALSE(ContactList.isEmpty());
-    EXPECT_EQ(ContactList.contactsCount(), 1);
+    EXPECT_FALSE(UsertList.isEmpty());
+    EXPECT_EQ(UsertList.count(), 1);
 }
 //-----------------------------------------------------------------------------
 /**
  * @brief TEST - Тест поиска не существующего контакта
  */
-TEST(ContactList, FindNotExistsContact)
+TEST(UsertList, FindNotExistsContact)
 {
     std::error_code Error; // Метка ошибки
-    hmcommon::HMContactList ContactList; // Список контактов
+    hmcommon::HMUserList ContactList; // Список контактов
 
     std::shared_ptr<hmcommon::HMUser> NewContact = make_user();
 
-    std::shared_ptr<hmcommon::HMUser> FindRes = ContactList.getContact(0, Error);
+    std::shared_ptr<hmcommon::HMUser> FindRes = ContactList.get(0, Error);
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
     ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmcommon::eSystemErrorEx::seContainerEmpty)); // И метку, что контейнер пуст
 
-    FindRes = ContactList.getContact(NewContact->m_uuid, Error);
+    FindRes = ContactList.get(NewContact->m_uuid, Error);
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
     ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmcommon::eSystemErrorEx::seNotInContainer)); // И метку, что контакт в контейнере не найден
@@ -80,22 +80,22 @@ TEST(ContactList, FindNotExistsContact)
 /**
  * @brief TEST - Тест поиска существующего контакта
  */
-TEST(ContactList, FindExistsContact)
+TEST(UsertList, FindExistsContact)
 {
     std::error_code Error; // Метка ошибки
-    hmcommon::HMContactList ContactList; // Список контактов
+    hmcommon::HMUserList ContactList; // Список контактов
 
     std::shared_ptr<hmcommon::HMUser> NewContact = make_user();
 
-    Error = ContactList.addContact(NewContact); // Добавляем новый контакт
+    Error = ContactList.add(NewContact); // Добавляем новый контакт
     ASSERT_FALSE(Error); // Ошибки быть не должно;
 
-    std::shared_ptr<hmcommon::HMUser> FindRes = ContactList.getContact(0, Error);
+    std::shared_ptr<hmcommon::HMUser> FindRes = ContactList.get(0, Error);
 
     ASSERT_NE(FindRes, nullptr); // Должен вернуться валидный указаетль
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    FindRes = ContactList.getContact(NewContact->m_uuid, Error);
+    FindRes = ContactList.get(NewContact->m_uuid, Error);
 
     ASSERT_NE(FindRes, nullptr); // Должен вернуться валидный указаетль
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -104,35 +104,35 @@ TEST(ContactList, FindExistsContact)
 /**
  * @brief TEST - Тест удаление контакта
  */
-TEST(ContactList, CheckRemoveContact)
+TEST(UsertList, CheckRemoveContact)
 {
     std::error_code Error; // Метка ошибки
-    hmcommon::HMContactList ContactList; // Список контактов
+    hmcommon::HMUserList UsertList; // Список контактов
 
     std::shared_ptr<hmcommon::HMUser> NewContact1 = make_user();
     std::shared_ptr<hmcommon::HMUser> NewContact2 = make_user();
 
-    Error = ContactList.addContact(NewContact1); // Добавляем новый контакт
+    Error = UsertList.add(NewContact1); // Добавляем новый контакт
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    Error = ContactList.addContact(NewContact2); // Добавляем новый контакт
+    Error = UsertList.add(NewContact2); // Добавляем новый контакт
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    EXPECT_FALSE(ContactList.isEmpty());
-    EXPECT_EQ(ContactList.contactsCount(), 2);
+    EXPECT_FALSE(UsertList.isEmpty());
+    EXPECT_EQ(UsertList.count(), 2);
 
-    Error = ContactList.removeContact(NewContact1->m_uuid); // Первого удалим по UUID
+    Error = UsertList.remove(NewContact1->m_uuid); // Первого удалим по UUID
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    Error = ContactList.removeContact(0); // Втогого по порядковому номеру (После удаления первого Index == 0)
+    Error = UsertList.remove(0); // Втогого по порядковому номеру (После удаления первого Index == 0)
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    EXPECT_TRUE(ContactList.isEmpty());
-    EXPECT_EQ(ContactList.contactsCount(), 0);
+    EXPECT_TRUE(UsertList.isEmpty());
+    EXPECT_EQ(UsertList.count(), 0);
 }
 //-----------------------------------------------------------------------------
 /**
- * @brief main - Входная точка тестировани функционала HMContactList
+ * @brief main - Входная точка тестировани функционала HMUserList
  * @param argc - Количество аргументов
  * @param argv - Перечень аргументов
  * @return Вернёт признак успешности тестирования

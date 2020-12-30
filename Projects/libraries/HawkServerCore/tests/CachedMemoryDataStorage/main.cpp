@@ -6,62 +6,10 @@
 #include <systemerrorex.h>
 #include <datastorage/DataStorage.h>
 
+#include <HawkCommonTestUtils.hpp>
+
 using namespace hmservcommon::datastorage;
 
-//-----------------------------------------------------------------------------
-/**
- * @brief make_user - Метод сформирует пользователя для тестирования
- * @param inUserUuid - UUID пользователя
- * @param inUserLogin - Логин пользователя
- * @param inUserPassword - Пароль пользователя
- * @param inCreateDate - Дата создания пользователя
- * @return Вернёт указатель на нового пользователя
- */
-std::shared_ptr<hmcommon::HMUser> make_user(const QUuid inUserUuid = QUuid::createUuid(), const QString inUserLogin = "UserLogin@login.com",
-                                            const QString inUserPassword = "P@ssworOfUser123", const QDateTime inCreateDate = QDateTime::currentDateTime())//QDateTime(QDate(), QTime::currentTime()))
-{
-    // Формируем нового пользователя
-    std::shared_ptr<hmcommon::HMUser> NewUser = std::make_shared<hmcommon::HMUser>(inUserUuid, inCreateDate);
-    // Задаём основные параметры
-    NewUser->setLogin(inUserLogin);
-    NewUser->setPassword(inUserPassword);
-
-    return NewUser;
-}
-//-----------------------------------------------------------------------------
-/**
- * @brief make_group - Метод сформирует группу для тестирования
- * @param inGroupUuid - UUID группы
- * @param inGroupName - Имя группы
- * @param inCreateDate - Дата создания группы
- * @return Вернёт указатель на новую группу
- */
-std::shared_ptr<hmcommon::HMGroup> make_group(const QUuid inGroupUuid = QUuid::createUuid(), const QString inGroupName = "New group name",
-                                              const QDateTime inCreateDate = QDateTime::currentDateTime())//QDateTime(QDate(), QTime::currentTime()))
-{
-    // Формируем новую группу
-    std::shared_ptr<hmcommon::HMGroup> NewGroup = std::make_shared<hmcommon::HMGroup>(inGroupUuid, inCreateDate);
-    NewGroup->setName(inGroupName); // Задаём имя группы
-
-    return NewGroup;
-}
-//-----------------------------------------------------------------------------
-/**
- * @brief make_groupmessage - Метод сформирует сообщение для тестирования
- * @param inData - Данные сообщения
- * @param inUuid - UUID сообщения
- * @param inGroupUuid - UUID группы, в которую входит сообщение
- * @param inCreateDate - Дата создания сообщения
- * @return Вернёт указатель на новое сообщение
- */
-std::shared_ptr<hmcommon::HMGroupMessage> make_groupmessage(const hmcommon::MsgData& inData, const QUuid inUuid = QUuid::createUuid(), const QUuid inGroupUuid = QUuid::createUuid(),
-                                                            const QDateTime inCreateDate = QDateTime::currentDateTime())
-{
-    std::shared_ptr<hmcommon::HMGroupMessage> NewMessage = std::make_shared<hmcommon::HMGroupMessage>(inUuid, inGroupUuid, inCreateDate);
-    NewMessage->setMessage(inData);
-
-    return NewMessage;
-}
 //-----------------------------------------------------------------------------
 /**
  * @brief TEST - Тест проверит попытку открытия хранилища
@@ -92,7 +40,7 @@ TEST(CachedMemoryDataStorage, AddUser)
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUser> NewUser = make_user();
+    std::shared_ptr<hmcommon::HMUser> NewUser = testscommon::make_user();
 
     Error = CachedStorage.addUser(NewUser); // Пытаемся добавить пользователя
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -116,7 +64,7 @@ TEST(CachedMemoryDataStorage, updateUser)
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUser> NewUser = make_user();
+    std::shared_ptr<hmcommon::HMUser> NewUser = testscommon::make_user();
 
     Error = CachedStorage.addUser(NewUser); // Пытаемся добавить пользователя
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -142,7 +90,7 @@ TEST(CachedMemoryDataStorage, findUserByUUID)
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUser> NewUser = make_user();
+    std::shared_ptr<hmcommon::HMUser> NewUser = testscommon::make_user();
 
     std::shared_ptr<hmcommon::HMUser> FindRes = CachedStorage.findUserByUUID(NewUser->m_uuid, Error); // Попытка получить не существующего пользователя
 
@@ -156,7 +104,7 @@ TEST(CachedMemoryDataStorage, findUserByUUID)
     for (size_t Index = 0; Index < SilCount; ++Index)
     {
         QString TrashUserLogin = "TrashUser" + QString::number(Index); // Логины мусорных пользователей должны быть уникальными
-        Error = CachedStorage.addUser(make_user(QUuid::createUuid(), TrashUserLogin)); // Пытаемся добавить пользователя
+        Error = CachedStorage.addUser(testscommon::make_user(QUuid::createUuid(), TrashUserLogin)); // Пытаемся добавить пользователя
         ASSERT_FALSE(Error); // Ошибки быть не должно
     }
 
@@ -183,7 +131,7 @@ TEST(CachedMemoryDataStorage, findUserByAuthentication)
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUser> NewUser = make_user();
+    std::shared_ptr<hmcommon::HMUser> NewUser = testscommon::make_user();
 
     std::shared_ptr<hmcommon::HMUser> FindRes = CachedStorage.findUserByAuthentication(NewUser->getLogin(), NewUser->getPasswordHash(), Error); // Попытка получить не существующего пользователя
 
@@ -197,7 +145,7 @@ TEST(CachedMemoryDataStorage, findUserByAuthentication)
     for (size_t Index = 0; Index < SilCount; ++Index)
     {
         QString TrashUserLogin = "TrashUser" + QString::number(Index); // Логины мусорных пользователей должны быть уникальными
-        Error = CachedStorage.addUser(make_user(QUuid::createUuid(), TrashUserLogin)); // Пытаемся добавить пользователя
+        Error = CachedStorage.addUser(testscommon::make_user(QUuid::createUuid(), TrashUserLogin)); // Пытаемся добавить пользователя
         ASSERT_FALSE(Error); // Ошибки быть не должно
     }
 
@@ -224,7 +172,7 @@ TEST(CachedMemoryDataStorage, removeUser)
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUser> NewUser = make_user();
+    std::shared_ptr<hmcommon::HMUser> NewUser = testscommon::make_user();
 
     Error = CachedStorage.addUser(NewUser); // Пытаемся добавить пользователя в кеш
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -253,7 +201,7 @@ TEST(CachedMemoryDataStorage, addGroup)
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMGroup> NewGroup = make_group();
+    std::shared_ptr<hmcommon::HMGroup> NewGroup = testscommon::make_group();
 
     Error = CachedStorage.addGroup(NewGroup);
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -277,7 +225,7 @@ TEST(CachedMemoryDataStorage, updateGroup)
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMGroup> NewGroup = make_group();
+    std::shared_ptr<hmcommon::HMGroup> NewGroup = testscommon::make_group();
 
     Error = CachedStorage.addGroup(NewGroup);
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -303,7 +251,7 @@ TEST(CachedMemoryDataStorage, findGroupByUUID)
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMGroup> NewGroup = make_group();
+    std::shared_ptr<hmcommon::HMGroup> NewGroup = testscommon::make_group();
 
     std::shared_ptr<hmcommon::HMGroup> FindRes = CachedStorage.findGroupByUUID(NewGroup->m_uuid, Error); // Попытка получить не существующую группу
 
@@ -317,7 +265,7 @@ TEST(CachedMemoryDataStorage, findGroupByUUID)
     for (size_t Index = 0; Index < SilCount; ++Index)
     {
         QString TrashGroupName = "TrashGroup" + QString::number(Index); // Логины мусорных пользователей должны быть уникальными
-        Error = CachedStorage.addGroup(make_group(QUuid::createUuid(), TrashGroupName)); // Пытаемся добавить группу
+        Error = CachedStorage.addGroup(testscommon::make_group(QUuid::createUuid(), TrashGroupName)); // Пытаемся добавить группу
         ASSERT_FALSE(Error); // Ошибки быть не должно
     }
 
@@ -344,7 +292,7 @@ TEST(CachedMemoryDataStorage, removeGroup)
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMGroup> NewGroup = make_group();
+    std::shared_ptr<hmcommon::HMGroup> NewGroup = testscommon::make_group();
 
     Error = CachedStorage.addGroup(NewGroup); // Пытаемся добавить группу в кеш
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -414,16 +362,16 @@ TEST(CachedMemoryDataStorage, setUserContacts)
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUser> NewUser = make_user(QUuid::createUuid(), "TestUser@login.com");
-    std::shared_ptr<hmcommon::HMUser> NewContact1 = make_user(QUuid::createUuid(), "TestContact1@login.com");
-    std::shared_ptr<hmcommon::HMUser> NewContact2 = make_user(QUuid::createUuid(), "TestContact2@login.com");
+    std::shared_ptr<hmcommon::HMUser> NewUser = testscommon::make_user(QUuid::createUuid(), "TestUser@login.com");
+    std::shared_ptr<hmcommon::HMUser> NewContact1 = testscommon::make_user(QUuid::createUuid(), "TestContact1@login.com");
+    std::shared_ptr<hmcommon::HMUser> NewContact2 = testscommon::make_user(QUuid::createUuid(), "TestContact2@login.com");
 
-    std::shared_ptr<hmcommon::HMContactList> NewContactList = std::make_shared<hmcommon::HMContactList>();
+    std::shared_ptr<hmcommon::HMUserList> NewContactList = std::make_shared<hmcommon::HMUserList>();
 
-    NewContactList->addContact(NewContact1);
+    NewContactList->add(NewContact1);
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    NewContactList->addContact(NewContact2);
+    NewContactList->add(NewContact2);
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     Error = CachedStorage.setUserContacts(NewUser->m_uuid, NewContactList); // Пытаемся добавить список контактов без добавления пользователя
@@ -449,13 +397,13 @@ TEST(CachedMemoryDataStorage, addUserContact)
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUser> NewUser = make_user(QUuid::createUuid(), "TestUser@login.com");
-    std::shared_ptr<hmcommon::HMUser> NewContact = make_user(QUuid::createUuid(), "TestContact@login.com");
+    std::shared_ptr<hmcommon::HMUser> NewUser = testscommon::make_user(QUuid::createUuid(), "TestUser@login.com");
+    std::shared_ptr<hmcommon::HMUser> NewContact = testscommon::make_user(QUuid::createUuid(), "TestContact@login.com");
 
     Error = CachedStorage.addUserContact(NewUser->m_uuid, NewContact);
     ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsRelationUCNotExists)); // Должны получить сообщение о том, что связь не существует
 
-    std::shared_ptr<hmcommon::HMContactList> NewContactList = std::make_shared<hmcommon::HMContactList>();
+    std::shared_ptr<hmcommon::HMUserList> NewContactList = std::make_shared<hmcommon::HMUserList>();
 
     Error = CachedStorage.setUserContacts(NewUser->m_uuid, NewContactList); // Добавляем пустой список контактов
     ASSERT_FALSE(Error); // Ошибки быть не должно (Наличие пользователя в кеше не обязательно)
@@ -483,13 +431,13 @@ TEST(CachedMemoryDataStorage, removeUserContact)
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUser> NewUser = make_user(QUuid::createUuid(), "TestUser@login.com");
-    std::shared_ptr<hmcommon::HMUser> NewContact = make_user(QUuid::createUuid(), "TestContact@login.com");
+    std::shared_ptr<hmcommon::HMUser> NewUser = testscommon::make_user(QUuid::createUuid(), "TestUser@login.com");
+    std::shared_ptr<hmcommon::HMUser> NewContact = testscommon::make_user(QUuid::createUuid(), "TestContact@login.com");
 
     Error = CachedStorage.removeUserContact(NewUser->m_uuid, NewContact->m_uuid); // Пытаемся удалсть не существующий контакт
     ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsRelationUCNotExists)); // Должны получить сообщение о том, что связи не существует
 
-    std::shared_ptr<hmcommon::HMContactList> NewContactList = std::make_shared<hmcommon::HMContactList>();
+    std::shared_ptr<hmcommon::HMUserList> NewContactList = std::make_shared<hmcommon::HMUserList>();
 
     Error = CachedStorage.setUserContacts(NewUser->m_uuid, NewContactList); // Добавляем пустой список контактов
     ASSERT_FALSE(Error); // Ошибки быть не должно (Наличие пользователя в кеше не обязательно)
@@ -517,14 +465,14 @@ TEST(CachedMemoryDataStorage, removeUserContacts)
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUser> NewUser = make_user(QUuid::createUuid(), "TestUser@login.com");
-    std::shared_ptr<hmcommon::HMUser> NewContact1 = make_user(QUuid::createUuid(), "TestContact1@login.com");
-    std::shared_ptr<hmcommon::HMUser> NewContact2 = make_user(QUuid::createUuid(), "TestContact2@login.com");
+    std::shared_ptr<hmcommon::HMUser> NewUser = testscommon::make_user(QUuid::createUuid(), "TestUser@login.com");
+    std::shared_ptr<hmcommon::HMUser> NewContact1 = testscommon::make_user(QUuid::createUuid(), "TestContact1@login.com");
+    std::shared_ptr<hmcommon::HMUser> NewContact2 = testscommon::make_user(QUuid::createUuid(), "TestContact2@login.com");
 
     Error = CachedStorage.removeUserContacts(NewUser->m_uuid); // Пытаемся удалить не сущестующую связь
     ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsSuccess)); // Вне зависимости от наличия в кеше, удаление валидно
 
-    std::shared_ptr<hmcommon::HMContactList> NewContactList = std::make_shared<hmcommon::HMContactList>();
+    std::shared_ptr<hmcommon::HMUserList> NewContactList = std::make_shared<hmcommon::HMUserList>();
 
     Error = CachedStorage.setUserContacts(NewUser->m_uuid, NewContactList); // Добавляем пустой список контактов
     ASSERT_FALSE(Error); // Ошибки быть не должно (Наличие пользователя в кеше не обязательно)
@@ -558,16 +506,16 @@ TEST(CachedMemoryDataStorage, getUserContactList)
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(CachedStorage.is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUser> NewUser = make_user(QUuid::createUuid(), "TestUser@login.com");
-    std::shared_ptr<hmcommon::HMUser> NewContact1 = make_user(QUuid::createUuid(), "TestContact1@login.com");
-    std::shared_ptr<hmcommon::HMUser> NewContact2 = make_user(QUuid::createUuid(), "TestContact2@login.com");
+    std::shared_ptr<hmcommon::HMUser> NewUser = testscommon::make_user(QUuid::createUuid(), "TestUser@login.com");
+    std::shared_ptr<hmcommon::HMUser> NewContact1 = testscommon::make_user(QUuid::createUuid(), "TestContact1@login.com");
+    std::shared_ptr<hmcommon::HMUser> NewContact2 = testscommon::make_user(QUuid::createUuid(), "TestContact2@login.com");
 
-    std::shared_ptr<hmcommon::HMContactList> FindRes = CachedStorage.getUserContactList(NewUser->m_uuid, Error); // Пытаемся получить список контактов не существующего пользователя
+    std::shared_ptr<hmcommon::HMUserList> FindRes = CachedStorage.getUserContactList(NewUser->m_uuid, Error); // Пытаемся получить список контактов не существующего пользователя
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться валидный указатель
     ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsRelationUCNotExists)); // Должны получить сообщение о том, что связь не существует
 
-    std::shared_ptr<hmcommon::HMContactList> NewContactList = std::make_shared<hmcommon::HMContactList>();
+    std::shared_ptr<hmcommon::HMUserList> NewContactList = std::make_shared<hmcommon::HMUserList>();
 
     Error = CachedStorage.setUserContacts(NewUser->m_uuid, NewContactList); // Добавляем пустой список контактов
     ASSERT_FALSE(Error); // Ошибки быть не должно (Наличие пользователя в кеше не обязательно)

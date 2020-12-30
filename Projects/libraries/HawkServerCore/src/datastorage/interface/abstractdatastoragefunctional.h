@@ -55,7 +55,7 @@ protected:
      * @param inContacts - Список контактов
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code checkUserContactsUnique(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMContactList> inContacts) const;
+    virtual std::error_code checkUserContactsUnique(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUserList> inContacts) const;
 
 };
 //-----------------------------------------------------------------------------

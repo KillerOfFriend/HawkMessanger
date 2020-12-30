@@ -15,6 +15,7 @@ set(TESTS_LINCED_LIBRARYES
 set(TESTS_INCLUDE_DIRS
     ${LIBRARIES_PATH}/HawkServerCore/src
     ${DIR_THIRDPARTY_PATH}/Building/googletest/googletest/include/
+    ${LIBRARIES_PATH}/HawkCommon/tests/TestsCommon
     )
 #====================================================================
 set(Test1 CachedMemoryDataStorage_Test)

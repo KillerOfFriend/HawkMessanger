@@ -3,7 +3,7 @@
 
 #include "user.h"
 #include "group.h"
-#include "contactlist.h"
+#include "userlist.h"
 
 namespace hmservcommon
 {
@@ -63,7 +63,7 @@ struct HMCachedUserContacts
      * @param inUserUUID - Uuid пользователя
      * @param inContactList - Список контактов
      */
-    HMCachedUserContacts(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMContactList> inContactList);
+    HMCachedUserContacts(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUserList> inContactList);
 
     /**
      * @brief HMCachedUserContacts - Конструктор копирования (Удалён)
@@ -94,7 +94,7 @@ struct HMCachedUserContacts
     bool operator == (const HMCachedUserContacts& inOther) const noexcept;
 
     QUuid m_userUUID; ///< UUID пользователя
-    std::shared_ptr<hmcommon::HMContactList> m_contactList = nullptr; ///< Перечень контактов
+    std::shared_ptr<hmcommon::HMUserList> m_contactList = nullptr; ///< Перечень контактов
     mutable QTime m_lastRequest; ///< Время последнего запроса
 };
 //-----------------------------------------------------------------------------

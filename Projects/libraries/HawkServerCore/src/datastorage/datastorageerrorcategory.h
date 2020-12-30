@@ -45,7 +45,7 @@ enum class eDataStorageError
     dsGroupUUIDCorrupted,               ///< UUID группы повреждён
     dsGroupRegistrationDateCorrupted,   ///< Время группы поврежено
     dsGroupNameCorrupted,               ///< Имя группы повреждено
-    dsGroupUsersCorrupted,              ///< Пользователи группы повреждены
+//    dsGroupUsersCorrupted,              ///< Пользователи группы повреждены
     // Собщения
     dsMessageNotExists,                 ///< Сообщение не существует
     dsMessageAlreadyExists,             ///< Сообщение уже существует

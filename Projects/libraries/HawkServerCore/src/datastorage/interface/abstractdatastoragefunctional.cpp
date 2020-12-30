@@ -114,7 +114,7 @@ std::error_code HMAbstractDataStorageFunctional::checkNewGroupUnique(const std::
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMAbstractDataStorageFunctional::checkUserContactsUnique(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMContactList> inContacts) const
+std::error_code HMAbstractDataStorageFunctional::checkUserContactsUnique(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUserList> inContacts) const
 {   // ДАННЫЙ МЕТОД НЕ ДОЛЖЕН ПРОВЕРЯТЬ КЕШ!
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
@@ -127,7 +127,7 @@ std::error_code HMAbstractDataStorageFunctional::checkUserContactsUnique(const Q
         else
         {
             std::error_code ErrorFindByUUID = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
-            std::shared_ptr<hmcommon::HMContactList> FindRes = getUserContactList(inUserUUID, ErrorFindByUUID); // Ищим связь по UUID
+            std::shared_ptr<hmcommon::HMUserList> FindRes = getUserContactList(inUserUUID, ErrorFindByUUID); // Ищим связь по UUID
 
             // I) getUserContactList Вернёт либо:
             // 1) Связь найдена == Success из любой категории (функция должна вернуть eDataStorageError::dsRelationUCAlreadyExists)
