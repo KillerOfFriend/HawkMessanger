@@ -6,8 +6,9 @@
  * @brief Содержит описание интерфейса хранилища данных
  */
 
-#include <memory>
+#include <set>
 #include <vector>
+#include <memory>
 #include <system_error>
 
 #include <HawkCommon.h>
@@ -99,6 +100,14 @@ public:
      */
     virtual std::error_code removeUser(const QUuid& inUserUUID) = 0;
 
+    /**
+     * @brief getUserGroups - Метод вернёт список групп пользователя
+     * @param inUserUUID - Uuid пользователя
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт список UUID'ов групп пользователя
+     */
+    virtual std::shared_ptr<std::set<QUuid>> getUserGroups(const QUuid& inUserUUID, std::error_code& outErrorCode) const = 0;
+
     // Группы
 
     /**
@@ -129,6 +138,45 @@ public:
      * @return Вернёт признак ошибки
      */
     virtual std::error_code removeGroup(const QUuid& inGroupUUID) = 0;
+
+    /**
+     * @brief setGroupUsers - Метод задаст список членов группы
+     * @param inGroupUUID - Uuid группы
+     * @param inUsers - Список пользователей группы (UUID'ы)
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code setGroupUsers(const QUuid& inGroupUUID, const std::shared_ptr<std::set<QUuid>> inUsers) = 0;
+
+    /**
+     * @brief setGroupUsers - Метод добавит пользователя в группу
+     * @param inGroupUUID - Uuid группы
+     * @param inUserUUID - UUID пользователя
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code addGroupUser(const QUuid& inGroupUUID, const QUuid& inUserUUID) = 0;
+
+    /**
+     * @brief removeGroupUser - Метод удалит пользователя из группы
+     * @param inGroupUUID - Uuid группы
+     * @param inUserUUID - Uuid пользователя
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code removeGroupUser(const QUuid& inGroupUUID, const QUuid& inUserUUID) = 0;
+
+    /**
+     * @brief clearGroupUsers - Метод очистит список членов группы
+     * @param inGroupUUID - Uuid группы
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code clearGroupUsers(const QUuid& inGroupUUID) = 0;
+
+    /**
+     * @brief getGroupUserList - Метод вернёт список UUID'ов членов группы
+     * @param inGroupUUID - Uuid группы
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт список UUID'ов пользователей группы
+     */
+    virtual std::shared_ptr<std::set<QUuid>> getGroupUserList(const QUuid& inGroupUUID, std::error_code& outErrorCode) const = 0;
 
     // Сообщения
 
@@ -211,9 +259,6 @@ public:
      * @return Вернёт список контактов пользователя
      */
     virtual std::shared_ptr<hmcommon::HMUserList> getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const = 0;
-
-    // Связи [Группа]
-
 
 };
 //-----------------------------------------------------------------------------

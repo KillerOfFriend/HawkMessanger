@@ -94,7 +94,6 @@ public:
      * @param inLogin - Логин пользователя
      * @param inPasswordHash - Хеш пароля пользователя
      * @param outErrorCode - Признак ошибки
-     * @param inWithContacts - Флаг "Вернуть со списокм контактов"
      * @return Вернёт указатель на экземпляр пользователя или nullptr
      */
     virtual std::shared_ptr<hmcommon::HMUser> findUserByAuthentication(const QString& inLogin, const QByteArray& inPasswordHash, std::error_code& outErrorCode) const override;
@@ -105,6 +104,14 @@ public:
      * @return Вернёт признак ошибки
      */
     virtual std::error_code removeUser(const QUuid& inUserUUID) override;
+
+    /**
+     * @brief getUserGroups - Метод вернёт список групп пользователя
+     * @param inUserUUID - Uuid пользователя
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт список UUID'ов групп пользователя
+     */
+    virtual std::shared_ptr<std::set<QUuid>> getUserGroups(const QUuid& inUserUUID, std::error_code& outErrorCode) const override;
 
     // Группы
 
@@ -136,6 +143,45 @@ public:
      * @return Вернёт признак ошибки
      */
     virtual std::error_code removeGroup(const QUuid& inGroupUUID) override;
+
+    /**
+     * @brief setGroupUsers - Метод задаст список членов группы
+     * @param inGroupUUID - Uuid группы
+     * @param inUsers - Список пользователей группы (UUID'ы)
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code setGroupUsers(const QUuid& inGroupUUID, const std::shared_ptr<std::set<QUuid>> inUsers) override;
+
+    /**
+     * @brief setGroupUsers - Метод добавит пользователя в группу
+     * @param inGroupUUID - Uuid группы
+     * @param inUserUUID - UUID пользователя
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code addGroupUser(const QUuid& inGroupUUID, const QUuid& inUserUUID) override;
+
+    /**
+     * @brief removeGroupUser - Метод удалит пользователя из группы
+     * @param inGroupUUID - Uuid группы
+     * @param inUserUUID - Uuid пользователя
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code removeGroupUser(const QUuid& inGroupUUID, const QUuid& inUserUUID) override;
+
+    /**
+     * @brief clearGroupUsers - Метод очистит список членов группы
+     * @param inGroupUUID - Uuid группы
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code clearGroupUsers(const QUuid& inGroupUUID) override;
+
+    /**
+     * @brief getGroupUserList - Метод вернёт список UUID'ов членов группы
+     * @param inGroupUUID - Uuid группы
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт список UUID'ов пользователей группы
+     */
+    virtual std::shared_ptr<std::set<QUuid>> getGroupUserList(const QUuid& inGroupUUID, std::error_code& outErrorCode) const override;
 
     // Сообщения
 
@@ -230,6 +276,38 @@ protected:
 private:
 
     /**
+     * @brief findUser - Метод вернёт ссылку на json объект пользователя в хранилище
+     * @param inUserUUID - UUID пользователя
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт ссылку на json объект пользователя в хранилище
+     */
+    nlohmann::json& findUser(const QUuid &inUserUUID, std::error_code& outErrorCode);
+
+    /**
+     * @brief findConstUser - Метод вернёт константную ссылку на json объект пользователя в хранилище
+     * @param inUserUUID - UUID пользователя
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт константную ссылку на json объект пользователя в хранилище
+     */
+    const nlohmann::json& findConstUser(const QUuid &inUserUUID, std::error_code& outErrorCode) const;
+
+    /**
+     * @brief findGroup - Метод вернёт ссылку на json объект группы в хранилище
+     * @param inGroupUUID - UUID группы
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт ссылку на json объект группы в хранилище
+     */
+    nlohmann::json& findGroup(const QUuid &inGroupUUID, std::error_code& outErrorCode);
+
+    /**
+     * @brief findConstGroup - Метод вернёт константную ссылку на json объект группы в хранилище
+     * @param inGroupUUID - UUID группы
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт константную ссылку на json объект группы в хранилище
+     */
+    const nlohmann::json& findConstGroup(const QUuid &inGroupUUID, std::error_code& outErrorCode) const;
+
+    /**
      * @brief onCreateUser - Метод выполнится при создании пользователя
      * @param inUserUUID - Uuid пользователя
      * @return Вернёт признак ошибки
@@ -289,11 +367,11 @@ private:
      */
     std::error_code checkRelationsUC() const;
 
-    /**
-     * @brief checkRelationsGU - Метод проверит корректность структуры связй группа-пользователи
-     * @return Вернёт признак ошибки
-     */
-    std::error_code checkRelationsGU() const;
+//    /**
+//     * @brief checkRelationsGU - Метод проверит корректность структуры связй группа-пользователи
+//     * @return Вернёт признак ошибки
+//     */
+//    std::error_code checkRelationsGU() const;
 
     /**
      * @brief write - Метод запишет изменения в JSON файл

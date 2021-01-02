@@ -78,3 +78,31 @@ bool HMCachedGroup::operator== (const HMCachedGroup& inOther) const noexcept
         return inOther.m_group->m_uuid == this->m_group->m_uuid;
 }
 //-----------------------------------------------------------------------------
+// HMCachedGroupUsers
+//-----------------------------------------------------------------------------
+HMCachedGroupUsers::HMCachedGroupUsers(const QUuid& inGroupUUID, const std::shared_ptr<std::set<QUuid>> inGroupUsers) :
+    m_group(inGroupUUID),
+    m_groupUsers(inGroupUsers),
+    m_lastRequest(QTime::currentTime())
+{
+    assert(m_groupUsers != nullptr);
+}
+//-----------------------------------------------------------------------------
+HMCachedGroupUsers::HMCachedGroupUsers(HMCachedGroupUsers&& inOther) :
+    m_group(inOther.m_group),
+    m_groupUsers(inOther.m_groupUsers),
+    m_lastRequest(inOther.m_lastRequest)
+{
+    inOther.m_group = QUuid();
+    inOther.m_groupUsers = nullptr;
+    inOther.m_lastRequest = QTime();
+}
+//-----------------------------------------------------------------------------
+bool HMCachedGroupUsers::operator == (const HMCachedGroupUsers& inOther) const noexcept
+{
+    if (!inOther.m_groupUsers || !this->m_groupUsers)
+        return false;
+    else
+        return inOther.m_group == this->m_group;
+}
+//-----------------------------------------------------------------------------

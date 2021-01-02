@@ -30,13 +30,17 @@ static const std::string J_USER_PASS                = "password_hash";
 static const std::string J_USER_NAME                = "name";
 static const std::string J_USER_SEX                 = "sex";
 static const std::string J_USER_BIRTHDAY            = "birthday";
+static const std::string J_USER_CONTACTS            = "contacts";
+static const std::string J_USER_CONTACT_UUID        = "contact_" + UUID;
+static const std::string J_USER_GROUPS              = "groups";
+static const std::string J_USER_GROUP_UUID          = "group_" + UUID;
 //-----------------------------------------------------------------------------
 // Группы
 //-----------------------------------------------------------------------------
 static const std::string J_GROUP_UUID               = UUID;
 static const std::string J_GROUP_REGDATE            = REGDATE;
 static const std::string J_GROUP_NAME               = "name";
-//static const std::string J_GROUP_USERS              = "users";
+static const std::string J_GROUP_USERS              = "users";
 //-----------------------------------------------------------------------------
 // Сообщения
 //-----------------------------------------------------------------------------

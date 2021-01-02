@@ -126,6 +126,13 @@ std::error_code HMCachedMemoryDataStorage::removeUser(const QUuid& inUserUUID)
     return make_error_code(eDataStorageError::dsSuccess); // Наплевать, был пользователь в кеше или нет
 }
 //-----------------------------------------------------------------------------
+std::shared_ptr<std::set<QUuid>> HMCachedMemoryDataStorage::getUserGroups(const QUuid& inUserUUID, std::error_code& outErrorCode) const
+{
+    Q_UNUSED(inUserUUID);
+    outErrorCode = make_error_code(eDataStorageError::dsUserGroupsRelationNotExists); // Чесно говорим, что группы пользователей не кешированы
+    return nullptr;
+}
+//-----------------------------------------------------------------------------
 std::error_code HMCachedMemoryDataStorage::addGroup(const std::shared_ptr<hmcommon::HMGroup> inGroup)
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально помечаем как успех
@@ -190,6 +197,118 @@ std::error_code HMCachedMemoryDataStorage::removeGroup(const QUuid& inGroupUUID)
         m_cachedGroups.erase(FindRes); // Удаляем её из кеша
 
     return make_error_code(eDataStorageError::dsSuccess); // Наплевать, была группа в кеше или нет
+}
+//-----------------------------------------------------------------------------
+std::error_code HMCachedMemoryDataStorage::setGroupUsers(const QUuid& inGroupUUID, const std::shared_ptr<std::set<QUuid>> inUsers)
+{
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+
+    if (!is_open()) // Хранилище должно быть открыто
+        Error = make_error_code(eDataStorageError::dsNotOpen);
+    else
+    {
+        if (!inUsers) // Работаем только с валидным указателем
+            Error = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
+        else
+        {
+            std::shared_lock sl(m_userGroupUsersDefender); // Публично блокируем участников групп
+            if (!m_cachedGroupUsers.emplace(HMCachedGroupUsers(inGroupUUID, inUsers)).second)
+                Error = make_error_code(eDataStorageError::dsGroupUserRelationNotExists);
+        }
+    }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
+std::error_code HMCachedMemoryDataStorage::addGroupUser(const QUuid& inGroupUUID, const QUuid& inUserUUID)
+{
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+
+    if (!is_open()) // Хранилище должно быть открыто
+        Error = make_error_code(eDataStorageError::dsNotOpen);
+    else
+    {
+        std::shared_lock sl(m_userGroupUsersDefender); // Публично блокируем участников групп
+        auto FindRes = m_cachedGroupUsers.find(HMCachedGroupUsers(inGroupUUID, std::make_shared<std::set<QUuid>>())); // Ищим связь в кеше
+
+        if (FindRes == m_cachedGroupUsers.end()) // Нет связи в кеше
+            Error = make_error_code(eDataStorageError::dsGroupUserRelationNotExists);
+        else // Связь кеширована
+        {
+            FindRes->m_groupUsers->insert(inUserUUID); // Добавляем участника (Если он уже внутри, не фатально)
+            FindRes->m_lastRequest = QTime::currentTime(); // Помечаем время последнего запроса
+        }
+    }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
+std::error_code HMCachedMemoryDataStorage::removeGroupUser(const QUuid& inGroupUUID, const QUuid& inUserUUID)
+{
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+
+    if (!is_open()) // Хранилище должно быть открыто
+        Error = make_error_code(eDataStorageError::dsNotOpen);
+    else
+    {
+        std::shared_lock sl(m_userGroupUsersDefender); // Публично блокируем участников групп
+        auto FindRes = m_cachedGroupUsers.find(HMCachedGroupUsers(inGroupUUID, std::make_shared<std::set<QUuid>>())); // Ищим связь в кеше
+
+        if (FindRes == m_cachedGroupUsers.end()) // Нет связи в кеше
+            Error = make_error_code(eDataStorageError::dsGroupUserRelationNotExists);
+        else // Связь кеширована
+        {
+            FindRes->m_groupUsers->erase(inUserUUID); // Удаляем участника (Если его не было, не фатально)
+            FindRes->m_lastRequest = QTime::currentTime(); // Помечаем время последнего запроса
+        }
+    }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
+std::error_code HMCachedMemoryDataStorage::clearGroupUsers(const QUuid& inGroupUUID)
+{
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+
+    if (!is_open()) // Хранилище должно быть открыто
+        Error = make_error_code(eDataStorageError::dsNotOpen);
+    else
+    {
+        std::shared_lock sl(m_userGroupUsersDefender); // Публично блокируем участников групп
+        auto FindRes = m_cachedGroupUsers.find(HMCachedGroupUsers(inGroupUUID, std::make_shared<std::set<QUuid>>())); // Ищим связь в кеше
+
+        if (FindRes == m_cachedGroupUsers.end()) // Нет связи в кеше
+            Error = make_error_code(eDataStorageError::dsGroupUserRelationNotExists);
+        else // Связь кеширована
+        {
+            FindRes->m_groupUsers->clear(); // Очищаем список участников
+            FindRes->m_lastRequest = QTime::currentTime(); // Помечаем время последнего запроса
+        }
+    }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
+std::shared_ptr<std::set<QUuid>> HMCachedMemoryDataStorage::getGroupUserList(const QUuid& inGroupUUID, std::error_code& outErrorCode) const
+{
+    std::shared_ptr<std::set<QUuid>> Result = nullptr;
+    outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+
+    if (!is_open()) // Хранилище должно быть открыто
+        outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
+    else
+    {
+        std::shared_lock sl(m_userGroupUsersDefender); // Публично блокируем участников групп
+
+        auto FindRes = m_cachedGroupUsers.find(HMCachedGroupUsers(inGroupUUID, std::make_shared<std::set<QUuid>>())); // Ищим связь в кеше
+
+        if (FindRes == m_cachedGroupUsers.end()) // Нет группы в кеше
+            outErrorCode = make_error_code(eDataStorageError::dsGroupUserRelationNotExists);
+        else // Связь кеширована
+            Result = FindRes->m_groupUsers; // Возвращаем кешированный список участников
+    }
+
+    return Result;
 }
 //-----------------------------------------------------------------------------
 std::error_code HMCachedMemoryDataStorage::addMessage(const std::shared_ptr<hmcommon::HMGroupMessage> inMessage)
@@ -346,6 +465,22 @@ void HMCachedMemoryDataStorage::processCacheInThread()
         {   // Если объектом владеет только кеш и время жизни объекта вышло
             if (It->m_contactList.use_count() == 1 && It->m_lastRequest.msecsTo(QTime::currentTime()) >= cacheLifeTime)
                 It = m_cachedUserContacts.erase(It); // Удаляем пользователя из кеша
+            else // Объект не привысил лимит жизни
+                It++; // Переходим к следующему объекту
+        }
+    }
+
+    // Обрабатываем кешированные связи группы-пользователи
+    if (m_userGroupUsersDefender.try_lock()) // Если прошла эксклюзивная блокировка
+    {   // Просматриваем кеш связи пользорватель-контакты
+        std::unique_lock ul(m_userGroupUsersDefender, std::adopt_lock); // Передаём контроль в unique_lock
+
+        auto It = m_cachedGroupUsers.begin();
+        // Пока не c++20 будем удалять по старинке
+        while (It != m_cachedGroupUsers.end())
+        {   // Если объектом владеет только кеш и время жизни объекта вышло
+            if (It->m_groupUsers.use_count() == 1 && It->m_lastRequest.msecsTo(QTime::currentTime()) >= cacheLifeTime)
+                It = m_cachedGroupUsers.erase(It); // Удаляем пользователя из кеша
             else // Объект не привысил лимит жизни
                 It++; // Переходим к следующему объекту
         }

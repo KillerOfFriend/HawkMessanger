@@ -59,18 +59,18 @@ public:
     std::error_code checkRelationUC(const nlohmann::json& inRelationUCObject) const;
 
     /**
+     * @brief checkRelationGU - Метод проверит валидность JSON объекта связи группа-пользователи
+     * @param inRelationGUObject - Проверяемый объек
+     * @return Вернёт признак ошибки
+     */
+    std::error_code checkRelationGU(const nlohmann::json& inRelationGUObject) const;
+
+    /**
      * @brief checkUserContactsRelation - Метод проверит валидность JSON объекта связи пользователь-контакты
      * @param inUCRelation - Проверяемый объект
      * @return Вернёт признак ошибки
      */
     std::error_code checkUserContactsRelation(const nlohmann::json& inUCRelation) const;
-
-    /**
-     * @brief checkUserContactRelations - Метод проверит валидность JSON объекта связи группа-пользователи
-     * @param inGURelation - Проверяемый объект
-     * @return Вернёт признак ошибки
-     */
-    std::error_code checkGroupUsersRelation(const nlohmann::json& inGURelation) const;
 
     /**
      * @brief jsonToByteArr - Функция преобразует JSON в QByteArray

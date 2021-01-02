@@ -5,18 +5,18 @@
 using namespace hmservcommon;
 
 //-----------------------------------------------------------------------------
-HMServerCore::HMServerCore() :
-    m_dataStorage(std::make_unique<datastorage::HMCombinedDataStorage>(
-                      std::make_shared<datastorage::HMJsonDataStorage>(std::filesystem::path("Storage.JSON")),
-                      std::make_shared<datastorage::HMCachedMemoryDataStorage>()))
+HMServerCore::HMServerCore()
 {
-    if (m_dataStorage)
-    {
-        std::error_code Error = m_dataStorage->open();
+    m_dataStorage = std::make_shared<datastorage::HMCombinedDataStorage>( // Формируем хранилище данных
+                std::make_shared<datastorage::HMJsonDataStorage>(std::filesystem::path("Storage.JSON")), // Из фисического (медленного) хранилища
+                std::make_shared<datastorage::HMCachedMemoryDataStorage>()); // И кеширующего (быстрого) хранилища
 
-        if (Error)
-            LOG_ERROR(QString::fromStdString(Error.message()));
-    }
+    std::error_code Error = m_dataStorage->open(); // Пытаемся открыть хранилище
+
+    if (Error)
+        LOG_ERROR(QString::fromStdString(Error.message()));
+
+    m_accountBuilder = std::make_unique<builders::HMAccountBuilder>(m_dataStorage); // Формируем билдер и передаём в него хранилище
 }
 //-----------------------------------------------------------------------------
 HMServerCore::~HMServerCore()

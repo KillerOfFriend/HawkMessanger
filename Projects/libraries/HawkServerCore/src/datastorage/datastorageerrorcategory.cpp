@@ -38,6 +38,8 @@ std::string DataStorageErrorCategory::message(int inCode) const
         case eDataStorageError::dsUserSexCorrupted:                 { Result = tr("Пол пользователя повреждён").toStdString(); break; }
         case eDataStorageError::dsUserBirthdayCorrupted:            { Result = tr("День рождения пользователя повреждён").toStdString(); break; }
         case eDataStorageError::dsUserContactsCorrupted:            { Result = tr("Контакты пользователя повреждены").toStdString(); break; }
+        case eDataStorageError::dsUserGroupsCorrupted:              { Result = tr("Группы пользователя повреждены").toStdString(); break; }
+        case eDataStorageError::dsUserGroupsRelationNotExists:      { Result = tr("Связь пользователь-группы не существует").toStdString(); break; }
 
         case eDataStorageError::dsGroupUUIDAlreadyRegistered:       { Result = tr("Группа с таким UUID уже зарегистрирована").toStdString(); break; }
         case eDataStorageError::dsGroupNotExists:                   { Result = tr("Группа не существует").toStdString(); break; }
@@ -45,6 +47,9 @@ std::string DataStorageErrorCategory::message(int inCode) const
         case eDataStorageError::dsGroupUUIDCorrupted:               { Result = tr("UUID группы повреждён").toStdString(); break; }
         case eDataStorageError::dsGroupNameCorrupted:               { Result = tr("Имя группы повреждено").toStdString(); break; }
         case eDataStorageError::dsGroupRegistrationDateCorrupted:   { Result = tr("Дата группы повреждена").toStdString(); break; }
+        case eDataStorageError::dsGroupUsersCorrupted:              { Result = tr("Участники группы повреждены").toStdString(); break; }
+        case eDataStorageError::dsGroupUserRelationAlredyExists:    { Result = tr("Связь группа-пользователь уже существует").toStdString(); break; }
+        case eDataStorageError::dsGroupUserRelationNotExists:       { Result = tr("Связь группа-пользователь не существует").toStdString(); break; }
 
         case eDataStorageError::dsMessageNotExists:                 { Result = tr("Сообщение не существует").toStdString(); break; }
         case eDataStorageError::dsMessageAlreadyExists:             { Result = tr("Сообщение уже существует").toStdString(); break; }
@@ -64,18 +69,9 @@ std::string DataStorageErrorCategory::message(int inCode) const
         case eDataStorageError::dsRelationUCUserUUIDCorrupted:      { Result = tr("В связи пользователь-контакты повреждён UUID пользователя").toStdString(); break; }
         case eDataStorageError::dsRelationUCContactsCorrupted:      { Result = tr("В связи пользователь-контакты повреждён список контактов").toStdString(); break; }
         case eDataStorageError::dsRelationUCContactUUIDCorrupted:   { Result = tr("В связи пользователь-контакты повреждён UUID контакта").toStdString(); break; }
-        // Связи группа-пользователь
-        case eDataStorageError::dsRelationGUAlreadyExists:          { Result = tr("Связь группа-пользвоатели уже существует").toStdString(); break; }
-        case eDataStorageError::dsRelationGUNotExists:              { Result = tr("Связь группа-пользвоатели не существует").toStdString(); break; }
-        case eDataStorageError::dsRelationGUUserAlredyExists:       { Result = tr("Пользователь уже существует в связи группа-пользвоатели").toStdString(); break; }
-        case eDataStorageError::dsRelationGUUserNotExists:          { Result = tr("Пользователь не существует в  связи группа-пользвоатели").toStdString(); break; }
-        case eDataStorageError::dsRelationGUCorrupted:              { Result = tr("Связи группа-пользвоатели повреждены").toStdString(); break; }
-        case eDataStorageError::dsRelationGUGroupUUIDCorrupted:     { Result = tr("В связи группа-пользвоатели повреждён UUID группы").toStdString(); break; }
-        case eDataStorageError::dsRelationGUUsersCorrupted:         { Result = tr("В связи группа-пользвоатели повреждён список пользователей").toStdString(); break; }
-        case eDataStorageError::dsRelationGUUserUUIDCorrupted:      { Result = tr("В связи группа-пользвоатели повреждён UUID пользователя").toStdString(); break; }
 
         default: Result = ( tr("Не известная ошибка с кодом: ") + QString::number(inCode) ).toStdString();
-    }
+}
 
     return Result;
 }

@@ -89,7 +89,6 @@ public:
      * @param inLogin - Логин пользователя
      * @param inPasswordHash - Хеш пароля пользователя
      * @param outErrorCode - Признак ошибки
-     * @param inWithContacts - Флаг "Вернуть со списокм контактов"
      * @return Вернёт указатель на экземпляр пользователя или nullptr
      */
     virtual std::shared_ptr<hmcommon::HMUser> findUserByAuthentication(const QString& inLogin, const QByteArray& inPasswordHash, std::error_code& outErrorCode) const override;
@@ -100,6 +99,14 @@ public:
      * @return Вернёт признак ошибки
      */
     virtual std::error_code removeUser(const QUuid& inUserUUID) override;
+
+    /**
+     * @brief getUserGroups - Метод вернёт список групп пользователя
+     * @param inUserUUID - Uuid пользователя
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт список UUID'ов групп пользователя
+     */
+    virtual std::shared_ptr<std::set<QUuid>> getUserGroups(const QUuid& inUserUUID, std::error_code& outErrorCode) const override;
 
     // Группы
 
@@ -131,6 +138,45 @@ public:
      * @return Вернёт признак ошибки
      */
     virtual std::error_code removeGroup(const QUuid& inGroupUUID) override;
+
+    /**
+     * @brief setGroupUsers - Метод задаст список членов группы
+     * @param inGroupUUID - Uuid группы
+     * @param inUsers - Список пользователей группы (UUID'ы)
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code setGroupUsers(const QUuid& inGroupUUID, const std::shared_ptr<std::set<QUuid>> inUsers) override;
+
+    /**
+     * @brief setGroupUsers - Метод добавит пользователя в группу
+     * @param inGroupUUID - Uuid группы
+     * @param inUserUUID - UUID пользователя
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code addGroupUser(const QUuid& inGroupUUID, const QUuid& inUserUUID) override;
+
+    /**
+     * @brief removeGroupUser - Метод удалит пользователя из группы
+     * @param inGroupUUID - Uuid группы
+     * @param inUserUUID - Uuid пользователя
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code removeGroupUser(const QUuid& inGroupUUID, const QUuid& inUserUUID) override;
+
+    /**
+     * @brief clearGroupUsers - Метод очистит список членов группы
+     * @param inGroupUUID - Uuid группы
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code clearGroupUsers(const QUuid& inGroupUUID) override;
+
+    /**
+     * @brief getGroupUserList - Метод вернёт список UUID'ов членов группы
+     * @param inGroupUUID - Uuid группы
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт список UUID'ов пользователей группы
+     */
+    virtual std::shared_ptr<std::set<QUuid>> getGroupUserList(const QUuid& inGroupUUID, std::error_code& outErrorCode) const override;
 
     // Сообщения
 

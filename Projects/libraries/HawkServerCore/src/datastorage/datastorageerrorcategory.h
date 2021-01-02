@@ -38,6 +38,9 @@ enum class eDataStorageError
     dsUserSexCorrupted,                 ///< Пол пользователя поврежден
     dsUserBirthdayCorrupted,            ///< День рождения пользователя повреждён
     dsUserContactsCorrupted,            ///< Контакты пользователя повреждены
+    dsUserGroupsCorrupted,              ///< Группы пользователя повреждены
+    dsUserGroupsRelationNotExists,      ///< Связь пользователь-группы не существует
+
     // Группы
     dsGroupUUIDAlreadyRegistered,       ///< В хранилище уже зарегистрирована группа с таким UUID
     dsGroupNotExists,                   ///< Группа не существует
@@ -45,7 +48,10 @@ enum class eDataStorageError
     dsGroupUUIDCorrupted,               ///< UUID группы повреждён
     dsGroupRegistrationDateCorrupted,   ///< Время группы поврежено
     dsGroupNameCorrupted,               ///< Имя группы повреждено
-//    dsGroupUsersCorrupted,              ///< Пользователи группы повреждены
+    dsGroupUsersCorrupted,              ///< Участники группы повреждены
+    dsGroupUserRelationAlredyExists,    ///< Связь группа-пользователь уже существует
+    dsGroupUserRelationNotExists,       ///< Связь группа-пользователь не существует
+
     // Собщения
     dsMessageNotExists,                 ///< Сообщение не существует
     dsMessageAlreadyExists,             ///< Сообщение уже существует
@@ -65,15 +71,6 @@ enum class eDataStorageError
     dsRelationUCUserUUIDCorrupted,      ///< В связи пользователь-контакты повреждён UUID пользователя
     dsRelationUCContactsCorrupted,      ///< В связи пользователь-контакты повреждён список контактов
     dsRelationUCContactUUIDCorrupted,   ///< В связи пользователь-контакты повреждён UUID контакта
-    // Связи группа-пользователь
-    dsRelationGUAlreadyExists,          ///< Связь группа-пользвоатели уже существует
-    dsRelationGUNotExists,              ///< Связь группа-пользвоатели не существует
-    dsRelationGUUserAlredyExists,       ///< Пользователь уже существует в связи группа-пользвоатели
-    dsRelationGUUserNotExists,          ///< Пользователь не существует в  связи группа-пользвоатели
-    dsRelationGUCorrupted,              ///< Связи группа-пользвоатели повреждены
-    dsRelationGUGroupUUIDCorrupted,     ///< В связи группа-пользвоатели повреждён UUID группы
-    dsRelationGUUsersCorrupted,         ///< В связи группа-пользвоатели повреждён список пользователей
-    dsRelationGUUserUUIDCorrupted,      ///< В связи группа-пользвоатели повреждён UUID пользователя
 
     dsCount
 };

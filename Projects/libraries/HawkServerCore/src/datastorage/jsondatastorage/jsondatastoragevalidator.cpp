@@ -33,6 +33,20 @@ std::error_code HMJsonDataStorageValidator::checkUser(const nlohmann::json& inUs
     if (inUserObject.find(J_USER_BIRTHDAY) == inUserObject.end() || /*inUserObject[J_USER_BIRTHDAY].is_null() ||*/ inUserObject[J_USER_BIRTHDAY].type() != nlohmann::json::value_t::string)
         Error = make_error_code(eDataStorageError::dsUserBirthdayCorrupted);
 
+    if (inUserObject.find(J_USER_CONTACTS) == inUserObject.end() || inUserObject[J_USER_CONTACTS].is_null() || inUserObject[J_USER_CONTACTS].type() != nlohmann::json::value_t::array)
+        Error = make_error_code(eDataStorageError::dsUserContactsCorrupted);
+    else
+        for (const auto& ContactUUID : inUserObject[J_USER_CONTACTS].items()) // Перебираем все контакты пользователя
+            if (ContactUUID.value().is_null() || ContactUUID.value().type() != nlohmann::json::value_t::string)
+            { Error = make_error_code(eDataStorageError::dsUserContactsCorrupted); break; } // Если хоть один повреждён, метим польхователя как повреждённого
+
+    if (inUserObject.find(J_USER_GROUPS) == inUserObject.end() || inUserObject[J_USER_GROUPS].is_null() || inUserObject[J_USER_GROUPS].type() != nlohmann::json::value_t::array)
+        Error = make_error_code(eDataStorageError::dsUserGroupsCorrupted);
+    else
+        for (const auto& GroupUUID : inUserObject[J_USER_GROUPS].items()) // Перебираем все группы пользователя
+            if (GroupUUID.value().is_null() || GroupUUID.value().type() != nlohmann::json::value_t::string)
+            { Error = make_error_code(eDataStorageError::dsUserGroupsCorrupted); break; } // Если хоть одна повреждена, метим польхователя как повреждённого
+
     return Error;
 }
 //-----------------------------------------------------------------------------
@@ -49,19 +63,12 @@ std::error_code HMJsonDataStorageValidator::checkGroup(const nlohmann::json& inG
     if (inGroupObject.find(J_GROUP_NAME) == inGroupObject.end() || inGroupObject[J_GROUP_NAME].is_null() || inGroupObject[J_GROUP_NAME].type() != nlohmann::json::value_t::string)
         Error = make_error_code(eDataStorageError::dsGroupNameCorrupted);
 
-//    if (inGroupObject.find(J_GROUP_USERS) == inGroupObject.end() || inGroupObject[J_GROUP_USERS].is_null() || inGroupObject[J_GROUP_USERS].type() != nlohmann::json::value_t::array)
-//        Error = make_error_code(eDataStorageError::dsGroupUsersCorrupted);
-//    else // Список пользователей группы валиден
-//    {
-//        for (auto& UserUUID : inGroupObject[J_GROUP_USERS].items())
-//        {   // Перебираем всех пользователй группы
-//            if (UserUUID.value().is_null() || UserUUID.value().type() != nlohmann::json::value_t::string)
-//            {   // Если хоть один повреждён, метим группу как повреждённую
-//                Error = make_error_code(eDataStorageError::dsGroupUsersCorrupted);
-//                break;
-//            }
-//        }
-//    }
+    if (inGroupObject.find(J_GROUP_USERS) == inGroupObject.end() || inGroupObject[J_GROUP_USERS].is_null() || inGroupObject[J_GROUP_USERS].type() != nlohmann::json::value_t::array)
+        Error = make_error_code(eDataStorageError::dsGroupUsersCorrupted);
+    else // Список пользователей группы валиден
+        for (auto& UserUUID : inGroupObject[J_GROUP_USERS].items()) // Перебираем всех пользователй группы
+            if (UserUUID.value().is_null() || UserUUID.value().type() != nlohmann::json::value_t::string)
+            { Error = make_error_code(eDataStorageError::dsGroupUsersCorrupted); break; } // Если хоть один повреждён, метим группу как повреждённую
 
     return Error;
 }
@@ -108,13 +115,31 @@ std::error_code HMJsonDataStorageValidator::checkRelationUC(const nlohmann::json
     return Error;
 }
 //-----------------------------------------------------------------------------
-#include <HawkLog.h>
+std::error_code HMJsonDataStorageValidator::checkRelationGU(const nlohmann::json& inRelationGUObject) const
+{
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+
+    if (inRelationGUObject.find(J_REL_GU_GROUP_UUID) == inRelationGUObject.end() || inRelationGUObject[J_REL_GU_GROUP_UUID].is_null() || inRelationGUObject[J_REL_GU_GROUP_UUID].type() != nlohmann::json::value_t::string)
+        Error = make_error_code(eDataStorageError::dsRelationUCUserUUIDCorrupted);
+
+    if (inRelationGUObject.find(J_REL_UC_CONTACTS) == inRelationGUObject.end() || inRelationGUObject[J_REL_UC_CONTACTS].is_null() || inRelationGUObject[J_REL_UC_CONTACTS].type() != nlohmann::json::value_t::array)
+        Error = make_error_code(eDataStorageError::dsRelationUCContactsCorrupted);
+    else
+        for (auto& Contact : inRelationGUObject[J_REL_UC_CONTACTS].items())
+            if (Contact.value().is_null() || Contact.value().type() != nlohmann::json::value_t::string)
+            {
+                Error = make_error_code(eDataStorageError::dsRelationUCContactUUIDCorrupted);
+                break;
+            }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
 std::error_code HMJsonDataStorageValidator::checkUserContactsRelation(const nlohmann::json& inUCRelation) const
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     std::string Dump = inUCRelation.dump();
-    LOG_DEBUG(QString::fromStdString(Dump));
 
     // Проверяем UUID пользователя
     if (inUCRelation.find(J_REL_UC_USER_UUID) == inUCRelation.end() ||
@@ -141,44 +166,6 @@ std::error_code HMJsonDataStorageValidator::checkUserContactsRelation(const nloh
                 if (Contact.value().is_null() || Contact.value().type() != nlohmann::json::value_t::string)
                 {
                     Error = make_error_code(eDataStorageError::dsRelationUCContactUUIDCorrupted); // UUID контакта повреждён
-                    break; // Остальных не смотрим
-                }
-            }
-        }
-    }
-
-    return Error;
-}
-//-----------------------------------------------------------------------------
-std::error_code HMJsonDataStorageValidator::checkGroupUsersRelation(const nlohmann::json& inGURelation) const
-{
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
-
-    // Проверяем UUID группы
-    if (inGURelation.find(J_REL_GU_GROUP_UUID) == inGURelation.end() ||
-            inGURelation[J_REL_GU_GROUP_UUID].is_null() ||
-            inGURelation[J_REL_GU_GROUP_UUID].type() != nlohmann::json::value_t::string)
-    {
-        Error = make_error_code(eDataStorageError::dsRelationGUGroupUUIDCorrupted); // UUID группы повреждён
-    }
-    else // UUID группы валиден
-    {
-        // Проверяем список пользователей
-        if (inGURelation.find(J_REL_GU_USERS) == inGURelation.end() ||
-                inGURelation[J_REL_GU_USERS].is_null() ||
-                inGURelation[J_REL_GU_USERS].type() != nlohmann::json::value_t::array)
-        {
-            Error = make_error_code(eDataStorageError::dsRelationGUUsersCorrupted); // Список пользователей повреждён
-        }
-        else
-        {
-            // Проверяем каждого пользователя группы
-            for (const auto& User : inGURelation[J_REL_GU_USERS].items())
-            {
-                // Проверяем UUID пользователя
-                if (User.value().is_null() || User.value().type() != nlohmann::json::value_t::string)
-                {
-                    Error = make_error_code(eDataStorageError::dsRelationGUUserUUIDCorrupted); // UUID пользователя повреждён
                     break; // Остальных не смотрим
                 }
             }

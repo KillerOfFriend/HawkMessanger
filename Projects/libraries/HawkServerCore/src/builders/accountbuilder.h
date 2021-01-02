@@ -24,12 +24,17 @@ namespace hmservcommon::builders
  */
 class HMAccountBuilder
 {
+private:
+
+    std::shared_ptr<datastorage::HMDataStorage> m_storage = nullptr; ///< Хранилище данных
+
 public:
 
     /**
-     * @brief HMAccountBuilder - Дефолтный конструктор по умолчанию
+     * @brief HMAccountBuilder - Инициализирующий конструктор
+     * @param inStorage - Хранилище данных
      */
-    HMAccountBuilder() = default;
+    HMAccountBuilder(const std::shared_ptr<datastorage::HMDataStorage> inStorage);
 
     /**
      * @brief HMAccountBuilder - Дефолтный деструктор по умолчанию
@@ -39,20 +44,18 @@ public:
     /**
      * @brief buildGroup - Метод соберёт экземпляр класса данных группы
      * @param inGroupUUID - UUID группы
-     * @param inStorage - Указатель на хранилище данных из которого берётся информация
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр группы или nullptr
      */
-    static std::shared_ptr<hmcommon::HMGroup> buildGroup(const QUuid& inGroupUUID, const std::shared_ptr<datastorage::HMDataStorage> inStorage, std::error_code& outErrorCode);
+    std::shared_ptr<hmcommon::HMGroup> buildGroup(const QUuid& inGroupUUID, std::error_code& outErrorCode);
 
     /**
      * @brief buildAccount - Метод соберёт экземпляр класса аккаунта пользователя
      * @param inUserUUID - UUID пользователя
-     * @param inStorage - Указатель на хранилище данных из которого берётся информация
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр аккаунта или nullptr
      */
-    static std::shared_ptr<hmcommon::HMAccount> buildAccount(const QUuid& inUserUUID, const std::shared_ptr<datastorage::HMDataStorage> inStorage, std::error_code& outErrorCode);
+    std::shared_ptr<hmcommon::HMAccount> buildAccount(const QUuid& inUserUUID, std::error_code& outErrorCode);
 
 };
 //-----------------------------------------------------------------------------

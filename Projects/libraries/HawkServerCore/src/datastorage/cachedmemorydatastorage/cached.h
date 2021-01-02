@@ -1,6 +1,9 @@
 #ifndef HMCACHED_H
 #define HMCACHED_H
 
+#include <set>
+#include <memory>
+
 #include "user.h"
 #include "group.h"
 #include "userlist.h"
@@ -143,6 +146,53 @@ struct HMCachedGroup
     mutable QTime m_lastRequest;     ///< Время последнего запроса
 };
 //-----------------------------------------------------------------------------
+/**
+ * @brief The HMCachedGroupUsers struct - Структура, описывающая кешированный перечень участников группы
+ */
+struct HMCachedGroupUsers
+{
+    /**
+     * @brief HMCachedGroupUsers - Инициализирующий конструктор
+     * @param inGroupUUID - UUID группы, которой пренадлежит перечень участников
+     * @param inGroupUsers - Указатель на перечень участников группы
+     */
+    HMCachedGroupUsers(const QUuid& inGroupUUID, const std::shared_ptr<std::set<QUuid>> inGroupUsers);
+
+    /**
+     * @brief HMCachedGroupUsers - Конструктор копирования (Удалён)
+     * @param inOther - Копируемый объект
+     */
+    HMCachedGroupUsers(const HMCachedGroupUsers& inOther) = delete;
+
+    /**
+     * @brief HMCachedGroupUsers - Оператор перемещения
+     * @param inOther - Перемещаемый объект
+     */
+    HMCachedGroupUsers(HMCachedGroupUsers&& inOther);
+
+    // Операторы
+
+    /**
+     * @brief operator = - Оператор копирования (Удалён)
+     * @param inOther - Копируемый объект
+     * @return Вернёт копию объекта
+     */
+    HMCachedGroupUsers& operator = (const HMCachedGroupUsers& inOther) noexcept = delete;
+
+    /**
+     * @brief operator == - Оператор сравнения
+     * @param inOther - Сравниваемый объект
+     * @return Вернёт результат сравнения
+     */
+    bool operator == (const HMCachedGroupUsers& inOther) const noexcept;
+
+    // Данные
+
+    QUuid m_group;                                              ///< UUID группы, которой пренадлежит перечень участников
+    std::shared_ptr<std::set<QUuid>> m_groupUsers = nullptr;    ///< Перечень участников группы
+    mutable QTime m_lastRequest;                                ///< Время последнего запроса
+};
+//-----------------------------------------------------------------------------
 }
 
 namespace std
@@ -187,6 +237,18 @@ struct hash<hmservcommon::HMCachedGroup>
             return 0;
         else
             return std::hash<std::string>{}(inCachedGroup.m_group->m_uuid.toString().toStdString());
+    }
+};
+//-----------------------------------------------------------------------------
+/**
+ * @brief The hash<hmservcommon::HMCachedGroupUsers> struct - Структура, определяющая функцию взятия хеша от хешируемого перечня участников группы
+ */
+template <>
+struct hash<hmservcommon::HMCachedGroupUsers>
+{
+    std::size_t operator()(const hmservcommon::HMCachedGroupUsers& inCachedGroupUsers) const
+    {
+        return std::hash<std::string>{}(inCachedGroupUsers.m_group.toString().toStdString());
     }
 };
 //-----------------------------------------------------------------------------
