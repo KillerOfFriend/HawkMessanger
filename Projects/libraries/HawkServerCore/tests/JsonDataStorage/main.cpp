@@ -250,6 +250,60 @@ TEST(JsonDataStorage, removeUser)
 }
 //-----------------------------------------------------------------------------
 /**
+ * @brief TEST - Тест проверит получение списка UUID'ов групп пользователя
+ */
+TEST(JsonDataStorage, getUserGroups)
+{
+    std::error_code Error;
+    std::unique_ptr<HMDataStorage> Storage = makeStorage(); // Создаём JSON хранилище
+
+    Error = Storage->open();
+
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(Storage->is_open()); // Хранилище должно считаться открытым
+
+    std::shared_ptr<hmcommon::HMGroup> NewGroup = testscommon::make_group(); // Создаём группу
+    Error = Storage->addGroup(NewGroup); // Добавляем группу в хранилище
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    const std::size_t UsersCount = 5; // Контейнер, хранащий пользователей
+    std::shared_ptr<std::set<QUuid>> UserUUIDs = std::make_shared<std::set<QUuid>>(); // Контейнер UUID'ов пользователей
+    std::shared_ptr<std::set<QUuid>> UserGroups = std::make_shared<std::set<QUuid>>(); // Перечень групп пользователя
+
+    for (size_t Index = 0; Index < UsersCount; ++Index)
+    {
+        QString TestUserLogin = "TestUser" + QString::number(Index); // Логины тестовых пользователей должны быть уникальными
+        std::shared_ptr<hmcommon::HMUser> User = testscommon::make_user(QUuid::createUuid(), TestUserLogin);
+
+        UserGroups = Storage->getUserGroups(User->m_uuid, Error); // Запрашиваем перечень групп не существующего в хранилище пользователя
+        ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Получаем метку, что пользователь не найден в хранилище
+
+        Error = Storage->addUser(User); // Пытаемся добавить пользователя
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+
+        UserGroups = Storage->getUserGroups(User->m_uuid, Error); // Запрашиваем перечень групп добавленного в хранилище пользователя
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+        ASSERT_NE(UserGroups, nullptr); // Должен вернуться валидный указаетль
+        EXPECT_TRUE(UserGroups->empty()); // Перечень групп должен быть пустым
+
+        UserUUIDs->insert(User->m_uuid); // Запоминаем UUID добавленого в хранилище пользователя
+    }
+
+    Error = Storage->setGroupUsers(NewGroup->m_uuid, UserUUIDs); // Пытаемся добавить пользователей в группу
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    for (const QUuid& UserUUID : *UserUUIDs) // Перебираем всех добавленых в хранилище пользователей
+    {
+        UserGroups = Storage->getUserGroups(UserUUID, Error); // Запрашиваем перечень групп пользователей
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+        ASSERT_NE(UserGroups, nullptr); // Должен вернуться валидный указаетль
+        EXPECT_NE(UserGroups->find(NewGroup->m_uuid), UserGroups->cend()); // Группа должна быть успешно найдена в списке групп пользователей
+    }
+
+    Storage->close();
+}
+//-----------------------------------------------------------------------------
+/**
  * @brief TEST - Тест проверит добавление группы
  */
 TEST(JsonDataStorage, addGroup)
@@ -378,6 +432,278 @@ TEST(JsonDataStorage, removeGroup)
 
     Error = Storage->removeGroup(NewGroup->m_uuid); // Пытаемся удалить не существующую группу
     ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    Storage->close();
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест проверит присвоение списка участников группе
+ */
+TEST(JsonDataStorage, setGroupUsers)
+{
+    std::error_code Error;
+    std::unique_ptr<HMDataStorage> Storage = makeStorage(); // Создаём JSON хранилище
+
+    Error = Storage->open();
+
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(Storage->is_open()); // Хранилище должно считаться открытым
+
+    const size_t UsersCount = 5;
+    std::shared_ptr<std::set<QUuid>> UserUUIDs = std::make_shared<std::set<QUuid>>(); // Инициализируем результат; // Контейнер UUID'ов пользователей
+
+    for (size_t Index = 0; Index < UsersCount; ++Index)
+    {
+        QString TestUserLogin = "TestUser" + QString::number(Index); // Логины тестовых пользователей должны быть уникальными
+        std::shared_ptr<hmcommon::HMUser> User = testscommon::make_user(QUuid::createUuid(), TestUserLogin);
+
+        Error = Storage->addUser(User); // Пытаемся добавить пользователя
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+        UserUUIDs->insert(User->m_uuid); // Запоминаем UUID добавленого в хранилище пользователя
+    }
+
+    std::shared_ptr<hmcommon::HMGroup> NewGroup = testscommon::make_group(); // Создаём группу
+
+    Error = Storage->setGroupUsers(NewGroup->m_uuid, UserUUIDs); // Пытаемся добавить пользователей в не существующую в хранилище группу
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // Получаем метку, что группа не найдена в хранилище
+
+    Error = Storage->addGroup(NewGroup); // Добавляем группу в хранилище
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    Error = Storage->setGroupUsers(NewGroup->m_uuid, UserUUIDs); // Пытаемся добавить пользователей в группу
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    // Теперь проверяем что связи созданы успешно
+    std::shared_ptr<std::set<QUuid>> GroupUsers = Storage->getGroupUserList(NewGroup->m_uuid, Error); // Запрашиваем список участников группы
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_NE(GroupUsers, nullptr); // Должен вернуться валидный указаетль
+    EXPECT_EQ(*UserUUIDs, *GroupUsers); // Перечни UUID'ов должны совпасть
+
+    for (const QUuid& UserUUID : *UserUUIDs) // Перебираем всех добавленых в хранилище пользователей
+    {
+        std::shared_ptr<std::set<QUuid>> UserGroups = Storage->getUserGroups(UserUUID, Error); // Запрашиваем перечень групп пользователей
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+        ASSERT_NE(UserGroups, nullptr); // Должен вернуться валидный указаетль
+        EXPECT_NE(UserGroups->find(NewGroup->m_uuid), UserGroups->cend()); // Группа должна быть успешно найдена в списке групп пользователей
+    }
+
+    Storage->close();
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест проверит добавление пользователя в группу
+ */
+TEST(JsonDataStorage, addGroupUser)
+{
+    std::error_code Error;
+    std::unique_ptr<HMDataStorage> Storage = makeStorage(); // Создаём JSON хранилище
+
+    Error = Storage->open();
+
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(Storage->is_open()); // Хранилище должно считаться открытым
+
+    std::shared_ptr<hmcommon::HMGroup> NewGroup = testscommon::make_group(); // Создаём группу
+    std::shared_ptr<hmcommon::HMUser> NewUser = testscommon::make_user(); // Создаём пользовтаеля
+
+    Error = Storage->addGroupUser(NewGroup->m_uuid, NewUser->m_uuid); // Пытаемся добавить пользователя в не существующую в хранилище группу
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // Получаем метку, что группа не найдена в хранилище
+
+    Error = Storage->addGroup(NewGroup); // Добавляем группу в хранилище
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    Error = Storage->addGroupUser(NewGroup->m_uuid, NewUser->m_uuid); // Пытаемся добавить не существующего в хранилище пользователя в группу
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Получаем метку, что пользователь не найдена в хранилище
+
+    Error = Storage->addUser(NewUser); // Добавляем пользователя в хранилище
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    Error = Storage->addGroupUser(NewGroup->m_uuid, NewUser->m_uuid); // Пытаемся добавить пользователя в группу
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    std::shared_ptr<std::set<QUuid>> GroupUsers = Storage->getGroupUserList(NewGroup->m_uuid, Error); // Запрашиваем список групп пользователя
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_NE(GroupUsers, nullptr); // Должен вернуться валидный указаетль
+    EXPECT_NE(GroupUsers->find(NewUser->m_uuid), GroupUsers->cend()); // Пользователь должен быть успешно найден среди участников группы
+
+    std::shared_ptr<std::set<QUuid>> UserGroups = Storage->getUserGroups(NewUser->m_uuid, Error); // Запрашиваем список пользователей группы
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_NE(UserGroups, nullptr); // Должен вернуться валидный указаетль
+    EXPECT_NE(UserGroups->find(NewGroup->m_uuid), UserGroups->cend()); // Группа должна быть успешно найдена в списке групп пользователей
+
+    Error = Storage->addGroupUser(NewGroup->m_uuid, NewUser->m_uuid); // Пытаемся повторно добавить пользователя в группу
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupUserRelationAlredyExists)); // Получаем метку, что группа и пользователь уже связаны
+
+    Storage->close();
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест проверит удаление пользователя из группы
+ */
+TEST(JsonDataStorage, removeGroupUser)
+{
+    std::error_code Error;
+    std::unique_ptr<HMDataStorage> Storage = makeStorage(); // Создаём JSON хранилище
+
+    Error = Storage->open();
+
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(Storage->is_open()); // Хранилище должно считаться открытым
+
+    std::shared_ptr<hmcommon::HMGroup> NewGroup = testscommon::make_group(); // Создаём группу
+    Error = Storage->addGroup(NewGroup); // Добавляем группу в хранилище
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    std::shared_ptr<hmcommon::HMUser> NewUser = testscommon::make_user(); // Создаём пользовтаеля
+    Error = Storage->addUser(NewUser); // Добавляем пользователя в хранилище
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    Error = Storage->removeGroupUser(NewGroup->m_uuid, NewUser->m_uuid); // Пытаемся удалить из группы, не существующего в ней пользователя
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupUserRelationNotExists)); // Получаем метку, что группа и пользователь не связаны
+
+    Error = Storage->addGroupUser(NewGroup->m_uuid, NewUser->m_uuid); // Пытаемся добавить пользователя в группу
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    std::shared_ptr<std::set<QUuid>> GroupUsers = Storage->getGroupUserList(NewGroup->m_uuid, Error); // Запрашиваем список групп пользователя
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_NE(GroupUsers, nullptr); // Должен вернуться валидный указаетль
+    EXPECT_NE(GroupUsers->find(NewUser->m_uuid), GroupUsers->cend()); // Пользователь должен быть успешно найден среди участников группы
+
+    std::shared_ptr<std::set<QUuid>> UserGroups = Storage->getUserGroups(NewUser->m_uuid, Error); // Запрашиваем список пользователей группы
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_NE(UserGroups, nullptr); // Должен вернуться валидный указаетль
+    EXPECT_NE(UserGroups->find(NewGroup->m_uuid), UserGroups->cend()); // Группа должна быть успешно найдена в списке групп пользователей
+
+    Error = Storage->removeGroupUser(NewGroup->m_uuid, NewUser->m_uuid); // Пытаемся удалить пользователя из группы
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    GroupUsers = Storage->getGroupUserList(NewGroup->m_uuid, Error); // Запрашиваем список групп пользователя
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_NE(GroupUsers, nullptr); // Должен вернуться валидный указаетль
+    EXPECT_EQ(GroupUsers->find(NewUser->m_uuid), GroupUsers->cend()); // Пользователь не должен быть найден среди участников группы
+
+    UserGroups = Storage->getUserGroups(NewUser->m_uuid, Error); // Запрашиваем список пользователей группы
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_NE(UserGroups, nullptr); // Должен вернуться валидный указаетль
+    EXPECT_EQ(UserGroups->find(NewGroup->m_uuid), UserGroups->cend()); // Группа не должна быть найдена в списке групп пользователей
+
+    Storage->close();
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест проверит очистку списка участников группы
+ */
+TEST(JsonDataStorage, clearGroupUsers)
+{
+    std::error_code Error;
+    std::unique_ptr<HMDataStorage> Storage = makeStorage(); // Создаём JSON хранилище
+
+    Error = Storage->open();
+
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(Storage->is_open()); // Хранилище должно считаться открытым
+
+    std::shared_ptr<hmcommon::HMGroup> NewGroup = testscommon::make_group(); // Создаём группу
+
+    Error = Storage->clearGroupUsers(NewGroup->m_uuid); // Пытаемся очистить перечень участников не существующей группы
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // Получаем метку, что группа не существует
+
+    Error = Storage->addGroup(NewGroup); // Добавляем группу в хранилище
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    const std::size_t UsersCount = 5; // Контейнер, хранащий пользователей
+    std::shared_ptr<std::set<QUuid>> UserUUIDs = std::make_shared<std::set<QUuid>>(); // Контейнер UUID'ов пользователей
+
+    for (size_t Index = 0; Index < UsersCount; ++Index)
+    {
+        QString TestUserLogin = "TestUser" + QString::number(Index); // Логины тестовых пользователей должны быть уникальными
+        std::shared_ptr<hmcommon::HMUser> User = testscommon::make_user(QUuid::createUuid(), TestUserLogin);
+
+        Error = Storage->addUser(User); // Пытаемся добавить пользователя
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+        UserUUIDs->insert(User->m_uuid); // Запоминаем UUID добавленого в хранилище пользователя
+    }
+
+    Error = Storage->setGroupUsers(NewGroup->m_uuid, UserUUIDs); // Пытаемся добавить пользователей в группу
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    // Теперь проверяем что связи созданы успешно
+    std::shared_ptr<std::set<QUuid>> GroupUsers = Storage->getGroupUserList(NewGroup->m_uuid, Error); // Запрашиваем список участников группы
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_NE(UserUUIDs, nullptr); // Должен вернуться валидный указаетль
+    EXPECT_EQ(*UserUUIDs, *GroupUsers); // Перечни UUID'ов должны совпасть
+
+    for (const QUuid& UserUUID : *UserUUIDs) // Перебираем всех добавленых в хранилище пользователей
+    {
+        std::shared_ptr<std::set<QUuid>> UserGroups = Storage->getUserGroups(UserUUID, Error); // Запрашиваем перечень групп пользователей
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+        ASSERT_NE(UserGroups, nullptr); // Должен вернуться валидный указаетль
+        EXPECT_NE(UserGroups->find(NewGroup->m_uuid), UserGroups->cend()); // Группа должна быть успешно найдена в списке групп пользователей
+    }
+
+    Error = Storage->clearGroupUsers(NewGroup->m_uuid); // Очищаем перечень участников группы
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    // Теперь проверяем что связи разорваны
+    GroupUsers = Storage->getGroupUserList(NewGroup->m_uuid, Error); // Запрашиваем список участников группы
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_NE(GroupUsers, nullptr); // Должен вернуться валидный указаетль
+    EXPECT_TRUE(GroupUsers->empty()); // Перечень участников группы должен быть пуст
+
+    for (const QUuid& UserUUID : *UserUUIDs) // Перебираем всех добавленых в хранилище пользователей
+    {
+        std::shared_ptr<std::set<QUuid>> UserGroups = Storage->getUserGroups(UserUUID, Error); // Запрашиваем перечень групп пользователей
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+        ASSERT_NE(UserGroups, nullptr); // Должен вернуться валидный указаетль
+        EXPECT_EQ(UserGroups->find(NewGroup->m_uuid), UserGroups->cend()); // Группа не должна быть найдена в списке групп пользователей
+    }
+
+    Storage->close();
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест проверит получение списка UUID'ов участников группы
+ */
+TEST(JsonDataStorage, getGroupUserList)
+{
+    std::error_code Error;
+    std::unique_ptr<HMDataStorage> Storage = makeStorage(); // Создаём JSON хранилище
+
+    Error = Storage->open();
+
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(Storage->is_open()); // Хранилище должно считаться открытым
+
+    std::shared_ptr<hmcommon::HMGroup> NewGroup = testscommon::make_group(); // Создаём группу
+
+    std::shared_ptr<std::set<QUuid>> GroupUsers = Storage->getGroupUserList(NewGroup->m_uuid, Error); // Запрашиваем список участников не существующей в хранилище группы
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // Получаем метку, что группы не существует
+
+    Error = Storage->addGroup(NewGroup); // Добавляем группу в хранилище
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    GroupUsers = Storage->getGroupUserList(NewGroup->m_uuid, Error); // Запрашиваем список участников только что созданной группы
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_NE(GroupUsers, nullptr); // Должен вернуться валидный указаетль
+    EXPECT_TRUE(GroupUsers->empty()); // Перечень участников должен быть пуст
+
+    const std::size_t UsersCount = 5; // Контейнер, хранащий пользователей
+    std::shared_ptr<std::set<QUuid>> UserUUIDs = std::make_shared<std::set<QUuid>>(); // Контейнер UUID'ов пользователей
+
+    for (size_t Index = 0; Index < UsersCount; ++Index)
+    {
+        QString TestUserLogin = "TestUser" + QString::number(Index); // Логины тестовых пользователей должны быть уникальными
+        std::shared_ptr<hmcommon::HMUser> User = testscommon::make_user(QUuid::createUuid(), TestUserLogin);
+
+        Error = Storage->addUser(User); // Пытаемся добавить пользователя
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+        UserUUIDs->insert(User->m_uuid); // Запоминаем UUID добавленого в хранилище пользователя
+    }
+
+    Error = Storage->setGroupUsers(NewGroup->m_uuid, UserUUIDs); // Пытаемся добавить пользователей в группу
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    GroupUsers = Storage->getGroupUserList(NewGroup->m_uuid, Error); // Запрашиваем список участников группы
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_NE(UserUUIDs, nullptr); // Должен вернуться валидный указаетль
+    EXPECT_EQ(*UserUUIDs, *GroupUsers); // Перечни UUID'ов должны совпасть
 
     Storage->close();
 }
@@ -793,332 +1119,6 @@ TEST(JsonDataStorage, getUserContactList)
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     EXPECT_TRUE(FindRes->contain(NewUser)); // Должен содержать первый контакт
-
-    Storage->close();
-}
-//-----------------------------------------------------------------------------
-/**
- * @brief TEST - Тест проверит присвоение списка участников группе
- */
-TEST(JsonDataStorage, setGroupUsers)
-{
-    std::error_code Error;
-    std::unique_ptr<HMDataStorage> Storage = makeStorage(); // Создаём JSON хранилище
-
-    Error = Storage->open();
-
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-    ASSERT_TRUE(Storage->is_open()); // Хранилище должно считаться открытым
-
-    const size_t UsersCount = 5;
-    std::shared_ptr<std::set<QUuid>> UserUUIDs = std::make_shared<std::set<QUuid>>(); // Инициализируем результат; // Контейнер UUID'ов пользователей
-
-    for (size_t Index = 0; Index < UsersCount; ++Index)
-    {
-        QString TestUserLogin = "TestUser" + QString::number(Index); // Логины тестовых пользователей должны быть уникальными
-        std::shared_ptr<hmcommon::HMUser> User = testscommon::make_user(QUuid::createUuid(), TestUserLogin);
-
-        Error = Storage->addUser(User); // Пытаемся добавить пользователя
-        ASSERT_FALSE(Error); // Ошибки быть не должно
-        UserUUIDs->insert(User->m_uuid); // Запоминаем UUID добавленого в хранилище пользователя
-    }
-
-    std::shared_ptr<hmcommon::HMGroup> NewGroup = testscommon::make_group(); // Создаём группу
-
-    Error = Storage->setGroupUsers(NewGroup->m_uuid, UserUUIDs); // Пытаемся добавить пользователей в не существующую в хранилище группу
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // Получаем метку, что группа не найдена в хранилище
-
-    Error = Storage->addGroup(NewGroup); // Добавляем группу в хранилище
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-
-    Error = Storage->setGroupUsers(NewGroup->m_uuid, UserUUIDs); // Пытаемся добавить пользователей в группу
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-    // Теперь проверяем что связи созданы успешно
-    std::shared_ptr<std::set<QUuid>> GroupUsers = Storage->getGroupUserList(NewGroup->m_uuid, Error); // Запрашиваем список участников группы
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-    ASSERT_NE(GroupUsers, nullptr); // Должен вернуться валидный указаетль
-    EXPECT_EQ(*UserUUIDs, *GroupUsers); // Перечни UUID'ов должны совпасть
-
-    for (const QUuid& UserUUID : *UserUUIDs) // Перебираем всех добавленых в хранилище пользователей
-    {
-        std::shared_ptr<std::set<QUuid>> UserGroups = Storage->getUserGroups(UserUUID, Error); // Запрашиваем перечень групп пользователей
-        ASSERT_FALSE(Error); // Ошибки быть не должно
-        ASSERT_NE(UserGroups, nullptr); // Должен вернуться валидный указаетль
-        EXPECT_NE(UserGroups->find(NewGroup->m_uuid), UserGroups->cend()); // Группа должна быть успешно найдена в списке групп пользователей
-    }
-
-    Storage->close();
-}
-//-----------------------------------------------------------------------------
-/**
- * @brief TEST - Тест проверит добавление пользователя в группу
- */
-TEST(JsonDataStorage, addGroupUser)
-{
-    std::error_code Error;
-    std::unique_ptr<HMDataStorage> Storage = makeStorage(); // Создаём JSON хранилище
-
-    Error = Storage->open();
-
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-    ASSERT_TRUE(Storage->is_open()); // Хранилище должно считаться открытым
-
-    std::shared_ptr<hmcommon::HMGroup> NewGroup = testscommon::make_group(); // Создаём группу
-    std::shared_ptr<hmcommon::HMUser> NewUser = testscommon::make_user(); // Создаём пользовтаеля
-
-    Error = Storage->addGroupUser(NewGroup->m_uuid, NewUser->m_uuid); // Пытаемся добавить пользователя в не существующую в хранилище группу
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // Получаем метку, что группа не найдена в хранилище
-
-    Error = Storage->addGroup(NewGroup); // Добавляем группу в хранилище
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-
-    Error = Storage->addGroupUser(NewGroup->m_uuid, NewUser->m_uuid); // Пытаемся добавить не существующего в хранилище пользователя в группу
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Получаем метку, что пользователь не найдена в хранилище
-
-    Error = Storage->addUser(NewUser); // Добавляем пользователя в хранилище
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-
-    Error = Storage->addGroupUser(NewGroup->m_uuid, NewUser->m_uuid); // Пытаемся добавить пользователя в группу
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-
-    std::shared_ptr<std::set<QUuid>> GroupUsers = Storage->getGroupUserList(NewGroup->m_uuid, Error); // Запрашиваем список групп пользователя
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-    ASSERT_NE(GroupUsers, nullptr); // Должен вернуться валидный указаетль
-    EXPECT_NE(GroupUsers->find(NewUser->m_uuid), GroupUsers->cend()); // Пользователь должен быть успешно найден среди участников группы
-
-    std::shared_ptr<std::set<QUuid>> UserGroups = Storage->getUserGroups(NewUser->m_uuid, Error); // Запрашиваем список пользователей группы
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-    ASSERT_NE(UserGroups, nullptr); // Должен вернуться валидный указаетль
-    EXPECT_NE(UserGroups->find(NewGroup->m_uuid), UserGroups->cend()); // Группа должна быть успешно найдена в списке групп пользователей
-
-    Error = Storage->addGroupUser(NewGroup->m_uuid, NewUser->m_uuid); // Пытаемся повторно добавить пользователя в группу
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupUserRelationAlredyExists)); // Получаем метку, что группа и пользователь уже связаны
-
-    Storage->close();
-}
-//-----------------------------------------------------------------------------
-/**
- * @brief TEST - Тест проверит удаление пользователя из группы
- */
-TEST(JsonDataStorage, removeGroupUser)
-{
-    std::error_code Error;
-    std::unique_ptr<HMDataStorage> Storage = makeStorage(); // Создаём JSON хранилище
-
-    Error = Storage->open();
-
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-    ASSERT_TRUE(Storage->is_open()); // Хранилище должно считаться открытым
-
-    std::shared_ptr<hmcommon::HMGroup> NewGroup = testscommon::make_group(); // Создаём группу
-    Error = Storage->addGroup(NewGroup); // Добавляем группу в хранилище
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-
-    std::shared_ptr<hmcommon::HMUser> NewUser = testscommon::make_user(); // Создаём пользовтаеля
-    Error = Storage->addUser(NewUser); // Добавляем пользователя в хранилище
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-
-    Error = Storage->removeGroupUser(NewGroup->m_uuid, NewUser->m_uuid); // Пытаемся удалить из группы, не существующего в ней пользователя
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupUserRelationNotExists)); // Получаем метку, что группа и пользователь не связаны
-
-    Error = Storage->addGroupUser(NewGroup->m_uuid, NewUser->m_uuid); // Пытаемся добавить пользователя в группу
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-
-    std::shared_ptr<std::set<QUuid>> GroupUsers = Storage->getGroupUserList(NewGroup->m_uuid, Error); // Запрашиваем список групп пользователя
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-    ASSERT_NE(GroupUsers, nullptr); // Должен вернуться валидный указаетль
-    EXPECT_NE(GroupUsers->find(NewUser->m_uuid), GroupUsers->cend()); // Пользователь должен быть успешно найден среди участников группы
-
-    std::shared_ptr<std::set<QUuid>> UserGroups = Storage->getUserGroups(NewUser->m_uuid, Error); // Запрашиваем список пользователей группы
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-    ASSERT_NE(UserGroups, nullptr); // Должен вернуться валидный указаетль
-    EXPECT_NE(UserGroups->find(NewGroup->m_uuid), UserGroups->cend()); // Группа должна быть успешно найдена в списке групп пользователей
-
-    Error = Storage->removeGroupUser(NewGroup->m_uuid, NewUser->m_uuid); // Пытаемся удалить пользователя из группы
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-
-    GroupUsers = Storage->getGroupUserList(NewGroup->m_uuid, Error); // Запрашиваем список групп пользователя
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-    ASSERT_NE(GroupUsers, nullptr); // Должен вернуться валидный указаетль
-    EXPECT_EQ(GroupUsers->find(NewUser->m_uuid), GroupUsers->cend()); // Пользователь не должен быть найден среди участников группы
-
-    UserGroups = Storage->getUserGroups(NewUser->m_uuid, Error); // Запрашиваем список пользователей группы
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-    ASSERT_NE(UserGroups, nullptr); // Должен вернуться валидный указаетль
-    EXPECT_EQ(UserGroups->find(NewGroup->m_uuid), UserGroups->cend()); // Группа не должна быть найдена в списке групп пользователей
-
-    Storage->close();
-}
-//-----------------------------------------------------------------------------
-/**
- * @brief TEST - Тест проверит очистку списка участников группы
- */
-TEST(JsonDataStorage, clearGroupUsers)
-{
-    std::error_code Error;
-    std::unique_ptr<HMDataStorage> Storage = makeStorage(); // Создаём JSON хранилище
-
-    Error = Storage->open();
-
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-    ASSERT_TRUE(Storage->is_open()); // Хранилище должно считаться открытым
-
-    std::shared_ptr<hmcommon::HMGroup> NewGroup = testscommon::make_group(); // Создаём группу
-
-    Error = Storage->clearGroupUsers(NewGroup->m_uuid); // Пытаемся очистить перечень участников не существующей группы
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // Получаем метку, что группа не существует
-
-    Error = Storage->addGroup(NewGroup); // Добавляем группу в хранилище
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-
-    const std::size_t UsersCount = 5; // Контейнер, хранащий пользователей
-    std::shared_ptr<std::set<QUuid>> UserUUIDs = std::make_shared<std::set<QUuid>>(); // Контейнер UUID'ов пользователей
-
-    for (size_t Index = 0; Index < UsersCount; ++Index)
-    {
-        QString TestUserLogin = "TestUser" + QString::number(Index); // Логины тестовых пользователей должны быть уникальными
-        std::shared_ptr<hmcommon::HMUser> User = testscommon::make_user(QUuid::createUuid(), TestUserLogin);
-
-        Error = Storage->addUser(User); // Пытаемся добавить пользователя
-        ASSERT_FALSE(Error); // Ошибки быть не должно
-        UserUUIDs->insert(User->m_uuid); // Запоминаем UUID добавленого в хранилище пользователя
-    }
-
-    Error = Storage->setGroupUsers(NewGroup->m_uuid, UserUUIDs); // Пытаемся добавить пользователей в группу
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-    // Теперь проверяем что связи созданы успешно
-    std::shared_ptr<std::set<QUuid>> GroupUsers = Storage->getGroupUserList(NewGroup->m_uuid, Error); // Запрашиваем список участников группы
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-    ASSERT_NE(UserUUIDs, nullptr); // Должен вернуться валидный указаетль
-    EXPECT_EQ(*UserUUIDs, *GroupUsers); // Перечни UUID'ов должны совпасть
-
-    for (const QUuid& UserUUID : *UserUUIDs) // Перебираем всех добавленых в хранилище пользователей
-    {
-        std::shared_ptr<std::set<QUuid>> UserGroups = Storage->getUserGroups(UserUUID, Error); // Запрашиваем перечень групп пользователей
-        ASSERT_FALSE(Error); // Ошибки быть не должно
-        ASSERT_NE(UserGroups, nullptr); // Должен вернуться валидный указаетль
-        EXPECT_NE(UserGroups->find(NewGroup->m_uuid), UserGroups->cend()); // Группа должна быть успешно найдена в списке групп пользователей
-    }
-
-    Error = Storage->clearGroupUsers(NewGroup->m_uuid); // Очищаем перечень участников группы
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-    // Теперь проверяем что связи разорваны
-    GroupUsers = Storage->getGroupUserList(NewGroup->m_uuid, Error); // Запрашиваем список участников группы
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-    ASSERT_NE(GroupUsers, nullptr); // Должен вернуться валидный указаетль
-    EXPECT_TRUE(GroupUsers->empty()); // Перечень участников группы должен быть пуст
-
-    for (const QUuid& UserUUID : *UserUUIDs) // Перебираем всех добавленых в хранилище пользователей
-    {
-        std::shared_ptr<std::set<QUuid>> UserGroups = Storage->getUserGroups(UserUUID, Error); // Запрашиваем перечень групп пользователей
-        ASSERT_FALSE(Error); // Ошибки быть не должно
-        ASSERT_NE(UserGroups, nullptr); // Должен вернуться валидный указаетль
-        EXPECT_EQ(UserGroups->find(NewGroup->m_uuid), UserGroups->cend()); // Группа не должна быть найдена в списке групп пользователей
-    }
-
-    Storage->close();
-}
-//-----------------------------------------------------------------------------
-/**
- * @brief TEST - Тест проверит получение списка UUID'ов участников группы
- */
-TEST(JsonDataStorage, getGroupUserList)
-{
-    std::error_code Error;
-    std::unique_ptr<HMDataStorage> Storage = makeStorage(); // Создаём JSON хранилище
-
-    Error = Storage->open();
-
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-    ASSERT_TRUE(Storage->is_open()); // Хранилище должно считаться открытым
-
-    std::shared_ptr<hmcommon::HMGroup> NewGroup = testscommon::make_group(); // Создаём группу
-
-    std::shared_ptr<std::set<QUuid>> GroupUsers = Storage->getGroupUserList(NewGroup->m_uuid, Error); // Запрашиваем список участников не существующей в хранилище группы
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // Получаем метку, что группы не существует
-
-    Error = Storage->addGroup(NewGroup); // Добавляем группу в хранилище
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-
-    GroupUsers = Storage->getGroupUserList(NewGroup->m_uuid, Error); // Запрашиваем список участников только что созданной группы
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-    ASSERT_NE(GroupUsers, nullptr); // Должен вернуться валидный указаетль
-    EXPECT_TRUE(GroupUsers->empty()); // Перечень участников должен быть пуст
-
-    const std::size_t UsersCount = 5; // Контейнер, хранащий пользователей
-    std::shared_ptr<std::set<QUuid>> UserUUIDs = std::make_shared<std::set<QUuid>>(); // Контейнер UUID'ов пользователей
-
-    for (size_t Index = 0; Index < UsersCount; ++Index)
-    {
-        QString TestUserLogin = "TestUser" + QString::number(Index); // Логины тестовых пользователей должны быть уникальными
-        std::shared_ptr<hmcommon::HMUser> User = testscommon::make_user(QUuid::createUuid(), TestUserLogin);
-
-        Error = Storage->addUser(User); // Пытаемся добавить пользователя
-        ASSERT_FALSE(Error); // Ошибки быть не должно
-        UserUUIDs->insert(User->m_uuid); // Запоминаем UUID добавленого в хранилище пользователя
-    }
-
-    Error = Storage->setGroupUsers(NewGroup->m_uuid, UserUUIDs); // Пытаемся добавить пользователей в группу
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-
-    GroupUsers = Storage->getGroupUserList(NewGroup->m_uuid, Error); // Запрашиваем список участников группы
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-    ASSERT_NE(UserUUIDs, nullptr); // Должен вернуться валидный указаетль
-    EXPECT_EQ(*UserUUIDs, *GroupUsers); // Перечни UUID'ов должны совпасть
-
-    Storage->close();
-}
-//-----------------------------------------------------------------------------
-/**
- * @brief TEST - Тест проверит получение списка UUID'ов групп пользователя
- */
-TEST(JsonDataStorage, getUserGroups)
-{
-    std::error_code Error;
-    std::unique_ptr<HMDataStorage> Storage = makeStorage(); // Создаём JSON хранилище
-
-    Error = Storage->open();
-
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-    ASSERT_TRUE(Storage->is_open()); // Хранилище должно считаться открытым
-
-    std::shared_ptr<hmcommon::HMGroup> NewGroup = testscommon::make_group(); // Создаём группу
-    Error = Storage->addGroup(NewGroup); // Добавляем группу в хранилище
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-
-    const std::size_t UsersCount = 5; // Контейнер, хранащий пользователей
-    std::shared_ptr<std::set<QUuid>> UserUUIDs = std::make_shared<std::set<QUuid>>(); // Контейнер UUID'ов пользователей
-    std::shared_ptr<std::set<QUuid>> UserGroups = std::make_shared<std::set<QUuid>>(); // Перечень групп пользователя
-
-    for (size_t Index = 0; Index < UsersCount; ++Index)
-    {
-        QString TestUserLogin = "TestUser" + QString::number(Index); // Логины тестовых пользователей должны быть уникальными
-        std::shared_ptr<hmcommon::HMUser> User = testscommon::make_user(QUuid::createUuid(), TestUserLogin);
-
-        UserGroups = Storage->getUserGroups(User->m_uuid, Error); // Запрашиваем перечень групп не существующего в хранилище пользователя
-        ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Получаем метку, что пользователь не найден в хранилище
-
-        Error = Storage->addUser(User); // Пытаемся добавить пользователя
-        ASSERT_FALSE(Error); // Ошибки быть не должно
-
-        UserGroups = Storage->getUserGroups(User->m_uuid, Error); // Запрашиваем перечень групп добавленного в хранилище пользователя
-        ASSERT_FALSE(Error); // Ошибки быть не должно
-        ASSERT_NE(UserGroups, nullptr); // Должен вернуться валидный указаетль
-        EXPECT_TRUE(UserGroups->empty()); // Перечень групп должен быть пустым
-
-        UserUUIDs->insert(User->m_uuid); // Запоминаем UUID добавленого в хранилище пользователя
-    }
-
-    Error = Storage->setGroupUsers(NewGroup->m_uuid, UserUUIDs); // Пытаемся добавить пользователей в группу
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-
-    for (const QUuid& UserUUID : *UserUUIDs) // Перебираем всех добавленых в хранилище пользователей
-    {
-        UserGroups = Storage->getUserGroups(UserUUID, Error); // Запрашиваем перечень групп пользователей
-        ASSERT_FALSE(Error); // Ошибки быть не должно
-        ASSERT_NE(UserGroups, nullptr); // Должен вернуться валидный указаетль
-        EXPECT_NE(UserGroups->find(NewGroup->m_uuid), UserGroups->cend()); // Группа должна быть успешно найдена в списке групп пользователей
-    }
 
     Storage->close();
 }
