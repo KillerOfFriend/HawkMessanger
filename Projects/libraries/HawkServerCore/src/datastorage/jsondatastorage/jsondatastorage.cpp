@@ -1123,8 +1123,21 @@ std::error_code HMJsonDataStorage::onRemoveUser(const QUuid &inUserUUID)
 
     Error = removeUserContacts(inUserUUID); // Пытаемся удалить список контактов пользователя
 
-    // TODO Реализовать получение всех групп, в которых пользователь состоит
-    // TODO Реализовать удаление пользователя из групп, в которых он состоит
+    if (!Error) // Если контакты пользователя успешно очищены
+    {
+        std::shared_ptr<std::set<QUuid>> UserGroups = getUserGroups(inUserUUID, Error); // Получаем перечень групп, в которых состоит пользователь
+
+        if (!Error)
+        {
+            std::error_code GroupRemoveError = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+            for (const QUuid& GroupUuid : *UserGroups) // Перебираем группы, в которых состоит пользователь
+            {
+                GroupRemoveError = removeGroupUser(GroupUuid, inUserUUID); // Удаляем пользователя их группы
+                if (GroupRemoveError) // Ошибки удаления обрабатываем отдельно
+                    LOG_WARNING_EX(QString::fromStdString(GroupRemoveError.message()), this);
+            }
+        }
+    }
 
     return Error;
 }
