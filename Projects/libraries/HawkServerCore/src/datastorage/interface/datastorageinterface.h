@@ -227,15 +227,15 @@ public:
      * @param inContacts - Список контактов
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code setUserContacts(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUserList> inContacts) = 0;
+    virtual std::error_code setUserContacts(const QUuid& inUserUUID, const std::shared_ptr<std::set<QUuid>> inContacts) = 0;
 
     /**
      * @brief addUserContact - Метод добавит контакт пользователю
      * @param inUserUUID - Uuid пользователя
-     * @param inContact - Новый контакт
+     * @param inContactUUID - Uuid контакта
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code addUserContact(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUser> inContact) = 0;
+    virtual std::error_code addUserContact(const QUuid& inUserUUID, const QUuid& inContactUUID) = 0;
 
     /**
      * @brief removeUserContact - Метод удалит контакт пользователя
@@ -258,7 +258,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт список контактов пользователя
      */
-    virtual std::shared_ptr<hmcommon::HMUserList> getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const = 0;
+    virtual std::shared_ptr<std::set<QUuid>> getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const = 0;
 
 };
 //-----------------------------------------------------------------------------

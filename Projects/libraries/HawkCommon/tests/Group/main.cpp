@@ -36,40 +36,40 @@ TEST(Group, CheckParams)
     Group.setName(GroupName);
     EXPECT_EQ(Group.getName(), GroupName);
 
-    EXPECT_EQ(Group.isUsersEmpty(), true);
+//    EXPECT_EQ(Group.isUsersEmpty(), true);
 
-    for (std::size_t Index = 0; Index < GroupUserCount; ++Index)
-    {
-        Users[Index] = testscommon::make_user();
-        Error = Group.addUser(Users[Index]);
-        ASSERT_FALSE(Error); // Ошибки быть не должно
-        EXPECT_EQ(Group.usersCount(), Index + 1);
-    }
+//    for (std::size_t Index = 0; Index < GroupUserCount; ++Index)
+//    {
+//        Users[Index] = testscommon::make_user();
+//        Error = Group.addUser(Users[Index]);
+//        ASSERT_FALSE(Error); // Ошибки быть не должно
+//        EXPECT_EQ(Group.usersCount(), Index + 1);
+//    }
 
-    EXPECT_EQ(Group.isUsersEmpty(), false);
+//    EXPECT_EQ(Group.isUsersEmpty(), false);
 
-    Error = Group.addUser(Users[0]);
-    ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmcommon::eSystemErrorEx::seAlredyInContainer));
+//    Error = Group.addUser(Users[0]);
+//    ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmcommon::eSystemErrorEx::seAlredyInContainer));
 
-    for (std::size_t Index = 0; Index < GroupUserCount; ++Index)
-    {
-        ASSERT_TRUE(Group.contain(Users[Index]->m_uuid));
+//    for (std::size_t Index = 0; Index < GroupUserCount; ++Index)
+//    {
+//        ASSERT_TRUE(Group.contain(Users[Index]->m_uuid));
 
-        std::shared_ptr<hmcommon::HMUser> User = Group.getUser(Index, Error);
-        ASSERT_FALSE(Error); // Ошибки быть не должно
-        EXPECT_EQ(User, Users[Index]); // И UUID пользователя должен совпадать
-    }
+//        std::shared_ptr<hmcommon::HMUser> User = Group.getUser(Index, Error);
+//        ASSERT_FALSE(Error); // Ошибки быть не должно
+//        EXPECT_EQ(User, Users[Index]); // И UUID пользователя должен совпадать
+//    }
 
-    for (std::size_t Index = 0; Index < GroupUserCount; ++Index)
-    {
-        Error = Group.removeUser(Users[Index]->m_uuid);
-        ASSERT_FALSE(Error); // Ошибки быть не должно
+//    for (std::size_t Index = 0; Index < GroupUserCount; ++Index)
+//    {
+//        Error = Group.removeUser(Users[Index]->m_uuid);
+//        ASSERT_FALSE(Error); // Ошибки быть не должно
 
-        ASSERT_FALSE(Group.contain(Users[Index]->m_uuid));
-        EXPECT_EQ(Group.usersCount(), GroupUserCount - (Index + 1));
-    }
+//        ASSERT_FALSE(Group.contain(Users[Index]->m_uuid));
+//        EXPECT_EQ(Group.usersCount(), GroupUserCount - (Index + 1));
+//    }
 
-    EXPECT_EQ(Group.isUsersEmpty(), true);
+//    EXPECT_EQ(Group.isUsersEmpty(), true);
 }
 //-----------------------------------------------------------------------------
 /**

@@ -30,7 +30,7 @@ bool HMCachedUser::operator== (const HMCachedUser& inOther) const noexcept
 //-----------------------------------------------------------------------------
 // HMCachedUserContacts
 //-----------------------------------------------------------------------------
-HMCachedUserContacts::HMCachedUserContacts(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUserList> inContactList) :
+HMCachedUserContacts::HMCachedUserContacts(const QUuid& inUserUUID, const std::shared_ptr<std::set<QUuid>> inContactList) :
     m_userUUID(inUserUUID),
     m_contactList(inContactList),
     m_lastRequest(QTime::currentTime())

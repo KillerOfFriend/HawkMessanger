@@ -926,22 +926,16 @@ TEST(JsonDataStorage, setUserContacts)
     std::shared_ptr<hmcommon::HMUser> NewContact1 = testscommon::make_user(QUuid::createUuid(), "TestContact1@login.com");
     std::shared_ptr<hmcommon::HMUser> NewContact2 = testscommon::make_user(QUuid::createUuid(), "TestContact2@login.com");
 
-    std::shared_ptr<hmcommon::HMUserList> NewContactList = std::make_shared<hmcommon::HMUserList>();
+    std::shared_ptr<std::set<QUuid>> NewContactList = std::make_shared<std::set<QUuid>>();
 
-    NewContactList->add(NewContact1);
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-
-    NewContactList->add(NewContact2);
-    ASSERT_FALSE(Error); // Ошибки быть не должно
+    NewContactList->insert(NewContact1->m_uuid);
+    NewContactList->insert(NewContact2->m_uuid);
 
     Error = Storage->setUserContacts(NewUser->m_uuid, NewContactList); // Пытаемся добавить список контактов без добавления пользователя
     ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что не существует пользователя, к которому нужно привязать список
 
     Error = Storage->addUser(NewUser); // Теперь добавим пользователя в хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
-
-    Error = Storage->setUserContacts(NewUser->m_uuid, NewContactList); // И только теперь добавляем список
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsRelationUCAlreadyExists)); // Должны получить сообщение о том, группа уже существует (Была создана пустая дефолтная группа при добавлении пользователя)
 
     Storage->close();
 }
@@ -962,19 +956,19 @@ TEST(JsonDataStorage, addUserContact)
     std::shared_ptr<hmcommon::HMUser> NewUser = testscommon::make_user(QUuid::createUuid(), "TestUser@login.com");
     std::shared_ptr<hmcommon::HMUser> NewContact = testscommon::make_user(QUuid::createUuid(), "TestContact@login.com");
 
-    Error = Storage->addUserContact(NewUser->m_uuid, NewContact); // Пытаемся добавить контакт без добавления пользователя
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsRelationUCNotExists)); // Должны получить сообщение о том, что связь не существует, т.к. пользователь "владелец" не существует в хранилище
+    Error = Storage->addUserContact(NewUser->m_uuid, NewContact->m_uuid); // Пытаемся добавить контакт без добавления пользователя
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что пользователь (вледелец) не существует в хранилище
 
     Error = Storage->addUser(NewUser); // Теперь добавим пользователя в хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    Error = Storage->addUserContact(NewUser->m_uuid, NewContact); // И теперь добавляем контакт
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что пользователь-контакт не существует в хранилище
+    Error = Storage->addUserContact(NewUser->m_uuid, NewContact->m_uuid); // И теперь добавляем контакт
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что пользователь (контакт) не существует в хранилище
 
     Error = Storage->addUser(NewContact); // Теперь добавим пользователя, который будет выступать новым контактом
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    Error = Storage->addUserContact(NewUser->m_uuid, NewContact); // И накнец штатно добавляем контакт пользователю
+    Error = Storage->addUserContact(NewUser->m_uuid, NewContact->m_uuid); // И накнец штатно добавляем контакт пользователю
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     Storage->close();
@@ -997,18 +991,18 @@ TEST(JsonDataStorage, removeUserContact)
     std::shared_ptr<hmcommon::HMUser> NewContact = testscommon::make_user(QUuid::createUuid(), "TestContact@login.com");
 
     Error = Storage->removeUserContact(NewUser->m_uuid, NewContact->m_uuid); // Пытаемся удалить контакт без добавления пользователя
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsRelationUCNotExists)); // Должны получить сообщение о том, что связь не существует, т.к. пользователь "владелец" не существует в хранилище
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что пользователь (вледелец) не существует в хранилище
 
     Error = Storage->addUser(NewUser); // Теперь добавим пользователя в хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     Error = Storage->removeUserContact(NewUser->m_uuid, NewContact->m_uuid); // И теперь добавляем контакт
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsRelationUCContactNotExists)); // Должны получить сообщение о том, что контакта в связи не существует
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserContactNotExists)); // Должны получить сообщение о том, что у пользователя нет такого контакта
 
     Error = Storage->addUser(NewContact); // Теперь добавим пользователя, который будет выступать новым контактом
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    Error = Storage->addUserContact(NewUser->m_uuid, NewContact); // И добавляем контакт пользователю
+    Error = Storage->addUserContact(NewUser->m_uuid, NewContact->m_uuid); // И добавляем контакт пользователю
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     Error = Storage->removeUserContact(NewUser->m_uuid, NewContact->m_uuid); // И наконец штатно удаляем связь
@@ -1035,12 +1029,12 @@ TEST(JsonDataStorage, removeUserContacts)
     std::shared_ptr<hmcommon::HMUser> NewContact2 = testscommon::make_user(QUuid::createUuid(), "TestContact2@login.com");
 
     Error = Storage->removeUserContacts(NewUser->m_uuid); // Пытаемся удалить не сущестующую связь
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsRelationUCNotExists)); // Должны получить сообщение о том, что связь не существует
-    // Добавляем пользователей
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что пользователь в хранилище не найден
+
     Error = Storage->addUser(NewUser);
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    Error = Storage->addUserContact(NewUser->m_uuid, NewUser); // Пытаемся добавить в список контактов самого себя
+    Error = Storage->addUserContact(NewUser->m_uuid, NewUser->m_uuid); // Пытаемся добавить в список контактов самого себя
     ASSERT_EQ(Error.value(), static_cast<int32_t>(hmcommon::eSystemErrorEx::seIncorretData)); // Должны получить сообщение о том, что данные не корректны
 
     Error = Storage->addUser(NewContact1);
@@ -1049,10 +1043,10 @@ TEST(JsonDataStorage, removeUserContacts)
     Error = Storage->addUser(NewContact2);
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    Error = Storage->addUserContact(NewUser->m_uuid, NewContact1); // И добавляем контакт1 пользователю
+    Error = Storage->addUserContact(NewUser->m_uuid, NewContact1->m_uuid); // И добавляем контакт1 пользователю
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    Error = Storage->addUserContact(NewUser->m_uuid, NewContact2); // И добавляем контакт2 пользователю
+    Error = Storage->addUserContact(NewUser->m_uuid, NewContact2->m_uuid); // И добавляем контакт2 пользователю
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     Error = Storage->removeUserContacts(NewUser->m_uuid);
@@ -1078,10 +1072,9 @@ TEST(JsonDataStorage, getUserContactList)
     std::shared_ptr<hmcommon::HMUser> NewContact1 = testscommon::make_user(QUuid::createUuid(), "TestContact1@login.com");
     std::shared_ptr<hmcommon::HMUser> NewContact2 = testscommon::make_user(QUuid::createUuid(), "TestContact2@login.com");
 
-    std::shared_ptr<hmcommon::HMUserList> FindRes = Storage->getUserContactList(NewUser->m_uuid, Error); // Пытаемся получить список контактов не существующего пользователя
-
+    std::shared_ptr<std::set<QUuid>> FindRes = Storage->getUserContactList(NewUser->m_uuid, Error); // Пытаемся получить список контактов не существующего пользователя
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться валидный указатель
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsRelationUCNotExists)); // Должны получить сообщение о том, что связь не существует
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что пользователь в хранилище не найден
     // Добавляем пользователей
     Error = Storage->addUser(NewUser);
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -1092,10 +1085,10 @@ TEST(JsonDataStorage, getUserContactList)
     Error = Storage->addUser(NewContact2);
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    Error = Storage->addUserContact(NewUser->m_uuid, NewContact1); // И добавляем контакт1 пользователю
+    Error = Storage->addUserContact(NewUser->m_uuid, NewContact1->m_uuid); // И добавляем контакт1 пользователю
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    Error = Storage->addUserContact(NewUser->m_uuid, NewContact2); // И добавляем контакт2 пользователю
+    Error = Storage->addUserContact(NewUser->m_uuid, NewContact2->m_uuid); // И добавляем контакт2 пользователю
     ASSERT_FALSE(Error); // Ошибки быть не должно
     // Начинаем проверять списки контактов
     FindRes = Storage->getUserContactList(NewUser->m_uuid, Error); // Теперь пытваемся получить список контактов пользователя
@@ -1103,22 +1096,22 @@ TEST(JsonDataStorage, getUserContactList)
     ASSERT_NE(FindRes, nullptr); // Должен вернуться валидный указатель
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    EXPECT_TRUE(FindRes->contain(NewContact1)); // Должен содержать первый контакт
-    EXPECT_TRUE(FindRes->contain(NewContact2)); // Должен содержать второй контакт
+    EXPECT_NE(FindRes->find(NewContact1->m_uuid), FindRes->end()); // Должен содержать первый контакт
+    EXPECT_NE(FindRes->find(NewContact2->m_uuid), FindRes->end()); // Должен содержать второй контакт
 
     FindRes = Storage->getUserContactList(NewContact1->m_uuid, Error); // Проверяем список контактов второго пользователя
 
     ASSERT_NE(FindRes, nullptr); // Должен вернуться валидный указатель
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    EXPECT_TRUE(FindRes->contain(NewUser)); // Должен содержать первый контакт
+    EXPECT_NE(FindRes->find(NewUser->m_uuid), FindRes->end()); // Должен содержать первый контакт
 
     FindRes = Storage->getUserContactList(NewContact2->m_uuid, Error); // Проверяем список контактов первого пользователя
 
     ASSERT_NE(FindRes, nullptr); // Должен вернуться валидный указатель
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    EXPECT_TRUE(FindRes->contain(NewUser)); // Должен содержать первый контакт
+    EXPECT_NE(FindRes->find(NewUser->m_uuid), FindRes->end()); // Должен содержать первый контакт
 
     Storage->close();
 }
@@ -1154,17 +1147,16 @@ TEST(JsonDataStorage, CheckJsonSave)
         Error = Storage->addUser(Contacts[Index]);
         EXPECT_FALSE(Error);
         // Добавляем контакт пользователю
-        Error = Storage->addUserContact(NewUser->m_uuid, Contacts[Index]);
+        Error = Storage->addUserContact(NewUser->m_uuid, Contacts[Index]->m_uuid);
         EXPECT_FALSE(Error);
     }
 
     std::shared_ptr<hmcommon::HMGroup> NewGroup = testscommon::make_group(); // Формируем новую группу
 
-    Error = NewGroup->addUser(NewUser);
-    ASSERT_FALSE(Error); // Ошибки быть не должно
-
     Error = Storage->addGroup(NewGroup);
     ASSERT_FALSE(Error); // Ошибки быть не должно
+
+    // Добавляем сообщения в группу
 
     const size_t MESSAGES = 5;
     std::array<std::shared_ptr<hmcommon::HMGroupMessage>, MESSAGES> Messages;
@@ -1177,6 +1169,18 @@ TEST(JsonDataStorage, CheckJsonSave)
         Error = Storage->addMessage(Messages[Index]);
         ASSERT_FALSE(Error); // Ошибки быть не должно
     }
+
+    // Добавляем участников в группу (из ранее созданных пользователей)
+    for (std::size_t Index = 0; Index < ContactsCount; ++Index)
+    {
+        Error = Storage->addGroupUser(NewGroup->m_uuid, Contacts[Index]->m_uuid);
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+    }
+
+    std::shared_ptr<std::set<QUuid>> GroupUsers = Storage->getGroupUserList(NewGroup->m_uuid, Error);
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_NE(GroupUsers, nullptr); // Должен вернуться валидный указатель
+    EXPECT_EQ(Contacts.size(), GroupUsers->size()); // Количество контактов должно совпасть
 
     // Переоткрываем хранилище
     Storage->close();
@@ -1193,6 +1197,10 @@ TEST(JsonDataStorage, CheckJsonSave)
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_NE(FindGroup, nullptr); // Должен вернуться валидный указатель
 
+    EXPECT_EQ(NewGroup->m_uuid, FindGroup->m_uuid);
+    EXPECT_EQ(NewGroup->m_registrationDate, FindGroup->m_registrationDate);
+    EXPECT_EQ(NewGroup->getName(), FindGroup->getName());
+
     // А теперь сравниваем все параметры записанного и считанного
     EXPECT_EQ(NewUser->m_uuid, FindUser->m_uuid);
     EXPECT_EQ(NewUser->m_registrationDate, FindUser->m_registrationDate);
@@ -1202,52 +1210,18 @@ TEST(JsonDataStorage, CheckJsonSave)
     EXPECT_EQ(NewUser->getSex(), FindUser->getSex());
     EXPECT_EQ(NewUser->getBirthday(), FindUser->getBirthday());
 
-    std::shared_ptr<hmcommon::HMUserList> FindUCList = Storage->getUserContactList(FindUser->m_uuid, Error);
+    std::shared_ptr<std::set<QUuid>> FindUCList = Storage->getUserContactList(FindUser->m_uuid, Error);
     ASSERT_FALSE(Error); // Ошибки быть не должно
-    ASSERT_NE(FindGroup, nullptr); // Должен вернуться валидный указатель
-    ASSERT_EQ(FindUCList->count(), MESSAGES); // Количество контактов должно быть прежним
+    ASSERT_NE(FindUCList, nullptr); // Должен вернуться валидный указатель
+    ASSERT_EQ(FindUCList->size(), MESSAGES); // Количество контактов должно быть прежним
 
     for (std::size_t Index = 0; Index < MESSAGES; ++Index)
-    {
-        ASSERT_TRUE(FindUCList->contain(Contacts[Index])); // Проверяем что контакт есть в списке
+        ASSERT_NE(FindUCList->find(Contacts[Index]->m_uuid), FindUCList->end()); // Проверяем что контакт есть в списке
 
-        std::shared_ptr<hmcommon::HMUser> Contact = FindUCList->get(Contacts[Index]->m_uuid, Error);
-
-        ASSERT_FALSE(Error); // Ошибки быть не должно
-        ASSERT_NE(FindGroup, nullptr); // Должен вернуться валидный указатель
-        // Проверяем что данные контакта валидны
-        EXPECT_EQ(Contacts[Index]->m_uuid, Contact->m_uuid);
-        EXPECT_EQ(Contacts[Index]->m_registrationDate, Contact->m_registrationDate);
-        EXPECT_EQ(Contacts[Index]->getName(), Contact->getName());
-        EXPECT_EQ(Contacts[Index]->getLogin(), Contact->getLogin());
-        EXPECT_EQ(Contacts[Index]->getPasswordHash(), Contact->getPasswordHash());
-        EXPECT_EQ(Contacts[Index]->getSex(), Contact->getSex());
-        EXPECT_EQ(Contacts[Index]->getBirthday(), Contact->getBirthday());
-        // Проверяем обратную связь
-        std::shared_ptr<hmcommon::HMUserList> ReverseUCList = Storage->getUserContactList(Contacts[Index]->m_uuid, Error);
-
-        ASSERT_FALSE(Error); // Ошибки быть не должно
-        ASSERT_NE(ReverseUCList, nullptr); // Должен вернуться валидный указатель
-        ASSERT_EQ(ReverseUCList->count(), 1); // Должна быть всего одна обратныя связь
-        ASSERT_TRUE(ReverseUCList->contain(FindUser->m_uuid)); // Проверяем что в списке именно этот контакт
-    }
-
-    EXPECT_EQ(NewGroup->m_uuid, FindGroup->m_uuid);
-    EXPECT_EQ(NewGroup->m_registrationDate, FindGroup->m_registrationDate);
-    EXPECT_EQ(NewGroup->getName(), FindGroup->getName());
-//    EXPECT_EQ(NewGroup->usersCount(), FindGroup->usersCount());
-
-//    for (std::size_t Index = 0; Index < NewGroup->usersCount(); ++Index)
-//    {
-//        std::shared_ptr<hmcommon::HMUser> User1 = NewGroup->getUser(Index, Error);
-//        ASSERT_NE(User1, nullptr); // Должен вернуться валидный указатель
-//        ASSERT_FALSE(Error); // Ошибки быть не должно
-//        std::shared_ptr<hmcommon::HMUser> User2 = FindGroup->getUser(Index, Error);
-//        ASSERT_NE(User2, nullptr); // Должен вернуться валидный указатель
-//        ASSERT_FALSE(Error); // Ошибки быть не должно
-
-//        EXPECT_EQ(User1->m_uuid, User2->m_uuid);
-//    }
+    std::shared_ptr<std::set<QUuid>> FindGroupUsers = Storage->getGroupUserList(NewGroup->m_uuid, Error);
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_NE(FindGroupUsers, nullptr); // Должен вернуться валидный указатель
+    EXPECT_EQ(*GroupUsers, *FindGroupUsers); // Сравниваем UUID'ы учасников группы
 
     for (std::size_t Index = 0; Index < MESSAGES; ++Index)
     {

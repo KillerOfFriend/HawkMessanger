@@ -49,13 +49,13 @@ protected:
      */
     virtual std::error_code checkNewGroupUnique(const std::shared_ptr<hmcommon::HMGroup> inGroup) const;
 
-    /**
-     * @brief checkUserContactsUnique - Метод проверит необходимую уникальность параметров нового списка контактов
-     * @param inUserUUID - Uuid пользователя
-     * @param inContacts - Список контактов
-     * @return Вернёт признак ошибки
-     */
-    virtual std::error_code checkUserContactsUnique(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUserList> inContacts) const;
+//    /**
+//     * @brief checkUserContactsUnique - Метод проверит необходимую уникальность параметров нового списка контактов
+//     * @param inUserUUID - Uuid пользователя
+//     * @param inContacts - Список контактов
+//     * @return Вернёт признак ошибки
+//     */
+//    virtual std::error_code checkUserContactsUnique(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUserList> inContacts) const;
 
 };
 //-----------------------------------------------------------------------------

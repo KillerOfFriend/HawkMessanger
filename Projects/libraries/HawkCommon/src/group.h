@@ -25,7 +25,7 @@ class HMGroup
 private:
 
     QString m_name;                                 ///< Имя группы
-    std::vector<std::shared_ptr<HMUser>> m_users;   ///< Перечень пользователей группы
+//    std::vector<std::shared_ptr<HMUser>> m_users;   ///< Перечень пользователей группы
 
 public:
 
@@ -63,45 +63,45 @@ public:
      */
     QString getName() const;
 
-    /**
-     * @brief isUsersEnpty - Метод вернёт признак того, что в группе нет пользователей
-     * @return Вернёт признак того, что в группе нет пользователей
-     */
-    bool isUsersEmpty() const;
+//    /**
+//     * @brief isUsersEnpty - Метод вернёт признак того, что в группе нет пользователей
+//     * @return Вернёт признак того, что в группе нет пользователей
+//     */
+//    bool isUsersEmpty() const;
 
-    /**
-     * @brief usersCount - Метод вернёт количество пользователей в группе
-     * @return Вернёт количество пользователей в группе
-     */
-    std::size_t usersCount() const;
+//    /**
+//     * @brief usersCount - Метод вернёт количество пользователей в группе
+//     * @return Вернёт количество пользователей в группе
+//     */
+//    std::size_t usersCount() const;
 
-    /**
-     * @brief addUser - Метод добавит пользователя в группу
-     * @param inUser - UUID добавляемого пользователя
-     * @return Вернёт признак ошибки
-     */
-    std::error_code addUser(const std::shared_ptr<HMUser> inUser);
+//    /**
+//     * @brief addUser - Метод добавит пользователя в группу
+//     * @param inUser - UUID добавляемого пользователя
+//     * @return Вернёт признак ошибки
+//     */
+//    std::error_code addUser(const std::shared_ptr<HMUser> inUser);
 
-    /**
-     * @brief removeUser - Метод удалит польоваетля из группы
-     * @param inUserUuid - UUID удаляемого пользователя
-     * @return Вернёт признак ошибки
-     */
-    std::error_code removeUser(const QUuid& inUserUuid);
+//    /**
+//     * @brief removeUser - Метод удалит польоваетля из группы
+//     * @param inUserUuid - UUID удаляемого пользователя
+//     * @return Вернёт признак ошибки
+//     */
+//    std::error_code removeUser(const QUuid& inUserUuid);
 
-    /**
-     * @brief getUser - Метод вернёт пользователя по его порядковому номеру
-     * @param outErrorCode - Признак ошибки
-     * @return Вернёт пользователя или nullptr
-     */
-    std::shared_ptr<HMUser> getUser(const std::size_t inIndex, std::error_code& outErrorCode);
+//    /**
+//     * @brief getUser - Метод вернёт пользователя по его порядковому номеру
+//     * @param outErrorCode - Признак ошибки
+//     * @return Вернёт пользователя или nullptr
+//     */
+//    std::shared_ptr<HMUser> getUser(const std::size_t inIndex, std::error_code& outErrorCode);
 
-    /**
-     * @brief contain - Метод проверит, содержит ли группа пользователя
-     * @param inUserUuid - UUID искомого пользователя
-     * @return Вернёт признак вхождения пользователя в группу
-     */
-    bool contain(const QUuid& inUserUuid) const;
+//    /**
+//     * @brief contain - Метод проверит, содержит ли группа пользователя
+//     * @param inUserUuid - UUID искомого пользователя
+//     * @return Вернёт признак вхождения пользователя в группу
+//     */
+//    bool contain(const QUuid& inUserUuid) const;
 
 };
 //-----------------------------------------------------------------------------

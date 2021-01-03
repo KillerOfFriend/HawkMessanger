@@ -50,16 +50,5 @@ static const std::string J_MESSAGE_REGDATE          = REGDATE;
 static const std::string J_MESSAGE_TYPE             = "type";
 static const std::string J_MESSAGE_DATA             = "data";
 //-----------------------------------------------------------------------------
-// Связи
-//-----------------------------------------------------------------------------
-// Пользователи-контакты
-static const std::string J_REL_USER_CONTACTS        = "USER_CONTACTS";
-static const std::string J_REL_UC_USER_UUID         = "user_" + UUID;
-static const std::string J_REL_UC_CONTACTS          = "contacts";
-// Группы-пользователи
-static const std::string J_REL_GROUP_USERS          = "GROUP_USERS";
-static const std::string J_REL_GU_GROUP_UUID        = "group_" + UUID;
-static const std::string J_REL_GU_USERS             = "users";
-//-----------------------------------------------------------------------------
 
 #endif // JSONDATASTORAGECONST_H

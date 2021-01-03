@@ -30,7 +30,7 @@ public:
     ~HMAccount() = default;
 
     std::shared_ptr<HMUser> m_userInfo = nullptr;           ///< Данные пользователя
-    std::shared_ptr<HMUserList> m_cotacts = nullptr;        ///< Контакты пользователя
+    HMUserList m_cotacts;                                   ///< Контакты пользователя
 
     std::vector<std::shared_ptr<HMGroup>> m_groups;         ///< Группы пользователя
 

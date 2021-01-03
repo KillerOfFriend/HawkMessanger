@@ -232,15 +232,15 @@ public:
      * @param inContacts - Список контактов
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code setUserContacts(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUserList> inContacts) override;
+    virtual std::error_code setUserContacts(const QUuid& inUserUUID, const std::shared_ptr<std::set<QUuid>> inContacts) override;
 
     /**
      * @brief addUserContact - Метод добавит контакт пользователю
      * @param inUserUUID - Uuid пользователя
-     * @param inContact - Новый контакт
+     * @param inContactUUID - Uuid контакта
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code addUserContact(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUser> inContact) override;
+    virtual std::error_code addUserContact(const QUuid& inUserUUID, const QUuid& inContactUUID) override;
 
     /**
      * @brief removeUserContact - Метод удалит контакт пользователя
@@ -263,7 +263,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт список контактов пользователя
      */
-    virtual std::shared_ptr<hmcommon::HMUserList> getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const override;
+    virtual std::shared_ptr<std::set<QUuid>> getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const override;
 
 protected:
 
@@ -362,18 +362,6 @@ private:
     std::error_code checkMessages() const;
 
     /**
-     * @brief checkRelationsUC - Метод проверит корректность структуры связей пользователь-контакты
-     * @return Вернёт признак ошибки
-     */
-    std::error_code checkRelationsUC() const;
-
-//    /**
-//     * @brief checkRelationsGU - Метод проверит корректность структуры связй группа-пользователи
-//     * @return Вернёт признак ошибки
-//     */
-//    std::error_code checkRelationsGU() const;
-
-    /**
      * @brief write - Метод запишет изменения в JSON файл
      * @return Вернёт признак ошибки
      */
@@ -426,23 +414,6 @@ private:
      * @return Вернёт объект Json
      */
     nlohmann::json messageToJson(std::shared_ptr<hmcommon::HMGroupMessage> inMessage, std::error_code& outErrorCode) const;
-
-    /**
-     * @brief jsonToRelationUC - Метод преобразует Json объект в экземпляр связи пользователь-контакты
-     * @param inRelationUCObject - Объект Json содержащий связь пользователь-контакты
-     * @param outErrorCode - Признак ошибки
-     * @return Вернёт объект Json
-     */
-    std::shared_ptr<hmcommon::HMUserList> jsonToRelationUC(const nlohmann::json& inRelationUCObject, std::error_code& outErrorCode) const;
-
-    /**
-     * @brief relationUCToJson - Метод преобразует связь пользователь-контакты в объект Json
-     * @param inUserUUID - UUID пользователя
-     * @param inRelationUC - Указатель на связь пользователь-контакты
-     * @param outErrorCode - Признак ошибки
-     * @return Вернёт объект Json
-     */
-    nlohmann::json relationUCToJson(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUserList> inRelationUC, std::error_code& outErrorCode) const;
 
 };
 //-----------------------------------------------------------------------------

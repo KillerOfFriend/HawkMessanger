@@ -52,27 +52,6 @@ public:
     std::error_code checkMessage(const nlohmann::json& inMesssageObject) const;
 
     /**
-     * @brief checkRelationUC - Метод проверит валидность JSON объекта связи пользователь-контакты
-     * @param inRelationUCObject - Проверяемый объект
-     * @return Вернёт признак ошибки
-     */
-    std::error_code checkRelationUC(const nlohmann::json& inRelationUCObject) const;
-
-    /**
-     * @brief checkRelationGU - Метод проверит валидность JSON объекта связи группа-пользователи
-     * @param inRelationGUObject - Проверяемый объек
-     * @return Вернёт признак ошибки
-     */
-    std::error_code checkRelationGU(const nlohmann::json& inRelationGUObject) const;
-
-    /**
-     * @brief checkUserContactsRelation - Метод проверит валидность JSON объекта связи пользователь-контакты
-     * @param inUCRelation - Проверяемый объект
-     * @return Вернёт признак ошибки
-     */
-    std::error_code checkUserContactsRelation(const nlohmann::json& inUCRelation) const;
-
-    /**
      * @brief jsonToByteArr - Функция преобразует JSON в QByteArray
      * @param inJson - Обрабатываемый JSON
      * @return Вернёт байтовую последовательность

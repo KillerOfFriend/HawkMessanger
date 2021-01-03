@@ -30,65 +30,65 @@ void HMGroup::setName(const QString& inName)
 QString HMGroup::getName() const
 { return m_name; }
 //-----------------------------------------------------------------------------
-bool HMGroup::isUsersEmpty() const
-{ return  m_users.empty(); }
-//-----------------------------------------------------------------------------
-std::size_t HMGroup::usersCount() const
-{ return m_users.size(); }
-//-----------------------------------------------------------------------------
-std::error_code HMGroup::addUser(const std::shared_ptr<HMUser> inUser)
-{
-    std::error_code Result = make_error_code(eSystemErrorEx::seSuccess);
+//bool HMGroup::isUsersEmpty() const
+//{ return  m_users.empty(); }
+////-----------------------------------------------------------------------------
+//std::size_t HMGroup::usersCount() const
+//{ return m_users.size(); }
+////-----------------------------------------------------------------------------
+//std::error_code HMGroup::addUser(const std::shared_ptr<HMUser> inUser)
+//{
+//    std::error_code Result = make_error_code(eSystemErrorEx::seSuccess);
 
-    if (!inUser)
-        Result = make_error_code(eSystemErrorEx::seInvalidPtr);
-    else
-    {
-        if (contain(inUser->m_uuid))
-            Result = make_error_code(eSystemErrorEx::seAlredyInContainer);
-        else
-            m_users.push_back(inUser);
-    }
+//    if (!inUser)
+//        Result = make_error_code(eSystemErrorEx::seInvalidPtr);
+//    else
+//    {
+//        if (contain(inUser->m_uuid))
+//            Result = make_error_code(eSystemErrorEx::seAlredyInContainer);
+//        else
+//            m_users.push_back(inUser);
+//    }
 
-    return Result;
-}
-//-----------------------------------------------------------------------------
-std::error_code HMGroup::removeUser(const QUuid& inUserUuid)
-{
-    std::error_code Result = make_error_code(eSystemErrorEx::seSuccess);
+//    return Result;
+//}
+////-----------------------------------------------------------------------------
+//std::error_code HMGroup::removeUser(const QUuid& inUserUuid)
+//{
+//    std::error_code Result = make_error_code(eSystemErrorEx::seSuccess);
 
-    auto It = std::find_if(m_users.begin(), m_users.end(), [&inUserUuid](const std::shared_ptr<HMUser>& User)
-    { return User->m_uuid == inUserUuid; });
+//    auto It = std::find_if(m_users.begin(), m_users.end(), [&inUserUuid](const std::shared_ptr<HMUser>& User)
+//    { return User->m_uuid == inUserUuid; });
 
-    if (It == m_users.end())
-        Result = make_error_code(eSystemErrorEx::seNotInContainer);
-    else
-        m_users.erase(It);
+//    if (It == m_users.end())
+//        Result = make_error_code(eSystemErrorEx::seNotInContainer);
+//    else
+//        m_users.erase(It);
 
-    return Result;
-}
-//-----------------------------------------------------------------------------
-std::shared_ptr<HMUser> HMGroup::getUser(const std::size_t inIndex, std::error_code& outErrorCode)
-{
-    std::shared_ptr<HMUser> Result = nullptr;
-    outErrorCode = make_error_code(eSystemErrorEx::seSuccess);
+//    return Result;
+//}
+////-----------------------------------------------------------------------------
+//std::shared_ptr<HMUser> HMGroup::getUser(const std::size_t inIndex, std::error_code& outErrorCode)
+//{
+//    std::shared_ptr<HMUser> Result = nullptr;
+//    outErrorCode = make_error_code(eSystemErrorEx::seSuccess);
 
-    if (isUsersEmpty())
-        outErrorCode = make_error_code(eSystemErrorEx::seContainerEmpty);
-    else
-    {
-        if (inIndex >= m_users.size())
-            outErrorCode = make_error_code(eSystemErrorEx::seIndexOutOfContainerRange);
-        else
-            Result = m_users[inIndex];
-    }
+//    if (isUsersEmpty())
+//        outErrorCode = make_error_code(eSystemErrorEx::seContainerEmpty);
+//    else
+//    {
+//        if (inIndex >= m_users.size())
+//            outErrorCode = make_error_code(eSystemErrorEx::seIndexOutOfContainerRange);
+//        else
+//            Result = m_users[inIndex];
+//    }
 
-    return Result;
-}
-//-----------------------------------------------------------------------------
-bool HMGroup::contain(const QUuid& inUserUuid) const
-{
-    return m_users.end() != std::find_if(m_users.begin(), m_users.end(), [&inUserUuid](const std::shared_ptr<HMUser>& User)
-    { return User->m_uuid == inUserUuid; });
-}
-//-----------------------------------------------------------------------------
+//    return Result;
+//}
+////-----------------------------------------------------------------------------
+//bool HMGroup::contain(const QUuid& inUserUuid) const
+//{
+//    return m_users.end() != std::find_if(m_users.begin(), m_users.end(), [&inUserUuid](const std::shared_ptr<HMUser>& User)
+//    { return User->m_uuid == inUserUuid; });
+//}
+////-----------------------------------------------------------------------------

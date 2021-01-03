@@ -53,7 +53,7 @@ struct HMCachedUser
     // Данные
 
     std::shared_ptr<hmcommon::HMUser> m_user = nullptr; ///< Пользователь
-    mutable QTime m_lastRequest; ///< Время последнего запроса
+    mutable QTime m_lastRequest;                        ///< Время последнего запроса
 };
 //-----------------------------------------------------------------------------
 /**
@@ -66,7 +66,7 @@ struct HMCachedUserContacts
      * @param inUserUUID - Uuid пользователя
      * @param inContactList - Список контактов
      */
-    HMCachedUserContacts(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUserList> inContactList);
+    HMCachedUserContacts(const QUuid& inUserUUID, const std::shared_ptr<std::set<QUuid>> inContactList);
 
     /**
      * @brief HMCachedUserContacts - Конструктор копирования (Удалён)
@@ -96,9 +96,9 @@ struct HMCachedUserContacts
      */
     bool operator == (const HMCachedUserContacts& inOther) const noexcept;
 
-    QUuid m_userUUID; ///< UUID пользователя
-    std::shared_ptr<hmcommon::HMUserList> m_contactList = nullptr; ///< Перечень контактов
-    mutable QTime m_lastRequest; ///< Время последнего запроса
+    QUuid m_userUUID;                                           ///< UUID пользователя
+    std::shared_ptr<std::set<QUuid>> m_contactList = nullptr;   ///< Перечень контактов
+    mutable QTime m_lastRequest;                                ///< Время последнего запроса
 };
 //-----------------------------------------------------------------------------
 /**
@@ -143,7 +143,7 @@ struct HMCachedGroup
     // Данные
 
     std::shared_ptr<hmcommon::HMGroup> m_group = nullptr;   ///< Группа
-    mutable QTime m_lastRequest;     ///< Время последнего запроса
+    mutable QTime m_lastRequest;                            ///< Время последнего запроса
 };
 //-----------------------------------------------------------------------------
 /**

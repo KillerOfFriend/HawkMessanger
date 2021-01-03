@@ -22,8 +22,10 @@ static const std::int32_t C_STORAG_ERROR_START = 300; ///< Начальное з
 enum class eDataStorageError
 {
     dsSuccess = 0,                      ///< 0 Не явялется ошибкой
+
     // Хранилище
     dsNotOpen = C_STORAG_ERROR_START,   ///< Хранилище не открыто
+
     // Пользователи
     dsUserUUIDAlreadyRegistered,        ///< В хранилище уже зарегистрирован пользователь с таким UUID
     dsUserLoginAlreadyRegistered,       ///< В хранилище уже зарегистрирован пользователь с таким логином
@@ -39,6 +41,11 @@ enum class eDataStorageError
     dsUserBirthdayCorrupted,            ///< День рождения пользователя повреждён
     dsUserContactsCorrupted,            ///< Контакты пользователя повреждены
     dsUserGroupsCorrupted,              ///< Группы пользователя повреждены
+    dsUserContactRelationAlredyExists,  ///< Связь пользователь-контакт уже существует
+    dsUserContactRelationNotExists,     ///< Связь пользователь-контакт не существует
+    dsUserContactAlredyExists,          ///< Контакт пользователя уже существует
+    dsUserContactNotExists,             ///< Контакт пользователя не существует
+    dsUserGroupsRelationAlredyExists,   ///< Связь пользователь-группы уже существует
     dsUserGroupsRelationNotExists,      ///< Связь пользователь-группы не существует
 
     // Группы
@@ -60,17 +67,19 @@ enum class eDataStorageError
     dsMessageRegistrationDateCorrupted, ///< Время сообщения поврежено
     dsMessageTypeCorrupted,             ///< Тип сообщения повреждён
     dsMessageDataCorrupted,             ///< Данные сообщения повреждены
+
     // Связи
-    dsRelationsCorrupted,               ///< ВСЕ связи повреждены
+//    dsRelationsCorrupted,               ///< ВСЕ связи повреждены
+
     // Связи пользователь-контакт
-    dsRelationUCAlreadyExists,          ///< Связь пользвоатель-контакты уже существует
-    dsRelationUCNotExists,              ///< Связь пользвоатель-контакты не существует
-    dsRelationUCContactAlredyExists,    ///< Контакт уже существует в связи пользвоатель-контакты
-    dsRelationUCContactNotExists,       ///< Контакт не существует в связи пользвоатель-контакты
-    dsRelationUCCorrupted,              ///< Связи пользвоатель-контакты повреждены
-    dsRelationUCUserUUIDCorrupted,      ///< В связи пользователь-контакты повреждён UUID пользователя
-    dsRelationUCContactsCorrupted,      ///< В связи пользователь-контакты повреждён список контактов
-    dsRelationUCContactUUIDCorrupted,   ///< В связи пользователь-контакты повреждён UUID контакта
+//    dsRelationUCAlreadyExists,          ///< Связь пользвоатель-контакты уже существует
+//    dsRelationUCNotExists,              ///< Связь пользвоатель-контакты не существует
+//    dsRelationUCContactAlredyExists,    ///< Контакт уже существует в связи пользвоатель-контакты
+//    dsRelationUCContactNotExists,       ///< Контакт не существует в связи пользвоатель-контакты
+//    dsRelationUCCorrupted,              ///< Связи пользвоатель-контакты повреждены
+//    dsRelationUCUserUUIDCorrupted,      ///< В связи пользователь-контакты повреждён UUID пользователя
+//    dsRelationUCContactsCorrupted,      ///< В связи пользователь-контакты повреждён список контактов
+//    dsRelationUCContactUUIDCorrupted,   ///< В связи пользователь-контакты повреждён UUID контакта
 
     dsCount
 };

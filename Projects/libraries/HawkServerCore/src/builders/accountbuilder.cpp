@@ -58,24 +58,37 @@ std::shared_ptr<hmcommon::HMAccount> HMAccountBuilder::buildAccount(const QUuid&
 
     if (!outErrorCode) // Информация о пользователе сформирована успешно
     {
-        Result->m_cotacts = m_storage->getUserContactList(inUserUUID, outErrorCode); // Ищим список контактов пользователя
+        std::shared_ptr<std::set<QUuid>> UserContact = m_storage->getUserContactList(inUserUUID, outErrorCode); // Ищим список контактов пользователя
 
-        if (!outErrorCode) // Если список контактов сформирован успешно
+        if (!outErrorCode)
         {
-            std::shared_ptr<std::set<QUuid>> UserGroups = m_storage->getUserGroups(inUserUUID, outErrorCode); // Получаем список UUID'ов групп пользователя
-
-            if (!outErrorCode) // Если UUID'ы группы успешно получены
+            for (const QUuid& ContactUUID : *UserContact) // Перебираем список контактов
             {
-                std::error_code FindGroupError = make_error_code(hmcommon::eSystemErrorEx::seSuccess); // Ошибки поиска групп обрабатываем отдельно
+                std::shared_ptr<hmcommon::HMUser> Contact = m_storage->findUserByUUID(ContactUUID, outErrorCode); // Ищим контакт
 
-                for (const QUuid& GroupUUID : *UserGroups)
+                if (outErrorCode) // Если ошибка при получении контакта
+                    break; // Останавливаем перебор
+                else // Контакт получен успешно
+                    Result->m_cotacts.add(Contact); // Добавляем контакт в список
+            }
+
+            if (!outErrorCode) // Если список контактов сформирован успешно
+            {
+                std::shared_ptr<std::set<QUuid>> UserGroups = m_storage->getUserGroups(inUserUUID, outErrorCode); // Получаем список UUID'ов групп пользователя
+
+                if (!outErrorCode) // Если UUID'ы группы успешно получены
                 {
-                    std::shared_ptr<hmcommon::HMGroup> Group = m_storage->findGroupByUUID(GroupUUID, FindGroupError);
+                    std::error_code FindGroupError = make_error_code(hmcommon::eSystemErrorEx::seSuccess); // Ошибки поиска групп обрабатываем отдельно
 
-                    if (FindGroupError) // Если не улаось обнаружить группу
-                        LOG_WARNING_EX(QString::fromStdString(FindGroupError.message()), this); // Сообщим об этом в логах
-                    else // Валидную группу добавляем в аккаунт
-                        Result->m_groups.emplace_back(std::move(Group));
+                    for (const QUuid& GroupUUID : *UserGroups)
+                    {
+                        std::shared_ptr<hmcommon::HMGroup> Group = m_storage->findGroupByUUID(GroupUUID, FindGroupError);
+
+                        if (FindGroupError) // Если не улаось обнаружить группу
+                            LOG_WARNING_EX(QString::fromStdString(FindGroupError.message()), this); // Сообщим об этом в логах
+                        else // Валидную группу добавляем в аккаунт
+                            Result->m_groups.emplace_back(std::move(Group));
+                    }
                 }
             }
         }
