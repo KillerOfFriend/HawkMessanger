@@ -687,7 +687,7 @@ TEST(CachedMemoryDataStorage, removeUserContact)
 /**
  * @brief TEST - Тест проверит удаление связи пользователь-контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ)
  */
-TEST(CachedMemoryDataStorage, removeUserContacts)
+TEST(CachedMemoryDataStorage, clearUserContacts)
 {
     std::error_code Error;
 
@@ -702,7 +702,7 @@ TEST(CachedMemoryDataStorage, removeUserContacts)
     std::shared_ptr<hmcommon::HMUser> NewContact1 = testscommon::make_user(QUuid::createUuid(), "TestContact1@login.com");
     std::shared_ptr<hmcommon::HMUser> NewContact2 = testscommon::make_user(QUuid::createUuid(), "TestContact2@login.com");
 
-    Error = CachedStorage->removeUserContacts(NewUser->m_uuid); // Пытаемся удалить не сущестующую связь
+    Error = CachedStorage->clearUserContacts(NewUser->m_uuid); // Пытаемся удалить не сущестующую связь
     ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsSuccess)); // Вне зависимости от наличия в кеше, удаление валидно
 
     std::shared_ptr<std::set<QUuid>> NewContactList = std::make_shared<std::set<QUuid>>();
@@ -719,7 +719,7 @@ TEST(CachedMemoryDataStorage, removeUserContacts)
     Error = CachedStorage->addUserContact(NewUser->m_uuid, NewContact2->m_uuid); // И добавляем контакт2 пользователю
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    Error = CachedStorage->removeUserContacts(NewUser->m_uuid); // Удаляем связь
+    Error = CachedStorage->clearUserContacts(NewUser->m_uuid); // Удаляем связь
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     CachedStorage->close();

@@ -84,7 +84,7 @@ TEST(JsonDataStorage, AddUser)
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     Error = Storage->addUser(NewUser); // Пытаемся добавить повторно
-    EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserUUIDAlreadyRegistered)); // Должны получить сообщение о том, что этот UUID уже зарегистрирован
+    EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserAlreadyExists)); // Должны получить сообщение о том, что пользователь с таким UUID уже зарегистрирован
 
     NewUser = testscommon::make_user(QUuid::createUuid()); // Формируем такого же пользователя но с другим UUID
 
@@ -1014,7 +1014,7 @@ TEST(JsonDataStorage, removeUserContact)
 /**
  * @brief TEST - Тест проверит удаление связи пользователь-контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ)
  */
-TEST(JsonDataStorage, removeUserContacts)
+TEST(JsonDataStorage, clearUserContacts)
 {
     std::error_code Error;
     std::unique_ptr<HMDataStorage> Storage = makeStorage(); // Создаём JSON хранилище
@@ -1028,7 +1028,7 @@ TEST(JsonDataStorage, removeUserContacts)
     std::shared_ptr<hmcommon::HMUser> NewContact1 = testscommon::make_user(QUuid::createUuid(), "TestContact1@login.com");
     std::shared_ptr<hmcommon::HMUser> NewContact2 = testscommon::make_user(QUuid::createUuid(), "TestContact2@login.com");
 
-    Error = Storage->removeUserContacts(NewUser->m_uuid); // Пытаемся удалить не сущестующую связь
+    Error = Storage->clearUserContacts(NewUser->m_uuid); // Пытаемся удалить не сущестующую связь
     ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что пользователь в хранилище не найден
 
     Error = Storage->addUser(NewUser);
@@ -1049,7 +1049,7 @@ TEST(JsonDataStorage, removeUserContacts)
     Error = Storage->addUserContact(NewUser->m_uuid, NewContact2->m_uuid); // И добавляем контакт2 пользователю
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    Error = Storage->removeUserContacts(NewUser->m_uuid);
+    Error = Storage->clearUserContacts(NewUser->m_uuid);
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     Storage->close();

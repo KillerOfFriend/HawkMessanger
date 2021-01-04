@@ -33,7 +33,7 @@ std::error_code HMAbstractDataStorageFunctional::checkNewUserUnique(const std::s
             std::shared_ptr<hmcommon::HMUser> FindUUIDRes = findUserByUUID(inUser->m_uuid, ErrorFindByUUID); // Ищим пользователя по UUID
 
             // I) findUserByUUID Вернёт либо:
-            // 1) Пользователь найден == Success из любой категории (функция должна вернуть eDataStorageError::dsUserUUIDAlreadyRegistered)
+            // 1) Пользователь найден == Success из любой категории (функция должна вернуть eDataStorageError::dsUserAlreadyExists)
             // 2) Пользователь не найден (функция должна вернуть dlSuccess)
             // 3) Одна из многих ошибок парсинга (функция должна вернуть эту ошибку)
 
@@ -49,7 +49,7 @@ std::error_code HMAbstractDataStorageFunctional::checkNewUserUnique(const std::s
             switch (ErrorFindByUUID.value()) // I
             {
                 // Ситуация I (1)
-                case 0: { Error = make_error_code(eDataStorageError::dsUserUUIDAlreadyRegistered); break; };
+                case 0: { Error = make_error_code(eDataStorageError::dsUserAlreadyExists); break; };
                 // Ситуация I (2)
                 case static_cast<int32_t>(eDataStorageError::dsUserNotExists):
                 { Error = make_error_code(eDataStorageError::dsSuccess); break; }

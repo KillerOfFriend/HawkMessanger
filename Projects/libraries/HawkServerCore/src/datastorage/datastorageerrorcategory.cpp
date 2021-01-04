@@ -26,8 +26,8 @@ std::string DataStorageErrorCategory::message(int inCode) const
 
         case eDataStorageError::dsNotOpen:                          { Result = tr("Хранилище не открыто").toStdString(); break; }
 
-        case eDataStorageError::dsUserUUIDAlreadyRegistered:        { Result = tr("Пользователь с таким UUID уже зарегистрирован").toStdString(); break; }
         case eDataStorageError::dsUserLoginAlreadyRegistered:       { Result = tr("Пользователь с таким логином уже зарегистрирован").toStdString(); break; }
+        case eDataStorageError::dsUserPasswordIncorrect:            { Result = tr("Не верный пароль").toStdString(); break; }
         case eDataStorageError::dsUserNotExists:                    { Result = tr("Пользователь не существует").toStdString(); break; }
         case eDataStorageError::dsUserAlreadyExists:                { Result = tr("Пользователь уже существует").toStdString(); break; }
         case eDataStorageError::dsUserUUIDCorrupted:                { Result = tr("UUID пользователя повреждён").toStdString(); break; }
@@ -62,18 +62,7 @@ std::string DataStorageErrorCategory::message(int inCode) const
         case eDataStorageError::dsMessageGroupUUIDCorrupted:        { Result = tr("UUID группы сообщения повреждён").toStdString(); break; }
         case eDataStorageError::dsMessageRegistrationDateCorrupted: { Result = tr("Дата сообщения повреждена").toStdString(); break; }
         case eDataStorageError::dsMessageTypeCorrupted:             { Result = tr("Тип сообщения повреждён").toStdString(); break; }
-        case eDataStorageError::dsMessageDataCorrupted:             { Result = tr("Ванные сообщения повреждены").toStdString(); break; }
-        // Связи
-//        case eDataStorageError::dsRelationsCorrupted:               { Result = tr("ВСЕ связи повреждены").toStdString(); break; }
-        // Связи пользователь-контакт
-//        case eDataStorageError::dsRelationUCAlreadyExists:          { Result = tr("Связь пользвоатель-контакты уже существует").toStdString(); break; }
-//        case eDataStorageError::dsRelationUCNotExists:              { Result = tr("Связь пользвоатель-контакты не существует").toStdString(); break; }
-//        case eDataStorageError::dsRelationUCContactAlredyExists:    { Result = tr("Контакт уже существует в связи пользвоатель-контакты").toStdString(); break; }
-//        case eDataStorageError::dsRelationUCContactNotExists:       { Result = tr("Контакт не существует в связи пользвоатель-контакты").toStdString(); break; }
-//        case eDataStorageError::dsRelationUCCorrupted:              { Result = tr("Связи пользвоатель-контакты повреждены").toStdString(); break; }
-//        case eDataStorageError::dsRelationUCUserUUIDCorrupted:      { Result = tr("В связи пользователь-контакты повреждён UUID пользователя").toStdString(); break; }
-//        case eDataStorageError::dsRelationUCContactsCorrupted:      { Result = tr("В связи пользователь-контакты повреждён список контактов").toStdString(); break; }
-//        case eDataStorageError::dsRelationUCContactUUIDCorrupted:   { Result = tr("В связи пользователь-контакты повреждён UUID контакта").toStdString(); break; }
+        case eDataStorageError::dsMessageDataCorrupted:             { Result = tr("Данные сообщения повреждены").toStdString(); break; }
 
         default: Result = ( tr("Не известная ошибка с кодом: ") + QString::number(inCode) ).toStdString();
 }

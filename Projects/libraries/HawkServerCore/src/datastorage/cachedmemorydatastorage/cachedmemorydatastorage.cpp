@@ -126,6 +126,94 @@ std::error_code HMCachedMemoryDataStorage::removeUser(const QUuid& inUserUUID)
     return make_error_code(eDataStorageError::dsSuccess); // Наплевать, был пользователь в кеше или нет
 }
 //-----------------------------------------------------------------------------
+std::error_code HMCachedMemoryDataStorage::setUserContacts(const QUuid& inUserUUID, const std::shared_ptr<std::set<QUuid>> inContacts)
+{
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+
+    if (!inContacts) // Проверяем указатель на валидность
+        Error = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
+    else
+    {
+        std::unique_lock ul(m_userContactsDefender); // Эксклюзивно блокируем доступ к связам пользователь-контакты
+        if (!m_cachedUserContacts.emplace(HMCachedUserContacts(inUserUUID, inContacts)).second)
+            Error = make_error_code(eDataStorageError::dsUserContactAlredyExists); // Контакт уже хеширован
+    }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
+std::error_code HMCachedMemoryDataStorage::addUserContact(const QUuid& inUserUUID, const QUuid& inContactUUID)
+{
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+
+    if (inUserUUID == inContactUUID) // Попытка добавить связь с самим собой
+        Error = make_error_code(hmcommon::eSystemErrorEx::seIncorretData);
+    else
+    {
+        std::shared_lock sl(m_userContactsDefender); // Публично блокируем связи пользователь-контакты
+        auto FindRes = m_cachedUserContacts.find(HMCachedUserContacts(inUserUUID, std::make_shared<std::set<QUuid>>())); // Ищим связь в кеше
+
+        if (FindRes == m_cachedUserContacts.end()) // Нет связи в кеше
+            Error = make_error_code(eDataStorageError::dsUserContactRelationNotExists);
+        else // Связь кеширована
+        {
+            if (!FindRes->m_contactList->insert(inContactUUID).second) // Добавляем контакт
+                Error = make_error_code(hmcommon::eSystemErrorEx::seAlredyInContainer);
+            FindRes->m_lastRequest = QTime::currentTime(); // Помечаем время последнего запроса
+        }
+    }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
+std::error_code HMCachedMemoryDataStorage::removeUserContact(const QUuid& inUserUUID, const QUuid& inContactUUID)
+{
+    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+
+    std::shared_lock sl(m_userContactsDefender); // Публично блокируем связи пользователь-контакты
+    auto FindRes = m_cachedUserContacts.find(HMCachedUserContacts(inUserUUID, std::make_shared<std::set<QUuid>>())); // Ищим связь в кеше
+
+    if (FindRes == m_cachedUserContacts.end()) // Нет связи в кеше
+        Error = make_error_code(eDataStorageError::dsUserContactRelationNotExists);
+    else // Связь кеширована
+    {
+        FindRes->m_contactList->erase(inContactUUID); // Удаляем контакт
+        FindRes->m_lastRequest = QTime::currentTime(); // Помечаем время последнего запроса
+    }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
+std::error_code HMCachedMemoryDataStorage::clearUserContacts(const QUuid& inUserUUID)
+{
+    std::shared_lock sl(m_userContactsDefender); // Публично блокируем связи пользователь-контакты
+    auto FindRes = m_cachedUserContacts.find(HMCachedUserContacts(inUserUUID, std::make_shared<std::set<QUuid>>())); // Ищим связь в кеше
+
+    if (FindRes != m_cachedUserContacts.end()) // Если связь найдена
+        m_cachedUserContacts.erase(FindRes); // Удаляем её из кеша
+
+    return make_error_code(eDataStorageError::dsSuccess); // Наплевать, был пользователь в кеше или нет
+}
+//-----------------------------------------------------------------------------
+std::shared_ptr<std::set<QUuid>> HMCachedMemoryDataStorage::getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const
+{
+    std::shared_ptr<std::set<QUuid>> Result = nullptr;
+    outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+
+    std::shared_lock sl(m_userContactsDefender); // Публично блокируем связи пользователь-контакты
+    auto FindRes = m_cachedUserContacts.find(HMCachedUserContacts(inUserUUID, std::make_shared<std::set<QUuid>>())); // Ищим связь в кеше
+
+    if (FindRes == m_cachedUserContacts.end()) // Нет связи в кеше
+        outErrorCode = make_error_code(eDataStorageError::dsUserContactRelationNotExists);
+    else // Связь кеширована
+    {
+        Result = FindRes->m_contactList; // Вернём указатель на кешированную связь
+        FindRes->m_lastRequest = QTime::currentTime(); // Помечаем время последнего запроса
+    }
+
+    return Result;
+}
+//-----------------------------------------------------------------------------
 std::shared_ptr<std::set<QUuid>> HMCachedMemoryDataStorage::getUserGroups(const QUuid& inUserUUID, std::error_code& outErrorCode) const
 {
     Q_UNUSED(inUserUUID);
@@ -344,94 +432,6 @@ std::error_code HMCachedMemoryDataStorage::removeMessage(const QUuid& inMessageU
     Q_UNUSED(inMessageUUID);
     Q_UNUSED(inGroupUUID);
     return make_error_code(eDataStorageError::dsSuccess); // Наплевать, было сообщение в кеше или нет
-}
-//-----------------------------------------------------------------------------
-std::error_code HMCachedMemoryDataStorage::setUserContacts(const QUuid& inUserUUID, const std::shared_ptr<std::set<QUuid>> inContacts)
-{
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
-
-    if (!inContacts) // Проверяем указатель на валидность
-        Error = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
-    else
-    {
-        std::unique_lock ul(m_userContactsDefender); // Эксклюзивно блокируем доступ к связам пользователь-контакты
-        if (!m_cachedUserContacts.emplace(HMCachedUserContacts(inUserUUID, inContacts)).second)
-            Error = make_error_code(eDataStorageError::dsUserContactAlredyExists); // Контакт уже хеширован
-    }
-
-    return Error;
-}
-//-----------------------------------------------------------------------------
-std::error_code HMCachedMemoryDataStorage::addUserContact(const QUuid& inUserUUID, const QUuid& inContactUUID)
-{
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
-
-    if (inUserUUID == inContactUUID) // Попытка добавить связь с самим собой
-        Error = make_error_code(hmcommon::eSystemErrorEx::seIncorretData);
-    else
-    {
-        std::shared_lock sl(m_userContactsDefender); // Публично блокируем связи пользователь-контакты
-        auto FindRes = m_cachedUserContacts.find(HMCachedUserContacts(inUserUUID, std::make_shared<std::set<QUuid>>())); // Ищим связь в кеше
-
-        if (FindRes == m_cachedUserContacts.end()) // Нет связи в кеше
-            Error = make_error_code(eDataStorageError::dsUserContactRelationNotExists);
-        else // Связь кеширована
-        {
-            if (!FindRes->m_contactList->insert(inContactUUID).second) // Добавляем контакт
-                Error = make_error_code(hmcommon::eSystemErrorEx::seAlredyInContainer);
-            FindRes->m_lastRequest = QTime::currentTime(); // Помечаем время последнего запроса
-        }
-    }
-
-    return Error;
-}
-//-----------------------------------------------------------------------------
-std::error_code HMCachedMemoryDataStorage::removeUserContact(const QUuid& inUserUUID, const QUuid& inContactUUID)
-{
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
-
-    std::shared_lock sl(m_userContactsDefender); // Публично блокируем связи пользователь-контакты
-    auto FindRes = m_cachedUserContacts.find(HMCachedUserContacts(inUserUUID, std::make_shared<std::set<QUuid>>())); // Ищим связь в кеше
-
-    if (FindRes == m_cachedUserContacts.end()) // Нет связи в кеше
-        Error = make_error_code(eDataStorageError::dsUserContactRelationNotExists);
-    else // Связь кеширована
-    {
-        FindRes->m_contactList->erase(inContactUUID); // Удаляем контакт
-        FindRes->m_lastRequest = QTime::currentTime(); // Помечаем время последнего запроса
-    }
-
-    return Error;
-}
-//-----------------------------------------------------------------------------
-std::error_code HMCachedMemoryDataStorage::removeUserContacts(const QUuid& inUserUUID)
-{
-    std::shared_lock sl(m_userContactsDefender); // Публично блокируем связи пользователь-контакты
-    auto FindRes = m_cachedUserContacts.find(HMCachedUserContacts(inUserUUID, std::make_shared<std::set<QUuid>>())); // Ищим связь в кеше
-
-    if (FindRes != m_cachedUserContacts.end()) // Если связь найдена
-        m_cachedUserContacts.erase(FindRes); // Удаляем её из кеша
-
-    return make_error_code(eDataStorageError::dsSuccess); // Наплевать, был пользователь в кеше или нет
-}
-//-----------------------------------------------------------------------------
-std::shared_ptr<std::set<QUuid>> HMCachedMemoryDataStorage::getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const
-{
-    std::shared_ptr<std::set<QUuid>> Result = nullptr;
-    outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
-
-    std::shared_lock sl(m_userContactsDefender); // Публично блокируем связи пользователь-контакты
-    auto FindRes = m_cachedUserContacts.find(HMCachedUserContacts(inUserUUID, std::make_shared<std::set<QUuid>>())); // Ищим связь в кеше
-
-    if (FindRes == m_cachedUserContacts.end()) // Нет связи в кеше
-        outErrorCode = make_error_code(eDataStorageError::dsUserContactRelationNotExists);
-    else // Связь кеширована
-    {
-        Result = FindRes->m_contactList; // Вернём указатель на кешированную связь
-        FindRes->m_lastRequest = QTime::currentTime(); // Помечаем время последнего запроса
-    }
-
-    return Result;
 }
 //-----------------------------------------------------------------------------
 void HMCachedMemoryDataStorage::clearCached()

@@ -91,6 +91,8 @@ void HMLogSystem::processMsg(const HMLogMessage& inMsg)
 //-----------------------------------------------------------------------------
 void HMLogSystem::printMsg(const HMLogMessage& inMsg) const
 {
+    std::lock_guard lg(m_streamDefender);
+
     switch (inMsg.m_type)
     {
         case eLogMessageType::lmtInfo:      { QStdOut() << "<" + inMsg.m_time.toString() + "> " << M_INFO << " " << inMsg.m_message << Qt::endl; break; }

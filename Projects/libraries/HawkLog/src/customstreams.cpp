@@ -1,10 +1,12 @@
 #include "customstreams.h"
 
+#include <mutex>
+
 #include <qsystemdetection.h>
 
 //-----------------------------------------------------------------------------
 QTextStream& hmlog::QStdOut()
-{
+{   
     static QTextStream TextStream( stdout, QIODeviceBase::WriteOnly );
     return TextStream;
 }

@@ -106,6 +106,45 @@ public:
     virtual std::error_code removeUser(const QUuid& inUserUUID) override;
 
     /**
+     * @brief setUserContacts - Метод задаст пользователю список контактов
+     * @param inUserUUID - Uuid пользователья
+     * @param inContacts - Список контактов
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code setUserContacts(const QUuid& inUserUUID, const std::shared_ptr<std::set<QUuid>> inContacts) override;
+
+    /**
+     * @brief addUserContact - Метод добавит контакт пользователю
+     * @param inUserUUID - Uuid пользователя
+     * @param inContactUUID - Uuid контакта
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code addUserContact(const QUuid& inUserUUID, const QUuid& inContactUUID) override;
+
+    /**
+     * @brief removeUserContact - Метод удалит контакт пользователя
+     * @param inUserUUID - Uuid пользователя
+     * @param inContactUUID - Uuid контакта
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code removeUserContact(const QUuid& inUserUUID, const QUuid& inContactUUID) override;
+
+    /**
+     * @brief clearUserContacts - Метод очистит контакты пользователя
+     * @param inUserUUID - Uuid пользователя
+     * @return Вернёт признак ошибки
+     */
+    virtual std::error_code clearUserContacts(const QUuid& inUserUUID) override;
+
+    /**
+     * @brief getUserContactList - Метод вернёт список контактов пользователя
+     * @param inUserUUID - Uuid пользователя
+     * @param outErrorCode - Признак ошибки
+     * @return Вернёт список контактов пользователя
+     */
+    virtual std::shared_ptr<std::set<QUuid>> getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const override;
+
+    /**
      * @brief getUserGroups - Метод вернёт список групп пользователя
      * @param inUserUUID - Uuid пользователя
      * @param outErrorCode - Признак ошибки
@@ -223,47 +262,6 @@ public:
      * @return Вернёт признак ошибки
      */
     virtual std::error_code removeMessage(const QUuid& inMessageUUID, const QUuid& inGroupUUID) override;
-
-    // Связи [Пользователь]
-
-    /**
-     * @brief setUserContacts - Метод задаст пользователю список контактов
-     * @param inUserUUID - Uuid пользователья
-     * @param inContacts - Список контактов
-     * @return Вернёт признак ошибки
-     */
-    virtual std::error_code setUserContacts(const QUuid& inUserUUID, const std::shared_ptr<std::set<QUuid>> inContacts) override;
-
-    /**
-     * @brief addUserContact - Метод добавит контакт пользователю
-     * @param inUserUUID - Uuid пользователя
-     * @param inContactUUID - Uuid контакта
-     * @return Вернёт признак ошибки
-     */
-    virtual std::error_code addUserContact(const QUuid& inUserUUID, const QUuid& inContactUUID) override;
-
-    /**
-     * @brief removeUserContact - Метод удалит контакт пользователя
-     * @param inUserUUID - Uuid пользователя
-     * @param inContactUUID - Uuid контакта
-     * @return Вернёт признак ошибки
-     */
-    virtual std::error_code removeUserContact(const QUuid& inUserUUID, const QUuid& inContactUUID) override;
-
-    /**
-     * @brief removeUserContacts - Метод удалит контакты пользователя
-     * @param inUserUUID - Uuid пользователя
-     * @return Вернёт признак ошибки
-     */
-    virtual std::error_code removeUserContacts(const QUuid& inUserUUID) override;
-
-    /**
-     * @brief getUserContactList - Метод вернёт список контактов пользователя
-     * @param inUserUUID - Uuid пользователя
-     * @param outErrorCode - Признак ошибки
-     * @return Вернёт список контактов пользователя
-     */
-    virtual std::shared_ptr<std::set<QUuid>> getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const override;
 
 protected:
 

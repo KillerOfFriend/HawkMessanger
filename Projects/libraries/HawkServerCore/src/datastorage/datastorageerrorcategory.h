@@ -14,7 +14,7 @@
 namespace hmservcommon::datastorage
 {
 //-----------------------------------------------------------------------------
-static const std::int32_t C_STORAG_ERROR_START = 300; ///< Начальное значение ошибок хранилища данных
+static const std::int32_t C_STORAGE_ERROR_START = 300; ///< Начальное значение ошибок хранилища данных
 //-----------------------------------------------------------------------------
 /**
  * @brief The eDataStorageError enum - Перечень ошибок хранилища данных
@@ -24,10 +24,9 @@ enum class eDataStorageError
     dsSuccess = 0,                      ///< 0 Не явялется ошибкой
 
     // Хранилище
-    dsNotOpen = C_STORAG_ERROR_START,   ///< Хранилище не открыто
+    dsNotOpen = C_STORAGE_ERROR_START,  ///< Хранилище не открыто
 
     // Пользователи
-    dsUserUUIDAlreadyRegistered,        ///< В хранилище уже зарегистрирован пользователь с таким UUID
     dsUserLoginAlreadyRegistered,       ///< В хранилище уже зарегистрирован пользователь с таким логином
     dsUserPasswordIncorrect,            ///< Не корректный пароль пользователя
     dsUserNotExists,                    ///< Пользователь не существует
@@ -67,19 +66,6 @@ enum class eDataStorageError
     dsMessageRegistrationDateCorrupted, ///< Время сообщения поврежено
     dsMessageTypeCorrupted,             ///< Тип сообщения повреждён
     dsMessageDataCorrupted,             ///< Данные сообщения повреждены
-
-    // Связи
-//    dsRelationsCorrupted,               ///< ВСЕ связи повреждены
-
-    // Связи пользователь-контакт
-//    dsRelationUCAlreadyExists,          ///< Связь пользвоатель-контакты уже существует
-//    dsRelationUCNotExists,              ///< Связь пользвоатель-контакты не существует
-//    dsRelationUCContactAlredyExists,    ///< Контакт уже существует в связи пользвоатель-контакты
-//    dsRelationUCContactNotExists,       ///< Контакт не существует в связи пользвоатель-контакты
-//    dsRelationUCCorrupted,              ///< Связи пользвоатель-контакты повреждены
-//    dsRelationUCUserUUIDCorrupted,      ///< В связи пользователь-контакты повреждён UUID пользователя
-//    dsRelationUCContactsCorrupted,      ///< В связи пользователь-контакты повреждён список контактов
-//    dsRelationUCContactUUIDCorrupted,   ///< В связи пользователь-контакты повреждён UUID контакта
 
     dsCount
 };

@@ -39,12 +39,14 @@ private:
 
     uint8_t m_config;                               ///< Настройки логирования
 
+    mutable std::mutex m_streamDefender;            ///< Мьютекс, защищающий выходной поток
+
     std::list<HMLogMessage> m_messages;             ///< Список логов
-    std::mutex m_listDefender;                      ///< Мьютекс, защищающий список особщений
+    mutable std::mutex m_listDefender;              ///< Мьютекс, защищающий список особщений
     std::size_t m_maxContainMessages = 100;         ///< Максимальное количество хранимых сообщений
 
     std::unique_ptr<QFile> m_logFile = nullptr;     ///< Хендл файла логов
-    std::mutex m_fileDefender;                      ///< Мьютекс, защищающий файл
+    mutable std::mutex m_fileDefender;              ///< Мьютекс, защищающий файл
     std::atomic_bool m_workFinish;                  ///< Флаг, сообщающий о завершении работы
 
     /**
@@ -144,34 +146,56 @@ public:
 //-----------------------------------------------------------------------------
 } // namespace hmlog
 
-// Макросы вывода сообщений
-#define LOG_SYSTEM ( hmlog::HMLogSystem::getInstance() )
-#define SENDER_LINE ( " Line: " + QString(__LINE__) )
-#define SENDER_DATA(inClass) ( QString(typeid(inClass).name()) + "::" + __FUNCTION__ + SENDER_LINE )
+
+// Вспомогательные макросы
+#define AS_MACRO_STR(inVal)             # inVal
+#define TO_MACRO_STR(inVal)             AS_MACRO_STR(inVal)
+// Для глубокого дебага выводим информацию об исходном файле и строке
+#define SRC_FILE_DATA                   ( "Source file: " __FILE__ " on line " TO_MACRO_STR(__LINE__) )
 
 #if defined(__GNUC__)
-
+    // Вывод информации о классе:методе (расширение gcc)
+    #define SENDER_CLASS(inClass)           ( QString("In class method: ") + __PRETTY_FUNCTION__ )
 #elif defined(_MSC_VER)
-
+    #define SENDER_CLASS(inClass)           ( QString("In class method: ") + QString(typeid(inClass).name()) + ":" + __FUNCTION__ )
 #endif
 
+// Вывод изормации о функции
+#define SENDER_FUNCTION                 ( QString("In function: ") + __FUNCTION__ )
+
+#ifndef NDEBUG // В режиме дебага выводим доп информацию об исходном файле
+    // Вывод изормации о функции с доп. информацией о сиходном файле
+    #define SENDER_FUNCTION_EX          ( SENDER_FUNCTION + "\n\t" + SRC_FILE_DATA )
+    // Вывод информации о классе::методе с доп. информацией о сиходном файле
+    #define SENDER_CLASS_EX(inClass)    ( SENDER_CLASS(inClass) + "\n\t" + SRC_FILE_DATA )
+#else // В релизной версии выводим только место "вызова"
+    // Вывод изормации о функции
+    #define SENDER_FUNCTION_EX          ( SENDER_FUNCTION )
+    // Вывод информации о классе::методе
+    #define SENDER_CLASS_EX(inClass)    ( SENDER_CLASS(inClass) )
+#endif
+
+//-----
+
+// Макросы вывода сообщений
+#define LOG_SYSTEM                      ( hmlog::HMLogSystem::getInstance() )
 // Простой текст
-#define LOG_TEXT(inMessage) ( LOG_SYSTEM.logText(inMessage) )
+#define LOG_TEXT(inMessage)             ( LOG_SYSTEM.logText(inMessage) )
 // Информационное сообщение
-#define LOG_INFO(inMessage) ( LOG_SYSTEM.logInfo(inMessage) )
-// Предупреждения
-#define LOG_WARNING(inMessage)              ( LOG_SYSTEM.logWarning(inMessage) )
-#define LOG_WARNING_EX(inMessage, inClass)  ( LOG_WARNING(inMessage + " " + SENDER_DATA(inClass)) )
-// Ошибки
-#define LOG_ERROR(inMessage)                ( LOG_SYSTEM.logError(inMessage) )
-#define LOG_ERROR_EX(inMessage, inClass)    ( LOG_ERROR(inMessage + " " + SENDER_DATA(inClass)) )
-// Дебаг
+#define LOG_INFO(inMessage)             ( LOG_SYSTEM.logInfo(inMessage) )
+// Предупреждения (В режиме дебага, выведет доп. информацию об исходном файле и строке)
+#define LOG_WARNING(inMessage)          ( LOG_SYSTEM.logWarning(inMessage + QString(" " + SENDER_FUNCTION_EX)) )
+#define LOG_WARNING_EX(inMessage)       ( LOG_SYSTEM.logWarning(inMessage + QString(" " + SENDER_CLASS_EX(this))) )
+// Ошибки (В режиме дебага, выведет доп. информацию об исходном файле и строке)
+#define LOG_ERROR(inMessage)            ( LOG_SYSTEM.logError(inMessage + QString(" " + SENDER_FUNCTION_EX)) )
+#define LOG_ERROR_EX(inMessage)         ( LOG_SYSTEM.logError(inMessage + QString(" " + SENDER_CLASS_EX(this))) )
+// Дебаг (Сообщение дебага не даст информации об исходном файле и строке)
 #ifndef NDEBUG
-    #define LOG_DEBUG(inMessage)                ( LOG_SYSTEM.logDebug(inMessage) )
-    #define LOG_DEBUG_EX(inMessage, inClass)    ( LOG_DEBUG(inMessage + " " + SENDER_DATA(inClass)) )
+    #define LOG_DEBUG(inMessage)        ( LOG_SYSTEM.logDebug(inMessage + QString(" " + SENDER_FUNCTION)) )
+    #define LOG_DEBUG_EX(inMessage)     ( LOG_SYSTEM.logDebug(inMessage + QString(" " + SENDER_CLASS(this))) )
 #else
     #define LOG_DEBUG(inMessage)
-    #define LOG_DEBUG_EX(inMessage, inClass)
+    #define LOG_DEBUG_EX(inMessage)
 #endif // NDEBUG
 
 #endif // LOGSYSTEM_H
