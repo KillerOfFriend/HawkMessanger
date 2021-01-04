@@ -154,10 +154,11 @@ public:
 #define SRC_FILE_DATA                   ( "Source file: " __FILE__ " on line " TO_MACRO_STR(__LINE__) )
 
 #if defined(__GNUC__)
-    // Вывод информации о классе:методе (расширение gcc)
+    // Вывод информации о классе::методе (расширение GCC)
     #define SENDER_CLASS(inClass)           ( QString("In class method: ") + __PRETTY_FUNCTION__ )
 #elif defined(_MSC_VER)
-    #define SENDER_CLASS(inClass)           ( QString("In class method: ") + QString(typeid(inClass).name()) + ":" + __FUNCTION__ )
+    // Вывод информации о классе::методе (расширение MSVC)
+    #define SENDER_CLASS(inClass)           ( QString("In class method: ") + __FUNCSIG__ )
 #endif
 
 // Вывод изормации о функции
