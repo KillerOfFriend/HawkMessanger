@@ -1,0 +1,5 @@
+<map id="hmservcommon::datastorage::HMAbstractCahceDataStorage::startCacheWatchdogThread" name="hmservcommon::datastorage::HMAbstractCahceDataStorage::startCacheWatchdogThread">
+<area shape="rect" id="node1" title="startCacheWatchdogThread &#45; Метод запустит поток, котролирующий объекты кеша" alt="" coords="643,5,869,61"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ab0178b64aff50caf8f0ce5c172def2ea" title="open &#45; Метод откроет хранилище данных" alt="" coords="328,13,595,54"/>
+<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a07c4e3bad5ced7d8a929b77a3df67197" title="open &#45; Метод откроет хранилище данных" alt="" coords="5,13,280,54"/>
+</map>

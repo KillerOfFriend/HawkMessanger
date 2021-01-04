@@ -1,0 +1,201 @@
+\hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator}{}\doxysection{Класс hmservcommon\+::datastorage\+::H\+M\+Json\+Data\+Storage\+Validator}
+\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator}\index{hmservcommon::datastorage::HMJsonDataStorageValidator@{hmservcommon::datastorage::HMJsonDataStorageValidator}}
+
+
+The \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator}{H\+M\+Json\+Data\+Storage\+Validator}} class -\/ Коасс, контролирующий J\+S\+ON для \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage}{H\+M\+Json\+Data\+Storage}}.  
+
+
+
+
+{\ttfamily \#include $<$jsondatastoragevalidator.\+h$>$}
+
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_ac38b417ea83e01e17c1086a7f724c0a3}{H\+M\+Json\+Data\+Storage\+Validator}} ()=default
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator}{H\+M\+Json\+Data\+Storage\+Validator}} -\/ Конструктор по умолчанию \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_a9059f019e9f98ccc3a7da05e9d8e481f}{$\sim$\+H\+M\+Json\+Data\+Storage\+Validator}} ()=default
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator}{H\+M\+Json\+Data\+Storage\+Validator}} -\/ Деструктор по умолчанию \end{DoxyCompactList}\item 
+std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_ab42c5960e7b452530a09257c3b8f10f7}{check\+User}} (const nlohmann\+::json \&in\+User\+Object) const
+\begin{DoxyCompactList}\small\item\em check\+User -\/ Метод проверит валидность J\+S\+ON объекта пользователя \end{DoxyCompactList}\item 
+std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_ad67e559f6133a566a6268d5e454de98f}{check\+Group}} (const nlohmann\+::json \&in\+Group\+Object) const
+\begin{DoxyCompactList}\small\item\em check\+Group -\/ Метод проверит валидность J\+S\+ON объекта группы \end{DoxyCompactList}\item 
+std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_a3530ea2565fda57cf662e1c5530d5b52}{check\+Message}} (const nlohmann\+::json \&in\+Messsage\+Object) const
+\begin{DoxyCompactList}\small\item\em check\+Message -\/ Метод проверит валидность J\+S\+ON объекта сообщения \end{DoxyCompactList}\item 
+Q\+Byte\+Array \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_ad1ac6dbe249e7dc46e9f1aa0efa17979}{json\+To\+Byte\+Arr}} (const nlohmann\+::json \&in\+Json) const
+\begin{DoxyCompactList}\small\item\em json\+To\+Byte\+Arr -\/ Функция преобразует J\+S\+ON в Q\+Byte\+Array \end{DoxyCompactList}\item 
+nlohmann\+::json \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_a9350acf42b2bab58affe884156600807}{byte\+Arr\+To\+Json}} (const Q\+Byte\+Array \&in\+Byte\+Arr) const
+\begin{DoxyCompactList}\small\item\em byte\+Arr\+To\+Json -\/ Функция преобразует Q\+Byte\+Array в J\+S\+ON \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+The \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator}{H\+M\+Json\+Data\+Storage\+Validator}} class -\/ Коасс, контролирующий J\+S\+ON для \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage}{H\+M\+Json\+Data\+Storage}}. 
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_ac38b417ea83e01e17c1086a7f724c0a3}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_ac38b417ea83e01e17c1086a7f724c0a3}} 
+\index{hmservcommon::datastorage::HMJsonDataStorageValidator@{hmservcommon::datastorage::HMJsonDataStorageValidator}!HMJsonDataStorageValidator@{HMJsonDataStorageValidator}}
+\index{HMJsonDataStorageValidator@{HMJsonDataStorageValidator}!hmservcommon::datastorage::HMJsonDataStorageValidator@{hmservcommon::datastorage::HMJsonDataStorageValidator}}
+\doxysubsubsection{\texorpdfstring{HMJsonDataStorageValidator()}{HMJsonDataStorageValidator()}}
+{\footnotesize\ttfamily hmservcommon\+::datastorage\+::\+H\+M\+Json\+Data\+Storage\+Validator\+::\+H\+M\+Json\+Data\+Storage\+Validator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator}{H\+M\+Json\+Data\+Storage\+Validator}} -\/ Конструктор по умолчанию 
+
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_a9059f019e9f98ccc3a7da05e9d8e481f}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_a9059f019e9f98ccc3a7da05e9d8e481f}} 
+\index{hmservcommon::datastorage::HMJsonDataStorageValidator@{hmservcommon::datastorage::HMJsonDataStorageValidator}!````~HMJsonDataStorageValidator@{$\sim$HMJsonDataStorageValidator}}
+\index{````~HMJsonDataStorageValidator@{$\sim$HMJsonDataStorageValidator}!hmservcommon::datastorage::HMJsonDataStorageValidator@{hmservcommon::datastorage::HMJsonDataStorageValidator}}
+\doxysubsubsection{\texorpdfstring{$\sim$HMJsonDataStorageValidator()}{~HMJsonDataStorageValidator()}}
+{\footnotesize\ttfamily hmservcommon\+::datastorage\+::\+H\+M\+Json\+Data\+Storage\+Validator\+::$\sim$\+H\+M\+Json\+Data\+Storage\+Validator (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator}{H\+M\+Json\+Data\+Storage\+Validator}} -\/ Деструктор по умолчанию 
+
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_a9350acf42b2bab58affe884156600807}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_a9350acf42b2bab58affe884156600807}} 
+\index{hmservcommon::datastorage::HMJsonDataStorageValidator@{hmservcommon::datastorage::HMJsonDataStorageValidator}!byteArrToJson@{byteArrToJson}}
+\index{byteArrToJson@{byteArrToJson}!hmservcommon::datastorage::HMJsonDataStorageValidator@{hmservcommon::datastorage::HMJsonDataStorageValidator}}
+\doxysubsubsection{\texorpdfstring{byteArrToJson()}{byteArrToJson()}}
+{\footnotesize\ttfamily nlohmann\+::json H\+M\+Json\+Data\+Storage\+Validator\+::byte\+Arr\+To\+Json (\begin{DoxyParamCaption}\item[{const Q\+Byte\+Array \&}]{in\+Byte\+Arr }\end{DoxyParamCaption}) const}
+
+
+
+byte\+Arr\+To\+Json -\/ Функция преобразует Q\+Byte\+Array в J\+S\+ON 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Byte\+Arr} & -\/ Обрабатываемый Q\+Byte\+Array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт J\+S\+ON array содержащий байтовую последоваельность 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_ad67e559f6133a566a6268d5e454de98f}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_ad67e559f6133a566a6268d5e454de98f}} 
+\index{hmservcommon::datastorage::HMJsonDataStorageValidator@{hmservcommon::datastorage::HMJsonDataStorageValidator}!checkGroup@{checkGroup}}
+\index{checkGroup@{checkGroup}!hmservcommon::datastorage::HMJsonDataStorageValidator@{hmservcommon::datastorage::HMJsonDataStorageValidator}}
+\doxysubsubsection{\texorpdfstring{checkGroup()}{checkGroup()}}
+{\footnotesize\ttfamily std\+::error\+\_\+code H\+M\+Json\+Data\+Storage\+Validator\+::check\+Group (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{in\+Group\+Object }\end{DoxyParamCaption}) const}
+
+
+
+check\+Group -\/ Метод проверит валидность J\+S\+ON объекта группы 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Group\+Object} & -\/ Проверяемый объект \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт признак ошибки 
+\end{DoxyReturn}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_ad67e559f6133a566a6268d5e454de98f_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_ad67e559f6133a566a6268d5e454de98f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_a3530ea2565fda57cf662e1c5530d5b52}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_a3530ea2565fda57cf662e1c5530d5b52}} 
+\index{hmservcommon::datastorage::HMJsonDataStorageValidator@{hmservcommon::datastorage::HMJsonDataStorageValidator}!checkMessage@{checkMessage}}
+\index{checkMessage@{checkMessage}!hmservcommon::datastorage::HMJsonDataStorageValidator@{hmservcommon::datastorage::HMJsonDataStorageValidator}}
+\doxysubsubsection{\texorpdfstring{checkMessage()}{checkMessage()}}
+{\footnotesize\ttfamily std\+::error\+\_\+code H\+M\+Json\+Data\+Storage\+Validator\+::check\+Message (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{in\+Messsage\+Object }\end{DoxyParamCaption}) const}
+
+
+
+check\+Message -\/ Метод проверит валидность J\+S\+ON объекта сообщения 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Messsage\+Object} & -\/ Проверяемый объект \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт признак ошибки 
+\end{DoxyReturn}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_a3530ea2565fda57cf662e1c5530d5b52_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_a3530ea2565fda57cf662e1c5530d5b52_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_ab42c5960e7b452530a09257c3b8f10f7}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_ab42c5960e7b452530a09257c3b8f10f7}} 
+\index{hmservcommon::datastorage::HMJsonDataStorageValidator@{hmservcommon::datastorage::HMJsonDataStorageValidator}!checkUser@{checkUser}}
+\index{checkUser@{checkUser}!hmservcommon::datastorage::HMJsonDataStorageValidator@{hmservcommon::datastorage::HMJsonDataStorageValidator}}
+\doxysubsubsection{\texorpdfstring{checkUser()}{checkUser()}}
+{\footnotesize\ttfamily std\+::error\+\_\+code H\+M\+Json\+Data\+Storage\+Validator\+::check\+User (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{in\+User\+Object }\end{DoxyParamCaption}) const}
+
+
+
+check\+User -\/ Метод проверит валидность J\+S\+ON объекта пользователя 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+User\+Object} & -\/ Проверяемый объект \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт признак ошибки 
+\end{DoxyReturn}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_ab42c5960e7b452530a09257c3b8f10f7_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_ab42c5960e7b452530a09257c3b8f10f7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_ad1ac6dbe249e7dc46e9f1aa0efa17979}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator_ad1ac6dbe249e7dc46e9f1aa0efa17979}} 
+\index{hmservcommon::datastorage::HMJsonDataStorageValidator@{hmservcommon::datastorage::HMJsonDataStorageValidator}!jsonToByteArr@{jsonToByteArr}}
+\index{jsonToByteArr@{jsonToByteArr}!hmservcommon::datastorage::HMJsonDataStorageValidator@{hmservcommon::datastorage::HMJsonDataStorageValidator}}
+\doxysubsubsection{\texorpdfstring{jsonToByteArr()}{jsonToByteArr()}}
+{\footnotesize\ttfamily Q\+Byte\+Array H\+M\+Json\+Data\+Storage\+Validator\+::json\+To\+Byte\+Arr (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{in\+Json }\end{DoxyParamCaption}) const}
+
+
+
+json\+To\+Byte\+Arr -\/ Функция преобразует J\+S\+ON в Q\+Byte\+Array 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Json} & -\/ Обрабатываемый J\+S\+ON \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт байтовую последовательность 
+\end{DoxyReturn}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Projects/libraries/\+Hawk\+Server\+Core/src/datastorage/jsondatastorage/\mbox{\hyperlink{jsondatastoragevalidator_8h}{jsondatastoragevalidator.\+h}}\item 
+Projects/libraries/\+Hawk\+Server\+Core/src/datastorage/jsondatastorage/\mbox{\hyperlink{jsondatastoragevalidator_8cpp}{jsondatastoragevalidator.\+cpp}}\end{DoxyCompactItemize}

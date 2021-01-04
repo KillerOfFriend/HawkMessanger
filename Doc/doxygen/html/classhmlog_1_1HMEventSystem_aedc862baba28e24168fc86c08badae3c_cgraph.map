@@ -1,0 +1,4 @@
+<map id="hmlog::HMEventSystem::~HMEventSystem" name="hmlog::HMEventSystem::~HMEventSystem">
+<area shape="rect" id="node1" title="~HMLogSystem &#45; Деструктор" alt="" coords="5,5,184,47"/>
+<area shape="rect" id="node2" href="$classhmlog_1_1HMEventSystem.html#ab04db23deb8321a22c07828f34e956b0" title="clear &#45; Метод сборсит обработчики событий" alt="" coords="232,5,411,47"/>
+</map>

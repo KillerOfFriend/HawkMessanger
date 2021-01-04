@@ -1,0 +1,6 @@
+<map id="hmservcommon::datastorage::HMAbstractHardDataStorage" name="hmservcommon::datastorage::HMAbstractHardDataStorage">
+<area shape="rect" id="node1" title="The HMAbstractHardDataStorage class &#45; Класс, описывающий абстракцию физического хранилища данных" alt="" coords="23,184,242,225"/>
+<area shape="rect" id="node4" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html" title="The HMJsonDataStorage class &#45; Класс, описывающий хранилище данных сервера в файле JSON." alt="" coords="25,273,240,315"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional.html" title="The HMAbstractDataStorageFunctional class &#45; Класс, описывающий абстрактное хранилище даннх с дополнит..." alt="" coords="5,95,260,136"/>
+<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMDataStorage.html" title="The HMDataStorage class &#45; Интерфейс, описывающий хранилище данных сервера" alt="" coords="25,5,240,47"/>
+</map>

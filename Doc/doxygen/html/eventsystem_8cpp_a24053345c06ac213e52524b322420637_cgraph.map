@@ -1,0 +1,5 @@
+<map id="Handle" name="Handle">
+<area shape="rect" id="node1" title="Handle &#45; Финальный обработчик события" alt="" coords="5,78,73,105"/>
+<area shape="rect" id="node2" href="$classhmlog_1_1HMEventSystem.html#a0ca698f47c4008acd62a05922ce5a69a" title="getInstance &#45; Метод вернёт единственный экземпляр системы перехвата системных событий" alt="" coords="121,5,300,47"/>
+<area shape="rect" id="node3" href="$classhmlog_1_1HMEventSystem.html#ad47dec282871b0e6ec3e443e1afb27f9" title="processUserHadles &#45; Метод вызовет все пользовательские обработчики" alt="" coords="121,71,300,112"/>
+</map>

@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>HawkMessanger: Исходный файл Projects/libraries/HawkCommon/src/group.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">HawkMessanger
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_7a6499598ddcfcabe96e224cb4a6d834.html">Projects</a></li><li class="navelem"><a class="el" href="dir_e58a87a21221f9da698103351b870c05.html">libraries</a></li><li class="navelem"><a class="el" href="dir_1ea90edc7b256d5238b2bba3b9bb95dc.html">HawkCommon</a></li><li class="navelem"><a class="el" href="dir_67803fc46832aab7dbb8b538e12f66ef.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">group.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="group_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef GROUP_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define GROUP_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;system_error&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="user_8h.html">user.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacehmcommon.html">hmcommon</a></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classhmcommon_1_1HMGroup.html">   23</a></span>&#160;<span class="comment"></span><span class="keyword">class </span><a class="code" href="classhmcommon_1_1HMGroup.html">HMGroup</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classhmcommon_1_1HMGroup.html#a6b753a50436fbaf6fe9537b114beda62">   27</a></span>&#160;    QString <a class="code" href="classhmcommon_1_1HMGroup.html#a6b753a50436fbaf6fe9537b114beda62">m_name</a>;                                 </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">//    std::vector&lt;std::shared_ptr&lt;HMUser&gt;&gt; m_users;   ///&lt; Перечень пользователей группы</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classhmcommon_1_1HMGroup.html#afc34093af63659de5bfacaf66f966af9">   32</a></span>&#160;    <span class="keyword">const</span> QUuid <a class="code" href="classhmcommon_1_1HMGroup.html#afc34093af63659de5bfacaf66f966af9">m_uuid</a>;                 </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classhmcommon_1_1HMGroup.html#a24bde2d05f5e698551997ae9c0b0e6d2">   33</a></span>&#160;    <span class="keyword">const</span> QDateTime <a class="code" href="classhmcommon_1_1HMGroup.html#a24bde2d05f5e698551997ae9c0b0e6d2">m_registrationDate</a>; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classhmcommon_1_1HMGroup.html#a82331808a003f3d99f356e3d591a5ceb">HMGroup</a>(<span class="keyword">const</span> QUuid&amp; inUuid, <span class="keyword">const</span> QDateTime&amp; inRegistrationDate = QDateTime::currentDateTime());</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="classhmcommon_1_1HMGroup.html#acb573c0abe7ae4049ca38675f4aa3104">~HMGroup</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classhmcommon_1_1HMGroup.html#a7eed9e8ec97feb42e2cd1939cef99305">operator== </a>(<span class="keyword">const</span> <a class="code" href="classhmcommon_1_1HMGroup.html">HMGroup</a>&amp; inOther) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classhmcommon_1_1HMGroup.html#ad56808c904e737de1d7167d93e40f646">setName</a>(<span class="keyword">const</span> QString&amp; inName);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    QString <a class="code" href="classhmcommon_1_1HMGroup.html#a68ecf108f6b48a5fbb94015e9fb9b49a">getName</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">//    /**</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">//     * @brief isUsersEnpty - Метод вернёт признак того, что в группе нет пользователей</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">//     * @return Вернёт признак того, что в группе нет пользователей</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">//     */</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">//    bool isUsersEmpty() const;</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">//    /**</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">//     * @brief usersCount - Метод вернёт количество пользователей в группе</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">//     * @return Вернёт количество пользователей в группе</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">//     */</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">//    std::size_t usersCount() const;</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment">//    /**</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">//     * @brief addUser - Метод добавит пользователя в группу</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">//     * @param inUser - UUID добавляемого пользователя</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">//     * @return Вернёт признак ошибки</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">//     */</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment">//    std::error_code addUser(const std::shared_ptr&lt;HMUser&gt; inUser);</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">//    /**</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">//     * @brief removeUser - Метод удалит польоваетля из группы</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">//     * @param inUserUuid - UUID удаляемого пользователя</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">//     * @return Вернёт признак ошибки</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">//     */</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">//    std::error_code removeUser(const QUuid&amp; inUserUuid);</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">//    /**</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">//     * @brief getUser - Метод вернёт пользователя по его порядковому номеру</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">//     * @param outErrorCode - Признак ошибки</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">//     * @return Вернёт пользователя или nullptr</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">//     */</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">//    std::shared_ptr&lt;HMUser&gt; getUser(const std::size_t inIndex, std::error_code&amp; outErrorCode);</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">//    /**</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment">//     * @brief contain - Метод проверит, содержит ли группа пользователя</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">//     * @param inUserUuid - UUID искомого пользователя</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">//     * @return Вернёт признак вхождения пользователя в группу</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">//     */</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">//    bool contain(const QUuid&amp; inUserUuid) const;</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;};</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;} <span class="comment">// namespace hmcommon</span></div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#endif // GROUP_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclasshmcommon_1_1HMGroup_html_a82331808a003f3d99f356e3d591a5ceb"><div class="ttname"><a href="classhmcommon_1_1HMGroup.html#a82331808a003f3d99f356e3d591a5ceb">hmcommon::HMGroup::HMGroup</a></div><div class="ttdeci">HMGroup(const QUuid &amp;inUuid, const QDateTime &amp;inRegistrationDate=QDateTime::currentDateTime())</div><div class="ttdoc">HMGroup - Инициализирующий конструктор</div><div class="ttdef"><b>Definition:</b> group.cpp:8</div></div>
+<div class="ttc" id="agroup_8h_html"><div class="ttname"><a href="group_8h.html">group.h</a></div><div class="ttdoc">Содержит описание группы\чата</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMGroup_html_afc34093af63659de5bfacaf66f966af9"><div class="ttname"><a href="classhmcommon_1_1HMGroup.html#afc34093af63659de5bfacaf66f966af9">hmcommon::HMGroup::m_uuid</a></div><div class="ttdeci">const QUuid m_uuid</div><div class="ttdoc">UUID группы</div><div class="ttdef"><b>Definition:</b> group.h:32</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMGroup_html_a68ecf108f6b48a5fbb94015e9fb9b49a"><div class="ttname"><a href="classhmcommon_1_1HMGroup.html#a68ecf108f6b48a5fbb94015e9fb9b49a">hmcommon::HMGroup::getName</a></div><div class="ttdeci">QString getName() const</div><div class="ttdoc">getName - Метод вернёт имя группы</div><div class="ttdef"><b>Definition:</b> group.cpp:30</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMGroup_html_ad56808c904e737de1d7167d93e40f646"><div class="ttname"><a href="classhmcommon_1_1HMGroup.html#ad56808c904e737de1d7167d93e40f646">hmcommon::HMGroup::setName</a></div><div class="ttdeci">void setName(const QString &amp;inName)</div><div class="ttdoc">setName - Метод задаст имя группы</div><div class="ttdef"><b>Definition:</b> group.cpp:27</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMGroup_html"><div class="ttname"><a href="classhmcommon_1_1HMGroup.html">hmcommon::HMGroup</a></div><div class="ttdoc">The HMGroup class - Класс, описывающий группу пользователей системы</div><div class="ttdef"><b>Definition:</b> group.h:23</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMGroup_html_a7eed9e8ec97feb42e2cd1939cef99305"><div class="ttname"><a href="classhmcommon_1_1HMGroup.html#a7eed9e8ec97feb42e2cd1939cef99305">hmcommon::HMGroup::operator==</a></div><div class="ttdeci">bool operator==(const HMGroup &amp;inOther) const</div><div class="ttdoc">operator == - Оператор сравнения</div><div class="ttdef"><b>Definition:</b> group.cpp:15</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMGroup_html_a24bde2d05f5e698551997ae9c0b0e6d2"><div class="ttname"><a href="classhmcommon_1_1HMGroup.html#a24bde2d05f5e698551997ae9c0b0e6d2">hmcommon::HMGroup::m_registrationDate</a></div><div class="ttdeci">const QDateTime m_registrationDate</div><div class="ttdoc">Дата регистрации группы</div><div class="ttdef"><b>Definition:</b> group.h:33</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMGroup_html_a6b753a50436fbaf6fe9537b114beda62"><div class="ttname"><a href="classhmcommon_1_1HMGroup.html#a6b753a50436fbaf6fe9537b114beda62">hmcommon::HMGroup::m_name</a></div><div class="ttdeci">QString m_name</div><div class="ttdoc">Имя группы</div><div class="ttdef"><b>Definition:</b> group.h:27</div></div>
+<div class="ttc" id="asystemerrorex_8h_html"><div class="ttname"><a href="systemerrorex_8h.html">systemerrorex.h</a></div><div class="ttdoc">Содержит описание категории расширеных системных ошибок</div></div>
+<div class="ttc" id="anamespacehmcommon_html"><div class="ttname"><a href="namespacehmcommon.html">hmcommon</a></div><div class="ttdef"><b>Definition:</b> account.h:16</div></div>
+<div class="ttc" id="auser_8h_html"><div class="ttname"><a href="user_8h.html">user.h</a></div><div class="ttdoc">Содержит описание пользователя системы</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMGroup_html_acb573c0abe7ae4049ca38675f4aa3104"><div class="ttname"><a href="classhmcommon_1_1HMGroup.html#acb573c0abe7ae4049ca38675f4aa3104">hmcommon::HMGroup::~HMGroup</a></div><div class="ttdeci">~HMGroup()=default</div><div class="ttdoc">~HMGroup - Деструктор по умолчанию</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

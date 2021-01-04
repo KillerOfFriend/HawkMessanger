@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>HawkMessanger: Исходный файл Projects/libraries/HawkCommon/src/systemerrorex.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">HawkMessanger
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_7a6499598ddcfcabe96e224cb4a6d834.html">Projects</a></li><li class="navelem"><a class="el" href="dir_e58a87a21221f9da698103351b870c05.html">libraries</a></li><li class="navelem"><a class="el" href="dir_1ea90edc7b256d5238b2bba3b9bb95dc.html">HawkCommon</a></li><li class="navelem"><a class="el" href="dir_67803fc46832aab7dbb8b538e12f66ef.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">systemerrorex.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="systemerrorex_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef SYSTEMERROREX_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define SYSTEMERROREX_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;system_error&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;QObject&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacehmcommon.html">hmcommon</a></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">static</span> <span class="keyword">const</span> std::int32_t C_SYSTEMERROR_START = 200; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="namespacehmcommon.html#aa623151570760a868235b187863ad074">   22</a></span>&#160;<span class="comment"></span><span class="keyword">enum class</span> <a class="code" href="namespacehmcommon.html#aa623151570760a868235b187863ad074">eSystemErrorEx</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <a class="code" href="namespacehmcommon.html#aa623151570760a868235b187863ad074aa330e55c3e289df2376203fce3c17925">seSuccess</a> = 0,                      </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="namespacehmcommon.html#aa623151570760a868235b187863ad074a075fedc58218682904f396b745bb5a5f">seInvalidPtr</a> = C_SYSTEMERROR_START, </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="namespacehmcommon.html#aa623151570760a868235b187863ad074ad722f613011e13774a74a93189fe2d05">seIncorrecVersion</a>,                  </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="namespacehmcommon.html#aa623151570760a868235b187863ad074ab70b48a1e6db9cc16b106d1bfdf2c4ab">seIncorretData</a>,                     </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="namespacehmcommon.html#aa623151570760a868235b187863ad074a8ddd0cd353bdad195ee19a945e9d732d">seOperationNotSupported</a>,            </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="namespacehmcommon.html#aa623151570760a868235b187863ad074a9934967d53d18e54b7934c2f70740465">seInputOperationFail</a>,               </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="namespacehmcommon.html#aa623151570760a868235b187863ad074af3d7af69e924f47e5115ce81f0475492">seOutputOperationFail</a>,              </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="namespacehmcommon.html#aa623151570760a868235b187863ad074a04e8a7494cb7bb8547b641f81331594a">seFileNotExists</a>,                    </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="namespacehmcommon.html#aa623151570760a868235b187863ad074ac71f2f7417d99fef94be05b9570511af">seDirNotExists</a>,                     </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="namespacehmcommon.html#aa623151570760a868235b187863ad074a03f071df41d9a23a6ff1c02d67c53c0b">seObjectNotFile</a>,                    </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="namespacehmcommon.html#aa623151570760a868235b187863ad074a53ce2d436165a3787736b40d89a0e0d8">seObjectNotDir</a>,                     </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="namespacehmcommon.html#aa623151570760a868235b187863ad074a7d1a0b9b4a4fb586745e95077c99711b">seFileNotOpen</a>,                      </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="namespacehmcommon.html#aa623151570760a868235b187863ad074a97d8e208f1ba84104a8d4744ae3b74b2">seOpenFileFail</a>,                     </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="namespacehmcommon.html#aa623151570760a868235b187863ad074aef6de778712312b09e7c8f6272a8cd8c">seReadFileFail</a>,                     </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="namespacehmcommon.html#aa623151570760a868235b187863ad074aaab0146e021aca2a47fc5e1882d76562">seContainerEmpty</a>,                   </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="namespacehmcommon.html#aa623151570760a868235b187863ad074afce0c62359706b88ab0e7962ef9f24d8">seNotInContainer</a>,                   </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="namespacehmcommon.html#aa623151570760a868235b187863ad074ae1cd8086c4e84519196dd8ea7b324ff2">seAlredyInContainer</a>,                </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="namespacehmcommon.html#aa623151570760a868235b187863ad074a1b7ef58f826b0d541714443e96260a40">seIndexOutOfContainerRange</a>,         </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <a class="code" href="namespacehmcommon.html#aa623151570760a868235b187863ad074a3da4c5a42267045c1c54ec7d24792dfa">seCount</a></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;};</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">//---------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classhmcommon_1_1SystemErrorExCategory.html">   56</a></span>&#160;<span class="comment"></span><span class="keyword">class </span><a class="code" href="classhmcommon_1_1SystemErrorExCategory.html">SystemErrorExCategory</a> : <span class="keyword">public</span> QObject, <span class="keyword">public</span> std::error_category</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="classhmcommon_1_1SystemErrorExCategory.html#a4a223d6b83bec86335f232c37cf93419">SystemErrorExCategory</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classhmcommon_1_1SystemErrorExCategory.html#a890fe6190543e74553c6bc56f9c856f8">~SystemErrorExCategory</a>() <span class="keyword">override</span> = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">virtual</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classhmcommon_1_1SystemErrorExCategory.html#a374971f89ff8449986690ecb36e4b836">name</a>() <span class="keyword">const</span> noexcept <span class="keyword">override</span> <span class="keyword">final</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keyword">virtual</span> std::string <a class="code" href="classhmcommon_1_1SystemErrorExCategory.html#a9c2654a0c610f9eb349d61577d9b5d2e">message</a>(<span class="keywordtype">int</span> inCode) <span class="keyword">const</span> <span class="keyword">override</span> <span class="keyword">final</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;};</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">// Define the linkage for this function to be used by external code.</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">// This would be the usual __declspec(dllexport) or __declspec(dllimport)</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">// if we were in a Windows DLL etc. But for this example use a global</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">// instance but with inline linkage so multiple definitions do not collide.</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="systemerrorex_8h.html#a4045cc829727bb50470e14a1faebc57c">   89</a></span>&#160;<span class="preprocessor">#define SYSTEMERREX_API_DECL extern inline</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment"></span><a class="code" href="systemerrorex_8h.html#a4045cc829727bb50470e14a1faebc57c">SYSTEMERREX_API_DECL</a> <span class="keyword">const</span> SystemErrorExCategory &amp;<a class="code" href="namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9">ConversionErrc_category</a>();</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;} <span class="comment">// namespace hmcommon</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="namespacestd.html">   99</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacestd.html">std</a></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;{</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">// Сообщаем метапрограммированию C++ 11 STL, что enum</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">// зарегистрирован в стандартной системе кодов ошибок</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="structstd_1_1is__error__code__enum_3_01hmcommon_1_1eSystemErrorEx_01_4.html">  103</a></span>&#160;<span class="keyword">template</span> &lt;&gt; <span class="keyword">struct </span>is_error_code_enum&lt;<a class="code" href="namespacehmcommon.html">hmcommon</a>::<a class="code" href="namespacehmcommon.html#aa623151570760a868235b187863ad074">eSystemErrorEx</a>&gt; : true_type</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;{};</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment"></span>std::error_code <a class="code" href="systemerrorex_8h.html#aacc415fb080ba818238619f5ab0676c3">make_error_code</a>(<a class="code" href="namespacehmcommon.html#aa623151570760a868235b187863ad074">hmcommon::eSystemErrorEx</a> inErrCode);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#endif // SYSTEMERROREX_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074ab70b48a1e6db9cc16b106d1bfdf2c4ab"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074ab70b48a1e6db9cc16b106d1bfdf2c4ab">hmcommon::eSystemErrorEx::seIncorretData</a></div><div class="ttdeci">@ seIncorretData</div><div class="ttdoc">Не корректные данные</div></div>
+<div class="ttc" id="aclasshmcommon_1_1SystemErrorExCategory_html_a4a223d6b83bec86335f232c37cf93419"><div class="ttname"><a href="classhmcommon_1_1SystemErrorExCategory.html#a4a223d6b83bec86335f232c37cf93419">hmcommon::SystemErrorExCategory::SystemErrorExCategory</a></div><div class="ttdeci">SystemErrorExCategory()</div><div class="ttdoc">SystemErrorExCategory - Конструктор по умолчанию</div><div class="ttdef"><b>Definition:</b> systemerrorex.cpp:6</div></div>
+<div class="ttc" id="aclasshmcommon_1_1SystemErrorExCategory_html_a9c2654a0c610f9eb349d61577d9b5d2e"><div class="ttname"><a href="classhmcommon_1_1SystemErrorExCategory.html#a9c2654a0c610f9eb349d61577d9b5d2e">hmcommon::SystemErrorExCategory::message</a></div><div class="ttdeci">virtual std::string message(int inCode) const override final</div><div class="ttdoc">message - Метод вернёт сообщение ошибки</div><div class="ttdef"><b>Definition:</b> systemerrorex.cpp:19</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074ae1cd8086c4e84519196dd8ea7b324ff2"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074ae1cd8086c4e84519196dd8ea7b324ff2">hmcommon::eSystemErrorEx::seAlredyInContainer</a></div><div class="ttdeci">@ seAlredyInContainer</div><div class="ttdoc">Объект уже в контейнере</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074a075fedc58218682904f396b745bb5a5f"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074a075fedc58218682904f396b745bb5a5f">hmcommon::eSystemErrorEx::seInvalidPtr</a></div><div class="ttdeci">@ seInvalidPtr</div><div class="ttdoc">Не валидный указатель</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074a97d8e208f1ba84104a8d4744ae3b74b2"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074a97d8e208f1ba84104a8d4744ae3b74b2">hmcommon::eSystemErrorEx::seOpenFileFail</a></div><div class="ttdeci">@ seOpenFileFail</div><div class="ttdoc">Не удалось открыть файл</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074a04e8a7494cb7bb8547b641f81331594a"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074a04e8a7494cb7bb8547b641f81331594a">hmcommon::eSystemErrorEx::seFileNotExists</a></div><div class="ttdeci">@ seFileNotExists</div><div class="ttdoc">Файл не существует</div></div>
+<div class="ttc" id="aclasshmcommon_1_1SystemErrorExCategory_html_a890fe6190543e74553c6bc56f9c856f8"><div class="ttname"><a href="classhmcommon_1_1SystemErrorExCategory.html#a890fe6190543e74553c6bc56f9c856f8">hmcommon::SystemErrorExCategory::~SystemErrorExCategory</a></div><div class="ttdeci">virtual ~SystemErrorExCategory() override=default</div><div class="ttdoc">~SystemErrorExCategory - Виртуальный деструктор по умолчанию</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074a53ce2d436165a3787736b40d89a0e0d8"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074a53ce2d436165a3787736b40d89a0e0d8">hmcommon::eSystemErrorEx::seObjectNotDir</a></div><div class="ttdeci">@ seObjectNotDir</div><div class="ttdoc">Объект не является директорией</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074aaab0146e021aca2a47fc5e1882d76562"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074aaab0146e021aca2a47fc5e1882d76562">hmcommon::eSystemErrorEx::seContainerEmpty</a></div><div class="ttdeci">@ seContainerEmpty</div><div class="ttdoc">Контейнер пуст</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074ad722f613011e13774a74a93189fe2d05"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074ad722f613011e13774a74a93189fe2d05">hmcommon::eSystemErrorEx::seIncorrecVersion</a></div><div class="ttdeci">@ seIncorrecVersion</div><div class="ttdoc">Не корректная версия</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074aef6de778712312b09e7c8f6272a8cd8c"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074aef6de778712312b09e7c8f6272a8cd8c">hmcommon::eSystemErrorEx::seReadFileFail</a></div><div class="ttdeci">@ seReadFileFail</div><div class="ttdoc">Ошибка при чтении файла</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074afce0c62359706b88ab0e7962ef9f24d8"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074afce0c62359706b88ab0e7962ef9f24d8">hmcommon::eSystemErrorEx::seNotInContainer</a></div><div class="ttdeci">@ seNotInContainer</div><div class="ttdoc">Объект не в контейнере</div></div>
+<div class="ttc" id="aclasshmcommon_1_1SystemErrorExCategory_html_a374971f89ff8449986690ecb36e4b836"><div class="ttname"><a href="classhmcommon_1_1SystemErrorExCategory.html#a374971f89ff8449986690ecb36e4b836">hmcommon::SystemErrorExCategory::name</a></div><div class="ttdeci">virtual const char * name() const noexcept override final</div><div class="ttdoc">name - Метод вернёт имя категории</div><div class="ttdef"><b>Definition:</b> systemerrorex.cpp:13</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074af3d7af69e924f47e5115ce81f0475492"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074af3d7af69e924f47e5115ce81f0475492">hmcommon::eSystemErrorEx::seOutputOperationFail</a></div><div class="ttdeci">@ seOutputOperationFail</div><div class="ttdoc">Операция вывода прошла с ошибкой</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074a03f071df41d9a23a6ff1c02d67c53c0b"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074a03f071df41d9a23a6ff1c02d67c53c0b">hmcommon::eSystemErrorEx::seObjectNotFile</a></div><div class="ttdeci">@ seObjectNotFile</div><div class="ttdoc">Объект не является файлом</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074a9934967d53d18e54b7934c2f70740465"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074a9934967d53d18e54b7934c2f70740465">hmcommon::eSystemErrorEx::seInputOperationFail</a></div><div class="ttdeci">@ seInputOperationFail</div><div class="ttdoc">Операция ввода прошла с ошибкой</div></div>
+<div class="ttc" id="aclasshmcommon_1_1SystemErrorExCategory_html"><div class="ttname"><a href="classhmcommon_1_1SystemErrorExCategory.html">hmcommon::SystemErrorExCategory</a></div><div class="ttdoc">The SystemErrorExCategory class - Класс, определяющий категорию расширеных системных ошибки</div><div class="ttdef"><b>Definition:</b> systemerrorex.h:56</div></div>
+<div class="ttc" id="anamespacehmcommon_html_a3f63bf15ae19c09b498ea755e90e78b9"><div class="ttname"><a href="namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9">hmcommon::ConversionErrc_category</a></div><div class="ttdeci">const SYSTEMERREX_API_DECL SystemErrorExCategory &amp; ConversionErrc_category()</div><div class="ttdoc">ConversionErrc_category - Функцию, возвращающую статический экземпляр пользовательской категории</div><div class="ttdef"><b>Definition:</b> systemerrorex.cpp:76</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074ac71f2f7417d99fef94be05b9570511af"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074ac71f2f7417d99fef94be05b9570511af">hmcommon::eSystemErrorEx::seDirNotExists</a></div><div class="ttdeci">@ seDirNotExists</div><div class="ttdoc">Директория не существует</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074a8ddd0cd353bdad195ee19a945e9d732d"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074a8ddd0cd353bdad195ee19a945e9d732d">hmcommon::eSystemErrorEx::seOperationNotSupported</a></div><div class="ttdeci">@ seOperationNotSupported</div><div class="ttdoc">Операция не поддерживается</div></div>
+<div class="ttc" id="asystemerrorex_8h_html"><div class="ttname"><a href="systemerrorex_8h.html">systemerrorex.h</a></div><div class="ttdoc">Содержит описание категории расширеных системных ошибок</div></div>
+<div class="ttc" id="asystemerrorex_8h_html_aacc415fb080ba818238619f5ab0676c3"><div class="ttname"><a href="systemerrorex_8h.html#aacc415fb080ba818238619f5ab0676c3">make_error_code</a></div><div class="ttdeci">std::error_code make_error_code(hmcommon::eSystemErrorEx inErrCode)</div><div class="ttdoc">make_error_code - Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени...</div><div class="ttdef"><b>Definition:</b> systemerrorex.cpp:82</div></div>
+<div class="ttc" id="asystemerrorex_8h_html_a4045cc829727bb50470e14a1faebc57c"><div class="ttname"><a href="systemerrorex_8h.html#a4045cc829727bb50470e14a1faebc57c">SYSTEMERREX_API_DECL</a></div><div class="ttdeci">#define SYSTEMERREX_API_DECL</div><div class="ttdef"><b>Definition:</b> systemerrorex.h:89</div></div>
+<div class="ttc" id="anamespacehmcommon_html"><div class="ttname"><a href="namespacehmcommon.html">hmcommon</a></div><div class="ttdef"><b>Definition:</b> account.h:16</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074a7d1a0b9b4a4fb586745e95077c99711b"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074a7d1a0b9b4a4fb586745e95077c99711b">hmcommon::eSystemErrorEx::seFileNotOpen</a></div><div class="ttdeci">@ seFileNotOpen</div><div class="ttdoc">Файл не открыт</div></div>
+<div class="ttc" id="asystemerrorex_8cpp_html_aacc415fb080ba818238619f5ab0676c3"><div class="ttname"><a href="systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3">make_error_code</a></div><div class="ttdeci">std::error_code make_error_code(hmcommon::eSystemErrorEx inErrCode)</div><div class="ttdoc">make_error_code - Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени...</div><div class="ttdef"><b>Definition:</b> systemerrorex.cpp:82</div></div>
+<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdef"><b>Definition:</b> systemerrorex.h:99</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074aa330e55c3e289df2376203fce3c17925"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074aa330e55c3e289df2376203fce3c17925">hmcommon::eSystemErrorEx::seSuccess</a></div><div class="ttdeci">@ seSuccess</div><div class="ttdoc">0 Не явялется ошибкой</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074">hmcommon::eSystemErrorEx</a></div><div class="ttdeci">eSystemErrorEx</div><div class="ttdoc">The eSystemErrorEx enum - Перечень расширеных системных ошибок</div><div class="ttdef"><b>Definition:</b> systemerrorex.h:22</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074a3da4c5a42267045c1c54ec7d24792dfa"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074a3da4c5a42267045c1c54ec7d24792dfa">hmcommon::eSystemErrorEx::seCount</a></div><div class="ttdeci">@ seCount</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074a1b7ef58f826b0d541714443e96260a40"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074a1b7ef58f826b0d541714443e96260a40">hmcommon::eSystemErrorEx::seIndexOutOfContainerRange</a></div><div class="ttdeci">@ seIndexOutOfContainerRange</div><div class="ttdoc">Индекс за пределами контейнера</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>HawkMessanger: Исходный файл Projects/libraries/HawkServerCore/src/datastorage/cachedmemorydatastorage/cached.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">HawkMessanger
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_7a6499598ddcfcabe96e224cb4a6d834.html">Projects</a></li><li class="navelem"><a class="el" href="dir_e58a87a21221f9da698103351b870c05.html">libraries</a></li><li class="navelem"><a class="el" href="dir_485b41ef44ea30d0ff1fb3a33d0a2744.html">HawkServerCore</a></li><li class="navelem"><a class="el" href="dir_c8ef347a8dd5b57ac3e6e5a41e06b75b.html">src</a></li><li class="navelem"><a class="el" href="dir_4b0eac25ca14f2da270617e6e177117c.html">datastorage</a></li><li class="navelem"><a class="el" href="dir_18216c84ed02d8d26e923b57ac2b4b4c.html">cachedmemorydatastorage</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">cached.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="cached_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef HMCACHED_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define HMCACHED_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;set&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="user_8h.html">user.h</a>&quot;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="group_8h.html">group.h</a>&quot;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="userlist_8h.html">userlist.h</a>&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacehmservcommon.html">hmservcommon</a></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;{</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="structhmservcommon_1_1HMCachedUser.html">   17</a></span>&#160;<span class="comment"></span><span class="keyword">struct </span><a class="code" href="structhmservcommon_1_1HMCachedUser.html">HMCachedUser</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="structhmservcommon_1_1HMCachedUser.html#a642eb6d21ea33086b2d5bdc0f1b9a12d">HMCachedUser</a>(<span class="keyword">const</span> std::shared_ptr&lt;hmcommon::HMUser&gt; inUser);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="structhmservcommon_1_1HMCachedUser.html#a642eb6d21ea33086b2d5bdc0f1b9a12d">HMCachedUser</a>(<span class="keyword">const</span> <a class="code" href="structhmservcommon_1_1HMCachedUser.html">HMCachedUser</a>&amp; inOther) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="structhmservcommon_1_1HMCachedUser.html#a642eb6d21ea33086b2d5bdc0f1b9a12d">HMCachedUser</a>(<a class="code" href="structhmservcommon_1_1HMCachedUser.html">HMCachedUser</a>&amp;&amp; inOther);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">// Операторы</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="structhmservcommon_1_1HMCachedUser.html">HMCachedUser</a>&amp; <a class="code" href="structhmservcommon_1_1HMCachedUser.html#a796b416e95180b2f87f6a66383ebaffc">operator = </a>(<span class="keyword">const</span> <a class="code" href="structhmservcommon_1_1HMCachedUser.html">HMCachedUser</a>&amp; inOther) noexcept = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structhmservcommon_1_1HMCachedUser.html#a2686d6845dbf27eb4e86bb299c030ade">operator == </a>(<span class="keyword">const</span> <a class="code" href="structhmservcommon_1_1HMCachedUser.html">HMCachedUser</a>&amp; inOther) <span class="keyword">const</span> noexcept;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">// Данные</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="structhmservcommon_1_1HMCachedUser.html#afda139338b8aa98881ae2dd91676002a">   55</a></span>&#160;    std::shared_ptr&lt;hmcommon::HMUser&gt; <a class="code" href="structhmservcommon_1_1HMCachedUser.html#afda139338b8aa98881ae2dd91676002a">m_user</a> = <span class="keyword">nullptr</span>; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structhmservcommon_1_1HMCachedUser.html#abea75ce145779b1c0e08f97c07a50f34">   56</a></span>&#160;    <span class="keyword">mutable</span> QTime <a class="code" href="structhmservcommon_1_1HMCachedUser.html#abea75ce145779b1c0e08f97c07a50f34">m_lastRequest</a>;                        </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;};</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="structhmservcommon_1_1HMCachedUserContacts.html">   62</a></span>&#160;<span class="comment"></span><span class="keyword">struct </span><a class="code" href="structhmservcommon_1_1HMCachedUserContacts.html">HMCachedUserContacts</a></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;{</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <a class="code" href="structhmservcommon_1_1HMCachedUserContacts.html#a7735a5d627a83413a0e67612959b41a2">HMCachedUserContacts</a>(<span class="keyword">const</span> QUuid&amp; inUserUUID, <span class="keyword">const</span> std::shared_ptr&lt;std::set&lt;QUuid&gt;&gt; inContactList);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="structhmservcommon_1_1HMCachedUserContacts.html#a7735a5d627a83413a0e67612959b41a2">HMCachedUserContacts</a>(<span class="keyword">const</span> <a class="code" href="structhmservcommon_1_1HMCachedUserContacts.html">HMCachedUserContacts</a>&amp; inOther) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="structhmservcommon_1_1HMCachedUserContacts.html#a7735a5d627a83413a0e67612959b41a2">HMCachedUserContacts</a>(<a class="code" href="structhmservcommon_1_1HMCachedUserContacts.html">HMCachedUserContacts</a>&amp;&amp; inOther);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment">// Операторы</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <a class="code" href="structhmservcommon_1_1HMCachedUserContacts.html">HMCachedUserContacts</a>&amp; <a class="code" href="structhmservcommon_1_1HMCachedUserContacts.html#a9797e06d2fe39da5564c23020f29c45d">operator = </a>(<span class="keyword">const</span> <a class="code" href="structhmservcommon_1_1HMCachedUserContacts.html">HMCachedUserContacts</a>&amp; inOther) noexcept = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structhmservcommon_1_1HMCachedUserContacts.html#ae47164a6b664fca25eb97cede7b8f79b">operator == </a>(<span class="keyword">const</span> <a class="code" href="structhmservcommon_1_1HMCachedUserContacts.html">HMCachedUserContacts</a>&amp; inOther) <span class="keyword">const</span> noexcept;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="structhmservcommon_1_1HMCachedUserContacts.html#aadaaf0ab49fde730b6f0490006ab1ff5">   99</a></span>&#160;    QUuid <a class="code" href="structhmservcommon_1_1HMCachedUserContacts.html#aadaaf0ab49fde730b6f0490006ab1ff5">m_userUUID</a>;                                           </div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="structhmservcommon_1_1HMCachedUserContacts.html#a393c3dc104cf0050aec94016cd551aa9">  100</a></span>&#160;    std::shared_ptr&lt;std::set&lt;QUuid&gt;&gt; <a class="code" href="structhmservcommon_1_1HMCachedUserContacts.html#a393c3dc104cf0050aec94016cd551aa9">m_contactList</a> = <span class="keyword">nullptr</span>;   </div>
+<div class="line"><a name="l00101"></a><span class="lineno"><a class="line" href="structhmservcommon_1_1HMCachedUserContacts.html#ae433517eae9b3f64d1999ba0f4e88a5e">  101</a></span>&#160;    <span class="keyword">mutable</span> QTime <a class="code" href="structhmservcommon_1_1HMCachedUserContacts.html#ae433517eae9b3f64d1999ba0f4e88a5e">m_lastRequest</a>;                                </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;};</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="structhmservcommon_1_1HMCachedGroup.html">  107</a></span>&#160;<span class="comment"></span><span class="keyword">struct </span><a class="code" href="structhmservcommon_1_1HMCachedGroup.html">HMCachedGroup</a></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;{</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <a class="code" href="structhmservcommon_1_1HMCachedGroup.html#a1ea43fde072ea0e9b1deb7dc37c9e0d0">HMCachedGroup</a>(<span class="keyword">const</span> std::shared_ptr&lt;hmcommon::HMGroup&gt; inGroup);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="structhmservcommon_1_1HMCachedGroup.html#a1ea43fde072ea0e9b1deb7dc37c9e0d0">HMCachedGroup</a>(<span class="keyword">const</span> <a class="code" href="structhmservcommon_1_1HMCachedGroup.html">HMCachedGroup</a>&amp; inOther) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <a class="code" href="structhmservcommon_1_1HMCachedGroup.html#a1ea43fde072ea0e9b1deb7dc37c9e0d0">HMCachedGroup</a>(<a class="code" href="structhmservcommon_1_1HMCachedGroup.html">HMCachedGroup</a>&amp;&amp; inOther);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="comment">// Операторы</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <a class="code" href="structhmservcommon_1_1HMCachedUser.html">HMCachedUser</a>&amp; <a class="code" href="structhmservcommon_1_1HMCachedGroup.html#a342e8936b92eca2dfcf222af3c9da8a9">operator = </a>(<span class="keyword">const</span> <a class="code" href="structhmservcommon_1_1HMCachedGroup.html">HMCachedGroup</a>&amp; inOther) noexcept = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structhmservcommon_1_1HMCachedGroup.html#a787db0dab877921242b86df52c3ed966">operator == </a>(<span class="keyword">const</span> <a class="code" href="structhmservcommon_1_1HMCachedGroup.html">HMCachedGroup</a>&amp; inOther) <span class="keyword">const</span> noexcept;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    <span class="comment">// Данные</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
+<div class="line"><a name="l00145"></a><span class="lineno"><a class="line" href="structhmservcommon_1_1HMCachedGroup.html#a8f7b105fb0d8012de8d4fe9b1f6d8c34">  145</a></span>&#160;    std::shared_ptr&lt;hmcommon::HMGroup&gt; <a class="code" href="structhmservcommon_1_1HMCachedGroup.html#a8f7b105fb0d8012de8d4fe9b1f6d8c34">m_group</a> = <span class="keyword">nullptr</span>;   </div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="structhmservcommon_1_1HMCachedGroup.html#aedc421e2e7c30c5f6cdd56896e17985d">  146</a></span>&#160;    <span class="keyword">mutable</span> QTime <a class="code" href="structhmservcommon_1_1HMCachedGroup.html#aedc421e2e7c30c5f6cdd56896e17985d">m_lastRequest</a>;                            </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;};</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="structhmservcommon_1_1HMCachedGroupUsers.html">  152</a></span>&#160;<span class="comment"></span><span class="keyword">struct </span><a class="code" href="structhmservcommon_1_1HMCachedGroupUsers.html">HMCachedGroupUsers</a></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;{</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <a class="code" href="structhmservcommon_1_1HMCachedGroupUsers.html#a098b43c93c2e5033d531e86794ae6b15">HMCachedGroupUsers</a>(<span class="keyword">const</span> QUuid&amp; inGroupUUID, <span class="keyword">const</span> std::shared_ptr&lt;std::set&lt;QUuid&gt;&gt; inGroupUsers);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <a class="code" href="structhmservcommon_1_1HMCachedGroupUsers.html#a098b43c93c2e5033d531e86794ae6b15">HMCachedGroupUsers</a>(<span class="keyword">const</span> <a class="code" href="structhmservcommon_1_1HMCachedGroupUsers.html">HMCachedGroupUsers</a>&amp; inOther) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <a class="code" href="structhmservcommon_1_1HMCachedGroupUsers.html#a098b43c93c2e5033d531e86794ae6b15">HMCachedGroupUsers</a>(<a class="code" href="structhmservcommon_1_1HMCachedGroupUsers.html">HMCachedGroupUsers</a>&amp;&amp; inOther);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="comment">// Операторы</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <a class="code" href="structhmservcommon_1_1HMCachedGroupUsers.html">HMCachedGroupUsers</a>&amp; <a class="code" href="structhmservcommon_1_1HMCachedGroupUsers.html#a9a47957f9d6abe2fd1f16df9b9b60db8">operator = </a>(<span class="keyword">const</span> <a class="code" href="structhmservcommon_1_1HMCachedGroupUsers.html">HMCachedGroupUsers</a>&amp; inOther) noexcept = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; </div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structhmservcommon_1_1HMCachedGroupUsers.html#a364487863236ceb58d0230f44b9e5a81">operator == </a>(<span class="keyword">const</span> <a class="code" href="structhmservcommon_1_1HMCachedGroupUsers.html">HMCachedGroupUsers</a>&amp; inOther) <span class="keyword">const</span> noexcept;</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="comment">// Данные</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno"><a class="line" href="structhmservcommon_1_1HMCachedGroupUsers.html#a7f2007e72e3d981a51bb90b969e07254">  191</a></span>&#160;    QUuid <a class="code" href="structhmservcommon_1_1HMCachedGroupUsers.html#a7f2007e72e3d981a51bb90b969e07254">m_group</a>;                                              </div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="line" href="structhmservcommon_1_1HMCachedGroupUsers.html#a6a7a3d327cabf28fe9de49c2007b91b0">  192</a></span>&#160;    std::shared_ptr&lt;std::set&lt;QUuid&gt;&gt; <a class="code" href="structhmservcommon_1_1HMCachedGroupUsers.html#a6a7a3d327cabf28fe9de49c2007b91b0">m_groupUsers</a> = <span class="keyword">nullptr</span>;    </div>
+<div class="line"><a name="l00193"></a><span class="lineno"><a class="line" href="structhmservcommon_1_1HMCachedGroupUsers.html#a7b9f4e1511b4a6bd98921c3601824f1e">  193</a></span>&#160;    <span class="keyword">mutable</span> QTime <a class="code" href="structhmservcommon_1_1HMCachedGroupUsers.html#a7b9f4e1511b4a6bd98921c3601824f1e">m_lastRequest</a>;                                </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;};</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;}</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacestd.html">std</a></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;{</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="comment"></span><span class="keyword">template</span> &lt;&gt;</div>
+<div class="line"><a name="l00205"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01hmservcommon_1_1HMCachedUser_01_4.html">  205</a></span>&#160;<span class="keyword">struct </span>hash&lt;<a class="code" href="namespacehmservcommon.html">hmservcommon</a>::HMCachedUser&gt;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;{</div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01hmservcommon_1_1HMCachedUser_01_4.html#a0b0a4d6541745bdc1323ee88c8bd7dd3">  207</a></span>&#160;    std::size_t <a class="code" href="structstd_1_1hash_3_01hmservcommon_1_1HMCachedUser_01_4.html#a0b0a4d6541745bdc1323ee88c8bd7dd3">operator()</a>(<span class="keyword">const</span> <a class="code" href="structhmservcommon_1_1HMCachedUser.html">hmservcommon::HMCachedUser</a>&amp; inCachedUser)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        <span class="keywordflow">if</span> (!inCachedUser.<a class="code" href="structhmservcommon_1_1HMCachedUser.html#afda139338b8aa98881ae2dd91676002a">m_user</a>)</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;            <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;            <span class="keywordflow">return</span> std::hash&lt;std::string&gt;{}(inCachedUser.<a class="code" href="structhmservcommon_1_1HMCachedUser.html#afda139338b8aa98881ae2dd91676002a">m_user</a>-&gt;m_uuid.toString().toStdString());</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    }</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;};</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment"></span><span class="keyword">template</span> &lt;&gt;</div>
+<div class="line"><a name="l00220"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01hmservcommon_1_1HMCachedUserContacts_01_4.html">  220</a></span>&#160;<span class="keyword">struct </span>hash&lt;<a class="code" href="namespacehmservcommon.html">hmservcommon</a>::HMCachedUserContacts&gt;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;{</div>
+<div class="line"><a name="l00222"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01hmservcommon_1_1HMCachedUserContacts_01_4.html#a78d34b62054218a3664c3fb11a855ed3">  222</a></span>&#160;    std::size_t <a class="code" href="structstd_1_1hash_3_01hmservcommon_1_1HMCachedUserContacts_01_4.html#a78d34b62054218a3664c3fb11a855ed3">operator()</a>(<span class="keyword">const</span> <a class="code" href="structhmservcommon_1_1HMCachedUserContacts.html">hmservcommon::HMCachedUserContacts</a>&amp; inCachedUserContacts)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="keywordflow">return</span> std::hash&lt;std::string&gt;{}(inCachedUserContacts.<a class="code" href="structhmservcommon_1_1HMCachedUserContacts.html#aadaaf0ab49fde730b6f0490006ab1ff5">m_userUUID</a>.toString().toStdString());</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    }</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;};</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="comment"></span><span class="keyword">template</span> &lt;&gt;</div>
+<div class="line"><a name="l00232"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01hmservcommon_1_1HMCachedGroup_01_4.html">  232</a></span>&#160;<span class="keyword">struct </span>hash&lt;<a class="code" href="namespacehmservcommon.html">hmservcommon</a>::HMCachedGroup&gt;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;{</div>
+<div class="line"><a name="l00234"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01hmservcommon_1_1HMCachedGroup_01_4.html#a1bb70af9e44f860946afeff64fa907f3">  234</a></span>&#160;    std::size_t <a class="code" href="structstd_1_1hash_3_01hmservcommon_1_1HMCachedGroup_01_4.html#a1bb70af9e44f860946afeff64fa907f3">operator()</a>(<span class="keyword">const</span> <a class="code" href="structhmservcommon_1_1HMCachedGroup.html">hmservcommon::HMCachedGroup</a>&amp; inCachedGroup)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        <span class="keywordflow">if</span> (!inCachedGroup.<a class="code" href="structhmservcommon_1_1HMCachedGroup.html#a8f7b105fb0d8012de8d4fe9b1f6d8c34">m_group</a>)</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;            <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;            <span class="keywordflow">return</span> std::hash&lt;std::string&gt;{}(inCachedGroup.<a class="code" href="structhmservcommon_1_1HMCachedGroup.html#a8f7b105fb0d8012de8d4fe9b1f6d8c34">m_group</a>-&gt;m_uuid.toString().toStdString());</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;};</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="comment"></span><span class="keyword">template</span> &lt;&gt;</div>
+<div class="line"><a name="l00247"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01hmservcommon_1_1HMCachedGroupUsers_01_4.html">  247</a></span>&#160;<span class="keyword">struct </span>hash&lt;<a class="code" href="namespacehmservcommon.html">hmservcommon</a>::HMCachedGroupUsers&gt;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;{</div>
+<div class="line"><a name="l00249"></a><span class="lineno"><a class="line" href="structstd_1_1hash_3_01hmservcommon_1_1HMCachedGroupUsers_01_4.html#ae69e0eb2c2677e722abfa6d1279a8dd5">  249</a></span>&#160;    std::size_t <a class="code" href="structstd_1_1hash_3_01hmservcommon_1_1HMCachedGroupUsers_01_4.html#ae69e0eb2c2677e722abfa6d1279a8dd5">operator()</a>(<span class="keyword">const</span> <a class="code" href="structhmservcommon_1_1HMCachedGroupUsers.html">hmservcommon::HMCachedGroupUsers</a>&amp; inCachedGroupUsers)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <span class="keywordflow">return</span> std::hash&lt;std::string&gt;{}(inCachedGroupUsers.<a class="code" href="structhmservcommon_1_1HMCachedGroupUsers.html#a7f2007e72e3d981a51bb90b969e07254">m_group</a>.toString().toStdString());</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    }</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;};</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;}</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="preprocessor">#endif // HMCACHED_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="auserlist_8h_html"><div class="ttname"><a href="userlist_8h.html">userlist.h</a></div><div class="ttdoc">Содержит описание контактов пользователя системы</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedUser_html_a2686d6845dbf27eb4e86bb299c030ade"><div class="ttname"><a href="structhmservcommon_1_1HMCachedUser.html#a2686d6845dbf27eb4e86bb299c030ade">hmservcommon::HMCachedUser::operator==</a></div><div class="ttdeci">bool operator==(const HMCachedUser &amp;inOther) const noexcept</div><div class="ttdoc">operator == - Оператор сравнения</div><div class="ttdef"><b>Definition:</b> cached.cpp:23</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedGroup_html_aedc421e2e7c30c5f6cdd56896e17985d"><div class="ttname"><a href="structhmservcommon_1_1HMCachedGroup.html#aedc421e2e7c30c5f6cdd56896e17985d">hmservcommon::HMCachedGroup::m_lastRequest</a></div><div class="ttdeci">QTime m_lastRequest</div><div class="ttdoc">Время последнего запроса</div><div class="ttdef"><b>Definition:</b> cached.h:146</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedUser_html_a642eb6d21ea33086b2d5bdc0f1b9a12d"><div class="ttname"><a href="structhmservcommon_1_1HMCachedUser.html#a642eb6d21ea33086b2d5bdc0f1b9a12d">hmservcommon::HMCachedUser::HMCachedUser</a></div><div class="ttdeci">HMCachedUser(const std::shared_ptr&lt; hmcommon::HMUser &gt; inUser)</div><div class="ttdoc">HMCachedUser - Инициализирующий конструктор</div><div class="ttdef"><b>Definition:</b> cached.cpp:8</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedGroup_html"><div class="ttname"><a href="structhmservcommon_1_1HMCachedGroup.html">hmservcommon::HMCachedGroup</a></div><div class="ttdoc">The HMCachedGroup struct - Структура, описывающая кешированную группу</div><div class="ttdef"><b>Definition:</b> cached.h:107</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedUserContacts_html_ae433517eae9b3f64d1999ba0f4e88a5e"><div class="ttname"><a href="structhmservcommon_1_1HMCachedUserContacts.html#ae433517eae9b3f64d1999ba0f4e88a5e">hmservcommon::HMCachedUserContacts::m_lastRequest</a></div><div class="ttdeci">QTime m_lastRequest</div><div class="ttdoc">Время последнего запроса</div><div class="ttdef"><b>Definition:</b> cached.h:101</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedUserContacts_html_aadaaf0ab49fde730b6f0490006ab1ff5"><div class="ttname"><a href="structhmservcommon_1_1HMCachedUserContacts.html#aadaaf0ab49fde730b6f0490006ab1ff5">hmservcommon::HMCachedUserContacts::m_userUUID</a></div><div class="ttdeci">QUuid m_userUUID</div><div class="ttdoc">UUID пользователя</div><div class="ttdef"><b>Definition:</b> cached.h:99</div></div>
+<div class="ttc" id="astructstd_1_1hash_3_01hmservcommon_1_1HMCachedUser_01_4_html_a0b0a4d6541745bdc1323ee88c8bd7dd3"><div class="ttname"><a href="structstd_1_1hash_3_01hmservcommon_1_1HMCachedUser_01_4.html#a0b0a4d6541745bdc1323ee88c8bd7dd3">std::hash&lt; hmservcommon::HMCachedUser &gt;::operator()</a></div><div class="ttdeci">std::size_t operator()(const hmservcommon::HMCachedUser &amp;inCachedUser) const</div><div class="ttdef"><b>Definition:</b> cached.h:207</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedGroup_html_a1ea43fde072ea0e9b1deb7dc37c9e0d0"><div class="ttname"><a href="structhmservcommon_1_1HMCachedGroup.html#a1ea43fde072ea0e9b1deb7dc37c9e0d0">hmservcommon::HMCachedGroup::HMCachedGroup</a></div><div class="ttdeci">HMCachedGroup(const std::shared_ptr&lt; hmcommon::HMGroup &gt; inGroup)</div><div class="ttdoc">HMCachedGroup - Инициализирующий конструктор</div><div class="ttdef"><b>Definition:</b> cached.cpp:58</div></div>
+<div class="ttc" id="agroup_8h_html"><div class="ttname"><a href="group_8h.html">group.h</a></div><div class="ttdoc">Содержит описание группы\чата</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedUserContacts_html_a393c3dc104cf0050aec94016cd551aa9"><div class="ttname"><a href="structhmservcommon_1_1HMCachedUserContacts.html#a393c3dc104cf0050aec94016cd551aa9">hmservcommon::HMCachedUserContacts::m_contactList</a></div><div class="ttdeci">std::shared_ptr&lt; std::set&lt; QUuid &gt; &gt; m_contactList</div><div class="ttdoc">Перечень контактов</div><div class="ttdef"><b>Definition:</b> cached.h:100</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedUser_html"><div class="ttname"><a href="structhmservcommon_1_1HMCachedUser.html">hmservcommon::HMCachedUser</a></div><div class="ttdoc">The HMCachedUser struct - Структура, описывающая кешированного пользователя</div><div class="ttdef"><b>Definition:</b> cached.h:17</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedGroup_html_a787db0dab877921242b86df52c3ed966"><div class="ttname"><a href="structhmservcommon_1_1HMCachedGroup.html#a787db0dab877921242b86df52c3ed966">hmservcommon::HMCachedGroup::operator==</a></div><div class="ttdeci">bool operator==(const HMCachedGroup &amp;inOther) const noexcept</div><div class="ttdoc">operator == - Оператор сравнения</div><div class="ttdef"><b>Definition:</b> cached.cpp:73</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedGroupUsers_html"><div class="ttname"><a href="structhmservcommon_1_1HMCachedGroupUsers.html">hmservcommon::HMCachedGroupUsers</a></div><div class="ttdoc">The HMCachedGroupUsers struct - Структура, описывающая кешированный перечень участников группы</div><div class="ttdef"><b>Definition:</b> cached.h:152</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedGroupUsers_html_a6a7a3d327cabf28fe9de49c2007b91b0"><div class="ttname"><a href="structhmservcommon_1_1HMCachedGroupUsers.html#a6a7a3d327cabf28fe9de49c2007b91b0">hmservcommon::HMCachedGroupUsers::m_groupUsers</a></div><div class="ttdeci">std::shared_ptr&lt; std::set&lt; QUuid &gt; &gt; m_groupUsers</div><div class="ttdoc">Перечень участников группы</div><div class="ttdef"><b>Definition:</b> cached.h:192</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedGroupUsers_html_a9a47957f9d6abe2fd1f16df9b9b60db8"><div class="ttname"><a href="structhmservcommon_1_1HMCachedGroupUsers.html#a9a47957f9d6abe2fd1f16df9b9b60db8">hmservcommon::HMCachedGroupUsers::operator=</a></div><div class="ttdeci">HMCachedGroupUsers &amp; operator=(const HMCachedGroupUsers &amp;inOther) noexcept=delete</div><div class="ttdoc">operator = - Оператор копирования (Удалён)</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedGroupUsers_html_a7b9f4e1511b4a6bd98921c3601824f1e"><div class="ttname"><a href="structhmservcommon_1_1HMCachedGroupUsers.html#a7b9f4e1511b4a6bd98921c3601824f1e">hmservcommon::HMCachedGroupUsers::m_lastRequest</a></div><div class="ttdeci">QTime m_lastRequest</div><div class="ttdoc">Время последнего запроса</div><div class="ttdef"><b>Definition:</b> cached.h:193</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedUser_html_afda139338b8aa98881ae2dd91676002a"><div class="ttname"><a href="structhmservcommon_1_1HMCachedUser.html#afda139338b8aa98881ae2dd91676002a">hmservcommon::HMCachedUser::m_user</a></div><div class="ttdeci">std::shared_ptr&lt; hmcommon::HMUser &gt; m_user</div><div class="ttdoc">Пользователь</div><div class="ttdef"><b>Definition:</b> cached.h:55</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedUser_html_a796b416e95180b2f87f6a66383ebaffc"><div class="ttname"><a href="structhmservcommon_1_1HMCachedUser.html#a796b416e95180b2f87f6a66383ebaffc">hmservcommon::HMCachedUser::operator=</a></div><div class="ttdeci">HMCachedUser &amp; operator=(const HMCachedUser &amp;inOther) noexcept=delete</div><div class="ttdoc">operator = - Оператор копирования (Удалён)</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedUserContacts_html"><div class="ttname"><a href="structhmservcommon_1_1HMCachedUserContacts.html">hmservcommon::HMCachedUserContacts</a></div><div class="ttdoc">The HMCachedUserContacts struct - Структура, описывающая кешированную связь пользователя с контактами</div><div class="ttdef"><b>Definition:</b> cached.h:62</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedGroupUsers_html_a7f2007e72e3d981a51bb90b969e07254"><div class="ttname"><a href="structhmservcommon_1_1HMCachedGroupUsers.html#a7f2007e72e3d981a51bb90b969e07254">hmservcommon::HMCachedGroupUsers::m_group</a></div><div class="ttdeci">QUuid m_group</div><div class="ttdoc">UUID группы, которой пренадлежит перечень участников</div><div class="ttdef"><b>Definition:</b> cached.h:191</div></div>
+<div class="ttc" id="anamespacehmservcommon_html"><div class="ttname"><a href="namespacehmservcommon.html">hmservcommon</a></div><div class="ttdef"><b>Definition:</b> accountbuilder.h:16</div></div>
+<div class="ttc" id="astructstd_1_1hash_3_01hmservcommon_1_1HMCachedGroupUsers_01_4_html_ae69e0eb2c2677e722abfa6d1279a8dd5"><div class="ttname"><a href="structstd_1_1hash_3_01hmservcommon_1_1HMCachedGroupUsers_01_4.html#ae69e0eb2c2677e722abfa6d1279a8dd5">std::hash&lt; hmservcommon::HMCachedGroupUsers &gt;::operator()</a></div><div class="ttdeci">std::size_t operator()(const hmservcommon::HMCachedGroupUsers &amp;inCachedGroupUsers) const</div><div class="ttdef"><b>Definition:</b> cached.h:249</div></div>
+<div class="ttc" id="astructstd_1_1hash_3_01hmservcommon_1_1HMCachedGroup_01_4_html_a1bb70af9e44f860946afeff64fa907f3"><div class="ttname"><a href="structstd_1_1hash_3_01hmservcommon_1_1HMCachedGroup_01_4.html#a1bb70af9e44f860946afeff64fa907f3">std::hash&lt; hmservcommon::HMCachedGroup &gt;::operator()</a></div><div class="ttdeci">std::size_t operator()(const hmservcommon::HMCachedGroup &amp;inCachedGroup) const</div><div class="ttdef"><b>Definition:</b> cached.h:234</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedUser_html_abea75ce145779b1c0e08f97c07a50f34"><div class="ttname"><a href="structhmservcommon_1_1HMCachedUser.html#abea75ce145779b1c0e08f97c07a50f34">hmservcommon::HMCachedUser::m_lastRequest</a></div><div class="ttdeci">QTime m_lastRequest</div><div class="ttdoc">Время последнего запроса</div><div class="ttdef"><b>Definition:</b> cached.h:56</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedGroupUsers_html_a098b43c93c2e5033d531e86794ae6b15"><div class="ttname"><a href="structhmservcommon_1_1HMCachedGroupUsers.html#a098b43c93c2e5033d531e86794ae6b15">hmservcommon::HMCachedGroupUsers::HMCachedGroupUsers</a></div><div class="ttdeci">HMCachedGroupUsers(const QUuid &amp;inGroupUUID, const std::shared_ptr&lt; std::set&lt; QUuid &gt;&gt; inGroupUsers)</div><div class="ttdoc">HMCachedGroupUsers - Инициализирующий конструктор</div><div class="ttdef"><b>Definition:</b> cached.cpp:83</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedGroup_html_a8f7b105fb0d8012de8d4fe9b1f6d8c34"><div class="ttname"><a href="structhmservcommon_1_1HMCachedGroup.html#a8f7b105fb0d8012de8d4fe9b1f6d8c34">hmservcommon::HMCachedGroup::m_group</a></div><div class="ttdeci">std::shared_ptr&lt; hmcommon::HMGroup &gt; m_group</div><div class="ttdoc">Группа</div><div class="ttdef"><b>Definition:</b> cached.h:145</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedGroupUsers_html_a364487863236ceb58d0230f44b9e5a81"><div class="ttname"><a href="structhmservcommon_1_1HMCachedGroupUsers.html#a364487863236ceb58d0230f44b9e5a81">hmservcommon::HMCachedGroupUsers::operator==</a></div><div class="ttdeci">bool operator==(const HMCachedGroupUsers &amp;inOther) const noexcept</div><div class="ttdoc">operator == - Оператор сравнения</div><div class="ttdef"><b>Definition:</b> cached.cpp:101</div></div>
+<div class="ttc" id="astructstd_1_1hash_3_01hmservcommon_1_1HMCachedUserContacts_01_4_html_a78d34b62054218a3664c3fb11a855ed3"><div class="ttname"><a href="structstd_1_1hash_3_01hmservcommon_1_1HMCachedUserContacts_01_4.html#a78d34b62054218a3664c3fb11a855ed3">std::hash&lt; hmservcommon::HMCachedUserContacts &gt;::operator()</a></div><div class="ttdeci">std::size_t operator()(const hmservcommon::HMCachedUserContacts &amp;inCachedUserContacts) const</div><div class="ttdef"><b>Definition:</b> cached.h:222</div></div>
+<div class="ttc" id="anamespacestd_html"><div class="ttname"><a href="namespacestd.html">std</a></div><div class="ttdef"><b>Definition:</b> systemerrorex.h:99</div></div>
+<div class="ttc" id="auser_8h_html"><div class="ttname"><a href="user_8h.html">user.h</a></div><div class="ttdoc">Содержит описание пользователя системы</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedUserContacts_html_ae47164a6b664fca25eb97cede7b8f79b"><div class="ttname"><a href="structhmservcommon_1_1HMCachedUserContacts.html#ae47164a6b664fca25eb97cede7b8f79b">hmservcommon::HMCachedUserContacts::operator==</a></div><div class="ttdeci">bool operator==(const HMCachedUserContacts &amp;inOther) const noexcept</div><div class="ttdoc">operator == - Оператор сравнения</div><div class="ttdef"><b>Definition:</b> cached.cpp:51</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedUserContacts_html_a9797e06d2fe39da5564c23020f29c45d"><div class="ttname"><a href="structhmservcommon_1_1HMCachedUserContacts.html#a9797e06d2fe39da5564c23020f29c45d">hmservcommon::HMCachedUserContacts::operator=</a></div><div class="ttdeci">HMCachedUserContacts &amp; operator=(const HMCachedUserContacts &amp;inOther) noexcept=delete</div><div class="ttdoc">operator = - Оператор копирования (Удалён)</div></div>
+<div class="ttc" id="acached_8h_html"><div class="ttname"><a href="cached_8h.html">cached.h</a></div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedUserContacts_html_a7735a5d627a83413a0e67612959b41a2"><div class="ttname"><a href="structhmservcommon_1_1HMCachedUserContacts.html#a7735a5d627a83413a0e67612959b41a2">hmservcommon::HMCachedUserContacts::HMCachedUserContacts</a></div><div class="ttdeci">HMCachedUserContacts(const QUuid &amp;inUserUUID, const std::shared_ptr&lt; std::set&lt; QUuid &gt;&gt; inContactList)</div><div class="ttdoc">HMCachedUserContacts - Инициализирующий конструктор</div><div class="ttdef"><b>Definition:</b> cached.cpp:33</div></div>
+<div class="ttc" id="astructhmservcommon_1_1HMCachedGroup_html_a342e8936b92eca2dfcf222af3c9da8a9"><div class="ttname"><a href="structhmservcommon_1_1HMCachedGroup.html#a342e8936b92eca2dfcf222af3c9da8a9">hmservcommon::HMCachedGroup::operator=</a></div><div class="ttdeci">HMCachedUser &amp; operator=(const HMCachedGroup &amp;inOther) noexcept=delete</div><div class="ttdoc">operator = - Оператор копирования (Удалён)</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

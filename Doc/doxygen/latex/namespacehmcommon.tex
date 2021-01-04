@@ -1,0 +1,237 @@
+\hypertarget{namespacehmcommon}{}\doxysection{Пространство имен hmcommon}
+\label{namespacehmcommon}\index{hmcommon@{hmcommon}}
+\doxysubsection*{Классы}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structhmcommon_1_1ContactCheckEqual}{Contact\+Check\+Equal}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{structhmcommon_1_1ContactCheckEqual}{Contact\+Check\+Equal}} struct -\/ Структура, реализующая оператор сравнения пользователей \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structhmcommon_1_1ContactMakeHash}{Contact\+Make\+Hash}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{structhmcommon_1_1ContactMakeHash}{Contact\+Make\+Hash}} struct -\/ Структура, реализующая оператор взятия хеша от пользователя \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classhmcommon_1_1HMAccount}{H\+M\+Account}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{classhmcommon_1_1HMAccount}{H\+M\+Account}} class -\/ Класс, описывающий аккаунт системы \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classhmcommon_1_1HMGroup}{H\+M\+Group}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{classhmcommon_1_1HMGroup}{H\+M\+Group}} class -\/ Класс, описывающий группу пользователей системы \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classhmcommon_1_1HMGroupMessage}{H\+M\+Group\+Message}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{classhmcommon_1_1HMGroupMessage}{H\+M\+Group\+Message}} class -\/ Класс, описывающий сообщение группы \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classhmcommon_1_1HMUser}{H\+M\+User}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{classhmcommon_1_1HMUser}{H\+M\+User}} class -\/ Класс, описывающий пользователя системы \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classhmcommon_1_1HMUserList}{H\+M\+User\+List}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{classhmcommon_1_1HMUserList}{H\+M\+User\+List}} class -\/ Класс, содержащий список пользователей системы \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structhmcommon_1_1MsgData}{Msg\+Data}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{structhmcommon_1_1MsgData}{Msg\+Data}} struct -\/ Структура, хранящая данные сообщения \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structhmcommon_1_1MsgRange}{Msg\+Range}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{structhmcommon_1_1MsgRange}{Msg\+Range}} struct -\/ Структура, описывающая временной промежуток сообщений \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classhmcommon_1_1SystemErrorExCategory}{System\+Error\+Ex\+Category}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{classhmcommon_1_1SystemErrorExCategory}{System\+Error\+Ex\+Category}} class -\/ Класс, определяющий категорию расширеных системных ошибки \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Перечисления}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespacehmcommon_a86a0319ec12319b7989570b02872baa1}{e\+Msg\+Type}} \{ \mbox{\hyperlink{namespacehmcommon_a86a0319ec12319b7989570b02872baa1ac549e7023f781c95b633467a444e7781}{e\+Msg\+Type\+::mt\+Empty}}, 
+\mbox{\hyperlink{namespacehmcommon_a86a0319ec12319b7989570b02872baa1ac6aeaa06ddf0d4bcfa549b6402dc6b80}{e\+Msg\+Type\+::mt\+Text}}, 
+\mbox{\hyperlink{namespacehmcommon_a86a0319ec12319b7989570b02872baa1af82d17e297fb6a80e296402000b29795}{e\+Msg\+Type\+::mt\+Image}}, 
+\mbox{\hyperlink{namespacehmcommon_a86a0319ec12319b7989570b02872baa1a29236eb2fa42e3aa7704b2cf9c6a6b74}{e\+Msg\+Type\+::mt\+Count}}
+ \}
+\begin{DoxyCompactList}\small\item\em The e\+Msg\+Type enum -\/ Перечень типов сообщений чата \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespacehmcommon_aa623151570760a868235b187863ad074}{e\+System\+Error\+Ex}} \{ \newline
+\mbox{\hyperlink{namespacehmcommon_aa623151570760a868235b187863ad074aa330e55c3e289df2376203fce3c17925}{e\+System\+Error\+Ex\+::se\+Success}} = 0, 
+\mbox{\hyperlink{namespacehmcommon_aa623151570760a868235b187863ad074a075fedc58218682904f396b745bb5a5f}{e\+System\+Error\+Ex\+::se\+Invalid\+Ptr}} = C\+\_\+\+S\+Y\+S\+T\+E\+M\+E\+R\+R\+O\+R\+\_\+\+S\+T\+A\+RT, 
+\mbox{\hyperlink{namespacehmcommon_aa623151570760a868235b187863ad074ad722f613011e13774a74a93189fe2d05}{e\+System\+Error\+Ex\+::se\+Incorrec\+Version}}, 
+\mbox{\hyperlink{namespacehmcommon_aa623151570760a868235b187863ad074ab70b48a1e6db9cc16b106d1bfdf2c4ab}{e\+System\+Error\+Ex\+::se\+Incorret\+Data}}, 
+\newline
+\mbox{\hyperlink{namespacehmcommon_aa623151570760a868235b187863ad074a8ddd0cd353bdad195ee19a945e9d732d}{e\+System\+Error\+Ex\+::se\+Operation\+Not\+Supported}}, 
+\mbox{\hyperlink{namespacehmcommon_aa623151570760a868235b187863ad074a9934967d53d18e54b7934c2f70740465}{e\+System\+Error\+Ex\+::se\+Input\+Operation\+Fail}}, 
+\mbox{\hyperlink{namespacehmcommon_aa623151570760a868235b187863ad074af3d7af69e924f47e5115ce81f0475492}{e\+System\+Error\+Ex\+::se\+Output\+Operation\+Fail}}, 
+\mbox{\hyperlink{namespacehmcommon_aa623151570760a868235b187863ad074a04e8a7494cb7bb8547b641f81331594a}{e\+System\+Error\+Ex\+::se\+File\+Not\+Exists}}, 
+\newline
+\mbox{\hyperlink{namespacehmcommon_aa623151570760a868235b187863ad074ac71f2f7417d99fef94be05b9570511af}{e\+System\+Error\+Ex\+::se\+Dir\+Not\+Exists}}, 
+\mbox{\hyperlink{namespacehmcommon_aa623151570760a868235b187863ad074a03f071df41d9a23a6ff1c02d67c53c0b}{e\+System\+Error\+Ex\+::se\+Object\+Not\+File}}, 
+\mbox{\hyperlink{namespacehmcommon_aa623151570760a868235b187863ad074a53ce2d436165a3787736b40d89a0e0d8}{e\+System\+Error\+Ex\+::se\+Object\+Not\+Dir}}, 
+\mbox{\hyperlink{namespacehmcommon_aa623151570760a868235b187863ad074a7d1a0b9b4a4fb586745e95077c99711b}{e\+System\+Error\+Ex\+::se\+File\+Not\+Open}}, 
+\newline
+\mbox{\hyperlink{namespacehmcommon_aa623151570760a868235b187863ad074a97d8e208f1ba84104a8d4744ae3b74b2}{e\+System\+Error\+Ex\+::se\+Open\+File\+Fail}}, 
+\mbox{\hyperlink{namespacehmcommon_aa623151570760a868235b187863ad074aef6de778712312b09e7c8f6272a8cd8c}{e\+System\+Error\+Ex\+::se\+Read\+File\+Fail}}, 
+\mbox{\hyperlink{namespacehmcommon_aa623151570760a868235b187863ad074aaab0146e021aca2a47fc5e1882d76562}{e\+System\+Error\+Ex\+::se\+Container\+Empty}}, 
+\mbox{\hyperlink{namespacehmcommon_aa623151570760a868235b187863ad074afce0c62359706b88ab0e7962ef9f24d8}{e\+System\+Error\+Ex\+::se\+Not\+In\+Container}}, 
+\newline
+\mbox{\hyperlink{namespacehmcommon_aa623151570760a868235b187863ad074ae1cd8086c4e84519196dd8ea7b324ff2}{e\+System\+Error\+Ex\+::se\+Alredy\+In\+Container}}, 
+\mbox{\hyperlink{namespacehmcommon_aa623151570760a868235b187863ad074a1b7ef58f826b0d541714443e96260a40}{e\+System\+Error\+Ex\+::se\+Index\+Out\+Of\+Container\+Range}}, 
+\mbox{\hyperlink{namespacehmcommon_aa623151570760a868235b187863ad074a3da4c5a42267045c1c54ec7d24792dfa}{e\+System\+Error\+Ex\+::se\+Count}}
+ \}
+\begin{DoxyCompactList}\small\item\em The e\+System\+Error\+Ex enum -\/ Перечень расширеных системных ошибок \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespacehmcommon_aa9f98c5316f7b182daa50c81658a4e1b}{e\+Sex}} \{ \mbox{\hyperlink{namespacehmcommon_aa9f98c5316f7b182daa50c81658a4e1ba144fcac0eff15e7fb278b5d23574a1c9}{e\+Sex\+::s\+Not\+Specified}}, 
+\mbox{\hyperlink{namespacehmcommon_aa9f98c5316f7b182daa50c81658a4e1ba68c340e350693d39bb9d38dc6f79671d}{e\+Sex\+::s\+Male}}, 
+\mbox{\hyperlink{namespacehmcommon_aa9f98c5316f7b182daa50c81658a4e1ba13f0bef840b0101b27dda9340511e7c4}{e\+Sex\+::s\+Female}}
+ \}
+\begin{DoxyCompactList}\small\item\em The e\+Sex enum -\/ Перечисление полов \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+const \mbox{\hyperlink{systemerrorex_8h_a4045cc829727bb50470e14a1faebc57c}{S\+Y\+S\+T\+E\+M\+E\+R\+R\+E\+X\+\_\+\+A\+P\+I\+\_\+\+D\+E\+CL}} \mbox{\hyperlink{classhmcommon_1_1SystemErrorExCategory}{System\+Error\+Ex\+Category}} \& \mbox{\hyperlink{namespacehmcommon_a3f63bf15ae19c09b498ea755e90e78b9}{Conversion\+Errc\+\_\+category}} ()
+\begin{DoxyCompactList}\small\item\em Conversion\+Errc\+\_\+category -\/ Функцию, возвращающую статический экземпляр пользовательской категории \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Перечисления}
+\mbox{\Hypertarget{namespacehmcommon_a86a0319ec12319b7989570b02872baa1}\label{namespacehmcommon_a86a0319ec12319b7989570b02872baa1}} 
+\index{hmcommon@{hmcommon}!eMsgType@{eMsgType}}
+\index{eMsgType@{eMsgType}!hmcommon@{hmcommon}}
+\doxysubsubsection{\texorpdfstring{eMsgType}{eMsgType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacehmcommon_a86a0319ec12319b7989570b02872baa1}{hmcommon\+::e\+Msg\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+The e\+Msg\+Type enum -\/ Перечень типов сообщений чата 
+
+\begin{DoxyEnumFields}{Элементы перечислений}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{mtEmpty@{mtEmpty}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!mtEmpty@{mtEmpty}}}\mbox{\Hypertarget{namespacehmcommon_a86a0319ec12319b7989570b02872baa1ac549e7023f781c95b633467a444e7781}\label{namespacehmcommon_a86a0319ec12319b7989570b02872baa1ac549e7023f781c95b633467a444e7781}} 
+mt\+Empty&Данные не заданы \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{mtText@{mtText}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!mtText@{mtText}}}\mbox{\Hypertarget{namespacehmcommon_a86a0319ec12319b7989570b02872baa1ac6aeaa06ddf0d4bcfa549b6402dc6b80}\label{namespacehmcommon_a86a0319ec12319b7989570b02872baa1ac6aeaa06ddf0d4bcfa549b6402dc6b80}} 
+mt\+Text&Текстовое сообщение \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{mtImage@{mtImage}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!mtImage@{mtImage}}}\mbox{\Hypertarget{namespacehmcommon_a86a0319ec12319b7989570b02872baa1af82d17e297fb6a80e296402000b29795}\label{namespacehmcommon_a86a0319ec12319b7989570b02872baa1af82d17e297fb6a80e296402000b29795}} 
+mt\+Image&Изображение \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{mtCount@{mtCount}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!mtCount@{mtCount}}}\mbox{\Hypertarget{namespacehmcommon_a86a0319ec12319b7989570b02872baa1a29236eb2fa42e3aa7704b2cf9c6a6b74}\label{namespacehmcommon_a86a0319ec12319b7989570b02872baa1a29236eb2fa42e3aa7704b2cf9c6a6b74}} 
+mt\+Count&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespacehmcommon_aa9f98c5316f7b182daa50c81658a4e1b}\label{namespacehmcommon_aa9f98c5316f7b182daa50c81658a4e1b}} 
+\index{hmcommon@{hmcommon}!eSex@{eSex}}
+\index{eSex@{eSex}!hmcommon@{hmcommon}}
+\doxysubsubsection{\texorpdfstring{eSex}{eSex}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacehmcommon_aa9f98c5316f7b182daa50c81658a4e1b}{hmcommon\+::e\+Sex}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+The e\+Sex enum -\/ Перечисление полов 
+
+\begin{DoxyEnumFields}{Элементы перечислений}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{sNotSpecified@{sNotSpecified}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!sNotSpecified@{sNotSpecified}}}\mbox{\Hypertarget{namespacehmcommon_aa9f98c5316f7b182daa50c81658a4e1ba144fcac0eff15e7fb278b5d23574a1c9}\label{namespacehmcommon_aa9f98c5316f7b182daa50c81658a4e1ba144fcac0eff15e7fb278b5d23574a1c9}} 
+s\+Not\+Specified&Пол не указан \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{sMale@{sMale}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!sMale@{sMale}}}\mbox{\Hypertarget{namespacehmcommon_aa9f98c5316f7b182daa50c81658a4e1ba68c340e350693d39bb9d38dc6f79671d}\label{namespacehmcommon_aa9f98c5316f7b182daa50c81658a4e1ba68c340e350693d39bb9d38dc6f79671d}} 
+s\+Male&Мужской \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{sFemale@{sFemale}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!sFemale@{sFemale}}}\mbox{\Hypertarget{namespacehmcommon_aa9f98c5316f7b182daa50c81658a4e1ba13f0bef840b0101b27dda9340511e7c4}\label{namespacehmcommon_aa9f98c5316f7b182daa50c81658a4e1ba13f0bef840b0101b27dda9340511e7c4}} 
+s\+Female&Женский \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespacehmcommon_aa623151570760a868235b187863ad074}\label{namespacehmcommon_aa623151570760a868235b187863ad074}} 
+\index{hmcommon@{hmcommon}!eSystemErrorEx@{eSystemErrorEx}}
+\index{eSystemErrorEx@{eSystemErrorEx}!hmcommon@{hmcommon}}
+\doxysubsubsection{\texorpdfstring{eSystemErrorEx}{eSystemErrorEx}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespacehmcommon_aa623151570760a868235b187863ad074}{hmcommon\+::e\+System\+Error\+Ex}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+The e\+System\+Error\+Ex enum -\/ Перечень расширеных системных ошибок 
+
+\begin{DoxyEnumFields}{Элементы перечислений}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{seSuccess@{seSuccess}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!seSuccess@{seSuccess}}}\mbox{\Hypertarget{namespacehmcommon_aa623151570760a868235b187863ad074aa330e55c3e289df2376203fce3c17925}\label{namespacehmcommon_aa623151570760a868235b187863ad074aa330e55c3e289df2376203fce3c17925}} 
+se\+Success&0 Не явялется ошибкой \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{seInvalidPtr@{seInvalidPtr}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!seInvalidPtr@{seInvalidPtr}}}\mbox{\Hypertarget{namespacehmcommon_aa623151570760a868235b187863ad074a075fedc58218682904f396b745bb5a5f}\label{namespacehmcommon_aa623151570760a868235b187863ad074a075fedc58218682904f396b745bb5a5f}} 
+se\+Invalid\+Ptr&Не валидный указатель \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{seIncorrecVersion@{seIncorrecVersion}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!seIncorrecVersion@{seIncorrecVersion}}}\mbox{\Hypertarget{namespacehmcommon_aa623151570760a868235b187863ad074ad722f613011e13774a74a93189fe2d05}\label{namespacehmcommon_aa623151570760a868235b187863ad074ad722f613011e13774a74a93189fe2d05}} 
+se\+Incorrec\+Version&Не корректная версия \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{seIncorretData@{seIncorretData}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!seIncorretData@{seIncorretData}}}\mbox{\Hypertarget{namespacehmcommon_aa623151570760a868235b187863ad074ab70b48a1e6db9cc16b106d1bfdf2c4ab}\label{namespacehmcommon_aa623151570760a868235b187863ad074ab70b48a1e6db9cc16b106d1bfdf2c4ab}} 
+se\+Incorret\+Data&Не корректные данные \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{seOperationNotSupported@{seOperationNotSupported}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!seOperationNotSupported@{seOperationNotSupported}}}\mbox{\Hypertarget{namespacehmcommon_aa623151570760a868235b187863ad074a8ddd0cd353bdad195ee19a945e9d732d}\label{namespacehmcommon_aa623151570760a868235b187863ad074a8ddd0cd353bdad195ee19a945e9d732d}} 
+se\+Operation\+Not\+Supported&Операция не поддерживается \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{seInputOperationFail@{seInputOperationFail}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!seInputOperationFail@{seInputOperationFail}}}\mbox{\Hypertarget{namespacehmcommon_aa623151570760a868235b187863ad074a9934967d53d18e54b7934c2f70740465}\label{namespacehmcommon_aa623151570760a868235b187863ad074a9934967d53d18e54b7934c2f70740465}} 
+se\+Input\+Operation\+Fail&Операция ввода прошла с ошибкой \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{seOutputOperationFail@{seOutputOperationFail}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!seOutputOperationFail@{seOutputOperationFail}}}\mbox{\Hypertarget{namespacehmcommon_aa623151570760a868235b187863ad074af3d7af69e924f47e5115ce81f0475492}\label{namespacehmcommon_aa623151570760a868235b187863ad074af3d7af69e924f47e5115ce81f0475492}} 
+se\+Output\+Operation\+Fail&Операция вывода прошла с ошибкой \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{seFileNotExists@{seFileNotExists}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!seFileNotExists@{seFileNotExists}}}\mbox{\Hypertarget{namespacehmcommon_aa623151570760a868235b187863ad074a04e8a7494cb7bb8547b641f81331594a}\label{namespacehmcommon_aa623151570760a868235b187863ad074a04e8a7494cb7bb8547b641f81331594a}} 
+se\+File\+Not\+Exists&Файл не существует \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{seDirNotExists@{seDirNotExists}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!seDirNotExists@{seDirNotExists}}}\mbox{\Hypertarget{namespacehmcommon_aa623151570760a868235b187863ad074ac71f2f7417d99fef94be05b9570511af}\label{namespacehmcommon_aa623151570760a868235b187863ad074ac71f2f7417d99fef94be05b9570511af}} 
+se\+Dir\+Not\+Exists&Директория не существует \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{seObjectNotFile@{seObjectNotFile}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!seObjectNotFile@{seObjectNotFile}}}\mbox{\Hypertarget{namespacehmcommon_aa623151570760a868235b187863ad074a03f071df41d9a23a6ff1c02d67c53c0b}\label{namespacehmcommon_aa623151570760a868235b187863ad074a03f071df41d9a23a6ff1c02d67c53c0b}} 
+se\+Object\+Not\+File&Объект не является файлом \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{seObjectNotDir@{seObjectNotDir}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!seObjectNotDir@{seObjectNotDir}}}\mbox{\Hypertarget{namespacehmcommon_aa623151570760a868235b187863ad074a53ce2d436165a3787736b40d89a0e0d8}\label{namespacehmcommon_aa623151570760a868235b187863ad074a53ce2d436165a3787736b40d89a0e0d8}} 
+se\+Object\+Not\+Dir&Объект не является директорией \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{seFileNotOpen@{seFileNotOpen}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!seFileNotOpen@{seFileNotOpen}}}\mbox{\Hypertarget{namespacehmcommon_aa623151570760a868235b187863ad074a7d1a0b9b4a4fb586745e95077c99711b}\label{namespacehmcommon_aa623151570760a868235b187863ad074a7d1a0b9b4a4fb586745e95077c99711b}} 
+se\+File\+Not\+Open&Файл не открыт \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{seOpenFileFail@{seOpenFileFail}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!seOpenFileFail@{seOpenFileFail}}}\mbox{\Hypertarget{namespacehmcommon_aa623151570760a868235b187863ad074a97d8e208f1ba84104a8d4744ae3b74b2}\label{namespacehmcommon_aa623151570760a868235b187863ad074a97d8e208f1ba84104a8d4744ae3b74b2}} 
+se\+Open\+File\+Fail&Не удалось открыть файл \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{seReadFileFail@{seReadFileFail}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!seReadFileFail@{seReadFileFail}}}\mbox{\Hypertarget{namespacehmcommon_aa623151570760a868235b187863ad074aef6de778712312b09e7c8f6272a8cd8c}\label{namespacehmcommon_aa623151570760a868235b187863ad074aef6de778712312b09e7c8f6272a8cd8c}} 
+se\+Read\+File\+Fail&Ошибка при чтении файла \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{seContainerEmpty@{seContainerEmpty}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!seContainerEmpty@{seContainerEmpty}}}\mbox{\Hypertarget{namespacehmcommon_aa623151570760a868235b187863ad074aaab0146e021aca2a47fc5e1882d76562}\label{namespacehmcommon_aa623151570760a868235b187863ad074aaab0146e021aca2a47fc5e1882d76562}} 
+se\+Container\+Empty&Контейнер пуст \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{seNotInContainer@{seNotInContainer}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!seNotInContainer@{seNotInContainer}}}\mbox{\Hypertarget{namespacehmcommon_aa623151570760a868235b187863ad074afce0c62359706b88ab0e7962ef9f24d8}\label{namespacehmcommon_aa623151570760a868235b187863ad074afce0c62359706b88ab0e7962ef9f24d8}} 
+se\+Not\+In\+Container&Объект не в контейнере \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{seAlredyInContainer@{seAlredyInContainer}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!seAlredyInContainer@{seAlredyInContainer}}}\mbox{\Hypertarget{namespacehmcommon_aa623151570760a868235b187863ad074ae1cd8086c4e84519196dd8ea7b324ff2}\label{namespacehmcommon_aa623151570760a868235b187863ad074ae1cd8086c4e84519196dd8ea7b324ff2}} 
+se\+Alredy\+In\+Container&Объект уже в контейнере \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{seIndexOutOfContainerRange@{seIndexOutOfContainerRange}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!seIndexOutOfContainerRange@{seIndexOutOfContainerRange}}}\mbox{\Hypertarget{namespacehmcommon_aa623151570760a868235b187863ad074a1b7ef58f826b0d541714443e96260a40}\label{namespacehmcommon_aa623151570760a868235b187863ad074a1b7ef58f826b0d541714443e96260a40}} 
+se\+Index\+Out\+Of\+Container\+Range&Индекс за пределами контейнера \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{seCount@{seCount}!hmcommon@{hmcommon}}\index{hmcommon@{hmcommon}!seCount@{seCount}}}\mbox{\Hypertarget{namespacehmcommon_aa623151570760a868235b187863ad074a3da4c5a42267045c1c54ec7d24792dfa}\label{namespacehmcommon_aa623151570760a868235b187863ad074a3da4c5a42267045c1c54ec7d24792dfa}} 
+se\+Count&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{namespacehmcommon_a3f63bf15ae19c09b498ea755e90e78b9}\label{namespacehmcommon_a3f63bf15ae19c09b498ea755e90e78b9}} 
+\index{hmcommon@{hmcommon}!ConversionErrc\_category@{ConversionErrc\_category}}
+\index{ConversionErrc\_category@{ConversionErrc\_category}!hmcommon@{hmcommon}}
+\doxysubsubsection{\texorpdfstring{ConversionErrc\_category()}{ConversionErrc\_category()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{systemerrorex_8h_a4045cc829727bb50470e14a1faebc57c}{S\+Y\+S\+T\+E\+M\+E\+R\+R\+E\+X\+\_\+\+A\+P\+I\+\_\+\+D\+E\+CL}} \mbox{\hyperlink{classhmcommon_1_1SystemErrorExCategory}{hmcommon\+::\+System\+Error\+Ex\+Category}} \& hmcommon\+::\+Conversion\+Errc\+\_\+category (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Conversion\+Errc\+\_\+category -\/ Функцию, возвращающую статический экземпляр пользовательской категории 
+
+\begin{DoxyReturn}{Возвращает}
+Вернёт статический экземпляр пользовательской категории 
+\end{DoxyReturn}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{namespacehmcommon_a3f63bf15ae19c09b498ea755e90e78b9_icgraph}
+\end{center}
+\end{figure}

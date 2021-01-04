@@ -1,0 +1,9 @@
+<map id="hmservcommon::datastorage::HMAbstractCahceDataStorage::stopCacheWatchdogThread" name="hmservcommon::datastorage::HMAbstractCahceDataStorage::stopCacheWatchdogThread">
+<area shape="rect" id="node1" title="stopCacheWatchdogThread &#45; Метод остановит поток, котролирующий объекты кеша" alt="" coords="971,43,1197,99"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ae620a0c526b13b1c4b9800f282d6461d" title="close &#45; Метод закроет хранилище данных" alt="" coords="653,13,923,54"/>
+<area shape="rect" id="node6" href="$classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a294948cbf56bd24c7d7ed60826b0fd87" title="startCacheWatchdogThread &#45; Метод запустит поток, котролирующий объекты кеша" alt="" coords="675,79,901,135"/>
+<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a8bf345ef8b7ca0b14ad3c9c7d4cbe91a" title="close &#45; Метод закроет хранилище данных" alt="" coords="328,13,605,54"/>
+<area shape="rect" id="node4" href="$classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a07c4e3bad5ced7d8a929b77a3df67197" title="open &#45; Метод откроет хранилище данных" alt="" coords="5,86,280,127"/>
+<area shape="rect" id="node5" href="$classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#aba844641d544b031bbbe89d001be3a50" title="~HMCachedDataStorage &#45; Виртуальный деструктор" alt="" coords="19,5,266,61"/>
+<area shape="rect" id="node7" href="$classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ab0178b64aff50caf8f0ce5c172def2ea" title="open &#45; Метод откроет хранилище данных" alt="" coords="333,86,600,127"/>
+</map>

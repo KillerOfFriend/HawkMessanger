@@ -1,0 +1,4 @@
+<map id="hmservcommon::datastorage::HMJsonDataStorage::setUserContacts" name="hmservcommon::datastorage::HMJsonDataStorage::setUserContacts">
+<area shape="rect" id="node1" title="setUserContacts &#45; Метод задаст пользователю список контактов" alt="" coords="311,5,585,47"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a98f52fc8d8c672d5c0e91a67a4a0995b" title="onCreateUser &#45; Метод выполнится при создании пользователя" alt="" coords="5,5,263,47"/>
+</map>

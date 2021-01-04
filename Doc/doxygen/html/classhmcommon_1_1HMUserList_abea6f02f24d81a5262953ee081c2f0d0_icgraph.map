@@ -1,0 +1,6 @@
+<map id="hmcommon::HMUserList::isEmpty" name="hmcommon::HMUserList::isEmpty">
+<area shape="rect" id="node1" title="isEmpty &#45; Метод вернёт признак того, что список пользователей пуст" alt="" coords="368,23,551,65"/>
+<area shape="rect" id="node2" href="$classhmcommon_1_1HMUserList.html#ae0f201708908b217b38f37135a47e6f0" title="get &#45; Метод вернёт пользователя по его порядковому номеру" alt="" coords="108,5,320,32"/>
+<area shape="rect" id="node4" href="$libraries_2HawkCommon_2tests_2UserList_2main_8cpp.html#a937714e3cdb84c94e3e3fe91d4f1cc22" title="TEST &#45; Тест создания списка контактов" alt="" coords="187,56,241,83"/>
+<area shape="rect" id="node3" href="$libraries_2HawkCommon_2tests_2UserList_2main_8cpp.html#ad46a4cda396ae2c9ebdaa3a7a2bdef25" title="TEST &#45; Тест поиска не существующего контакта" alt="" coords="5,5,60,32"/>
+</map>

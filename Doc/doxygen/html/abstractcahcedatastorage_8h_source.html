@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>HawkMessanger: Исходный файл Projects/libraries/HawkServerCore/src/datastorage/interface/abstractcahcedatastorage.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">HawkMessanger
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_7a6499598ddcfcabe96e224cb4a6d834.html">Projects</a></li><li class="navelem"><a class="el" href="dir_e58a87a21221f9da698103351b870c05.html">libraries</a></li><li class="navelem"><a class="el" href="dir_485b41ef44ea30d0ff1fb3a33d0a2744.html">HawkServerCore</a></li><li class="navelem"><a class="el" href="dir_c8ef347a8dd5b57ac3e6e5a41e06b75b.html">src</a></li><li class="navelem"><a class="el" href="dir_4b0eac25ca14f2da270617e6e177117c.html">datastorage</a></li><li class="navelem"><a class="el" href="dir_5ce3709ee35263179baf6c98555c148f.html">interface</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">abstractcahcedatastorage.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="abstractcahcedatastorage_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef HMABSTRACTCAHCEDATASTORAGE_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define HMABSTRACTCAHCEDATASTORAGE_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;thread&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;atomic&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="abstractdatastoragefunctional_8h.html">datastorage/interface/abstractdatastoragefunctional.h</a>&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacehmservcommon_1_1datastorage.html">hmservcommon::datastorage</a></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html">   23</a></span>&#160;<span class="comment"></span><span class="keyword">class </span><a class="code" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html">HMAbstractCahceDataStorage</a> : <span class="keyword">public</span> <a class="code" href="classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional.html">HMAbstractDataStorageFunctional</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a0df6ffeafbfd116db3921125c45ed69e">   27</a></span>&#160;    std::atomic_bool <a class="code" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a0df6ffeafbfd116db3921125c45ed69e">m_threadWork</a>;      </div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a12b2aa0bc2fe3c26e7b710de66283d4c">   28</a></span>&#160;    std::thread <a class="code" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a12b2aa0bc2fe3c26e7b710de66283d4c">m_watchdogThread</a>;       </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a8810c7ba34b68da79d7b2f21a72b43d5">HMAbstractCahceDataStorage</a>();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">virtual</span> <a class="code" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a12fddffdcff831dd8d62f57f75d9bb67">~HMAbstractCahceDataStorage</a>() <span class="keyword">override</span> = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// Хранилище</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">virtual</span> std::error_code <a class="code" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ab0178b64aff50caf8f0ce5c172def2ea">open</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a6a6932677f1662b09c2a29a2ef12ecf6">is_open</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ae620a0c526b13b1c4b9800f282d6461d">close</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">virtual</span> std::error_code <a class="code" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a294948cbf56bd24c7d7ed60826b0fd87">startCacheWatchdogThread</a>();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#af31c7d4680c9785f515e433ab79e9049">stopCacheWatchdogThread</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a8b502568fc2ad3cbc54fe30695e3f320">processCacheInThread</a>() = 0;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ad31687e2e23f8b66e2b43b1f91d5a066">cacheWatchdogThreadFunc</a>();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;};</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;} <span class="comment">// namespace hmservcommon::datastorage</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#endif // HMABSTRACTCAHCEDATASTORAGE_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074ab70b48a1e6db9cc16b106d1bfdf2c4ab"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074ab70b48a1e6db9cc16b106d1bfdf2c4ab">hmcommon::eSystemErrorEx::seIncorretData</a></div><div class="ttdeci">@ seIncorretData</div><div class="ttdoc">Не корректные данные</div></div>
+<div class="ttc" id="aclasshmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_html_a12fddffdcff831dd8d62f57f75d9bb67"><div class="ttname"><a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a12fddffdcff831dd8d62f57f75d9bb67">hmservcommon::datastorage::HMAbstractCahceDataStorage::~HMAbstractCahceDataStorage</a></div><div class="ttdeci">virtual ~HMAbstractCahceDataStorage() override=default</div><div class="ttdoc">~HMAbstractCahceDataStorage - Виртуальный деструктор по умолчанию</div></div>
+<div class="ttc" id="aabstractdatastoragefunctional_8h_html"><div class="ttname"><a href="abstractdatastoragefunctional_8h.html">abstractdatastoragefunctional.h</a></div></div>
+<div class="ttc" id="aclasshmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_html_ae620a0c526b13b1c4b9800f282d6461d"><div class="ttname"><a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ae620a0c526b13b1c4b9800f282d6461d">hmservcommon::datastorage::HMAbstractCahceDataStorage::close</a></div><div class="ttdeci">virtual void close() override</div><div class="ttdoc">close - Метод закроет хранилище данных</div><div class="ttdef"><b>Definition:</b> abstractcahcedatastorage.cpp:24</div></div>
+<div class="ttc" id="aclasshmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_html_a8b502568fc2ad3cbc54fe30695e3f320"><div class="ttname"><a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a8b502568fc2ad3cbc54fe30695e3f320">hmservcommon::datastorage::HMAbstractCahceDataStorage::processCacheInThread</a></div><div class="ttdeci">virtual void processCacheInThread()=0</div><div class="ttdoc">processCacheInThread - Метод обработки кеша в потоке</div></div>
+<div class="ttc" id="aclasshmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_html_ad31687e2e23f8b66e2b43b1f91d5a066"><div class="ttname"><a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ad31687e2e23f8b66e2b43b1f91d5a066">hmservcommon::datastorage::HMAbstractCahceDataStorage::cacheWatchdogThreadFunc</a></div><div class="ttdeci">void cacheWatchdogThreadFunc()</div><div class="ttdoc">cacheWatchdogThreadFunc - Метод потока, обрабатывающего кеш</div><div class="ttdef"><b>Definition:</b> abstractcahcedatastorage.cpp:56</div></div>
+<div class="ttc" id="anamespacehmservcommon_1_1datastorage_html_a3d95216f1cded112bfab2672868e2346aadd891e654b6d82a79754084ba26471a"><div class="ttname"><a href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346aadd891e654b6d82a79754084ba26471a">hmservcommon::datastorage::eDataStorageError::dsSuccess</a></div><div class="ttdeci">@ dsSuccess</div><div class="ttdoc">0 Не явялется ошибкой</div></div>
+<div class="ttc" id="aclasshmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional_html"><div class="ttname"><a href="classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional.html">hmservcommon::datastorage::HMAbstractDataStorageFunctional</a></div><div class="ttdoc">The HMAbstractDataStorageFunctional class - Класс, описывающий абстрактное хранилище даннх с дополнит...</div><div class="ttdef"><b>Definition:</b> abstractdatastoragefunctional.h:22</div></div>
+<div class="ttc" id="aHawkLog_8h_html"><div class="ttname"><a href="HawkLog_8h.html">HawkLog.h</a></div></div>
+<div class="ttc" id="aclasshmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_html_a0df6ffeafbfd116db3921125c45ed69e"><div class="ttname"><a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a0df6ffeafbfd116db3921125c45ed69e">hmservcommon::datastorage::HMAbstractCahceDataStorage::m_threadWork</a></div><div class="ttdeci">std::atomic_bool m_threadWork</div><div class="ttdoc">Флаг работы потока</div><div class="ttdef"><b>Definition:</b> abstractcahcedatastorage.h:27</div></div>
+<div class="ttc" id="anamespacehmservcommon_1_1datastorage_html"><div class="ttname"><a href="namespacehmservcommon_1_1datastorage.html">hmservcommon::datastorage</a></div><div class="ttdef"><b>Definition:</b> cachedmemorydatastorage.h:17</div></div>
+<div class="ttc" id="adatastorageerrorcategory_8h_html"><div class="ttname"><a href="datastorageerrorcategory_8h.html">datastorageerrorcategory.h</a></div></div>
+<div class="ttc" id="aabstractcahcedatastorage_8h_html"><div class="ttname"><a href="abstractcahcedatastorage_8h.html">abstractcahcedatastorage.h</a></div><div class="ttdoc">Содержит описание абстрактного класса кеширующего хранилища данных</div></div>
+<div class="ttc" id="aclasshmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_html_a8810c7ba34b68da79d7b2f21a72b43d5"><div class="ttname"><a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a8810c7ba34b68da79d7b2f21a72b43d5">hmservcommon::datastorage::HMAbstractCahceDataStorage::HMAbstractCahceDataStorage</a></div><div class="ttdeci">HMAbstractCahceDataStorage()</div><div class="ttdoc">HMAbstractCahceDataStorage - Конструктор по умолчанию</div><div class="ttdef"><b>Definition:</b> abstractcahcedatastorage.cpp:9</div></div>
+<div class="ttc" id="aclasshmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_html_af31c7d4680c9785f515e433ab79e9049"><div class="ttname"><a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#af31c7d4680c9785f515e433ab79e9049">hmservcommon::datastorage::HMAbstractCahceDataStorage::stopCacheWatchdogThread</a></div><div class="ttdeci">virtual void stopCacheWatchdogThread()</div><div class="ttdoc">stopCacheWatchdogThread - Метод остановит поток, котролирующий объекты кеша</div><div class="ttdef"><b>Definition:</b> abstractcahcedatastorage.cpp:45</div></div>
+<div class="ttc" id="asystemerrorex_8h_html"><div class="ttname"><a href="systemerrorex_8h.html">systemerrorex.h</a></div><div class="ttdoc">Содержит описание категории расширеных системных ошибок</div></div>
+<div class="ttc" id="aclasshmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_html"><div class="ttname"><a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html">hmservcommon::datastorage::HMAbstractCahceDataStorage</a></div><div class="ttdoc">The HMAbstractCahceDataStorage class - Класс, описывающий абстракцию кеширующего хранилища данных</div><div class="ttdef"><b>Definition:</b> abstractcahcedatastorage.h:23</div></div>
+<div class="ttc" id="asystemerrorex_8cpp_html_aacc415fb080ba818238619f5ab0676c3"><div class="ttname"><a href="systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3">make_error_code</a></div><div class="ttdeci">std::error_code make_error_code(hmcommon::eSystemErrorEx inErrCode)</div><div class="ttdoc">make_error_code - Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени...</div><div class="ttdef"><b>Definition:</b> systemerrorex.cpp:82</div></div>
+<div class="ttc" id="aclasshmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_html_a12b2aa0bc2fe3c26e7b710de66283d4c"><div class="ttname"><a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a12b2aa0bc2fe3c26e7b710de66283d4c">hmservcommon::datastorage::HMAbstractCahceDataStorage::m_watchdogThread</a></div><div class="ttdeci">std::thread m_watchdogThread</div><div class="ttdoc">Поток контроля кеша</div><div class="ttdef"><b>Definition:</b> abstractcahcedatastorage.h:28</div></div>
+<div class="ttc" id="aclasshmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_html_a6a6932677f1662b09c2a29a2ef12ecf6"><div class="ttname"><a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a6a6932677f1662b09c2a29a2ef12ecf6">hmservcommon::datastorage::HMAbstractCahceDataStorage::is_open</a></div><div class="ttdeci">virtual bool is_open() const override</div><div class="ttdoc">is_open - Метод вернёт признак открытости хранилища данных</div><div class="ttdef"><b>Definition:</b> abstractcahcedatastorage.cpp:19</div></div>
+<div class="ttc" id="aclasshmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_html_ab0178b64aff50caf8f0ce5c172def2ea"><div class="ttname"><a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ab0178b64aff50caf8f0ce5c172def2ea">hmservcommon::datastorage::HMAbstractCahceDataStorage::open</a></div><div class="ttdeci">virtual std::error_code open() override</div><div class="ttdoc">open - Метод откроет хранилище данных</div><div class="ttdef"><b>Definition:</b> abstractcahcedatastorage.cpp:14</div></div>
+<div class="ttc" id="alogsystem_8h_html_ae96a91e6218de1cd6f3dc4060c3d04e2"><div class="ttname"><a href="logsystem_8h.html#ae96a91e6218de1cd6f3dc4060c3d04e2">LOG_DEBUG_EX</a></div><div class="ttdeci">#define LOG_DEBUG_EX(inMessage, inClass)</div><div class="ttdef"><b>Definition:</b> logsystem.h:171</div></div>
+<div class="ttc" id="aclasshmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_html_a294948cbf56bd24c7d7ed60826b0fd87"><div class="ttname"><a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a294948cbf56bd24c7d7ed60826b0fd87">hmservcommon::datastorage::HMAbstractCahceDataStorage::startCacheWatchdogThread</a></div><div class="ttdeci">virtual std::error_code startCacheWatchdogThread()</div><div class="ttdoc">startCacheWatchdogThread - Метод запустит поток, котролирующий объекты кеша</div><div class="ttdef"><b>Definition:</b> abstractcahcedatastorage.cpp:29</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

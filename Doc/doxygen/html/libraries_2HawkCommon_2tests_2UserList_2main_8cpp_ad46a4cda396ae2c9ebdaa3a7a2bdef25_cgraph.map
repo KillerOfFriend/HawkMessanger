@@ -1,0 +1,8 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="node1" title="TEST &#45; Тест поиска не существующего контакта" alt="" coords="5,67,60,94"/>
+<area shape="rect" id="node2" href="$classhmcommon_1_1HMUserList.html#ae0f201708908b217b38f37135a47e6f0" title="get &#45; Метод вернёт пользователя по его порядковому номеру" alt="" coords="108,42,320,69"/>
+<area shape="rect" id="node6" href="$libraries_2HawkCommon_2tests_2UserList_2main_8cpp.html#a3e44660770eba1698411e0d2d6f4b832" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="167,93,261,119"/>
+<area shape="rect" id="node3" href="$classhmcommon_1_1HMUserList.html#abea6f02f24d81a5262953ee081c2f0d0" title="isEmpty &#45; Метод вернёт признак того, что список пользователей пуст" alt="" coords="368,5,551,47"/>
+<area shape="rect" id="node4" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="392,71,527,98"/>
+<area shape="rect" id="node5" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="599,64,805,105"/>
+</map>

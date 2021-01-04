@@ -1,0 +1,164 @@
+\hypertarget{structhmservcommon_1_1HMCachedUserContacts}{}\doxysection{Структура hmservcommon\+::H\+M\+Cached\+User\+Contacts}
+\label{structhmservcommon_1_1HMCachedUserContacts}\index{hmservcommon::HMCachedUserContacts@{hmservcommon::HMCachedUserContacts}}
+
+
+The \mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts}{H\+M\+Cached\+User\+Contacts}} struct -\/ Структура, описывающая кешированную связь пользователя с контактами  
+
+
+
+
+{\ttfamily \#include $<$cached.\+h$>$}
+
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts_a7735a5d627a83413a0e67612959b41a2}{H\+M\+Cached\+User\+Contacts}} (const Q\+Uuid \&in\+User\+U\+U\+ID, const std\+::shared\+\_\+ptr$<$ std\+::set$<$ Q\+Uuid $>$$>$ in\+Contact\+List)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts}{H\+M\+Cached\+User\+Contacts}} -\/ Инициализирующий конструктор \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts_a0431aedac3458219b2d0d1e19b3dd7b5}{H\+M\+Cached\+User\+Contacts}} (const \mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts}{H\+M\+Cached\+User\+Contacts}} \&in\+Other)=delete
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts}{H\+M\+Cached\+User\+Contacts}} -\/ Конструктор копирования (Удалён) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts_add84e1f2b337c66334deefe18cb7aaa9}{H\+M\+Cached\+User\+Contacts}} (\mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts}{H\+M\+Cached\+User\+Contacts}} \&\&in\+Other)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts}{H\+M\+Cached\+User\+Contacts}} -\/ Оператор перемещения \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts}{H\+M\+Cached\+User\+Contacts}} \& \mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts_a9797e06d2fe39da5564c23020f29c45d}{operator=}} (const \mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts}{H\+M\+Cached\+User\+Contacts}} \&in\+Other) noexcept=delete
+\begin{DoxyCompactList}\small\item\em operator = -\/ Оператор копирования (Удалён) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts_ae47164a6b664fca25eb97cede7b8f79b}{operator==}} (const \mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts}{H\+M\+Cached\+User\+Contacts}} \&in\+Other) const noexcept
+\begin{DoxyCompactList}\small\item\em operator == -\/ Оператор сравнения \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Uuid \mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts_aadaaf0ab49fde730b6f0490006ab1ff5}{m\+\_\+user\+U\+U\+ID}}
+\begin{DoxyCompactList}\small\item\em U\+U\+ID пользователя \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ std\+::set$<$ Q\+Uuid $>$ $>$ \mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts_a393c3dc104cf0050aec94016cd551aa9}{m\+\_\+contact\+List}} = nullptr
+\begin{DoxyCompactList}\small\item\em Перечень контактов \end{DoxyCompactList}\item 
+Q\+Time \mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts_ae433517eae9b3f64d1999ba0f4e88a5e}{m\+\_\+last\+Request}}
+\begin{DoxyCompactList}\small\item\em Время последнего запроса \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+The \mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts}{H\+M\+Cached\+User\+Contacts}} struct -\/ Структура, описывающая кешированную связь пользователя с контактами 
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{structhmservcommon_1_1HMCachedUserContacts_a7735a5d627a83413a0e67612959b41a2}\label{structhmservcommon_1_1HMCachedUserContacts_a7735a5d627a83413a0e67612959b41a2}} 
+\index{hmservcommon::HMCachedUserContacts@{hmservcommon::HMCachedUserContacts}!HMCachedUserContacts@{HMCachedUserContacts}}
+\index{HMCachedUserContacts@{HMCachedUserContacts}!hmservcommon::HMCachedUserContacts@{hmservcommon::HMCachedUserContacts}}
+\doxysubsubsection{\texorpdfstring{HMCachedUserContacts()}{HMCachedUserContacts()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily H\+M\+Cached\+User\+Contacts\+::\+H\+M\+Cached\+User\+Contacts (\begin{DoxyParamCaption}\item[{const Q\+Uuid \&}]{in\+User\+U\+U\+ID,  }\item[{const std\+::shared\+\_\+ptr$<$ std\+::set$<$ Q\+Uuid $>$$>$}]{in\+Contact\+List }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts}{H\+M\+Cached\+User\+Contacts}} -\/ Инициализирующий конструктор 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+User\+U\+U\+ID} & -\/ Uuid пользователя \\
+\hline
+{\em in\+Contact\+List} & -\/ Список контактов \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structhmservcommon_1_1HMCachedUserContacts_a0431aedac3458219b2d0d1e19b3dd7b5}\label{structhmservcommon_1_1HMCachedUserContacts_a0431aedac3458219b2d0d1e19b3dd7b5}} 
+\index{hmservcommon::HMCachedUserContacts@{hmservcommon::HMCachedUserContacts}!HMCachedUserContacts@{HMCachedUserContacts}}
+\index{HMCachedUserContacts@{HMCachedUserContacts}!hmservcommon::HMCachedUserContacts@{hmservcommon::HMCachedUserContacts}}
+\doxysubsubsection{\texorpdfstring{HMCachedUserContacts()}{HMCachedUserContacts()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily hmservcommon\+::\+H\+M\+Cached\+User\+Contacts\+::\+H\+M\+Cached\+User\+Contacts (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts}{H\+M\+Cached\+User\+Contacts}} \&}]{in\+Other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+\mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts}{H\+M\+Cached\+User\+Contacts}} -\/ Конструктор копирования (Удалён) 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Other} & -\/ Копируемый объект \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structhmservcommon_1_1HMCachedUserContacts_add84e1f2b337c66334deefe18cb7aaa9}\label{structhmservcommon_1_1HMCachedUserContacts_add84e1f2b337c66334deefe18cb7aaa9}} 
+\index{hmservcommon::HMCachedUserContacts@{hmservcommon::HMCachedUserContacts}!HMCachedUserContacts@{HMCachedUserContacts}}
+\index{HMCachedUserContacts@{HMCachedUserContacts}!hmservcommon::HMCachedUserContacts@{hmservcommon::HMCachedUserContacts}}
+\doxysubsubsection{\texorpdfstring{HMCachedUserContacts()}{HMCachedUserContacts()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily H\+M\+Cached\+User\+Contacts\+::\+H\+M\+Cached\+User\+Contacts (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts}{H\+M\+Cached\+User\+Contacts}} \&\&}]{in\+Other }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts}{H\+M\+Cached\+User\+Contacts}} -\/ Оператор перемещения 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Other} & -\/ Перемещаемый объект \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{structhmservcommon_1_1HMCachedUserContacts_a9797e06d2fe39da5564c23020f29c45d}\label{structhmservcommon_1_1HMCachedUserContacts_a9797e06d2fe39da5564c23020f29c45d}} 
+\index{hmservcommon::HMCachedUserContacts@{hmservcommon::HMCachedUserContacts}!operator=@{operator=}}
+\index{operator=@{operator=}!hmservcommon::HMCachedUserContacts@{hmservcommon::HMCachedUserContacts}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts}{H\+M\+Cached\+User\+Contacts}}\& hmservcommon\+::\+H\+M\+Cached\+User\+Contacts\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts}{H\+M\+Cached\+User\+Contacts}} \&}]{in\+Other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}, {\ttfamily [noexcept]}}
+
+
+
+operator = -\/ Оператор копирования (Удалён) 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Other} & -\/ Копируемый объект \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт копию объекта 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structhmservcommon_1_1HMCachedUserContacts_ae47164a6b664fca25eb97cede7b8f79b}\label{structhmservcommon_1_1HMCachedUserContacts_ae47164a6b664fca25eb97cede7b8f79b}} 
+\index{hmservcommon::HMCachedUserContacts@{hmservcommon::HMCachedUserContacts}!operator==@{operator==}}
+\index{operator==@{operator==}!hmservcommon::HMCachedUserContacts@{hmservcommon::HMCachedUserContacts}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool H\+M\+Cached\+User\+Contacts\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts}{H\+M\+Cached\+User\+Contacts}} \&}]{in\+Other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+operator == -\/ Оператор сравнения 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Other} & -\/ Сравниваемый объект \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт результат сравнения 
+\end{DoxyReturn}
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{structhmservcommon_1_1HMCachedUserContacts_a393c3dc104cf0050aec94016cd551aa9}\label{structhmservcommon_1_1HMCachedUserContacts_a393c3dc104cf0050aec94016cd551aa9}} 
+\index{hmservcommon::HMCachedUserContacts@{hmservcommon::HMCachedUserContacts}!m\_contactList@{m\_contactList}}
+\index{m\_contactList@{m\_contactList}!hmservcommon::HMCachedUserContacts@{hmservcommon::HMCachedUserContacts}}
+\doxysubsubsection{\texorpdfstring{m\_contactList}{m\_contactList}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$std\+::set$<$Q\+Uuid$>$ $>$ hmservcommon\+::\+H\+M\+Cached\+User\+Contacts\+::m\+\_\+contact\+List = nullptr}
+
+
+
+Перечень контактов 
+
+\mbox{\Hypertarget{structhmservcommon_1_1HMCachedUserContacts_ae433517eae9b3f64d1999ba0f4e88a5e}\label{structhmservcommon_1_1HMCachedUserContacts_ae433517eae9b3f64d1999ba0f4e88a5e}} 
+\index{hmservcommon::HMCachedUserContacts@{hmservcommon::HMCachedUserContacts}!m\_lastRequest@{m\_lastRequest}}
+\index{m\_lastRequest@{m\_lastRequest}!hmservcommon::HMCachedUserContacts@{hmservcommon::HMCachedUserContacts}}
+\doxysubsubsection{\texorpdfstring{m\_lastRequest}{m\_lastRequest}}
+{\footnotesize\ttfamily Q\+Time hmservcommon\+::\+H\+M\+Cached\+User\+Contacts\+::m\+\_\+last\+Request\hspace{0.3cm}{\ttfamily [mutable]}}
+
+
+
+Время последнего запроса 
+
+\mbox{\Hypertarget{structhmservcommon_1_1HMCachedUserContacts_aadaaf0ab49fde730b6f0490006ab1ff5}\label{structhmservcommon_1_1HMCachedUserContacts_aadaaf0ab49fde730b6f0490006ab1ff5}} 
+\index{hmservcommon::HMCachedUserContacts@{hmservcommon::HMCachedUserContacts}!m\_userUUID@{m\_userUUID}}
+\index{m\_userUUID@{m\_userUUID}!hmservcommon::HMCachedUserContacts@{hmservcommon::HMCachedUserContacts}}
+\doxysubsubsection{\texorpdfstring{m\_userUUID}{m\_userUUID}}
+{\footnotesize\ttfamily Q\+Uuid hmservcommon\+::\+H\+M\+Cached\+User\+Contacts\+::m\+\_\+user\+U\+U\+ID}
+
+
+
+U\+U\+ID пользователя 
+
+
+
+Объявления и описания членов структур находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Projects/libraries/\+Hawk\+Server\+Core/src/datastorage/cachedmemorydatastorage/\mbox{\hyperlink{cached_8h}{cached.\+h}}\item 
+Projects/libraries/\+Hawk\+Server\+Core/src/datastorage/cachedmemorydatastorage/\mbox{\hyperlink{cached_8cpp}{cached.\+cpp}}\end{DoxyCompactItemize}

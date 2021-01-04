@@ -1,0 +1,5 @@
+<map id="hmservcommon::datastorage::HMJsonDataStorage::removeGroupUser" name="hmservcommon::datastorage::HMJsonDataStorage::removeGroupUser">
+<area shape="rect" id="node1" title="removeGroupUser &#45; Метод удалит пользователя из группы" alt="" coords="321,39,608,80"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a87839428ae2d26d0ebd2db35ca0828d3" title="onRemoveUser &#45; Метод выполнится при удалении пользователя" alt="" coords="5,5,273,47"/>
+<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aaecb72687a39e65f93d88cc149014140" title="setGroupUsers &#45; Метод задаст список членов группы" alt="" coords="7,71,271,112"/>
+</map>

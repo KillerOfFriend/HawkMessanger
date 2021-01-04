@@ -1,0 +1,9 @@
+<map id="hmservcommon::datastorage::HMAbstractCahceDataStorage::is_open" name="hmservcommon::datastorage::HMAbstractCahceDataStorage::is_open">
+<area shape="rect" id="node1" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="571,165,797,221"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#ad25c96a585b2b7b1fb3c0dd66ecb311b" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="288,165,523,221"/>
+<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a80333f8480208f8f02a45104b0281bd3" title="setGroupUsers &#45; Метод добавит пользователя в группу" alt="" coords="5,5,240,61"/>
+<area shape="rect" id="node4" href="$classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#ace91c921030136da5337fdce0d22ed6e" title="clearGroupUsers &#45; Метод очистит список членов группы" alt="" coords="5,85,240,141"/>
+<area shape="rect" id="node5" href="$classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#aa8c89663cfbb43fd7ddd8ac91a6dc03a" title="getGroupUserList &#45; Метод вернёт список UUID&#39;ов членов группы" alt="" coords="5,165,240,221"/>
+<area shape="rect" id="node6" href="$classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a49bd464edbb633d27e66cd21a0b55cc4" title="removeGroupUser &#45; Метод удалит пользователя из группы" alt="" coords="5,245,240,301"/>
+<area shape="rect" id="node7" href="$classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a9077f73dc54f9ec1f7cb75aeb7bbf191" title="setGroupUsers &#45; Метод задаст список членов группы" alt="" coords="5,325,240,381"/>
+</map>

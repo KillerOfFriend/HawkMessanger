@@ -1,0 +1,10 @@
+<map id="hmlog::HMLogSystem::logWarning" name="hmlog::HMLogSystem::logWarning">
+<area shape="rect" id="node1" title="logWarning &#45; Метод занесёт в лог сообщение с предупреждением" alt="" coords="5,35,171,76"/>
+<area shape="rect" id="node2" href="$classhmlog_1_1HMLogSystem.html#a3bd35bd95552fe57ec6c89d1fa93f5ca" title="processMsg &#45; Метод обработки сообщений" alt="" coords="219,35,384,76"/>
+<area shape="rect" id="node3" href="$classhmlog_1_1HMLogSystem.html#a3342c70687ba9d72983ef6e69476715d" title="printMsg &#45; Метод печати сообщений" alt="" coords="859,5,1024,47"/>
+<area shape="rect" id="node5" href="$classhmlog_1_1HMLogSystem.html#a0ec78cc91e32f5865e2fb7d390d0a300" title="writeMsgToFile &#45; Метод записи в файл" alt="" coords="432,64,597,105"/>
+<area shape="rect" id="node4" href="$namespacehmlog.html#abc2ef519ffd1694f97ee7fcdee4543e4" title="QStdOut &#45; Функция вернёт текстовый поток на онове стандартного потока" alt="" coords="1113,13,1238,39"/>
+<area shape="rect" id="node6" href="$classhmlog_1_1HMLogSystem.html#ac40521893a6be592186b3dffb81aa1c9" title="fileOpen &#45; Метод откроет файл на запись" alt="" coords="645,64,811,105"/>
+<area shape="rect" id="node7" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="874,71,1009,98"/>
+<area shape="rect" id="node8" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="1072,64,1279,105"/>
+</map>

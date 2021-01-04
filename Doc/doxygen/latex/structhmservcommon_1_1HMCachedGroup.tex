@@ -1,0 +1,150 @@
+\hypertarget{structhmservcommon_1_1HMCachedGroup}{}\doxysection{Структура hmservcommon\+::H\+M\+Cached\+Group}
+\label{structhmservcommon_1_1HMCachedGroup}\index{hmservcommon::HMCachedGroup@{hmservcommon::HMCachedGroup}}
+
+
+The \mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup}{H\+M\+Cached\+Group}} struct -\/ Структура, описывающая кешированную группу  
+
+
+
+
+{\ttfamily \#include $<$cached.\+h$>$}
+
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup_a1ea43fde072ea0e9b1deb7dc37c9e0d0}{H\+M\+Cached\+Group}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{hmcommon\+::\+H\+M\+Group}} $>$ in\+Group)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup}{H\+M\+Cached\+Group}} -\/ Инициализирующий конструктор \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup_aea72ee35f952fdadc250684ed978fc6d}{H\+M\+Cached\+Group}} (const \mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup}{H\+M\+Cached\+Group}} \&in\+Other)=delete
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup}{H\+M\+Cached\+Group}} -\/ Конструктор копирования (Удалён) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup_a5467e25820a5543c82a402bc29b73297}{H\+M\+Cached\+Group}} (\mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup}{H\+M\+Cached\+Group}} \&\&in\+Other)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup}{H\+M\+Cached\+Group}} -\/ Оператор перемещения \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structhmservcommon_1_1HMCachedUser}{H\+M\+Cached\+User}} \& \mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup_a342e8936b92eca2dfcf222af3c9da8a9}{operator=}} (const \mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup}{H\+M\+Cached\+Group}} \&in\+Other) noexcept=delete
+\begin{DoxyCompactList}\small\item\em operator = -\/ Оператор копирования (Удалён) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup_a787db0dab877921242b86df52c3ed966}{operator==}} (const \mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup}{H\+M\+Cached\+Group}} \&in\+Other) const noexcept
+\begin{DoxyCompactList}\small\item\em operator == -\/ Оператор сравнения \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Открытые атрибуты}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{hmcommon\+::\+H\+M\+Group}} $>$ \mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup_a8f7b105fb0d8012de8d4fe9b1f6d8c34}{m\+\_\+group}} = nullptr
+\begin{DoxyCompactList}\small\item\em Группа \end{DoxyCompactList}\item 
+Q\+Time \mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup_aedc421e2e7c30c5f6cdd56896e17985d}{m\+\_\+last\+Request}}
+\begin{DoxyCompactList}\small\item\em Время последнего запроса \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+The \mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup}{H\+M\+Cached\+Group}} struct -\/ Структура, описывающая кешированную группу 
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{structhmservcommon_1_1HMCachedGroup_a1ea43fde072ea0e9b1deb7dc37c9e0d0}\label{structhmservcommon_1_1HMCachedGroup_a1ea43fde072ea0e9b1deb7dc37c9e0d0}} 
+\index{hmservcommon::HMCachedGroup@{hmservcommon::HMCachedGroup}!HMCachedGroup@{HMCachedGroup}}
+\index{HMCachedGroup@{HMCachedGroup}!hmservcommon::HMCachedGroup@{hmservcommon::HMCachedGroup}}
+\doxysubsubsection{\texorpdfstring{HMCachedGroup()}{HMCachedGroup()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily H\+M\+Cached\+Group\+::\+H\+M\+Cached\+Group (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{hmcommon\+::\+H\+M\+Group}} $>$}]{in\+Group }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup}{H\+M\+Cached\+Group}} -\/ Инициализирующий конструктор 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Group} & -\/ Указатель на группу \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structhmservcommon_1_1HMCachedGroup_aea72ee35f952fdadc250684ed978fc6d}\label{structhmservcommon_1_1HMCachedGroup_aea72ee35f952fdadc250684ed978fc6d}} 
+\index{hmservcommon::HMCachedGroup@{hmservcommon::HMCachedGroup}!HMCachedGroup@{HMCachedGroup}}
+\index{HMCachedGroup@{HMCachedGroup}!hmservcommon::HMCachedGroup@{hmservcommon::HMCachedGroup}}
+\doxysubsubsection{\texorpdfstring{HMCachedGroup()}{HMCachedGroup()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily hmservcommon\+::\+H\+M\+Cached\+Group\+::\+H\+M\+Cached\+Group (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup}{H\+M\+Cached\+Group}} \&}]{in\+Other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+\mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup}{H\+M\+Cached\+Group}} -\/ Конструктор копирования (Удалён) 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Other} & -\/ Копируемый объект \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{structhmservcommon_1_1HMCachedGroup_a5467e25820a5543c82a402bc29b73297}\label{structhmservcommon_1_1HMCachedGroup_a5467e25820a5543c82a402bc29b73297}} 
+\index{hmservcommon::HMCachedGroup@{hmservcommon::HMCachedGroup}!HMCachedGroup@{HMCachedGroup}}
+\index{HMCachedGroup@{HMCachedGroup}!hmservcommon::HMCachedGroup@{hmservcommon::HMCachedGroup}}
+\doxysubsubsection{\texorpdfstring{HMCachedGroup()}{HMCachedGroup()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily H\+M\+Cached\+Group\+::\+H\+M\+Cached\+Group (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup}{H\+M\+Cached\+Group}} \&\&}]{in\+Other }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup}{H\+M\+Cached\+Group}} -\/ Оператор перемещения 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Other} & -\/ Перемещаемый объект \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{structhmservcommon_1_1HMCachedGroup_a342e8936b92eca2dfcf222af3c9da8a9}\label{structhmservcommon_1_1HMCachedGroup_a342e8936b92eca2dfcf222af3c9da8a9}} 
+\index{hmservcommon::HMCachedGroup@{hmservcommon::HMCachedGroup}!operator=@{operator=}}
+\index{operator=@{operator=}!hmservcommon::HMCachedGroup@{hmservcommon::HMCachedGroup}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structhmservcommon_1_1HMCachedUser}{H\+M\+Cached\+User}}\& hmservcommon\+::\+H\+M\+Cached\+Group\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup}{H\+M\+Cached\+Group}} \&}]{in\+Other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}, {\ttfamily [noexcept]}}
+
+
+
+operator = -\/ Оператор копирования (Удалён) 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Other} & -\/ Копируемый объект \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт копию объекта 
+\end{DoxyReturn}
+\mbox{\Hypertarget{structhmservcommon_1_1HMCachedGroup_a787db0dab877921242b86df52c3ed966}\label{structhmservcommon_1_1HMCachedGroup_a787db0dab877921242b86df52c3ed966}} 
+\index{hmservcommon::HMCachedGroup@{hmservcommon::HMCachedGroup}!operator==@{operator==}}
+\index{operator==@{operator==}!hmservcommon::HMCachedGroup@{hmservcommon::HMCachedGroup}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool H\+M\+Cached\+Group\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup}{H\+M\+Cached\+Group}} \&}]{in\+Other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+operator == -\/ Оператор сравнения 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Other} & -\/ Сравниваемый объект \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт результат сравнения 
+\end{DoxyReturn}
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{structhmservcommon_1_1HMCachedGroup_a8f7b105fb0d8012de8d4fe9b1f6d8c34}\label{structhmservcommon_1_1HMCachedGroup_a8f7b105fb0d8012de8d4fe9b1f6d8c34}} 
+\index{hmservcommon::HMCachedGroup@{hmservcommon::HMCachedGroup}!m\_group@{m\_group}}
+\index{m\_group@{m\_group}!hmservcommon::HMCachedGroup@{hmservcommon::HMCachedGroup}}
+\doxysubsubsection{\texorpdfstring{m\_group}{m\_group}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classhmcommon_1_1HMGroup}{hmcommon\+::\+H\+M\+Group}}$>$ hmservcommon\+::\+H\+M\+Cached\+Group\+::m\+\_\+group = nullptr}
+
+
+
+Группа 
+
+\mbox{\Hypertarget{structhmservcommon_1_1HMCachedGroup_aedc421e2e7c30c5f6cdd56896e17985d}\label{structhmservcommon_1_1HMCachedGroup_aedc421e2e7c30c5f6cdd56896e17985d}} 
+\index{hmservcommon::HMCachedGroup@{hmservcommon::HMCachedGroup}!m\_lastRequest@{m\_lastRequest}}
+\index{m\_lastRequest@{m\_lastRequest}!hmservcommon::HMCachedGroup@{hmservcommon::HMCachedGroup}}
+\doxysubsubsection{\texorpdfstring{m\_lastRequest}{m\_lastRequest}}
+{\footnotesize\ttfamily Q\+Time hmservcommon\+::\+H\+M\+Cached\+Group\+::m\+\_\+last\+Request\hspace{0.3cm}{\ttfamily [mutable]}}
+
+
+
+Время последнего запроса 
+
+
+
+Объявления и описания членов структур находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Projects/libraries/\+Hawk\+Server\+Core/src/datastorage/cachedmemorydatastorage/\mbox{\hyperlink{cached_8h}{cached.\+h}}\item 
+Projects/libraries/\+Hawk\+Server\+Core/src/datastorage/cachedmemorydatastorage/\mbox{\hyperlink{cached_8cpp}{cached.\+cpp}}\end{DoxyCompactItemize}

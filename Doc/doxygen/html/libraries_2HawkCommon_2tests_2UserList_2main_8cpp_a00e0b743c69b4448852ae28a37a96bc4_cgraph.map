@@ -1,0 +1,10 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="node1" title="TEST &#45; Тест удаление контакта" alt="" coords="5,129,60,156"/>
+<area shape="rect" id="node2" href="$classhmcommon_1_1HMUserList.html#a6a573ed62c535316765066a710966721" title="add &#45; Метод добавит нового пользователя в перечень" alt="" coords="108,5,323,32"/>
+<area shape="rect" id="node5" href="$classhmcommon_1_1HMUserList.html#a8c9bb6ee395db2fb9d0ec3416e0af0b0" title="count &#45; Метод вернёт количество пользователей в списке" alt="" coords="124,57,307,98"/>
+<area shape="rect" id="node6" href="$classhmcommon_1_1HMUserList.html#abea6f02f24d81a5262953ee081c2f0d0" title="isEmpty &#45; Метод вернёт признак того, что список пользователей пуст" alt="" coords="124,122,307,163"/>
+<area shape="rect" id="node7" href="$libraries_2HawkCommon_2tests_2UserList_2main_8cpp.html#a3e44660770eba1698411e0d2d6f4b832" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="169,188,262,215"/>
+<area shape="rect" id="node8" href="$classhmcommon_1_1HMUserList.html#af5a8b3fc50581ecba154f55f432caf00" title="remove &#45; Метод удалит пользователя по его порядквому номеру" alt="" coords="124,239,307,281"/>
+<area shape="rect" id="node3" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="371,127,505,153"/>
+<area shape="rect" id="node4" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="553,119,760,161"/>
+</map>

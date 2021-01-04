@@ -1,0 +1,6 @@
+<map id="hmservcommon::datastorage::HMJsonDataStorage::removeUserContacts" name="hmservcommon::datastorage::HMJsonDataStorage::removeUserContacts">
+<area shape="rect" id="node1" title="removeUserContacts &#45; Метод удалит контакты пользователя" alt="" coords="633,31,881,87"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a87839428ae2d26d0ebd2db35ca0828d3" title="onRemoveUser &#45; Метод выполнится при удалении пользователя" alt="" coords="314,5,582,47"/>
+<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a8fe994f6f1a05bb97c1a4af8607a5690" title="setUserContacts &#45; Метод задаст пользователю список контактов" alt="" coords="311,71,585,112"/>
+<area shape="rect" id="node4" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a98f52fc8d8c672d5c0e91a67a4a0995b" title="onCreateUser &#45; Метод выполнится при создании пользователя" alt="" coords="5,71,263,112"/>
+</map>

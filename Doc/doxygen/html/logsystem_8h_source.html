@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>HawkMessanger: Исходный файл Projects/libraries/HawkLog/src/logsystem.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">HawkMessanger
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_7a6499598ddcfcabe96e224cb4a6d834.html">Projects</a></li><li class="navelem"><a class="el" href="dir_e58a87a21221f9da698103351b870c05.html">libraries</a></li><li class="navelem"><a class="el" href="dir_0527b9e544647ea0dc8700b0fbde68c3.html">HawkLog</a></li><li class="navelem"><a class="el" href="dir_6743f19fb753a52a0ed3811974b193af.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">logsystem.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="logsystem_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef LOGSYSTEM_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define LOGSYSTEM_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;QFile&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;QString&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="logmessage_8h.html">logmessage.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacehmlog.html">hmlog</a></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="namespacehmlog.html#a7635b4d3b9f3549b28f0978910ce1ddb">   22</a></span>&#160;<span class="comment"></span><span class="keyword">enum</span> <a class="code" href="namespacehmlog.html#a7635b4d3b9f3549b28f0978910ce1ddb">eLogConfig</a> : uint8_t</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="namespacehmlog.html#a7635b4d3b9f3549b28f0978910ce1ddba7272ca5ddc900f64e5bd58fc14eddb89">   24</a></span>&#160;    <a class="code" href="namespacehmlog.html#a7635b4d3b9f3549b28f0978910ce1ddba7272ca5ddc900f64e5bd58fc14eddb89">lcNone</a>          = 0, </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="namespacehmlog.html#a7635b4d3b9f3549b28f0978910ce1ddba2c49988a4701f86256484c8e5f83294e">   25</a></span>&#160;    <a class="code" href="namespacehmlog.html#a7635b4d3b9f3549b28f0978910ce1ddba2c49988a4701f86256484c8e5f83294e">lcShowStdOut</a>    = 1, </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="namespacehmlog.html#a7635b4d3b9f3549b28f0978910ce1ddbaac6633fb65a23f6588ad429032de8d52">   26</a></span>&#160;    <a class="code" href="namespacehmlog.html#a7635b4d3b9f3549b28f0978910ce1ddbaac6633fb65a23f6588ad429032de8d52">lcWriteFile</a>     = 2, </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="namespacehmlog.html#a7635b4d3b9f3549b28f0978910ce1ddba4e03b5d4d0e7af4609b7e057171307cf">   27</a></span>&#160;    <a class="code" href="namespacehmlog.html#a7635b4d3b9f3549b28f0978910ce1ddba4e03b5d4d0e7af4609b7e057171307cf">lcContainMsg</a>    = 4  </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classhmlog_1_1HMLogSystem.html">   36</a></span>&#160;<span class="comment"></span><span class="keyword">class </span><a class="code" href="classhmlog_1_1HMLogSystem.html">HMLogSystem</a></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classhmlog_1_1HMLogSystem.html#ac30464c9290ac14a0f0440fe576be43c">   40</a></span>&#160;    uint8_t <a class="code" href="classhmlog_1_1HMLogSystem.html#ac30464c9290ac14a0f0440fe576be43c">m_config</a>;                               </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classhmlog_1_1HMLogSystem.html#adc90d05bb4570ac74b77e3ba2886b5f7">   42</a></span>&#160;    std::list&lt;HMLogMessage&gt; <a class="code" href="classhmlog_1_1HMLogSystem.html#adc90d05bb4570ac74b77e3ba2886b5f7">m_messages</a>;             </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classhmlog_1_1HMLogSystem.html#aaf9a0771fa99e8a0c952e0f311349a13">   43</a></span>&#160;    std::mutex <a class="code" href="classhmlog_1_1HMLogSystem.html#aaf9a0771fa99e8a0c952e0f311349a13">m_listDefender</a>;                      </div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classhmlog_1_1HMLogSystem.html#a52923cc9c1e03a579ae9565bbf22515a">   44</a></span>&#160;    std::size_t <a class="code" href="classhmlog_1_1HMLogSystem.html#a52923cc9c1e03a579ae9565bbf22515a">m_maxContainMessages</a> = 100;         </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classhmlog_1_1HMLogSystem.html#a3fe4e5d98c1539df137a2a5aff9b40e6">   46</a></span>&#160;    std::unique_ptr&lt;QFile&gt; <a class="code" href="classhmlog_1_1HMLogSystem.html#a3fe4e5d98c1539df137a2a5aff9b40e6">m_logFile</a> = <span class="keyword">nullptr</span>;     </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classhmlog_1_1HMLogSystem.html#abf2a580db74b115fe24977e4d5bf480f">   47</a></span>&#160;    std::mutex <a class="code" href="classhmlog_1_1HMLogSystem.html#abf2a580db74b115fe24977e4d5bf480f">m_fileDefender</a>;                      </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classhmlog_1_1HMLogSystem.html#a4fe5684ad649c5d31164ac0055ee939f">   48</a></span>&#160;    std::atomic_bool <a class="code" href="classhmlog_1_1HMLogSystem.html#a4fe5684ad649c5d31164ac0055ee939f">m_workFinish</a>;                  </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <a class="code" href="classhmlog_1_1HMLogSystem.html#a09a75fff6981c288bfc193392912f01f">HMLogSystem</a>();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="classhmlog_1_1HMLogSystem.html#a4fc3e290a327d5187d1d2108d24ffd44">~HMLogSystem</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classhmlog_1_1HMLogSystem.html#a3bd35bd95552fe57ec6c89d1fa93f5ca">processMsg</a>(<span class="keyword">const</span> <a class="code" href="structhmlog_1_1HMLogMessage.html">HMLogMessage</a>&amp; inMsg);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classhmlog_1_1HMLogSystem.html#a3342c70687ba9d72983ef6e69476715d">printMsg</a>(<span class="keyword">const</span> <a class="code" href="structhmlog_1_1HMLogMessage.html">HMLogMessage</a>&amp; inMsg) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classhmlog_1_1HMLogSystem.html#ac40521893a6be592186b3dffb81aa1c9">fileOpen</a>();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classhmlog_1_1HMLogSystem.html#a0ec78cc91e32f5865e2fb7d390d0a300">writeMsgToFile</a>(<span class="keyword">const</span> <a class="code" href="structhmlog_1_1HMLogMessage.html">HMLogMessage</a>&amp; inMsg);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classhmlog_1_1HMLogSystem.html#ac433e5a0118c2f2dfa1afc5266660606">fileClose</a>();</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="comment">// Копирование запрещено</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <a class="code" href="classhmlog_1_1HMLogSystem.html#a09a75fff6981c288bfc193392912f01f">HMLogSystem</a>(<span class="keyword">const</span> <a class="code" href="classhmlog_1_1HMLogSystem.html">HMLogSystem</a>&amp; inOther) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <a class="code" href="classhmlog_1_1HMLogSystem.html">HMLogSystem</a>&amp; <a class="code" href="classhmlog_1_1HMLogSystem.html#ad6a9ed55554f238f5c61b655e749afc1">operator=</a>(<a class="code" href="classhmlog_1_1HMLogSystem.html">HMLogSystem</a>&amp; inOther) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keyword">static</span> <a class="code" href="classhmlog_1_1HMLogSystem.html">HMLogSystem</a>&amp; <a class="code" href="classhmlog_1_1HMLogSystem.html#a483d02bc60c3ab50a60248f0e4b1179a">getInstance</a>();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classhmlog_1_1HMLogSystem.html#a114ddb14886434dd283f13c2668c4dac">setConfig</a>(<span class="keyword">const</span> uint8_t inConfigMask);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    uint8_t <a class="code" href="classhmlog_1_1HMLogSystem.html#a99eb3f529d8f865413abb87663b883ab">getConfig</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classhmlog_1_1HMLogSystem.html#a065315e3a19bf1bf791227073b7b213a">logText</a>(<span class="keyword">const</span> QString&amp; inMessage);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classhmlog_1_1HMLogSystem.html#acc224f935312a47d237173bf0324eb60">logDebug</a>(<span class="keyword">const</span> QString&amp; inMessage);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classhmlog_1_1HMLogSystem.html#a9f7534357306a8a1e4d458d4e045b82c">logInfo</a>(<span class="keyword">const</span> QString&amp; inMessage);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classhmlog_1_1HMLogSystem.html#a7b319796c8c0343629c25175bf3bece7">logWarning</a>(<span class="keyword">const</span> QString&amp; inMessage);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160; </div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classhmlog_1_1HMLogSystem.html#ae5b2d166a6d04460ea093cdc898044b1">logError</a>(<span class="keyword">const</span> QString&amp; inMessage);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;};</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;} <span class="comment">// namespace hmlog</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="comment">// Макросы вывода сообщений</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="logsystem_8h.html#a0c3cf4792ec9e891c37b26be5fca8f91">  148</a></span>&#160;<span class="preprocessor">#define LOG_SYSTEM ( hmlog::HMLogSystem::getInstance() )</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="logsystem_8h.html#a5add3a0e2d5859d56d4f20df46fa03a6">  149</a></span>&#160;<span class="preprocessor">#define SENDER_LINE ( &quot; Line: &quot; + QString(__LINE__) )</span></div>
+<div class="line"><a name="l00150"></a><span class="lineno"><a class="line" href="logsystem_8h.html#a3b2ebed074515c32d34bd93011e58554">  150</a></span>&#160;<span class="preprocessor">#define SENDER_DATA(inClass) ( QString(typeid(inClass).name()) + &quot;::&quot; + __FUNCTION__ + SENDER_LINE )</span></div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="preprocessor">#if defined(__GNUC__)</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="preprocessor">#elif defined(_MSC_VER)</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="comment">// Простой текст</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno"><a class="line" href="logsystem_8h.html#ac55a75d6e0280f486a4f0bfb940e41c7">  159</a></span>&#160;<span class="preprocessor">#define LOG_TEXT(inMessage) ( LOG_SYSTEM.logText(inMessage) )</span></div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="comment">// Информационное сообщение</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno"><a class="line" href="logsystem_8h.html#a01f8f3c63a6eb0ce818331eb4a60e321">  161</a></span>&#160;<span class="preprocessor">#define LOG_INFO(inMessage) ( LOG_SYSTEM.logInfo(inMessage) )</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="comment">// Предупреждения</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno"><a class="line" href="logsystem_8h.html#a28d951a59b78eae4199639f6996219e2">  163</a></span>&#160;<span class="preprocessor">#define LOG_WARNING(inMessage)              ( LOG_SYSTEM.logWarning(inMessage) )</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno"><a class="line" href="logsystem_8h.html#af58713b93b2f625713f2c042d88fcad8">  164</a></span>&#160;<span class="preprocessor">#define LOG_WARNING_EX(inMessage, inClass)  ( LOG_WARNING(inMessage + &quot; &quot; + SENDER_DATA(inClass)) )</span></div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="comment">// Ошибки</span></div>
+<div class="line"><a name="l00166"></a><span class="lineno"><a class="line" href="logsystem_8h.html#acc8b76ee310b6b0920dee14ef127db48">  166</a></span>&#160;<span class="preprocessor">#define LOG_ERROR(inMessage)                ( LOG_SYSTEM.logError(inMessage) )</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno"><a class="line" href="logsystem_8h.html#aed1422ce2fe06a4e72f5f0e6e70ff6fa">  167</a></span>&#160;<span class="preprocessor">#define LOG_ERROR_EX(inMessage, inClass)    ( LOG_ERROR(inMessage + &quot; &quot; + SENDER_DATA(inClass)) )</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment">// Дебаг</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="preprocessor">#ifndef NDEBUG</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="logsystem_8h.html#a2195e9eb32daa5eb8fa0e166547808e4">  170</a></span>&#160;<span class="preprocessor">    #define LOG_DEBUG(inMessage)                ( LOG_SYSTEM.logDebug(inMessage) )</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno"><a class="line" href="logsystem_8h.html#ae96a91e6218de1cd6f3dc4060c3d04e2">  171</a></span>&#160;<span class="preprocessor">    #define LOG_DEBUG_EX(inMessage, inClass)    ( LOG_DEBUG(inMessage + &quot; &quot; + SENDER_DATA(inClass)) )</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="preprocessor">    #define LOG_DEBUG(inMessage)</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor">    #define LOG_DEBUG_EX(inMessage, inClass)</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="preprocessor">#endif // NDEBUG</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">#endif // LOGSYSTEM_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="alogsystem_8cpp_html_a9ef8b24ea3a0c273cebca23aaef462fd"><div class="ttname"><a href="logsystem_8cpp.html#a9ef8b24ea3a0c273cebca23aaef462fd">M_WARNING</a></div><div class="ttdeci">#define M_WARNING</div><div class="ttdef"><b>Definition:</b> logsystem.cpp:14</div></div>
+<div class="ttc" id="anamespacehmlog_html_a93ded3e60cdcdc73d5314124c415b11ba726e6743bb56e5000b5aba85375d00bf"><div class="ttname"><a href="namespacehmlog.html#a93ded3e60cdcdc73d5314124c415b11ba726e6743bb56e5000b5aba85375d00bf">hmlog::eLogMessageType::lmtText</a></div><div class="ttdeci">@ lmtText</div><div class="ttdoc">Простой текст</div></div>
+<div class="ttc" id="anamespacehmlog_html_a7635b4d3b9f3549b28f0978910ce1ddbaac6633fb65a23f6588ad429032de8d52"><div class="ttname"><a href="namespacehmlog.html#a7635b4d3b9f3549b28f0978910ce1ddbaac6633fb65a23f6588ad429032de8d52">hmlog::lcWriteFile</a></div><div class="ttdeci">@ lcWriteFile</div><div class="ttdoc">Запись логов в файл</div><div class="ttdef"><b>Definition:</b> logsystem.h:26</div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_a9f7534357306a8a1e4d458d4e045b82c"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#a9f7534357306a8a1e4d458d4e045b82c">hmlog::HMLogSystem::logInfo</a></div><div class="ttdeci">void logInfo(const QString &amp;inMessage)</div><div class="ttdoc">logInfo - Метод занесёт в лог информационное сообщение</div><div class="ttdef"><b>Definition:</b> logsystem.cpp:55</div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_a3bd35bd95552fe57ec6c89d1fa93f5ca"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#a3bd35bd95552fe57ec6c89d1fa93f5ca">hmlog::HMLogSystem::processMsg</a></div><div class="ttdeci">void processMsg(const HMLogMessage &amp;inMsg)</div><div class="ttdoc">processMsg - Метод обработки сообщений</div><div class="ttdef"><b>Definition:</b> logsystem.cpp:70</div></div>
+<div class="ttc" id="anamespacehmlog_html_a7635b4d3b9f3549b28f0978910ce1ddba4e03b5d4d0e7af4609b7e057171307cf"><div class="ttname"><a href="namespacehmlog.html#a7635b4d3b9f3549b28f0978910ce1ddba4e03b5d4d0e7af4609b7e057171307cf">hmlog::lcContainMsg</a></div><div class="ttdeci">@ lcContainMsg</div><div class="ttdoc">Хранение сообщений внутри системы</div><div class="ttdef"><b>Definition:</b> logsystem.h:27</div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_aaf9a0771fa99e8a0c952e0f311349a13"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#aaf9a0771fa99e8a0c952e0f311349a13">hmlog::HMLogSystem::m_listDefender</a></div><div class="ttdeci">std::mutex m_listDefender</div><div class="ttdoc">Мьютекс, защищающий список особщений</div><div class="ttdef"><b>Definition:</b> logsystem.h:43</div></div>
+<div class="ttc" id="alogsystem_8cpp_html_ade61794318f1bbcac19df28e2fe83260"><div class="ttname"><a href="logsystem_8cpp.html#ade61794318f1bbcac19df28e2fe83260">M_INFO</a></div><div class="ttdeci">#define M_INFO</div><div class="ttdef"><b>Definition:</b> logsystem.cpp:13</div></div>
+<div class="ttc" id="anamespacehmlog_html"><div class="ttname"><a href="namespacehmlog.html">hmlog</a></div><div class="ttdef"><b>Definition:</b> customstreams.h:6</div></div>
+<div class="ttc" id="anamespacehmlog_html_a93ded3e60cdcdc73d5314124c415b11bad6bdba17108901350e2286bffc5c2ace"><div class="ttname"><a href="namespacehmlog.html#a93ded3e60cdcdc73d5314124c415b11bad6bdba17108901350e2286bffc5c2ace">hmlog::eLogMessageType::lmtWarning</a></div><div class="ttdeci">@ lmtWarning</div><div class="ttdoc">Предупреждение</div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_acc224f935312a47d237173bf0324eb60"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#acc224f935312a47d237173bf0324eb60">hmlog::HMLogSystem::logDebug</a></div><div class="ttdeci">void logDebug(const QString &amp;inMessage)</div><div class="ttdoc">logDebug - Метод занесёт в лог отладочное сообщение</div><div class="ttdef"><b>Definition:</b> logsystem.cpp:50</div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_ae5b2d166a6d04460ea093cdc898044b1"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#ae5b2d166a6d04460ea093cdc898044b1">hmlog::HMLogSystem::logError</a></div><div class="ttdeci">void logError(const QString &amp;inMessage)</div><div class="ttdoc">logError - Метод занесёт в лог сообщение об ошибке</div><div class="ttdef"><b>Definition:</b> logsystem.cpp:65</div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_a4fc3e290a327d5187d1d2108d24ffd44"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#a4fc3e290a327d5187d1d2108d24ffd44">hmlog::HMLogSystem::~HMLogSystem</a></div><div class="ttdeci">~HMLogSystem()</div><div class="ttdoc">~HMLogSystem - Деструктор</div><div class="ttdef"><b>Definition:</b> logsystem.cpp:24</div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_a7b319796c8c0343629c25175bf3bece7"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#a7b319796c8c0343629c25175bf3bece7">hmlog::HMLogSystem::logWarning</a></div><div class="ttdeci">void logWarning(const QString &amp;inMessage)</div><div class="ttdoc">logWarning - Метод занесёт в лог сообщение с предупреждением</div><div class="ttdef"><b>Definition:</b> logsystem.cpp:60</div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_a114ddb14886434dd283f13c2668c4dac"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#a114ddb14886434dd283f13c2668c4dac">hmlog::HMLogSystem::setConfig</a></div><div class="ttdeci">void setConfig(const uint8_t inConfigMask)</div><div class="ttdoc">setConfig - Метод задаст настройки системы логирования</div><div class="ttdef"><b>Definition:</b> logsystem.cpp:36</div></div>
+<div class="ttc" id="anamespacehmlog_html_a93ded3e60cdcdc73d5314124c415b11ba470567979df626314268454351cd1ec3"><div class="ttname"><a href="namespacehmlog.html#a93ded3e60cdcdc73d5314124c415b11ba470567979df626314268454351cd1ec3">hmlog::eLogMessageType::lmtInfo</a></div><div class="ttdeci">@ lmtInfo</div><div class="ttdoc">Информация</div></div>
+<div class="ttc" id="astructhmlog_1_1HMLogMessage_html_a860c68ba6ffcd9300717f2e456c8f03d"><div class="ttname"><a href="structhmlog_1_1HMLogMessage.html#a860c68ba6ffcd9300717f2e456c8f03d">hmlog::HMLogMessage::m_type</a></div><div class="ttdeci">const eLogMessageType m_type</div><div class="ttdoc">Тип сообщения</div><div class="ttdef"><b>Definition:</b> logmessage.h:48</div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_a09a75fff6981c288bfc193392912f01f"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#a09a75fff6981c288bfc193392912f01f">hmlog::HMLogSystem::HMLogSystem</a></div><div class="ttdeci">HMLogSystem()</div><div class="ttdoc">HMLogSystem - Конструктор по умолчанию</div><div class="ttdef"><b>Definition:</b> logsystem.cpp:18</div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_a0ec78cc91e32f5865e2fb7d390d0a300"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#a0ec78cc91e32f5865e2fb7d390d0a300">hmlog::HMLogSystem::writeMsgToFile</a></div><div class="ttdeci">void writeMsgToFile(const HMLogMessage &amp;inMsg)</div><div class="ttdoc">writeMsgToFile - Метод записи в файл</div><div class="ttdef"><b>Definition:</b> logsystem.cpp:142</div></div>
+<div class="ttc" id="astructhmlog_1_1HMLogMessage_html_a009903eb25f67f0966ba52d43fa6156f"><div class="ttname"><a href="structhmlog_1_1HMLogMessage.html#a009903eb25f67f0966ba52d43fa6156f">hmlog::HMLogMessage::m_time</a></div><div class="ttdeci">const QDateTime m_time</div><div class="ttdoc">Время формирования сообщения</div><div class="ttdef"><b>Definition:</b> logmessage.h:47</div></div>
+<div class="ttc" id="anamespacehmlog_html_abc2ef519ffd1694f97ee7fcdee4543e4"><div class="ttname"><a href="namespacehmlog.html#abc2ef519ffd1694f97ee7fcdee4543e4">hmlog::QStdOut</a></div><div class="ttdeci">QTextStream &amp; QStdOut()</div><div class="ttdoc">QStdOut - Функция вернёт текстовый поток на онове стандартного потока</div><div class="ttdef"><b>Definition:</b> customstreams.cpp:6</div></div>
+<div class="ttc" id="acustomstreams_8h_html"><div class="ttname"><a href="customstreams_8h.html">customstreams.h</a></div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_a3342c70687ba9d72983ef6e69476715d"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#a3342c70687ba9d72983ef6e69476715d">hmlog::HMLogSystem::printMsg</a></div><div class="ttdeci">void printMsg(const HMLogMessage &amp;inMsg) const</div><div class="ttdoc">printMsg - Метод печати сообщений</div><div class="ttdef"><b>Definition:</b> logsystem.cpp:92</div></div>
+<div class="ttc" id="astructhmlog_1_1HMLogMessage_html"><div class="ttname"><a href="structhmlog_1_1HMLogMessage.html">hmlog::HMLogMessage</a></div><div class="ttdoc">The HMLogMessage struct - Структкра, описывающая сообщение логов</div><div class="ttdef"><b>Definition:</b> logmessage.h:33</div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_ac433e5a0118c2f2dfa1afc5266660606"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#ac433e5a0118c2f2dfa1afc5266660606">hmlog::HMLogSystem::fileClose</a></div><div class="ttdeci">void fileClose()</div><div class="ttdoc">fileClose - Метод закроет файл</div><div class="ttdef"><b>Definition:</b> logsystem.cpp:166</div></div>
+<div class="ttc" id="alogsystem_8cpp_html_a6d40a84c7b08504117c9c58bf65a61fd"><div class="ttname"><a href="logsystem_8cpp.html#a6d40a84c7b08504117c9c58bf65a61fd">M_ERROR</a></div><div class="ttdeci">#define M_ERROR</div><div class="ttdef"><b>Definition:</b> logsystem.cpp:15</div></div>
+<div class="ttc" id="anamespacehmlog_html_a7635b4d3b9f3549b28f0978910ce1ddba2c49988a4701f86256484c8e5f83294e"><div class="ttname"><a href="namespacehmlog.html#a7635b4d3b9f3549b28f0978910ce1ddba2c49988a4701f86256484c8e5f83294e">hmlog::lcShowStdOut</a></div><div class="ttdeci">@ lcShowStdOut</div><div class="ttdoc">Вывод логов в стандартный поток</div><div class="ttdef"><b>Definition:</b> logsystem.h:25</div></div>
+<div class="ttc" id="anamespacehmlog_html_a93ded3e60cdcdc73d5314124c415b11baa32bce7ea285534798a9e1d6330302cb"><div class="ttname"><a href="namespacehmlog.html#a93ded3e60cdcdc73d5314124c415b11baa32bce7ea285534798a9e1d6330302cb">hmlog::eLogMessageType::lmtError</a></div><div class="ttdeci">@ lmtError</div><div class="ttdoc">Ошибка</div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_a99eb3f529d8f865413abb87663b883ab"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#a99eb3f529d8f865413abb87663b883ab">hmlog::HMLogSystem::getConfig</a></div><div class="ttdeci">uint8_t getConfig() const</div><div class="ttdoc">getConfig - Метод вернёт настройки системы логирования</div><div class="ttdef"><b>Definition:</b> logsystem.cpp:42</div></div>
+<div class="ttc" id="anamespacehmlog_html_a93ded3e60cdcdc73d5314124c415b11bac5c630b94c7bd0eb8276dee7442ca651"><div class="ttname"><a href="namespacehmlog.html#a93ded3e60cdcdc73d5314124c415b11bac5c630b94c7bd0eb8276dee7442ca651">hmlog::eLogMessageType::lmtDebug</a></div><div class="ttdeci">@ lmtDebug</div><div class="ttdoc">Отладочное сообщение</div></div>
+<div class="ttc" id="anamespacehmlog_html_a7635b4d3b9f3549b28f0978910ce1ddba7272ca5ddc900f64e5bd58fc14eddb89"><div class="ttname"><a href="namespacehmlog.html#a7635b4d3b9f3549b28f0978910ce1ddba7272ca5ddc900f64e5bd58fc14eddb89">hmlog::lcNone</a></div><div class="ttdeci">@ lcNone</div><div class="ttdoc">Бездействие</div><div class="ttdef"><b>Definition:</b> logsystem.h:24</div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_a52923cc9c1e03a579ae9565bbf22515a"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#a52923cc9c1e03a579ae9565bbf22515a">hmlog::HMLogSystem::m_maxContainMessages</a></div><div class="ttdeci">std::size_t m_maxContainMessages</div><div class="ttdoc">Максимальное количество хранимых сообщений</div><div class="ttdef"><b>Definition:</b> logsystem.h:44</div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_a3fe4e5d98c1539df137a2a5aff9b40e6"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#a3fe4e5d98c1539df137a2a5aff9b40e6">hmlog::HMLogSystem::m_logFile</a></div><div class="ttdeci">std::unique_ptr&lt; QFile &gt; m_logFile</div><div class="ttdoc">Хендл файла логов</div><div class="ttdef"><b>Definition:</b> logsystem.h:46</div></div>
+<div class="ttc" id="alogmessage_8h_html"><div class="ttname"><a href="logmessage_8h.html">logmessage.h</a></div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_a483d02bc60c3ab50a60248f0e4b1179a"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#a483d02bc60c3ab50a60248f0e4b1179a">hmlog::HMLogSystem::getInstance</a></div><div class="ttdeci">static HMLogSystem &amp; getInstance()</div><div class="ttdoc">getInstance - Метод вернёт единственный экземпляр системы логирования</div><div class="ttdef"><b>Definition:</b> logsystem.cpp:30</div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_ad6a9ed55554f238f5c61b655e749afc1"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#ad6a9ed55554f238f5c61b655e749afc1">hmlog::HMLogSystem::operator=</a></div><div class="ttdeci">HMLogSystem &amp; operator=(HMLogSystem &amp;inOther)=delete</div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html">hmlog::HMLogSystem</a></div><div class="ttdoc">The HMLogSystem class - Класс, описывающий систему ведения логов</div><div class="ttdef"><b>Definition:</b> logsystem.h:36</div></div>
+<div class="ttc" id="alogsystem_8h_html"><div class="ttname"><a href="logsystem_8h.html">logsystem.h</a></div></div>
+<div class="ttc" id="asystemerrorex_8cpp_html_aacc415fb080ba818238619f5ab0676c3"><div class="ttname"><a href="systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3">make_error_code</a></div><div class="ttdeci">std::error_code make_error_code(hmcommon::eSystemErrorEx inErrCode)</div><div class="ttdoc">make_error_code - Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени...</div><div class="ttdef"><b>Definition:</b> systemerrorex.cpp:82</div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_a4fe5684ad649c5d31164ac0055ee939f"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#a4fe5684ad649c5d31164ac0055ee939f">hmlog::HMLogSystem::m_workFinish</a></div><div class="ttdeci">std::atomic_bool m_workFinish</div><div class="ttdoc">Флаг, сообщающий о завершении работы</div><div class="ttdef"><b>Definition:</b> logsystem.h:48</div></div>
+<div class="ttc" id="anamespacehmlog_html_a7635b4d3b9f3549b28f0978910ce1ddb"><div class="ttname"><a href="namespacehmlog.html#a7635b4d3b9f3549b28f0978910ce1ddb">hmlog::eLogConfig</a></div><div class="ttdeci">eLogConfig</div><div class="ttdoc">The eLogConfig enum - Перечисление параметров настройки системы логирования</div><div class="ttdef"><b>Definition:</b> logsystem.h:22</div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_ac40521893a6be592186b3dffb81aa1c9"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#ac40521893a6be592186b3dffb81aa1c9">hmlog::HMLogSystem::fileOpen</a></div><div class="ttdeci">bool fileOpen()</div><div class="ttdoc">fileOpen - Метод откроет файл на запись</div><div class="ttdef"><b>Definition:</b> logsystem.cpp:106</div></div>
+<div class="ttc" id="astructhmlog_1_1HMLogMessage_html_a1c2709eb1a98218126b311e677891204"><div class="ttname"><a href="structhmlog_1_1HMLogMessage.html#a1c2709eb1a98218126b311e677891204">hmlog::HMLogMessage::m_message</a></div><div class="ttdeci">const QString m_message</div><div class="ttdoc">Текст сообщения</div><div class="ttdef"><b>Definition:</b> logmessage.h:49</div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_ac30464c9290ac14a0f0440fe576be43c"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#ac30464c9290ac14a0f0440fe576be43c">hmlog::HMLogSystem::m_config</a></div><div class="ttdeci">uint8_t m_config</div><div class="ttdoc">Настройки логирования</div><div class="ttdef"><b>Definition:</b> logsystem.h:40</div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_adc90d05bb4570ac74b77e3ba2886b5f7"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#adc90d05bb4570ac74b77e3ba2886b5f7">hmlog::HMLogSystem::m_messages</a></div><div class="ttdeci">std::list&lt; HMLogMessage &gt; m_messages</div><div class="ttdoc">Список логов</div><div class="ttdef"><b>Definition:</b> logsystem.h:42</div></div>
+<div class="ttc" id="alogsystem_8cpp_html_acccd12226173a70815de18bc19ad5c29"><div class="ttname"><a href="logsystem_8cpp.html#acccd12226173a70815de18bc19ad5c29">M_DEBUG</a></div><div class="ttdeci">#define M_DEBUG</div><div class="ttdef"><b>Definition:</b> logsystem.cpp:12</div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_a065315e3a19bf1bf791227073b7b213a"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#a065315e3a19bf1bf791227073b7b213a">hmlog::HMLogSystem::logText</a></div><div class="ttdeci">void logText(const QString &amp;inMessage)</div><div class="ttdoc">logText - Метод занесёт в лог текстовое сообщение</div><div class="ttdef"><b>Definition:</b> logsystem.cpp:45</div></div>
+<div class="ttc" id="aclasshmlog_1_1HMLogSystem_html_abf2a580db74b115fe24977e4d5bf480f"><div class="ttname"><a href="classhmlog_1_1HMLogSystem.html#abf2a580db74b115fe24977e4d5bf480f">hmlog::HMLogSystem::m_fileDefender</a></div><div class="ttdeci">std::mutex m_fileDefender</div><div class="ttdoc">Мьютекс, защищающий файл</div><div class="ttdef"><b>Definition:</b> logsystem.h:47</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

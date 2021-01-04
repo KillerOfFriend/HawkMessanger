@@ -1,0 +1,7 @@
+<map id="hmservcommon::datastorage::HMAbstractCahceDataStorage::processCacheInThread" name="hmservcommon::datastorage::HMAbstractCahceDataStorage::processCacheInThread">
+<area shape="rect" id="node1" title="processCacheInThread &#45; Метод обработки кеша в потоке" alt="" coords="1192,5,1419,61"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ad31687e2e23f8b66e2b43b1f91d5a066" title="cacheWatchdogThreadFunc &#45; Метод потока, обрабатывающего кеш" alt="" coords="917,5,1144,61"/>
+<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a294948cbf56bd24c7d7ed60826b0fd87" title="startCacheWatchdogThread &#45; Метод запустит поток, котролирующий объекты кеша" alt="" coords="643,5,869,61"/>
+<area shape="rect" id="node4" href="$classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ab0178b64aff50caf8f0ce5c172def2ea" title="open &#45; Метод откроет хранилище данных" alt="" coords="328,13,595,54"/>
+<area shape="rect" id="node5" href="$classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a07c4e3bad5ced7d8a929b77a3df67197" title="open &#45; Метод откроет хранилище данных" alt="" coords="5,13,280,54"/>
+</map>

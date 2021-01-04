@@ -1,0 +1,8 @@
+<map id="hmlog::HMLogSystem::processMsg" name="hmlog::HMLogSystem::processMsg">
+<area shape="rect" id="node1" title="processMsg &#45; Метод обработки сообщений" alt="" coords="219,136,384,177"/>
+<area shape="rect" id="node2" href="$classhmlog_1_1HMLogSystem.html#acc224f935312a47d237173bf0324eb60" title="logDebug &#45; Метод занесёт в лог отладочное сообщение" alt="" coords="5,5,171,47"/>
+<area shape="rect" id="node3" href="$classhmlog_1_1HMLogSystem.html#ae5b2d166a6d04460ea093cdc898044b1" title="logError &#45; Метод занесёт в лог сообщение об ошибке" alt="" coords="5,71,171,112"/>
+<area shape="rect" id="node4" href="$classhmlog_1_1HMLogSystem.html#a9f7534357306a8a1e4d458d4e045b82c" title="logInfo &#45; Метод занесёт в лог информационное сообщение" alt="" coords="5,136,171,177"/>
+<area shape="rect" id="node5" href="$classhmlog_1_1HMLogSystem.html#a065315e3a19bf1bf791227073b7b213a" title="logText &#45; Метод занесёт в лог текстовое сообщение" alt="" coords="5,201,171,243"/>
+<area shape="rect" id="node6" href="$classhmlog_1_1HMLogSystem.html#a7b319796c8c0343629c25175bf3bece7" title="logWarning &#45; Метод занесёт в лог сообщение с предупреждением" alt="" coords="5,267,171,308"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="hmservcommon::datastorage::HMCachedMemoryDataStorage::clearCached" name="hmservcommon::datastorage::HMCachedMemoryDataStorage::clearCached">
+<area shape="rect" id="node1" title="clearCached &#45; Метод очистит закешированные данные" alt="" coords="653,35,888,91"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a8bf345ef8b7ca0b14ad3c9c7d4cbe91a" title="close &#45; Метод закроет хранилище данных" alt="" coords="328,43,605,84"/>
+<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a07c4e3bad5ced7d8a929b77a3df67197" title="open &#45; Метод откроет хранилище данных" alt="" coords="5,5,280,47"/>
+<area shape="rect" id="node4" href="$classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#aba844641d544b031bbbe89d001be3a50" title="~HMCachedDataStorage &#45; Виртуальный деструктор" alt="" coords="19,71,266,127"/>
+</map>

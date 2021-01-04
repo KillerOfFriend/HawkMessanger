@@ -1,0 +1,11 @@
+<map id="main" name="main">
+<area shape="rect" id="node1" title=" " alt="" coords="5,111,60,138"/>
+<area shape="rect" id="node2" href="$modules_2HawkConsolServer_2src_2main_8cpp.html#a673ba203f393f401e6d2a94d7294ca7b" title=" " alt="" coords="108,111,223,138"/>
+<area shape="rect" id="node3" href="$classhmlog_1_1HMEventSystem.html#a0ca698f47c4008acd62a05922ce5a69a" title="getInstance &#45; Метод вернёт единственный экземпляр системы перехвата системных событий" alt="" coords="271,5,449,47"/>
+<area shape="rect" id="node4" href="$classhmlog_1_1HMLogSystem.html#a483d02bc60c3ab50a60248f0e4b1179a" title="getInstance &#45; Метод вернёт единственный экземпляр системы логирования" alt="" coords="277,71,443,112"/>
+<area shape="rect" id="node5" href="$classhmlog_1_1HMEventSystem.html#ae3142b29af023073240d225d9bd076f5" title="setConfig &#45; Метод задаст настройки системы перехвата системных событий" alt="" coords="271,136,449,177"/>
+<area shape="rect" id="node8" href="$classhmlog_1_1HMLogSystem.html#a114ddb14886434dd283f13c2668c4dac" title="setConfig &#45; Метод задаст настройки системы логирования" alt="" coords="277,201,443,243"/>
+<area shape="rect" id="node6" href="$classhmlog_1_1HMEventSystem.html#af430bd634559bc13b7a239188e7d6bbb" title="acceptConfig &#45; Метод задаст обработчики событий согласно настройкам" alt="" coords="497,71,676,112"/>
+<area shape="rect" id="node7" href="$classhmlog_1_1HMEventSystem.html#ab04db23deb8321a22c07828f34e956b0" title="clear &#45; Метод сборсит обработчики событий" alt="" coords="497,136,676,177"/>
+<area shape="rect" id="node9" href="$classhmlog_1_1HMLogSystem.html#ac433e5a0118c2f2dfa1afc5266660606" title="fileClose &#45; Метод закроет файл" alt="" coords="504,201,669,243"/>
+</map>

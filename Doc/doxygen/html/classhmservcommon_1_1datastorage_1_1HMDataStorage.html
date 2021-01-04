@@ -1,0 +1,1496 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>HawkMessanger: Класс hmservcommon::datastorage::HMDataStorage</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">HawkMessanger
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespacehmservcommon.html">hmservcommon</a></li><li class="navelem"><a class="el" href="namespacehmservcommon_1_1datastorage.html">datastorage</a></li><li class="navelem"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html">HMDataStorage</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Открытые члены</a> &#124;
+<a href="classhmservcommon_1_1datastorage_1_1HMDataStorage-members.html">Полный список членов класса</a>  </div>
+  <div class="headertitle">
+<div class="title">Класс hmservcommon::datastorage::HMDataStorage<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>The <a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html" title="The HMDataStorage class - Интерфейс, описывающий хранилище данных сервера">HMDataStorage</a> class - Интерфейс, описывающий хранилище данных сервера  
+ <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#details">Подробнее...</a></p>
+
+<p><code>#include &lt;<a class="el" href="datastorageinterface_8h_source.html">datastorageinterface.h</a>&gt;</code></p>
+<div class="dynheader">
+Граф наследования:hmservcommon::datastorage::HMDataStorage:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhmservcommon_1_1datastorage_1_1HMDataStorage__inherit__graph.png" border="0" usemap="#hmservcommon_1_1datastorage_1_1HMDataStorage_inherit__map" alt="Inheritance graph"/></div>
+<map name="hmservcommon_1_1datastorage_1_1HMDataStorage_inherit__map" id="hmservcommon_1_1datastorage_1_1HMDataStorage_inherit__map">
+<area shape="rect" title="The HMDataStorage class &#45; Интерфейс, описывающий хранилище данных сервера" alt="" coords="5,71,220,112"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional.html" title="The HMAbstractDataStorageFunctional class &#45; Класс, описывающий абстрактное хранилище даннх с дополнит..." alt="" coords="268,37,523,79"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html" title="The HMCombinedDataStorage class &#45; Класс, описывающий комбинированное хранилище данных (физическое\хеш..." alt="" coords="288,103,503,144"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html" title="The HMAbstractCahceDataStorage class &#45; Класс, описывающий абстракцию кеширующего хранилища данных" alt="" coords="571,5,797,47"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMAbstractHardDataStorage.html" title="The HMAbstractHardDataStorage class &#45; Класс, описывающий абстракцию физического хранилища данных" alt="" coords="575,71,793,112"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html" title="The HMCachedMemoryDataStorage class &#45; Класс, описывающий кеширующее хранилище данных в оперативной па..." alt="" coords="845,5,1080,47"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html" title="The HMJsonDataStorage class &#45; Класс, описывающий хранилище данных сервера в файле JSON." alt="" coords="855,71,1070,112"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">см. легенду</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Открытые члены</h2></td></tr>
+<tr class="memitem:a44d1b4e68c327bcf6b8a17dbe3a2353b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a44d1b4e68c327bcf6b8a17dbe3a2353b">HMDataStorage</a> ()=default</td></tr>
+<tr class="memdesc:a44d1b4e68c327bcf6b8a17dbe3a2353b"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html" title="The HMDataStorage class - Интерфейс, описывающий хранилище данных сервера">HMDataStorage</a> - Конструктор по умолчанию  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a44d1b4e68c327bcf6b8a17dbe3a2353b">Подробнее...</a><br /></td></tr>
+<tr class="separator:a44d1b4e68c327bcf6b8a17dbe3a2353b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a485a9b4b8f7f25cdff59a027cb5334fb"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a485a9b4b8f7f25cdff59a027cb5334fb">~HMDataStorage</a> ()=default</td></tr>
+<tr class="memdesc:a485a9b4b8f7f25cdff59a027cb5334fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">~HMDataStorage - Виртуальный деструктор по умолчанию  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a485a9b4b8f7f25cdff59a027cb5334fb">Подробнее...</a><br /></td></tr>
+<tr class="separator:a485a9b4b8f7f25cdff59a027cb5334fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb0de0bc5c99dba122843d63708ad3d3"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#acb0de0bc5c99dba122843d63708ad3d3">open</a> ()=0</td></tr>
+<tr class="memdesc:acb0de0bc5c99dba122843d63708ad3d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">open - Метод откроет хранилище данных  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#acb0de0bc5c99dba122843d63708ad3d3">Подробнее...</a><br /></td></tr>
+<tr class="separator:acb0de0bc5c99dba122843d63708ad3d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a229a1917e9b16d4107e56768fc2df7a7"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a229a1917e9b16d4107e56768fc2df7a7">is_open</a> () const =0</td></tr>
+<tr class="memdesc:a229a1917e9b16d4107e56768fc2df7a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">is_open - Метод вернёт признак открытости хранилища данных  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a229a1917e9b16d4107e56768fc2df7a7">Подробнее...</a><br /></td></tr>
+<tr class="separator:a229a1917e9b16d4107e56768fc2df7a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81d0d540feb688fb6d82fd669b35297b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a81d0d540feb688fb6d82fd669b35297b">close</a> ()=0</td></tr>
+<tr class="memdesc:a81d0d540feb688fb6d82fd669b35297b"><td class="mdescLeft">&#160;</td><td class="mdescRight">close - Метод закроет хранилище данных  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a81d0d540feb688fb6d82fd669b35297b">Подробнее...</a><br /></td></tr>
+<tr class="separator:a81d0d540feb688fb6d82fd669b35297b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4bdb8c8b3743471115cbd05d5990f4f"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ac4bdb8c8b3743471115cbd05d5990f4f">addUser</a> (const std::shared_ptr&lt; <a class="el" href="classhmcommon_1_1HMUser.html">hmcommon::HMUser</a> &gt; inUser)=0</td></tr>
+<tr class="memdesc:ac4bdb8c8b3743471115cbd05d5990f4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">addUser - Метод добавит нового пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ac4bdb8c8b3743471115cbd05d5990f4f">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac4bdb8c8b3743471115cbd05d5990f4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a952f09b0b7f80ddcbd81e61074c5d648"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a952f09b0b7f80ddcbd81e61074c5d648">updateUser</a> (const std::shared_ptr&lt; <a class="el" href="classhmcommon_1_1HMUser.html">hmcommon::HMUser</a> &gt; inUser)=0</td></tr>
+<tr class="memdesc:a952f09b0b7f80ddcbd81e61074c5d648"><td class="mdescLeft">&#160;</td><td class="mdescRight">updateUser - Метод обновит данные пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a952f09b0b7f80ddcbd81e61074c5d648">Подробнее...</a><br /></td></tr>
+<tr class="separator:a952f09b0b7f80ddcbd81e61074c5d648"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17ce90091313c898df64f544edf979b1"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; <a class="el" href="classhmcommon_1_1HMUser.html">hmcommon::HMUser</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a17ce90091313c898df64f544edf979b1">findUserByUUID</a> (const QUuid &amp;inUserUUID, std::error_code &amp;outErrorCode) const =0</td></tr>
+<tr class="memdesc:a17ce90091313c898df64f544edf979b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">findUserByUUID - Метод найдёт пользователя по его uuid  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a17ce90091313c898df64f544edf979b1">Подробнее...</a><br /></td></tr>
+<tr class="separator:a17ce90091313c898df64f544edf979b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a174b743bc27f9784270e1d77fe3d4055"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; <a class="el" href="classhmcommon_1_1HMUser.html">hmcommon::HMUser</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a174b743bc27f9784270e1d77fe3d4055">findUserByAuthentication</a> (const QString &amp;inLogin, const QByteArray &amp;inPasswordHash, std::error_code &amp;outErrorCode) const =0</td></tr>
+<tr class="memdesc:a174b743bc27f9784270e1d77fe3d4055"><td class="mdescLeft">&#160;</td><td class="mdescRight">findUserByAuthentication - Метод найдёт пользователя по его данным аутентификации  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a174b743bc27f9784270e1d77fe3d4055">Подробнее...</a><br /></td></tr>
+<tr class="separator:a174b743bc27f9784270e1d77fe3d4055"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad20bc2871b5babb00f471c667bccaafb"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ad20bc2871b5babb00f471c667bccaafb">removeUser</a> (const QUuid &amp;inUserUUID)=0</td></tr>
+<tr class="memdesc:ad20bc2871b5babb00f471c667bccaafb"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeUser - Метод удалит пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ad20bc2871b5babb00f471c667bccaafb">Подробнее...</a><br /></td></tr>
+<tr class="separator:ad20bc2871b5babb00f471c667bccaafb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf83eedd2d7e34cf650e80484afdac0b"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; std::set&lt; QUuid &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#abf83eedd2d7e34cf650e80484afdac0b">getUserGroups</a> (const QUuid &amp;inUserUUID, std::error_code &amp;outErrorCode) const =0</td></tr>
+<tr class="memdesc:abf83eedd2d7e34cf650e80484afdac0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">getUserGroups - Метод вернёт список групп пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#abf83eedd2d7e34cf650e80484afdac0b">Подробнее...</a><br /></td></tr>
+<tr class="separator:abf83eedd2d7e34cf650e80484afdac0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a084b842e26a5eaa9c6811a36792e9e1b"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a084b842e26a5eaa9c6811a36792e9e1b">addGroup</a> (const std::shared_ptr&lt; <a class="el" href="classhmcommon_1_1HMGroup.html">hmcommon::HMGroup</a> &gt; inGroup)=0</td></tr>
+<tr class="memdesc:a084b842e26a5eaa9c6811a36792e9e1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">addGroup - Метод добавит новую группу  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a084b842e26a5eaa9c6811a36792e9e1b">Подробнее...</a><br /></td></tr>
+<tr class="separator:a084b842e26a5eaa9c6811a36792e9e1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fba4d873704c4afa24293d00722436c"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a5fba4d873704c4afa24293d00722436c">updateGroup</a> (const std::shared_ptr&lt; <a class="el" href="classhmcommon_1_1HMGroup.html">hmcommon::HMGroup</a> &gt; inGroup)=0</td></tr>
+<tr class="memdesc:a5fba4d873704c4afa24293d00722436c"><td class="mdescLeft">&#160;</td><td class="mdescRight">updateGroup - Метод обновит данные группы  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a5fba4d873704c4afa24293d00722436c">Подробнее...</a><br /></td></tr>
+<tr class="separator:a5fba4d873704c4afa24293d00722436c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69b796166a22d31a57032aaec90b47a4"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; <a class="el" href="classhmcommon_1_1HMGroup.html">hmcommon::HMGroup</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a69b796166a22d31a57032aaec90b47a4">findGroupByUUID</a> (const QUuid &amp;inGroupUUID, std::error_code &amp;outErrorCode) const =0</td></tr>
+<tr class="memdesc:a69b796166a22d31a57032aaec90b47a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">findGroupByUUID - Метод найдёт пользователя по его uuid  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a69b796166a22d31a57032aaec90b47a4">Подробнее...</a><br /></td></tr>
+<tr class="separator:a69b796166a22d31a57032aaec90b47a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9854c3322ee1f91a093f4bd002d8087f"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a9854c3322ee1f91a093f4bd002d8087f">removeGroup</a> (const QUuid &amp;inGroupUUID)=0</td></tr>
+<tr class="memdesc:a9854c3322ee1f91a093f4bd002d8087f"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeGroup - Метод удалит группу  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a9854c3322ee1f91a093f4bd002d8087f">Подробнее...</a><br /></td></tr>
+<tr class="separator:a9854c3322ee1f91a093f4bd002d8087f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7583facb7df49d65bc45fa0c2344c608"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a7583facb7df49d65bc45fa0c2344c608">setGroupUsers</a> (const QUuid &amp;inGroupUUID, const std::shared_ptr&lt; std::set&lt; QUuid &gt;&gt; inUsers)=0</td></tr>
+<tr class="memdesc:a7583facb7df49d65bc45fa0c2344c608"><td class="mdescLeft">&#160;</td><td class="mdescRight">setGroupUsers - Метод задаст список членов группы  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a7583facb7df49d65bc45fa0c2344c608">Подробнее...</a><br /></td></tr>
+<tr class="separator:a7583facb7df49d65bc45fa0c2344c608"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a816a0752bb5156d8cd0e45abfc5bf867"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a816a0752bb5156d8cd0e45abfc5bf867">addGroupUser</a> (const QUuid &amp;inGroupUUID, const QUuid &amp;inUserUUID)=0</td></tr>
+<tr class="memdesc:a816a0752bb5156d8cd0e45abfc5bf867"><td class="mdescLeft">&#160;</td><td class="mdescRight">setGroupUsers - Метод добавит пользователя в группу  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a816a0752bb5156d8cd0e45abfc5bf867">Подробнее...</a><br /></td></tr>
+<tr class="separator:a816a0752bb5156d8cd0e45abfc5bf867"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a940385812cdd258bbc8c4d0eba81dcec"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a940385812cdd258bbc8c4d0eba81dcec">removeGroupUser</a> (const QUuid &amp;inGroupUUID, const QUuid &amp;inUserUUID)=0</td></tr>
+<tr class="memdesc:a940385812cdd258bbc8c4d0eba81dcec"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeGroupUser - Метод удалит пользователя из группы  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a940385812cdd258bbc8c4d0eba81dcec">Подробнее...</a><br /></td></tr>
+<tr class="separator:a940385812cdd258bbc8c4d0eba81dcec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71b764303e32914d203b696acc03b32c"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a71b764303e32914d203b696acc03b32c">clearGroupUsers</a> (const QUuid &amp;inGroupUUID)=0</td></tr>
+<tr class="memdesc:a71b764303e32914d203b696acc03b32c"><td class="mdescLeft">&#160;</td><td class="mdescRight">clearGroupUsers - Метод очистит список членов группы  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a71b764303e32914d203b696acc03b32c">Подробнее...</a><br /></td></tr>
+<tr class="separator:a71b764303e32914d203b696acc03b32c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23806d3edbef4654c1023a297d932c64"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; std::set&lt; QUuid &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a23806d3edbef4654c1023a297d932c64">getGroupUserList</a> (const QUuid &amp;inGroupUUID, std::error_code &amp;outErrorCode) const =0</td></tr>
+<tr class="memdesc:a23806d3edbef4654c1023a297d932c64"><td class="mdescLeft">&#160;</td><td class="mdescRight">getGroupUserList - Метод вернёт список UUID'ов членов группы  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a23806d3edbef4654c1023a297d932c64">Подробнее...</a><br /></td></tr>
+<tr class="separator:a23806d3edbef4654c1023a297d932c64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc7fe7ac22b15909432934bf4a7529eb"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#acc7fe7ac22b15909432934bf4a7529eb">addMessage</a> (const std::shared_ptr&lt; <a class="el" href="classhmcommon_1_1HMGroupMessage.html">hmcommon::HMGroupMessage</a> &gt; inMessage)=0</td></tr>
+<tr class="memdesc:acc7fe7ac22b15909432934bf4a7529eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">addMessage - Метод добавит новое сообщение  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#acc7fe7ac22b15909432934bf4a7529eb">Подробнее...</a><br /></td></tr>
+<tr class="separator:acc7fe7ac22b15909432934bf4a7529eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c4f1de3495a74d5966479dd6dc11e16"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a2c4f1de3495a74d5966479dd6dc11e16">updateMessage</a> (const std::shared_ptr&lt; <a class="el" href="classhmcommon_1_1HMGroupMessage.html">hmcommon::HMGroupMessage</a> &gt; inMessage)=0</td></tr>
+<tr class="memdesc:a2c4f1de3495a74d5966479dd6dc11e16"><td class="mdescLeft">&#160;</td><td class="mdescRight">updateMessage - Метод обновит данные сообщения  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a2c4f1de3495a74d5966479dd6dc11e16">Подробнее...</a><br /></td></tr>
+<tr class="separator:a2c4f1de3495a74d5966479dd6dc11e16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9861e10c67a208a2cc25f5c77af6ee4"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; <a class="el" href="classhmcommon_1_1HMGroupMessage.html">hmcommon::HMGroupMessage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ae9861e10c67a208a2cc25f5c77af6ee4">findMessage</a> (const QUuid &amp;inMessageUUID, std::error_code &amp;outErrorCode) const =0</td></tr>
+<tr class="memdesc:ae9861e10c67a208a2cc25f5c77af6ee4"><td class="mdescLeft">&#160;</td><td class="mdescRight">findMessages - Метод найдёт сообщение по его uuid  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ae9861e10c67a208a2cc25f5c77af6ee4">Подробнее...</a><br /></td></tr>
+<tr class="separator:ae9861e10c67a208a2cc25f5c77af6ee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9711f5b122a6435267ca023a0d58b557"><td class="memItemLeft" align="right" valign="top">virtual std::vector&lt; std::shared_ptr&lt; <a class="el" href="classhmcommon_1_1HMGroupMessage.html">hmcommon::HMGroupMessage</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a9711f5b122a6435267ca023a0d58b557">findMessages</a> (const QUuid &amp;inGroupUUID, const <a class="el" href="structhmcommon_1_1MsgRange.html">hmcommon::MsgRange</a> &amp;inRange, std::error_code &amp;outErrorCode) const =0</td></tr>
+<tr class="memdesc:a9711f5b122a6435267ca023a0d58b557"><td class="mdescLeft">&#160;</td><td class="mdescRight">findMessages - Метод вернёт перечень сообщений группы за куазаный промежуток времени  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a9711f5b122a6435267ca023a0d58b557">Подробнее...</a><br /></td></tr>
+<tr class="separator:a9711f5b122a6435267ca023a0d58b557"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad46dcb9045327e4717399f923c6d8255"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ad46dcb9045327e4717399f923c6d8255">removeMessage</a> (const QUuid &amp;inMessageUUID, const QUuid &amp;inGroupUUID)=0</td></tr>
+<tr class="memdesc:ad46dcb9045327e4717399f923c6d8255"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeMessage - Метод удалит сообщение  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ad46dcb9045327e4717399f923c6d8255">Подробнее...</a><br /></td></tr>
+<tr class="separator:ad46dcb9045327e4717399f923c6d8255"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ea3bd9d2d620b2a3716eeb0715c30b6"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a5ea3bd9d2d620b2a3716eeb0715c30b6">setUserContacts</a> (const QUuid &amp;inUserUUID, const std::shared_ptr&lt; std::set&lt; QUuid &gt;&gt; inContacts)=0</td></tr>
+<tr class="memdesc:a5ea3bd9d2d620b2a3716eeb0715c30b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">setUserContacts - Метод задаст пользователю список контактов  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a5ea3bd9d2d620b2a3716eeb0715c30b6">Подробнее...</a><br /></td></tr>
+<tr class="separator:a5ea3bd9d2d620b2a3716eeb0715c30b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab611c63a8eb0e86beaf2e2b7a0cca844"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ab611c63a8eb0e86beaf2e2b7a0cca844">addUserContact</a> (const QUuid &amp;inUserUUID, const QUuid &amp;inContactUUID)=0</td></tr>
+<tr class="memdesc:ab611c63a8eb0e86beaf2e2b7a0cca844"><td class="mdescLeft">&#160;</td><td class="mdescRight">addUserContact - Метод добавит контакт пользователю  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ab611c63a8eb0e86beaf2e2b7a0cca844">Подробнее...</a><br /></td></tr>
+<tr class="separator:ab611c63a8eb0e86beaf2e2b7a0cca844"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d24299c9f951f5fd4a9a2b8b0e58c52"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a3d24299c9f951f5fd4a9a2b8b0e58c52">removeUserContact</a> (const QUuid &amp;inUserUUID, const QUuid &amp;inContactUUID)=0</td></tr>
+<tr class="memdesc:a3d24299c9f951f5fd4a9a2b8b0e58c52"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeUserContact - Метод удалит контакт пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a3d24299c9f951f5fd4a9a2b8b0e58c52">Подробнее...</a><br /></td></tr>
+<tr class="separator:a3d24299c9f951f5fd4a9a2b8b0e58c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ca8ad1ef3e69b5880235e7dafe93263"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a7ca8ad1ef3e69b5880235e7dafe93263">removeUserContacts</a> (const QUuid &amp;inUserUUID)=0</td></tr>
+<tr class="memdesc:a7ca8ad1ef3e69b5880235e7dafe93263"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeUserContacts - Метод удалит контакты пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a7ca8ad1ef3e69b5880235e7dafe93263">Подробнее...</a><br /></td></tr>
+<tr class="separator:a7ca8ad1ef3e69b5880235e7dafe93263"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fa4e4e8a76543001fb964db1add11f2"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; std::set&lt; QUuid &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a1fa4e4e8a76543001fb964db1add11f2">getUserContactList</a> (const QUuid &amp;inUserUUID, std::error_code &amp;outErrorCode) const =0</td></tr>
+<tr class="memdesc:a1fa4e4e8a76543001fb964db1add11f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">getUserContactList - Метод вернёт список контактов пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a1fa4e4e8a76543001fb964db1add11f2">Подробнее...</a><br /></td></tr>
+<tr class="separator:a1fa4e4e8a76543001fb964db1add11f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
+<div class="textblock"><p>The <a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html" title="The HMDataStorage class - Интерфейс, описывающий хранилище данных сервера">HMDataStorage</a> class - Интерфейс, описывающий хранилище данных сервера </p>
+<p>Хранит информацию о: 1) Польхователях системы. 2) Группах системы. 3) Переписку групп системы.</p>
+<dl class="section author"><dt>Авторы</dt><dd>Alekseev_s </dd></dl>
+<dl class="section date"><dt>Дата</dt><dd>08.11.2020 </dd></dl>
+</div><h2 class="groupheader">Конструктор(ы)</h2>
+<a id="a44d1b4e68c327bcf6b8a17dbe3a2353b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44d1b4e68c327bcf6b8a17dbe3a2353b">&#9670;&nbsp;</a></span>HMDataStorage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">hmservcommon::datastorage::HMDataStorage::HMDataStorage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html" title="The HMDataStorage class - Интерфейс, описывающий хранилище данных сервера">HMDataStorage</a> - Конструктор по умолчанию </p>
+
+</div>
+</div>
+<a id="a485a9b4b8f7f25cdff59a027cb5334fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a485a9b4b8f7f25cdff59a027cb5334fb">&#9670;&nbsp;</a></span>~HMDataStorage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual hmservcommon::datastorage::HMDataStorage::~HMDataStorage </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span><span class="mlabel">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>~HMDataStorage - Виртуальный деструктор по умолчанию </p>
+
+</div>
+</div>
+<h2 class="groupheader">Методы</h2>
+<a id="a084b842e26a5eaa9c6811a36792e9e1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a084b842e26a5eaa9c6811a36792e9e1b">&#9670;&nbsp;</a></span>addGroup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::error_code hmservcommon::datastorage::HMDataStorage::addGroup </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classhmcommon_1_1HMGroup.html">hmcommon::HMGroup</a> &gt;&#160;</td>
+          <td class="paramname"><em>inGroup</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>addGroup - Метод добавит новую группу </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inGroup</td><td>- Добавляемая группа </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a8b32eff2a118d7b709040668c63e53c6">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a7a02a80b8d82a50f3def1e81482cbf9c">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#aae7bb0e2d505c2a317e07ff306dbc67c">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="a816a0752bb5156d8cd0e45abfc5bf867"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a816a0752bb5156d8cd0e45abfc5bf867">&#9670;&nbsp;</a></span>addGroupUser()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::error_code hmservcommon::datastorage::HMDataStorage::addGroupUser </td>
+          <td>(</td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inGroupUUID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inUserUUID</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>setGroupUsers - Метод добавит пользователя в группу </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inGroupUUID</td><td>- Uuid группы </td></tr>
+    <tr><td class="paramname">inUserUUID</td><td>- UUID пользователя </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a80333f8480208f8f02a45104b0281bd3">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a89c7d6e8863cd3ca11a6b2474a109b2a">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#af887b8074021a643b4d4c1cb1eebb8f6">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="acc7fe7ac22b15909432934bf4a7529eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc7fe7ac22b15909432934bf4a7529eb">&#9670;&nbsp;</a></span>addMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::error_code hmservcommon::datastorage::HMDataStorage::addMessage </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classhmcommon_1_1HMGroupMessage.html">hmcommon::HMGroupMessage</a> &gt;&#160;</td>
+          <td class="paramname"><em>inMessage</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>addMessage - Метод добавит новое сообщение </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inMessage</td><td>- Добавляемое сообщение </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a8d02f1bc144e84853bc822652674aa50">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aed250a79a512d43ee449a1002438010a">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#afde2be7417cea972bd90d030b39cb9ef">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="ac4bdb8c8b3743471115cbd05d5990f4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac4bdb8c8b3743471115cbd05d5990f4f">&#9670;&nbsp;</a></span>addUser()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::error_code hmservcommon::datastorage::HMDataStorage::addUser </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classhmcommon_1_1HMUser.html">hmcommon::HMUser</a> &gt;&#160;</td>
+          <td class="paramname"><em>inUser</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>addUser - Метод добавит нового пользователя </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inUser</td><td>- Добавляемый пользователь </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#ade219a004d602eb0e5dbcca86df6ec62">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aabb0162c6d3d65e5faf312dd6ff9b1ad">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a349d7f366c9f407c728c1aa1efa77d1f">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="ab611c63a8eb0e86beaf2e2b7a0cca844"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab611c63a8eb0e86beaf2e2b7a0cca844">&#9670;&nbsp;</a></span>addUserContact()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::error_code hmservcommon::datastorage::HMDataStorage::addUserContact </td>
+          <td>(</td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inUserUUID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inContactUUID</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>addUserContact - Метод добавит контакт пользователю </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inUserUUID</td><td>- Uuid пользователя </td></tr>
+    <tr><td class="paramname">inContactUUID</td><td>- Uuid контакта </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a90a123dce1b878445e01083db350ad55">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#abfdf94d5dca87303a3dc3c253df331a2">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a0d4b3796976e63f2b10220a7534e5708">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="a71b764303e32914d203b696acc03b32c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71b764303e32914d203b696acc03b32c">&#9670;&nbsp;</a></span>clearGroupUsers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::error_code hmservcommon::datastorage::HMDataStorage::clearGroupUsers </td>
+          <td>(</td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inGroupUUID</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>clearGroupUsers - Метод очистит список членов группы </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inGroupUUID</td><td>- Uuid группы </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#ace91c921030136da5337fdce0d22ed6e">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#ab847270a178228e732a2d0d115c89362">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a517b5f7a1503e3a45f15768019709604">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="a81d0d540feb688fb6d82fd669b35297b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81d0d540feb688fb6d82fd669b35297b">&#9670;&nbsp;</a></span>close()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void hmservcommon::datastorage::HMDataStorage::close </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>close - Метод закроет хранилище данных </p>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a8bf345ef8b7ca0b14ad3c9c7d4cbe91a">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a455fb5ad71c026b9e0a71154c15254e2">hmservcommon::datastorage::HMJsonDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a93e18f3a3a19662c88df615b32967ead">hmservcommon::datastorage::HMCombinedDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ae620a0c526b13b1c4b9800f282d6461d">hmservcommon::datastorage::HMAbstractCahceDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="a69b796166a22d31a57032aaec90b47a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69b796166a22d31a57032aaec90b47a4">&#9670;&nbsp;</a></span>findGroupByUUID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::shared_ptr&lt;<a class="el" href="classhmcommon_1_1HMGroup.html">hmcommon::HMGroup</a>&gt; hmservcommon::datastorage::HMDataStorage::findGroupByUUID </td>
+          <td>(</td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inGroupUUID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::error_code &amp;&#160;</td>
+          <td class="paramname"><em>outErrorCode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>findGroupByUUID - Метод найдёт пользователя по его uuid </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inGroupUUID</td><td>- Uuid группы </td></tr>
+    <tr><td class="paramname">outErrorCode</td><td>- Признак ошибки </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт указатель на экземпляр группы или nullptr </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a5cba3109874fbb384b226429b330297c">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#ac8ba242b00ff9beeaed5c93c5be11a41">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#ab8a48eb0dd0b04895bf3b2e1618a072d">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhmservcommon_1_1datastorage_1_1HMDataStorage_a69b796166a22d31a57032aaec90b47a4_icgraph.png" border="0" usemap="#classhmservcommon_1_1datastorage_1_1HMDataStorage_a69b796166a22d31a57032aaec90b47a4_icgraph" alt=""/></div>
+<map name="classhmservcommon_1_1datastorage_1_1HMDataStorage_a69b796166a22d31a57032aaec90b47a4_icgraph" id="classhmservcommon_1_1datastorage_1_1HMDataStorage_a69b796166a22d31a57032aaec90b47a4_icgraph">
+<area shape="rect" title="findGroupByUUID &#45; Метод найдёт пользователя по его uuid" alt="" coords="587,13,841,54"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional.html#a408fff55ef513722a95beafb3b579ac5" title="checkNewGroupUnique &#45; Метод проверит необходимую уникальность параметров новой группы" alt="" coords="284,5,539,61"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a7a02a80b8d82a50f3def1e81482cbf9c" title="addGroup &#45; Метод добавит новую группу" alt="" coords="5,13,236,54"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae9861e10c67a208a2cc25f5c77af6ee4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9861e10c67a208a2cc25f5c77af6ee4">&#9670;&nbsp;</a></span>findMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::shared_ptr&lt;<a class="el" href="classhmcommon_1_1HMGroupMessage.html">hmcommon::HMGroupMessage</a>&gt; hmservcommon::datastorage::HMDataStorage::findMessage </td>
+          <td>(</td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inMessageUUID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::error_code &amp;&#160;</td>
+          <td class="paramname"><em>outErrorCode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>findMessages - Метод найдёт сообщение по его uuid </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inMessageUUID</td><td>- Uuid сообщения </td></tr>
+    <tr><td class="paramname">outErrorCode</td><td>- Признак ошибки </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт указатель на экземпляр сообщения или nullptr </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a63c9156aa7fcc4670cd37abe2bb8c04e">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#acb3999bb7e6805062bce168d3720b1a2">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#ac4b8bceefa16ea735c45a1fee63d136f">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="a9711f5b122a6435267ca023a0d58b557"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9711f5b122a6435267ca023a0d58b557">&#9670;&nbsp;</a></span>findMessages()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::vector&lt;std::shared_ptr&lt;<a class="el" href="classhmcommon_1_1HMGroupMessage.html">hmcommon::HMGroupMessage</a>&gt; &gt; hmservcommon::datastorage::HMDataStorage::findMessages </td>
+          <td>(</td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inGroupUUID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structhmcommon_1_1MsgRange.html">hmcommon::MsgRange</a> &amp;&#160;</td>
+          <td class="paramname"><em>inRange</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::error_code &amp;&#160;</td>
+          <td class="paramname"><em>outErrorCode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>findMessages - Метод вернёт перечень сообщений группы за куазаный промежуток времени </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inGroupUUID</td><td>- Uuid группы, которой пренадлежат сообщения </td></tr>
+    <tr><td class="paramname">inRange</td><td>- Временной диапозон </td></tr>
+    <tr><td class="paramname">outErrorCode</td><td>- Признак ошибки </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт перечень сообщений </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a17cef5a62dc91198d61698b62a9aa499">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#ab61a516b9abd905dad0a9cb18a034d1f">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a37ad6383e0f05ff5c0e7baf49069a102">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="a174b743bc27f9784270e1d77fe3d4055"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a174b743bc27f9784270e1d77fe3d4055">&#9670;&nbsp;</a></span>findUserByAuthentication()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::shared_ptr&lt;<a class="el" href="classhmcommon_1_1HMUser.html">hmcommon::HMUser</a>&gt; hmservcommon::datastorage::HMDataStorage::findUserByAuthentication </td>
+          <td>(</td>
+          <td class="paramtype">const QString &amp;&#160;</td>
+          <td class="paramname"><em>inLogin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QByteArray &amp;&#160;</td>
+          <td class="paramname"><em>inPasswordHash</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::error_code &amp;&#160;</td>
+          <td class="paramname"><em>outErrorCode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>findUserByAuthentication - Метод найдёт пользователя по его данным аутентификации </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inLogin</td><td>- Логин пользователя </td></tr>
+    <tr><td class="paramname">inPasswordHash</td><td>- Хеш пароля пользователя </td></tr>
+    <tr><td class="paramname">outErrorCode</td><td>- Признак ошибки </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт указатель на экземпляр пользователя или nullptr </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#af716231867c549ca531faf75167b2b92">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#ad3c8ee535dc17ca12422dc3ba57b0f7d">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a1a9e54146283021ea709e9aa95cc180d">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhmservcommon_1_1datastorage_1_1HMDataStorage_a174b743bc27f9784270e1d77fe3d4055_icgraph.png" border="0" usemap="#classhmservcommon_1_1datastorage_1_1HMDataStorage_a174b743bc27f9784270e1d77fe3d4055_icgraph" alt=""/></div>
+<map name="classhmservcommon_1_1datastorage_1_1HMDataStorage_a174b743bc27f9784270e1d77fe3d4055_icgraph" id="classhmservcommon_1_1datastorage_1_1HMDataStorage_a174b743bc27f9784270e1d77fe3d4055_icgraph">
+<area shape="rect" title="findUserByAuthentication &#45; Метод найдёт пользователя по его данным аутентификации" alt="" coords="579,13,885,54"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional.html#aa277c38e68d58396d55db76900b18823" title="checkNewUserUnique &#45; Метод проверит необходимую уникальность параметров нового пользователя" alt="" coords="276,5,531,61"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aabb0162c6d3d65e5faf312dd6ff9b1ad" title="addUser &#45; Метод добавит нового пользователя" alt="" coords="5,13,228,54"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a17ce90091313c898df64f544edf979b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17ce90091313c898df64f544edf979b1">&#9670;&nbsp;</a></span>findUserByUUID()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::shared_ptr&lt;<a class="el" href="classhmcommon_1_1HMUser.html">hmcommon::HMUser</a>&gt; hmservcommon::datastorage::HMDataStorage::findUserByUUID </td>
+          <td>(</td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inUserUUID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::error_code &amp;&#160;</td>
+          <td class="paramname"><em>outErrorCode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>findUserByUUID - Метод найдёт пользователя по его uuid </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inUserUUID</td><td>- Uuid пользователя </td></tr>
+    <tr><td class="paramname">outErrorCode</td><td>- Признак ошибки </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт указатель на экземпляр пользователя или nullptr </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#ab7d800c940d4dc4172a1c511dee0a8a5">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#afef4c7507fb65d03a581e9598761914f">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#abdea46cba1821915a3cc22f5493325d2">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhmservcommon_1_1datastorage_1_1HMDataStorage_a17ce90091313c898df64f544edf979b1_icgraph.png" border="0" usemap="#classhmservcommon_1_1datastorage_1_1HMDataStorage_a17ce90091313c898df64f544edf979b1_icgraph" alt=""/></div>
+<map name="classhmservcommon_1_1datastorage_1_1HMDataStorage_a17ce90091313c898df64f544edf979b1_icgraph" id="classhmservcommon_1_1datastorage_1_1HMDataStorage_a17ce90091313c898df64f544edf979b1_icgraph">
+<area shape="rect" title="findUserByUUID &#45; Метод найдёт пользователя по его uuid" alt="" coords="579,13,825,54"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional.html#aa277c38e68d58396d55db76900b18823" title="checkNewUserUnique &#45; Метод проверит необходимую уникальность параметров нового пользователя" alt="" coords="276,5,531,61"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aabb0162c6d3d65e5faf312dd6ff9b1ad" title="addUser &#45; Метод добавит нового пользователя" alt="" coords="5,13,228,54"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a23806d3edbef4654c1023a297d932c64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23806d3edbef4654c1023a297d932c64">&#9670;&nbsp;</a></span>getGroupUserList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::shared_ptr&lt;std::set&lt;QUuid&gt; &gt; hmservcommon::datastorage::HMDataStorage::getGroupUserList </td>
+          <td>(</td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inGroupUUID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::error_code &amp;&#160;</td>
+          <td class="paramname"><em>outErrorCode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>getGroupUserList - Метод вернёт список UUID'ов членов группы </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inGroupUUID</td><td>- Uuid группы </td></tr>
+    <tr><td class="paramname">outErrorCode</td><td>- Признак ошибки </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт список UUID'ов пользователей группы </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#aa8c89663cfbb43fd7ddd8ac91a6dc03a">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a7363a642ac18060116cd8bc648e85bae">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a8a0ed00fb25dcc57dbd47e4570529182">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="a1fa4e4e8a76543001fb964db1add11f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fa4e4e8a76543001fb964db1add11f2">&#9670;&nbsp;</a></span>getUserContactList()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::shared_ptr&lt;std::set&lt;QUuid&gt; &gt; hmservcommon::datastorage::HMDataStorage::getUserContactList </td>
+          <td>(</td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inUserUUID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::error_code &amp;&#160;</td>
+          <td class="paramname"><em>outErrorCode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>getUserContactList - Метод вернёт список контактов пользователя </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inUserUUID</td><td>- Uuid пользователя </td></tr>
+    <tr><td class="paramname">outErrorCode</td><td>- Признак ошибки </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт список контактов пользователя </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a224dd2118aefffc7541c5a0d44fd78bd">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a25efe7999dbe8fa55b28ded9e4bd23f3">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a0283115427bc3ca56a81f48a25641640">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="abf83eedd2d7e34cf650e80484afdac0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf83eedd2d7e34cf650e80484afdac0b">&#9670;&nbsp;</a></span>getUserGroups()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::shared_ptr&lt;std::set&lt;QUuid&gt; &gt; hmservcommon::datastorage::HMDataStorage::getUserGroups </td>
+          <td>(</td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inUserUUID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::error_code &amp;&#160;</td>
+          <td class="paramname"><em>outErrorCode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>getUserGroups - Метод вернёт список групп пользователя </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inUserUUID</td><td>- Uuid пользователя </td></tr>
+    <tr><td class="paramname">outErrorCode</td><td>- Признак ошибки </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт список UUID'ов групп пользователя </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a01db6b0e45b9cacc7c407b1d36df988e">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a69c8ae062f88f8f4dc0771f1dbde7ac1">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#ab6c01d8dbc8abf5d855381c23090119f">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="a229a1917e9b16d4107e56768fc2df7a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a229a1917e9b16d4107e56768fc2df7a7">&#9670;&nbsp;</a></span>is_open()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool hmservcommon::datastorage::HMDataStorage::is_open </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>is_open - Метод вернёт признак открытости хранилища данных </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак открытости </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#ad25c96a585b2b7b1fb3c0dd66ecb311b">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#af7129f6ff8883d6b59a187a375992aeb">hmservcommon::datastorage::HMJsonDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a7997d3495b3efa912e1e8bf2fef0ac10">hmservcommon::datastorage::HMCombinedDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a6a6932677f1662b09c2a29a2ef12ecf6">hmservcommon::datastorage::HMAbstractCahceDataStorage</a>.</p>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhmservcommon_1_1datastorage_1_1HMDataStorage_a229a1917e9b16d4107e56768fc2df7a7_icgraph.png" border="0" usemap="#classhmservcommon_1_1datastorage_1_1HMDataStorage_a229a1917e9b16d4107e56768fc2df7a7_icgraph" alt=""/></div>
+<map name="classhmservcommon_1_1datastorage_1_1HMDataStorage_a229a1917e9b16d4107e56768fc2df7a7_icgraph" id="classhmservcommon_1_1datastorage_1_1HMDataStorage_a229a1917e9b16d4107e56768fc2df7a7_icgraph">
+<area shape="rect" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="587,53,801,94"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional.html#a408fff55ef513722a95beafb3b579ac5" title="checkNewGroupUnique &#45; Метод проверит необходимую уникальность параметров новой группы" alt="" coords="284,5,539,61"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional.html#aa277c38e68d58396d55db76900b18823" title="checkNewUserUnique &#45; Метод проверит необходимую уникальность параметров нового пользователя" alt="" coords="284,85,539,141"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a7a02a80b8d82a50f3def1e81482cbf9c" title="addGroup &#45; Метод добавит новую группу" alt="" coords="5,13,236,54"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aabb0162c6d3d65e5faf312dd6ff9b1ad" title="addUser &#45; Метод добавит нового пользователя" alt="" coords="9,93,232,134"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="acb0de0bc5c99dba122843d63708ad3d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb0de0bc5c99dba122843d63708ad3d3">&#9670;&nbsp;</a></span>open()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::error_code hmservcommon::datastorage::HMDataStorage::open </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>open - Метод откроет хранилище данных </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a07c4e3bad5ced7d8a929b77a3df67197">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a657aae996bc68cfb3d8f1d9f332ad812">hmservcommon::datastorage::HMJsonDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#ab0bda1e6f91d2b8c11e57dcd300f064a">hmservcommon::datastorage::HMCombinedDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ab0178b64aff50caf8f0ce5c172def2ea">hmservcommon::datastorage::HMAbstractCahceDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="a9854c3322ee1f91a093f4bd002d8087f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9854c3322ee1f91a093f4bd002d8087f">&#9670;&nbsp;</a></span>removeGroup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::error_code hmservcommon::datastorage::HMDataStorage::removeGroup </td>
+          <td>(</td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inGroupUUID</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>removeGroup - Метод удалит группу </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inGroupUUID</td><td>- Uuid удаляемой группы </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#aef4e740f276b5b3d0babb186b985b88d">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a97d9b5a2a2d20d652416e72082426ce7">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a365ae0e3d32b0077cf014dc00e4c1896">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="a940385812cdd258bbc8c4d0eba81dcec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a940385812cdd258bbc8c4d0eba81dcec">&#9670;&nbsp;</a></span>removeGroupUser()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::error_code hmservcommon::datastorage::HMDataStorage::removeGroupUser </td>
+          <td>(</td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inGroupUUID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inUserUUID</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>removeGroupUser - Метод удалит пользователя из группы </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inGroupUUID</td><td>- Uuid группы </td></tr>
+    <tr><td class="paramname">inUserUUID</td><td>- Uuid пользователя </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a49bd464edbb633d27e66cd21a0b55cc4">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a4459561f4b1cff34960e4092859aa83f">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a3f48cc25ba66450941c744c86eccb176">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="ad46dcb9045327e4717399f923c6d8255"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad46dcb9045327e4717399f923c6d8255">&#9670;&nbsp;</a></span>removeMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::error_code hmservcommon::datastorage::HMDataStorage::removeMessage </td>
+          <td>(</td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inMessageUUID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inGroupUUID</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>removeMessage - Метод удалит сообщение </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inMessageUUID</td><td>- Uuid сообщения </td></tr>
+    <tr><td class="paramname">inGroupUUID</td><td>- Uuid группы </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a31a77cb059991b7fff10cbb2b373d3b5">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#afd99e713e31a40fc994c5b5fd1696e46">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#ad1b1dadab3c44aaae5b685ad3d3b9538">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="ad20bc2871b5babb00f471c667bccaafb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad20bc2871b5babb00f471c667bccaafb">&#9670;&nbsp;</a></span>removeUser()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::error_code hmservcommon::datastorage::HMDataStorage::removeUser </td>
+          <td>(</td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inUserUUID</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>removeUser - Метод удалит пользователя </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inUserUUID</td><td>- Uuid удаляемого пользователя </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#aa63af5fa0c5afe05ae839bce0d40a8da">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aea408c5f20ffe8908f9e706127e11dd9">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a4305ecc40d29124b1ec7b19ae3b1d9c1">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="a3d24299c9f951f5fd4a9a2b8b0e58c52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d24299c9f951f5fd4a9a2b8b0e58c52">&#9670;&nbsp;</a></span>removeUserContact()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::error_code hmservcommon::datastorage::HMDataStorage::removeUserContact </td>
+          <td>(</td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inUserUUID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inContactUUID</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>removeUserContact - Метод удалит контакт пользователя </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inUserUUID</td><td>- Uuid пользователя </td></tr>
+    <tr><td class="paramname">inContactUUID</td><td>- Uuid контакта </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#ac9a9c52d90f4e30e3fe1034d4d33f8a8">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aab05e4ced328690bfe601e3dcc4c73e5">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a86662ab7068607481e4956b16cd7eb5f">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="a7ca8ad1ef3e69b5880235e7dafe93263"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ca8ad1ef3e69b5880235e7dafe93263">&#9670;&nbsp;</a></span>removeUserContacts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::error_code hmservcommon::datastorage::HMDataStorage::removeUserContacts </td>
+          <td>(</td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inUserUUID</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>removeUserContacts - Метод удалит контакты пользователя </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inUserUUID</td><td>- Uuid пользователя </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a7e64f02d91859f832c87209c82f25df9">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a87cfb4031e21333635a5313c55d31486">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#adf7f3081fde70192b1e027637baea289">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="a7583facb7df49d65bc45fa0c2344c608"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7583facb7df49d65bc45fa0c2344c608">&#9670;&nbsp;</a></span>setGroupUsers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::error_code hmservcommon::datastorage::HMDataStorage::setGroupUsers </td>
+          <td>(</td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inGroupUUID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::shared_ptr&lt; std::set&lt; QUuid &gt;&gt;&#160;</td>
+          <td class="paramname"><em>inUsers</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>setGroupUsers - Метод задаст список членов группы </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inGroupUUID</td><td>- Uuid группы </td></tr>
+    <tr><td class="paramname">inUsers</td><td>- Список пользователей группы (UUID'ы) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a9077f73dc54f9ec1f7cb75aeb7bbf191">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aaecb72687a39e65f93d88cc149014140">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a7f1e0928251b5d0cc0952cc1717d901d">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="a5ea3bd9d2d620b2a3716eeb0715c30b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ea3bd9d2d620b2a3716eeb0715c30b6">&#9670;&nbsp;</a></span>setUserContacts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::error_code hmservcommon::datastorage::HMDataStorage::setUserContacts </td>
+          <td>(</td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inUserUUID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::shared_ptr&lt; std::set&lt; QUuid &gt;&gt;&#160;</td>
+          <td class="paramname"><em>inContacts</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>setUserContacts - Метод задаст пользователю список контактов </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inUserUUID</td><td>- Uuid пользователья </td></tr>
+    <tr><td class="paramname">inContacts</td><td>- Список контактов </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#ad30ea9de3a5393c43d0e5fe86f21c541">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a8fe994f6f1a05bb97c1a4af8607a5690">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#acbb02d4f68e5f47719f9280945b45708">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="a5fba4d873704c4afa24293d00722436c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fba4d873704c4afa24293d00722436c">&#9670;&nbsp;</a></span>updateGroup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::error_code hmservcommon::datastorage::HMDataStorage::updateGroup </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classhmcommon_1_1HMGroup.html">hmcommon::HMGroup</a> &gt;&#160;</td>
+          <td class="paramname"><em>inGroup</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>updateGroup - Метод обновит данные группы </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inGroup</td><td>- Обновляемая группа </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#ac052efa418f96b0c2b2c345319160c46">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a76a810289a3527343410e83a7d939ce6">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#af9ffbd87f6f638e2dae0be16bbaea134">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="a2c4f1de3495a74d5966479dd6dc11e16"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c4f1de3495a74d5966479dd6dc11e16">&#9670;&nbsp;</a></span>updateMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::error_code hmservcommon::datastorage::HMDataStorage::updateMessage </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classhmcommon_1_1HMGroupMessage.html">hmcommon::HMGroupMessage</a> &gt;&#160;</td>
+          <td class="paramname"><em>inMessage</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>updateMessage - Метод обновит данные сообщения </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inMessage</td><td>- Обновляемое сообщение </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a8ab7b06f037b13bd7bdee7f44c618a0d">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a223338f1c88ead7f56e5bf6e1c07b465">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a576a82e6306e4bcd8e5bbdade3fa00a4">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
+<a id="a952f09b0b7f80ddcbd81e61074c5d648"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a952f09b0b7f80ddcbd81e61074c5d648">&#9670;&nbsp;</a></span>updateUser()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::error_code hmservcommon::datastorage::HMDataStorage::updateUser </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classhmcommon_1_1HMUser.html">hmcommon::HMUser</a> &gt;&#160;</td>
+          <td class="paramname"><em>inUser</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>updateUser - Метод обновит данные пользователя </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inUser</td><td>- Обновляемый пользователь </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#ac750a6dc6927e9d466751b0e7f8af5a4">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a1319eca40027cace1bddccb068a315ab">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a60efa530f2e0aeb0d10e7cb71e5d5784">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
+<hr/>Объявления и описания членов класса находятся в файле:<ul>
+<li>Projects/libraries/HawkServerCore/src/datastorage/interface/<a class="el" href="datastorageinterface_8h_source.html">datastorageinterface.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

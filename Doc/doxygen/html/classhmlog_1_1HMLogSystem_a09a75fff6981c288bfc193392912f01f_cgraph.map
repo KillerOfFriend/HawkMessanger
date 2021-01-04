@@ -1,0 +1,5 @@
+<map id="hmlog::HMLogSystem::HMLogSystem" name="hmlog::HMLogSystem::HMLogSystem">
+<area shape="rect" id="node1" title="HMLogSystem &#45; Конструктор по умолчанию" alt="" coords="5,5,171,47"/>
+<area shape="rect" id="node2" href="$classhmlog_1_1HMLogSystem.html#a114ddb14886434dd283f13c2668c4dac" title="setConfig &#45; Метод задаст настройки системы логирования" alt="" coords="219,5,384,47"/>
+<area shape="rect" id="node3" href="$classhmlog_1_1HMLogSystem.html#ac433e5a0118c2f2dfa1afc5266660606" title="fileClose &#45; Метод закроет файл" alt="" coords="432,5,597,47"/>
+</map>

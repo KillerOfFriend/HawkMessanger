@@ -1,0 +1,5 @@
+<map id="hmservcommon::datastorage::HMAbstractCahceDataStorage" name="hmservcommon::datastorage::HMAbstractCahceDataStorage">
+<area shape="rect" id="node1" title="The HMAbstractCahceDataStorage class &#45; Класс, описывающий абстракцию кеширующего хранилища данных" alt="" coords="19,184,246,225"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional.html" title="The HMAbstractDataStorageFunctional class &#45; Класс, описывающий абстрактное хранилище даннх с дополнит..." alt="" coords="5,95,260,136"/>
+<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMDataStorage.html" title="The HMDataStorage class &#45; Интерфейс, описывающий хранилище данных сервера" alt="" coords="25,5,240,47"/>
+</map>

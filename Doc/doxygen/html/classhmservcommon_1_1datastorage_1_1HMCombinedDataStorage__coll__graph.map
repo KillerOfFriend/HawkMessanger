@@ -1,0 +1,4 @@
+<map id="hmservcommon::datastorage::HMCombinedDataStorage" name="hmservcommon::datastorage::HMCombinedDataStorage">
+<area shape="rect" id="node1" title="The HMCombinedDataStorage class &#45; Класс, описывающий комбинированное хранилище данных (физическое\хеш..." alt="" coords="5,95,220,136"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMDataStorage.html" title="The HMDataStorage class &#45; Интерфейс, описывающий хранилище данных сервера" alt="" coords="5,5,220,47"/>
+</map>

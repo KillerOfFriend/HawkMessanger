@@ -1,0 +1,5 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="node1" title="TEST &#45; Тест хранения параметров группы" alt="" coords="5,46,60,73"/>
+<area shape="rect" id="node2" href="$classhmcommon_1_1HMGroup.html#a68ecf108f6b48a5fbb94015e9fb9b49a" title="getName &#45; Метод вернёт имя группы" alt="" coords="108,5,285,47"/>
+<area shape="rect" id="node3" href="$classhmcommon_1_1HMGroup.html#ad56808c904e737de1d7167d93e40f646" title="setName &#45; Метод задаст имя группы" alt="" coords="108,71,285,112"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="hmlog::HMLogSystem::printMsg" name="hmlog::HMLogSystem::printMsg">
+<area shape="rect" id="node1" title="printMsg &#45; Метод печати сообщений" alt="" coords="5,5,171,47"/>
+<area shape="rect" id="node2" href="$namespacehmlog.html#abc2ef519ffd1694f97ee7fcdee4543e4" title="QStdOut &#45; Функция вернёт текстовый поток на онове стандартного потока" alt="" coords="219,13,344,39"/>
+</map>

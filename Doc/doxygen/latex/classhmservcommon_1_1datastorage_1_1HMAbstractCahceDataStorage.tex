@@ -1,0 +1,326 @@
+\hypertarget{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage}{}\doxysection{Класс hmservcommon\+::datastorage\+::H\+M\+Abstract\+Cahce\+Data\+Storage}
+\label{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage}\index{hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}}
+
+
+The \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage}{H\+M\+Abstract\+Cahce\+Data\+Storage}} class -\/ Класс, описывающий абстракцию кеширующего хранилища данных  
+
+
+
+
+{\ttfamily \#include $<$abstractcahcedatastorage.\+h$>$}
+
+
+
+Граф наследования\+:hmservcommon\+::datastorage\+::H\+M\+Abstract\+Cahce\+Data\+Storage\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=271pt]{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Граф связей класса hmservcommon\+::datastorage\+::H\+M\+Abstract\+Cahce\+Data\+Storage\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=271pt]{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a8810c7ba34b68da79d7b2f21a72b43d5}{H\+M\+Abstract\+Cahce\+Data\+Storage}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage}{H\+M\+Abstract\+Cahce\+Data\+Storage}} -\/ Конструктор по умолчанию \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a12fddffdcff831dd8d62f57f75d9bb67}{$\sim$\+H\+M\+Abstract\+Cahce\+Data\+Storage}} () override=default
+\begin{DoxyCompactList}\small\item\em $\sim$\+H\+M\+Abstract\+Cahce\+Data\+Storage -\/ Виртуальный деструктор по умолчанию \end{DoxyCompactList}\item 
+virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_ab0178b64aff50caf8f0ce5c172def2ea}{open}} () override
+\begin{DoxyCompactList}\small\item\em open -\/ Метод откроет хранилище данных \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a6a6932677f1662b09c2a29a2ef12ecf6}{is\+\_\+open}} () const override
+\begin{DoxyCompactList}\small\item\em is\+\_\+open -\/ Метод вернёт признак открытости хранилища данных \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_ae620a0c526b13b1c4b9800f282d6461d}{close}} () override
+\begin{DoxyCompactList}\small\item\em close -\/ Метод закроет хранилище данных \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Защищенные члены}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a294948cbf56bd24c7d7ed60826b0fd87}{start\+Cache\+Watchdog\+Thread}} ()
+\begin{DoxyCompactList}\small\item\em start\+Cache\+Watchdog\+Thread -\/ Метод запустит поток, котролирующий объекты кеша \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_af31c7d4680c9785f515e433ab79e9049}{stop\+Cache\+Watchdog\+Thread}} ()
+\begin{DoxyCompactList}\small\item\em stop\+Cache\+Watchdog\+Thread -\/ Метод остановит поток, котролирующий объекты кеша \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a8b502568fc2ad3cbc54fe30695e3f320}{process\+Cache\+In\+Thread}} ()=0
+\begin{DoxyCompactList}\small\item\em process\+Cache\+In\+Thread -\/ Метод обработки кеша в потоке \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_ad31687e2e23f8b66e2b43b1f91d5a066}{cache\+Watchdog\+Thread\+Func}} ()
+\begin{DoxyCompactList}\small\item\em cache\+Watchdog\+Thread\+Func -\/ Метод потока, обрабатывающего кеш \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+std\+::atomic\+\_\+bool \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a0df6ffeafbfd116db3921125c45ed69e}{m\+\_\+thread\+Work}}
+\begin{DoxyCompactList}\small\item\em Флаг работы потока \end{DoxyCompactList}\item 
+std\+::thread \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a12b2aa0bc2fe3c26e7b710de66283d4c}{m\+\_\+watchdog\+Thread}}
+\begin{DoxyCompactList}\small\item\em Поток контроля кеша \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+The \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage}{H\+M\+Abstract\+Cahce\+Data\+Storage}} class -\/ Класс, описывающий абстракцию кеширующего хранилища данных 
+
+\begin{DoxyAuthor}{Авторы}
+Alekseev\+\_\+s 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Дата}
+12.\+12.\+2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a8810c7ba34b68da79d7b2f21a72b43d5}\label{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a8810c7ba34b68da79d7b2f21a72b43d5}} 
+\index{hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}!HMAbstractCahceDataStorage@{HMAbstractCahceDataStorage}}
+\index{HMAbstractCahceDataStorage@{HMAbstractCahceDataStorage}!hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}}
+\doxysubsubsection{\texorpdfstring{HMAbstractCahceDataStorage()}{HMAbstractCahceDataStorage()}}
+{\footnotesize\ttfamily H\+M\+Abstract\+Cahce\+Data\+Storage\+::\+H\+M\+Abstract\+Cahce\+Data\+Storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage}{H\+M\+Abstract\+Cahce\+Data\+Storage}} -\/ Конструктор по умолчанию 
+
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a12fddffdcff831dd8d62f57f75d9bb67}\label{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a12fddffdcff831dd8d62f57f75d9bb67}} 
+\index{hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}!````~HMAbstractCahceDataStorage@{$\sim$HMAbstractCahceDataStorage}}
+\index{````~HMAbstractCahceDataStorage@{$\sim$HMAbstractCahceDataStorage}!hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}}
+\doxysubsubsection{\texorpdfstring{$\sim$HMAbstractCahceDataStorage()}{~HMAbstractCahceDataStorage()}}
+{\footnotesize\ttfamily virtual hmservcommon\+::datastorage\+::\+H\+M\+Abstract\+Cahce\+Data\+Storage\+::$\sim$\+H\+M\+Abstract\+Cahce\+Data\+Storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+$\sim$\+H\+M\+Abstract\+Cahce\+Data\+Storage -\/ Виртуальный деструктор по умолчанию 
+
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_ad31687e2e23f8b66e2b43b1f91d5a066}\label{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_ad31687e2e23f8b66e2b43b1f91d5a066}} 
+\index{hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}!cacheWatchdogThreadFunc@{cacheWatchdogThreadFunc}}
+\index{cacheWatchdogThreadFunc@{cacheWatchdogThreadFunc}!hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}}
+\doxysubsubsection{\texorpdfstring{cacheWatchdogThreadFunc()}{cacheWatchdogThreadFunc()}}
+{\footnotesize\ttfamily void H\+M\+Abstract\+Cahce\+Data\+Storage\+::cache\+Watchdog\+Thread\+Func (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+cache\+Watchdog\+Thread\+Func -\/ Метод потока, обрабатывающего кеш 
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_ad31687e2e23f8b66e2b43b1f91d5a066_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_ad31687e2e23f8b66e2b43b1f91d5a066_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_ae620a0c526b13b1c4b9800f282d6461d}\label{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_ae620a0c526b13b1c4b9800f282d6461d}} 
+\index{hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}!close@{close}}
+\index{close@{close}!hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void H\+M\+Abstract\+Cahce\+Data\+Storage\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+close -\/ Метод закроет хранилище данных 
+
+
+
+Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a81d0d540feb688fb6d82fd669b35297b}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
+
+
+
+Переопределяется в \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a8bf345ef8b7ca0b14ad3c9c7d4cbe91a}{hmservcommon\+::datastorage\+::\+H\+M\+Cached\+Memory\+Data\+Storage}}.
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_ae620a0c526b13b1c4b9800f282d6461d_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_ae620a0c526b13b1c4b9800f282d6461d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a6a6932677f1662b09c2a29a2ef12ecf6}\label{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a6a6932677f1662b09c2a29a2ef12ecf6}} 
+\index{hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}!is\_open@{is\_open}}
+\index{is\_open@{is\_open}!hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}}
+\doxysubsubsection{\texorpdfstring{is\_open()}{is\_open()}}
+{\footnotesize\ttfamily bool H\+M\+Abstract\+Cahce\+Data\+Storage\+::is\+\_\+open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+is\+\_\+open -\/ Метод вернёт признак открытости хранилища данных 
+
+\begin{DoxyReturn}{Возвращает}
+Вернёт признак открытости 
+\end{DoxyReturn}
+
+
+Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a229a1917e9b16d4107e56768fc2df7a7}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
+
+
+
+Переопределяется в \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_ad25c96a585b2b7b1fb3c0dd66ecb311b}{hmservcommon\+::datastorage\+::\+H\+M\+Cached\+Memory\+Data\+Storage}}.
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a6a6932677f1662b09c2a29a2ef12ecf6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_ab0178b64aff50caf8f0ce5c172def2ea}\label{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_ab0178b64aff50caf8f0ce5c172def2ea}} 
+\index{hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}!open@{open}}
+\index{open@{open}!hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}}
+\doxysubsubsection{\texorpdfstring{open()}{open()}}
+{\footnotesize\ttfamily std\+::error\+\_\+code H\+M\+Abstract\+Cahce\+Data\+Storage\+::open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+open -\/ Метод откроет хранилище данных 
+
+\begin{DoxyReturn}{Возвращает}
+Вернёт признак ошибки 
+\end{DoxyReturn}
+
+
+Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_acb0de0bc5c99dba122843d63708ad3d3}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
+
+
+
+Переопределяется в \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a07c4e3bad5ced7d8a929b77a3df67197}{hmservcommon\+::datastorage\+::\+H\+M\+Cached\+Memory\+Data\+Storage}}.
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_ab0178b64aff50caf8f0ce5c172def2ea_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_ab0178b64aff50caf8f0ce5c172def2ea_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a8b502568fc2ad3cbc54fe30695e3f320}\label{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a8b502568fc2ad3cbc54fe30695e3f320}} 
+\index{hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}!processCacheInThread@{processCacheInThread}}
+\index{processCacheInThread@{processCacheInThread}!hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}}
+\doxysubsubsection{\texorpdfstring{processCacheInThread()}{processCacheInThread()}}
+{\footnotesize\ttfamily virtual void hmservcommon\+::datastorage\+::\+H\+M\+Abstract\+Cahce\+Data\+Storage\+::process\+Cache\+In\+Thread (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+process\+Cache\+In\+Thread -\/ Метод обработки кеша в потоке 
+
+
+
+Замещается в \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a8d25c37d56c5208e65e1e6781c56a4a8}{hmservcommon\+::datastorage\+::\+H\+M\+Cached\+Memory\+Data\+Storage}}.
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a8b502568fc2ad3cbc54fe30695e3f320_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a294948cbf56bd24c7d7ed60826b0fd87}\label{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a294948cbf56bd24c7d7ed60826b0fd87}} 
+\index{hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}!startCacheWatchdogThread@{startCacheWatchdogThread}}
+\index{startCacheWatchdogThread@{startCacheWatchdogThread}!hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}}
+\doxysubsubsection{\texorpdfstring{startCacheWatchdogThread()}{startCacheWatchdogThread()}}
+{\footnotesize\ttfamily std\+::error\+\_\+code H\+M\+Abstract\+Cahce\+Data\+Storage\+::start\+Cache\+Watchdog\+Thread (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+start\+Cache\+Watchdog\+Thread -\/ Метод запустит поток, котролирующий объекты кеша 
+
+\begin{DoxyReturn}{Возвращает}
+Вернёт признак ошибки 
+\end{DoxyReturn}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a294948cbf56bd24c7d7ed60826b0fd87_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a294948cbf56bd24c7d7ed60826b0fd87_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_af31c7d4680c9785f515e433ab79e9049}\label{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_af31c7d4680c9785f515e433ab79e9049}} 
+\index{hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}!stopCacheWatchdogThread@{stopCacheWatchdogThread}}
+\index{stopCacheWatchdogThread@{stopCacheWatchdogThread}!hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}}
+\doxysubsubsection{\texorpdfstring{stopCacheWatchdogThread()}{stopCacheWatchdogThread()}}
+{\footnotesize\ttfamily void H\+M\+Abstract\+Cahce\+Data\+Storage\+::stop\+Cache\+Watchdog\+Thread (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+stop\+Cache\+Watchdog\+Thread -\/ Метод остановит поток, котролирующий объекты кеша 
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_af31c7d4680c9785f515e433ab79e9049_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a0df6ffeafbfd116db3921125c45ed69e}\label{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a0df6ffeafbfd116db3921125c45ed69e}} 
+\index{hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}!m\_threadWork@{m\_threadWork}}
+\index{m\_threadWork@{m\_threadWork}!hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}}
+\doxysubsubsection{\texorpdfstring{m\_threadWork}{m\_threadWork}}
+{\footnotesize\ttfamily std\+::atomic\+\_\+bool hmservcommon\+::datastorage\+::\+H\+M\+Abstract\+Cahce\+Data\+Storage\+::m\+\_\+thread\+Work\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Флаг работы потока 
+
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a12b2aa0bc2fe3c26e7b710de66283d4c}\label{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a12b2aa0bc2fe3c26e7b710de66283d4c}} 
+\index{hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}!m\_watchdogThread@{m\_watchdogThread}}
+\index{m\_watchdogThread@{m\_watchdogThread}!hmservcommon::datastorage::HMAbstractCahceDataStorage@{hmservcommon::datastorage::HMAbstractCahceDataStorage}}
+\doxysubsubsection{\texorpdfstring{m\_watchdogThread}{m\_watchdogThread}}
+{\footnotesize\ttfamily std\+::thread hmservcommon\+::datastorage\+::\+H\+M\+Abstract\+Cahce\+Data\+Storage\+::m\+\_\+watchdog\+Thread\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Поток контроля кеша 
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Projects/libraries/\+Hawk\+Server\+Core/src/datastorage/interface/\mbox{\hyperlink{abstractcahcedatastorage_8h}{abstractcahcedatastorage.\+h}}\item 
+Projects/libraries/\+Hawk\+Server\+Core/src/datastorage/interface/\mbox{\hyperlink{abstractcahcedatastorage_8cpp}{abstractcahcedatastorage.\+cpp}}\end{DoxyCompactItemize}

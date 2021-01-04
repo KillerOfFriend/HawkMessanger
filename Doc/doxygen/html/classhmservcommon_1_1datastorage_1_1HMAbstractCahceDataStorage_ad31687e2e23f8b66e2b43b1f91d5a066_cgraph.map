@@ -1,0 +1,4 @@
+<map id="hmservcommon::datastorage::HMAbstractCahceDataStorage::cacheWatchdogThreadFunc" name="hmservcommon::datastorage::HMAbstractCahceDataStorage::cacheWatchdogThreadFunc">
+<area shape="rect" id="node1" title="cacheWatchdogThreadFunc &#45; Метод потока, обрабатывающего кеш" alt="" coords="5,5,232,61"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a8b502568fc2ad3cbc54fe30695e3f320" title="processCacheInThread &#45; Метод обработки кеша в потоке" alt="" coords="280,5,507,61"/>
+</map>

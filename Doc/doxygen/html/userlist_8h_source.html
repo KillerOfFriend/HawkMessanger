@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>HawkMessanger: Исходный файл Projects/libraries/HawkCommon/src/userlist.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">HawkMessanger
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_7a6499598ddcfcabe96e224cb4a6d834.html">Projects</a></li><li class="navelem"><a class="el" href="dir_e58a87a21221f9da698103351b870c05.html">libraries</a></li><li class="navelem"><a class="el" href="dir_1ea90edc7b256d5238b2bba3b9bb95dc.html">HawkCommon</a></li><li class="navelem"><a class="el" href="dir_67803fc46832aab7dbb8b538e12f66ef.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">userlist.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="userlist_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef HMUserList_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define HMUserList_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;system_error&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;unordered_set&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;QUuid&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="user_8h.html">user.h</a>&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacehmcommon.html">hmcommon</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structhmcommon_1_1ContactMakeHash.html">   23</a></span>&#160;<span class="comment"></span><span class="keyword">struct </span><a class="code" href="structhmcommon_1_1ContactMakeHash.html">ContactMakeHash</a></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    std::size_t <a class="code" href="structhmcommon_1_1ContactMakeHash.html#a88c1cf366f5fc5d5783297afee76adcc">operator() </a>(<span class="keyword">const</span> std::shared_ptr&lt;HMUser&gt;&amp; inContact) <span class="keyword">const</span> noexcept;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;};</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structhmcommon_1_1ContactCheckEqual.html">   36</a></span>&#160;<span class="comment"></span><span class="keyword">struct </span><a class="code" href="structhmcommon_1_1ContactCheckEqual.html">ContactCheckEqual</a></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;{</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structhmcommon_1_1ContactCheckEqual.html#afa4355e37378795d96cc3f6474176e7c">operator()</a>(<span class="keyword">const</span> std::shared_ptr&lt;HMUser&gt;&amp; inLeftContact, <span class="keyword">const</span> std::shared_ptr&lt;HMUser&gt;&amp; inRightContact) <span class="keyword">const</span> noexcept;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;};</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classhmcommon_1_1HMUserList.html">   47</a></span>&#160;<span class="comment"></span><span class="keyword">class </span><a class="code" href="classhmcommon_1_1HMUserList.html">HMUserList</a></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classhmcommon_1_1HMUserList.html#a8c14b712ea37f53abf16f4dd29c005a6">   51</a></span>&#160;    std::unordered_set&lt;std::shared_ptr&lt;HMUser&gt;, <a class="code" href="structhmcommon_1_1ContactMakeHash.html">ContactMakeHash</a>, <a class="code" href="structhmcommon_1_1ContactCheckEqual.html">ContactCheckEqual</a>&gt; <a class="code" href="classhmcommon_1_1HMUserList.html#a8c14b712ea37f53abf16f4dd29c005a6">m_contacts</a>; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <a class="code" href="classhmcommon_1_1HMUserList.html#ab67efa0af6ee1a63bad0f5384cbcf93e">HMUserList</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="classhmcommon_1_1HMUserList.html#a062bca6b73fb961eb05787410eddd3e5">~HMUserList</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classhmcommon_1_1HMUserList.html#abea6f02f24d81a5262953ee081c2f0d0">isEmpty</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    std::size_t <a class="code" href="classhmcommon_1_1HMUserList.html#a8c9bb6ee395db2fb9d0ec3416e0af0b0">count</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classhmcommon_1_1HMUserList.html#a412833fb3b9f5ea608cee7dba728bdd1">contain</a>(<span class="keyword">const</span> QUuid&amp; inUserUUID) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classhmcommon_1_1HMUserList.html#a412833fb3b9f5ea608cee7dba728bdd1">contain</a>(<span class="keyword">const</span> std::shared_ptr&lt;HMUser&gt; inUser) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    std::error_code <a class="code" href="classhmcommon_1_1HMUserList.html#a6a573ed62c535316765066a710966721">add</a>(<span class="keyword">const</span> std::shared_ptr&lt;HMUser&gt; inNewUser);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    std::shared_ptr&lt;HMUser&gt; <a class="code" href="classhmcommon_1_1HMUserList.html#ae0f201708908b217b38f37135a47e6f0">get</a>(<span class="keyword">const</span> std::size_t inIndex, std::error_code&amp; outErrorCode) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    std::shared_ptr&lt;HMUser&gt; <a class="code" href="classhmcommon_1_1HMUserList.html#ae0f201708908b217b38f37135a47e6f0">get</a>(<span class="keyword">const</span> QUuid inUserUuid, std::error_code&amp; outErrorCode) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    std::error_code <a class="code" href="classhmcommon_1_1HMUserList.html#af5a8b3fc50581ecba154f55f432caf00">remove</a>(<span class="keyword">const</span> std::size_t inIndex);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    std::error_code <a class="code" href="classhmcommon_1_1HMUserList.html#af5a8b3fc50581ecba154f55f432caf00">remove</a>(<span class="keyword">const</span> QUuid inUserUuid);</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;};</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;}</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="preprocessor">#endif // HMUserList_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="auserlist_8h_html"><div class="ttname"><a href="userlist_8h.html">userlist.h</a></div><div class="ttdoc">Содержит описание контактов пользователя системы</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074ae1cd8086c4e84519196dd8ea7b324ff2"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074ae1cd8086c4e84519196dd8ea7b324ff2">hmcommon::eSystemErrorEx::seAlredyInContainer</a></div><div class="ttdeci">@ seAlredyInContainer</div><div class="ttdoc">Объект уже в контейнере</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMUserList_html_a6a573ed62c535316765066a710966721"><div class="ttname"><a href="classhmcommon_1_1HMUserList.html#a6a573ed62c535316765066a710966721">hmcommon::HMUserList::add</a></div><div class="ttdeci">std::error_code add(const std::shared_ptr&lt; HMUser &gt; inNewUser)</div><div class="ttdoc">add - Метод добавит нового пользователя в перечень</div><div class="ttdef"><b>Definition:</b> userlist.cpp:47</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074a075fedc58218682904f396b745bb5a5f"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074a075fedc58218682904f396b745bb5a5f">hmcommon::eSystemErrorEx::seInvalidPtr</a></div><div class="ttdeci">@ seInvalidPtr</div><div class="ttdoc">Не валидный указатель</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMUserList_html"><div class="ttname"><a href="classhmcommon_1_1HMUserList.html">hmcommon::HMUserList</a></div><div class="ttdoc">The HMUserList class - Класс, содержащий список пользователей системы</div><div class="ttdef"><b>Definition:</b> userlist.h:47</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMUserList_html_af5a8b3fc50581ecba154f55f432caf00"><div class="ttname"><a href="classhmcommon_1_1HMUserList.html#af5a8b3fc50581ecba154f55f432caf00">hmcommon::HMUserList::remove</a></div><div class="ttdeci">std::error_code remove(const std::size_t inIndex)</div><div class="ttdoc">remove - Метод удалит пользователя по его порядквому номеру</div><div class="ttdef"><b>Definition:</b> userlist.cpp:99</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMUserList_html_ae0f201708908b217b38f37135a47e6f0"><div class="ttname"><a href="classhmcommon_1_1HMUserList.html#ae0f201708908b217b38f37135a47e6f0">hmcommon::HMUserList::get</a></div><div class="ttdeci">std::shared_ptr&lt; HMUser &gt; get(const std::size_t inIndex, std::error_code &amp;outErrorCode) const</div><div class="ttdoc">get - Метод вернёт пользователя по его порядковому номеру</div><div class="ttdef"><b>Definition:</b> userlist.cpp:62</div></div>
+<div class="ttc" id="astructhmcommon_1_1ContactMakeHash_html"><div class="ttname"><a href="structhmcommon_1_1ContactMakeHash.html">hmcommon::ContactMakeHash</a></div><div class="ttdoc">The ContactMakeHash struct - Структура, реализующая оператор взятия хеша от пользователя</div><div class="ttdef"><b>Definition:</b> userlist.h:23</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074aaab0146e021aca2a47fc5e1882d76562"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074aaab0146e021aca2a47fc5e1882d76562">hmcommon::eSystemErrorEx::seContainerEmpty</a></div><div class="ttdeci">@ seContainerEmpty</div><div class="ttdoc">Контейнер пуст</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMUserList_html_a8c14b712ea37f53abf16f4dd29c005a6"><div class="ttname"><a href="classhmcommon_1_1HMUserList.html#a8c14b712ea37f53abf16f4dd29c005a6">hmcommon::HMUserList::m_contacts</a></div><div class="ttdeci">std::unordered_set&lt; std::shared_ptr&lt; HMUser &gt;, ContactMakeHash, ContactCheckEqual &gt; m_contacts</div><div class="ttdoc">Контейнер, содержащий перечень пользователей</div><div class="ttdef"><b>Definition:</b> userlist.h:51</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMUserList_html_ab67efa0af6ee1a63bad0f5384cbcf93e"><div class="ttname"><a href="classhmcommon_1_1HMUserList.html#ab67efa0af6ee1a63bad0f5384cbcf93e">hmcommon::HMUserList::HMUserList</a></div><div class="ttdeci">HMUserList()=default</div><div class="ttdoc">HMUserList - Конструктор по умолчанию</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMUserList_html_a8c9bb6ee395db2fb9d0ec3416e0af0b0"><div class="ttname"><a href="classhmcommon_1_1HMUserList.html#a8c9bb6ee395db2fb9d0ec3416e0af0b0">hmcommon::HMUserList::count</a></div><div class="ttdeci">std::size_t count() const</div><div class="ttdoc">count - Метод вернёт количество пользователей в списке</div><div class="ttdef"><b>Definition:</b> userlist.cpp:31</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMUserList_html_a062bca6b73fb961eb05787410eddd3e5"><div class="ttname"><a href="classhmcommon_1_1HMUserList.html#a062bca6b73fb961eb05787410eddd3e5">hmcommon::HMUserList::~HMUserList</a></div><div class="ttdeci">~HMUserList()=default</div><div class="ttdoc">~HMUserList - Деструктор по умолчанию</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074afce0c62359706b88ab0e7962ef9f24d8"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074afce0c62359706b88ab0e7962ef9f24d8">hmcommon::eSystemErrorEx::seNotInContainer</a></div><div class="ttdeci">@ seNotInContainer</div><div class="ttdoc">Объект не в контейнере</div></div>
+<div class="ttc" id="astructhmcommon_1_1ContactMakeHash_html_a88c1cf366f5fc5d5783297afee76adcc"><div class="ttname"><a href="structhmcommon_1_1ContactMakeHash.html#a88c1cf366f5fc5d5783297afee76adcc">hmcommon::ContactMakeHash::operator()</a></div><div class="ttdeci">std::size_t operator()(const std::shared_ptr&lt; HMUser &gt; &amp;inContact) const noexcept</div><div class="ttdoc">operator () - Оператор сравнения пользователей</div><div class="ttdef"><b>Definition:</b> userlist.cpp:12</div></div>
+<div class="ttc" id="asystemerrorex_8h_html"><div class="ttname"><a href="systemerrorex_8h.html">systemerrorex.h</a></div><div class="ttdoc">Содержит описание категории расширеных системных ошибок</div></div>
+<div class="ttc" id="anamespacehmcommon_html"><div class="ttname"><a href="namespacehmcommon.html">hmcommon</a></div><div class="ttdef"><b>Definition:</b> account.h:16</div></div>
+<div class="ttc" id="asystemerrorex_8cpp_html_aacc415fb080ba818238619f5ab0676c3"><div class="ttname"><a href="systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3">make_error_code</a></div><div class="ttdeci">std::error_code make_error_code(hmcommon::eSystemErrorEx inErrCode)</div><div class="ttdoc">make_error_code - Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени...</div><div class="ttdef"><b>Definition:</b> systemerrorex.cpp:82</div></div>
+<div class="ttc" id="auser_8h_html"><div class="ttname"><a href="user_8h.html">user.h</a></div><div class="ttdoc">Содержит описание пользователя системы</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMUserList_html_a412833fb3b9f5ea608cee7dba728bdd1"><div class="ttname"><a href="classhmcommon_1_1HMUserList.html#a412833fb3b9f5ea608cee7dba728bdd1">hmcommon::HMUserList::contain</a></div><div class="ttdeci">bool contain(const QUuid &amp;inUserUUID) const</div><div class="ttdoc">contain - Метод проверит существование пользователей по UUID</div><div class="ttdef"><b>Definition:</b> userlist.cpp:34</div></div>
+<div class="ttc" id="astructhmcommon_1_1ContactCheckEqual_html"><div class="ttname"><a href="structhmcommon_1_1ContactCheckEqual.html">hmcommon::ContactCheckEqual</a></div><div class="ttdoc">The ContactCheckEqual struct - Структура, реализующая оператор сравнения пользователей</div><div class="ttdef"><b>Definition:</b> userlist.h:36</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074aa330e55c3e289df2376203fce3c17925"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074aa330e55c3e289df2376203fce3c17925">hmcommon::eSystemErrorEx::seSuccess</a></div><div class="ttdeci">@ seSuccess</div><div class="ttdoc">0 Не явялется ошибкой</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMUserList_html_abea6f02f24d81a5262953ee081c2f0d0"><div class="ttname"><a href="classhmcommon_1_1HMUserList.html#abea6f02f24d81a5262953ee081c2f0d0">hmcommon::HMUserList::isEmpty</a></div><div class="ttdeci">bool isEmpty() const</div><div class="ttdoc">isEmpty - Метод вернёт признак того, что список пользователей пуст</div><div class="ttdef"><b>Definition:</b> userlist.cpp:28</div></div>
+<div class="ttc" id="astructhmcommon_1_1ContactCheckEqual_html_afa4355e37378795d96cc3f6474176e7c"><div class="ttname"><a href="structhmcommon_1_1ContactCheckEqual.html#afa4355e37378795d96cc3f6474176e7c">hmcommon::ContactCheckEqual::operator()</a></div><div class="ttdeci">bool operator()(const std::shared_ptr&lt; HMUser &gt; &amp;inLeftContact, const std::shared_ptr&lt; HMUser &gt; &amp;inRightContact) const noexcept</div><div class="ttdef"><b>Definition:</b> userlist.cpp:20</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074a1b7ef58f826b0d541714443e96260a40"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074a1b7ef58f826b0d541714443e96260a40">hmcommon::eSystemErrorEx::seIndexOutOfContainerRange</a></div><div class="ttdeci">@ seIndexOutOfContainerRange</div><div class="ttdoc">Индекс за пределами контейнера</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

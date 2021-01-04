@@ -1,0 +1,4 @@
+<map id="hmservcommon::datastorage::HMJsonDataStorage::getUserContactList" name="hmservcommon::datastorage::HMJsonDataStorage::getUserContactList">
+<area shape="rect" id="node1" title="getUserContactList &#45; Метод вернёт список контактов пользователя" alt="" coords="321,5,613,47"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a87839428ae2d26d0ebd2db35ca0828d3" title="onRemoveUser &#45; Метод выполнится при удалении пользователя" alt="" coords="5,5,273,47"/>
+</map>

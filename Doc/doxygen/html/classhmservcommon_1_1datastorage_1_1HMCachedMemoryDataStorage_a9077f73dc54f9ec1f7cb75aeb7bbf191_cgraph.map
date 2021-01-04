@@ -1,0 +1,7 @@
+<map id="hmservcommon::datastorage::HMCachedMemoryDataStorage::setGroupUsers" name="hmservcommon::datastorage::HMCachedMemoryDataStorage::setGroupUsers">
+<area shape="rect" id="node1" title="setGroupUsers &#45; Метод задаст список членов группы" alt="" coords="5,43,240,99"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#ad25c96a585b2b7b1fb3c0dd66ecb311b" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="288,8,523,64"/>
+<area shape="rect" id="node4" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="338,89,473,116"/>
+<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a6a6932677f1662b09c2a29a2ef12ecf6" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="571,5,797,61"/>
+<area shape="rect" id="node5" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="581,86,787,127"/>
+</map>

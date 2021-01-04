@@ -1,0 +1,6 @@
+<map id="hmservcommon::datastorage::HMCachedMemoryDataStorage::updateGroup" name="hmservcommon::datastorage::HMCachedMemoryDataStorage::updateGroup">
+<area shape="rect" id="node1" title="updateGroup &#45; Метод обновит данные группы" alt="" coords="5,39,240,95"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a5cba3109874fbb384b226429b330297c" title="findGroupByUUID &#45; Метод найдёт пользователя по его uuid" alt="" coords="288,5,523,61"/>
+<area shape="rect" id="node3" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="571,53,705,80"/>
+<area shape="rect" id="node4" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="753,46,960,87"/>
+</map>

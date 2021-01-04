@@ -1,0 +1,4 @@
+<map id="hmcommon::HMUserList::add" name="hmcommon::HMUserList::add">
+<area shape="rect" id="node1" title="add &#45; Метод добавит нового пользователя в перечень" alt="" coords="108,5,323,32"/>
+<area shape="rect" id="node2" href="$libraries_2HawkCommon_2tests_2UserList_2main_8cpp.html#a43a11fdb22bdbfb18f9f4f1b21f5211e" title="TEST &#45; Тест добавления контакта" alt="" coords="5,5,60,32"/>
+</map>

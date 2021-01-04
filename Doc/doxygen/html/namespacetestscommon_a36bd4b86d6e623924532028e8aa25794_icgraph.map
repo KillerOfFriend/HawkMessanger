@@ -1,0 +1,4 @@
+<map id="testscommon::make_user" name="testscommon::make_user">
+<area shape="rect" id="node1" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="108,5,299,32"/>
+<area shape="rect" id="node2" href="$libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#accdbe4cf95dade575d3e44f1ce9f7179" title="TEST &#45; Тест проверит добавление пользователя" alt="" coords="5,5,60,32"/>
+</map>

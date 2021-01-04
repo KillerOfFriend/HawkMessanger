@@ -1,0 +1,5 @@
+<map id="hmlog::HMEventSystem::setConfig" name="hmlog::HMEventSystem::setConfig">
+<area shape="rect" id="node1" title="setConfig &#45; Метод задаст настройки системы перехвата системных событий" alt="" coords="5,39,184,80"/>
+<area shape="rect" id="node2" href="$classhmlog_1_1HMEventSystem.html#af430bd634559bc13b7a239188e7d6bbb" title="acceptConfig &#45; Метод задаст обработчики событий согласно настройкам" alt="" coords="232,5,411,47"/>
+<area shape="rect" id="node3" href="$classhmlog_1_1HMEventSystem.html#ab04db23deb8321a22c07828f34e956b0" title="clear &#45; Метод сборсит обработчики событий" alt="" coords="232,71,411,112"/>
+</map>

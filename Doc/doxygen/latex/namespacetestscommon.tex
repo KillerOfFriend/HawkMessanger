@@ -1,0 +1,108 @@
+\hypertarget{namespacetestscommon}{}\doxysection{Пространство имен testscommon}
+\label{namespacetestscommon}\index{testscommon@{testscommon}}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUser}{hmcommon\+::\+H\+M\+User}} $>$ \mbox{\hyperlink{namespacetestscommon_a36bd4b86d6e623924532028e8aa25794}{make\+\_\+user}} (const Q\+Uuid in\+User\+Uuid=Q\+Uuid\+::create\+Uuid(), const Q\+String in\+User\+Login=\char`\"{}User\+Login@login.\+com\char`\"{}, const Q\+String in\+User\+Password=\char`\"{}P@sswor\+Of\+User123\char`\"{}, const Q\+Date\+Time in\+Create\+Date=Q\+Date\+Time\+::current\+Date\+Time())
+\begin{DoxyCompactList}\small\item\em make\+\_\+user -\/ Метод сформирует пользователя для тестирования \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{hmcommon\+::\+H\+M\+Group}} $>$ \mbox{\hyperlink{namespacetestscommon_a1e118fb8fb94664294f3d9e23364569e}{make\+\_\+group}} (const Q\+Uuid in\+Group\+Uuid=Q\+Uuid\+::create\+Uuid(), const Q\+String in\+Group\+Name=\char`\"{}New group name\char`\"{}, const Q\+Date\+Time in\+Create\+Date=Q\+Date\+Time\+::current\+Date\+Time())
+\begin{DoxyCompactList}\small\item\em make\+\_\+group -\/ Метод сформирует группу для тестирования \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupMessage}{hmcommon\+::\+H\+M\+Group\+Message}} $>$ \mbox{\hyperlink{namespacetestscommon_a8ab7b7550fa3839ed15e043e1d760d50}{make\+\_\+groupmessage}} (const \mbox{\hyperlink{structhmcommon_1_1MsgData}{hmcommon\+::\+Msg\+Data}} \&in\+Data, const Q\+Uuid in\+Uuid=Q\+Uuid\+::create\+Uuid(), const Q\+Uuid in\+Group\+Uuid=Q\+Uuid\+::create\+Uuid(), const Q\+Date\+Time in\+Create\+Date=Q\+Date\+Time\+::current\+Date\+Time())
+\begin{DoxyCompactList}\small\item\em make\+\_\+groupmessage -\/ Метод сформирует сообщение для тестирования \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{namespacetestscommon_a1e118fb8fb94664294f3d9e23364569e}\label{namespacetestscommon_a1e118fb8fb94664294f3d9e23364569e}} 
+\index{testscommon@{testscommon}!make\_group@{make\_group}}
+\index{make\_group@{make\_group}!testscommon@{testscommon}}
+\doxysubsubsection{\texorpdfstring{make\_group()}{make\_group()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classhmcommon_1_1HMGroup}{hmcommon\+::\+H\+M\+Group}}$>$ testscommon\+::make\+\_\+group (\begin{DoxyParamCaption}\item[{const Q\+Uuid}]{in\+Group\+Uuid = {\ttfamily QUuid\+:\+:createUuid()},  }\item[{const Q\+String}]{in\+Group\+Name = {\ttfamily \char`\"{}New~group~name\char`\"{}},  }\item[{const Q\+Date\+Time}]{in\+Create\+Date = {\ttfamily QDateTime\+:\+:currentDateTime()} }\end{DoxyParamCaption})}
+
+
+
+make\+\_\+group -\/ Метод сформирует группу для тестирования 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Group\+Uuid} & -\/ U\+U\+ID группы \\
+\hline
+{\em in\+Group\+Name} & -\/ Имя группы \\
+\hline
+{\em in\+Create\+Date} & -\/ Дата создания группы \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт указатель на новую группу 
+\end{DoxyReturn}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{namespacetestscommon_a1e118fb8fb94664294f3d9e23364569e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacetestscommon_a8ab7b7550fa3839ed15e043e1d760d50}\label{namespacetestscommon_a8ab7b7550fa3839ed15e043e1d760d50}} 
+\index{testscommon@{testscommon}!make\_groupmessage@{make\_groupmessage}}
+\index{make\_groupmessage@{make\_groupmessage}!testscommon@{testscommon}}
+\doxysubsubsection{\texorpdfstring{make\_groupmessage()}{make\_groupmessage()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classhmcommon_1_1HMGroupMessage}{hmcommon\+::\+H\+M\+Group\+Message}}$>$ testscommon\+::make\+\_\+groupmessage (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmcommon_1_1MsgData}{hmcommon\+::\+Msg\+Data}} \&}]{in\+Data,  }\item[{const Q\+Uuid}]{in\+Uuid = {\ttfamily QUuid\+:\+:createUuid()},  }\item[{const Q\+Uuid}]{in\+Group\+Uuid = {\ttfamily QUuid\+:\+:createUuid()},  }\item[{const Q\+Date\+Time}]{in\+Create\+Date = {\ttfamily QDateTime\+:\+:currentDateTime()} }\end{DoxyParamCaption})}
+
+
+
+make\+\_\+groupmessage -\/ Метод сформирует сообщение для тестирования 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Data} & -\/ Данные сообщения \\
+\hline
+{\em in\+Uuid} & -\/ U\+U\+ID сообщения \\
+\hline
+{\em in\+Group\+Uuid} & -\/ U\+U\+ID группы, в которую входит сообщение \\
+\hline
+{\em in\+Create\+Date} & -\/ Дата создания сообщения \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт указатель на новое сообщение 
+\end{DoxyReturn}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacetestscommon_a8ab7b7550fa3839ed15e043e1d760d50_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{namespacetestscommon_a36bd4b86d6e623924532028e8aa25794}\label{namespacetestscommon_a36bd4b86d6e623924532028e8aa25794}} 
+\index{testscommon@{testscommon}!make\_user@{make\_user}}
+\index{make\_user@{make\_user}!testscommon@{testscommon}}
+\doxysubsubsection{\texorpdfstring{make\_user()}{make\_user()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classhmcommon_1_1HMUser}{hmcommon\+::\+H\+M\+User}}$>$ testscommon\+::make\+\_\+user (\begin{DoxyParamCaption}\item[{const Q\+Uuid}]{in\+User\+Uuid = {\ttfamily QUuid\+:\+:createUuid()},  }\item[{const Q\+String}]{in\+User\+Login = {\ttfamily \char`\"{}UserLogin@login.com\char`\"{}},  }\item[{const Q\+String}]{in\+User\+Password = {\ttfamily \char`\"{}P@ssworOfUser123\char`\"{}},  }\item[{const Q\+Date\+Time}]{in\+Create\+Date = {\ttfamily QDateTime\+:\+:currentDateTime()} }\end{DoxyParamCaption})}
+
+
+
+make\+\_\+user -\/ Метод сформирует пользователя для тестирования 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+User\+Uuid} & -\/ U\+U\+ID пользователя \\
+\hline
+{\em in\+User\+Login} & -\/ Логин пользователя \\
+\hline
+{\em in\+User\+Password} & -\/ Пароль пользователя \\
+\hline
+{\em in\+Create\+Date} & -\/ Дата создания пользователя \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт указатель на нового пользователя 
+\end{DoxyReturn}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{namespacetestscommon_a36bd4b86d6e623924532028e8aa25794_icgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,4 @@
+<map id="hmservcommon::datastorage::HMJsonDataStorage::findGroupByUUID" name="hmservcommon::datastorage::HMJsonDataStorage::findGroupByUUID">
+<area shape="rect" id="node1" title="findGroupByUUID &#45; Метод найдёт пользователя по его uuid" alt="" coords="304,5,535,61"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aed250a79a512d43ee449a1002438010a" title="addMessage &#45; Метод добавит новое сообщение" alt="" coords="5,13,256,54"/>
+</map>

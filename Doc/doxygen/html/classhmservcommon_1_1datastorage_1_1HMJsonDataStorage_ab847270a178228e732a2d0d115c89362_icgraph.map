@@ -1,0 +1,4 @@
+<map id="hmservcommon::datastorage::HMJsonDataStorage::clearGroupUsers" name="hmservcommon::datastorage::HMJsonDataStorage::clearGroupUsers">
+<area shape="rect" id="node1" title="clearGroupUsers &#45; Метод очистит список членов группы" alt="" coords="317,5,593,47"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aaecb72687a39e65f93d88cc149014140" title="setGroupUsers &#45; Метод задаст список членов группы" alt="" coords="5,5,269,47"/>
+</map>

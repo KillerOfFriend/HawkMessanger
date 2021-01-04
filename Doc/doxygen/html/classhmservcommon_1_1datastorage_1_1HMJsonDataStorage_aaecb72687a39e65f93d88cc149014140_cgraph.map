@@ -1,0 +1,10 @@
+<map id="hmservcommon::datastorage::HMJsonDataStorage::setGroupUsers" name="hmservcommon::datastorage::HMJsonDataStorage::setGroupUsers">
+<area shape="rect" id="node1" title="setGroupUsers &#45; Метод задаст список членов группы" alt="" coords="5,181,269,222"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a89c7d6e8863cd3ca11a6b2474a109b2a" title="setGroupUsers &#45; Метод добавит пользователя в группу" alt="" coords="330,267,591,309"/>
+<area shape="rect" id="node4" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#af7129f6ff8883d6b59a187a375992aeb" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="931,122,1149,163"/>
+<area shape="rect" id="node5" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="973,247,1107,273"/>
+<area shape="rect" id="node7" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#ab847270a178228e732a2d0d115c89362" title="clearGroupUsers &#45; Метод очистит список членов группы" alt="" coords="323,181,599,222"/>
+<area shape="rect" id="node8" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a4459561f4b1cff34960e4092859aa83f" title="removeGroupUser &#45; Метод удалит пользователя из группы" alt="" coords="317,93,604,134"/>
+<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#af4451dde155385d6ec4679f1755337cd" title="findGroup &#45; Метод вернёт ссылку на json объект группы в хранилище" alt="" coords="652,181,883,222"/>
+<area shape="rect" id="node6" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="1197,239,1404,281"/>
+</map>

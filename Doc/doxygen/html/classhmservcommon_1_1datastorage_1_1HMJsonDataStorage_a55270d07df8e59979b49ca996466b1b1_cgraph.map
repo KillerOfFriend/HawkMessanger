@@ -1,0 +1,8 @@
+<map id="hmservcommon::datastorage::HMJsonDataStorage::~HMJsonDataStorage" name="hmservcommon::datastorage::HMJsonDataStorage::~HMJsonDataStorage">
+<area shape="rect" id="node1" title="~HMJsonDataStorage &#45; Виртуальный деструктор" alt="" coords="5,31,264,87"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a455fb5ad71c026b9e0a71154c15254e2" title="close &#45; Метод закроет хранилище данных" alt="" coords="312,39,527,80"/>
+<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#af7129f6ff8883d6b59a187a375992aeb" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="575,5,793,47"/>
+<area shape="rect" id="node4" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a1f7d4d306e6001e8253ed48b9501f9ef" title="write &#45; Метод запишет изменения в JSON файл" alt="" coords="577,71,791,112"/>
+<area shape="rect" id="node5" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="841,78,976,105"/>
+<area shape="rect" id="node6" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="1024,71,1231,112"/>
+</map>

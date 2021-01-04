@@ -1,0 +1,23 @@
+<map id="Projects/libraries/HawkServerCore/src/datastorage/interface/abstractcahcedatastorage.h" name="Projects/libraries/HawkServerCore/src/datastorage/interface/abstractcahcedatastorage.h">
+<area shape="rect" id="node1" title="Содержит описание абстрактного класса кеширующего хранилища данных" alt="" coords="23,5,230,76"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,131,69,158"/>
+<area shape="rect" id="node3" title=" " alt="" coords="93,131,160,158"/>
+<area shape="rect" id="node4" href="$abstractdatastoragefunctional_8h.html" title=" " alt="" coords="184,124,419,165"/>
+<area shape="rect" id="node5" title=" " alt="" coords="269,512,347,539"/>
+<area shape="rect" id="node6" href="$datastorageinterface_8h.html" title=" " alt="" coords="289,213,460,240"/>
+<area shape="rect" id="node7" title=" " alt="" coords="267,288,309,315"/>
+<area shape="rect" id="node8" title=" " alt="" coords="561,512,623,539"/>
+<area shape="rect" id="node9" title=" " alt="" coords="734,512,842,539"/>
+<area shape="rect" id="node10" href="$HawkCommon_8h.html" title=" " alt="" coords="567,288,697,315"/>
+<area shape="rect" id="node11" href="$user_8h.html" title="Содержит описание пользователя системы" alt="" coords="648,512,709,539"/>
+<area shape="rect" id="node17" href="$group_8h.html" title="Содержит описание группы\чата" alt="" coords="669,437,739,464"/>
+<area shape="rect" id="node18" href="$userlist_8h.html" title="Содержит описание контактов пользователя системы" alt="" coords="460,437,543,464"/>
+<area shape="rect" id="node20" href="$groupmessage_8h.html" title="Содержит описание сообщения группы" alt="" coords="865,437,996,464"/>
+<area shape="rect" id="node21" href="$account_8h.html" title="Содержит описание аккаунта пользователя" alt="" coords="549,363,635,389"/>
+<area shape="rect" id="node12" title=" " alt="" coords="563,587,626,613"/>
+<area shape="rect" id="node13" title=" " alt="" coords="650,587,713,613"/>
+<area shape="rect" id="node14" title=" " alt="" coords="882,587,953,613"/>
+<area shape="rect" id="node15" title=" " alt="" coords="981,587,1077,613"/>
+<area shape="rect" id="node16" title=" " alt="" coords="753,587,850,613"/>
+<area shape="rect" id="node19" title=" " alt="" coords="371,512,485,539"/>
+</map>

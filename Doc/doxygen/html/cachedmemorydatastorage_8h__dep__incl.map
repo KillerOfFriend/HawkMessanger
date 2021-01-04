@@ -1,0 +1,13 @@
+<map id="Projects/libraries/HawkServerCore/src/datastorage/cachedmemorydatastorage/cachedmemorydatastorage.h" name="Projects/libraries/HawkServerCore/src/datastorage/cachedmemorydatastorage/cachedmemorydatastorage.h">
+<area shape="rect" id="node1" title="Содержит описание класса кеширующего хранилища данных" alt="" coords="297,5,583,76"/>
+<area shape="rect" id="node2" href="$cachedmemorydatastorage_8cpp.html" title=" " alt="" coords="29,124,315,195"/>
+<area shape="rect" id="node3" href="$DataStorage_8h.html" title=" " alt="" coords="339,131,541,187"/>
+<area shape="rect" id="node11" href="$abstractdatastoragefunctional_8cpp.html" title=" " alt="" coords="565,124,814,195"/>
+<area shape="rect" id="node4" href="$servercore_8h.html" title=" " alt="" coords="153,250,311,306"/>
+<area shape="rect" id="node5" href="$HawkServerCore_8h.html" title=" " alt="" coords="35,361,194,417"/>
+<area shape="rect" id="node8" href="$libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html" title=" " alt="" coords="335,243,545,313"/>
+<area shape="rect" id="node9" href="$libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html" title=" " alt="" coords="569,250,807,306"/>
+<area shape="rect" id="node10" href="$libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html" title=" " alt="" coords="830,250,1029,306"/>
+<area shape="rect" id="node7" href="$servercore_8cpp.html" title=" " alt="" coords="218,361,377,417"/>
+<area shape="rect" id="node6" href="$modules_2HawkConsolServer_2src_2main_8cpp.html" title=" " alt="" coords="5,465,224,507"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="hmservcommon::datastorage::HMAbstractCahceDataStorage::startCacheWatchdogThread" name="hmservcommon::datastorage::HMAbstractCahceDataStorage::startCacheWatchdogThread">
+<area shape="rect" id="node1" title="startCacheWatchdogThread &#45; Метод запустит поток, котролирующий объекты кеша" alt="" coords="5,77,232,133"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ad31687e2e23f8b66e2b43b1f91d5a066" title="cacheWatchdogThreadFunc &#45; Метод потока, обрабатывающего кеш" alt="" coords="280,8,507,64"/>
+<area shape="rect" id="node4" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="326,92,461,119"/>
+<area shape="rect" id="node6" href="$classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#af31c7d4680c9785f515e433ab79e9049" title="stopCacheWatchdogThread &#45; Метод остановит поток, котролирующий объекты кеша" alt="" coords="280,143,507,199"/>
+<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a8b502568fc2ad3cbc54fe30695e3f320" title="processCacheInThread &#45; Метод обработки кеша в потоке" alt="" coords="555,5,781,61"/>
+<area shape="rect" id="node5" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="565,86,771,127"/>
+</map>
