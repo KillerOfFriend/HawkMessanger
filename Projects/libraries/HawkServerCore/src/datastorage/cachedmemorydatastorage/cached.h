@@ -53,8 +53,8 @@ struct HMCachedUser
 
     // Данные
 
-    std::shared_ptr<hmcommon::HMUser> m_user = nullptr;             ///< Пользователь
-    mutable std::chrono::system_clock::time_point m_lastRequest;    ///< Время последнего запроса
+    std::shared_ptr<hmcommon::HMUser> m_user = nullptr;                 ///< Пользователь
+    mutable std::chrono::system_clock::time_point m_lastRequest;        ///< Время последнего запроса
 };
 //-----------------------------------------------------------------------------
 /**
@@ -97,9 +97,9 @@ struct HMCachedUserContacts
      */
     bool operator == (const HMCachedUserContacts& inOther) const noexcept;
 
-    QUuid m_userUUID;                                               ///< UUID пользователя
-    std::shared_ptr<std::set<QUuid>> m_contactList = nullptr;       ///< Перечень контактов
-    mutable std::chrono::system_clock::time_point m_lastRequest;    ///< Время последнего запроса
+    QUuid m_userUUID;                                                   ///< UUID пользователя
+    mutable std::shared_ptr<std::set<QUuid>> m_contactList = nullptr;   ///< Перечень контактов
+    mutable std::chrono::system_clock::time_point m_lastRequest;        ///< Время последнего запроса
 };
 //-----------------------------------------------------------------------------
 /**
@@ -143,8 +143,8 @@ struct HMCachedGroup
 
     // Данные
 
-    std::shared_ptr<hmcommon::HMGroup> m_group = nullptr;           ///< Группа
-    mutable std::chrono::system_clock::time_point m_lastRequest;    ///< Время последнего запроса
+    std::shared_ptr<hmcommon::HMGroup> m_group = nullptr;               ///< Группа
+    mutable std::chrono::system_clock::time_point m_lastRequest;        ///< Время последнего запроса
 };
 //-----------------------------------------------------------------------------
 /**
@@ -189,9 +189,9 @@ struct HMCachedGroupUsers
 
     // Данные
 
-    QUuid m_group;                                                  ///< UUID группы, которой пренадлежит перечень участников
-    std::shared_ptr<std::set<QUuid>> m_groupUsers = nullptr;        ///< Перечень участников группы
-    mutable std::chrono::system_clock::time_point m_lastRequest;    ///< Время последнего запроса
+    QUuid m_group;                                                      ///< UUID группы, которой пренадлежит перечень участников
+    mutable std::shared_ptr<std::set<QUuid>> m_groupUsers = nullptr;    ///< Перечень участников группы
+    mutable std::chrono::system_clock::time_point m_lastRequest;        ///< Время последнего запроса
 };
 //-----------------------------------------------------------------------------
 }

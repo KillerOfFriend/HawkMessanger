@@ -141,8 +141,10 @@ std::error_code HMCachedMemoryDataStorage::setUserContacts(const QUuid& inUserUU
     else
     {
         std::unique_lock ul(m_userContactsDefender); // Эксклюзивно блокируем доступ к связам пользователь-контакты
-        if (!m_cachedUserContacts.emplace(HMCachedUserContacts(inUserUUID, inContacts)).second)
-            Error = make_error_code(eDataStorageError::dsUserContactAlredyExists); // Контакт уже кеширован
+        auto EmplaceRes = m_cachedUserContacts.emplace(HMCachedUserContacts(inUserUUID, inContacts));
+
+        if (!EmplaceRes.second) // Если связь уже кеширована
+            EmplaceRes.first->m_contactList = inContacts; // Заменяем существующий список контактов
     }
 
     return Error;
@@ -307,8 +309,10 @@ std::error_code HMCachedMemoryDataStorage::setGroupUsers(const QUuid& inGroupUUI
         else
         {
             std::shared_lock sl(m_userGroupUsersDefender); // Публично блокируем участников групп
-            if (!m_cachedGroupUsers.emplace(HMCachedGroupUsers(inGroupUUID, inUsers)).second)
-                Error = make_error_code(eDataStorageError::dsGroupUserRelationNotExists);
+            auto EmplaceRes = m_cachedGroupUsers.emplace(HMCachedGroupUsers(inGroupUUID, inUsers));
+
+            if (!EmplaceRes.second) // Если вставка не прошла (Связь уже существует)
+                EmplaceRes.first->m_groupUsers = inUsers; // Заменяем существующий список учасников
         }
     }
 

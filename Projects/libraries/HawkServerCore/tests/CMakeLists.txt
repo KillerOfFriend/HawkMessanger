@@ -32,5 +32,11 @@ target_link_libraries(${Test2} PRIVATE ${TESTS_LINCED_LIBRARYES})
 
 add_test(NAME HawkServerCore_Test2 COMMAND JsonDataStorageTest)
 #====================================================================
+set(Test3 CombinedDataStorage_Test)
+add_executable(${Test3} ${CMAKE_CURRENT_SOURCE_DIR}/CombinedDataStorage/main.cpp)
+target_include_directories(${Test3} PRIVATE ${TESTS_INCLUDE_DIRS})
+target_link_libraries(${Test3} PRIVATE ${TESTS_LINCED_LIBRARYES})
 
+add_test(NAME HawkServerCore_Test3 COMMAND CombinedDataStorage_Test)
+#====================================================================
 

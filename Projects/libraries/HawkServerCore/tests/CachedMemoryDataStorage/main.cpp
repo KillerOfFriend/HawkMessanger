@@ -11,16 +11,20 @@
 using namespace hmservcommon::datastorage;
 
 //-----------------------------------------------------------------------------
+const std::chrono::milliseconds C_CACHE_LIFE_TIME_FAST = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::milliseconds(100)); ///< Сокращённое время существования объекта в кеше
+const std::chrono::milliseconds C_CACHE_SLEEP_FAST = std::chrono::milliseconds(50);                                                             ///< Сокращённое время ожидания потока контроля кеша
+const std::chrono::milliseconds C_CACHE_LIFE_END_WAIT = C_CACHE_LIFE_TIME_FAST + C_CACHE_SLEEP_FAST * 2;                                        ///< Время, гарантирующее уничтожение объекта в кеше
+//-----------------------------------------------------------------------------
 /**
  * @brief makeStorage - Метод создаст экземпляр хранилища
+ * @param inCacheLifeTime - Время жизни объектов кеша (в милисекундах)
+ * @param inSleep - Время ожидания потока контроля кеша в (в милисекундах)
  * @return Вернёт экземпляр хранилища
  */
-std::unique_ptr<HMDataStorage> makeStorage()
+std::unique_ptr<HMDataStorage> makeStorage(const std::chrono::milliseconds inCacheLifeTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::minutes(15)),
+                                           const std::chrono::milliseconds inSleep = std::chrono::milliseconds(1000))
 {
-    std::chrono::milliseconds CacheLifeTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::minutes(10));
-    std::chrono::milliseconds Sleep = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::minutes(1));
-
-    return std::make_unique<HMCachedMemoryDataStorage>(CacheLifeTime, Sleep); // Создаём экземпляр кеширующего хранилища HMCachedMemoryDataStorage
+    return std::make_unique<HMCachedMemoryDataStorage>(inCacheLifeTime, inSleep); // Создаём экземпляр кеширующего хранилища HMCachedMemoryDataStorage
 }
 //-----------------------------------------------------------------------------
 /**
@@ -614,9 +618,6 @@ TEST(CachedMemoryDataStorage, setUserContacts)
     Error = CachedStorage->setUserContacts(NewUser->m_uuid, NewContactList); // Пытаемся добавить список контактов без добавления пользователя
     ASSERT_FALSE(Error); // Ошибки быть не должно (Наличие пользователя в кеше не обязательно)
 
-    Error = CachedStorage->setUserContacts(NewUser->m_uuid, NewContactList); // Повторно добавляем список
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserContactAlredyExists)); // Должны получить сообщение о том, что контакт уже есть в списке пользователя
-
     CachedStorage->close();
 }
 //-----------------------------------------------------------------------------
@@ -771,6 +772,169 @@ TEST(CachedMemoryDataStorage, getUserContactList)
     EXPECT_NE(FindRes->find(NewContact2->m_uuid), FindRes->end()); // Должен содержать второй контакт
 
     CachedStorage->close();
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест проверит кеширование объектов
+ */
+TEST(CombinedDataStorage, CacheTest)
+{
+    std::error_code Error;
+    std::unique_ptr<HMDataStorage> Storage = makeStorage(C_CACHE_LIFE_TIME_FAST, C_CACHE_SLEEP_FAST); // Создаём кеширующее хранилище (С короткой жизнью объектов)
+
+    Error = Storage->open();
+    ASSERT_FALSE(Error); // Ошибки быть не должно
+    ASSERT_TRUE(Storage->is_open()); // Хранилище должно считаться открытым
+
+
+    //-----
+    // Проверим кеширование пользователя
+    //-----
+    {
+        QUuid UserUUID = QUuid::createUuid();
+        std::shared_ptr<hmcommon::HMUser> User = testscommon::make_user(UserUUID, "CachedUser@login.com"); // Формируем нового пользователя
+
+        Error = Storage->addUser(User); // Добавляем пользователя в хранилище
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+
+        std::uintptr_t Address1 = reinterpret_cast<std::uintptr_t>(User.get()); // Запоминаем адрес объекта
+        User = nullptr; // Обязательно сбрасываем указатель на добавленного пользователя
+
+        User = Storage->findUserByUUID(UserUUID, Error); // Изщим пользователя по UUID
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+        ASSERT_NE(User, nullptr); // Должен вернуться валидный указатель
+
+        std::uintptr_t Address2 = reinterpret_cast<std::uintptr_t>(User.get()); // Запоминаем адрес объекта
+        User = nullptr; // Обязательно сбрасываем указатель на найденного пользователя
+
+        EXPECT_EQ(Address1, Address2); // Если объект возвращён из кеша, то адреса должны совапасть
+        std::this_thread::sleep_for(C_CACHE_LIFE_END_WAIT); // Ожидаем время, гарантирующее уничтожение объекта в кеше
+
+        User = Storage->findUserByUUID(UserUUID, Error); // Ищим пользователя по UUID
+        EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Должны получить сообщение, что пользователь в кеше не существует
+    }
+
+    //-----
+    // Проверим кеширование групп
+    //-----
+    {
+        QUuid GroupUUID = QUuid::createUuid();
+        std::shared_ptr<hmcommon::HMGroup> Group = testscommon::make_group(GroupUUID, "CachedGroup");
+
+        Error = Storage->addGroup(Group); // Добавляем группу в хранилище
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+
+        std::uintptr_t Address1 = reinterpret_cast<std::uintptr_t>(Group.get()); // Запоминаем адрес объекта
+        Group = nullptr; // Обязательно сбрасываем указатель на добавленную группу
+
+        Group = Storage->findGroupByUUID(GroupUUID, Error);
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+        ASSERT_NE(Group, nullptr); // Должен вернуться валидный указатель
+
+        std::uintptr_t Address2 = reinterpret_cast<std::uintptr_t>(Group.get()); // Запоминаем адрес объекта
+        Group = nullptr; // Обязательно сбрасываем указатель на найденную группу
+
+        EXPECT_EQ(Address1, Address2); // Если объект возвращён из кеша, то адреса должны совапасть
+        std::this_thread::sleep_for(C_CACHE_LIFE_END_WAIT); // Ожидаем время, гарантирующее уничтожение объекта в кеше
+
+        Group = Storage->findGroupByUUID(GroupUUID, Error); // Ищим пользователя по UUID
+        EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // Должны получить сообщение, что группы в кеше не существует
+    }
+
+    //-----
+    // Проверим кеширование сообщений
+    //-----
+    {
+        // Сообщения не кешируются
+    }
+
+    //-----
+    // Проверим кеширование контактов пользователей
+    //-----
+    {
+        QUuid UserUUID = QUuid::createUuid();
+        std::shared_ptr<hmcommon::HMUser> User = testscommon::make_user(UserUUID, "UserWithContacts@login.com"); // Формируем нового пользователя
+
+        Error = Storage->addUser(User); // Добавляем пользователя в хранилище
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+
+        const std::size_t ContactsCount = 5;
+        std::shared_ptr<std::set<QUuid>> Contacts = std::make_shared<std::set<QUuid>>(); // Формируем список контактов
+
+        for (std::size_t Index = 0; Index < ContactsCount; ++Index)
+        {
+            QString UserLogin = "Contact@login.com" + QString::number(Index); // Логин должен быть униакальным
+            std::shared_ptr<hmcommon::HMUser> NewUser = testscommon::make_user(QUuid::createUuid(), UserLogin); // Формируем нового пользователя
+
+            Error = Storage->addUser(NewUser);
+            ASSERT_FALSE(Error); // Ошибки быть не должно
+            Contacts->insert(NewUser->m_uuid); // Запоминаем UUID добавленного пользователя
+        }
+
+        Error = Storage->setUserContacts(UserUUID, Contacts); // Задаём пользователю список контактов
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+
+        std::uintptr_t Address1 = reinterpret_cast<std::uintptr_t>(Contacts.get()); // Запоминаем адрес объекта
+        Contacts = nullptr; // Обязательно сбрасываем указатель на добавленный список пользователей
+
+        Contacts = Storage->getUserContactList(UserUUID, Error); // Запрашиваем список контактов пользователя
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+        ASSERT_NE(Contacts, nullptr); // Должен вернуться валидный указатель
+
+        std::uintptr_t Address2 = reinterpret_cast<std::uintptr_t>(Contacts.get()); // Запоминаем адрес объекта
+        Contacts = nullptr; // Обязательно сбрасываем указатель на полученный список пользователей
+
+        EXPECT_EQ(Address1, Address2); // Если объект возвращён из кеша, то адреса должны совапасть
+        std::this_thread::sleep_for(C_CACHE_LIFE_END_WAIT); // Ожидаем время, гарантирующее уничтожение объекта в кеше
+
+        Contacts = Storage->getUserContactList(UserUUID, Error); // Запрашиваем список контактов пользователя
+        EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserContactRelationNotExists)); // Должны получить сообщение, что список контактов не кеширован
+    }
+
+    //-----
+    // Проверим кеширование участников групп
+    //-----
+    {
+        QUuid GroupUUID = QUuid::createUuid();
+        std::shared_ptr<hmcommon::HMGroup> Group = testscommon::make_group(GroupUUID, "GroupWithUsers");
+
+        Error = Storage->addGroup(Group); // Добавляем группу в хранилище
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+
+        const std::size_t UserssCount = 5;
+        std::shared_ptr<std::set<QUuid>> Users = std::make_shared<std::set<QUuid>>(); // Формируем список контактов
+
+        for (std::size_t Index = 0; Index < UserssCount; ++Index)
+        {
+            QString UserLogin = "GroupUser@login.com" + QString::number(Index); // Логин должен быть униакальным
+            std::shared_ptr<hmcommon::HMUser> NewUser = testscommon::make_user(QUuid::createUuid(), UserLogin); // Формируем нового пользователя
+
+            Error = Storage->addUser(NewUser);
+            ASSERT_FALSE(Error); // Ошибки быть не должно
+            Users->insert(NewUser->m_uuid); // Запоминаем UUID добавленного пользователя
+        }
+
+        Error = Storage->setGroupUsers(GroupUUID, Users); // Задаём группе список пользователей
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+
+        std::uintptr_t Address1 = reinterpret_cast<std::uintptr_t>(Users.get()); // Запоминаем адрес объекта
+        Users = nullptr; // Обязательно сбрасываем указатель на добавленный список пользователей
+
+        Users = Storage->getGroupUserList(GroupUUID, Error); // Запрашиваем список участников группы
+        ASSERT_FALSE(Error); // Ошибки быть не должно
+        ASSERT_NE(Users, nullptr); // Должен вернуться валидный указатель
+
+        std::uintptr_t Address2 = reinterpret_cast<std::uintptr_t>(Users.get()); // Запоминаем адрес объекта
+        Users = nullptr; // Обязательно сбрасываем указатель на полученный список пользователей
+
+        EXPECT_EQ(Address1, Address2); // Если объект возвращён из кеша, то адреса должны совапасть
+        std::this_thread::sleep_for(C_CACHE_LIFE_END_WAIT); // Ожидаем время, гарантирующее уничтожение объекта в кеше
+
+        Users = Storage->getGroupUserList(GroupUUID, Error); // Запрашиваем список участников группы
+        EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupUserRelationNotExists)); // Должны получить сообщение, что список учасников группы не кеширован
+    }
+
+    Storage->close();
 }
 //-----------------------------------------------------------------------------
 /**
