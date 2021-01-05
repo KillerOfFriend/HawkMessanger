@@ -97,8 +97,12 @@ std::error_code HMCombinedDataStorage::updateUser(const std::shared_ptr<hmcommon
             if (!Error && m_CacheStorage) // Если пользователь успешно обновлён в физическое хранилище и доступен кеш
             {
                 std::error_code CacheError = m_CacheStorage->updateUser(inUser); // Обновляем данные о пользователе в кеше
-                if (CacheError) // Ошибки кеша обрабатывам отдельно
-                    LOG_WARNING(QString::fromStdString(CacheError.message()));
+                if (CacheError) // Не удалось обновить пользователя в кеше
+                {
+                    CacheError = m_CacheStorage->addUser(inUser); // Добавляем в кеш обновлённый объект
+                    if (CacheError) // Если и добавление не прошло то обрабатываем ошибку отдельно
+                        LOG_WARNING(QString::fromStdString(CacheError.message()));
+                }
             }
         }
     }
@@ -115,14 +119,16 @@ std::shared_ptr<hmcommon::HMUser> HMCombinedDataStorage::findUserByUUID(const QU
         outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
-        std::error_code CacheError = make_error_code(eDataStorageError::dsSuccess); // Отдельный результат для поиска в кеше
+        std::error_code CacheError = make_error_code(eDataStorageError::dsUserNotExists); // Отдельный результат для поиска в кеше
 
-        if (!m_CacheStorage) // Если не доступен кеш
-            CacheError = make_error_code(eDataStorageError::dsUserNotExists); // Помечаем результат поиска в кеше как ошибку
-        else // Если доступен кеш
+        if (m_CacheStorage) // Если доступен кеш
+        {
             Result = m_CacheStorage->findUserByUUID(inUserUUID, CacheError); // Сначала ищим пользователя в кеше
+            if (CacheError && CacheError.value() != static_cast<int32_t>(eDataStorageError::dsUserNotExists)) // Если ошибка отличается от "объект не найден"
+                 LOG_WARNING(QString::fromStdString(CacheError.message())); // Пишим её в лог
+        }
 
-        if (CacheError.value() == static_cast<int32_t>(eDataStorageError::dsUserNotExists)) // Если в кеше не удалось найти пользователя
+        if (CacheError) // Если в кеше не удалось найти пользователя
         {   // Ищим в физическом хранилище
             Result = m_HardStorage->findUserByUUID(inUserUUID, outErrorCode);
 
@@ -133,8 +139,6 @@ std::shared_ptr<hmcommon::HMUser> HMCombinedDataStorage::findUserByUUID(const QU
                     LOG_WARNING(QString::fromStdString(CacheError.message()));
             }
         }   // Поиск в самом хранилище
-        else // В кеше встретелось что-то внезапное
-            outErrorCode = CacheError; // Вернём ошибку из кеширующего хранилища
 
         if (outErrorCode) // Если ошибка поиска пользователя
             Result = nullptr; // На всякий случай сбросим результат
@@ -152,26 +156,31 @@ std::shared_ptr<hmcommon::HMUser> HMCombinedDataStorage::findUserByAuthenticatio
         outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
-        std::error_code CacheError = make_error_code(eDataStorageError::dsSuccess); // Отдельный результат для поиска в кеше
+        std::error_code CacheError = make_error_code(eDataStorageError::dsUserNotExists); // Отдельный результат для поиска в кеше
 
-        if (!m_CacheStorage) // Если не доступен кеш
-            CacheError = make_error_code(eDataStorageError::dsUserNotExists); // Помечаем результат поиска в кеше как ошибку
-        else // Если доступен кеш
+        if (m_CacheStorage) // Если доступен кеш
+        {
             Result = m_CacheStorage->findUserByAuthentication(inLogin, inPasswordHash, CacheError); // Сначала ищим пользователя в кеше
+            if (CacheError && CacheError.value() != static_cast<int32_t>(eDataStorageError::dsUserNotExists)) // Если ошибка отличается от "объект не найден"
+                 LOG_WARNING(QString::fromStdString(CacheError.message())); // Пишим её в лог
+        }
 
-        if (CacheError.value() == static_cast<int32_t>(eDataStorageError::dsUserNotExists)) // Если в кеше не удалось найти пользователя
-        {   // Ищим в физическом хранилище
-            Result = m_HardStorage->findUserByAuthentication(inLogin, inPasswordHash, outErrorCode);
+        if (CacheError.value() != static_cast<int32_t>(eDataStorageError::dsUserPasswordIncorrect)) // Если просто не совпал пароль
+            outErrorCode = CacheError; // Вернём эту ошибку
+        else // Если не ошибка не корректного пароля
+        {   // Проверям что всётаки ошибка!
+            if (CacheError) // Если в кеше не удалось найти пользователя
+            {   // Ищим в физическом хранилище
+                Result = m_HardStorage->findUserByAuthentication(inLogin, inPasswordHash, outErrorCode);
 
-            if (!outErrorCode && m_CacheStorage) // Если пользователь успешно найден в физическое хранилище и доступен кеш
-            {   // Добавим его в кеш
-                CacheError = m_CacheStorage->addUser(Result);
-                if (CacheError) // Ошибки кеша обрабатывам отдельно
-                    LOG_WARNING(QString::fromStdString(CacheError.message()));
-            }
-        }   // Поиск в самом хранилище
-        else // В кеше встретелось что-то внезапное
-            outErrorCode = CacheError; // Вернём ошибку из кеширующего хранилища
+                if (!outErrorCode && m_CacheStorage) // Если пользователь успешно найден в физическое хранилище и доступен кеш
+                {   // Добавим его в кеш
+                    CacheError = m_CacheStorage->addUser(Result);
+                    if (CacheError) // Ошибки кеша обрабатывам отдельно
+                        LOG_WARNING(QString::fromStdString(CacheError.message()));
+                }
+            }   // Поиск в самом хранилище
+        }
 
         if (outErrorCode) // Если ошибка поиска пользователя
             Result = nullptr; // На всякий случай сбросим результат
@@ -299,27 +308,26 @@ std::shared_ptr<std::set<QUuid>> HMCombinedDataStorage::getUserContactList(const
         outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
-        std::error_code CacheError = make_error_code(eDataStorageError::dsSuccess); // Отдельный результат для поиска в кеше
+        std::error_code CacheError = make_error_code(eDataStorageError::dsUserContactRelationNotExists); // Отдельный результат для поиска в кеше
 
-        if (!m_CacheStorage) // Если не доступен кеш
-            CacheError = make_error_code(eDataStorageError::dsUserContactRelationNotExists); // Помечаем результат поиска в кеше как ошибку
-        else // Если доступен кеш
+        if (m_CacheStorage) // Если доступен кеш
+        {
             Result = m_CacheStorage->getUserContactList(inUserUUID, CacheError); // Сначала ищим сообщения в кеше
+            if (CacheError && CacheError.value() != static_cast<int32_t>(eDataStorageError::dsUserContactRelationNotExists)) // Если ошибка отличается от "объект не найден"
+                 LOG_WARNING(QString::fromStdString(CacheError.message())); // Пишим её в лог
+        }
 
-        if (CacheError.value() == static_cast<int32_t>(eDataStorageError::dsUserContactRelationNotExists)) // Если в кеше не удалось найти связь
+        if (CacheError) // Если в кеше не удалось найти связь
         {   // Ищим в физическом хранилище
             Result = m_HardStorage->getUserContactList(inUserUUID, outErrorCode);
 
             if (!outErrorCode && m_CacheStorage) // Если список контактов успешно найден в физическом хранилище и доступен кеш
             {
                 CacheError = m_CacheStorage->setUserContacts(inUserUUID, Result); // Добавим его в кеш
-
                 if (CacheError) // Ошибки кеша обрабатывам отдельно
                     LOG_WARNING(QString::fromStdString(CacheError.message()));
             }
         }   // Поиск в самом хранилище
-        else // В кеше встретелось что-то внезапное
-            outErrorCode = CacheError; // Вернём ошибку из кеширующего хранилища
 
         if (outErrorCode) // Если ошибка поиска сообщения
             Result = nullptr; // На всякий случай сбросим результат
@@ -337,22 +345,22 @@ std::shared_ptr<std::set<QUuid>> HMCombinedDataStorage::getUserGroups(const QUui
         outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
-        std::error_code CacheError = make_error_code(eDataStorageError::dsSuccess); // Отдельный результат для поиска в кеше
+        std::error_code CacheError = make_error_code(eDataStorageError::dsUserGroupsRelationNotExists); // Отдельный результат для поиска в кеше
 
-        if (!m_CacheStorage) // Если не доступен кеш
-            CacheError = make_error_code(eDataStorageError::dsUserGroupsRelationNotExists); // Помечаем результат поиска в кеше как ошибку
-        else // Если доступен кеш
+        if (m_CacheStorage) // Если доступен кеш
+        {
             Result = m_CacheStorage->getUserGroups(inUserUUID, CacheError); // Сначала ищим сообщения в кеше
+            if (CacheError && CacheError.value() != static_cast<int32_t>(eDataStorageError::dsUserGroupsRelationNotExists)) // Если ошибка отличается от "объект не найден"
+                 LOG_WARNING(QString::fromStdString(CacheError.message())); // Пишим её в лог
+        }
 
-        if (CacheError.value() == static_cast<int32_t>(eDataStorageError::dsUserGroupsRelationNotExists)) // Если в кеше не удалось найти связь
+        if (CacheError) // Если в кеше не удалось найти связь
         {   // Ищим в физическом хранилище
             Result = m_HardStorage->getUserGroups(inUserUUID, outErrorCode);
 
             // !ОСОБЫЙ СЛУЧАЙ! Если в кеше не найдено значение и взято в физическом хранилище то не требуется писать его в кеш
 
         }   // Поиск в самом хранилище
-        else // В кеше встретелось что-то внезапное
-            outErrorCode = CacheError; // Вернём ошибку из кеширующего хранилища
 
         if (outErrorCode) // Если ошибка поиска сообщения
             Result = nullptr; // На всякий случай сбросим результат
@@ -404,8 +412,12 @@ std::error_code HMCombinedDataStorage::updateGroup(const std::shared_ptr<hmcommo
             if (!Error && m_CacheStorage) // Если группа успешно обновлёна в физическое хранилище и доступен кеш
             {
                 std::error_code CacheError = m_CacheStorage->updateGroup(inGroup); // Обновляем данные о группе в кеше
-                if (CacheError) // Ошибки кеша обрабатывам отдельно
-                    LOG_WARNING(QString::fromStdString(CacheError.message()));
+                if (CacheError) // Если не удалось обновить объект
+                {
+                    CacheError = m_CacheStorage->addGroup(inGroup); // То добавляем в кеш уже обновлённый объект
+                    if (CacheError) // Если и добавление не прошло
+                        LOG_WARNING(QString::fromStdString(CacheError.message())); // Обрабатываем ошибку
+                }
             }
         }
     }
@@ -422,14 +434,16 @@ std::shared_ptr<hmcommon::HMGroup> HMCombinedDataStorage::findGroupByUUID(const 
         outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
-        std::error_code CacheError = make_error_code(eDataStorageError::dsSuccess); // Отдельный результат для поиска в кеше
+        std::error_code CacheError = make_error_code(eDataStorageError::dsGroupNotExists); // Отдельный результат для поиска в кеше
 
-        if (!m_CacheStorage) // Если не доступен кеш
-            CacheError = make_error_code(eDataStorageError::dsGroupNotExists); // Помечаем результат поиска в кеше как ошибку
-        else // Если доступен кеш
+        if (m_CacheStorage) // Если доступен кеш
+        {
             Result = m_CacheStorage->findGroupByUUID(inGroupUUID, CacheError); // Сначала ищим пользователя в кеше
+            if (CacheError && CacheError.value() != static_cast<int32_t>(eDataStorageError::dsGroupNotExists)) // Если ошибка отличается от "объект не найден"
+                 LOG_WARNING(QString::fromStdString(CacheError.message())); // Пишим её в лог
+        }
 
-        if (CacheError.value() == static_cast<int32_t>(eDataStorageError::dsGroupNotExists)) // Если в кеше не удалось найти группу
+        if (CacheError) // Если в кеше не удалось найти группу
         {   // Ищим в физическом хранилище
             Result = m_HardStorage->findGroupByUUID(inGroupUUID, outErrorCode);
 
@@ -440,8 +454,6 @@ std::shared_ptr<hmcommon::HMGroup> HMCombinedDataStorage::findGroupByUUID(const 
                     LOG_WARNING(QString::fromStdString(CacheError.message()));
             }
         }   // Поиск в самом хранилище
-        else // В кеше встретелось что-то внезапное
-            outErrorCode = CacheError; // Вернём ошибку из кеширующего хранилища
 
         if (outErrorCode) // Если ошибка поиска группы
             Result = nullptr; // На всякий случай сбросим результат
@@ -564,27 +576,26 @@ std::shared_ptr<std::set<QUuid>> HMCombinedDataStorage::getGroupUserList(const Q
         outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
-        std::error_code CacheError = make_error_code(eDataStorageError::dsSuccess); // Отдельный результат для поиска в кеше
+        std::error_code CacheError = make_error_code(eDataStorageError::dsGroupUserRelationNotExists); // Отдельный результат для поиска в кеше
 
-        if (!m_CacheStorage) // Если не доступен кеш
-            CacheError = make_error_code(eDataStorageError::dsGroupUserRelationNotExists); // Помечаем результат поиска в кеше как ошибку
-        else // Если доступен кеш
+        if (m_CacheStorage) // Если доступен кеш
+        {
             Result = m_CacheStorage->getGroupUserList(inGroupUUID, CacheError); // Сначала ищим сообщения в кеше
+            if (CacheError && CacheError.value() != static_cast<int32_t>(eDataStorageError::dsGroupUserRelationNotExists)) // Если ошибка отличается от "объект не найден"
+                 LOG_WARNING(QString::fromStdString(CacheError.message())); // Пишим её в лог
+        }
 
-        if (CacheError.value() == static_cast<int32_t>(eDataStorageError::dsGroupUserRelationNotExists)) // Если в кеше не удалось найти связь
+        if (CacheError) // Если в кеше не удалось найти связь
         {   // Ищим в физическом хранилище
             Result = m_HardStorage->getGroupUserList(inGroupUUID, outErrorCode);
 
             if (!outErrorCode && m_CacheStorage) // Если список окнтактов успешно найден в физическом хранилище и доступен кеш
             {
                 CacheError = m_CacheStorage->setGroupUsers(inGroupUUID, Result); // Добавим его в кеш
-
                 if (CacheError) // Ошибки кеша обрабатывам отдельно
                     LOG_WARNING(QString::fromStdString(CacheError.message()));
             }
         }   // Поиск в самом хранилище
-        else // В кеше встретелось что-то внезапное
-            outErrorCode = CacheError; // Вернём ошибку из кеширующего хранилища
 
         if (outErrorCode) // Если ошибка поиска сообщения
             Result = nullptr; // На всякий случай сбросим результат
@@ -654,14 +665,16 @@ std::shared_ptr<hmcommon::HMGroupMessage> HMCombinedDataStorage::findMessage(con
         outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
-        std::error_code CacheError = make_error_code(eDataStorageError::dsSuccess); // Отдельный результат для поиска в кеше
+        std::error_code CacheError = make_error_code(eDataStorageError::dsMessageNotExists); // Отдельный результат для поиска в кеше
 
-        if (!m_CacheStorage) // Если не доступен кеш
-            CacheError = make_error_code(eDataStorageError::dsMessageNotExists); // Помечаем результат поиска в кеше как ошибку
-        else // Если доступен кеш
+        if (m_CacheStorage) // Если доступен кеш
+        {
             Result = m_CacheStorage->findMessage(inMessageUUID, CacheError); // Сначала ищим сообщение в кеше
+            if (CacheError && CacheError.value() != static_cast<int32_t>(eDataStorageError::dsMessageNotExists)) // Если ошибка отличается от "объект не найден"
+                 LOG_WARNING(QString::fromStdString(CacheError.message())); // Пишим её в лог
+        }
 
-        if (CacheError.value() == static_cast<int32_t>(eDataStorageError::dsMessageNotExists)) // Если в кеше не удалось найти сообщение
+        if (CacheError) // Если в кеше не удалось найти сообщение
         {   // Ищим в физическом хранилище
             Result = m_HardStorage->findMessage(inMessageUUID, outErrorCode);
 
@@ -672,8 +685,6 @@ std::shared_ptr<hmcommon::HMGroupMessage> HMCombinedDataStorage::findMessage(con
                     LOG_WARNING(QString::fromStdString(CacheError.message()));
             }
         }   // Поиск в самом хранилище
-        else // В кеше встретелось что-то внезапное
-            outErrorCode = CacheError; // Вернём ошибку из кеширующего хранилища
 
         if (outErrorCode) // Если ошибка поиска сообщения
             Result = nullptr; // На всякий случай сбросим результат
@@ -691,14 +702,16 @@ std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> HMCombinedDataStorage::fi
         outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
-        std::error_code CacheError = make_error_code(eDataStorageError::dsSuccess); // Отдельный результат для поиска в кеше
+        std::error_code CacheError = make_error_code(eDataStorageError::dsMessageNotExists); // Отдельный результат для поиска в кеше
 
-        if (!m_CacheStorage) // Если не доступен кеш
-            CacheError = make_error_code(eDataStorageError::dsMessageNotExists); // Помечаем результат поиска в кеше как ошибку
-        else // Если доступен кеш
+        if (m_CacheStorage) // Если доступен кеш
+        {
             Result = m_CacheStorage->findMessages(inGroupUUID, inRange, CacheError); // Сначала ищим сообщения в кеше
+            if (CacheError && CacheError.value() != static_cast<int32_t>(eDataStorageError::dsMessageNotExists)) // Если ошибка отличается от "объект не найден"
+                 LOG_WARNING(QString::fromStdString(CacheError.message())); // Пишим её в лог
+        }
 
-        if (CacheError.value() == static_cast<int32_t>(eDataStorageError::dsMessageNotExists)) // Если в кеше не удалось найти сообщения
+        if (CacheError) // Если в кеше не удалось найти сообщения
         {   // Ищим в физическом хранилище
             Result = m_HardStorage->findMessages(inGroupUUID, inRange, outErrorCode);
 
@@ -712,8 +725,6 @@ std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> HMCombinedDataStorage::fi
                 }
             }
         }   // Поиск в самом хранилище
-        else // В кеше встретелось что-то внезапное
-            outErrorCode = CacheError; // Вернём ошибку из кеширующего хранилища
 
         if (outErrorCode) // Если ошибка поиска сообщения
             Result.clear(); // На всякий случай сбросим результат

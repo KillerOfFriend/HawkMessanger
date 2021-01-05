@@ -15,7 +15,7 @@ namespace hmservcommon::datastorage
 {
 //-----------------------------------------------------------------------------
 /**
- * @brief The HMCombinedDataStorage class - Класс, описывающий комбинированное хранилище данных (физическое\хешированное)
+ * @brief The HMCombinedDataStorage class - Класс, описывающий комбинированное хранилище данных (физическое\кеширующее)
  *
  * @authors Alekseev_s
  * @date 11.12.2020

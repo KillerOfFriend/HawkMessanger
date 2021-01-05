@@ -1,13 +1,21 @@
 #include "abstractcahcedatastorage.h"
 
+#include <cassert>
+
 #include "HawkLog.h"
 #include "systemerrorex.h"
 #include "datastorage/datastorageerrorcategory.h"
 
 using namespace hmservcommon::datastorage;
 
-HMAbstractCahceDataStorage::HMAbstractCahceDataStorage() : HMAbstractDataStorageFunctional()
+HMAbstractCahceDataStorage::HMAbstractCahceDataStorage(const std::chrono::milliseconds inCacheLifeTime, const std::chrono::milliseconds inSleep) :
+    HMAbstractDataStorageFunctional(),
+    m_cacheLifeTime(inCacheLifeTime),
+    m_sleep(inSleep)
 {
+    assert(m_cacheLifeTime.count() != 0);
+    assert(m_sleep.count() != 0);
+
     std::atomic_init(&m_threadWork, false); // По умолчанию не разрешаем работу потока
 }
 //-----------------------------------------------------------------------------
@@ -25,6 +33,18 @@ void HMAbstractCahceDataStorage::close()
 {
     stopCacheWatchdogThread(); // Останавливаем поток
 }
+//-----------------------------------------------------------------------------
+void HMAbstractCahceDataStorage::setCacheLifeTime(const std::chrono::milliseconds inCacheLifeTime)
+{ m_cacheLifeTime = inCacheLifeTime; }
+//-----------------------------------------------------------------------------
+std::chrono::milliseconds HMAbstractCahceDataStorage::getCacheLifeTime() const
+{ return m_cacheLifeTime; }
+//-----------------------------------------------------------------------------
+void HMAbstractCahceDataStorage::setThreadSleep(const std::chrono::milliseconds inSleep)
+{ m_sleep = inSleep; }
+//-----------------------------------------------------------------------------
+std::chrono::milliseconds HMAbstractCahceDataStorage::getThreadSleep() const
+{ return m_sleep; }
 //-----------------------------------------------------------------------------
 std::error_code HMAbstractCahceDataStorage::startCacheWatchdogThread()
 {
@@ -46,7 +66,11 @@ void HMAbstractCahceDataStorage::stopCacheWatchdogThread()
 {
     if (m_threadWork)
     {
-        m_threadWork.store(false); // Останавливаем поток
+        {
+            std::lock_guard<std::mutex> lk(m_conditionDefender);
+            m_threadWork.store(false); // Останавливаем поток
+        }
+        m_break.notify_one(); // Шлём сигнал прирывания потока
 
         if (m_watchdogThread.joinable())
             m_watchdogThread.join(); // Ожидаем завершения потока
@@ -60,7 +84,9 @@ void HMAbstractCahceDataStorage::cacheWatchdogThreadFunc()
     while (m_threadWork)
     {
         processCacheInThread(); // Обрабатываем кеш
-        std::this_thread::sleep_for(std::chrono::milliseconds(50)); // Замораживаем поток
+
+        std::unique_lock ul(m_conditionDefender);
+        m_break.wait_for(ul, m_sleep, [&] { return !m_threadWork; }); // Ожидаем либо срабатывания m_break (по !m_threadWork) либо таймаута m_sleep
     }
 
     LOG_DEBUG("cacheWatchdogThreadFunc Finished");

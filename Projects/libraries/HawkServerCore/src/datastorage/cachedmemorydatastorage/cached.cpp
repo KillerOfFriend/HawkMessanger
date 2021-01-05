@@ -7,7 +7,7 @@ using namespace hmservcommon;
 //-----------------------------------------------------------------------------
 HMCachedUser::HMCachedUser(const std::shared_ptr<hmcommon::HMUser> inUser) :
     m_user(inUser),
-    m_lastRequest(QTime::currentTime())
+    m_lastRequest(std::chrono::system_clock::now())
 {
     assert(m_user != nullptr);
 }
@@ -17,7 +17,7 @@ HMCachedUser::HMCachedUser(HMCachedUser&& inOther) :
     m_lastRequest(std::move(inOther.m_lastRequest))
 {
     inOther.m_user = nullptr;
-    inOther.m_lastRequest = QTime();
+    inOther.m_lastRequest = {};
 }
 //-----------------------------------------------------------------------------
 bool HMCachedUser::operator== (const HMCachedUser& inOther) const noexcept
@@ -33,7 +33,7 @@ bool HMCachedUser::operator== (const HMCachedUser& inOther) const noexcept
 HMCachedUserContacts::HMCachedUserContacts(const QUuid& inUserUUID, const std::shared_ptr<std::set<QUuid>> inContactList) :
     m_userUUID(inUserUUID),
     m_contactList(inContactList),
-    m_lastRequest(QTime::currentTime())
+    m_lastRequest(std::chrono::system_clock::now())
 {
     assert(m_contactList != nullptr);
 }
@@ -45,7 +45,7 @@ HMCachedUserContacts::HMCachedUserContacts(HMCachedUserContacts&& inOther) :
 {
     inOther.m_userUUID = QUuid();
     inOther.m_contactList = nullptr;
-    inOther.m_lastRequest = QTime();
+    inOther.m_lastRequest = {};
 }
 //-----------------------------------------------------------------------------
 bool HMCachedUserContacts::operator == (const HMCachedUserContacts& inOther) const noexcept
@@ -57,7 +57,7 @@ bool HMCachedUserContacts::operator == (const HMCachedUserContacts& inOther) con
 //-----------------------------------------------------------------------------
 HMCachedGroup::HMCachedGroup(const std::shared_ptr<hmcommon::HMGroup> inGroup) :
     m_group(inGroup),
-    m_lastRequest(QTime::currentTime())
+    m_lastRequest(std::chrono::system_clock::now())
 {
     assert(m_group != nullptr);
 }
@@ -67,7 +67,7 @@ HMCachedGroup::HMCachedGroup(HMCachedGroup&& inOther) :
     m_lastRequest(inOther.m_lastRequest)
 {
     inOther.m_group = nullptr;
-    inOther.m_lastRequest = QTime();
+    inOther.m_lastRequest = {};
 }
 //-----------------------------------------------------------------------------
 bool HMCachedGroup::operator== (const HMCachedGroup& inOther) const noexcept
@@ -83,7 +83,7 @@ bool HMCachedGroup::operator== (const HMCachedGroup& inOther) const noexcept
 HMCachedGroupUsers::HMCachedGroupUsers(const QUuid& inGroupUUID, const std::shared_ptr<std::set<QUuid>> inGroupUsers) :
     m_group(inGroupUUID),
     m_groupUsers(inGroupUsers),
-    m_lastRequest(QTime::currentTime())
+    m_lastRequest(std::chrono::system_clock::now())
 {
     assert(m_groupUsers != nullptr);
 }
@@ -95,7 +95,7 @@ HMCachedGroupUsers::HMCachedGroupUsers(HMCachedGroupUsers&& inOther) :
 {
     inOther.m_group = QUuid();
     inOther.m_groupUsers = nullptr;
-    inOther.m_lastRequest = QTime();
+    inOther.m_lastRequest = {};
 }
 //-----------------------------------------------------------------------------
 bool HMCachedGroupUsers::operator == (const HMCachedGroupUsers& inOther) const noexcept

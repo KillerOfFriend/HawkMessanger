@@ -17,7 +17,10 @@ using namespace hmservcommon::datastorage;
  */
 std::unique_ptr<HMDataStorage> makeStorage()
 {
-    return std::make_unique<HMCachedMemoryDataStorage>(); // Создаём экземпляр кеширующего хранилища HMCachedMemoryDataStorage
+    std::chrono::milliseconds CacheLifeTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::minutes(10));
+    std::chrono::milliseconds Sleep = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::minutes(1));
+
+    return std::make_unique<HMCachedMemoryDataStorage>(CacheLifeTime, Sleep); // Создаём экземпляр кеширующего хранилища HMCachedMemoryDataStorage
 }
 //-----------------------------------------------------------------------------
 /**
@@ -55,7 +58,7 @@ TEST(CachedMemoryDataStorage, AddUser)
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     Error = CachedStorage->addUser(NewUser); // Пытаемся добавить повторно
-    EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserAlreadyExists)); // Должны получить сообщение что пользователь уже хеширован
+    EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserAlreadyExists)); // Должны получить сообщение что пользователь уже кеширован
 
     CachedStorage->close();
 }
@@ -104,7 +107,7 @@ TEST(CachedMemoryDataStorage, findUserByUUID)
     std::shared_ptr<hmcommon::HMUser> FindRes = CachedStorage->findUserByUUID(NewUser->m_uuid, Error); // Попытка получить не существующего пользователя
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // И метку, что пользователь не хеширован
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // И метку, что пользователь не кеширован
 
     Error = CachedStorage->addUser(NewUser); // Пытаемся добавить пользователя в кеш
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -122,7 +125,7 @@ TEST(CachedMemoryDataStorage, findUserByUUID)
     ASSERT_NE(FindRes, nullptr); // Должен вернуться валидный указатель
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    EXPECT_EQ(FindRes, NewUser); // Проводим сравнение указателей (КОНЦЕПЦИЯ ХЕША: Объект всегда хранится под одним указателем)
+    EXPECT_EQ(FindRes, NewUser); // Проводим сравнение указателей (КОНЦЕПЦИЯ кешА: Объект всегда хранится под одним указателем)
 
     CachedStorage->close();
 }
@@ -145,7 +148,7 @@ TEST(CachedMemoryDataStorage, findUserByAuthentication)
     std::shared_ptr<hmcommon::HMUser> FindRes = CachedStorage->findUserByAuthentication(NewUser->getLogin(), NewUser->getPasswordHash(), Error); // Попытка получить не существующего пользователя
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // И метку, что пользователь не хеширован
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // И метку, что пользователь не кеширован
 
     Error = CachedStorage->addUser(NewUser); // Пытаемся добавить пользователя в кеш
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -163,7 +166,7 @@ TEST(CachedMemoryDataStorage, findUserByAuthentication)
     ASSERT_NE(FindRes, nullptr); // Должен вернуться валидный указатель
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    EXPECT_EQ(FindRes, NewUser); // Проводим сравнение указателей (КОНЦЕПЦИЯ ХЕША: Объект всегда хранится под одним указателем)
+    EXPECT_EQ(FindRes, NewUser); // Проводим сравнение указателей (КОНЦЕПЦИЯ кешА: Объект всегда хранится под одним указателем)
 
     CachedStorage->close();
 }
@@ -192,7 +195,7 @@ TEST(CachedMemoryDataStorage, removeUser)
     std::shared_ptr<hmcommon::HMUser> FindRes = CachedStorage->findUserByUUID(NewUser->m_uuid, Error); // Попытка получить удалённого пользователя
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // И метку, что пользователь не хеширован
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // И метку, что пользователь не кеширован
 
     CachedStorage->close();
 }
@@ -246,7 +249,7 @@ TEST(CachedMemoryDataStorage, addGroup)
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     Error = CachedStorage->addGroup(NewGroup);
-    EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupAlreadyExists)); // Должны получить сообщение что группа уже хеширована
+    EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupAlreadyExists)); // Должны получить сообщение что группа уже кеширована
 
     CachedStorage->close();
 }
@@ -295,7 +298,7 @@ TEST(CachedMemoryDataStorage, findGroupByUUID)
     std::shared_ptr<hmcommon::HMGroup> FindRes = CachedStorage->findGroupByUUID(NewGroup->m_uuid, Error); // Попытка получить не существующую группу
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // И метку, что группа не хеширована
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // И метку, что группа не кеширована
 
     Error = CachedStorage->addGroup(NewGroup); // Пытаемся добавить группу в кеш
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -313,7 +316,7 @@ TEST(CachedMemoryDataStorage, findGroupByUUID)
     ASSERT_NE(FindRes, nullptr); // Должен вернуться валидный указатель
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    EXPECT_EQ(FindRes, NewGroup); // Проводим сравнение указателей (КОНЦЕПЦИЯ ХЕША: Объект всегда хранится под одним указателем)
+    EXPECT_EQ(FindRes, NewGroup); // Проводим сравнение указателей (КОНЦЕПЦИЯ кешА: Объект всегда хранится под одним указателем)
 
     CachedStorage->close();
 }
@@ -342,7 +345,7 @@ TEST(CachedMemoryDataStorage, removeGroup)
     std::shared_ptr<hmcommon::HMGroup> FindRes = CachedStorage->findGroupByUUID(NewGroup->m_uuid, Error); // Попытка получить удалённую группу
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // И метку, что группа не хеширована
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // И метку, что группа не кеширована
 
     CachedStorage->close();
 }

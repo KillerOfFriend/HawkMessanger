@@ -11,6 +11,12 @@
 using namespace hmservcommon::datastorage;
 
 //-----------------------------------------------------------------------------
+HMCachedMemoryDataStorage::HMCachedMemoryDataStorage(const std::chrono::milliseconds inCacheLifeTime, const std::chrono::milliseconds inSleep) :
+    HMAbstractCahceDataStorage(inCacheLifeTime, inSleep)
+{
+
+}
+//-----------------------------------------------------------------------------
 HMCachedMemoryDataStorage::~HMCachedMemoryDataStorage()
 {
     close();
@@ -82,7 +88,7 @@ std::shared_ptr<hmcommon::HMUser> HMCachedMemoryDataStorage::findUserByUUID(cons
     else // Пользователь кеширован
     {
         Result = FindRes->m_user; // Вернём указатель на кешированного пользователя
-        FindRes->m_lastRequest = QTime::currentTime(); // Помечаем время последнего запроса
+        FindRes->m_lastRequest = std::chrono::system_clock::now(); // Помечаем время последнего запроса
     }
 
     return Result;
@@ -109,7 +115,7 @@ std::shared_ptr<hmcommon::HMUser> HMCachedMemoryDataStorage::findUserByAuthentic
     else // Пользователь кеширован
     {
         Result = FindRes->m_user; // Вернём указатель на кешированного пользователя
-        FindRes->m_lastRequest = QTime::currentTime(); // Помечаем время последнего запроса
+        FindRes->m_lastRequest = std::chrono::system_clock::now(); // Помечаем время последнего запроса
     }
 
     return Result;
@@ -136,7 +142,7 @@ std::error_code HMCachedMemoryDataStorage::setUserContacts(const QUuid& inUserUU
     {
         std::unique_lock ul(m_userContactsDefender); // Эксклюзивно блокируем доступ к связам пользователь-контакты
         if (!m_cachedUserContacts.emplace(HMCachedUserContacts(inUserUUID, inContacts)).second)
-            Error = make_error_code(eDataStorageError::dsUserContactAlredyExists); // Контакт уже хеширован
+            Error = make_error_code(eDataStorageError::dsUserContactAlredyExists); // Контакт уже кеширован
     }
 
     return Error;
@@ -159,7 +165,7 @@ std::error_code HMCachedMemoryDataStorage::addUserContact(const QUuid& inUserUUI
         {
             if (!FindRes->m_contactList->insert(inContactUUID).second) // Добавляем контакт
                 Error = make_error_code(hmcommon::eSystemErrorEx::seAlredyInContainer);
-            FindRes->m_lastRequest = QTime::currentTime(); // Помечаем время последнего запроса
+            FindRes->m_lastRequest = std::chrono::system_clock::now(); // Помечаем время последнего запроса
         }
     }
 
@@ -178,7 +184,8 @@ std::error_code HMCachedMemoryDataStorage::removeUserContact(const QUuid& inUser
     else // Связь кеширована
     {
         FindRes->m_contactList->erase(inContactUUID); // Удаляем контакт
-        FindRes->m_lastRequest = QTime::currentTime(); // Помечаем время последнего запроса
+//        FindRes->m_lastRequest = QTime::currentTime(); // Помечаем время последнего запроса
+        FindRes->m_lastRequest = std::chrono::system_clock::now(); // Помечаем время последнего запроса
     }
 
     return Error;
@@ -208,7 +215,7 @@ std::shared_ptr<std::set<QUuid>> HMCachedMemoryDataStorage::getUserContactList(c
     else // Связь кеширована
     {
         Result = FindRes->m_contactList; // Вернём указатель на кешированную связь
-        FindRes->m_lastRequest = QTime::currentTime(); // Помечаем время последнего запроса
+        FindRes->m_lastRequest = std::chrono::system_clock::now(); // Помечаем время последнего запроса
     }
 
     return Result;
@@ -270,7 +277,7 @@ std::shared_ptr<hmcommon::HMGroup> HMCachedMemoryDataStorage::findGroupByUUID(co
     else // Группа кеширована
     {
         Result = FindRes->m_group; // Вернём указатель на кешированную группу
-        FindRes->m_lastRequest = QTime::currentTime(); // Помечаем время последнего запроса
+        FindRes->m_lastRequest = std::chrono::system_clock::now(); // Помечаем время последнего запроса
     }
 
     return Result;
@@ -325,7 +332,7 @@ std::error_code HMCachedMemoryDataStorage::addGroupUser(const QUuid& inGroupUUID
         {
             if (!FindRes->m_groupUsers->insert(inUserUUID).second) // Добавляем участника (Если он уже внутри, не фатально)
                 Error = make_error_code(eDataStorageError::dsGroupUserRelationAlredyExists);
-            FindRes->m_lastRequest = QTime::currentTime(); // Помечаем время последнего запроса
+            FindRes->m_lastRequest = std::chrono::system_clock::now(); // Помечаем время последнего запроса
         }
     }
 
@@ -348,7 +355,7 @@ std::error_code HMCachedMemoryDataStorage::removeGroupUser(const QUuid& inGroupU
         else // Связь кеширована
         {
             FindRes->m_groupUsers->erase(inUserUUID); // Удаляем участника (Если его не было, не фатально)
-            FindRes->m_lastRequest = QTime::currentTime(); // Помечаем время последнего запроса
+            FindRes->m_lastRequest = std::chrono::system_clock::now(); // Помечаем время последнего запроса
         }
     }
 
@@ -371,7 +378,7 @@ std::error_code HMCachedMemoryDataStorage::clearGroupUsers(const QUuid& inGroupU
         else // Связь кеширована
         {
             FindRes->m_groupUsers->clear(); // Очищаем список участников
-            FindRes->m_lastRequest = QTime::currentTime(); // Помечаем время последнего запроса
+            FindRes->m_lastRequest = std::chrono::system_clock::now(); // Помечаем время последнего запроса
         }
     }
 
@@ -394,7 +401,10 @@ std::shared_ptr<std::set<QUuid>> HMCachedMemoryDataStorage::getGroupUserList(con
         if (FindRes == m_cachedGroupUsers.end()) // Нет группы в кеше
             outErrorCode = make_error_code(eDataStorageError::dsGroupUserRelationNotExists);
         else // Связь кеширована
+        {
             Result = FindRes->m_groupUsers; // Возвращаем кешированный список участников
+            FindRes->m_lastRequest = std::chrono::system_clock::now(); // Помечаем время последнего запроса
+        }
     }
 
     return Result;
@@ -447,7 +457,8 @@ void HMCachedMemoryDataStorage::clearCached()
 //-----------------------------------------------------------------------------
 void HMCachedMemoryDataStorage::processCacheInThread()
 {
-    static const std::int32_t cacheLifeTime = 15 * 60000; // Время жизни кешированого объекта 15 минут в милисекундах
+    const std::chrono::system_clock::time_point CurrentTime = std::chrono::system_clock::now(); // Получаем текщее время
+    std::chrono::milliseconds TimeLeft; // Переменная, хранящая прошедшее время (в милисекундах)
 
     // СПЕРВА ОБРАБОТАТЬ СВЯЗИ
 
@@ -459,8 +470,10 @@ void HMCachedMemoryDataStorage::processCacheInThread()
         auto It = m_cachedUserContacts.begin();
         // Пока не c++20 будем удалять по старинке
         while (It != m_cachedUserContacts.end())
-        {   // Если объектом владеет только кеш и время жизни объекта вышло
-            if (It->m_contactList.use_count() == 1 && It->m_lastRequest.msecsTo(QTime::currentTime()) >= cacheLifeTime)
+        {
+            TimeLeft = std::chrono::duration_cast<std::chrono::milliseconds>(CurrentTime - It->m_lastRequest);
+
+            if (It->m_contactList.use_count() == 1 && getCacheLifeTime() <= TimeLeft) // Если объектом владеет только кеш и время жизни объекта вышло
                 It = m_cachedUserContacts.erase(It); // Удаляем пользователя из кеша
             else // Объект не привысил лимит жизни
                 It++; // Переходим к следующему объекту
@@ -475,8 +488,10 @@ void HMCachedMemoryDataStorage::processCacheInThread()
         auto It = m_cachedGroupUsers.begin();
         // Пока не c++20 будем удалять по старинке
         while (It != m_cachedGroupUsers.end())
-        {   // Если объектом владеет только кеш и время жизни объекта вышло
-            if (It->m_groupUsers.use_count() == 1 && It->m_lastRequest.msecsTo(QTime::currentTime()) >= cacheLifeTime)
+        {
+            TimeLeft = std::chrono::duration_cast<std::chrono::milliseconds>(CurrentTime - It->m_lastRequest);
+
+            if (It->m_groupUsers.use_count() == 1 && getCacheLifeTime() <= TimeLeft) // Если объектом владеет только кеш и время жизни объекта вышло
                 It = m_cachedGroupUsers.erase(It); // Удаляем пользователя из кеша
             else // Объект не привысил лимит жизни
                 It++; // Переходим к следующему объекту
@@ -494,7 +509,9 @@ void HMCachedMemoryDataStorage::processCacheInThread()
         // Пока не c++20 будем удалять по старинке
         while (It != m_cachedUsers.end())
         {   // Если объектом владеет только кеш и время жизни объекта вышло
-            if (It->m_user.use_count() == 1 && It->m_lastRequest.msecsTo(QTime::currentTime()) >= cacheLifeTime)
+            TimeLeft = std::chrono::duration_cast<std::chrono::milliseconds>(CurrentTime - It->m_lastRequest);
+
+            if (It->m_user.use_count() == 1 && getCacheLifeTime() <= TimeLeft) // Если объектом владеет только кеш и время жизни объекта вышло
                 It = m_cachedUsers.erase(It); // Удаляем пользователя из кеша
             else // Объект не привысил лимит жизни
                 It++; // Переходим к следующему объекту
@@ -511,7 +528,9 @@ void HMCachedMemoryDataStorage::processCacheInThread()
         // Пока не c++20 будем удалять по старинке
         while (It != m_cachedGroups.end())
         {   // Если объектом владеет только кеш и время жизни объекта вышло
-            if (It->m_group.use_count() == 1 && It->m_lastRequest.msecsTo(QTime::currentTime()) >= cacheLifeTime)
+            TimeLeft = std::chrono::duration_cast<std::chrono::milliseconds>(CurrentTime - It->m_lastRequest);
+
+            if (It->m_group.use_count() == 1 && getCacheLifeTime() <= TimeLeft) // Если объектом владеет только кеш и время жизни объекта вышло
                 It = m_cachedGroups.erase(It); // Удаляем группу из кеша
             else // Объект не привысил лимит жизни
                 It++; // Переходим к следующему объекту

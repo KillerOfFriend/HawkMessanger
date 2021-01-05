@@ -6,8 +6,10 @@
  * @brief Содержит описание абстрактного класса кеширующего хранилища данных
  */
 
+#include <mutex>
 #include <thread>
 #include <atomic>
+#include <condition_variable>
 
 #include "datastorage/interface/abstractdatastoragefunctional.h"
 
@@ -24,15 +26,24 @@ class HMAbstractCahceDataStorage : public HMAbstractDataStorageFunctional
 {
 private:
 
-    std::atomic_bool m_threadWork;      ///< Флаг работы потока
-    std::thread m_watchdogThread;       ///< Поток контроля кеша
+    std::chrono::milliseconds m_cacheLifeTime;  ///< Время жизни объектов кеша (в милисекундах)
+    std::chrono::milliseconds m_sleep;          ///< Время ожидания потока контроля кеша (в милисекундах)
+
+    std::mutex m_conditionDefender;             ///< Мьютекс, защищающий условную переменную
+    std::condition_variable m_break;            ///< Условная переменная прерывания ожидания потока
+
+    std::atomic_bool m_threadWork;              ///< Флаг работы потока
+    std::thread m_watchdogThread;               ///< Поток контроля кеша
 
 public:
 
     /**
-     * @brief HMAbstractCahceDataStorage - Конструктор по умолчанию
+     * @brief HMAbstractCahceDataStorage - Инициализирующий конструктор
+     * @param inCacheLifeTime - Время жизни объектов кеша (в милисекундах)
+     * @param inSleep - Время ожидания потока контроля кеша в (в милисекундах)
      */
-    HMAbstractCahceDataStorage();
+    HMAbstractCahceDataStorage(const std::chrono::milliseconds inCacheLifeTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::minutes(15)),
+                               const std::chrono::milliseconds inSleep = std::chrono::milliseconds(1000));
 
     /**
      * @brief ~HMAbstractCahceDataStorage - Виртуальный деструктор по умолчанию
@@ -57,6 +68,22 @@ public:
      * @brief close - Метод закроет хранилище данных
      */
     virtual void close() override;
+
+    void setCacheLifeTime(const std::chrono::milliseconds inCacheLifeTime);
+
+    std::chrono::milliseconds getCacheLifeTime() const;
+
+    /**
+     * @brief setThreadSleep - Метод задаст время ожидания потока контроля кеша
+     * @param inSleep - Время ожидания потока контроля кеша в (в милисекундах)
+     */
+    void setThreadSleep(const std::chrono::milliseconds inSleep);
+
+    /**
+     * @brief getThreadSleep - Метод вернёт время ожидания потока контроля кеша
+     * @return Вернёт время ожидания потока контроля кеша (в милисекундах)
+     */
+    std::chrono::milliseconds getThreadSleep() const;
 
 protected:
 

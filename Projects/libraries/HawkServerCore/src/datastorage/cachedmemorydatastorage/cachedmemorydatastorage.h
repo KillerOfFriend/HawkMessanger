@@ -6,10 +6,9 @@
  * @brief Содержит описание класса кеширующего хранилища данных
  */
 
+#include <chrono>
 #include <shared_mutex>
 #include <unordered_set>
-
-#include <QTime>
 
 #include "cached.h"
 #include "datastorage/interface/abstractcahcedatastorage.h"
@@ -47,9 +46,12 @@ private:
 public:
 
     /**
-     * @brief HMCachedDataStorage - Конструктор по умолчанию
+     * @brief HMCachedMemoryDataStorage - Инициализирующий конструктор
+     * @param inCacheLifeTime - Время жизни объектов кеша (в милисекундах)
+     * @param inSleep - Время ожидания потока контроля кеша в (в милисекундах)
      */
-    HMCachedMemoryDataStorage() = default;
+    HMCachedMemoryDataStorage(const std::chrono::milliseconds inCacheLifeTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::minutes(15)),
+                              const std::chrono::milliseconds inSleep = std::chrono::milliseconds(1000));
 
     /**
      * @brief ~HMCachedDataStorage - Виртуальный деструктор
