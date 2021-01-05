@@ -19,7 +19,7 @@ HMAccountBuilder::HMAccountBuilder(const std::shared_ptr<datastorage::HMDataStor
         std::error_code Error = m_storage->open(); // Пытаемся открыть самостоятельно
 
         if (Error)
-            LOG_WARNING_EX(QString::fromStdString(Error.message()));
+            LOG_WARNING(QString::fromStdString(Error.message()));
     }
 }
 //-----------------------------------------------------------------------------
@@ -85,7 +85,7 @@ std::shared_ptr<hmcommon::HMAccount> HMAccountBuilder::buildAccount(const QUuid&
                         std::shared_ptr<hmcommon::HMGroup> Group = m_storage->findGroupByUUID(GroupUUID, FindGroupError);
 
                         if (FindGroupError) // Если не улаось обнаружить группу
-                            LOG_WARNING_EX(QString::fromStdString(FindGroupError.message())); // Сообщим об этом в логах
+                            LOG_WARNING(QString::fromStdString(FindGroupError.message())); // Сообщим об этом в логах
                         else // Валидную группу добавляем в аккаунт
                             Result->m_groups.emplace_back(std::move(Group));
                     }

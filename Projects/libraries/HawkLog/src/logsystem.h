@@ -148,55 +148,44 @@ public:
 
 
 // Вспомогательные макросы
-#define AS_MACRO_STR(inVal)             # inVal
-#define TO_MACRO_STR(inVal)             AS_MACRO_STR(inVal)
+#define AS_MACRO_STR(inVal)         # inVal
+#define TO_MACRO_STR(inVal)         AS_MACRO_STR(inVal)
 // Для глубокого дебага выводим информацию об исходном файле и строке
-#define SRC_FILE_DATA                   ( "Source file: " __FILE__ " on line " TO_MACRO_STR(__LINE__) )
+#define SRC_FILE_DATA               ( "Source file: " __FILE__ " on line " TO_MACRO_STR(__LINE__) )
 
 #if defined(__GNUC__)
     // Вывод информации о классе::методе (расширение GCC)
-    #define SENDER_CLASS(inClass)           ( QString("In class method: ") + __PRETTY_FUNCTION__ )
+    #define SENDER_INFO             ( QString("Sender: ") + __PRETTY_FUNCTION__ )
 #elif defined(_MSC_VER)
     // Вывод информации о классе::методе (расширение MSVC)
-    #define SENDER_CLASS(inClass)           ( QString("In class method: ") + __FUNCSIG__ )
+    #define SENDER_INFO             ( QString("Sender: ") + __FUNCSIG__ )
 #endif
 
-// Вывод изормации о функции
-#define SENDER_FUNCTION                 ( QString("In function: ") + __FUNCTION__ )
-
 #ifndef NDEBUG // В режиме дебага выводим доп информацию об исходном файле
-    // Вывод изормации о функции с доп. информацией о сиходном файле
-    #define SENDER_FUNCTION_EX          ( SENDER_FUNCTION + "\n\t" + SRC_FILE_DATA )
-    // Вывод информации о классе::методе с доп. информацией о сиходном файле
-    #define SENDER_CLASS_EX(inClass)    ( SENDER_CLASS(inClass) + "\n\t" + SRC_FILE_DATA )
+    // Вывод изормации об отправителе
+    #define SENDER_INFO_EX          ( SENDER_INFO + "\n\t" + SRC_FILE_DATA )
 #else // В релизной версии выводим только место "вызова"
-    // Вывод изормации о функции
-    #define SENDER_FUNCTION_EX          ( SENDER_FUNCTION )
-    // Вывод информации о классе::методе
-    #define SENDER_CLASS_EX(inClass)    ( SENDER_CLASS(inClass) )
+    // Вывод изормации об отправителе
+    #define SENDER_INFO_EX          ( SENDER_INFO )
 #endif
 
 //-----
 
 // Макросы вывода сообщений
-#define LOG_SYSTEM                      ( hmlog::HMLogSystem::getInstance() )
+#define LOG_SYSTEM                  ( hmlog::HMLogSystem::getInstance() )
 // Простой текст
-#define LOG_TEXT(inMessage)             ( LOG_SYSTEM.logText(inMessage) )
+#define LOG_TEXT(inMessage)         ( LOG_SYSTEM.logText(inMessage) )
 // Информационное сообщение
-#define LOG_INFO(inMessage)             ( LOG_SYSTEM.logInfo(inMessage) )
+#define LOG_INFO(inMessage)         ( LOG_SYSTEM.logInfo(inMessage) )
 // Предупреждения (В режиме дебага, выведет доп. информацию об исходном файле и строке)
-#define LOG_WARNING(inMessage)          ( LOG_SYSTEM.logWarning(inMessage + QString(" " + SENDER_FUNCTION_EX)) )
-#define LOG_WARNING_EX(inMessage)       ( LOG_SYSTEM.logWarning(inMessage + QString(" " + SENDER_CLASS_EX(this))) )
+#define LOG_WARNING(inMessage)      ( LOG_SYSTEM.logWarning(inMessage + QString(" " + SENDER_INFO_EX)) )
 // Ошибки (В режиме дебага, выведет доп. информацию об исходном файле и строке)
-#define LOG_ERROR(inMessage)            ( LOG_SYSTEM.logError(inMessage + QString(" " + SENDER_FUNCTION_EX)) )
-#define LOG_ERROR_EX(inMessage)         ( LOG_SYSTEM.logError(inMessage + QString(" " + SENDER_CLASS_EX(this))) )
+#define LOG_ERROR(inMessage)        ( LOG_SYSTEM.logError(inMessage + QString(" " + SENDER_INFO_EX)) )
 // Дебаг (Сообщение дебага не даст информации об исходном файле и строке)
 #ifndef NDEBUG
-    #define LOG_DEBUG(inMessage)        ( LOG_SYSTEM.logDebug(inMessage + QString(" " + SENDER_FUNCTION)) )
-    #define LOG_DEBUG_EX(inMessage)     ( LOG_SYSTEM.logDebug(inMessage + QString(" " + SENDER_CLASS(this))) )
+    #define LOG_DEBUG(inMessage)    ( LOG_SYSTEM.logDebug(inMessage + QString(" " + SENDER_INFO)) )
 #else
     #define LOG_DEBUG(inMessage)
-    #define LOG_DEBUG_EX(inMessage)
 #endif // NDEBUG
 
 #endif // LOGSYSTEM_H

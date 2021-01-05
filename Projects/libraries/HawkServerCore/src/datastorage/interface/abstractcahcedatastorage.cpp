@@ -55,7 +55,7 @@ void HMAbstractCahceDataStorage::stopCacheWatchdogThread()
 //-----------------------------------------------------------------------------
 void HMAbstractCahceDataStorage::cacheWatchdogThreadFunc()
 {
-    LOG_DEBUG_EX("cacheWatchdogThreadFunc Started");
+    LOG_DEBUG("cacheWatchdogThreadFunc Started");
 
     while (m_threadWork)
     {
@@ -63,6 +63,6 @@ void HMAbstractCahceDataStorage::cacheWatchdogThreadFunc()
         std::this_thread::sleep_for(std::chrono::milliseconds(50)); // Замораживаем поток
     }
 
-    LOG_DEBUG_EX("cacheWatchdogThreadFunc Finished");
+    LOG_DEBUG("cacheWatchdogThreadFunc Finished");
 }
 //-----------------------------------------------------------------------------
