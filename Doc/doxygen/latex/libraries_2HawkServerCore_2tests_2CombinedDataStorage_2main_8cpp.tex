@@ -1,11 +1,9 @@
 \hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp}{}\doxysection{Файл Projects/libraries/\+Hawk\+Server\+Core/tests/\+Combined\+Data\+Storage/main.cpp}
 \label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp}\index{Projects/libraries/HawkServerCore/tests/CombinedDataStorage/main.cpp@{Projects/libraries/HawkServerCore/tests/CombinedDataStorage/main.cpp}}
+{\ttfamily \#include $<$chrono$>$}\newline
 {\ttfamily \#include $<$gtest/gtest.\+h$>$}\newline
-{\ttfamily \#include $<$thread$>$}\newline
-{\ttfamily \#include $<$filesystem$>$}\newline
-{\ttfamily \#include $<$systemerrorex.\+h$>$}\newline
 {\ttfamily \#include $<$datastorage/\+Data\+Storage.\+h$>$}\newline
-{\ttfamily \#include $<$Hawk\+Common\+Test\+Utils.\+hpp$>$}\newline
+{\ttfamily \#include $<$Hawk\+Server\+Core\+Hard\+Data\+Storage\+Test.\+hpp$>$}\newline
 Граф включаемых заголовочных файлов для main.\+cpp\+:
 \nopagebreak
 \begin{figure}[H]
@@ -17,11 +15,11 @@
 \doxysubsection*{Функции}
 \begin{DoxyCompactItemize}
 \item 
-std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0b4f6771133f750fee6eef138cf68e98}{make\+Storage}} ()
+std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a324574ea38cd8b2ee41ac60f545b8115}{make\+Storage}} (const std\+::chrono\+::milliseconds in\+Cache\+Life\+Time=std\+::chrono\+::duration\+\_\+cast$<$ std\+::chrono\+::milliseconds $>$(std\+::chrono\+::minutes(15)), const std\+::chrono\+::milliseconds in\+Sleep=std\+::chrono\+::milliseconds(1000))
 \begin{DoxyCompactList}\small\item\em make\+Storage -\/ Метод создаст экземпляр хранилища \end{DoxyCompactList}\item 
-\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_adcff88426fa7f8ee7c9ff35944c63c11}{T\+E\+ST}} (Combined\+Data\+Storage, Open)
+\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_af83213f16629462a0c78353ab93b1141}{T\+E\+ST}} (Combined\+Data\+Storage, open)
 \begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит попытку открытия хранилища \end{DoxyCompactList}\item 
-\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ab25bbf965a1a24ad4000528352c130d2}{T\+E\+ST}} (Combined\+Data\+Storage, Add\+User)
+\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ad27803efb742e2a7da890fddc224e6c2}{T\+E\+ST}} (Combined\+Data\+Storage, add\+User)
 \begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит добавление пользователя \end{DoxyCompactList}\item 
 \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ac3ae972982f3a562733af227f066fe2b}{T\+E\+ST}} (Combined\+Data\+Storage, update\+User)
 \begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит обновление пользователя \end{DoxyCompactList}\item 
@@ -30,7 +28,17 @@ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1H
 \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aafe9063697ba8b93653334623b8a76cb}{T\+E\+ST}} (Combined\+Data\+Storage, find\+User\+By\+Authentication)
 \begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит поиск пользователья по данным аутентификации \end{DoxyCompactList}\item 
 \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0a3575d82efbbbc4c305a8132c8a26c2}{T\+E\+ST}} (Combined\+Data\+Storage, remove\+User)
-\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит удаление пользователя из кеша \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит удаление пользователя из хранилище \end{DoxyCompactList}\item 
+\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ae9ec386ff44b1e99f3f3ff322477a204}{T\+E\+ST}} (Combined\+Data\+Storage, set\+User\+Contacts)
+\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит создание связи пользователь-\/контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2d3565f8d36ca2313f76e3febd3eb8ff}{T\+E\+ST}} (Combined\+Data\+Storage, add\+User\+Contact)
+\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит добавление контакта пользователю \end{DoxyCompactList}\item 
+\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ac175dee47b4d5697c01f5290d02037be}{T\+E\+ST}} (Combined\+Data\+Storage, remove\+User\+Contact)
+\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит удаление контакта пользователя \end{DoxyCompactList}\item 
+\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ad24a345e1e005288bbb811beef1c30a0}{T\+E\+ST}} (Combined\+Data\+Storage, clear\+User\+Contacts)
+\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит удаление связи пользователь-\/контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0e58e177d68dfaddac4102e7c77111f4}{T\+E\+ST}} (Combined\+Data\+Storage, get\+User\+Contact\+List)
+\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит получение списка контатков пользователя \end{DoxyCompactList}\item 
 \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_acdc930e40c6e28c1acf27e676a1389fc}{T\+E\+ST}} (Combined\+Data\+Storage, get\+User\+Groups)
 \begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит получение списка U\+U\+ID\textquotesingle{}ов групп пользователя \end{DoxyCompactList}\item 
 \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aee26dc304588c127494cd23406260127}{T\+E\+ST}} (Combined\+Data\+Storage, add\+Group)
@@ -61,23 +69,21 @@ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1H
 \begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит поиск перечня сообщений по временному промежутку \end{DoxyCompactList}\item 
 \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2909748a7b55bf6a503b29c5eaaf65ee}{T\+E\+ST}} (Combined\+Data\+Storage, remove\+Message)
 \begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит удаление сообщения \end{DoxyCompactList}\item 
-\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ae9ec386ff44b1e99f3f3ff322477a204}{T\+E\+ST}} (Combined\+Data\+Storage, set\+User\+Contacts)
-\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит создание связи пользователь-\/контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ) \end{DoxyCompactList}\item 
-\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2d3565f8d36ca2313f76e3febd3eb8ff}{T\+E\+ST}} (Combined\+Data\+Storage, add\+User\+Contact)
-\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит добавление контакта пользователю \end{DoxyCompactList}\item 
-\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ac175dee47b4d5697c01f5290d02037be}{T\+E\+ST}} (Combined\+Data\+Storage, remove\+User\+Contact)
-\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит удаление контакта пользователя \end{DoxyCompactList}\item 
-\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a5e0fd6dfc629bcb5d2dea1a3e6a443ee}{T\+E\+ST}} (Combined\+Data\+Storage, remove\+User\+Contacts)
-\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит удаление связи пользователь-\/контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ) \end{DoxyCompactList}\item 
-\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0e58e177d68dfaddac4102e7c77111f4}{T\+E\+ST}} (Combined\+Data\+Storage, get\+User\+Contact\+List)
-\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит получение списка контатков пользователя \end{DoxyCompactList}\item 
+\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a4df1ba87553bf6119190a1f748413e2c}{T\+E\+ST}} (Combined\+Data\+Storage, Cache\+Test)
+\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит кеширование объектов \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
 \begin{DoxyCompactList}\small\item\em main -\/ Входная точка тестировани функционала H\+M\+Combined\+Data\+Storage \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Переменные}
 \begin{DoxyCompactItemize}
 \item 
 const std\+::filesystem\+::path \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ac191795d64548fb36e4249ad030c3f66}{C\+\_\+\+J\+S\+O\+N\+\_\+\+P\+A\+TH}} = std\+::filesystem\+::current\+\_\+path() / \char`\"{}Data\+Storage.\+json\char`\"{}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Путь к физическому хранилищу данных (J\+S\+ON) \end{DoxyCompactList}\item 
+const std\+::chrono\+::milliseconds \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a1fecb6b2220cc4ace15cbc1a0192854b}{C\+\_\+\+C\+A\+C\+H\+E\+\_\+\+L\+I\+F\+E\+\_\+\+T\+I\+M\+E\+\_\+\+F\+A\+ST}} = std\+::chrono\+::duration\+\_\+cast$<$std\+::chrono\+::milliseconds$>$(std\+::chrono\+::milliseconds(100))
+\begin{DoxyCompactList}\small\item\em Сокращённое время существования объекта в кеше \end{DoxyCompactList}\item 
+const std\+::chrono\+::milliseconds \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a7290c089c41104fb5c98b697f2760784}{C\+\_\+\+C\+A\+C\+H\+E\+\_\+\+S\+L\+E\+E\+P\+\_\+\+F\+A\+ST}} = std\+::chrono\+::milliseconds(50)
+\begin{DoxyCompactList}\small\item\em Сокращённое время ожидания потока контроля кеша \end{DoxyCompactList}\item 
+const std\+::chrono\+::milliseconds \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aabab7f1f24df46f4134b668431ccd1f5}{C\+\_\+\+C\+A\+C\+H\+E\+\_\+\+L\+I\+F\+E\+\_\+\+E\+N\+D\+\_\+\+W\+A\+IT}} = \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a1fecb6b2220cc4ace15cbc1a0192854b}{C\+\_\+\+C\+A\+C\+H\+E\+\_\+\+L\+I\+F\+E\+\_\+\+T\+I\+M\+E\+\_\+\+F\+A\+ST}} + \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a7290c089c41104fb5c98b697f2760784}{C\+\_\+\+C\+A\+C\+H\+E\+\_\+\+S\+L\+E\+E\+P\+\_\+\+F\+A\+ST}} $\ast$ 2
+\begin{DoxyCompactList}\small\item\em Время, гарантирующее уничтожение объекта в кеше \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Функции}
@@ -101,164 +107,319 @@ main -\/ Входная точка тестировани функционала
 \begin{DoxyReturn}{Возвращает}
 Вернёт признак успешности тестирования 
 \end{DoxyReturn}
-\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0b4f6771133f750fee6eef138cf68e98}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0b4f6771133f750fee6eef138cf68e98}} 
+\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a324574ea38cd8b2ee41ac60f545b8115}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a324574ea38cd8b2ee41ac60f545b8115}} 
 \index{main.cpp@{main.cpp}!makeStorage@{makeStorage}}
 \index{makeStorage@{makeStorage}!main.cpp@{main.cpp}}
 \doxysubsubsection{\texorpdfstring{makeStorage()}{makeStorage()}}
-{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}}$>$ make\+Storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}}$>$ make\+Storage (\begin{DoxyParamCaption}\item[{const std\+::chrono\+::milliseconds}]{in\+Cache\+Life\+Time = {\ttfamily std\+:\+:chrono\+:\+:duration\+\_\+cast$<$std\+:\+:chrono\+:\+:milliseconds$>$(std\+:\+:chrono\+:\+:minutes(15))},  }\item[{const std\+::chrono\+::milliseconds}]{in\+Sleep = {\ttfamily std\+:\+:chrono\+:\+:milliseconds(1000)} }\end{DoxyParamCaption})}
 
 
 
 make\+Storage -\/ Метод создаст экземпляр хранилища 
 
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Cache\+Life\+Time} & -\/ Время жизни объектов кеша (в милисекундах) \\
+\hline
+{\em in\+Sleep} & -\/ Время ожидания потока контроля кеша в (в милисекундах) \\
+\hline
+\end{DoxyParams}
 \begin{DoxyReturn}{Возвращает}
 Вернёт экземпляр хранилища 
 \end{DoxyReturn}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aee26dc304588c127494cd23406260127}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aee26dc304588c127494cd23406260127}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [1/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [1/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{add\+Group}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит добавление группы 
 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aee26dc304588c127494cd23406260127_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_afb829ab55608774bb149fa2aac936288}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_afb829ab55608774bb149fa2aac936288}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [2/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [2/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{add\+Group\+User}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит добавление пользователя в группу 
 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_afb829ab55608774bb149fa2aac936288_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aeaa4420ca91f86119f9d1af331f97102}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aeaa4420ca91f86119f9d1af331f97102}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [3/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [3/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{add\+Message}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит добовление сообщения 
 
-\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ab25bbf965a1a24ad4000528352c130d2}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ab25bbf965a1a24ad4000528352c130d2}} 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aeaa4420ca91f86119f9d1af331f97102_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ad27803efb742e2a7da890fddc224e6c2}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ad27803efb742e2a7da890fddc224e6c2}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [4/26]}}
-{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{Add\+User}]{ }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [4/27]}}
+{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{add\+User}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит добавление пользователя 
 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ad27803efb742e2a7da890fddc224e6c2_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2d3565f8d36ca2313f76e3febd3eb8ff}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2d3565f8d36ca2313f76e3febd3eb8ff}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [5/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [5/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{add\+User\+Contact}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит добавление контакта пользователю 
 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2d3565f8d36ca2313f76e3febd3eb8ff_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a4df1ba87553bf6119190a1f748413e2c}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a4df1ba87553bf6119190a1f748413e2c}} 
+\index{main.cpp@{main.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [6/27]}}
+{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{Cache\+Test}]{ }\end{DoxyParamCaption})}
+
+
+
+T\+E\+ST -\/ Тест проверит кеширование объектов 
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a4df1ba87553bf6119190a1f748413e2c_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ae4d9e7413cab4d551531d011a33ba889}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ae4d9e7413cab4d551531d011a33ba889}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [6/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [7/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{clear\+Group\+Users}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит очистку списка участников группы 
 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ae4d9e7413cab4d551531d011a33ba889_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ad24a345e1e005288bbb811beef1c30a0}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ad24a345e1e005288bbb811beef1c30a0}} 
+\index{main.cpp@{main.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [8/27]}}
+{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{clear\+User\+Contacts}]{ }\end{DoxyParamCaption})}
+
+
+
+T\+E\+ST -\/ Тест проверит удаление связи пользователь-\/контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ) 
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ad24a345e1e005288bbb811beef1c30a0_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_af208b4d3df76de201871041fff5486fe}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_af208b4d3df76de201871041fff5486fe}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [7/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [9/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{find\+Group\+By\+U\+U\+ID}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит поиск группы по U\+U\+ID. 
 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_af208b4d3df76de201871041fff5486fe_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2f6896443cc64b95fdff4124e9516455}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2f6896443cc64b95fdff4124e9516455}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [8/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [10/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{find\+Message}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит поиск сообщения по U\+U\+ID. 
 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2f6896443cc64b95fdff4124e9516455_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a94972b0ed50427e477c74ece97523f9e}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a94972b0ed50427e477c74ece97523f9e}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [9/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [11/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{find\+Messages}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит поиск перечня сообщений по временному промежутку 
 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a94972b0ed50427e477c74ece97523f9e_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aafe9063697ba8b93653334623b8a76cb}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aafe9063697ba8b93653334623b8a76cb}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [10/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [12/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{find\+User\+By\+Authentication}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит поиск пользователья по данным аутентификации 
 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aafe9063697ba8b93653334623b8a76cb_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aac4410e4983129004df6a5bba9626c34}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aac4410e4983129004df6a5bba9626c34}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [11/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [13/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{find\+User\+By\+U\+U\+ID}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит поиск пользователья по U\+U\+ID. 
 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aac4410e4983129004df6a5bba9626c34_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a00ae62e8e678a256ba398a96eaa6c590}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a00ae62e8e678a256ba398a96eaa6c590}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [12/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [14/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{get\+Group\+User\+List}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит получение списка U\+U\+ID\textquotesingle{}ов участников группы 
 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a00ae62e8e678a256ba398a96eaa6c590_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0e58e177d68dfaddac4102e7c77111f4}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0e58e177d68dfaddac4102e7c77111f4}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [13/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [15/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{get\+User\+Contact\+List}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит получение списка контатков пользователя 
 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0e58e177d68dfaddac4102e7c77111f4_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_acdc930e40c6e28c1acf27e676a1389fc}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_acdc930e40c6e28c1acf27e676a1389fc}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [14/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [16/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{get\+User\+Groups}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит получение списка U\+U\+ID\textquotesingle{}ов групп пользователя 
 
-\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_adcff88426fa7f8ee7c9ff35944c63c11}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_adcff88426fa7f8ee7c9ff35944c63c11}} 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_acdc930e40c6e28c1acf27e676a1389fc_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_af83213f16629462a0c78353ab93b1141}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_af83213f16629462a0c78353ab93b1141}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [15/26]}}
-{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{Open}]{ }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [17/27]}}
+{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{open}]{ }\end{DoxyParamCaption})}
 
 
 
@@ -269,125 +430,229 @@ T\+E\+ST -\/ Тест проверит попытку открытия хран�
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=238pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_adcff88426fa7f8ee7c9ff35944c63c11_cgraph}
+\includegraphics[width=238pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_af83213f16629462a0c78353ab93b1141_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a887727667107c37aaaedd2a823b97419}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a887727667107c37aaaedd2a823b97419}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [16/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [18/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{remove\+Group}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит удаление группы 
 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a887727667107c37aaaedd2a823b97419_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a24078291842f16737d0c2fc4107acd73}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a24078291842f16737d0c2fc4107acd73}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [17/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [19/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{remove\+Group\+User}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит удаление пользователя из группы 
 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a24078291842f16737d0c2fc4107acd73_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2909748a7b55bf6a503b29c5eaaf65ee}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2909748a7b55bf6a503b29c5eaaf65ee}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [18/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [20/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{remove\+Message}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит удаление сообщения 
 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2909748a7b55bf6a503b29c5eaaf65ee_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0a3575d82efbbbc4c305a8132c8a26c2}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0a3575d82efbbbc4c305a8132c8a26c2}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [19/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [21/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{remove\+User}]{ }\end{DoxyParamCaption})}
 
 
 
-T\+E\+ST -\/ Тест проверит удаление пользователя из кеша 
+T\+E\+ST -\/ Тест проверит удаление пользователя из хранилище 
 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0a3575d82efbbbc4c305a8132c8a26c2_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ac175dee47b4d5697c01f5290d02037be}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ac175dee47b4d5697c01f5290d02037be}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [20/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [22/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{remove\+User\+Contact}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит удаление контакта пользователя 
 
-\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a5e0fd6dfc629bcb5d2dea1a3e6a443ee}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a5e0fd6dfc629bcb5d2dea1a3e6a443ee}} 
-\index{main.cpp@{main.cpp}!TEST@{TEST}}
-\index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [21/26]}}
-{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{remove\+User\+Contacts}]{ }\end{DoxyParamCaption})}
-
-
-
-T\+E\+ST -\/ Тест проверит удаление связи пользователь-\/контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ) 
-
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ac175dee47b4d5697c01f5290d02037be_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0120e39c6ba1b684dc22ed603b95e973}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0120e39c6ba1b684dc22ed603b95e973}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [22/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [23/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{set\+Group\+Users}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит присвоение списка участников группе 
 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0120e39c6ba1b684dc22ed603b95e973_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ae9ec386ff44b1e99f3f3ff322477a204}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ae9ec386ff44b1e99f3f3ff322477a204}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [23/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [24/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{set\+User\+Contacts}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит создание связи пользователь-\/контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ) 
 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ae9ec386ff44b1e99f3f3ff322477a204_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a8f213a96cb9c166bdbe896c8df400f39}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a8f213a96cb9c166bdbe896c8df400f39}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [24/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [25/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{update\+Group}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит обновление группы 
 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a8f213a96cb9c166bdbe896c8df400f39_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ab50adf53e82fd2714b0521779532d8d8}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ab50adf53e82fd2714b0521779532d8d8}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [25/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [26/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{update\+Message}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит обновление сообщения 
 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ab50adf53e82fd2714b0521779532d8d8_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ac3ae972982f3a562733af227f066fe2b}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ac3ae972982f3a562733af227f066fe2b}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [26/26]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [27/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Combined\+Data\+Storage}]{,  }\item[{update\+User}]{ }\end{DoxyParamCaption})}
 
 
 
 T\+E\+ST -\/ Тест проверит обновление пользователя 
 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ac3ae972982f3a562733af227f066fe2b_cgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{Переменные}
+\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aabab7f1f24df46f4134b668431ccd1f5}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aabab7f1f24df46f4134b668431ccd1f5}} 
+\index{main.cpp@{main.cpp}!C\_CACHE\_LIFE\_END\_WAIT@{C\_CACHE\_LIFE\_END\_WAIT}}
+\index{C\_CACHE\_LIFE\_END\_WAIT@{C\_CACHE\_LIFE\_END\_WAIT}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{C\_CACHE\_LIFE\_END\_WAIT}{C\_CACHE\_LIFE\_END\_WAIT}}
+{\footnotesize\ttfamily const std\+::chrono\+::milliseconds C\+\_\+\+C\+A\+C\+H\+E\+\_\+\+L\+I\+F\+E\+\_\+\+E\+N\+D\+\_\+\+W\+A\+IT = \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a1fecb6b2220cc4ace15cbc1a0192854b}{C\+\_\+\+C\+A\+C\+H\+E\+\_\+\+L\+I\+F\+E\+\_\+\+T\+I\+M\+E\+\_\+\+F\+A\+ST}} + \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a7290c089c41104fb5c98b697f2760784}{C\+\_\+\+C\+A\+C\+H\+E\+\_\+\+S\+L\+E\+E\+P\+\_\+\+F\+A\+ST}} $\ast$ 2}
+
+
+
+Время, гарантирующее уничтожение объекта в кеше 
+
+\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a1fecb6b2220cc4ace15cbc1a0192854b}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a1fecb6b2220cc4ace15cbc1a0192854b}} 
+\index{main.cpp@{main.cpp}!C\_CACHE\_LIFE\_TIME\_FAST@{C\_CACHE\_LIFE\_TIME\_FAST}}
+\index{C\_CACHE\_LIFE\_TIME\_FAST@{C\_CACHE\_LIFE\_TIME\_FAST}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{C\_CACHE\_LIFE\_TIME\_FAST}{C\_CACHE\_LIFE\_TIME\_FAST}}
+{\footnotesize\ttfamily const std\+::chrono\+::milliseconds C\+\_\+\+C\+A\+C\+H\+E\+\_\+\+L\+I\+F\+E\+\_\+\+T\+I\+M\+E\+\_\+\+F\+A\+ST = std\+::chrono\+::duration\+\_\+cast$<$std\+::chrono\+::milliseconds$>$(std\+::chrono\+::milliseconds(100))}
+
+
+
+Сокращённое время существования объекта в кеше 
+
+\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a7290c089c41104fb5c98b697f2760784}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a7290c089c41104fb5c98b697f2760784}} 
+\index{main.cpp@{main.cpp}!C\_CACHE\_SLEEP\_FAST@{C\_CACHE\_SLEEP\_FAST}}
+\index{C\_CACHE\_SLEEP\_FAST@{C\_CACHE\_SLEEP\_FAST}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{C\_CACHE\_SLEEP\_FAST}{C\_CACHE\_SLEEP\_FAST}}
+{\footnotesize\ttfamily const std\+::chrono\+::milliseconds C\+\_\+\+C\+A\+C\+H\+E\+\_\+\+S\+L\+E\+E\+P\+\_\+\+F\+A\+ST = std\+::chrono\+::milliseconds(50)}
+
+
+
+Сокращённое время ожидания потока контроля кеша 
+
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ac191795d64548fb36e4249ad030c3f66}\label{libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ac191795d64548fb36e4249ad030c3f66}} 
 \index{main.cpp@{main.cpp}!C\_JSON\_PATH@{C\_JSON\_PATH}}
 \index{C\_JSON\_PATH@{C\_JSON\_PATH}!main.cpp@{main.cpp}}
 \doxysubsubsection{\texorpdfstring{C\_JSON\_PATH}{C\_JSON\_PATH}}
 {\footnotesize\ttfamily const std\+::filesystem\+::path C\+\_\+\+J\+S\+O\+N\+\_\+\+P\+A\+TH = std\+::filesystem\+::current\+\_\+path() / \char`\"{}Data\+Storage.\+json\char`\"{}}
+
+
+
+Путь к физическому хранилищу данных (J\+S\+ON) 
 

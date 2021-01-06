@@ -1,10 +1,8 @@
 <map id="Projects/libraries/HawkServerCore/src/datastorage/DataStorage.h" name="Projects/libraries/HawkServerCore/src/datastorage/DataStorage.h">
-<area shape="rect" id="node1" title=" " alt="" coords="339,5,541,61"/>
-<area shape="rect" id="node2" href="$servercore_8h.html" title=" " alt="" coords="153,117,311,173"/>
-<area shape="rect" id="node3" href="$HawkServerCore_8h.html" title=" " alt="" coords="35,228,194,284"/>
-<area shape="rect" id="node6" href="$libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html" title=" " alt="" coords="335,109,545,180"/>
-<area shape="rect" id="node7" href="$libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html" title=" " alt="" coords="569,117,807,173"/>
-<area shape="rect" id="node8" href="$libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html" title=" " alt="" coords="830,117,1029,173"/>
-<area shape="rect" id="node5" href="$servercore_8cpp.html" title=" " alt="" coords="218,228,377,284"/>
-<area shape="rect" id="node4" href="$modules_2HawkConsolServer_2src_2main_8cpp.html" title=" " alt="" coords="5,332,224,373"/>
+<area shape="rect" id="node1" title=" " alt="" coords="131,5,333,61"/>
+<area shape="rect" id="node2" href="$servercore_8h.html" title=" " alt="" coords="153,109,311,165"/>
+<area shape="rect" id="node3" href="$HawkServerCore_8h.html" title=" " alt="" coords="35,213,194,269"/>
+<area shape="rect" id="node6" href="$libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html" title=" " alt="" coords="336,109,573,165"/>
+<area shape="rect" id="node5" href="$servercore_8cpp.html" title=" " alt="" coords="218,213,377,269"/>
+<area shape="rect" id="node4" href="$modules_2HawkConsolServer_2src_2main_8cpp.html" title=" " alt="" coords="5,317,224,359"/>
 </map>

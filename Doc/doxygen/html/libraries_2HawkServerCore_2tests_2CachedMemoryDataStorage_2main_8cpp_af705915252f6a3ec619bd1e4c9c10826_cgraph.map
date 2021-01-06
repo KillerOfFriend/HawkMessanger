@@ -1,6 +1,7 @@
 <map id="TEST" name="TEST">
-<area shape="rect" id="node1" title="TEST &#45; Тест проверит очистку списка участников группы" alt="" coords="5,56,60,83"/>
-<area shape="rect" id="node2" href="$namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="108,5,307,32"/>
-<area shape="rect" id="node3" href="$namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="112,56,303,83"/>
-<area shape="rect" id="node4" href="$libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="153,107,261,133"/>
+<area shape="rect" id="node1" title="TEST &#45; Тест проверит очистку списка участников группы" alt="" coords="5,60,60,87"/>
+<area shape="rect" id="node2" href="$HawkServerCoreCachedDataStorageTest_8hpp.html#a614a6d6e24df34b90bca0f493ed6af1a" title="CachedDataStorage_ClearGroupUsersTest &#45; Тест физического хранилища, проверяющий очистку участников гр..." alt="" coords="108,23,339,65"/>
+<area shape="rect" id="node5" href="$libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="169,89,277,116"/>
+<area shape="rect" id="node3" href="$namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="387,5,585,32"/>
+<area shape="rect" id="node4" href="$namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="391,56,581,83"/>
 </map>

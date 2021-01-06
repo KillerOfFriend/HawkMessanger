@@ -1,0 +1,4 @@
+<map id="HardDataStorage_FindUserByUUIDTest" name="HardDataStorage_FindUserByUUIDTest">
+<area shape="rect" id="node1" title="HardDataStorage_FindUserByUUIDTest &#45; Тест физического хранилища, проверяющий поиск пользователя по UU..." alt="" coords="108,5,307,47"/>
+<area shape="rect" id="node2" href="$libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#aac4410e4983129004df6a5bba9626c34" title="TEST &#45; Тест проверит поиск пользователья по UUID." alt="" coords="5,13,60,39"/>
+</map>

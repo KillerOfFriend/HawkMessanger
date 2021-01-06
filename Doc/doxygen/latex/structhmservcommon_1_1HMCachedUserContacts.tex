@@ -29,7 +29,7 @@ Q\+Uuid \mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts_aadaaf0ab49f
 \begin{DoxyCompactList}\small\item\em U\+U\+ID пользователя \end{DoxyCompactList}\item 
 std\+::shared\+\_\+ptr$<$ std\+::set$<$ Q\+Uuid $>$ $>$ \mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts_a393c3dc104cf0050aec94016cd551aa9}{m\+\_\+contact\+List}} = nullptr
 \begin{DoxyCompactList}\small\item\em Перечень контактов \end{DoxyCompactList}\item 
-Q\+Time \mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts_ae433517eae9b3f64d1999ba0f4e88a5e}{m\+\_\+last\+Request}}
+std\+::chrono\+::system\+\_\+clock\+::time\+\_\+point \mbox{\hyperlink{structhmservcommon_1_1HMCachedUserContacts_acd1d44eb4336e917f7dfdc9eb640210f}{m\+\_\+last\+Request}}
 \begin{DoxyCompactList}\small\item\em Время последнего запроса \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -130,17 +130,17 @@ operator == -\/ Оператор сравнения
 \index{hmservcommon::HMCachedUserContacts@{hmservcommon::HMCachedUserContacts}!m\_contactList@{m\_contactList}}
 \index{m\_contactList@{m\_contactList}!hmservcommon::HMCachedUserContacts@{hmservcommon::HMCachedUserContacts}}
 \doxysubsubsection{\texorpdfstring{m\_contactList}{m\_contactList}}
-{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$std\+::set$<$Q\+Uuid$>$ $>$ hmservcommon\+::\+H\+M\+Cached\+User\+Contacts\+::m\+\_\+contact\+List = nullptr}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$std\+::set$<$Q\+Uuid$>$ $>$ hmservcommon\+::\+H\+M\+Cached\+User\+Contacts\+::m\+\_\+contact\+List = nullptr\hspace{0.3cm}{\ttfamily [mutable]}}
 
 
 
 Перечень контактов 
 
-\mbox{\Hypertarget{structhmservcommon_1_1HMCachedUserContacts_ae433517eae9b3f64d1999ba0f4e88a5e}\label{structhmservcommon_1_1HMCachedUserContacts_ae433517eae9b3f64d1999ba0f4e88a5e}} 
+\mbox{\Hypertarget{structhmservcommon_1_1HMCachedUserContacts_acd1d44eb4336e917f7dfdc9eb640210f}\label{structhmservcommon_1_1HMCachedUserContacts_acd1d44eb4336e917f7dfdc9eb640210f}} 
 \index{hmservcommon::HMCachedUserContacts@{hmservcommon::HMCachedUserContacts}!m\_lastRequest@{m\_lastRequest}}
 \index{m\_lastRequest@{m\_lastRequest}!hmservcommon::HMCachedUserContacts@{hmservcommon::HMCachedUserContacts}}
 \doxysubsubsection{\texorpdfstring{m\_lastRequest}{m\_lastRequest}}
-{\footnotesize\ttfamily Q\+Time hmservcommon\+::\+H\+M\+Cached\+User\+Contacts\+::m\+\_\+last\+Request\hspace{0.3cm}{\ttfamily [mutable]}}
+{\footnotesize\ttfamily std\+::chrono\+::system\+\_\+clock\+::time\+\_\+point hmservcommon\+::\+H\+M\+Cached\+User\+Contacts\+::m\+\_\+last\+Request\hspace{0.3cm}{\ttfamily [mutable]}}
 
 
 

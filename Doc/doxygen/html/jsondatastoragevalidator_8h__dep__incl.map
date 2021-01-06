@@ -1,14 +1,13 @@
 <map id="Projects/libraries/HawkServerCore/src/datastorage/jsondatastorage/jsondatastoragevalidator.h" name="Projects/libraries/HawkServerCore/src/datastorage/jsondatastorage/jsondatastoragevalidator.h">
-<area shape="rect" id="node1" title="Содержит описание класса, контролирующего JSON для HMJsonDataStorage." alt="" coords="568,5,781,76"/>
-<area shape="rect" id="node2" href="$jsondatastorage_8h.html" title="Содержит описание класса хранилища данных в файле JSON." alt="" coords="449,124,663,195"/>
-<area shape="rect" id="node12" href="$jsondatastoragevalidator_8cpp.html" title=" " alt="" coords="687,124,902,195"/>
-<area shape="rect" id="node3" href="$DataStorage_8h.html" title=" " alt="" coords="339,250,541,306"/>
-<area shape="rect" id="node11" href="$jsondatastorage_8cpp.html" title=" " alt="" coords="565,243,779,313"/>
-<area shape="rect" id="node4" href="$servercore_8h.html" title=" " alt="" coords="153,369,311,425"/>
-<area shape="rect" id="node5" href="$HawkServerCore_8h.html" title=" " alt="" coords="35,480,194,536"/>
-<area shape="rect" id="node8" href="$libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html" title=" " alt="" coords="335,361,545,432"/>
-<area shape="rect" id="node9" href="$libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html" title=" " alt="" coords="569,369,807,425"/>
-<area shape="rect" id="node10" href="$libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html" title=" " alt="" coords="830,369,1029,425"/>
-<area shape="rect" id="node7" href="$servercore_8cpp.html" title=" " alt="" coords="218,480,377,536"/>
-<area shape="rect" id="node6" href="$modules_2HawkConsolServer_2src_2main_8cpp.html" title=" " alt="" coords="5,584,224,625"/>
+<area shape="rect" id="node1" title="Содержит описание класса, контролирующего JSON для HMJsonDataStorage." alt="" coords="476,5,689,76"/>
+<area shape="rect" id="node2" href="$jsondatastorage_8h.html" title="Содержит описание класса хранилища данных в файле JSON." alt="" coords="357,124,571,195"/>
+<area shape="rect" id="node11" href="$jsondatastoragevalidator_8cpp.html" title=" " alt="" coords="595,124,810,195"/>
+<area shape="rect" id="node3" href="$DataStorage_8h.html" title=" " alt="" coords="131,250,333,306"/>
+<area shape="rect" id="node9" href="$jsondatastorage_8cpp.html" title=" " alt="" coords="357,243,571,313"/>
+<area shape="rect" id="node10" href="$libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html" title=" " alt="" coords="595,250,794,306"/>
+<area shape="rect" id="node4" href="$servercore_8h.html" title=" " alt="" coords="153,361,311,417"/>
+<area shape="rect" id="node5" href="$HawkServerCore_8h.html" title=" " alt="" coords="35,465,194,521"/>
+<area shape="rect" id="node8" href="$libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html" title=" " alt="" coords="336,361,573,417"/>
+<area shape="rect" id="node7" href="$servercore_8cpp.html" title=" " alt="" coords="218,465,377,521"/>
+<area shape="rect" id="node6" href="$modules_2HawkConsolServer_2src_2main_8cpp.html" title=" " alt="" coords="5,569,224,611"/>
 </map>

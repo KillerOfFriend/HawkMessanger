@@ -93,7 +93,7 @@ $(function() {
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html" title="The HMCachedMemoryDataStorage class - Класс, описывающий кеширующее хранилище данных в оперативной па...">HMCachedMemoryDataStorage</a> class - Класс, описывающий кеширующее хранилище данных в оперативной памяти  <a href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#details">Подробнее...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html">HMCombinedDataStorage</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html" title="The HMCombinedDataStorage class - Класс, описывающий комбинированное хранилище данных (физическое\хеш...">HMCombinedDataStorage</a> class - Класс, описывающий комбинированное хранилище данных (физическое\хешированное)  <a href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#details">Подробнее...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html" title="The HMCombinedDataStorage class - Класс, описывающий комбинированное хранилище данных (физическое\кеш...">HMCombinedDataStorage</a> class - Класс, описывающий комбинированное хранилище данных (физическое\кеширующее)  <a href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#details">Подробнее...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html">HMDataStorage</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html" title="The HMDataStorage class - Интерфейс, описывающий хранилище данных сервера">HMDataStorage</a> class - Интерфейс, описывающий хранилище данных сервера  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#details">Подробнее...</a><br /></td></tr>
@@ -109,52 +109,51 @@ $(function() {
 Перечисления</h2></td></tr>
 <tr class="memitem:a3d95216f1cded112bfab2672868e2346"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346">eDataStorageError</a> { <br />
 &#160;&#160;<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346aadd891e654b6d82a79754084ba26471a">eDataStorageError::dsSuccess</a> = 0, 
-<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346af66cab8620d742a03e2aa3073a3734f9">eDataStorageError::dsNotOpen</a> = C_STORAG_ERROR_START, 
-<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a38a1dc02bd5ec842fe854beb583f5777">eDataStorageError::dsUserUUIDAlreadyRegistered</a>, 
+<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346af66cab8620d742a03e2aa3073a3734f9">eDataStorageError::dsNotOpen</a> = C_STORAGE_ERROR_START, 
 <a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346acc910f9f3095708462a3ac15a7709efa">eDataStorageError::dsUserLoginAlreadyRegistered</a>, 
+<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346aa487126049b54f76aacad7b602ded3f3">eDataStorageError::dsUserPasswordIncorrect</a>, 
 <br />
-&#160;&#160;<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346aa487126049b54f76aacad7b602ded3f3">eDataStorageError::dsUserPasswordIncorrect</a>, 
-<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346ac57d3ce0dc0e4714b20eb66e62ec9419">eDataStorageError::dsUserNotExists</a>, 
+&#160;&#160;<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346ac57d3ce0dc0e4714b20eb66e62ec9419">eDataStorageError::dsUserNotExists</a>, 
 <a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346aa6131afc59690fccd3f4e32635f858c9">eDataStorageError::dsUserAlreadyExists</a>, 
 <a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346aa65ab92f67712a435729e55b5376d7c2">eDataStorageError::dsUserUUIDCorrupted</a>, 
+<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346ac50561366ab31be22463870a43b28226">eDataStorageError::dsUserRegistrationDateCorrupted</a>, 
 <br />
-&#160;&#160;<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346ac50561366ab31be22463870a43b28226">eDataStorageError::dsUserRegistrationDateCorrupted</a>, 
-<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a1ca6006308688290c8dde7281c5d1d16">eDataStorageError::dsUserLoginCorrupted</a>, 
+&#160;&#160;<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a1ca6006308688290c8dde7281c5d1d16">eDataStorageError::dsUserLoginCorrupted</a>, 
 <a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a753a88b207bd741d18d8f7a365d23827">eDataStorageError::dsUserPasswordHashCorrupted</a>, 
 <a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a2b921d3ee2c62bcee076da5bf9040c75">eDataStorageError::dsUserNameCorrupted</a>, 
+<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346abbc853c8f486975f15055880581d013a">eDataStorageError::dsUserSexCorrupted</a>, 
 <br />
-&#160;&#160;<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346abbc853c8f486975f15055880581d013a">eDataStorageError::dsUserSexCorrupted</a>, 
-<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a8643341d9b465a6ab341e0467b6906a3">eDataStorageError::dsUserBirthdayCorrupted</a>, 
+&#160;&#160;<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a8643341d9b465a6ab341e0467b6906a3">eDataStorageError::dsUserBirthdayCorrupted</a>, 
 <a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a28b6c1969ccd0b19f1714f373d8b7c35">eDataStorageError::dsUserContactsCorrupted</a>, 
 <a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a2212e3bef6c6b343cf9db075c0c540af">eDataStorageError::dsUserGroupsCorrupted</a>, 
+<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a7c4d89a2d5d4ec5ed4bc4e8daa6e77b7">eDataStorageError::dsUserContactRelationAlredyExists</a>, 
 <br />
-&#160;&#160;<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a7c4d89a2d5d4ec5ed4bc4e8daa6e77b7">eDataStorageError::dsUserContactRelationAlredyExists</a>, 
-<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a53b460637e59cf233f9f031bf8fc3bbd">eDataStorageError::dsUserContactRelationNotExists</a>, 
+&#160;&#160;<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a53b460637e59cf233f9f031bf8fc3bbd">eDataStorageError::dsUserContactRelationNotExists</a>, 
 <a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a9603ddda95c6f417533a6c60f787e01c">eDataStorageError::dsUserContactAlredyExists</a>, 
 <a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a2adcf070d6cd4fb817919180050527c1">eDataStorageError::dsUserContactNotExists</a>, 
+<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a2efd0a9cc6390fcd9a3485e293e83d14">eDataStorageError::dsUserGroupsRelationAlredyExists</a>, 
 <br />
-&#160;&#160;<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a2efd0a9cc6390fcd9a3485e293e83d14">eDataStorageError::dsUserGroupsRelationAlredyExists</a>, 
-<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346ac5fafe680ad4efb2fd0f01f648ed6559">eDataStorageError::dsUserGroupsRelationNotExists</a>, 
+&#160;&#160;<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346ac5fafe680ad4efb2fd0f01f648ed6559">eDataStorageError::dsUserGroupsRelationNotExists</a>, 
 <a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a4c5d329795468afaf76bc60d8c3e4c11">eDataStorageError::dsGroupUUIDAlreadyRegistered</a>, 
 <a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a7d185f5637a6f3b9f67eac6a5f79714c">eDataStorageError::dsGroupNotExists</a>, 
+<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346ada3734f1e846c826a5de65080bcce626">eDataStorageError::dsGroupAlreadyExists</a>, 
 <br />
-&#160;&#160;<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346ada3734f1e846c826a5de65080bcce626">eDataStorageError::dsGroupAlreadyExists</a>, 
-<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a677e6c86f29b4c7179f96e6ef3c7e32a">eDataStorageError::dsGroupUUIDCorrupted</a>, 
+&#160;&#160;<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a677e6c86f29b4c7179f96e6ef3c7e32a">eDataStorageError::dsGroupUUIDCorrupted</a>, 
 <a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a963047759f3c2e3cdd03ae447513184d">eDataStorageError::dsGroupRegistrationDateCorrupted</a>, 
 <a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346ac35485704d20da1874ff7e6d23c4f423">eDataStorageError::dsGroupNameCorrupted</a>, 
+<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a61c83f4ad657d2a51ed7b6f8dbfba033">eDataStorageError::dsGroupUsersCorrupted</a>, 
 <br />
-&#160;&#160;<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a61c83f4ad657d2a51ed7b6f8dbfba033">eDataStorageError::dsGroupUsersCorrupted</a>, 
-<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346aec3aeaac8706fe57b1217b496d6bc530">eDataStorageError::dsGroupUserRelationAlredyExists</a>, 
+&#160;&#160;<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346aec3aeaac8706fe57b1217b496d6bc530">eDataStorageError::dsGroupUserRelationAlredyExists</a>, 
 <a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a26cd290119d3370c659f0b0126b5be28">eDataStorageError::dsGroupUserRelationNotExists</a>, 
 <a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a090ebde89fa3b2a6d4f551ebf7b12c72">eDataStorageError::dsMessageNotExists</a>, 
+<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a76106f4317cfc0140494051d222801cf">eDataStorageError::dsMessageAlreadyExists</a>, 
 <br />
-&#160;&#160;<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a76106f4317cfc0140494051d222801cf">eDataStorageError::dsMessageAlreadyExists</a>, 
-<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a7216390f14a2150fc2182dcfa84dd5ff">eDataStorageError::dsMessageUUIDCorrupted</a>, 
+&#160;&#160;<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a7216390f14a2150fc2182dcfa84dd5ff">eDataStorageError::dsMessageUUIDCorrupted</a>, 
 <a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a84e8a60f40ec2bc1ea6d87f69aea7af4">eDataStorageError::dsMessageGroupUUIDCorrupted</a>, 
 <a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a0c37271b8ce8dd937878ba98edf25c25">eDataStorageError::dsMessageRegistrationDateCorrupted</a>, 
+<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a452b1f453805caf6516bcab79a01b688">eDataStorageError::dsMessageTypeCorrupted</a>, 
 <br />
-&#160;&#160;<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a452b1f453805caf6516bcab79a01b688">eDataStorageError::dsMessageTypeCorrupted</a>, 
-<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346affb2554178a6ccf13e98f210e4a52f6f">eDataStorageError::dsMessageDataCorrupted</a>, 
+&#160;&#160;<a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346affb2554178a6ccf13e98f210e4a52f6f">eDataStorageError::dsMessageDataCorrupted</a>, 
 <a class="el" href="namespacehmservcommon_1_1datastorage.html#a3d95216f1cded112bfab2672868e2346a1044e1765983cf9e5cbcdbf8dad87ece">eDataStorageError::dsCount</a>
 <br />
  }</td></tr>
@@ -193,8 +192,6 @@ $(function() {
 <tr><th colspan="2">Элементы перечислений</th></tr><tr><td class="fieldname"><a id="a3d95216f1cded112bfab2672868e2346aadd891e654b6d82a79754084ba26471a"></a>dsSuccess&#160;</td><td class="fielddoc"><p>0 Не явялется ошибкой </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a3d95216f1cded112bfab2672868e2346af66cab8620d742a03e2aa3073a3734f9"></a>dsNotOpen&#160;</td><td class="fielddoc"><p>Хранилище не открыто </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a3d95216f1cded112bfab2672868e2346a38a1dc02bd5ec842fe854beb583f5777"></a>dsUserUUIDAlreadyRegistered&#160;</td><td class="fielddoc"><p>В хранилище уже зарегистрирован пользователь с таким UUID. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a3d95216f1cded112bfab2672868e2346acc910f9f3095708462a3ac15a7709efa"></a>dsUserLoginAlreadyRegistered&#160;</td><td class="fielddoc"><p>В хранилище уже зарегистрирован пользователь с таким логином </p>
 </td></tr>

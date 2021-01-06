@@ -1,0 +1,4 @@
+<map id="HardDataStorage_GetGroupUserListTest" name="HardDataStorage_GetGroupUserListTest">
+<area shape="rect" id="node1" title="HardDataStorage_GetGroupUserListTest &#45; Тест физического хранилища, проверяющий запрос списка участник..." alt="" coords="108,5,311,47"/>
+<area shape="rect" id="node2" href="$libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a00ae62e8e678a256ba398a96eaa6c590" title="TEST &#45; Тест проверит получение списка UUID&#39;ов участников группы" alt="" coords="5,13,60,39"/>
+</map>

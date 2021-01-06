@@ -137,6 +137,21 @@ $(function() {
 <tr class="memitem:aea408c5f20ffe8908f9e706127e11dd9"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aea408c5f20ffe8908f9e706127e11dd9">removeUser</a> (const QUuid &amp;inUserUUID) override</td></tr>
 <tr class="memdesc:aea408c5f20ffe8908f9e706127e11dd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeUser - Метод удалит пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aea408c5f20ffe8908f9e706127e11dd9">Подробнее...</a><br /></td></tr>
 <tr class="separator:aea408c5f20ffe8908f9e706127e11dd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fe994f6f1a05bb97c1a4af8607a5690"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a8fe994f6f1a05bb97c1a4af8607a5690">setUserContacts</a> (const QUuid &amp;inUserUUID, const std::shared_ptr&lt; std::set&lt; QUuid &gt;&gt; inContacts) override</td></tr>
+<tr class="memdesc:a8fe994f6f1a05bb97c1a4af8607a5690"><td class="mdescLeft">&#160;</td><td class="mdescRight">setUserContacts - Метод задаст пользователю список контактов  <a href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a8fe994f6f1a05bb97c1a4af8607a5690">Подробнее...</a><br /></td></tr>
+<tr class="separator:a8fe994f6f1a05bb97c1a4af8607a5690"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfdf94d5dca87303a3dc3c253df331a2"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#abfdf94d5dca87303a3dc3c253df331a2">addUserContact</a> (const QUuid &amp;inUserUUID, const QUuid &amp;inContactUUID) override</td></tr>
+<tr class="memdesc:abfdf94d5dca87303a3dc3c253df331a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">addUserContact - Метод добавит контакт пользователю  <a href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#abfdf94d5dca87303a3dc3c253df331a2">Подробнее...</a><br /></td></tr>
+<tr class="separator:abfdf94d5dca87303a3dc3c253df331a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab05e4ced328690bfe601e3dcc4c73e5"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aab05e4ced328690bfe601e3dcc4c73e5">removeUserContact</a> (const QUuid &amp;inUserUUID, const QUuid &amp;inContactUUID) override</td></tr>
+<tr class="memdesc:aab05e4ced328690bfe601e3dcc4c73e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeUserContact - Метод удалит контакт пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aab05e4ced328690bfe601e3dcc4c73e5">Подробнее...</a><br /></td></tr>
+<tr class="separator:aab05e4ced328690bfe601e3dcc4c73e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fc56117718d56551ba0e4d2d5b243f9"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a7fc56117718d56551ba0e4d2d5b243f9">clearUserContacts</a> (const QUuid &amp;inUserUUID) override</td></tr>
+<tr class="memdesc:a7fc56117718d56551ba0e4d2d5b243f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">clearUserContacts - Метод очистит контакты пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a7fc56117718d56551ba0e4d2d5b243f9">Подробнее...</a><br /></td></tr>
+<tr class="separator:a7fc56117718d56551ba0e4d2d5b243f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25efe7999dbe8fa55b28ded9e4bd23f3"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; std::set&lt; QUuid &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a25efe7999dbe8fa55b28ded9e4bd23f3">getUserContactList</a> (const QUuid &amp;inUserUUID, std::error_code &amp;outErrorCode) const override</td></tr>
+<tr class="memdesc:a25efe7999dbe8fa55b28ded9e4bd23f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">getUserContactList - Метод вернёт список контактов пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a25efe7999dbe8fa55b28ded9e4bd23f3">Подробнее...</a><br /></td></tr>
+<tr class="separator:a25efe7999dbe8fa55b28ded9e4bd23f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69c8ae062f88f8f4dc0771f1dbde7ac1"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; std::set&lt; QUuid &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a69c8ae062f88f8f4dc0771f1dbde7ac1">getUserGroups</a> (const QUuid &amp;inUserUUID, std::error_code &amp;outErrorCode) const override</td></tr>
 <tr class="memdesc:a69c8ae062f88f8f4dc0771f1dbde7ac1"><td class="mdescLeft">&#160;</td><td class="mdescRight">getUserGroups - Метод вернёт список групп пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a69c8ae062f88f8f4dc0771f1dbde7ac1">Подробнее...</a><br /></td></tr>
 <tr class="separator:a69c8ae062f88f8f4dc0771f1dbde7ac1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -182,21 +197,6 @@ $(function() {
 <tr class="memitem:afd99e713e31a40fc994c5b5fd1696e46"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#afd99e713e31a40fc994c5b5fd1696e46">removeMessage</a> (const QUuid &amp;inMessageUUID, const QUuid &amp;inGroupUUID) override</td></tr>
 <tr class="memdesc:afd99e713e31a40fc994c5b5fd1696e46"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeMessage - Метод удалит сообщение  <a href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#afd99e713e31a40fc994c5b5fd1696e46">Подробнее...</a><br /></td></tr>
 <tr class="separator:afd99e713e31a40fc994c5b5fd1696e46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8fe994f6f1a05bb97c1a4af8607a5690"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a8fe994f6f1a05bb97c1a4af8607a5690">setUserContacts</a> (const QUuid &amp;inUserUUID, const std::shared_ptr&lt; std::set&lt; QUuid &gt;&gt; inContacts) override</td></tr>
-<tr class="memdesc:a8fe994f6f1a05bb97c1a4af8607a5690"><td class="mdescLeft">&#160;</td><td class="mdescRight">setUserContacts - Метод задаст пользователю список контактов  <a href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a8fe994f6f1a05bb97c1a4af8607a5690">Подробнее...</a><br /></td></tr>
-<tr class="separator:a8fe994f6f1a05bb97c1a4af8607a5690"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abfdf94d5dca87303a3dc3c253df331a2"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#abfdf94d5dca87303a3dc3c253df331a2">addUserContact</a> (const QUuid &amp;inUserUUID, const QUuid &amp;inContactUUID) override</td></tr>
-<tr class="memdesc:abfdf94d5dca87303a3dc3c253df331a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">addUserContact - Метод добавит контакт пользователю  <a href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#abfdf94d5dca87303a3dc3c253df331a2">Подробнее...</a><br /></td></tr>
-<tr class="separator:abfdf94d5dca87303a3dc3c253df331a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab05e4ced328690bfe601e3dcc4c73e5"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aab05e4ced328690bfe601e3dcc4c73e5">removeUserContact</a> (const QUuid &amp;inUserUUID, const QUuid &amp;inContactUUID) override</td></tr>
-<tr class="memdesc:aab05e4ced328690bfe601e3dcc4c73e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeUserContact - Метод удалит контакт пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aab05e4ced328690bfe601e3dcc4c73e5">Подробнее...</a><br /></td></tr>
-<tr class="separator:aab05e4ced328690bfe601e3dcc4c73e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a87cfb4031e21333635a5313c55d31486"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a87cfb4031e21333635a5313c55d31486">removeUserContacts</a> (const QUuid &amp;inUserUUID) override</td></tr>
-<tr class="memdesc:a87cfb4031e21333635a5313c55d31486"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeUserContacts - Метод удалит контакты пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a87cfb4031e21333635a5313c55d31486">Подробнее...</a><br /></td></tr>
-<tr class="separator:a87cfb4031e21333635a5313c55d31486"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a25efe7999dbe8fa55b28ded9e4bd23f3"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; std::set&lt; QUuid &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a25efe7999dbe8fa55b28ded9e4bd23f3">getUserContactList</a> (const QUuid &amp;inUserUUID, std::error_code &amp;outErrorCode) const override</td></tr>
-<tr class="memdesc:a25efe7999dbe8fa55b28ded9e4bd23f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">getUserContactList - Метод вернёт список контактов пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a25efe7999dbe8fa55b28ded9e4bd23f3">Подробнее...</a><br /></td></tr>
-<tr class="separator:a25efe7999dbe8fa55b28ded9e4bd23f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classhmservcommon_1_1datastorage_1_1HMAbstractHardDataStorage"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classhmservcommon_1_1datastorage_1_1HMAbstractHardDataStorage')"><img src="closed.png" alt="-"/>&#160;Открытые члены унаследованные от <a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractHardDataStorage.html">hmservcommon::datastorage::HMAbstractHardDataStorage</a></td></tr>
 <tr class="memitem:aff572e443b6b70edd6cda9a7f09b6e1f inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMAbstractHardDataStorage"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractHardDataStorage.html#aff572e443b6b70edd6cda9a7f09b6e1f">HMAbstractHardDataStorage</a> ()=default</td></tr>
 <tr class="memdesc:aff572e443b6b70edd6cda9a7f09b6e1f inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMAbstractHardDataStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractHardDataStorage.html" title="The HMAbstractHardDataStorage class - Класс, описывающий абстракцию физического хранилища данных">HMAbstractHardDataStorage</a> - Конструктор по умолчанию  <a href="classhmservcommon_1_1datastorage_1_1HMAbstractHardDataStorage.html#aff572e443b6b70edd6cda9a7f09b6e1f">Подробнее...</a><br /></td></tr>
@@ -970,6 +970,66 @@ $(function() {
 
 </div>
 </div>
+<a id="a7fc56117718d56551ba0e4d2d5b243f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fc56117718d56551ba0e4d2d5b243f9">&#9670;&nbsp;</a></span>clearUserContacts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::error_code HMJsonDataStorage::clearUserContacts </td>
+          <td>(</td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inUserUUID</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>clearUserContacts - Метод очистит контакты пользователя </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inUserUUID</td><td>- Uuid пользователя </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
+
+<p>Замещает <a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a3d5add9a9cda2b08727f09e6bd944c04">hmservcommon::datastorage::HMDataStorage</a>.</p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a7fc56117718d56551ba0e4d2d5b243f9_cgraph.png" border="0" usemap="#classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a7fc56117718d56551ba0e4d2d5b243f9_cgraph" alt=""/></div>
+<map name="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a7fc56117718d56551ba0e4d2d5b243f9_cgraph" id="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a7fc56117718d56551ba0e4d2d5b243f9_cgraph">
+<area shape="rect" title="clearUserContacts &#45; Метод очистит контакты пользователя" alt="" coords="5,42,236,98"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a164e9512ed6667ef3ef0bdcee8836ea5" title="findUser &#45; Метод вернёт ссылку на json объект пользователя в хранилище" alt="" coords="284,49,507,91"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#af7129f6ff8883d6b59a187a375992aeb" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="555,5,773,47"/>
+<area shape="rect" href="systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="597,86,731,113"/>
+<area shape="rect" href="namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="821,79,1028,120"/>
+</map>
+</div>
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a7fc56117718d56551ba0e4d2d5b243f9_icgraph.png" border="0" usemap="#classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a7fc56117718d56551ba0e4d2d5b243f9_icgraph" alt=""/></div>
+<map name="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a7fc56117718d56551ba0e4d2d5b243f9_icgraph" id="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a7fc56117718d56551ba0e4d2d5b243f9_icgraph">
+<area shape="rect" title="clearUserContacts &#45; Метод очистит контакты пользователя" alt="" coords="633,31,864,87"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a87839428ae2d26d0ebd2db35ca0828d3" title="onRemoveUser &#45; Метод выполнится при удалении пользователя" alt="" coords="314,5,582,47"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a8fe994f6f1a05bb97c1a4af8607a5690" title="setUserContacts &#45; Метод задаст пользователю список контактов" alt="" coords="311,71,585,112"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a98f52fc8d8c672d5c0e91a67a4a0995b" title="onCreateUser &#45; Метод выполнится при создании пользователя" alt="" coords="5,71,263,112"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="a455fb5ad71c026b9e0a71154c15254e2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a455fb5ad71c026b9e0a71154c15254e2">&#9670;&nbsp;</a></span>close()</h2>
 
@@ -1496,8 +1556,8 @@ $(function() {
 <map name="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a164e9512ed6667ef3ef0bdcee8836ea5_icgraph" id="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a164e9512ed6667ef3ef0bdcee8836ea5_icgraph">
 <area shape="rect" title="findUser &#45; Метод вернёт ссылку на json объект пользователя в хранилище" alt="" coords="1288,126,1511,167"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a74cac3dc28dba35021dfa1884660e4b7" title="addContactUC &#45; Метод добавит контакт пользователю" alt="" coords="966,158,1227,199"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a7fc56117718d56551ba0e4d2d5b243f9" title="clearUserContacts &#45; Метод очистит контакты пользователя" alt="" coords="654,5,885,61"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a08fcc0f7936b88d81a911f91ad4cca57" title="removeContactUC &#45; Метод удалит контакт пользователя" alt="" coords="953,93,1240,134"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a87cfb4031e21333635a5313c55d31486" title="removeUserContacts &#45; Метод удалит контакты пользователя" alt="" coords="645,5,893,61"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a1319eca40027cace1bddccb068a315ab" title="updateUser &#45; Метод обновит данные пользователя" alt="" coords="975,223,1218,265"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#abfdf94d5dca87303a3dc3c253df331a2" title="addUserContact &#45; Метод добавит контакт пользователю" alt="" coords="633,166,905,207"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aab05e4ced328690bfe601e3dcc4c73e5" title="removeUserContact &#45; Метод удалит контакт пользователя" alt="" coords="645,85,893,141"/>
@@ -1945,6 +2005,7 @@ $(function() {
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aabb0162c6d3d65e5faf312dd6ff9b1ad" title="addUser &#45; Метод добавит нового пользователя" alt="" coords="1320,1401,1543,1442"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a689eba44fde841015dfd780e9ef6729e" title="checkCorrectStruct &#45; Метод проверит корректность структуры файла" alt="" coords="1305,1467,1558,1523"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#ab847270a178228e732a2d0d115c89362" title="clearGroupUsers &#45; Метод очистит список членов группы" alt="" coords="961,793,1237,834"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a7fc56117718d56551ba0e4d2d5b243f9" title="clearUserContacts &#45; Метод очистит контакты пользователя" alt="" coords="654,372,885,428"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a455fb5ad71c026b9e0a71154c15254e2" title="close &#45; Метод закроет хранилище данных" alt="" coords="1324,1547,1539,1589"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a03c4fcd80735293dcffa25ce0a7c9246" title="findConstGroup &#45; Метод вернёт константную ссылку на json объект группы в хранилище" alt="" coords="1297,1218,1565,1259"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#ac8ba242b00ff9beeaed5c93c5be11a41" title="findGroupByUUID &#45; Метод найдёт пользователя по его uuid" alt="" coords="984,1173,1215,1229"/>
@@ -1960,7 +2021,6 @@ $(function() {
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#ab61a516b9abd905dad0a9cb18a034d1f" title="findMessages &#45; Метод вернёт перечень сообщений группы за куазаный промежуток времени" alt="" coords="1303,1613,1560,1654"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a164e9512ed6667ef3ef0bdcee8836ea5" title="findUser &#45; Метод вернёт ссылку на json объект пользователя в хранилище" alt="" coords="1320,285,1543,326"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a08fcc0f7936b88d81a911f91ad4cca57" title="removeContactUC &#45; Метод удалит контакт пользователя" alt="" coords="956,226,1243,267"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a87cfb4031e21333635a5313c55d31486" title="removeUserContacts &#45; Метод удалит контакты пользователя" alt="" coords="645,372,893,428"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a1319eca40027cace1bddccb068a315ab" title="updateUser &#45; Метод обновит данные пользователя" alt="" coords="978,343,1221,385"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#ad3c8ee535dc17ca12422dc3ba57b0f7d" title="findUserByAuthentication &#45; Метод найдёт пользователя по его данным аутентификации" alt="" coords="1312,1679,1551,1735"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a97d9b5a2a2d20d652416e72082426ce7" title="removeGroup &#45; Метод удалит группу" alt="" coords="1303,1759,1560,1801"/>
@@ -2327,8 +2387,8 @@ $(function() {
 <area shape="rect" href="namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="1825,223,2032,264"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#abfdf94d5dca87303a3dc3c253df331a2" title="addUserContact &#45; Метод добавит контакт пользователю" alt="" coords="633,291,905,332"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#af7129f6ff8883d6b59a187a375992aeb" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="1559,416,1777,458"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a7fc56117718d56551ba0e4d2d5b243f9" title="clearUserContacts &#45; Метод очистит контакты пользователя" alt="" coords="981,525,1212,581"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aab05e4ced328690bfe601e3dcc4c73e5" title="removeUserContact &#45; Метод удалит контакт пользователя" alt="" coords="645,357,893,413"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a87cfb4031e21333635a5313c55d31486" title="removeUserContacts &#45; Метод удалит контакты пользователя" alt="" coords="973,525,1221,581"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a74cac3dc28dba35021dfa1884660e4b7" title="addContactUC &#45; Метод добавит контакт пользователю" alt="" coords="966,295,1227,336"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a08fcc0f7936b88d81a911f91ad4cca57" title="removeContactUC &#45; Метод удалит контакт пользователя" alt="" coords="953,360,1240,402"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a164e9512ed6667ef3ef0bdcee8836ea5" title="findUser &#45; Метод вернёт ссылку на json объект пользователя в хранилище" alt="" coords="1288,358,1511,399"/>
@@ -2375,19 +2435,19 @@ $(function() {
 <div class="center"><img src="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a87839428ae2d26d0ebd2db35ca0828d3_cgraph.png" border="0" usemap="#classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a87839428ae2d26d0ebd2db35ca0828d3_cgraph" alt=""/></div>
 <map name="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a87839428ae2d26d0ebd2db35ca0828d3_cgraph" id="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a87839428ae2d26d0ebd2db35ca0828d3_cgraph">
 <area shape="rect" title="onRemoveUser &#45; Метод выполнится при удалении пользователя" alt="" coords="5,419,273,460"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a25efe7999dbe8fa55b28ded9e4bd23f3" title="getUserContactList &#45; Метод вернёт список контактов пользователя" alt="" coords="617,578,909,619"/>
-<area shape="rect" href="systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="1306,330,1441,357"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a69c8ae062f88f8f4dc0771f1dbde7ac1" title="getUserGroups &#45; Метод вернёт список групп пользователя" alt="" coords="631,715,896,756"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a4459561f4b1cff34960e4092859aa83f" title="removeGroupUser &#45; Метод удалит пользователя из группы" alt="" coords="620,159,907,200"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aab05e4ced328690bfe601e3dcc4c73e5" title="removeUserContact &#45; Метод удалит контакт пользователя" alt="" coords="321,374,569,430"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a87cfb4031e21333635a5313c55d31486" title="removeUserContacts &#45; Метод удалит контакты пользователя" alt="" coords="639,454,887,510"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a1fc056cb19ff8571cf9212f12e892346" title="findConstUser &#45; Метод вернёт константную ссылку на json объект пользователя в хранилище" alt="" coords="957,752,1216,794"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#af7129f6ff8883d6b59a187a375992aeb" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="1264,542,1483,583"/>
-<area shape="rect" href="namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="1531,323,1737,364"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#af4451dde155385d6ec4679f1755337cd" title="findGroup &#45; Метод вернёт ссылку на json объект группы в хранилище" alt="" coords="971,112,1202,154"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a74cac3dc28dba35021dfa1884660e4b7" title="addContactUC &#45; Метод добавит контакт пользователю" alt="" coords="633,382,894,423"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a08fcc0f7936b88d81a911f91ad4cca57" title="removeContactUC &#45; Метод удалит контакт пользователя" alt="" coords="620,294,907,335"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a164e9512ed6667ef3ef0bdcee8836ea5" title="findUser &#45; Метод вернёт ссылку на json объект пользователя в хранилище" alt="" coords="975,382,1198,423"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a7fc56117718d56551ba0e4d2d5b243f9" title="clearUserContacts &#45; Метод очистит контакты пользователя" alt="" coords="648,458,879,514"/>
+<area shape="rect" href="systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="1306,334,1441,361"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a25efe7999dbe8fa55b28ded9e4bd23f3" title="getUserContactList &#45; Метод вернёт список контактов пользователя" alt="" coords="617,582,909,623"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a69c8ae062f88f8f4dc0771f1dbde7ac1" title="getUserGroups &#45; Метод вернёт список групп пользователя" alt="" coords="631,719,896,760"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a4459561f4b1cff34960e4092859aa83f" title="removeGroupUser &#45; Метод удалит пользователя из группы" alt="" coords="620,211,907,252"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aab05e4ced328690bfe601e3dcc4c73e5" title="removeUserContact &#45; Метод удалит контакт пользователя" alt="" coords="321,378,569,434"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a164e9512ed6667ef3ef0bdcee8836ea5" title="findUser &#45; Метод вернёт ссылку на json объект пользователя в хранилище" alt="" coords="975,386,1198,427"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#af7129f6ff8883d6b59a187a375992aeb" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="1264,546,1483,587"/>
+<area shape="rect" href="namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="1531,327,1737,368"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a1fc056cb19ff8571cf9212f12e892346" title="findConstUser &#45; Метод вернёт константную ссылку на json объект пользователя в хранилище" alt="" coords="957,756,1216,798"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#af4451dde155385d6ec4679f1755337cd" title="findGroup &#45; Метод вернёт ссылку на json объект группы в хранилище" alt="" coords="971,116,1202,158"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a74cac3dc28dba35021dfa1884660e4b7" title="addContactUC &#45; Метод добавит контакт пользователю" alt="" coords="633,291,894,332"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a08fcc0f7936b88d81a911f91ad4cca57" title="removeContactUC &#45; Метод удалит контакт пользователя" alt="" coords="620,386,907,427"/>
 </map>
 </div>
 
@@ -2807,66 +2867,6 @@ $(function() {
 
 </div>
 </div>
-<a id="a87cfb4031e21333635a5313c55d31486"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a87cfb4031e21333635a5313c55d31486">&#9670;&nbsp;</a></span>removeUserContacts()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::error_code HMJsonDataStorage::removeUserContacts </td>
-          <td>(</td>
-          <td class="paramtype">const QUuid &amp;&#160;</td>
-          <td class="paramname"><em>inUserUUID</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>removeUserContacts - Метод удалит контакты пользователя </p>
-<dl class="params"><dt>Аргументы</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">inUserUUID</td><td>- Uuid пользователя </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
-
-<p>Замещает <a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a7ca8ad1ef3e69b5880235e7dafe93263">hmservcommon::datastorage::HMDataStorage</a>.</p>
-<div class="dynheader">
-Граф вызовов:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a87cfb4031e21333635a5313c55d31486_cgraph.png" border="0" usemap="#classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a87cfb4031e21333635a5313c55d31486_cgraph" alt=""/></div>
-<map name="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a87cfb4031e21333635a5313c55d31486_cgraph" id="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a87cfb4031e21333635a5313c55d31486_cgraph">
-<area shape="rect" title="removeUserContacts &#45; Метод удалит контакты пользователя" alt="" coords="5,42,253,98"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a164e9512ed6667ef3ef0bdcee8836ea5" title="findUser &#45; Метод вернёт ссылку на json объект пользователя в хранилище" alt="" coords="301,49,524,91"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#af7129f6ff8883d6b59a187a375992aeb" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="572,5,791,47"/>
-<area shape="rect" href="systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="614,86,749,113"/>
-<area shape="rect" href="namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="839,79,1045,120"/>
-</map>
-</div>
-<div class="dynheader">
-Граф вызова функции:</div>
-<div class="dyncontent">
-<div class="center"><img src="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a87cfb4031e21333635a5313c55d31486_icgraph.png" border="0" usemap="#classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a87cfb4031e21333635a5313c55d31486_icgraph" alt=""/></div>
-<map name="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a87cfb4031e21333635a5313c55d31486_icgraph" id="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a87cfb4031e21333635a5313c55d31486_icgraph">
-<area shape="rect" title="removeUserContacts &#45; Метод удалит контакты пользователя" alt="" coords="633,31,881,87"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a87839428ae2d26d0ebd2db35ca0828d3" title="onRemoveUser &#45; Метод выполнится при удалении пользователя" alt="" coords="314,5,582,47"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a8fe994f6f1a05bb97c1a4af8607a5690" title="setUserContacts &#45; Метод задаст пользователю список контактов" alt="" coords="311,71,585,112"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a98f52fc8d8c672d5c0e91a67a4a0995b" title="onCreateUser &#45; Метод выполнится при создании пользователя" alt="" coords="5,71,263,112"/>
-</map>
-</div>
-
-</div>
-</div>
 <a id="aaecb72687a39e65f93d88cc149014140"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaecb72687a39e65f93d88cc149014140">&#9670;&nbsp;</a></span>setGroupUsers()</h2>
 
@@ -2980,16 +2980,16 @@ $(function() {
 <div class="dyncontent">
 <div class="center"><img src="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a8fe994f6f1a05bb97c1a4af8607a5690_cgraph.png" border="0" usemap="#classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a8fe994f6f1a05bb97c1a4af8607a5690_cgraph" alt=""/></div>
 <map name="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a8fe994f6f1a05bb97c1a4af8607a5690_cgraph" id="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a8fe994f6f1a05bb97c1a4af8607a5690_cgraph">
-<area shape="rect" title="setUserContacts &#45; Метод задаст пользователю список контактов" alt="" coords="5,226,280,268"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#abfdf94d5dca87303a3dc3c253df331a2" title="addUserContact &#45; Метод добавит контакт пользователю" alt="" coords="328,226,600,268"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#af7129f6ff8883d6b59a187a375992aeb" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="1253,168,1472,209"/>
-<area shape="rect" href="systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="1295,394,1430,420"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aab05e4ced328690bfe601e3dcc4c73e5" title="removeUserContact &#45; Метод удалит контакт пользователя" alt="" coords="340,292,588,348"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a87cfb4031e21333635a5313c55d31486" title="removeUserContacts &#45; Метод удалит контакты пользователя" alt="" coords="667,122,915,178"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a74cac3dc28dba35021dfa1884660e4b7" title="addContactUC &#45; Метод добавит контакт пользователю" alt="" coords="661,292,922,333"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a08fcc0f7936b88d81a911f91ad4cca57" title="removeContactUC &#45; Метод удалит контакт пользователя" alt="" coords="648,226,935,268"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a164e9512ed6667ef3ef0bdcee8836ea5" title="findUser &#45; Метод вернёт ссылку на json объект пользователя в хранилище" alt="" coords="983,226,1205,268"/>
-<area shape="rect" href="namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="1520,386,1727,428"/>
+<area shape="rect" title="setUserContacts &#45; Метод задаст пользователю список контактов" alt="" coords="5,370,280,411"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#abfdf94d5dca87303a3dc3c253df331a2" title="addUserContact &#45; Метод добавит контакт пользователю" alt="" coords="328,248,600,290"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#af7129f6ff8883d6b59a187a375992aeb" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="1253,198,1472,239"/>
+<area shape="rect" href="systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="1295,373,1430,400"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a7fc56117718d56551ba0e4d2d5b243f9" title="clearUserContacts &#45; Метод очистит контакты пользователя" alt="" coords="676,474,907,530"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aab05e4ced328690bfe601e3dcc4c73e5" title="removeUserContact &#45; Метод удалит контакт пользователя" alt="" coords="340,362,588,418"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a74cac3dc28dba35021dfa1884660e4b7" title="addContactUC &#45; Метод добавит контакт пользователю" alt="" coords="661,314,922,355"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a08fcc0f7936b88d81a911f91ad4cca57" title="removeContactUC &#45; Метод удалит контакт пользователя" alt="" coords="648,248,935,290"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a164e9512ed6667ef3ef0bdcee8836ea5" title="findUser &#45; Метод вернёт ссылку на json объект пользователя в хранилище" alt="" coords="983,307,1205,348"/>
+<area shape="rect" href="namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="1520,366,1727,407"/>
 </map>
 </div>
 <div class="dynheader">

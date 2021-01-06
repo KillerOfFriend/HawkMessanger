@@ -1,0 +1,4 @@
+<map id="hmservcommon::datastorage::HMAbstractCahceDataStorage::getCacheLifeTime" name="hmservcommon::datastorage::HMAbstractCahceDataStorage::getCacheLifeTime">
+<area shape="rect" id="node1" title=" " alt="" coords="288,5,515,61"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a8d25c37d56c5208e65e1e6781c56a4a8" title="processCacheInThread &#45; Метод обработки кеша в потоке" alt="" coords="5,5,240,61"/>
+</map>

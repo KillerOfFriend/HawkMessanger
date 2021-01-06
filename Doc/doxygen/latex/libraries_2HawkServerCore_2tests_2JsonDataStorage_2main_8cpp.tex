@@ -1,11 +1,10 @@
 \hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp}{}\doxysection{Файл Projects/libraries/\+Hawk\+Server\+Core/tests/\+Json\+Data\+Storage/main.cpp}
 \label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp}\index{Projects/libraries/HawkServerCore/tests/JsonDataStorage/main.cpp@{Projects/libraries/HawkServerCore/tests/JsonDataStorage/main.cpp}}
-{\ttfamily \#include $<$gtest/gtest.\+h$>$}\newline
-{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
 {\ttfamily \#include $<$filesystem$>$}\newline
-{\ttfamily \#include $<$systemerrorex.\+h$>$}\newline
-{\ttfamily \#include $<$datastorage/\+Data\+Storage.\+h$>$}\newline
-{\ttfamily \#include $<$Hawk\+Common\+Test\+Utils.\+hpp$>$}\newline
+{\ttfamily \#include $<$gtest/gtest.\+h$>$}\newline
+{\ttfamily \#include $<$Hawk\+Server\+Core\+Hard\+Data\+Storage\+Test.\+hpp$>$}\newline
+{\ttfamily \#include $<$datastorage/jsondatastorage/jsondatastorage.\+h$>$}\newline
 Граф включаемых заголовочных файлов для main.\+cpp\+:
 \nopagebreak
 \begin{figure}[H]
@@ -19,9 +18,9 @@
 \item 
 std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_acf61b12d4beb26dbaf8a58b1e4ba79f0}{make\+Storage}} (const std\+::filesystem\+::path \&in\+Storage\+Path=\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac191795d64548fb36e4249ad030c3f66}{C\+\_\+\+J\+S\+O\+N\+\_\+\+P\+A\+TH}}, const bool in\+Remove\+Old=true)
 \begin{DoxyCompactList}\small\item\em make\+Storage -\/ Метод создаст экземпляр хранилища \end{DoxyCompactList}\item 
-\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a5fb5678dee12d0a061eac78623d40da1}{T\+E\+ST}} (Json\+Data\+Storage, Open)
+\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a581e4c9acce5dabd20b925beefd42303}{T\+E\+ST}} (Json\+Data\+Storage, open)
 \begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит попытку открытия хранилища \end{DoxyCompactList}\item 
-\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a8220e8f9cbc56dce44631f4b55bcf29e}{T\+E\+ST}} (Json\+Data\+Storage, Add\+User)
+\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a884ffdd0edcc0664c8d9677b8bf82e98}{T\+E\+ST}} (Json\+Data\+Storage, add\+User)
 \begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит добавление пользователя \end{DoxyCompactList}\item 
 \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aa51ca2252794860a43fbb430f27aac33}{T\+E\+ST}} (Json\+Data\+Storage, update\+User)
 \begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит обновление пользователя \end{DoxyCompactList}\item 
@@ -31,6 +30,16 @@ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1H
 \begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит поиск пользователья по данным аутентификации \end{DoxyCompactList}\item 
 \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ad9bd25fd066b76557c37ca40c06f7faf}{T\+E\+ST}} (Json\+Data\+Storage, remove\+User)
 \begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит удаление пользователя из хранилище \end{DoxyCompactList}\item 
+\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac90ce3a20236ee732d33b237895934dd}{T\+E\+ST}} (Json\+Data\+Storage, set\+User\+Contacts)
+\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит создание связи пользователь-\/контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a9ccd279cb9fafef46ac423bba91d8114}{T\+E\+ST}} (Json\+Data\+Storage, add\+User\+Contact)
+\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит добавление контакта пользователю \end{DoxyCompactList}\item 
+\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a14d52c267576f758b6db03a7a8d30913}{T\+E\+ST}} (Json\+Data\+Storage, remove\+User\+Contact)
+\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит удаление контакта пользователя \end{DoxyCompactList}\item 
+\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a0a072f59fb036ceed5889986d6c95d98}{T\+E\+ST}} (Json\+Data\+Storage, clear\+User\+Contacts)
+\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит удаление связи пользователь-\/контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ace6ee2287eb3fd5f2cd56b6a00e2c01c}{T\+E\+ST}} (Json\+Data\+Storage, get\+User\+Contact\+List)
+\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит получение списка контатков пользователя \end{DoxyCompactList}\item 
 \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a823ca165ce090bf6d74cce6ce8c577db}{T\+E\+ST}} (Json\+Data\+Storage, get\+User\+Groups)
 \begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит получение списка U\+U\+ID\textquotesingle{}ов групп пользователя \end{DoxyCompactList}\item 
 \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a00336ff25d708f6104b5a58eee7a161f}{T\+E\+ST}} (Json\+Data\+Storage, add\+Group)
@@ -61,16 +70,6 @@ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1H
 \begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит поиск перечня сообщений по временному промежутку \end{DoxyCompactList}\item 
 \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a0c2f4ba787435b93de0aa2b4bffb0b3d}{T\+E\+ST}} (Json\+Data\+Storage, remove\+Message)
 \begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит удаление сообщения \end{DoxyCompactList}\item 
-\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac90ce3a20236ee732d33b237895934dd}{T\+E\+ST}} (Json\+Data\+Storage, set\+User\+Contacts)
-\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит создание связи пользователь-\/контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ) \end{DoxyCompactList}\item 
-\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a9ccd279cb9fafef46ac423bba91d8114}{T\+E\+ST}} (Json\+Data\+Storage, add\+User\+Contact)
-\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит добавление контакта пользователю \end{DoxyCompactList}\item 
-\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a14d52c267576f758b6db03a7a8d30913}{T\+E\+ST}} (Json\+Data\+Storage, remove\+User\+Contact)
-\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит удаление контакта пользователя \end{DoxyCompactList}\item 
-\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac9576077c352e23fdc55ab11a72f40df}{T\+E\+ST}} (Json\+Data\+Storage, remove\+User\+Contacts)
-\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит удаление связи пользователь-\/контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ) \end{DoxyCompactList}\item 
-\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ace6ee2287eb3fd5f2cd56b6a00e2c01c}{T\+E\+ST}} (Json\+Data\+Storage, get\+User\+Contact\+List)
-\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест проверит получение списка контатков пользователя \end{DoxyCompactList}\item 
 \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a1babef04e2b5e096ce7ec312df41d38c}{T\+E\+ST}} (Json\+Data\+Storage, Check\+Json\+Save)
 \begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест сохранения хранилища в J\+S\+ON. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
@@ -138,7 +137,7 @@ T\+E\+ST -\/ Тест проверит добавление группы
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=306pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a00336ff25d708f6104b5a58eee7a161f_cgraph}
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a00336ff25d708f6104b5a58eee7a161f_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a6107b91a40775d27702164f36ecc20c1}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a6107b91a40775d27702164f36ecc20c1}} 
@@ -156,7 +155,7 @@ T\+E\+ST -\/ Тест проверит добавление пользовате
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=306pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a6107b91a40775d27702164f36ecc20c1_cgraph}
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a6107b91a40775d27702164f36ecc20c1_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_acb43ef695e92329570af9e64ad24798f}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_acb43ef695e92329570af9e64ad24798f}} 
@@ -177,11 +176,11 @@ T\+E\+ST -\/ Тест проверит добовление сообщения
 \includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_acb43ef695e92329570af9e64ad24798f_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a8220e8f9cbc56dce44631f4b55bcf29e}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a8220e8f9cbc56dce44631f4b55bcf29e}} 
+\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a884ffdd0edcc0664c8d9677b8bf82e98}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a884ffdd0edcc0664c8d9677b8bf82e98}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
 \doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [4/27]}}
-{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Json\+Data\+Storage}]{,  }\item[{Add\+User}]{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Json\+Data\+Storage}]{,  }\item[{add\+User}]{ }\end{DoxyParamCaption})}
 
 
 
@@ -192,7 +191,7 @@ T\+E\+ST -\/ Тест проверит добавление пользовате
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=300pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a8220e8f9cbc56dce44631f4b55bcf29e_cgraph}
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a884ffdd0edcc0664c8d9677b8bf82e98_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a9ccd279cb9fafef46ac423bba91d8114}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a9ccd279cb9fafef46ac423bba91d8114}} 
@@ -210,7 +209,7 @@ T\+E\+ST -\/ Тест проверит добавление контакта п�
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=300pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a9ccd279cb9fafef46ac423bba91d8114_cgraph}
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a9ccd279cb9fafef46ac423bba91d8114_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a1babef04e2b5e096ce7ec312df41d38c}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a1babef04e2b5e096ce7ec312df41d38c}} 
@@ -246,13 +245,31 @@ T\+E\+ST -\/ Тест проверит очистку списка участн�
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=306pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_af65202c41d5996ebb04941b1a869301c_cgraph}
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_af65202c41d5996ebb04941b1a869301c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a0a072f59fb036ceed5889986d6c95d98}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a0a072f59fb036ceed5889986d6c95d98}} 
+\index{main.cpp@{main.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [8/27]}}
+{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Json\+Data\+Storage}]{,  }\item[{clear\+User\+Contacts}]{ }\end{DoxyParamCaption})}
+
+
+
+T\+E\+ST -\/ Тест проверит удаление связи пользователь-\/контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ) 
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a0a072f59fb036ceed5889986d6c95d98_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ae1bc09c0d3c075d81ebf9ff305b8a8e2}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ae1bc09c0d3c075d81ebf9ff305b8a8e2}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [8/27]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [9/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Json\+Data\+Storage}]{,  }\item[{find\+Group\+By\+U\+U\+ID}]{ }\end{DoxyParamCaption})}
 
 
@@ -264,13 +281,13 @@ T\+E\+ST -\/ Тест проверит поиск группы по U\+U\+ID.
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=306pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ae1bc09c0d3c075d81ebf9ff305b8a8e2_cgraph}
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ae1bc09c0d3c075d81ebf9ff305b8a8e2_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a31089dcfe141509b3d4a2b2813474d33}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a31089dcfe141509b3d4a2b2813474d33}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [9/27]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [10/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Json\+Data\+Storage}]{,  }\item[{find\+Message}]{ }\end{DoxyParamCaption})}
 
 
@@ -288,7 +305,7 @@ T\+E\+ST -\/ Тест проверит поиск сообщения по U\+U\+
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a94a04895036c17d8c0c113bfae422059}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a94a04895036c17d8c0c113bfae422059}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [10/27]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [11/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Json\+Data\+Storage}]{,  }\item[{find\+Messages}]{ }\end{DoxyParamCaption})}
 
 
@@ -306,7 +323,7 @@ T\+E\+ST -\/ Тест проверит поиск перечня сообщен�
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_afe925bdb7f4df4e533817958849488bf}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_afe925bdb7f4df4e533817958849488bf}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [11/27]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [12/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Json\+Data\+Storage}]{,  }\item[{find\+User\+By\+Authentication}]{ }\end{DoxyParamCaption})}
 
 
@@ -318,13 +335,13 @@ T\+E\+ST -\/ Тест проверит поиск пользователья п�
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=300pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_afe925bdb7f4df4e533817958849488bf_cgraph}
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_afe925bdb7f4df4e533817958849488bf_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ab85d00012b15b009e66295da2632bfd2}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ab85d00012b15b009e66295da2632bfd2}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [12/27]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [13/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Json\+Data\+Storage}]{,  }\item[{find\+User\+By\+U\+U\+ID}]{ }\end{DoxyParamCaption})}
 
 
@@ -336,13 +353,13 @@ T\+E\+ST -\/ Тест проверит поиск пользователья п�
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=300pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ab85d00012b15b009e66295da2632bfd2_cgraph}
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ab85d00012b15b009e66295da2632bfd2_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_af51e24fb9000be93b006952d4cf0b946}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_af51e24fb9000be93b006952d4cf0b946}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [13/27]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [14/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Json\+Data\+Storage}]{,  }\item[{get\+Group\+User\+List}]{ }\end{DoxyParamCaption})}
 
 
@@ -354,13 +371,13 @@ T\+E\+ST -\/ Тест проверит получение списка U\+U\+ID\
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=306pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_af51e24fb9000be93b006952d4cf0b946_cgraph}
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_af51e24fb9000be93b006952d4cf0b946_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ace6ee2287eb3fd5f2cd56b6a00e2c01c}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ace6ee2287eb3fd5f2cd56b6a00e2c01c}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [14/27]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [15/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Json\+Data\+Storage}]{,  }\item[{get\+User\+Contact\+List}]{ }\end{DoxyParamCaption})}
 
 
@@ -372,13 +389,13 @@ T\+E\+ST -\/ Тест проверит получение списка конт�
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=300pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ace6ee2287eb3fd5f2cd56b6a00e2c01c_cgraph}
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ace6ee2287eb3fd5f2cd56b6a00e2c01c_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a823ca165ce090bf6d74cce6ce8c577db}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a823ca165ce090bf6d74cce6ce8c577db}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [15/27]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [16/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Json\+Data\+Storage}]{,  }\item[{get\+User\+Groups}]{ }\end{DoxyParamCaption})}
 
 
@@ -390,14 +407,14 @@ T\+E\+ST -\/ Тест проверит получение списка U\+U\+ID\
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=306pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a823ca165ce090bf6d74cce6ce8c577db_cgraph}
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a823ca165ce090bf6d74cce6ce8c577db_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a5fb5678dee12d0a061eac78623d40da1}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a5fb5678dee12d0a061eac78623d40da1}} 
+\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a581e4c9acce5dabd20b925beefd42303}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a581e4c9acce5dabd20b925beefd42303}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [16/27]}}
-{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Json\+Data\+Storage}]{,  }\item[{Open}]{ }\end{DoxyParamCaption})}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [17/27]}}
+{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Json\+Data\+Storage}]{,  }\item[{open}]{ }\end{DoxyParamCaption})}
 
 
 
@@ -408,13 +425,13 @@ T\+E\+ST -\/ Тест проверит попытку открытия хран�
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=238pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a5fb5678dee12d0a061eac78623d40da1_cgraph}
+\includegraphics[width=238pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a581e4c9acce5dabd20b925beefd42303_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a28433154b349404ab299f8874bd9e0f5}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a28433154b349404ab299f8874bd9e0f5}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [17/27]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [18/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Json\+Data\+Storage}]{,  }\item[{remove\+Group}]{ }\end{DoxyParamCaption})}
 
 
@@ -426,13 +443,13 @@ T\+E\+ST -\/ Тест проверит удаление группы
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=306pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a28433154b349404ab299f8874bd9e0f5_cgraph}
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a28433154b349404ab299f8874bd9e0f5_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a89e5a764505bd0eb50cd21981c7b6de6}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a89e5a764505bd0eb50cd21981c7b6de6}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [18/27]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [19/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Json\+Data\+Storage}]{,  }\item[{remove\+Group\+User}]{ }\end{DoxyParamCaption})}
 
 
@@ -444,13 +461,13 @@ T\+E\+ST -\/ Тест проверит удаление пользователя
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=306pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a89e5a764505bd0eb50cd21981c7b6de6_cgraph}
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a89e5a764505bd0eb50cd21981c7b6de6_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a0c2f4ba787435b93de0aa2b4bffb0b3d}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a0c2f4ba787435b93de0aa2b4bffb0b3d}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [19/27]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [20/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Json\+Data\+Storage}]{,  }\item[{remove\+Message}]{ }\end{DoxyParamCaption})}
 
 
@@ -468,7 +485,7 @@ T\+E\+ST -\/ Тест проверит удаление сообщения
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ad9bd25fd066b76557c37ca40c06f7faf}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ad9bd25fd066b76557c37ca40c06f7faf}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [20/27]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [21/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Json\+Data\+Storage}]{,  }\item[{remove\+User}]{ }\end{DoxyParamCaption})}
 
 
@@ -480,13 +497,13 @@ T\+E\+ST -\/ Тест проверит удаление пользователя
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=300pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ad9bd25fd066b76557c37ca40c06f7faf_cgraph}
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ad9bd25fd066b76557c37ca40c06f7faf_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a14d52c267576f758b6db03a7a8d30913}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a14d52c267576f758b6db03a7a8d30913}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [21/27]}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [22/27]}}
 {\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Json\+Data\+Storage}]{,  }\item[{remove\+User\+Contact}]{ }\end{DoxyParamCaption})}
 
 
@@ -498,25 +515,7 @@ T\+E\+ST -\/ Тест проверит удаление контакта пол�
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=300pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a14d52c267576f758b6db03a7a8d30913_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac9576077c352e23fdc55ab11a72f40df}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac9576077c352e23fdc55ab11a72f40df}} 
-\index{main.cpp@{main.cpp}!TEST@{TEST}}
-\index{TEST@{TEST}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [22/27]}}
-{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Json\+Data\+Storage}]{,  }\item[{remove\+User\+Contacts}]{ }\end{DoxyParamCaption})}
-
-
-
-T\+E\+ST -\/ Тест проверит удаление связи пользователь-\/контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ) 
-
-Граф вызовов\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=300pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac9576077c352e23fdc55ab11a72f40df_cgraph}
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a14d52c267576f758b6db03a7a8d30913_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aed8cb12e20af4150bac076a7e6c8d9d6}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aed8cb12e20af4150bac076a7e6c8d9d6}} 
@@ -534,7 +533,7 @@ T\+E\+ST -\/ Тест проверит присвоение списка уча�
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=306pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aed8cb12e20af4150bac076a7e6c8d9d6_cgraph}
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aed8cb12e20af4150bac076a7e6c8d9d6_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac90ce3a20236ee732d33b237895934dd}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac90ce3a20236ee732d33b237895934dd}} 
@@ -552,7 +551,7 @@ T\+E\+ST -\/ Тест проверит создание связи пользо�
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=300pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac90ce3a20236ee732d33b237895934dd_cgraph}
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac90ce3a20236ee732d33b237895934dd_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aebfbb8ab90bf06954442af42904f6224}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aebfbb8ab90bf06954442af42904f6224}} 
@@ -570,7 +569,7 @@ T\+E\+ST -\/ Тест проверит обновление группы
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=306pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aebfbb8ab90bf06954442af42904f6224_cgraph}
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aebfbb8ab90bf06954442af42904f6224_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac5851275c5c6396bd38f71770056b9c9}\label{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac5851275c5c6396bd38f71770056b9c9}} 
@@ -606,7 +605,7 @@ T\+E\+ST -\/ Тест проверит обновление пользовате
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=300pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aa51ca2252794860a43fbb430f27aac33_cgraph}
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aa51ca2252794860a43fbb430f27aac33_cgraph}
 \end{center}
 \end{figure}
 

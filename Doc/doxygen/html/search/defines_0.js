@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['datastorage_5fapi_5fdecl_813',['DATASTORAGE_API_DECL',['../datastorageerrorcategory_8h.html#ad3fd45f38fcb9251d401fd4f3e46ac03',1,'datastorageerrorcategory.h']]]
+  ['as_5fmacro_5fstr_938',['AS_MACRO_STR',['../logsystem_8h.html#aafbab3078991c23972869e8e39eabb8e',1,'logsystem.h']]]
 ];

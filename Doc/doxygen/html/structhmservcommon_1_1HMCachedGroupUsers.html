@@ -106,9 +106,9 @@ $(function() {
 <tr class="memitem:a6a7a3d327cabf28fe9de49c2007b91b0"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; std::set&lt; QUuid &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhmservcommon_1_1HMCachedGroupUsers.html#a6a7a3d327cabf28fe9de49c2007b91b0">m_groupUsers</a> = nullptr</td></tr>
 <tr class="memdesc:a6a7a3d327cabf28fe9de49c2007b91b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Перечень участников группы  <a href="structhmservcommon_1_1HMCachedGroupUsers.html#a6a7a3d327cabf28fe9de49c2007b91b0">Подробнее...</a><br /></td></tr>
 <tr class="separator:a6a7a3d327cabf28fe9de49c2007b91b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b9f4e1511b4a6bd98921c3601824f1e"><td class="memItemLeft" align="right" valign="top">QTime&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhmservcommon_1_1HMCachedGroupUsers.html#a7b9f4e1511b4a6bd98921c3601824f1e">m_lastRequest</a></td></tr>
-<tr class="memdesc:a7b9f4e1511b4a6bd98921c3601824f1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Время последнего запроса  <a href="structhmservcommon_1_1HMCachedGroupUsers.html#a7b9f4e1511b4a6bd98921c3601824f1e">Подробнее...</a><br /></td></tr>
-<tr class="separator:a7b9f4e1511b4a6bd98921c3601824f1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5805e59002c0b5b231df6b26f8b46c85"><td class="memItemLeft" align="right" valign="top">std::chrono::system_clock::time_point&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structhmservcommon_1_1HMCachedGroupUsers.html#a5805e59002c0b5b231df6b26f8b46c85">m_lastRequest</a></td></tr>
+<tr class="memdesc:a5805e59002c0b5b231df6b26f8b46c85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Время последнего запроса  <a href="structhmservcommon_1_1HMCachedGroupUsers.html#a5805e59002c0b5b231df6b26f8b46c85">Подробнее...</a><br /></td></tr>
+<tr class="separator:a5805e59002c0b5b231df6b26f8b46c85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
 <div class="textblock"><p>The <a class="el" href="structhmservcommon_1_1HMCachedGroupUsers.html" title="The HMCachedGroupUsers struct - Структура, описывающая кешированный перечень участников группы">HMCachedGroupUsers</a> struct - Структура, описывающая кешированный перечень участников группы </p>
@@ -303,19 +303,27 @@ $(function() {
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">std::shared_ptr&lt;std::set&lt;QUuid&gt; &gt; hmservcommon::HMCachedGroupUsers::m_groupUsers = nullptr</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">mutable</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Перечень участников группы </p>
 
 </div>
 </div>
-<a id="a7b9f4e1511b4a6bd98921c3601824f1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b9f4e1511b4a6bd98921c3601824f1e">&#9670;&nbsp;</a></span>m_lastRequest</h2>
+<a id="a5805e59002c0b5b231df6b26f8b46c85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5805e59002c0b5b231df6b26f8b46c85">&#9670;&nbsp;</a></span>m_lastRequest</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -324,7 +332,7 @@ $(function() {
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QTime hmservcommon::HMCachedGroupUsers::m_lastRequest</td>
+          <td class="memname">std::chrono::system_clock::time_point hmservcommon::HMCachedGroupUsers::m_lastRequest</td>
         </tr>
       </table>
   </td>

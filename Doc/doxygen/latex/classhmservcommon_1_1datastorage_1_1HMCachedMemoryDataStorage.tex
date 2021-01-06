@@ -11,8 +11,7 @@ The \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStora
 
 
 
-Граф наследования\+:hmservcommon\+::datastorage\+::H\+M\+Cached\+Memory\+Data\+Storage\+:
-\nopagebreak
+Граф наследования\+:hmservcommon\+::datastorage\+::H\+M\+Cached\+Memory\+Data\+Storage\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,8 +20,7 @@ The \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStora
 \end{figure}
 
 
-Граф связей класса hmservcommon\+::datastorage\+::H\+M\+Cached\+Memory\+Data\+Storage\+:
-\nopagebreak
+Граф связей класса hmservcommon\+::datastorage\+::H\+M\+Cached\+Memory\+Data\+Storage\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -32,8 +30,8 @@ The \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStora
 \doxysubsection*{Открытые члены}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a8b03729a9757acc28917101745b44843}{H\+M\+Cached\+Memory\+Data\+Storage}} ()=default
-\begin{DoxyCompactList}\small\item\em H\+M\+Cached\+Data\+Storage -\/ Конструктор по умолчанию \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a91302fe5267cdf84c0673fab746b09e5}{H\+M\+Cached\+Memory\+Data\+Storage}} (const std\+::chrono\+::milliseconds in\+Cache\+Life\+Time=std\+::chrono\+::duration\+\_\+cast$<$ std\+::chrono\+::milliseconds $>$(std\+::chrono\+::minutes(15)), const std\+::chrono\+::milliseconds in\+Sleep=std\+::chrono\+::milliseconds(1000))
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage}{H\+M\+Cached\+Memory\+Data\+Storage}} -\/ Инициализирующий конструктор \end{DoxyCompactList}\item 
 virtual \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_aba844641d544b031bbbe89d001be3a50}{$\sim$\+H\+M\+Cached\+Memory\+Data\+Storage}} () override
 \begin{DoxyCompactList}\small\item\em $\sim$\+H\+M\+Cached\+Data\+Storage -\/ Виртуальный деструктор \end{DoxyCompactList}\item 
 virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a07c4e3bad5ced7d8a929b77a3df67197}{open}} () override
@@ -52,6 +50,16 @@ virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUser}{hmco
 \begin{DoxyCompactList}\small\item\em find\+User\+By\+Authentication -\/ Метод найдёт пользователя по его данным аутентификации \end{DoxyCompactList}\item 
 virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_aa63af5fa0c5afe05ae839bce0d40a8da}{remove\+User}} (const Q\+Uuid \&in\+User\+U\+U\+ID) override
 \begin{DoxyCompactList}\small\item\em remove\+User -\/ Метод удалит пользователя \end{DoxyCompactList}\item 
+virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_ad30ea9de3a5393c43d0e5fe86f21c541}{set\+User\+Contacts}} (const Q\+Uuid \&in\+User\+U\+U\+ID, const std\+::shared\+\_\+ptr$<$ std\+::set$<$ Q\+Uuid $>$$>$ in\+Contacts) override
+\begin{DoxyCompactList}\small\item\em set\+User\+Contacts -\/ Метод задаст пользователю список контактов \end{DoxyCompactList}\item 
+virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a90a123dce1b878445e01083db350ad55}{add\+User\+Contact}} (const Q\+Uuid \&in\+User\+U\+U\+ID, const Q\+Uuid \&in\+Contact\+U\+U\+ID) override
+\begin{DoxyCompactList}\small\item\em add\+User\+Contact -\/ Метод добавит контакт пользователю \end{DoxyCompactList}\item 
+virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_ac9a9c52d90f4e30e3fe1034d4d33f8a8}{remove\+User\+Contact}} (const Q\+Uuid \&in\+User\+U\+U\+ID, const Q\+Uuid \&in\+Contact\+U\+U\+ID) override
+\begin{DoxyCompactList}\small\item\em remove\+User\+Contact -\/ Метод удалит контакт пользователя \end{DoxyCompactList}\item 
+virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a46e0b517c8c91fd11aed0d982a8a553a}{clear\+User\+Contacts}} (const Q\+Uuid \&in\+User\+U\+U\+ID) override
+\begin{DoxyCompactList}\small\item\em clear\+User\+Contacts -\/ Метод очистит контакты пользователя \end{DoxyCompactList}\item 
+virtual std\+::shared\+\_\+ptr$<$ std\+::set$<$ Q\+Uuid $>$ $>$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a224dd2118aefffc7541c5a0d44fd78bd}{get\+User\+Contact\+List}} (const Q\+Uuid \&in\+User\+U\+U\+ID, std\+::error\+\_\+code \&out\+Error\+Code) const override
+\begin{DoxyCompactList}\small\item\em get\+User\+Contact\+List -\/ Метод вернёт список контактов пользователя \end{DoxyCompactList}\item 
 virtual std\+::shared\+\_\+ptr$<$ std\+::set$<$ Q\+Uuid $>$ $>$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a01db6b0e45b9cacc7c407b1d36df988e}{get\+User\+Groups}} (const Q\+Uuid \&in\+User\+U\+U\+ID, std\+::error\+\_\+code \&out\+Error\+Code) const override
 \begin{DoxyCompactList}\small\item\em get\+User\+Groups -\/ Метод вернёт список групп пользователя \end{DoxyCompactList}\item 
 virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a8b32eff2a118d7b709040668c63e53c6}{add\+Group}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{hmcommon\+::\+H\+M\+Group}} $>$ in\+Group) override
@@ -81,17 +89,7 @@ virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupMessa
 virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupMessage}{hmcommon\+::\+H\+M\+Group\+Message}} $>$ $>$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a17cef5a62dc91198d61698b62a9aa499}{find\+Messages}} (const Q\+Uuid \&in\+Group\+U\+U\+ID, const \mbox{\hyperlink{structhmcommon_1_1MsgRange}{hmcommon\+::\+Msg\+Range}} \&in\+Range, std\+::error\+\_\+code \&out\+Error\+Code) const override
 \begin{DoxyCompactList}\small\item\em find\+Messages -\/ Метод вернёт перечень сообщений группы за куазаный промежуток времени \end{DoxyCompactList}\item 
 virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a31a77cb059991b7fff10cbb2b373d3b5}{remove\+Message}} (const Q\+Uuid \&in\+Message\+U\+U\+ID, const Q\+Uuid \&in\+Group\+U\+U\+ID) override
-\begin{DoxyCompactList}\small\item\em remove\+Message -\/ Метод удалит сообщение \end{DoxyCompactList}\item 
-virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_ad30ea9de3a5393c43d0e5fe86f21c541}{set\+User\+Contacts}} (const Q\+Uuid \&in\+User\+U\+U\+ID, const std\+::shared\+\_\+ptr$<$ std\+::set$<$ Q\+Uuid $>$$>$ in\+Contacts) override
-\begin{DoxyCompactList}\small\item\em set\+User\+Contacts -\/ Метод задаст пользователю список контактов \end{DoxyCompactList}\item 
-virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a90a123dce1b878445e01083db350ad55}{add\+User\+Contact}} (const Q\+Uuid \&in\+User\+U\+U\+ID, const Q\+Uuid \&in\+Contact\+U\+U\+ID) override
-\begin{DoxyCompactList}\small\item\em add\+User\+Contact -\/ Метод добавит контакт пользователю \end{DoxyCompactList}\item 
-virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_ac9a9c52d90f4e30e3fe1034d4d33f8a8}{remove\+User\+Contact}} (const Q\+Uuid \&in\+User\+U\+U\+ID, const Q\+Uuid \&in\+Contact\+U\+U\+ID) override
-\begin{DoxyCompactList}\small\item\em remove\+User\+Contact -\/ Метод удалит контакт пользователя \end{DoxyCompactList}\item 
-virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a7e64f02d91859f832c87209c82f25df9}{remove\+User\+Contacts}} (const Q\+Uuid \&in\+User\+U\+U\+ID) override
-\begin{DoxyCompactList}\small\item\em remove\+User\+Contacts -\/ Метод удалит контакты пользователя \end{DoxyCompactList}\item 
-virtual std\+::shared\+\_\+ptr$<$ std\+::set$<$ Q\+Uuid $>$ $>$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a224dd2118aefffc7541c5a0d44fd78bd}{get\+User\+Contact\+List}} (const Q\+Uuid \&in\+User\+U\+U\+ID, std\+::error\+\_\+code \&out\+Error\+Code) const override
-\begin{DoxyCompactList}\small\item\em get\+User\+Contact\+List -\/ Метод вернёт список контактов пользователя \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em remove\+Message -\/ Метод удалит сообщение \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Защищенные члены}
 \begin{DoxyCompactItemize}
 \item 
@@ -135,16 +133,23 @@ Alekseev\+\_\+s
 
 
 \doxysubsection{Конструктор(ы)}
-\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a8b03729a9757acc28917101745b44843}\label{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a8b03729a9757acc28917101745b44843}} 
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a91302fe5267cdf84c0673fab746b09e5}\label{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a91302fe5267cdf84c0673fab746b09e5}} 
 \index{hmservcommon::datastorage::HMCachedMemoryDataStorage@{hmservcommon::datastorage::HMCachedMemoryDataStorage}!HMCachedMemoryDataStorage@{HMCachedMemoryDataStorage}}
 \index{HMCachedMemoryDataStorage@{HMCachedMemoryDataStorage}!hmservcommon::datastorage::HMCachedMemoryDataStorage@{hmservcommon::datastorage::HMCachedMemoryDataStorage}}
 \doxysubsubsection{\texorpdfstring{HMCachedMemoryDataStorage()}{HMCachedMemoryDataStorage()}}
-{\footnotesize\ttfamily hmservcommon\+::datastorage\+::\+H\+M\+Cached\+Memory\+Data\+Storage\+::\+H\+M\+Cached\+Memory\+Data\+Storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+{\footnotesize\ttfamily H\+M\+Cached\+Memory\+Data\+Storage\+::\+H\+M\+Cached\+Memory\+Data\+Storage (\begin{DoxyParamCaption}\item[{const std\+::chrono\+::milliseconds}]{in\+Cache\+Life\+Time = {\ttfamily std\+:\+:chrono\+:\+:duration\+\_\+cast$<$std\+:\+:chrono\+:\+:milliseconds$>$(std\+:\+:chrono\+:\+:minutes(15))},  }\item[{const std\+::chrono\+::milliseconds}]{in\+Sleep = {\ttfamily std\+:\+:chrono\+:\+:milliseconds(1000)} }\end{DoxyParamCaption})}
 
 
 
-H\+M\+Cached\+Data\+Storage -\/ Конструктор по умолчанию 
+\mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage}{H\+M\+Cached\+Memory\+Data\+Storage}} -\/ Инициализирующий конструктор 
 
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Cache\+Life\+Time} & -\/ Время жизни объектов кеша (в милисекундах) \\
+\hline
+{\em in\+Sleep} & -\/ Время ожидания потока контроля кеша в (в милисекундах) \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_aba844641d544b031bbbe89d001be3a50}\label{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_aba844641d544b031bbbe89d001be3a50}} 
 \index{hmservcommon::datastorage::HMCachedMemoryDataStorage@{hmservcommon::datastorage::HMCachedMemoryDataStorage}!````~HMCachedMemoryDataStorage@{$\sim$HMCachedMemoryDataStorage}}
 \index{````~HMCachedMemoryDataStorage@{$\sim$HMCachedMemoryDataStorage}!hmservcommon::datastorage::HMCachedMemoryDataStorage@{hmservcommon::datastorage::HMCachedMemoryDataStorage}}
@@ -155,8 +160,7 @@ H\+M\+Cached\+Data\+Storage -\/ Конструктор по умолчанию
 
 $\sim$\+H\+M\+Cached\+Data\+Storage -\/ Виртуальный деструктор 
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -188,8 +192,7 @@ add\+Group -\/ Метод добавит новую группу
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a084b842e26a5eaa9c6811a36792e9e1b}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -220,8 +223,7 @@ set\+Group\+Users -\/ Метод добавит пользователя в гр
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a816a0752bb5156d8cd0e45abfc5bf867}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -250,8 +252,7 @@ add\+Message -\/ Метод добавит новое сообщение
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_acc7fe7ac22b15909432934bf4a7529eb}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -280,8 +281,7 @@ add\+User -\/ Метод добавит нового пользователя
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_ac4bdb8c8b3743471115cbd05d5990f4f}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -312,8 +312,7 @@ add\+User\+Contact -\/ Метод добавит контакт пользова
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_ab611c63a8eb0e86beaf2e2b7a0cca844}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -330,8 +329,7 @@ add\+User\+Contact -\/ Метод добавит контакт пользова
 
 clear\+Cached -\/ Метод очистит закешированные данные 
 
-Граф вызова функции\+:
-\nopagebreak
+Граф вызова функции\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -360,12 +358,41 @@ clear\+Group\+Users -\/ Метод очистит список членов гр
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a71b764303e32914d203b696acc03b32c}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
+Граф вызовов\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_ace91c921030136da5337fdce0d22ed6e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a46e0b517c8c91fd11aed0d982a8a553a}\label{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a46e0b517c8c91fd11aed0d982a8a553a}} 
+\index{hmservcommon::datastorage::HMCachedMemoryDataStorage@{hmservcommon::datastorage::HMCachedMemoryDataStorage}!clearUserContacts@{clearUserContacts}}
+\index{clearUserContacts@{clearUserContacts}!hmservcommon::datastorage::HMCachedMemoryDataStorage@{hmservcommon::datastorage::HMCachedMemoryDataStorage}}
+\doxysubsubsection{\texorpdfstring{clearUserContacts()}{clearUserContacts()}}
+{\footnotesize\ttfamily std\+::error\+\_\+code H\+M\+Cached\+Memory\+Data\+Storage\+::clear\+User\+Contacts (\begin{DoxyParamCaption}\item[{const Q\+Uuid \&}]{in\+User\+U\+U\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+clear\+User\+Contacts -\/ Метод очистит контакты пользователя 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+User\+U\+U\+ID} & -\/ Uuid пользователя \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт признак ошибки 
+\end{DoxyReturn}
+
+
+Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a3d5add9a9cda2b08727f09e6bd944c04}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
+
 Граф вызовов\+:
 \nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_ace91c921030136da5337fdce0d22ed6e_cgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a46e0b517c8c91fd11aed0d982a8a553a_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a8bf345ef8b7ca0b14ad3c9c7d4cbe91a}\label{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a8bf345ef8b7ca0b14ad3c9c7d4cbe91a}} 
@@ -382,16 +409,14 @@ close -\/ Метод закроет хранилище данных
 
 Переопределяет метод предка \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_ae620a0c526b13b1c4b9800f282d6461d}{hmservcommon\+::datastorage\+::\+H\+M\+Abstract\+Cahce\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a8bf345ef8b7ca0b14ad3c9c7d4cbe91a_cgraph}
 \end{center}
 \end{figure}
-Граф вызова функции\+:
-\nopagebreak
+Граф вызова функции\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -422,16 +447,14 @@ find\+Group\+By\+U\+U\+ID -\/ Метод найдёт пользователя �
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a69b796166a22d31a57032aaec90b47a4}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a5cba3109874fbb384b226429b330297c_cgraph}
 \end{center}
 \end{figure}
-Граф вызова функции\+:
-\nopagebreak
+Граф вызова функции\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -462,8 +485,7 @@ find\+Message -\/ Метод найдёт сообщение по его uuid
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_ae9861e10c67a208a2cc25f5c77af6ee4}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -496,8 +518,7 @@ find\+Messages -\/ Метод вернёт перечень сообщений �
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a9711f5b122a6435267ca023a0d58b557}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -530,8 +551,7 @@ find\+User\+By\+Authentication -\/ Метод найдёт пользовате�
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a174b743bc27f9784270e1d77fe3d4055}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -562,16 +582,14 @@ find\+User\+By\+U\+U\+ID -\/ Метод найдёт пользователя п
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a17ce90091313c898df64f544edf979b1}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_ab7d800c940d4dc4172a1c511dee0a8a5_cgraph}
 \end{center}
 \end{figure}
-Граф вызова функции\+:
-\nopagebreak
+Граф вызова функции\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -602,8 +620,7 @@ get\+Group\+User\+List -\/ Метод вернёт список U\+U\+ID\textquo
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a23806d3edbef4654c1023a297d932c64}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -634,8 +651,7 @@ get\+User\+Contact\+List -\/ Метод вернёт список контакт
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a1fa4e4e8a76543001fb964db1add11f2}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -666,8 +682,7 @@ get\+User\+Groups -\/ Метод вернёт список групп польз
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_abf83eedd2d7e34cf650e80484afdac0b}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -691,16 +706,14 @@ is\+\_\+open -\/ Метод вернёт признак открытости х�
 
 Переопределяет метод предка \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a6a6932677f1662b09c2a29a2ef12ecf6}{hmservcommon\+::datastorage\+::\+H\+M\+Abstract\+Cahce\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_ad25c96a585b2b7b1fb3c0dd66ecb311b_cgraph}
 \end{center}
 \end{figure}
-Граф вызова функции\+:
-\nopagebreak
+Граф вызова функции\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -724,8 +737,7 @@ open -\/ Метод откроет хранилище данных
 
 Переопределяет метод предка \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_ab0178b64aff50caf8f0ce5c172def2ea}{hmservcommon\+::datastorage\+::\+H\+M\+Abstract\+Cahce\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -746,6 +758,14 @@ process\+Cache\+In\+Thread -\/ Метод обработки кеша в пот�
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a8b502568fc2ad3cbc54fe30695e3f320}{hmservcommon\+::datastorage\+::\+H\+M\+Abstract\+Cahce\+Data\+Storage}}.
 
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a8d25c37d56c5208e65e1e6781c56a4a8_cgraph}
+\end{center}
+\end{figure}
 \mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_aef4e740f276b5b3d0babb186b985b88d}\label{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_aef4e740f276b5b3d0babb186b985b88d}} 
 \index{hmservcommon::datastorage::HMCachedMemoryDataStorage@{hmservcommon::datastorage::HMCachedMemoryDataStorage}!removeGroup@{removeGroup}}
 \index{removeGroup@{removeGroup}!hmservcommon::datastorage::HMCachedMemoryDataStorage@{hmservcommon::datastorage::HMCachedMemoryDataStorage}}
@@ -768,8 +788,7 @@ remove\+Group -\/ Метод удалит группу
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a9854c3322ee1f91a093f4bd002d8087f}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -800,8 +819,7 @@ remove\+Group\+User -\/ Метод удалит пользователя из г
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a940385812cdd258bbc8c4d0eba81dcec}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -832,8 +850,7 @@ remove\+Message -\/ Метод удалит сообщение
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_ad46dcb9045327e4717399f923c6d8255}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -862,8 +879,7 @@ remove\+User -\/ Метод удалит пользователя
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_ad20bc2871b5babb00f471c667bccaafb}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -894,42 +910,11 @@ remove\+User\+Contact -\/ Метод удалит контакт пользов�
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a3d24299c9f951f5fd4a9a2b8b0e58c52}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_ac9a9c52d90f4e30e3fe1034d4d33f8a8_cgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a7e64f02d91859f832c87209c82f25df9}\label{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a7e64f02d91859f832c87209c82f25df9}} 
-\index{hmservcommon::datastorage::HMCachedMemoryDataStorage@{hmservcommon::datastorage::HMCachedMemoryDataStorage}!removeUserContacts@{removeUserContacts}}
-\index{removeUserContacts@{removeUserContacts}!hmservcommon::datastorage::HMCachedMemoryDataStorage@{hmservcommon::datastorage::HMCachedMemoryDataStorage}}
-\doxysubsubsection{\texorpdfstring{removeUserContacts()}{removeUserContacts()}}
-{\footnotesize\ttfamily std\+::error\+\_\+code H\+M\+Cached\+Memory\+Data\+Storage\+::remove\+User\+Contacts (\begin{DoxyParamCaption}\item[{const Q\+Uuid \&}]{in\+User\+U\+U\+ID }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
-
-
-
-remove\+User\+Contacts -\/ Метод удалит контакты пользователя 
-
-
-\begin{DoxyParams}{Аргументы}
-{\em in\+User\+U\+U\+ID} & -\/ Uuid пользователя \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
-Вернёт признак ошибки 
-\end{DoxyReturn}
-
-
-Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a7ca8ad1ef3e69b5880235e7dafe93263}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
-
-Граф вызовов\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a7e64f02d91859f832c87209c82f25df9_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a9077f73dc54f9ec1f7cb75aeb7bbf191}\label{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage_a9077f73dc54f9ec1f7cb75aeb7bbf191}} 
@@ -956,8 +941,7 @@ set\+Group\+Users -\/ Метод задаст список членов груп
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a7583facb7df49d65bc45fa0c2344c608}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -988,8 +972,7 @@ set\+User\+Contacts -\/ Метод задаст пользователю спи�
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a5ea3bd9d2d620b2a3716eeb0715c30b6}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1018,8 +1001,7 @@ update\+Group -\/ Метод обновит данные группы
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a5fba4d873704c4afa24293d00722436c}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1048,8 +1030,7 @@ update\+Message -\/ Метод обновит данные сообщения
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a2c4f1de3495a74d5966479dd6dc11e16}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1078,8 +1059,7 @@ update\+User -\/ Метод обновит данные пользователя
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a952f09b0b7f80ddcbd81e61074c5d648}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

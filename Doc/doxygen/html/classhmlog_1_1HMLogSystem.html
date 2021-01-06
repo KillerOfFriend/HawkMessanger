@@ -145,6 +145,9 @@ $(function() {
 <tr class="memitem:ac30464c9290ac14a0f0440fe576be43c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmlog_1_1HMLogSystem.html#ac30464c9290ac14a0f0440fe576be43c">m_config</a></td></tr>
 <tr class="memdesc:ac30464c9290ac14a0f0440fe576be43c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Настройки логирования  <a href="classhmlog_1_1HMLogSystem.html#ac30464c9290ac14a0f0440fe576be43c">Подробнее...</a><br /></td></tr>
 <tr class="separator:ac30464c9290ac14a0f0440fe576be43c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6451f0e6683110a6254511af17467640"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmlog_1_1HMLogSystem.html#a6451f0e6683110a6254511af17467640">m_streamDefender</a></td></tr>
+<tr class="memdesc:a6451f0e6683110a6254511af17467640"><td class="mdescLeft">&#160;</td><td class="mdescRight">Мьютекс, защищающий выходной поток  <a href="classhmlog_1_1HMLogSystem.html#a6451f0e6683110a6254511af17467640">Подробнее...</a><br /></td></tr>
+<tr class="separator:a6451f0e6683110a6254511af17467640"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc90d05bb4570ac74b77e3ba2886b5f7"><td class="memItemLeft" align="right" valign="top">std::list&lt; <a class="el" href="structhmlog_1_1HMLogMessage.html">HMLogMessage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmlog_1_1HMLogSystem.html#adc90d05bb4570ac74b77e3ba2886b5f7">m_messages</a></td></tr>
 <tr class="memdesc:adc90d05bb4570ac74b77e3ba2886b5f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Список логов  <a href="classhmlog_1_1HMLogSystem.html#adc90d05bb4570ac74b77e3ba2886b5f7">Подробнее...</a><br /></td></tr>
 <tr class="separator:adc90d05bb4570ac74b77e3ba2886b5f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -920,7 +923,7 @@ $(function() {
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -944,7 +947,7 @@ $(function() {
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1022,6 +1025,30 @@ $(function() {
 </div><div class="memdoc">
 
 <p>Список логов </p>
+
+</div>
+</div>
+<a id="a6451f0e6683110a6254511af17467640"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6451f0e6683110a6254511af17467640">&#9670;&nbsp;</a></span>m_streamDefender</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::mutex hmlog::HMLogSystem::m_streamDefender</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">mutable</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Мьютекс, защищающий выходной поток </p>
 
 </div>
 </div>

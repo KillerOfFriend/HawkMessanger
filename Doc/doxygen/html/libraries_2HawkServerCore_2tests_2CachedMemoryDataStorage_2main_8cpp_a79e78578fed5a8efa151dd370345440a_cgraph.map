@@ -1,5 +1,6 @@
 <map id="TEST" name="TEST">
-<area shape="rect" id="node1" title="TEST &#45; Тест проверит удаление контакта пользователя" alt="" coords="5,31,60,57"/>
-<area shape="rect" id="node2" href="$namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="108,5,299,32"/>
-<area shape="rect" id="node3" href="$libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="149,56,257,83"/>
+<area shape="rect" id="node1" title="TEST &#45; Тест проверит удаление контакта пользователя" alt="" coords="5,42,60,69"/>
+<area shape="rect" id="node2" href="$HawkServerCoreCachedDataStorageTest_8hpp.html#ac1f3dc5a3eb40a071ff5b8dcf706a372" title="CachedDataStorage_RemoveUserContactTest &#45; Тест физического хранилища, проверяющий удаление контакта п..." alt="" coords="108,5,320,47"/>
+<area shape="rect" id="node4" href="$libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="160,71,268,98"/>
+<area shape="rect" id="node3" href="$namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="368,13,559,39"/>
 </map>

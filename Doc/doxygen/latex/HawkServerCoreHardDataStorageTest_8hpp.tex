@@ -1,0 +1,856 @@
+\hypertarget{HawkServerCoreHardDataStorageTest_8hpp}{}\doxysection{Файл Projects/libraries/\+Hawk\+Server\+Core/tests/\+Tests\+Common/\+Hawk\+Server\+Core\+Hard\+Data\+Storage\+Test.hpp}
+\label{HawkServerCoreHardDataStorageTest_8hpp}\index{Projects/libraries/HawkServerCore/tests/TestsCommon/HawkServerCoreHardDataStorageTest.hpp@{Projects/libraries/HawkServerCore/tests/TestsCommon/HawkServerCoreHardDataStorageTest.hpp}}
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$memory$>$}\newline
+{\ttfamily \#include $<$systemerrorex.\+h$>$}\newline
+{\ttfamily \#include $<$gtest/gtest.\+h$>$}\newline
+{\ttfamily \#include $<$Hawk\+Common\+Test\+Utils.\+hpp$>$}\newline
+{\ttfamily \#include $<$datastorage/datastorageerrorcategory.\+h$>$}\newline
+{\ttfamily \#include $<$datastorage/interface/datastorageinterface.\+h$>$}\newline
+Граф включаемых заголовочных файлов для Hawk\+Server\+Core\+Hard\+Data\+Storage\+Test.\+hpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp__incl}
+\end{center}
+\end{figure}
+Граф файлов, в которые включается этот файл\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_aac8b0a0e4c5017fac55607fedc9b7928}{Hard\+Data\+Storage\+\_\+\+Add\+User\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Add\+User\+Test -\/ Тест физического хранилища, проверяющий добавление пользователя \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_a1c667ee8e8485b0b4115ac08bf84c55d}{Hard\+Data\+Storage\+\_\+\+Update\+User\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Update\+User\+Test -\/ Тест физического хранилища, проверяющий обновление пользователя \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_a953e0090e298daae01929ad85a82ce59}{Hard\+Data\+Storage\+\_\+\+Find\+User\+By\+U\+U\+I\+D\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Find\+User\+By\+U\+U\+I\+D\+Test -\/ Тест физического хранилища, проверяющий поиск пользователя по U\+U\+ID. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_a84b40af307faf078370a6fbd7723d17c}{Hard\+Data\+Storage\+\_\+\+Find\+User\+By\+Authentication\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Find\+User\+By\+Authentication\+Test -\/ Тест физического хранилища, проверяющий поиск пользователя по данным аутентификации \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_a391a4c5b38a4ad9c7f8faa8fe823b649}{Hard\+Data\+Storage\+\_\+\+Remove\+User\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Remove\+User\+Test -\/ Тест физического хранилища, проверяющий удаление пользователя \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_a8058a0f646d289c628886b660b2b3f10}{Hard\+Data\+Storage\+\_\+\+Set\+User\+Contacts\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Set\+User\+Contacts\+Test -\/ Тест физического хранилища, проверяющий присвоение контактов пользователю \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_a29f0a20d6bf7d70e308ec7c2070d88fd}{Hard\+Data\+Storage\+\_\+\+Add\+User\+Contact\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Add\+User\+Contact\+Test -\/ Тест физического хранилища, проверяющий добавление контакта пользователю \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_aedb5f7c791d3dd25152657fca28f6ed7}{Hard\+Data\+Storage\+\_\+\+Remove\+User\+Contact\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Remove\+User\+Contact\+Test -\/ Тест физического хранилища, проверяющий удаление контакта пользователю \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_afdf3d3212cdec80732f6315e57d60b93}{Hard\+Data\+Storage\+\_\+\+Clear\+User\+Contacts\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Clear\+User\+Contacts\+Test -\/ Тест физического хранилища, проверяющий очистку контактов пользователей \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_a807635177ec8abda17752ca2310ab385}{Hard\+Data\+Storage\+\_\+\+Get\+User\+Contact\+List\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Get\+User\+Contact\+List\+Test-\/ Тест физического хранилища, проверяющий запрос списка контактов пользователей \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_afeb896a530cb34bd7bb71b51c0b4097a}{Hard\+Data\+Storage\+\_\+\+Get\+User\+Groups\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Get\+User\+Groups\+Test -\/ Тест физического хранилища, проверяющий запрос списка групп пользователей \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_a3d75ea1e1fad5082d6b57e18012dc925}{Hard\+Data\+Storage\+\_\+\+Add\+Group\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Add\+Group\+Test -\/ Тест физического хранилища, проверяющий добавление группы \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_aa0178c0861cd423e083b40e4249b1ef6}{Hard\+Data\+Storage\+\_\+\+Update\+Group\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Update\+Group\+Test -\/ Тест физического хранилища, проверяющий обновление группы \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_a659aa8429707ba7030417dc35dea6598}{Hard\+Data\+Storage\+\_\+\+Find\+Group\+By\+U\+U\+I\+D\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Find\+Group\+By\+U\+U\+I\+D\+Test -\/ Тест физического хранилища, проверяющий поиск группы \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_a259ff505d9a1cc76f569a9f08ddd3b61}{Hard\+Data\+Storage\+\_\+\+Remove\+Group\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Remove\+Group\+Test -\/ Тест физического хранилища, проверяющий удаление группы \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_a61a9cf8ddc1525d7b8ba05c775c2fc8f}{Hard\+Data\+Storage\+\_\+\+Set\+Group\+Users\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Set\+Group\+Users\+Test -\/ Тест физического хранилища, проверяющий присвоение участниковы группе \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_a8bf1317bb308d78c04fa09f6ff2e1747}{Hard\+Data\+Storage\+\_\+\+Add\+Group\+User\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Add\+Group\+User\+Test -\/ Тест физического хранилища, проверяющий добавление участника в группу \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_ac4229f8fd95b8f345b0f1f478e9d42bf}{Hard\+Data\+Storage\+\_\+\+Remove\+Group\+User\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Remove\+Group\+User\+Test -\/ Тест физического хранилища, проверяющий удаление участника из группы \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_a49f8fa55d6118dc1b9a97a539e538dd3}{Hard\+Data\+Storage\+\_\+\+Clear\+Group\+Users\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Clear\+Group\+Users\+Test -\/ Тест физического хранилища, проверяющий очистку участников группы \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_aaefd6cfeef56b662d054e27a925a3e4f}{Hard\+Data\+Storage\+\_\+\+Get\+Group\+User\+List\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Get\+Group\+User\+List\+Test -\/ Тест физического хранилища, проверяющий запрос списка участников группы \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_a9dbb08d92a746fc0e122c89a7490ac28}{Hard\+Data\+Storage\+\_\+\+Add\+Message\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Add\+Message\+Test -\/ Тест физического хранилища, проверяющий добавление сообщения \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_aad35b1a77e23a6dfec598546b7bf3a92}{Hard\+Data\+Storage\+\_\+\+Update\+Message\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Update\+Message\+Test -\/ Тест физического хранилища, проверяющий обновление сообщения \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_a639ae4e160acae67a63bc8b61c1ae925}{Hard\+Data\+Storage\+\_\+\+Find\+Message\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Find\+Message\+Test -\/ Тест физического хранилища, проверяющий поиск сообщения \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_a8a11bbaf542040109242a496435ba5cc}{Hard\+Data\+Storage\+\_\+\+Find\+Messages\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Find\+Messages\+Test -\/ Тест физического хранилища, проверяющий поиск сообщений \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{HawkServerCoreHardDataStorageTest_8hpp_a48a1da988762944a781561a6aa8e6116}{Hard\+Data\+Storage\+\_\+\+Remove\+Message\+Test}} (std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Hard\+Data\+Storage)
+\begin{DoxyCompactList}\small\item\em Hard\+Data\+Storage\+\_\+\+Remove\+Message\+Test -\/ Тест физического хранилища, проверяющий удаление сообщения \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_a3d75ea1e1fad5082d6b57e18012dc925}\label{HawkServerCoreHardDataStorageTest_8hpp_a3d75ea1e1fad5082d6b57e18012dc925}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_AddGroupTest@{HardDataStorage\_AddGroupTest}}
+\index{HardDataStorage\_AddGroupTest@{HardDataStorage\_AddGroupTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_AddGroupTest()}{HardDataStorage\_AddGroupTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Add\+Group\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Add\+Group\+Test -\/ Тест физического хранилища, проверяющий добавление группы 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_a3d75ea1e1fad5082d6b57e18012dc925_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{HawkServerCoreHardDataStorageTest_8hpp_a3d75ea1e1fad5082d6b57e18012dc925_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_a8bf1317bb308d78c04fa09f6ff2e1747}\label{HawkServerCoreHardDataStorageTest_8hpp_a8bf1317bb308d78c04fa09f6ff2e1747}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_AddGroupUserTest@{HardDataStorage\_AddGroupUserTest}}
+\index{HardDataStorage\_AddGroupUserTest@{HardDataStorage\_AddGroupUserTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_AddGroupUserTest()}{HardDataStorage\_AddGroupUserTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Add\+Group\+User\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Add\+Group\+User\+Test -\/ Тест физического хранилища, проверяющий добавление участника в группу 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_a8bf1317bb308d78c04fa09f6ff2e1747_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{HawkServerCoreHardDataStorageTest_8hpp_a8bf1317bb308d78c04fa09f6ff2e1747_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_a9dbb08d92a746fc0e122c89a7490ac28}\label{HawkServerCoreHardDataStorageTest_8hpp_a9dbb08d92a746fc0e122c89a7490ac28}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_AddMessageTest@{HardDataStorage\_AddMessageTest}}
+\index{HardDataStorage\_AddMessageTest@{HardDataStorage\_AddMessageTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_AddMessageTest()}{HardDataStorage\_AddMessageTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Add\+Message\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Add\+Message\+Test -\/ Тест физического хранилища, проверяющий добавление сообщения 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_a9dbb08d92a746fc0e122c89a7490ac28_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{HawkServerCoreHardDataStorageTest_8hpp_a9dbb08d92a746fc0e122c89a7490ac28_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_a29f0a20d6bf7d70e308ec7c2070d88fd}\label{HawkServerCoreHardDataStorageTest_8hpp_a29f0a20d6bf7d70e308ec7c2070d88fd}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_AddUserContactTest@{HardDataStorage\_AddUserContactTest}}
+\index{HardDataStorage\_AddUserContactTest@{HardDataStorage\_AddUserContactTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_AddUserContactTest()}{HardDataStorage\_AddUserContactTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Add\+User\+Contact\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Add\+User\+Contact\+Test -\/ Тест физического хранилища, проверяющий добавление контакта пользователю 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_a29f0a20d6bf7d70e308ec7c2070d88fd_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_a29f0a20d6bf7d70e308ec7c2070d88fd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_aac8b0a0e4c5017fac55607fedc9b7928}\label{HawkServerCoreHardDataStorageTest_8hpp_aac8b0a0e4c5017fac55607fedc9b7928}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_AddUserTest@{HardDataStorage\_AddUserTest}}
+\index{HardDataStorage\_AddUserTest@{HardDataStorage\_AddUserTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_AddUserTest()}{HardDataStorage\_AddUserTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Add\+User\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Add\+User\+Test -\/ Тест физического хранилища, проверяющий добавление пользователя 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_aac8b0a0e4c5017fac55607fedc9b7928_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=324pt]{HawkServerCoreHardDataStorageTest_8hpp_aac8b0a0e4c5017fac55607fedc9b7928_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_a49f8fa55d6118dc1b9a97a539e538dd3}\label{HawkServerCoreHardDataStorageTest_8hpp_a49f8fa55d6118dc1b9a97a539e538dd3}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_ClearGroupUsersTest@{HardDataStorage\_ClearGroupUsersTest}}
+\index{HardDataStorage\_ClearGroupUsersTest@{HardDataStorage\_ClearGroupUsersTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_ClearGroupUsersTest()}{HardDataStorage\_ClearGroupUsersTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Clear\+Group\+Users\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Clear\+Group\+Users\+Test -\/ Тест физического хранилища, проверяющий очистку участников группы 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_a49f8fa55d6118dc1b9a97a539e538dd3_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{HawkServerCoreHardDataStorageTest_8hpp_a49f8fa55d6118dc1b9a97a539e538dd3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_afdf3d3212cdec80732f6315e57d60b93}\label{HawkServerCoreHardDataStorageTest_8hpp_afdf3d3212cdec80732f6315e57d60b93}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_ClearUserContactsTest@{HardDataStorage\_ClearUserContactsTest}}
+\index{HardDataStorage\_ClearUserContactsTest@{HardDataStorage\_ClearUserContactsTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_ClearUserContactsTest()}{HardDataStorage\_ClearUserContactsTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Clear\+User\+Contacts\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Clear\+User\+Contacts\+Test -\/ Тест физического хранилища, проверяющий очистку контактов пользователей 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_afdf3d3212cdec80732f6315e57d60b93_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=311pt]{HawkServerCoreHardDataStorageTest_8hpp_afdf3d3212cdec80732f6315e57d60b93_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_a659aa8429707ba7030417dc35dea6598}\label{HawkServerCoreHardDataStorageTest_8hpp_a659aa8429707ba7030417dc35dea6598}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_FindGroupByUUIDTest@{HardDataStorage\_FindGroupByUUIDTest}}
+\index{HardDataStorage\_FindGroupByUUIDTest@{HardDataStorage\_FindGroupByUUIDTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_FindGroupByUUIDTest()}{HardDataStorage\_FindGroupByUUIDTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Find\+Group\+By\+U\+U\+I\+D\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Find\+Group\+By\+U\+U\+I\+D\+Test -\/ Тест физического хранилища, проверяющий поиск группы 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_a659aa8429707ba7030417dc35dea6598_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{HawkServerCoreHardDataStorageTest_8hpp_a659aa8429707ba7030417dc35dea6598_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_a8a11bbaf542040109242a496435ba5cc}\label{HawkServerCoreHardDataStorageTest_8hpp_a8a11bbaf542040109242a496435ba5cc}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_FindMessagesTest@{HardDataStorage\_FindMessagesTest}}
+\index{HardDataStorage\_FindMessagesTest@{HardDataStorage\_FindMessagesTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_FindMessagesTest()}{HardDataStorage\_FindMessagesTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Find\+Messages\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Find\+Messages\+Test -\/ Тест физического хранилища, проверяющий поиск сообщений 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_a8a11bbaf542040109242a496435ba5cc_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_a8a11bbaf542040109242a496435ba5cc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_a639ae4e160acae67a63bc8b61c1ae925}\label{HawkServerCoreHardDataStorageTest_8hpp_a639ae4e160acae67a63bc8b61c1ae925}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_FindMessageTest@{HardDataStorage\_FindMessageTest}}
+\index{HardDataStorage\_FindMessageTest@{HardDataStorage\_FindMessageTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_FindMessageTest()}{HardDataStorage\_FindMessageTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Find\+Message\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Find\+Message\+Test -\/ Тест физического хранилища, проверяющий поиск сообщения 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_a639ae4e160acae67a63bc8b61c1ae925_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=346pt]{HawkServerCoreHardDataStorageTest_8hpp_a639ae4e160acae67a63bc8b61c1ae925_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_a84b40af307faf078370a6fbd7723d17c}\label{HawkServerCoreHardDataStorageTest_8hpp_a84b40af307faf078370a6fbd7723d17c}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_FindUserByAuthenticationTest@{HardDataStorage\_FindUserByAuthenticationTest}}
+\index{HardDataStorage\_FindUserByAuthenticationTest@{HardDataStorage\_FindUserByAuthenticationTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_FindUserByAuthenticationTest()}{HardDataStorage\_FindUserByAuthenticationTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Find\+User\+By\+Authentication\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Find\+User\+By\+Authentication\+Test -\/ Тест физического хранилища, проверяющий поиск пользователя по данным аутентификации 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_a84b40af307faf078370a6fbd7723d17c_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{HawkServerCoreHardDataStorageTest_8hpp_a84b40af307faf078370a6fbd7723d17c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_a953e0090e298daae01929ad85a82ce59}\label{HawkServerCoreHardDataStorageTest_8hpp_a953e0090e298daae01929ad85a82ce59}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_FindUserByUUIDTest@{HardDataStorage\_FindUserByUUIDTest}}
+\index{HardDataStorage\_FindUserByUUIDTest@{HardDataStorage\_FindUserByUUIDTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_FindUserByUUIDTest()}{HardDataStorage\_FindUserByUUIDTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Find\+User\+By\+U\+U\+I\+D\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Find\+User\+By\+U\+U\+I\+D\+Test -\/ Тест физического хранилища, проверяющий поиск пользователя по U\+U\+ID. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_a953e0090e298daae01929ad85a82ce59_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=306pt]{HawkServerCoreHardDataStorageTest_8hpp_a953e0090e298daae01929ad85a82ce59_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_aaefd6cfeef56b662d054e27a925a3e4f}\label{HawkServerCoreHardDataStorageTest_8hpp_aaefd6cfeef56b662d054e27a925a3e4f}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_GetGroupUserListTest@{HardDataStorage\_GetGroupUserListTest}}
+\index{HardDataStorage\_GetGroupUserListTest@{HardDataStorage\_GetGroupUserListTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_GetGroupUserListTest()}{HardDataStorage\_GetGroupUserListTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Get\+Group\+User\+List\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Get\+Group\+User\+List\+Test -\/ Тест физического хранилища, проверяющий запрос списка участников группы 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_aaefd6cfeef56b662d054e27a925a3e4f_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=309pt]{HawkServerCoreHardDataStorageTest_8hpp_aaefd6cfeef56b662d054e27a925a3e4f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_a807635177ec8abda17752ca2310ab385}\label{HawkServerCoreHardDataStorageTest_8hpp_a807635177ec8abda17752ca2310ab385}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_GetUserContactListTest@{HardDataStorage\_GetUserContactListTest}}
+\index{HardDataStorage\_GetUserContactListTest@{HardDataStorage\_GetUserContactListTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_GetUserContactListTest()}{HardDataStorage\_GetUserContactListTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Get\+User\+Contact\+List\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Get\+User\+Contact\+List\+Test-\/ Тест физического хранилища, проверяющий запрос списка контактов пользователей 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_a807635177ec8abda17752ca2310ab385_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{HawkServerCoreHardDataStorageTest_8hpp_a807635177ec8abda17752ca2310ab385_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_afeb896a530cb34bd7bb71b51c0b4097a}\label{HawkServerCoreHardDataStorageTest_8hpp_afeb896a530cb34bd7bb71b51c0b4097a}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_GetUserGroupsTest@{HardDataStorage\_GetUserGroupsTest}}
+\index{HardDataStorage\_GetUserGroupsTest@{HardDataStorage\_GetUserGroupsTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_GetUserGroupsTest()}{HardDataStorage\_GetUserGroupsTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Get\+User\+Groups\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Get\+User\+Groups\+Test -\/ Тест физического хранилища, проверяющий запрос списка групп пользователей 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_afeb896a530cb34bd7bb71b51c0b4097a_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_afeb896a530cb34bd7bb71b51c0b4097a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_a259ff505d9a1cc76f569a9f08ddd3b61}\label{HawkServerCoreHardDataStorageTest_8hpp_a259ff505d9a1cc76f569a9f08ddd3b61}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_RemoveGroupTest@{HardDataStorage\_RemoveGroupTest}}
+\index{HardDataStorage\_RemoveGroupTest@{HardDataStorage\_RemoveGroupTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_RemoveGroupTest()}{HardDataStorage\_RemoveGroupTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Remove\+Group\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Remove\+Group\+Test -\/ Тест физического хранилища, проверяющий удаление группы 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_a259ff505d9a1cc76f569a9f08ddd3b61_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_a259ff505d9a1cc76f569a9f08ddd3b61_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_ac4229f8fd95b8f345b0f1f478e9d42bf}\label{HawkServerCoreHardDataStorageTest_8hpp_ac4229f8fd95b8f345b0f1f478e9d42bf}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_RemoveGroupUserTest@{HardDataStorage\_RemoveGroupUserTest}}
+\index{HardDataStorage\_RemoveGroupUserTest@{HardDataStorage\_RemoveGroupUserTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_RemoveGroupUserTest()}{HardDataStorage\_RemoveGroupUserTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Remove\+Group\+User\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Remove\+Group\+User\+Test -\/ Тест физического хранилища, проверяющий удаление участника из группы 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_ac4229f8fd95b8f345b0f1f478e9d42bf_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{HawkServerCoreHardDataStorageTest_8hpp_ac4229f8fd95b8f345b0f1f478e9d42bf_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_a48a1da988762944a781561a6aa8e6116}\label{HawkServerCoreHardDataStorageTest_8hpp_a48a1da988762944a781561a6aa8e6116}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_RemoveMessageTest@{HardDataStorage\_RemoveMessageTest}}
+\index{HardDataStorage\_RemoveMessageTest@{HardDataStorage\_RemoveMessageTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_RemoveMessageTest()}{HardDataStorage\_RemoveMessageTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Remove\+Message\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Remove\+Message\+Test -\/ Тест физического хранилища, проверяющий удаление сообщения 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_a48a1da988762944a781561a6aa8e6116_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_a48a1da988762944a781561a6aa8e6116_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_aedb5f7c791d3dd25152657fca28f6ed7}\label{HawkServerCoreHardDataStorageTest_8hpp_aedb5f7c791d3dd25152657fca28f6ed7}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_RemoveUserContactTest@{HardDataStorage\_RemoveUserContactTest}}
+\index{HardDataStorage\_RemoveUserContactTest@{HardDataStorage\_RemoveUserContactTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_RemoveUserContactTest()}{HardDataStorage\_RemoveUserContactTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Remove\+User\+Contact\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Remove\+User\+Contact\+Test -\/ Тест физического хранилища, проверяющий удаление контакта пользователю 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_aedb5f7c791d3dd25152657fca28f6ed7_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{HawkServerCoreHardDataStorageTest_8hpp_aedb5f7c791d3dd25152657fca28f6ed7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_a391a4c5b38a4ad9c7f8faa8fe823b649}\label{HawkServerCoreHardDataStorageTest_8hpp_a391a4c5b38a4ad9c7f8faa8fe823b649}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_RemoveUserTest@{HardDataStorage\_RemoveUserTest}}
+\index{HardDataStorage\_RemoveUserTest@{HardDataStorage\_RemoveUserTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_RemoveUserTest()}{HardDataStorage\_RemoveUserTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Remove\+User\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Remove\+User\+Test -\/ Тест физического хранилища, проверяющий удаление пользователя 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_a391a4c5b38a4ad9c7f8faa8fe823b649_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{HawkServerCoreHardDataStorageTest_8hpp_a391a4c5b38a4ad9c7f8faa8fe823b649_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_a61a9cf8ddc1525d7b8ba05c775c2fc8f}\label{HawkServerCoreHardDataStorageTest_8hpp_a61a9cf8ddc1525d7b8ba05c775c2fc8f}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_SetGroupUsersTest@{HardDataStorage\_SetGroupUsersTest}}
+\index{HardDataStorage\_SetGroupUsersTest@{HardDataStorage\_SetGroupUsersTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_SetGroupUsersTest()}{HardDataStorage\_SetGroupUsersTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Set\+Group\+Users\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Set\+Group\+Users\+Test -\/ Тест физического хранилища, проверяющий присвоение участниковы группе 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_a61a9cf8ddc1525d7b8ba05c775c2fc8f_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=308pt]{HawkServerCoreHardDataStorageTest_8hpp_a61a9cf8ddc1525d7b8ba05c775c2fc8f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_a8058a0f646d289c628886b660b2b3f10}\label{HawkServerCoreHardDataStorageTest_8hpp_a8058a0f646d289c628886b660b2b3f10}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_SetUserContactsTest@{HardDataStorage\_SetUserContactsTest}}
+\index{HardDataStorage\_SetUserContactsTest@{HardDataStorage\_SetUserContactsTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_SetUserContactsTest()}{HardDataStorage\_SetUserContactsTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Set\+User\+Contacts\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Set\+User\+Contacts\+Test -\/ Тест физического хранилища, проверяющий присвоение контактов пользователю 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_a8058a0f646d289c628886b660b2b3f10_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_a8058a0f646d289c628886b660b2b3f10_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_aa0178c0861cd423e083b40e4249b1ef6}\label{HawkServerCoreHardDataStorageTest_8hpp_aa0178c0861cd423e083b40e4249b1ef6}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_UpdateGroupTest@{HardDataStorage\_UpdateGroupTest}}
+\index{HardDataStorage\_UpdateGroupTest@{HardDataStorage\_UpdateGroupTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_UpdateGroupTest()}{HardDataStorage\_UpdateGroupTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Update\+Group\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Update\+Group\+Test -\/ Тест физического хранилища, проверяющий обновление группы 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_aa0178c0861cd423e083b40e4249b1ef6_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{HawkServerCoreHardDataStorageTest_8hpp_aa0178c0861cd423e083b40e4249b1ef6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_aad35b1a77e23a6dfec598546b7bf3a92}\label{HawkServerCoreHardDataStorageTest_8hpp_aad35b1a77e23a6dfec598546b7bf3a92}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_UpdateMessageTest@{HardDataStorage\_UpdateMessageTest}}
+\index{HardDataStorage\_UpdateMessageTest@{HardDataStorage\_UpdateMessageTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_UpdateMessageTest()}{HardDataStorage\_UpdateMessageTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Update\+Message\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Update\+Message\+Test -\/ Тест физического хранилища, проверяющий обновление сообщения 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_aad35b1a77e23a6dfec598546b7bf3a92_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_aad35b1a77e23a6dfec598546b7bf3a92_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{HawkServerCoreHardDataStorageTest_8hpp_a1c667ee8e8485b0b4115ac08bf84c55d}\label{HawkServerCoreHardDataStorageTest_8hpp_a1c667ee8e8485b0b4115ac08bf84c55d}} 
+\index{HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}!HardDataStorage\_UpdateUserTest@{HardDataStorage\_UpdateUserTest}}
+\index{HardDataStorage\_UpdateUserTest@{HardDataStorage\_UpdateUserTest}!HawkServerCoreHardDataStorageTest.hpp@{HawkServerCoreHardDataStorageTest.hpp}}
+\doxysubsubsection{\texorpdfstring{HardDataStorage\_UpdateUserTest()}{HardDataStorage\_UpdateUserTest()}}
+{\footnotesize\ttfamily void Hard\+Data\+Storage\+\_\+\+Update\+User\+Test (\begin{DoxyParamCaption}\item[{std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Hard\+Data\+Storage }\end{DoxyParamCaption})}
+
+
+
+Hard\+Data\+Storage\+\_\+\+Update\+User\+Test -\/ Тест физического хранилища, проверяющий обновление пользователя 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Hard\+Data\+Storage} & -\/ Тестируемое физическое хранилище \\
+\hline
+\end{DoxyParams}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{HawkServerCoreHardDataStorageTest_8hpp_a1c667ee8e8485b0b4115ac08bf84c55d_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=340pt]{HawkServerCoreHardDataStorageTest_8hpp_a1c667ee8e8485b0b4115ac08bf84c55d_icgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,5 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="node1" title="TEST &#45; Тест проверит обновление сообщения" alt="" coords="5,42,60,69"/>
+<area shape="rect" id="node2" href="$HawkServerCoreCachedDataStorageTest_8hpp.html#a5b48bb6a61e464df839f6770581aac50" title="CachedDataStorage_UpdateMessageTest &#45; Тест физического хранилища, проверяющий обновление сообщения" alt="" coords="108,5,313,47"/>
+<area shape="rect" id="node3" href="$libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="157,71,265,98"/>
+</map>

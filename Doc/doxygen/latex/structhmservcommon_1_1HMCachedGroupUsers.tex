@@ -29,7 +29,7 @@ Q\+Uuid \mbox{\hyperlink{structhmservcommon_1_1HMCachedGroupUsers_a7f2007e72e3d9
 \begin{DoxyCompactList}\small\item\em U\+U\+ID группы, которой пренадлежит перечень участников \end{DoxyCompactList}\item 
 std\+::shared\+\_\+ptr$<$ std\+::set$<$ Q\+Uuid $>$ $>$ \mbox{\hyperlink{structhmservcommon_1_1HMCachedGroupUsers_a6a7a3d327cabf28fe9de49c2007b91b0}{m\+\_\+group\+Users}} = nullptr
 \begin{DoxyCompactList}\small\item\em Перечень участников группы \end{DoxyCompactList}\item 
-Q\+Time \mbox{\hyperlink{structhmservcommon_1_1HMCachedGroupUsers_a7b9f4e1511b4a6bd98921c3601824f1e}{m\+\_\+last\+Request}}
+std\+::chrono\+::system\+\_\+clock\+::time\+\_\+point \mbox{\hyperlink{structhmservcommon_1_1HMCachedGroupUsers_a5805e59002c0b5b231df6b26f8b46c85}{m\+\_\+last\+Request}}
 \begin{DoxyCompactList}\small\item\em Время последнего запроса \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -140,17 +140,17 @@ U\+U\+ID группы, которой пренадлежит перечень у
 \index{hmservcommon::HMCachedGroupUsers@{hmservcommon::HMCachedGroupUsers}!m\_groupUsers@{m\_groupUsers}}
 \index{m\_groupUsers@{m\_groupUsers}!hmservcommon::HMCachedGroupUsers@{hmservcommon::HMCachedGroupUsers}}
 \doxysubsubsection{\texorpdfstring{m\_groupUsers}{m\_groupUsers}}
-{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$std\+::set$<$Q\+Uuid$>$ $>$ hmservcommon\+::\+H\+M\+Cached\+Group\+Users\+::m\+\_\+group\+Users = nullptr}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$std\+::set$<$Q\+Uuid$>$ $>$ hmservcommon\+::\+H\+M\+Cached\+Group\+Users\+::m\+\_\+group\+Users = nullptr\hspace{0.3cm}{\ttfamily [mutable]}}
 
 
 
 Перечень участников группы 
 
-\mbox{\Hypertarget{structhmservcommon_1_1HMCachedGroupUsers_a7b9f4e1511b4a6bd98921c3601824f1e}\label{structhmservcommon_1_1HMCachedGroupUsers_a7b9f4e1511b4a6bd98921c3601824f1e}} 
+\mbox{\Hypertarget{structhmservcommon_1_1HMCachedGroupUsers_a5805e59002c0b5b231df6b26f8b46c85}\label{structhmservcommon_1_1HMCachedGroupUsers_a5805e59002c0b5b231df6b26f8b46c85}} 
 \index{hmservcommon::HMCachedGroupUsers@{hmservcommon::HMCachedGroupUsers}!m\_lastRequest@{m\_lastRequest}}
 \index{m\_lastRequest@{m\_lastRequest}!hmservcommon::HMCachedGroupUsers@{hmservcommon::HMCachedGroupUsers}}
 \doxysubsubsection{\texorpdfstring{m\_lastRequest}{m\_lastRequest}}
-{\footnotesize\ttfamily Q\+Time hmservcommon\+::\+H\+M\+Cached\+Group\+Users\+::m\+\_\+last\+Request\hspace{0.3cm}{\ttfamily [mutable]}}
+{\footnotesize\ttfamily std\+::chrono\+::system\+\_\+clock\+::time\+\_\+point hmservcommon\+::\+H\+M\+Cached\+Group\+Users\+::m\+\_\+last\+Request\hspace{0.3cm}{\ttfamily [mutable]}}
 
 
 

@@ -1,0 +1,4 @@
+<map id="HardDataStorage_ClearUserContactsTest" name="HardDataStorage_ClearUserContactsTest">
+<area shape="rect" id="node1" title="HardDataStorage_ClearUserContactsTest &#45; Тест физического хранилища, проверяющий очистку контактов пол..." alt="" coords="108,5,313,47"/>
+<area shape="rect" id="node2" href="$libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#ad24a345e1e005288bbb811beef1c30a0" title="TEST &#45; Тест проверит удаление связи пользователь&#45;контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ)" alt="" coords="5,13,60,39"/>
+</map>

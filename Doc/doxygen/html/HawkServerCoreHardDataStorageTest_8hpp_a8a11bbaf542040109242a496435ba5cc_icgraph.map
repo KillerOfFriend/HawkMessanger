@@ -1,0 +1,4 @@
+<map id="HardDataStorage_FindMessagesTest" name="HardDataStorage_FindMessagesTest">
+<area shape="rect" id="node1" title="HardDataStorage_FindMessagesTest &#45; Тест физического хранилища, проверяющий поиск сообщений" alt="" coords="108,5,367,32"/>
+<area shape="rect" id="node2" href="$libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a94972b0ed50427e477c74ece97523f9e" title="TEST &#45; Тест проверит поиск перечня сообщений по временному промежутку" alt="" coords="5,5,60,32"/>
+</map>

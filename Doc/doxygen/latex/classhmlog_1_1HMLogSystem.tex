@@ -57,6 +57,8 @@ void \mbox{\hyperlink{classhmlog_1_1HMLogSystem_ac433e5a0118c2f2dfa1afc526666060
 \item 
 uint8\+\_\+t \mbox{\hyperlink{classhmlog_1_1HMLogSystem_ac30464c9290ac14a0f0440fe576be43c}{m\+\_\+config}}
 \begin{DoxyCompactList}\small\item\em Настройки логирования \end{DoxyCompactList}\item 
+std\+::mutex \mbox{\hyperlink{classhmlog_1_1HMLogSystem_a6451f0e6683110a6254511af17467640}{m\+\_\+stream\+Defender}}
+\begin{DoxyCompactList}\small\item\em Мьютекс, защищающий выходной поток \end{DoxyCompactList}\item 
 std\+::list$<$ \mbox{\hyperlink{structhmlog_1_1HMLogMessage}{H\+M\+Log\+Message}} $>$ \mbox{\hyperlink{classhmlog_1_1HMLogSystem_adc90d05bb4570ac74b77e3ba2886b5f7}{m\+\_\+messages}}
 \begin{DoxyCompactList}\small\item\em Список логов \end{DoxyCompactList}\item 
 std\+::mutex \mbox{\hyperlink{classhmlog_1_1HMLogSystem_aaf9a0771fa99e8a0c952e0f311349a13}{m\+\_\+list\+Defender}}
@@ -93,8 +95,7 @@ Alekseev\+\_\+s
 
 \mbox{\hyperlink{classhmlog_1_1HMLogSystem}{H\+M\+Log\+System}} -\/ Конструктор по умолчанию 
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -111,8 +112,7 @@ Alekseev\+\_\+s
 
 $\sim$\+H\+M\+Log\+System -\/ Деструктор 
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -138,8 +138,7 @@ $\sim$\+H\+M\+Log\+System -\/ Деструктор
 
 file\+Close -\/ Метод закроет файл 
 
-Граф вызова функции\+:
-\nopagebreak
+Граф вызова функции\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -159,16 +158,14 @@ file\+Open -\/ Метод откроет файл на запись
 \begin{DoxyReturn}{Возвращает}
 Вернёт признак успешности операции 
 \end{DoxyReturn}
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classhmlog_1_1HMLogSystem_ac40521893a6be592186b3dffb81aa1c9_cgraph}
 \end{center}
 \end{figure}
-Граф вызова функции\+:
-\nopagebreak
+Граф вызова функции\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -201,8 +198,7 @@ get\+Instance -\/ Метод вернёт единственный экземп�
 \begin{DoxyReturn}{Возвращает}
 Вернёт ссылку на систему логирования 
 \end{DoxyReturn}
-Граф вызова функции\+:
-\nopagebreak
+Граф вызова функции\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -224,8 +220,7 @@ log\+Debug -\/ Метод занесёт в лог отладочное сооб
 {\em in\+Message} & -\/ Тест сообщения \\
 \hline
 \end{DoxyParams}
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -247,8 +242,7 @@ log\+Error -\/ Метод занесёт в лог сообщение об ош�
 {\em in\+Message} & -\/ Тест сообщения \\
 \hline
 \end{DoxyParams}
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -270,8 +264,7 @@ log\+Info -\/ Метод занесёт в лог информационное �
 {\em in\+Message} & -\/ Тест сообщения \\
 \hline
 \end{DoxyParams}
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -293,8 +286,7 @@ log\+Text -\/ Метод занесёт в лог текстовое сообщ�
 {\em in\+Message} & -\/ Тест сообщения \\
 \hline
 \end{DoxyParams}
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -316,8 +308,7 @@ log\+Warning -\/ Метод занесёт в лог сообщение с пр�
 {\em in\+Message} & -\/ Тест сообщения \\
 \hline
 \end{DoxyParams}
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -345,16 +336,14 @@ print\+Msg -\/ Метод печати сообщений
 {\em in\+Msg} & -\/ Печатуемое сообщение \\
 \hline
 \end{DoxyParams}
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=334pt]{classhmlog_1_1HMLogSystem_a3342c70687ba9d72983ef6e69476715d_cgraph}
 \end{center}
 \end{figure}
-Граф вызова функции\+:
-\nopagebreak
+Граф вызова функции\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -376,16 +365,14 @@ process\+Msg -\/ Метод обработки сообщений
 {\em in\+Msg} & -\/ Полученное сообщение \\
 \hline
 \end{DoxyParams}
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classhmlog_1_1HMLogSystem_a3bd35bd95552fe57ec6c89d1fa93f5ca_cgraph}
 \end{center}
 \end{figure}
-Граф вызова функции\+:
-\nopagebreak
+Граф вызова функции\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -407,16 +394,14 @@ set\+Config -\/ Метод задаст настройки системы лог
 {\em in\+Config\+Mask} & -\/ Маска параметров системы логирования \\
 \hline
 \end{DoxyParams}
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classhmlog_1_1HMLogSystem_a114ddb14886434dd283f13c2668c4dac_cgraph}
 \end{center}
 \end{figure}
-Граф вызова функции\+:
-\nopagebreak
+Граф вызова функции\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -438,16 +423,14 @@ write\+Msg\+To\+File -\/ Метод записи в файл
 {\em in\+Msg} & -\/ Записываемое сообщение \\
 \hline
 \end{DoxyParams}
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classhmlog_1_1HMLogSystem_a0ec78cc91e32f5865e2fb7d390d0a300_cgraph}
 \end{center}
 \end{figure}
-Граф вызова функции\+:
-\nopagebreak
+Граф вызова функции\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -471,7 +454,7 @@ write\+Msg\+To\+File -\/ Метод записи в файл
 \index{hmlog::HMLogSystem@{hmlog::HMLogSystem}!m\_fileDefender@{m\_fileDefender}}
 \index{m\_fileDefender@{m\_fileDefender}!hmlog::HMLogSystem@{hmlog::HMLogSystem}}
 \doxysubsubsection{\texorpdfstring{m\_fileDefender}{m\_fileDefender}}
-{\footnotesize\ttfamily std\+::mutex hmlog\+::\+H\+M\+Log\+System\+::m\+\_\+file\+Defender\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::mutex hmlog\+::\+H\+M\+Log\+System\+::m\+\_\+file\+Defender\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [private]}}
 
 
 
@@ -481,7 +464,7 @@ write\+Msg\+To\+File -\/ Метод записи в файл
 \index{hmlog::HMLogSystem@{hmlog::HMLogSystem}!m\_listDefender@{m\_listDefender}}
 \index{m\_listDefender@{m\_listDefender}!hmlog::HMLogSystem@{hmlog::HMLogSystem}}
 \doxysubsubsection{\texorpdfstring{m\_listDefender}{m\_listDefender}}
-{\footnotesize\ttfamily std\+::mutex hmlog\+::\+H\+M\+Log\+System\+::m\+\_\+list\+Defender\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::mutex hmlog\+::\+H\+M\+Log\+System\+::m\+\_\+list\+Defender\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [private]}}
 
 
 
@@ -516,6 +499,16 @@ write\+Msg\+To\+File -\/ Метод записи в файл
 
 
 Список логов 
+
+\mbox{\Hypertarget{classhmlog_1_1HMLogSystem_a6451f0e6683110a6254511af17467640}\label{classhmlog_1_1HMLogSystem_a6451f0e6683110a6254511af17467640}} 
+\index{hmlog::HMLogSystem@{hmlog::HMLogSystem}!m\_streamDefender@{m\_streamDefender}}
+\index{m\_streamDefender@{m\_streamDefender}!hmlog::HMLogSystem@{hmlog::HMLogSystem}}
+\doxysubsubsection{\texorpdfstring{m\_streamDefender}{m\_streamDefender}}
+{\footnotesize\ttfamily std\+::mutex hmlog\+::\+H\+M\+Log\+System\+::m\+\_\+stream\+Defender\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [private]}}
+
+
+
+Мьютекс, защищающий выходной поток 
 
 \mbox{\Hypertarget{classhmlog_1_1HMLogSystem_a4fe5684ad649c5d31164ac0055ee939f}\label{classhmlog_1_1HMLogSystem_a4fe5684ad649c5d31164ac0055ee939f}} 
 \index{hmlog::HMLogSystem@{hmlog::HMLogSystem}!m\_workFinish@{m\_workFinish}}

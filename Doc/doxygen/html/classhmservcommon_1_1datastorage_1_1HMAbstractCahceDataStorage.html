@@ -105,9 +105,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Открытые члены</h2></td></tr>
-<tr class="memitem:a8810c7ba34b68da79d7b2f21a72b43d5"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a8810c7ba34b68da79d7b2f21a72b43d5">HMAbstractCahceDataStorage</a> ()</td></tr>
-<tr class="memdesc:a8810c7ba34b68da79d7b2f21a72b43d5"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html" title="The HMAbstractCahceDataStorage class - Класс, описывающий абстракцию кеширующего хранилища данных">HMAbstractCahceDataStorage</a> - Конструктор по умолчанию  <a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a8810c7ba34b68da79d7b2f21a72b43d5">Подробнее...</a><br /></td></tr>
-<tr class="separator:a8810c7ba34b68da79d7b2f21a72b43d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3b45f8ecba0e5e0a61688821d487ff0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#af3b45f8ecba0e5e0a61688821d487ff0">HMAbstractCahceDataStorage</a> (const std::chrono::milliseconds inCacheLifeTime=std::chrono::duration_cast&lt; std::chrono::milliseconds &gt;(std::chrono::minutes(15)), const std::chrono::milliseconds inSleep=std::chrono::milliseconds(1000))</td></tr>
+<tr class="memdesc:af3b45f8ecba0e5e0a61688821d487ff0"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html" title="The HMAbstractCahceDataStorage class - Класс, описывающий абстракцию кеширующего хранилища данных">HMAbstractCahceDataStorage</a> - Инициализирующий конструктор  <a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#af3b45f8ecba0e5e0a61688821d487ff0">Подробнее...</a><br /></td></tr>
+<tr class="separator:af3b45f8ecba0e5e0a61688821d487ff0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12fddffdcff831dd8d62f57f75d9bb67"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a12fddffdcff831dd8d62f57f75d9bb67">~HMAbstractCahceDataStorage</a> () override=default</td></tr>
 <tr class="memdesc:a12fddffdcff831dd8d62f57f75d9bb67"><td class="mdescLeft">&#160;</td><td class="mdescRight">~HMAbstractCahceDataStorage - Виртуальный деструктор по умолчанию  <a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a12fddffdcff831dd8d62f57f75d9bb67">Подробнее...</a><br /></td></tr>
 <tr class="separator:a12fddffdcff831dd8d62f57f75d9bb67"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -120,6 +120,16 @@ $(function() {
 <tr class="memitem:ae620a0c526b13b1c4b9800f282d6461d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ae620a0c526b13b1c4b9800f282d6461d">close</a> () override</td></tr>
 <tr class="memdesc:ae620a0c526b13b1c4b9800f282d6461d"><td class="mdescLeft">&#160;</td><td class="mdescRight">close - Метод закроет хранилище данных  <a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ae620a0c526b13b1c4b9800f282d6461d">Подробнее...</a><br /></td></tr>
 <tr class="separator:ae620a0c526b13b1c4b9800f282d6461d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a581b3f3305ea913e8762c45205ab38c8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a581b3f3305ea913e8762c45205ab38c8">setCacheLifeTime</a> (const std::chrono::milliseconds inCacheLifeTime)</td></tr>
+<tr class="separator:a581b3f3305ea913e8762c45205ab38c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a534f3c4e744ad47df1c882e9411898b9"><td class="memItemLeft" align="right" valign="top">std::chrono::milliseconds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a534f3c4e744ad47df1c882e9411898b9">getCacheLifeTime</a> () const</td></tr>
+<tr class="separator:a534f3c4e744ad47df1c882e9411898b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b345ec71e065fca1df528e2ac81d43c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a5b345ec71e065fca1df528e2ac81d43c">setThreadSleep</a> (const std::chrono::milliseconds inSleep)</td></tr>
+<tr class="memdesc:a5b345ec71e065fca1df528e2ac81d43c"><td class="mdescLeft">&#160;</td><td class="mdescRight">setThreadSleep - Метод задаст время ожидания потока контроля кеша  <a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a5b345ec71e065fca1df528e2ac81d43c">Подробнее...</a><br /></td></tr>
+<tr class="separator:a5b345ec71e065fca1df528e2ac81d43c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad09b8cafafa5020370e119321f05149e"><td class="memItemLeft" align="right" valign="top">std::chrono::milliseconds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ad09b8cafafa5020370e119321f05149e">getThreadSleep</a> () const</td></tr>
+<tr class="memdesc:ad09b8cafafa5020370e119321f05149e"><td class="mdescLeft">&#160;</td><td class="mdescRight">getThreadSleep - Метод вернёт время ожидания потока контроля кеша  <a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ad09b8cafafa5020370e119321f05149e">Подробнее...</a><br /></td></tr>
+<tr class="separator:ad09b8cafafa5020370e119321f05149e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional')"><img src="closed.png" alt="-"/>&#160;Открытые члены унаследованные от <a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional.html">hmservcommon::datastorage::HMAbstractDataStorageFunctional</a></td></tr>
 <tr class="memitem:af3174df267793d71212108df42aa7d2f inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional.html#af3174df267793d71212108df42aa7d2f">HMAbstractDataStorageFunctional</a> ()</td></tr>
 <tr class="memdesc:af3174df267793d71212108df42aa7d2f inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional.html" title="The HMAbstractDataStorageFunctional class - Класс, описывающий абстрактное хранилище даннх с дополнит...">HMAbstractDataStorageFunctional</a> - Конструктор по умолчанию  <a href="classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional.html#af3174df267793d71212108df42aa7d2f">Подробнее...</a><br /></td></tr>
@@ -149,6 +159,21 @@ $(function() {
 <tr class="memitem:ad20bc2871b5babb00f471c667bccaafb inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ad20bc2871b5babb00f471c667bccaafb">removeUser</a> (const QUuid &amp;inUserUUID)=0</td></tr>
 <tr class="memdesc:ad20bc2871b5babb00f471c667bccaafb inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeUser - Метод удалит пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ad20bc2871b5babb00f471c667bccaafb">Подробнее...</a><br /></td></tr>
 <tr class="separator:ad20bc2871b5babb00f471c667bccaafb inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ea3bd9d2d620b2a3716eeb0715c30b6 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a5ea3bd9d2d620b2a3716eeb0715c30b6">setUserContacts</a> (const QUuid &amp;inUserUUID, const std::shared_ptr&lt; std::set&lt; QUuid &gt;&gt; inContacts)=0</td></tr>
+<tr class="memdesc:a5ea3bd9d2d620b2a3716eeb0715c30b6 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">setUserContacts - Метод задаст пользователю список контактов  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a5ea3bd9d2d620b2a3716eeb0715c30b6">Подробнее...</a><br /></td></tr>
+<tr class="separator:a5ea3bd9d2d620b2a3716eeb0715c30b6 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab611c63a8eb0e86beaf2e2b7a0cca844 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ab611c63a8eb0e86beaf2e2b7a0cca844">addUserContact</a> (const QUuid &amp;inUserUUID, const QUuid &amp;inContactUUID)=0</td></tr>
+<tr class="memdesc:ab611c63a8eb0e86beaf2e2b7a0cca844 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">addUserContact - Метод добавит контакт пользователю  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ab611c63a8eb0e86beaf2e2b7a0cca844">Подробнее...</a><br /></td></tr>
+<tr class="separator:ab611c63a8eb0e86beaf2e2b7a0cca844 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d24299c9f951f5fd4a9a2b8b0e58c52 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a3d24299c9f951f5fd4a9a2b8b0e58c52">removeUserContact</a> (const QUuid &amp;inUserUUID, const QUuid &amp;inContactUUID)=0</td></tr>
+<tr class="memdesc:a3d24299c9f951f5fd4a9a2b8b0e58c52 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeUserContact - Метод удалит контакт пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a3d24299c9f951f5fd4a9a2b8b0e58c52">Подробнее...</a><br /></td></tr>
+<tr class="separator:a3d24299c9f951f5fd4a9a2b8b0e58c52 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d5add9a9cda2b08727f09e6bd944c04 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a3d5add9a9cda2b08727f09e6bd944c04">clearUserContacts</a> (const QUuid &amp;inUserUUID)=0</td></tr>
+<tr class="memdesc:a3d5add9a9cda2b08727f09e6bd944c04 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">clearUserContacts - Метод очистит контакты пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a3d5add9a9cda2b08727f09e6bd944c04">Подробнее...</a><br /></td></tr>
+<tr class="separator:a3d5add9a9cda2b08727f09e6bd944c04 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fa4e4e8a76543001fb964db1add11f2 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; std::set&lt; QUuid &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a1fa4e4e8a76543001fb964db1add11f2">getUserContactList</a> (const QUuid &amp;inUserUUID, std::error_code &amp;outErrorCode) const =0</td></tr>
+<tr class="memdesc:a1fa4e4e8a76543001fb964db1add11f2 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">getUserContactList - Метод вернёт список контактов пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a1fa4e4e8a76543001fb964db1add11f2">Подробнее...</a><br /></td></tr>
+<tr class="separator:a1fa4e4e8a76543001fb964db1add11f2 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf83eedd2d7e34cf650e80484afdac0b inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; std::set&lt; QUuid &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#abf83eedd2d7e34cf650e80484afdac0b">getUserGroups</a> (const QUuid &amp;inUserUUID, std::error_code &amp;outErrorCode) const =0</td></tr>
 <tr class="memdesc:abf83eedd2d7e34cf650e80484afdac0b inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">getUserGroups - Метод вернёт список групп пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#abf83eedd2d7e34cf650e80484afdac0b">Подробнее...</a><br /></td></tr>
 <tr class="separator:abf83eedd2d7e34cf650e80484afdac0b inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -194,21 +219,6 @@ $(function() {
 <tr class="memitem:ad46dcb9045327e4717399f923c6d8255 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ad46dcb9045327e4717399f923c6d8255">removeMessage</a> (const QUuid &amp;inMessageUUID, const QUuid &amp;inGroupUUID)=0</td></tr>
 <tr class="memdesc:ad46dcb9045327e4717399f923c6d8255 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeMessage - Метод удалит сообщение  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ad46dcb9045327e4717399f923c6d8255">Подробнее...</a><br /></td></tr>
 <tr class="separator:ad46dcb9045327e4717399f923c6d8255 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ea3bd9d2d620b2a3716eeb0715c30b6 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a5ea3bd9d2d620b2a3716eeb0715c30b6">setUserContacts</a> (const QUuid &amp;inUserUUID, const std::shared_ptr&lt; std::set&lt; QUuid &gt;&gt; inContacts)=0</td></tr>
-<tr class="memdesc:a5ea3bd9d2d620b2a3716eeb0715c30b6 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">setUserContacts - Метод задаст пользователю список контактов  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a5ea3bd9d2d620b2a3716eeb0715c30b6">Подробнее...</a><br /></td></tr>
-<tr class="separator:a5ea3bd9d2d620b2a3716eeb0715c30b6 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab611c63a8eb0e86beaf2e2b7a0cca844 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ab611c63a8eb0e86beaf2e2b7a0cca844">addUserContact</a> (const QUuid &amp;inUserUUID, const QUuid &amp;inContactUUID)=0</td></tr>
-<tr class="memdesc:ab611c63a8eb0e86beaf2e2b7a0cca844 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">addUserContact - Метод добавит контакт пользователю  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ab611c63a8eb0e86beaf2e2b7a0cca844">Подробнее...</a><br /></td></tr>
-<tr class="separator:ab611c63a8eb0e86beaf2e2b7a0cca844 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d24299c9f951f5fd4a9a2b8b0e58c52 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a3d24299c9f951f5fd4a9a2b8b0e58c52">removeUserContact</a> (const QUuid &amp;inUserUUID, const QUuid &amp;inContactUUID)=0</td></tr>
-<tr class="memdesc:a3d24299c9f951f5fd4a9a2b8b0e58c52 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeUserContact - Метод удалит контакт пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a3d24299c9f951f5fd4a9a2b8b0e58c52">Подробнее...</a><br /></td></tr>
-<tr class="separator:a3d24299c9f951f5fd4a9a2b8b0e58c52 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ca8ad1ef3e69b5880235e7dafe93263 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a7ca8ad1ef3e69b5880235e7dafe93263">removeUserContacts</a> (const QUuid &amp;inUserUUID)=0</td></tr>
-<tr class="memdesc:a7ca8ad1ef3e69b5880235e7dafe93263 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeUserContacts - Метод удалит контакты пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a7ca8ad1ef3e69b5880235e7dafe93263">Подробнее...</a><br /></td></tr>
-<tr class="separator:a7ca8ad1ef3e69b5880235e7dafe93263 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fa4e4e8a76543001fb964db1add11f2 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; std::set&lt; QUuid &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a1fa4e4e8a76543001fb964db1add11f2">getUserContactList</a> (const QUuid &amp;inUserUUID, std::error_code &amp;outErrorCode) const =0</td></tr>
-<tr class="memdesc:a1fa4e4e8a76543001fb964db1add11f2 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="mdescLeft">&#160;</td><td class="mdescRight">getUserContactList - Метод вернёт список контактов пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a1fa4e4e8a76543001fb964db1add11f2">Подробнее...</a><br /></td></tr>
-<tr class="separator:a1fa4e4e8a76543001fb964db1add11f2 inherit pub_methods_classhmservcommon_1_1datastorage_1_1HMDataStorage"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Защищенные члены</h2></td></tr>
@@ -237,6 +247,18 @@ $(function() {
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Закрытые данные</h2></td></tr>
+<tr class="memitem:ac7e729352bbabe393f7b22c1a00dd7ab"><td class="memItemLeft" align="right" valign="top">std::chrono::milliseconds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ac7e729352bbabe393f7b22c1a00dd7ab">m_cacheLifeTime</a></td></tr>
+<tr class="memdesc:ac7e729352bbabe393f7b22c1a00dd7ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Время жизни объектов кеша (в милисекундах)  <a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ac7e729352bbabe393f7b22c1a00dd7ab">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac7e729352bbabe393f7b22c1a00dd7ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10ef9f6a7a7dc9c7dba86b7732626e26"><td class="memItemLeft" align="right" valign="top">std::chrono::milliseconds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a10ef9f6a7a7dc9c7dba86b7732626e26">m_sleep</a></td></tr>
+<tr class="memdesc:a10ef9f6a7a7dc9c7dba86b7732626e26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Время ожидания потока контроля кеша (в милисекундах)  <a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a10ef9f6a7a7dc9c7dba86b7732626e26">Подробнее...</a><br /></td></tr>
+<tr class="separator:a10ef9f6a7a7dc9c7dba86b7732626e26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f64c0bf504dd90400e92f67c15dbc09"><td class="memItemLeft" align="right" valign="top">std::mutex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a8f64c0bf504dd90400e92f67c15dbc09">m_conditionDefender</a></td></tr>
+<tr class="memdesc:a8f64c0bf504dd90400e92f67c15dbc09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Мьютекс, защищающий условную переменную  <a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a8f64c0bf504dd90400e92f67c15dbc09">Подробнее...</a><br /></td></tr>
+<tr class="separator:a8f64c0bf504dd90400e92f67c15dbc09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8a2e9b347223d383142adc55350be69"><td class="memItemLeft" align="right" valign="top">std::condition_variable&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#aa8a2e9b347223d383142adc55350be69">m_break</a></td></tr>
+<tr class="memdesc:aa8a2e9b347223d383142adc55350be69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Условная переменная прерывания ожидания потока  <a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#aa8a2e9b347223d383142adc55350be69">Подробнее...</a><br /></td></tr>
+<tr class="separator:aa8a2e9b347223d383142adc55350be69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0df6ffeafbfd116db3921125c45ed69e"><td class="memItemLeft" align="right" valign="top">std::atomic_bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a0df6ffeafbfd116db3921125c45ed69e">m_threadWork</a></td></tr>
 <tr class="memdesc:a0df6ffeafbfd116db3921125c45ed69e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Флаг работы потока  <a href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a0df6ffeafbfd116db3921125c45ed69e">Подробнее...</a><br /></td></tr>
 <tr class="separator:a0df6ffeafbfd116db3921125c45ed69e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -249,8 +271,8 @@ $(function() {
 <dl class="section author"><dt>Авторы</dt><dd>Alekseev_s </dd></dl>
 <dl class="section date"><dt>Дата</dt><dd>12.12.2020 </dd></dl>
 </div><h2 class="groupheader">Конструктор(ы)</h2>
-<a id="a8810c7ba34b68da79d7b2f21a72b43d5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8810c7ba34b68da79d7b2f21a72b43d5">&#9670;&nbsp;</a></span>HMAbstractCahceDataStorage()</h2>
+<a id="af3b45f8ecba0e5e0a61688821d487ff0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3b45f8ecba0e5e0a61688821d487ff0">&#9670;&nbsp;</a></span>HMAbstractCahceDataStorage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -258,13 +280,31 @@ $(function() {
         <tr>
           <td class="memname">HMAbstractCahceDataStorage::HMAbstractCahceDataStorage </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const std::chrono::milliseconds&#160;</td>
+          <td class="paramname"><em>inCacheLifeTime</em> = <code>std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(std::chrono::minutes(15))</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const std::chrono::milliseconds&#160;</td>
+          <td class="paramname"><em>inSleep</em> = <code>std::chrono::milliseconds(1000)</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html" title="The HMAbstractCahceDataStorage class - Класс, описывающий абстракцию кеширующего хранилища данных">HMAbstractCahceDataStorage</a> - Конструктор по умолчанию </p>
+<p><a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html" title="The HMAbstractCahceDataStorage class - Класс, описывающий абстракцию кеширующего хранилища данных">HMAbstractCahceDataStorage</a> - Инициализирующий конструктор </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inCacheLifeTime</td><td>- Время жизни объектов кеша (в милисекундах) </td></tr>
+    <tr><td class="paramname">inSleep</td><td>- Время ожидания потока контроля кеша в (в милисекундах) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -391,6 +431,52 @@ $(function() {
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#aba844641d544b031bbbe89d001be3a50" title="~HMCachedDataStorage &#45; Виртуальный деструктор" alt="" coords="19,71,266,127"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="a534f3c4e744ad47df1c882e9411898b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a534f3c4e744ad47df1c882e9411898b9">&#9670;&nbsp;</a></span>getCacheLifeTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::chrono::milliseconds HMAbstractCahceDataStorage::getCacheLifeTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+Граф вызова функции:</div>
+<div class="dyncontent">
+<div class="center"><img src="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a534f3c4e744ad47df1c882e9411898b9_icgraph.png" border="0" usemap="#classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a534f3c4e744ad47df1c882e9411898b9_icgraph" alt=""/></div>
+<map name="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a534f3c4e744ad47df1c882e9411898b9_icgraph" id="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage_a534f3c4e744ad47df1c882e9411898b9_icgraph">
+<area shape="rect" title=" " alt="" coords="288,5,515,61"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a8d25c37d56c5208e65e1e6781c56a4a8" title="processCacheInThread &#45; Метод обработки кеша в потоке" alt="" coords="5,5,240,61"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad09b8cafafa5020370e119321f05149e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad09b8cafafa5020370e119321f05149e">&#9670;&nbsp;</a></span>getThreadSleep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::chrono::milliseconds HMAbstractCahceDataStorage::getThreadSleep </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getThreadSleep - Метод вернёт время ожидания потока контроля кеша </p>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт время ожидания потока контроля кеша (в милисекундах) </dd></dl>
 
 </div>
 </div>
@@ -536,6 +622,50 @@ $(function() {
 
 </div>
 </div>
+<a id="a581b3f3305ea913e8762c45205ab38c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a581b3f3305ea913e8762c45205ab38c8">&#9670;&nbsp;</a></span>setCacheLifeTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HMAbstractCahceDataStorage::setCacheLifeTime </td>
+          <td>(</td>
+          <td class="paramtype">const std::chrono::milliseconds&#160;</td>
+          <td class="paramname"><em>inCacheLifeTime</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5b345ec71e065fca1df528e2ac81d43c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b345ec71e065fca1df528e2ac81d43c">&#9670;&nbsp;</a></span>setThreadSleep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void HMAbstractCahceDataStorage::setThreadSleep </td>
+          <td>(</td>
+          <td class="paramtype">const std::chrono::milliseconds&#160;</td>
+          <td class="paramname"><em>inSleep</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>setThreadSleep - Метод задаст время ожидания потока контроля кеша </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inSleep</td><td>- Время ожидания потока контроля кеша в (в милисекундах) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a294948cbf56bd24c7d7ed60826b0fd87"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a294948cbf56bd24c7d7ed60826b0fd87">&#9670;&nbsp;</a></span>startCacheWatchdogThread()</h2>
 
@@ -629,6 +759,102 @@ $(function() {
 </div>
 </div>
 <h2 class="groupheader">Данные класса</h2>
+<a id="aa8a2e9b347223d383142adc55350be69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8a2e9b347223d383142adc55350be69">&#9670;&nbsp;</a></span>m_break</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::condition_variable hmservcommon::datastorage::HMAbstractCahceDataStorage::m_break</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Условная переменная прерывания ожидания потока </p>
+
+</div>
+</div>
+<a id="ac7e729352bbabe393f7b22c1a00dd7ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7e729352bbabe393f7b22c1a00dd7ab">&#9670;&nbsp;</a></span>m_cacheLifeTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::chrono::milliseconds hmservcommon::datastorage::HMAbstractCahceDataStorage::m_cacheLifeTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Время жизни объектов кеша (в милисекундах) </p>
+
+</div>
+</div>
+<a id="a8f64c0bf504dd90400e92f67c15dbc09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f64c0bf504dd90400e92f67c15dbc09">&#9670;&nbsp;</a></span>m_conditionDefender</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::mutex hmservcommon::datastorage::HMAbstractCahceDataStorage::m_conditionDefender</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Мьютекс, защищающий условную переменную </p>
+
+</div>
+</div>
+<a id="a10ef9f6a7a7dc9c7dba86b7732626e26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10ef9f6a7a7dc9c7dba86b7732626e26">&#9670;&nbsp;</a></span>m_sleep</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::chrono::milliseconds hmservcommon::datastorage::HMAbstractCahceDataStorage::m_sleep</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Время ожидания потока контроля кеша (в милисекундах) </p>
+
+</div>
+</div>
 <a id="a0df6ffeafbfd116db3921125c45ed69e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0df6ffeafbfd116db3921125c45ed69e">&#9670;&nbsp;</a></span>m_threadWork</h2>
 

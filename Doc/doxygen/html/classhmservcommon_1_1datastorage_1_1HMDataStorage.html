@@ -85,7 +85,7 @@ $(function() {
 <map name="hmservcommon_1_1datastorage_1_1HMDataStorage_inherit__map" id="hmservcommon_1_1datastorage_1_1HMDataStorage_inherit__map">
 <area shape="rect" title="The HMDataStorage class &#45; Интерфейс, описывающий хранилище данных сервера" alt="" coords="5,71,220,112"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional.html" title="The HMAbstractDataStorageFunctional class &#45; Класс, описывающий абстрактное хранилище даннх с дополнит..." alt="" coords="268,37,523,79"/>
-<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html" title="The HMCombinedDataStorage class &#45; Класс, описывающий комбинированное хранилище данных (физическое\хеш..." alt="" coords="288,103,503,144"/>
+<area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html" title="The HMCombinedDataStorage class &#45; Класс, описывающий комбинированное хранилище данных (физическое\кеш..." alt="" coords="288,103,503,144"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html" title="The HMAbstractCahceDataStorage class &#45; Класс, описывающий абстракцию кеширующего хранилища данных" alt="" coords="571,5,797,47"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMAbstractHardDataStorage.html" title="The HMAbstractHardDataStorage class &#45; Класс, описывающий абстракцию физического хранилища данных" alt="" coords="575,71,793,112"/>
 <area shape="rect" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html" title="The HMCachedMemoryDataStorage class &#45; Класс, описывающий кеширующее хранилище данных в оперативной па..." alt="" coords="845,5,1080,47"/>
@@ -125,6 +125,21 @@ $(function() {
 <tr class="memitem:ad20bc2871b5babb00f471c667bccaafb"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ad20bc2871b5babb00f471c667bccaafb">removeUser</a> (const QUuid &amp;inUserUUID)=0</td></tr>
 <tr class="memdesc:ad20bc2871b5babb00f471c667bccaafb"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeUser - Метод удалит пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ad20bc2871b5babb00f471c667bccaafb">Подробнее...</a><br /></td></tr>
 <tr class="separator:ad20bc2871b5babb00f471c667bccaafb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ea3bd9d2d620b2a3716eeb0715c30b6"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a5ea3bd9d2d620b2a3716eeb0715c30b6">setUserContacts</a> (const QUuid &amp;inUserUUID, const std::shared_ptr&lt; std::set&lt; QUuid &gt;&gt; inContacts)=0</td></tr>
+<tr class="memdesc:a5ea3bd9d2d620b2a3716eeb0715c30b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">setUserContacts - Метод задаст пользователю список контактов  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a5ea3bd9d2d620b2a3716eeb0715c30b6">Подробнее...</a><br /></td></tr>
+<tr class="separator:a5ea3bd9d2d620b2a3716eeb0715c30b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab611c63a8eb0e86beaf2e2b7a0cca844"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ab611c63a8eb0e86beaf2e2b7a0cca844">addUserContact</a> (const QUuid &amp;inUserUUID, const QUuid &amp;inContactUUID)=0</td></tr>
+<tr class="memdesc:ab611c63a8eb0e86beaf2e2b7a0cca844"><td class="mdescLeft">&#160;</td><td class="mdescRight">addUserContact - Метод добавит контакт пользователю  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ab611c63a8eb0e86beaf2e2b7a0cca844">Подробнее...</a><br /></td></tr>
+<tr class="separator:ab611c63a8eb0e86beaf2e2b7a0cca844"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d24299c9f951f5fd4a9a2b8b0e58c52"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a3d24299c9f951f5fd4a9a2b8b0e58c52">removeUserContact</a> (const QUuid &amp;inUserUUID, const QUuid &amp;inContactUUID)=0</td></tr>
+<tr class="memdesc:a3d24299c9f951f5fd4a9a2b8b0e58c52"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeUserContact - Метод удалит контакт пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a3d24299c9f951f5fd4a9a2b8b0e58c52">Подробнее...</a><br /></td></tr>
+<tr class="separator:a3d24299c9f951f5fd4a9a2b8b0e58c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d5add9a9cda2b08727f09e6bd944c04"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a3d5add9a9cda2b08727f09e6bd944c04">clearUserContacts</a> (const QUuid &amp;inUserUUID)=0</td></tr>
+<tr class="memdesc:a3d5add9a9cda2b08727f09e6bd944c04"><td class="mdescLeft">&#160;</td><td class="mdescRight">clearUserContacts - Метод очистит контакты пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a3d5add9a9cda2b08727f09e6bd944c04">Подробнее...</a><br /></td></tr>
+<tr class="separator:a3d5add9a9cda2b08727f09e6bd944c04"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fa4e4e8a76543001fb964db1add11f2"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; std::set&lt; QUuid &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a1fa4e4e8a76543001fb964db1add11f2">getUserContactList</a> (const QUuid &amp;inUserUUID, std::error_code &amp;outErrorCode) const =0</td></tr>
+<tr class="memdesc:a1fa4e4e8a76543001fb964db1add11f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">getUserContactList - Метод вернёт список контактов пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a1fa4e4e8a76543001fb964db1add11f2">Подробнее...</a><br /></td></tr>
+<tr class="separator:a1fa4e4e8a76543001fb964db1add11f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf83eedd2d7e34cf650e80484afdac0b"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; std::set&lt; QUuid &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#abf83eedd2d7e34cf650e80484afdac0b">getUserGroups</a> (const QUuid &amp;inUserUUID, std::error_code &amp;outErrorCode) const =0</td></tr>
 <tr class="memdesc:abf83eedd2d7e34cf650e80484afdac0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">getUserGroups - Метод вернёт список групп пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#abf83eedd2d7e34cf650e80484afdac0b">Подробнее...</a><br /></td></tr>
 <tr class="separator:abf83eedd2d7e34cf650e80484afdac0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -170,21 +185,6 @@ $(function() {
 <tr class="memitem:ad46dcb9045327e4717399f923c6d8255"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ad46dcb9045327e4717399f923c6d8255">removeMessage</a> (const QUuid &amp;inMessageUUID, const QUuid &amp;inGroupUUID)=0</td></tr>
 <tr class="memdesc:ad46dcb9045327e4717399f923c6d8255"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeMessage - Метод удалит сообщение  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ad46dcb9045327e4717399f923c6d8255">Подробнее...</a><br /></td></tr>
 <tr class="separator:ad46dcb9045327e4717399f923c6d8255"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ea3bd9d2d620b2a3716eeb0715c30b6"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a5ea3bd9d2d620b2a3716eeb0715c30b6">setUserContacts</a> (const QUuid &amp;inUserUUID, const std::shared_ptr&lt; std::set&lt; QUuid &gt;&gt; inContacts)=0</td></tr>
-<tr class="memdesc:a5ea3bd9d2d620b2a3716eeb0715c30b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">setUserContacts - Метод задаст пользователю список контактов  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a5ea3bd9d2d620b2a3716eeb0715c30b6">Подробнее...</a><br /></td></tr>
-<tr class="separator:a5ea3bd9d2d620b2a3716eeb0715c30b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab611c63a8eb0e86beaf2e2b7a0cca844"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ab611c63a8eb0e86beaf2e2b7a0cca844">addUserContact</a> (const QUuid &amp;inUserUUID, const QUuid &amp;inContactUUID)=0</td></tr>
-<tr class="memdesc:ab611c63a8eb0e86beaf2e2b7a0cca844"><td class="mdescLeft">&#160;</td><td class="mdescRight">addUserContact - Метод добавит контакт пользователю  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#ab611c63a8eb0e86beaf2e2b7a0cca844">Подробнее...</a><br /></td></tr>
-<tr class="separator:ab611c63a8eb0e86beaf2e2b7a0cca844"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d24299c9f951f5fd4a9a2b8b0e58c52"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a3d24299c9f951f5fd4a9a2b8b0e58c52">removeUserContact</a> (const QUuid &amp;inUserUUID, const QUuid &amp;inContactUUID)=0</td></tr>
-<tr class="memdesc:a3d24299c9f951f5fd4a9a2b8b0e58c52"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeUserContact - Метод удалит контакт пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a3d24299c9f951f5fd4a9a2b8b0e58c52">Подробнее...</a><br /></td></tr>
-<tr class="separator:a3d24299c9f951f5fd4a9a2b8b0e58c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ca8ad1ef3e69b5880235e7dafe93263"><td class="memItemLeft" align="right" valign="top">virtual std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a7ca8ad1ef3e69b5880235e7dafe93263">removeUserContacts</a> (const QUuid &amp;inUserUUID)=0</td></tr>
-<tr class="memdesc:a7ca8ad1ef3e69b5880235e7dafe93263"><td class="mdescLeft">&#160;</td><td class="mdescRight">removeUserContacts - Метод удалит контакты пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a7ca8ad1ef3e69b5880235e7dafe93263">Подробнее...</a><br /></td></tr>
-<tr class="separator:a7ca8ad1ef3e69b5880235e7dafe93263"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1fa4e4e8a76543001fb964db1add11f2"><td class="memItemLeft" align="right" valign="top">virtual std::shared_ptr&lt; std::set&lt; QUuid &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a1fa4e4e8a76543001fb964db1add11f2">getUserContactList</a> (const QUuid &amp;inUserUUID, std::error_code &amp;outErrorCode) const =0</td></tr>
-<tr class="memdesc:a1fa4e4e8a76543001fb964db1add11f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">getUserContactList - Метод вернёт список контактов пользователя  <a href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a1fa4e4e8a76543001fb964db1add11f2">Подробнее...</a><br /></td></tr>
-<tr class="separator:a1fa4e4e8a76543001fb964db1add11f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Подробное описание</h2>
 <div class="textblock"><p>The <a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html" title="The HMDataStorage class - Интерфейс, описывающий хранилище данных сервера">HMDataStorage</a> class - Интерфейс, описывающий хранилище данных сервера </p>
@@ -491,6 +491,43 @@ $(function() {
 
 </div>
 </div>
+<a id="a3d5add9a9cda2b08727f09e6bd944c04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d5add9a9cda2b08727f09e6bd944c04">&#9670;&nbsp;</a></span>clearUserContacts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual std::error_code hmservcommon::datastorage::HMDataStorage::clearUserContacts </td>
+          <td>(</td>
+          <td class="paramtype">const QUuid &amp;&#160;</td>
+          <td class="paramname"><em>inUserUUID</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>clearUserContacts - Метод очистит контакты пользователя </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inUserUUID</td><td>- Uuid пользователя </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
+
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a46e0b517c8c91fd11aed0d982a8a553a">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a7fc56117718d56551ba0e4d2d5b243f9">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#ad3009efb3655b9d1b863cb0bbe5defe9">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
+
+</div>
+</div>
 <a id="a81d0d540feb688fb6d82fd669b35297b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a81d0d540feb688fb6d82fd669b35297b">&#9670;&nbsp;</a></span>close()</h2>
 
@@ -516,7 +553,7 @@ $(function() {
 
 <p>close - Метод закроет хранилище данных </p>
 
-<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a8bf345ef8b7ca0b14ad3c9c7d4cbe91a">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a455fb5ad71c026b9e0a71154c15254e2">hmservcommon::datastorage::HMJsonDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a93e18f3a3a19662c88df615b32967ead">hmservcommon::datastorage::HMCombinedDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ae620a0c526b13b1c4b9800f282d6461d">hmservcommon::datastorage::HMAbstractCahceDataStorage</a>.</p>
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a8bf345ef8b7ca0b14ad3c9c7d4cbe91a">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ae620a0c526b13b1c4b9800f282d6461d">hmservcommon::datastorage::HMAbstractCahceDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a455fb5ad71c026b9e0a71154c15254e2">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a93e18f3a3a19662c88df615b32967ead">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
 
 </div>
 </div>
@@ -974,7 +1011,7 @@ $(function() {
 <p>is_open - Метод вернёт признак открытости хранилища данных </p>
 <dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак открытости </dd></dl>
 
-<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#ad25c96a585b2b7b1fb3c0dd66ecb311b">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#af7129f6ff8883d6b59a187a375992aeb">hmservcommon::datastorage::HMJsonDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a7997d3495b3efa912e1e8bf2fef0ac10">hmservcommon::datastorage::HMCombinedDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a6a6932677f1662b09c2a29a2ef12ecf6">hmservcommon::datastorage::HMAbstractCahceDataStorage</a>.</p>
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#ad25c96a585b2b7b1fb3c0dd66ecb311b">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a6a6932677f1662b09c2a29a2ef12ecf6">hmservcommon::datastorage::HMAbstractCahceDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#af7129f6ff8883d6b59a187a375992aeb">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a7997d3495b3efa912e1e8bf2fef0ac10">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
 <div class="dynheader">
 Граф вызова функции:</div>
 <div class="dyncontent">
@@ -1016,7 +1053,7 @@ $(function() {
 <p>open - Метод откроет хранилище данных </p>
 <dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
 
-<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a07c4e3bad5ced7d8a929b77a3df67197">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a657aae996bc68cfb3d8f1d9f332ad812">hmservcommon::datastorage::HMJsonDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#ab0bda1e6f91d2b8c11e57dcd300f064a">hmservcommon::datastorage::HMCombinedDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ab0178b64aff50caf8f0ce5c172def2ea">hmservcommon::datastorage::HMAbstractCahceDataStorage</a>.</p>
+<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a07c4e3bad5ced7d8a929b77a3df67197">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#ab0178b64aff50caf8f0ce5c172def2ea">hmservcommon::datastorage::HMAbstractCahceDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a657aae996bc68cfb3d8f1d9f332ad812">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#ab0bda1e6f91d2b8c11e57dcd300f064a">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
 
 </div>
 </div>
@@ -1235,43 +1272,6 @@ $(function() {
 <dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
 
 <p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#ac9a9c52d90f4e30e3fe1034d4d33f8a8">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aab05e4ced328690bfe601e3dcc4c73e5">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a86662ab7068607481e4956b16cd7eb5f">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
-
-</div>
-</div>
-<a id="a7ca8ad1ef3e69b5880235e7dafe93263"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7ca8ad1ef3e69b5880235e7dafe93263">&#9670;&nbsp;</a></span>removeUserContacts()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual std::error_code hmservcommon::datastorage::HMDataStorage::removeUserContacts </td>
-          <td>(</td>
-          <td class="paramtype">const QUuid &amp;&#160;</td>
-          <td class="paramname"><em>inUserUUID</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>removeUserContacts - Метод удалит контакты пользователя </p>
-<dl class="params"><dt>Аргументы</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">inUserUUID</td><td>- Uuid пользователя </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Возвращает</dt><dd>Вернёт признак ошибки </dd></dl>
-
-<p>Замещается в <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a7e64f02d91859f832c87209c82f25df9">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>, <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a87cfb4031e21333635a5313c55d31486">hmservcommon::datastorage::HMJsonDataStorage</a> и <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#adf7f3081fde70192b1e027637baea289">hmservcommon::datastorage::HMCombinedDataStorage</a>.</p>
 
 </div>
 </div>

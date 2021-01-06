@@ -1,5 +1,6 @@
 <map id="TEST" name="TEST">
 <area shape="rect" id="node1" title="TEST &#45; Тест проверит добавление группы" alt="" coords="5,31,60,57"/>
-<area shape="rect" id="node2" href="$namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="108,5,307,32"/>
-<area shape="rect" id="node3" href="$libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="153,56,261,83"/>
+<area shape="rect" id="node2" href="$HawkServerCoreCachedDataStorageTest_8hpp.html#a7630396df8eb1e8bac44524cfc159177" title="CachedDataStorage_AddGroupTest &#45; Тест физического хранилища, проверяющий добавление группы" alt="" coords="108,5,356,32"/>
+<area shape="rect" id="node4" href="$libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="178,56,286,83"/>
+<area shape="rect" id="node3" href="$namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="404,5,603,32"/>
 </map>

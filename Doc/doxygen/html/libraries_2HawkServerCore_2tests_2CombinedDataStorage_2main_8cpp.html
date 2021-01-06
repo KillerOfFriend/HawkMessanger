@@ -73,70 +73,71 @@ $(function() {
 <div class="title">Файл main.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;gtest/gtest.h&gt;</code><br />
-<code>#include &lt;thread&gt;</code><br />
-<code>#include &lt;filesystem&gt;</code><br />
-<code>#include &lt;<a class="el" href="systemerrorex_8h_source.html">systemerrorex.h</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;chrono&gt;</code><br />
+<code>#include &lt;gtest/gtest.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="DataStorage_8h_source.html">datastorage/DataStorage.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="HawkCommonTestUtils_8hpp_source.html">HawkCommonTestUtils.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="HawkServerCoreHardDataStorageTest_8hpp_source.html">HawkServerCoreHardDataStorageTest.hpp</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Граф включаемых заголовочных файлов для main.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp__incl.png" border="0" usemap="#Projects_2libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp" alt=""/></div>
 <map name="Projects_2libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp" id="Projects_2libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp">
-<area shape="rect" title=" " alt="" coords="565,5,802,61"/>
-<area shape="rect" title=" " alt="" coords="338,109,442,136"/>
-<area shape="rect" title=" " alt="" coords="746,370,810,397"/>
-<area shape="rect" title=" " alt="" coords="1614,281,1705,307"/>
-<area shape="rect" href="systemerrorex_8h.html" title="Содержит описание категории расширеных системных ошибок" alt="" coords="5,191,135,218"/>
-<area shape="rect" href="DataStorage_8h.html" title=" " alt="" coords="517,109,714,136"/>
-<area shape="rect" href="HawkCommonTestUtils_8hpp.html" title=" " alt="" coords="1449,616,1651,643"/>
-<area shape="rect" title=" " alt="" coords="119,281,178,307"/>
-<area shape="rect" title=" " alt="" coords="443,765,551,792"/>
-<area shape="rect" title=" " alt="" coords="205,281,279,307"/>
-<area shape="rect" href="datastorageerrorcategory_8h.html" title=" " alt="" coords="159,191,357,218"/>
-<area shape="rect" href="datastorageinterface_8h.html" title=" " alt="" coords="487,452,661,493"/>
-<area shape="rect" href="abstractdatastoragefunctional_8h.html" title=" " alt="" coords="941,363,1175,404"/>
-<area shape="rect" href="combineddatastorage_8h.html" title="Содержит описание комбинированного хранилища данных (физическое\хешированное)" alt="" coords="1055,184,1301,225"/>
-<area shape="rect" href="cachedmemorydatastorage_8h.html" title="Содержит описание класса кеширующего хранилища данных" alt="" coords="431,184,714,225"/>
-<area shape="rect" href="jsondatastorage_8h.html" title="Содержит описание класса хранилища данных в файле JSON." alt="" coords="1325,184,1535,225"/>
-<area shape="rect" title=" " alt="" coords="585,691,627,717"/>
-<area shape="rect" title=" " alt="" coords="715,765,777,792"/>
-<area shape="rect" title=" " alt="" coords="1175,765,1253,792"/>
-<area shape="rect" href="HawkCommon_8h.html" title=" " alt="" coords="903,541,1034,568"/>
-<area shape="rect" href="user_8h.html" title="Содержит описание пользователя системы" alt="" coords="1090,765,1151,792"/>
-<area shape="rect" href="group_8h.html" title="Содержит описание группы\чата" alt="" coords="652,691,723,717"/>
-<area shape="rect" href="userlist_8h.html" title="Содержит описание контактов пользователя системы" alt="" coords="849,691,931,717"/>
-<area shape="rect" href="groupmessage_8h.html" title="Содержит описание сообщения группы" alt="" coords="1411,691,1542,717"/>
-<area shape="rect" href="account_8h.html" title="Содержит описание аккаунта пользователя" alt="" coords="926,616,1011,643"/>
-<area shape="rect" title=" " alt="" coords="1328,840,1391,867"/>
-<area shape="rect" title=" " alt="" coords="1089,840,1152,867"/>
-<area shape="rect" title=" " alt="" coords="1545,840,1616,867"/>
-<area shape="rect" title=" " alt="" coords="1425,840,1521,867"/>
-<area shape="rect" title=" " alt="" coords="1188,840,1285,867"/>
-<area shape="rect" title=" " alt="" coords="575,765,690,792"/>
-<area shape="rect" href="abstractharddatastorage_8h.html" title="Содержит описание абстрактного класса физического хранилища данных" alt="" coords="1069,273,1268,315"/>
-<area shape="rect" href="abstractcahcedatastorage_8h.html" title="Содержит описание абстрактного класса кеширующего хранилища данных" alt="" coords="788,273,995,315"/>
-<area shape="rect" title=" " alt="" coords="850,370,917,397"/>
-<area shape="rect" title=" " alt="" coords="457,281,571,307"/>
-<area shape="rect" title=" " alt="" coords="596,281,661,307"/>
-<area shape="rect" href="cached_8h.html" title=" " alt="" coords="759,616,839,643"/>
-<area shape="rect" title=" " alt="" coords="1238,370,1385,397"/>
-<area shape="rect" href="jsondatastoragevalidator_8h.html" title="Содержит описание класса, контролирующего JSON для HMJsonDataStorage." alt="" coords="1343,281,1539,307"/>
+<area shape="rect" title=" " alt="" coords="360,5,597,61"/>
+<area shape="rect" title=" " alt="" coords="124,541,191,568"/>
+<area shape="rect" title=" " alt="" coords="667,459,771,486"/>
+<area shape="rect" href="DataStorage_8h.html" title=" " alt="" coords="803,109,1000,136"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html" title=" " alt="" coords="1308,363,1551,404"/>
+<area shape="rect" href="datastorageerrorcategory_8h.html" title=" " alt="" coords="1433,459,1631,486"/>
+<area shape="rect" href="datastorageinterface_8h.html" title=" " alt="" coords="1183,452,1358,493"/>
+<area shape="rect" href="abstractdatastoragefunctional_8h.html" title=" " alt="" coords="717,363,952,404"/>
+<area shape="rect" href="combineddatastorage_8h.html" title="Содержит описание комбинированного хранилища данных (физическое\хешированное)" alt="" coords="562,184,809,225"/>
+<area shape="rect" href="cachedmemorydatastorage_8h.html" title="Содержит описание класса кеширующего хранилища данных" alt="" coords="155,184,437,225"/>
+<area shape="rect" href="jsondatastorage_8h.html" title="Содержит описание класса хранилища данных в файле JSON." alt="" coords="939,184,1149,225"/>
+<area shape="rect" title=" " alt="" coords="1588,541,1647,568"/>
+<area shape="rect" title=" " alt="" coords="1398,765,1506,792"/>
+<area shape="rect" title=" " alt="" coords="1489,541,1564,568"/>
+<area shape="rect" title=" " alt="" coords="931,541,973,568"/>
+<area shape="rect" title=" " alt="" coords="1311,765,1374,792"/>
+<area shape="rect" title=" " alt="" coords="729,765,807,792"/>
+<area shape="rect" href="HawkCommon_8h.html" title=" " alt="" coords="1088,541,1219,568"/>
+<area shape="rect" href="user_8h.html" title="Содержит описание пользователя системы" alt="" coords="1225,765,1287,792"/>
+<area shape="rect" href="group_8h.html" title="Содержит описание группы\чата" alt="" coords="1242,691,1313,717"/>
+<area shape="rect" href="userlist_8h.html" title="Содержит описание контактов пользователя системы" alt="" coords="831,691,913,717"/>
+<area shape="rect" href="groupmessage_8h.html" title="Содержит описание сообщения группы" alt="" coords="1591,691,1721,717"/>
+<area shape="rect" href="account_8h.html" title="Содержит описание аккаунта пользователя" alt="" coords="909,616,995,643"/>
+<area shape="rect" title=" " alt="" coords="1533,840,1595,867"/>
+<area shape="rect" title=" " alt="" coords="1225,840,1287,867"/>
+<area shape="rect" title=" " alt="" coords="1643,840,1714,867"/>
+<area shape="rect" title=" " alt="" coords="1739,840,1835,867"/>
+<area shape="rect" title=" " alt="" coords="1363,840,1461,867"/>
+<area shape="rect" title=" " alt="" coords="313,765,428,792"/>
+<area shape="rect" href="abstractharddatastorage_8h.html" title="Содержит описание абстрактного класса физического хранилища данных" alt="" coords="666,273,865,315"/>
+<area shape="rect" href="abstractcahcedatastorage_8h.html" title="Содержит описание абстрактного класса кеширующего хранилища данных" alt="" coords="385,273,591,315"/>
+<area shape="rect" title=" " alt="" coords="528,370,592,397"/>
+<area shape="rect" title=" " alt="" coords="795,459,859,486"/>
+<area shape="rect" title=" " alt="" coords="269,370,336,397"/>
+<area shape="rect" title=" " alt="" coords="361,370,503,397"/>
+<area shape="rect" title=" " alt="" coords="195,281,309,307"/>
+<area shape="rect" href="cached_8h.html" title=" " alt="" coords="500,459,580,486"/>
+<area shape="rect" title=" " alt="" coords="989,281,1080,307"/>
+<area shape="rect" title=" " alt="" coords="976,370,1123,397"/>
+<area shape="rect" href="jsondatastoragevalidator_8h.html" title="Содержит описание класса, контролирующего JSON для HMJsonDataStorage." alt="" coords="1105,281,1301,307"/>
+<area shape="rect" href="systemerrorex_8h.html" title="Содержит описание категории расширеных системных ошибок" alt="" coords="1655,459,1785,486"/>
+<area shape="rect" href="HawkCommonTestUtils_8hpp.html" title=" " alt="" coords="1640,616,1843,643"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Функции</h2></td></tr>
-<tr class="memitem:a0b4f6771133f750fee6eef138cf68e98"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html">HMDataStorage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98">makeStorage</a> ()</td></tr>
-<tr class="memdesc:a0b4f6771133f750fee6eef138cf68e98"><td class="mdescLeft">&#160;</td><td class="mdescRight">makeStorage - Метод создаст экземпляр хранилища  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98">Подробнее...</a><br /></td></tr>
-<tr class="separator:a0b4f6771133f750fee6eef138cf68e98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adcff88426fa7f8ee7c9ff35944c63c11"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#adcff88426fa7f8ee7c9ff35944c63c11">TEST</a> (CombinedDataStorage, Open)</td></tr>
-<tr class="memdesc:adcff88426fa7f8ee7c9ff35944c63c11"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит попытку открытия хранилища  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#adcff88426fa7f8ee7c9ff35944c63c11">Подробнее...</a><br /></td></tr>
-<tr class="separator:adcff88426fa7f8ee7c9ff35944c63c11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab25bbf965a1a24ad4000528352c130d2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#ab25bbf965a1a24ad4000528352c130d2">TEST</a> (CombinedDataStorage, AddUser)</td></tr>
-<tr class="memdesc:ab25bbf965a1a24ad4000528352c130d2"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит добавление пользователя  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#ab25bbf965a1a24ad4000528352c130d2">Подробнее...</a><br /></td></tr>
-<tr class="separator:ab25bbf965a1a24ad4000528352c130d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a324574ea38cd8b2ee41ac60f545b8115"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html">HMDataStorage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115">makeStorage</a> (const std::chrono::milliseconds inCacheLifeTime=std::chrono::duration_cast&lt; std::chrono::milliseconds &gt;(std::chrono::minutes(15)), const std::chrono::milliseconds inSleep=std::chrono::milliseconds(1000))</td></tr>
+<tr class="memdesc:a324574ea38cd8b2ee41ac60f545b8115"><td class="mdescLeft">&#160;</td><td class="mdescRight">makeStorage - Метод создаст экземпляр хранилища  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115">Подробнее...</a><br /></td></tr>
+<tr class="separator:a324574ea38cd8b2ee41ac60f545b8115"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af83213f16629462a0c78353ab93b1141"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#af83213f16629462a0c78353ab93b1141">TEST</a> (CombinedDataStorage, open)</td></tr>
+<tr class="memdesc:af83213f16629462a0c78353ab93b1141"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит попытку открытия хранилища  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#af83213f16629462a0c78353ab93b1141">Подробнее...</a><br /></td></tr>
+<tr class="separator:af83213f16629462a0c78353ab93b1141"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad27803efb742e2a7da890fddc224e6c2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#ad27803efb742e2a7da890fddc224e6c2">TEST</a> (CombinedDataStorage, addUser)</td></tr>
+<tr class="memdesc:ad27803efb742e2a7da890fddc224e6c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит добавление пользователя  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#ad27803efb742e2a7da890fddc224e6c2">Подробнее...</a><br /></td></tr>
+<tr class="separator:ad27803efb742e2a7da890fddc224e6c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3ae972982f3a562733af227f066fe2b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#ac3ae972982f3a562733af227f066fe2b">TEST</a> (CombinedDataStorage, updateUser)</td></tr>
 <tr class="memdesc:ac3ae972982f3a562733af227f066fe2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит обновление пользователя  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#ac3ae972982f3a562733af227f066fe2b">Подробнее...</a><br /></td></tr>
 <tr class="separator:ac3ae972982f3a562733af227f066fe2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -147,8 +148,23 @@ $(function() {
 <tr class="memdesc:aafe9063697ba8b93653334623b8a76cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит поиск пользователья по данным аутентификации  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#aafe9063697ba8b93653334623b8a76cb">Подробнее...</a><br /></td></tr>
 <tr class="separator:aafe9063697ba8b93653334623b8a76cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a3575d82efbbbc4c305a8132c8a26c2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a0a3575d82efbbbc4c305a8132c8a26c2">TEST</a> (CombinedDataStorage, removeUser)</td></tr>
-<tr class="memdesc:a0a3575d82efbbbc4c305a8132c8a26c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит удаление пользователя из кеша  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a0a3575d82efbbbc4c305a8132c8a26c2">Подробнее...</a><br /></td></tr>
+<tr class="memdesc:a0a3575d82efbbbc4c305a8132c8a26c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит удаление пользователя из хранилище  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a0a3575d82efbbbc4c305a8132c8a26c2">Подробнее...</a><br /></td></tr>
 <tr class="separator:a0a3575d82efbbbc4c305a8132c8a26c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9ec386ff44b1e99f3f3ff322477a204"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#ae9ec386ff44b1e99f3f3ff322477a204">TEST</a> (CombinedDataStorage, setUserContacts)</td></tr>
+<tr class="memdesc:ae9ec386ff44b1e99f3f3ff322477a204"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит создание связи пользователь-контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ)  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#ae9ec386ff44b1e99f3f3ff322477a204">Подробнее...</a><br /></td></tr>
+<tr class="separator:ae9ec386ff44b1e99f3f3ff322477a204"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d3565f8d36ca2313f76e3febd3eb8ff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a2d3565f8d36ca2313f76e3febd3eb8ff">TEST</a> (CombinedDataStorage, addUserContact)</td></tr>
+<tr class="memdesc:a2d3565f8d36ca2313f76e3febd3eb8ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит добавление контакта пользователю  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a2d3565f8d36ca2313f76e3febd3eb8ff">Подробнее...</a><br /></td></tr>
+<tr class="separator:a2d3565f8d36ca2313f76e3febd3eb8ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac175dee47b4d5697c01f5290d02037be"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#ac175dee47b4d5697c01f5290d02037be">TEST</a> (CombinedDataStorage, removeUserContact)</td></tr>
+<tr class="memdesc:ac175dee47b4d5697c01f5290d02037be"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит удаление контакта пользователя  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#ac175dee47b4d5697c01f5290d02037be">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac175dee47b4d5697c01f5290d02037be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad24a345e1e005288bbb811beef1c30a0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#ad24a345e1e005288bbb811beef1c30a0">TEST</a> (CombinedDataStorage, clearUserContacts)</td></tr>
+<tr class="memdesc:ad24a345e1e005288bbb811beef1c30a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит удаление связи пользователь-контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ)  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#ad24a345e1e005288bbb811beef1c30a0">Подробнее...</a><br /></td></tr>
+<tr class="separator:ad24a345e1e005288bbb811beef1c30a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e58e177d68dfaddac4102e7c77111f4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a0e58e177d68dfaddac4102e7c77111f4">TEST</a> (CombinedDataStorage, getUserContactList)</td></tr>
+<tr class="memdesc:a0e58e177d68dfaddac4102e7c77111f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит получение списка контатков пользователя  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a0e58e177d68dfaddac4102e7c77111f4">Подробнее...</a><br /></td></tr>
+<tr class="separator:a0e58e177d68dfaddac4102e7c77111f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acdc930e40c6e28c1acf27e676a1389fc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#acdc930e40c6e28c1acf27e676a1389fc">TEST</a> (CombinedDataStorage, getUserGroups)</td></tr>
 <tr class="memdesc:acdc930e40c6e28c1acf27e676a1389fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит получение списка UUID'ов групп пользователя  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#acdc930e40c6e28c1acf27e676a1389fc">Подробнее...</a><br /></td></tr>
 <tr class="separator:acdc930e40c6e28c1acf27e676a1389fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -194,21 +210,9 @@ $(function() {
 <tr class="memitem:a2909748a7b55bf6a503b29c5eaaf65ee"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a2909748a7b55bf6a503b29c5eaaf65ee">TEST</a> (CombinedDataStorage, removeMessage)</td></tr>
 <tr class="memdesc:a2909748a7b55bf6a503b29c5eaaf65ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит удаление сообщения  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a2909748a7b55bf6a503b29c5eaaf65ee">Подробнее...</a><br /></td></tr>
 <tr class="separator:a2909748a7b55bf6a503b29c5eaaf65ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9ec386ff44b1e99f3f3ff322477a204"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#ae9ec386ff44b1e99f3f3ff322477a204">TEST</a> (CombinedDataStorage, setUserContacts)</td></tr>
-<tr class="memdesc:ae9ec386ff44b1e99f3f3ff322477a204"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит создание связи пользователь-контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ)  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#ae9ec386ff44b1e99f3f3ff322477a204">Подробнее...</a><br /></td></tr>
-<tr class="separator:ae9ec386ff44b1e99f3f3ff322477a204"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d3565f8d36ca2313f76e3febd3eb8ff"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a2d3565f8d36ca2313f76e3febd3eb8ff">TEST</a> (CombinedDataStorage, addUserContact)</td></tr>
-<tr class="memdesc:a2d3565f8d36ca2313f76e3febd3eb8ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит добавление контакта пользователю  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a2d3565f8d36ca2313f76e3febd3eb8ff">Подробнее...</a><br /></td></tr>
-<tr class="separator:a2d3565f8d36ca2313f76e3febd3eb8ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac175dee47b4d5697c01f5290d02037be"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#ac175dee47b4d5697c01f5290d02037be">TEST</a> (CombinedDataStorage, removeUserContact)</td></tr>
-<tr class="memdesc:ac175dee47b4d5697c01f5290d02037be"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит удаление контакта пользователя  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#ac175dee47b4d5697c01f5290d02037be">Подробнее...</a><br /></td></tr>
-<tr class="separator:ac175dee47b4d5697c01f5290d02037be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e0fd6dfc629bcb5d2dea1a3e6a443ee"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a5e0fd6dfc629bcb5d2dea1a3e6a443ee">TEST</a> (CombinedDataStorage, removeUserContacts)</td></tr>
-<tr class="memdesc:a5e0fd6dfc629bcb5d2dea1a3e6a443ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит удаление связи пользователь-контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ)  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a5e0fd6dfc629bcb5d2dea1a3e6a443ee">Подробнее...</a><br /></td></tr>
-<tr class="separator:a5e0fd6dfc629bcb5d2dea1a3e6a443ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e58e177d68dfaddac4102e7c77111f4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a0e58e177d68dfaddac4102e7c77111f4">TEST</a> (CombinedDataStorage, getUserContactList)</td></tr>
-<tr class="memdesc:a0e58e177d68dfaddac4102e7c77111f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит получение списка контатков пользователя  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a0e58e177d68dfaddac4102e7c77111f4">Подробнее...</a><br /></td></tr>
-<tr class="separator:a0e58e177d68dfaddac4102e7c77111f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4df1ba87553bf6119190a1f748413e2c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a4df1ba87553bf6119190a1f748413e2c">TEST</a> (CombinedDataStorage, CacheTest)</td></tr>
+<tr class="memdesc:a4df1ba87553bf6119190a1f748413e2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит кеширование объектов  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a4df1ba87553bf6119190a1f748413e2c">Подробнее...</a><br /></td></tr>
+<tr class="separator:a4df1ba87553bf6119190a1f748413e2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
 <tr class="memdesc:a0ddf1224851353fc92bfbff6f499fa97"><td class="mdescLeft">&#160;</td><td class="mdescRight">main - Входная точка тестировани функционала HMCombinedDataStorage  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">Подробнее...</a><br /></td></tr>
 <tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -216,7 +220,17 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Переменные</h2></td></tr>
 <tr class="memitem:ac191795d64548fb36e4249ad030c3f66"><td class="memItemLeft" align="right" valign="top">const std::filesystem::path&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#ac191795d64548fb36e4249ad030c3f66">C_JSON_PATH</a> = std::filesystem::current_path() / &quot;DataStorage.json&quot;</td></tr>
+<tr class="memdesc:ac191795d64548fb36e4249ad030c3f66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Путь к физическому хранилищу данных (JSON)  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#ac191795d64548fb36e4249ad030c3f66">Подробнее...</a><br /></td></tr>
 <tr class="separator:ac191795d64548fb36e4249ad030c3f66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fecb6b2220cc4ace15cbc1a0192854b"><td class="memItemLeft" align="right" valign="top">const std::chrono::milliseconds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a1fecb6b2220cc4ace15cbc1a0192854b">C_CACHE_LIFE_TIME_FAST</a> = std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(std::chrono::milliseconds(100))</td></tr>
+<tr class="memdesc:a1fecb6b2220cc4ace15cbc1a0192854b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сокращённое время существования объекта в кеше  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a1fecb6b2220cc4ace15cbc1a0192854b">Подробнее...</a><br /></td></tr>
+<tr class="separator:a1fecb6b2220cc4ace15cbc1a0192854b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7290c089c41104fb5c98b697f2760784"><td class="memItemLeft" align="right" valign="top">const std::chrono::milliseconds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a7290c089c41104fb5c98b697f2760784">C_CACHE_SLEEP_FAST</a> = std::chrono::milliseconds(50)</td></tr>
+<tr class="memdesc:a7290c089c41104fb5c98b697f2760784"><td class="mdescLeft">&#160;</td><td class="mdescRight">Сокращённое время ожидания потока контроля кеша  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a7290c089c41104fb5c98b697f2760784">Подробнее...</a><br /></td></tr>
+<tr class="separator:a7290c089c41104fb5c98b697f2760784"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabab7f1f24df46f4134b668431ccd1f5"><td class="memItemLeft" align="right" valign="top">const std::chrono::milliseconds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#aabab7f1f24df46f4134b668431ccd1f5">C_CACHE_LIFE_END_WAIT</a> = <a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a1fecb6b2220cc4ace15cbc1a0192854b">C_CACHE_LIFE_TIME_FAST</a> + <a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a7290c089c41104fb5c98b697f2760784">C_CACHE_SLEEP_FAST</a> * 2</td></tr>
+<tr class="memdesc:aabab7f1f24df46f4134b668431ccd1f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Время, гарантирующее уничтожение объекта в кеше  <a href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#aabab7f1f24df46f4134b668431ccd1f5">Подробнее...</a><br /></td></tr>
+<tr class="separator:aabab7f1f24df46f4134b668431ccd1f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Функции</h2>
 <a id="a0ddf1224851353fc92bfbff6f499fa97"></a>
@@ -257,8 +271,8 @@ $(function() {
 
 </div>
 </div>
-<a id="a0b4f6771133f750fee6eef138cf68e98"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b4f6771133f750fee6eef138cf68e98">&#9670;&nbsp;</a></span>makeStorage()</h2>
+<a id="a324574ea38cd8b2ee41ac60f545b8115"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a324574ea38cd8b2ee41ac60f545b8115">&#9670;&nbsp;</a></span>makeStorage()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -266,19 +280,37 @@ $(function() {
         <tr>
           <td class="memname">std::unique_ptr&lt;<a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html">HMDataStorage</a>&gt; makeStorage </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const std::chrono::milliseconds&#160;</td>
+          <td class="paramname"><em>inCacheLifeTime</em> = <code>std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(std::chrono::minutes(15))</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const std::chrono::milliseconds&#160;</td>
+          <td class="paramname"><em>inSleep</em> = <code>std::chrono::milliseconds(1000)</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>makeStorage - Метод создаст экземпляр хранилища </p>
+<dl class="params"><dt>Аргументы</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">inCacheLifeTime</td><td>- Время жизни объектов кеша (в милисекундах) </td></tr>
+    <tr><td class="paramname">inSleep</td><td>- Время ожидания потока контроля кеша в (в милисекундах) </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Возвращает</dt><dd>Вернёт экземпляр хранилища </dd></dl>
 
 </div>
 </div>
 <a id="aee26dc304588c127494cd23406260127"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aee26dc304588c127494cd23406260127">&#9670;&nbsp;</a></span>TEST() <span class="overload">[1/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aee26dc304588c127494cd23406260127">&#9670;&nbsp;</a></span>TEST() <span class="overload">[1/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -304,11 +336,22 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит добавление группы </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aee26dc304588c127494cd23406260127_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aee26dc304588c127494cd23406260127_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aee26dc304588c127494cd23406260127_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aee26dc304588c127494cd23406260127_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит добавление группы" alt="" coords="5,31,60,57"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a3d75ea1e1fad5082d6b57e18012dc925" title="HardDataStorage_AddGroupTest &#45; Тест физического хранилища, проверяющий добавление группы" alt="" coords="108,5,339,32"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="169,56,277,83"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="387,5,585,32"/>
+</map>
+</div>
 
 </div>
 </div>
 <a id="afb829ab55608774bb149fa2aac936288"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb829ab55608774bb149fa2aac936288">&#9670;&nbsp;</a></span>TEST() <span class="overload">[2/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#afb829ab55608774bb149fa2aac936288">&#9670;&nbsp;</a></span>TEST() <span class="overload">[2/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -334,11 +377,23 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит добавление пользователя в группу </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_afb829ab55608774bb149fa2aac936288_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_afb829ab55608774bb149fa2aac936288_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_afb829ab55608774bb149fa2aac936288_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_afb829ab55608774bb149fa2aac936288_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит добавление пользователя в группу" alt="" coords="5,60,60,87"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a8bf1317bb308d78c04fa09f6ff2e1747" title="HardDataStorage_AddGroupUserTest &#45; Тест физического хранилища, проверяющий добавление участника в гру..." alt="" coords="108,23,313,65"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="157,89,265,116"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="361,5,560,32"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="365,56,556,83"/>
+</map>
+</div>
 
 </div>
 </div>
 <a id="aeaa4420ca91f86119f9d1af331f97102"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeaa4420ca91f86119f9d1af331f97102">&#9670;&nbsp;</a></span>TEST() <span class="overload">[3/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaa4420ca91f86119f9d1af331f97102">&#9670;&nbsp;</a></span>TEST() <span class="overload">[3/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -364,11 +419,23 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит добовление сообщения </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aeaa4420ca91f86119f9d1af331f97102_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aeaa4420ca91f86119f9d1af331f97102_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aeaa4420ca91f86119f9d1af331f97102_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aeaa4420ca91f86119f9d1af331f97102_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит добовление сообщения" alt="" coords="5,56,60,83"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a9dbb08d92a746fc0e122c89a7490ac28" title="HardDataStorage_AddMessageTest &#45; Тест физического хранилища, проверяющий добавление сообщения" alt="" coords="108,31,359,57"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="179,81,287,108"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="437,5,635,32"/>
+<area shape="rect" href="namespacetestscommon.html#a8ab7b7550fa3839ed15e043e1d760d50" title="make_groupmessage &#45; Метод сформирует сообщение для тестирования" alt="" coords="407,56,665,83"/>
+</map>
+</div>
 
 </div>
 </div>
-<a id="ab25bbf965a1a24ad4000528352c130d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab25bbf965a1a24ad4000528352c130d2">&#9670;&nbsp;</a></span>TEST() <span class="overload">[4/26]</span></h2>
+<a id="ad27803efb742e2a7da890fddc224e6c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad27803efb742e2a7da890fddc224e6c2">&#9670;&nbsp;</a></span>TEST() <span class="overload">[4/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -382,7 +449,7 @@ $(function() {
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">AddUser&#160;</td>
+          <td class="paramtype">addUser&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>
@@ -394,11 +461,22 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит добавление пользователя </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ad27803efb742e2a7da890fddc224e6c2_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ad27803efb742e2a7da890fddc224e6c2_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ad27803efb742e2a7da890fddc224e6c2_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ad27803efb742e2a7da890fddc224e6c2_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит добавление пользователя" alt="" coords="5,31,60,57"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#aac8b0a0e4c5017fac55607fedc9b7928" title="HardDataStorage_AddUserTest &#45; Тест физического хранилища, проверяющий добавление пользователя" alt="" coords="108,5,331,32"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="165,56,273,83"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="379,5,569,32"/>
+</map>
+</div>
 
 </div>
 </div>
 <a id="a2d3565f8d36ca2313f76e3febd3eb8ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d3565f8d36ca2313f76e3febd3eb8ff">&#9670;&nbsp;</a></span>TEST() <span class="overload">[5/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d3565f8d36ca2313f76e3febd3eb8ff">&#9670;&nbsp;</a></span>TEST() <span class="overload">[5/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -424,11 +502,63 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит добавление контакта пользователю </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2d3565f8d36ca2313f76e3febd3eb8ff_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2d3565f8d36ca2313f76e3febd3eb8ff_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2d3565f8d36ca2313f76e3febd3eb8ff_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2d3565f8d36ca2313f76e3febd3eb8ff_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит добавление контакта пользователю" alt="" coords="5,31,60,57"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a29f0a20d6bf7d70e308ec7c2070d88fd" title="HardDataStorage_AddUserContactTest &#45; Тест физического хранилища, проверяющий добавление контакта поль..." alt="" coords="108,5,380,32"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="190,56,298,83"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="428,5,619,32"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a4df1ba87553bf6119190a1f748413e2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4df1ba87553bf6119190a1f748413e2c">&#9670;&nbsp;</a></span>TEST() <span class="overload">[6/27]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">CombinedDataStorage&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">CacheTest&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>TEST - Тест проверит кеширование объектов </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a4df1ba87553bf6119190a1f748413e2c_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a4df1ba87553bf6119190a1f748413e2c_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a4df1ba87553bf6119190a1f748413e2c_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a4df1ba87553bf6119190a1f748413e2c_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит кеширование объектов" alt="" coords="5,56,60,83"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="108,5,307,32"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="112,56,303,83"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="153,107,261,133"/>
+</map>
+</div>
 
 </div>
 </div>
 <a id="ae4d9e7413cab4d551531d011a33ba889"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae4d9e7413cab4d551531d011a33ba889">&#9670;&nbsp;</a></span>TEST() <span class="overload">[6/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4d9e7413cab4d551531d011a33ba889">&#9670;&nbsp;</a></span>TEST() <span class="overload">[7/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -454,11 +584,64 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит очистку списка участников группы </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ae4d9e7413cab4d551531d011a33ba889_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ae4d9e7413cab4d551531d011a33ba889_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ae4d9e7413cab4d551531d011a33ba889_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ae4d9e7413cab4d551531d011a33ba889_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит очистку списка участников группы" alt="" coords="5,60,60,87"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a49f8fa55d6118dc1b9a97a539e538dd3" title="HardDataStorage_ClearGroupUsersTest &#45; Тест физического хранилища, проверяющий очистку участников груп..." alt="" coords="108,23,323,65"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="161,89,269,116"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="371,5,569,32"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="375,56,565,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ad24a345e1e005288bbb811beef1c30a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad24a345e1e005288bbb811beef1c30a0">&#9670;&nbsp;</a></span>TEST() <span class="overload">[8/27]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">CombinedDataStorage&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">clearUserContacts&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>TEST - Тест проверит удаление связи пользователь-контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ) </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ad24a345e1e005288bbb811beef1c30a0_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ad24a345e1e005288bbb811beef1c30a0_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ad24a345e1e005288bbb811beef1c30a0_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ad24a345e1e005288bbb811beef1c30a0_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит удаление связи пользователь&#45;контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ)" alt="" coords="5,42,60,69"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#afdf3d3212cdec80732f6315e57d60b93" title="HardDataStorage_ClearUserContactsTest &#45; Тест физического хранилища, проверяющий очистку контактов пол..." alt="" coords="108,5,313,47"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="157,71,265,98"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="361,13,552,39"/>
+</map>
+</div>
 
 </div>
 </div>
 <a id="af208b4d3df76de201871041fff5486fe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af208b4d3df76de201871041fff5486fe">&#9670;&nbsp;</a></span>TEST() <span class="overload">[7/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af208b4d3df76de201871041fff5486fe">&#9670;&nbsp;</a></span>TEST() <span class="overload">[9/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -484,11 +667,22 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит поиск группы по UUID. </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_af208b4d3df76de201871041fff5486fe_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_af208b4d3df76de201871041fff5486fe_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_af208b4d3df76de201871041fff5486fe_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_af208b4d3df76de201871041fff5486fe_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит поиск группы по UUID." alt="" coords="5,42,60,69"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a659aa8429707ba7030417dc35dea6598" title="HardDataStorage_FindGroupByUUIDTest &#45; Тест физического хранилища, проверяющий поиск группы" alt="" coords="108,5,315,47"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="157,71,265,98"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="363,13,561,39"/>
+</map>
+</div>
 
 </div>
 </div>
 <a id="a2f6896443cc64b95fdff4124e9516455"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f6896443cc64b95fdff4124e9516455">&#9670;&nbsp;</a></span>TEST() <span class="overload">[8/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f6896443cc64b95fdff4124e9516455">&#9670;&nbsp;</a></span>TEST() <span class="overload">[10/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -514,11 +708,23 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит поиск сообщения по UUID. </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2f6896443cc64b95fdff4124e9516455_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2f6896443cc64b95fdff4124e9516455_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2f6896443cc64b95fdff4124e9516455_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2f6896443cc64b95fdff4124e9516455_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит поиск сообщения по UUID." alt="" coords="5,56,60,83"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a639ae4e160acae67a63bc8b61c1ae925" title="HardDataStorage_FindMessageTest &#45; Тест физического хранилища, проверяющий поиск сообщения" alt="" coords="108,31,360,57"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="180,81,288,108"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="438,5,637,32"/>
+<area shape="rect" href="namespacetestscommon.html#a8ab7b7550fa3839ed15e043e1d760d50" title="make_groupmessage &#45; Метод сформирует сообщение для тестирования" alt="" coords="408,56,667,83"/>
+</map>
+</div>
 
 </div>
 </div>
 <a id="a94972b0ed50427e477c74ece97523f9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94972b0ed50427e477c74ece97523f9e">&#9670;&nbsp;</a></span>TEST() <span class="overload">[9/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a94972b0ed50427e477c74ece97523f9e">&#9670;&nbsp;</a></span>TEST() <span class="overload">[11/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -544,11 +750,23 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит поиск перечня сообщений по временному промежутку </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a94972b0ed50427e477c74ece97523f9e_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a94972b0ed50427e477c74ece97523f9e_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a94972b0ed50427e477c74ece97523f9e_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a94972b0ed50427e477c74ece97523f9e_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит поиск перечня сообщений по временному промежутку" alt="" coords="5,56,60,83"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a8a11bbaf542040109242a496435ba5cc" title="HardDataStorage_FindMessagesTest &#45; Тест физического хранилища, проверяющий поиск сообщений" alt="" coords="108,31,367,57"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="183,81,291,108"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="445,5,643,32"/>
+<area shape="rect" href="namespacetestscommon.html#a8ab7b7550fa3839ed15e043e1d760d50" title="make_groupmessage &#45; Метод сформирует сообщение для тестирования" alt="" coords="415,56,673,83"/>
+</map>
+</div>
 
 </div>
 </div>
 <a id="aafe9063697ba8b93653334623b8a76cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aafe9063697ba8b93653334623b8a76cb">&#9670;&nbsp;</a></span>TEST() <span class="overload">[10/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aafe9063697ba8b93653334623b8a76cb">&#9670;&nbsp;</a></span>TEST() <span class="overload">[12/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -574,11 +792,22 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит поиск пользователья по данным аутентификации </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aafe9063697ba8b93653334623b8a76cb_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aafe9063697ba8b93653334623b8a76cb_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aafe9063697ba8b93653334623b8a76cb_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aafe9063697ba8b93653334623b8a76cb_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит поиск пользователья по данным аутентификации" alt="" coords="5,42,60,69"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a84b40af307faf078370a6fbd7723d17c" title="HardDataStorage_FindUserByAuthenticationTest &#45; Тест физического хранилища, проверяющий поиск пользова..." alt="" coords="108,5,307,47"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="153,71,261,98"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="355,13,545,39"/>
+</map>
+</div>
 
 </div>
 </div>
 <a id="aac4410e4983129004df6a5bba9626c34"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aac4410e4983129004df6a5bba9626c34">&#9670;&nbsp;</a></span>TEST() <span class="overload">[11/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aac4410e4983129004df6a5bba9626c34">&#9670;&nbsp;</a></span>TEST() <span class="overload">[13/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -604,11 +833,22 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит поиск пользователья по UUID. </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aac4410e4983129004df6a5bba9626c34_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aac4410e4983129004df6a5bba9626c34_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aac4410e4983129004df6a5bba9626c34_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_aac4410e4983129004df6a5bba9626c34_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит поиск пользователья по UUID." alt="" coords="5,42,60,69"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a953e0090e298daae01929ad85a82ce59" title="HardDataStorage_FindUserByUUIDTest &#45; Тест физического хранилища, проверяющий поиск пользователя по UU..." alt="" coords="108,5,307,47"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="153,71,261,98"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="355,13,545,39"/>
+</map>
+</div>
 
 </div>
 </div>
 <a id="a00ae62e8e678a256ba398a96eaa6c590"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00ae62e8e678a256ba398a96eaa6c590">&#9670;&nbsp;</a></span>TEST() <span class="overload">[12/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a00ae62e8e678a256ba398a96eaa6c590">&#9670;&nbsp;</a></span>TEST() <span class="overload">[14/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -634,11 +874,23 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит получение списка UUID'ов участников группы </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a00ae62e8e678a256ba398a96eaa6c590_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a00ae62e8e678a256ba398a96eaa6c590_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a00ae62e8e678a256ba398a96eaa6c590_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a00ae62e8e678a256ba398a96eaa6c590_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит получение списка UUID&#39;ов участников группы" alt="" coords="5,60,60,87"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#aaefd6cfeef56b662d054e27a925a3e4f" title="HardDataStorage_GetGroupUserListTest &#45; Тест физического хранилища, проверяющий запрос списка участник..." alt="" coords="108,23,311,65"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="155,89,263,116"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="359,5,557,32"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="363,56,553,83"/>
+</map>
+</div>
 
 </div>
 </div>
 <a id="a0e58e177d68dfaddac4102e7c77111f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0e58e177d68dfaddac4102e7c77111f4">&#9670;&nbsp;</a></span>TEST() <span class="overload">[13/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e58e177d68dfaddac4102e7c77111f4">&#9670;&nbsp;</a></span>TEST() <span class="overload">[15/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -664,11 +916,22 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит получение списка контатков пользователя </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0e58e177d68dfaddac4102e7c77111f4_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0e58e177d68dfaddac4102e7c77111f4_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0e58e177d68dfaddac4102e7c77111f4_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0e58e177d68dfaddac4102e7c77111f4_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит получение списка контатков пользователя" alt="" coords="5,42,60,69"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a807635177ec8abda17752ca2310ab385" title="HardDataStorage_GetUserContactListTest&#45; Тест физического хранилища, проверяющий запрос списка контакт..." alt="" coords="108,5,352,47"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="176,71,284,98"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="400,13,591,39"/>
+</map>
+</div>
 
 </div>
 </div>
 <a id="acdc930e40c6e28c1acf27e676a1389fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acdc930e40c6e28c1acf27e676a1389fc">&#9670;&nbsp;</a></span>TEST() <span class="overload">[14/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#acdc930e40c6e28c1acf27e676a1389fc">&#9670;&nbsp;</a></span>TEST() <span class="overload">[16/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -694,11 +957,23 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит получение списка UUID'ов групп пользователя </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_acdc930e40c6e28c1acf27e676a1389fc_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_acdc930e40c6e28c1acf27e676a1389fc_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_acdc930e40c6e28c1acf27e676a1389fc_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_acdc930e40c6e28c1acf27e676a1389fc_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит получение списка UUID&#39;ов групп пользователя" alt="" coords="5,56,60,83"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#afeb896a530cb34bd7bb71b51c0b4097a" title="HardDataStorage_GetUserGroupsTest &#45; Тест физического хранилища, проверяющий запрос списка групп польз..." alt="" coords="108,31,375,57"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="187,81,295,108"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="423,5,621,32"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="427,56,617,83"/>
+</map>
+</div>
 
 </div>
 </div>
-<a id="adcff88426fa7f8ee7c9ff35944c63c11"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adcff88426fa7f8ee7c9ff35944c63c11">&#9670;&nbsp;</a></span>TEST() <span class="overload">[15/26]</span></h2>
+<a id="af83213f16629462a0c78353ab93b1141"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af83213f16629462a0c78353ab93b1141">&#9670;&nbsp;</a></span>TEST() <span class="overload">[17/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -712,7 +987,7 @@ $(function() {
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Open&#160;</td>
+          <td class="paramtype">open&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>
@@ -727,17 +1002,17 @@ $(function() {
 <div class="dynheader">
 Граф вызовов:</div>
 <div class="dyncontent">
-<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_adcff88426fa7f8ee7c9ff35944c63c11_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_adcff88426fa7f8ee7c9ff35944c63c11_cgraph" alt=""/></div>
-<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_adcff88426fa7f8ee7c9ff35944c63c11_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_adcff88426fa7f8ee7c9ff35944c63c11_cgraph">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_af83213f16629462a0c78353ab93b1141_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_af83213f16629462a0c78353ab93b1141_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_af83213f16629462a0c78353ab93b1141_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_af83213f16629462a0c78353ab93b1141_cgraph">
 <area shape="rect" title="TEST &#45; Тест проверит попытку открытия хранилища" alt="" coords="5,5,60,32"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="108,5,216,32"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="108,5,216,32"/>
 </map>
 </div>
 
 </div>
 </div>
 <a id="a887727667107c37aaaedd2a823b97419"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a887727667107c37aaaedd2a823b97419">&#9670;&nbsp;</a></span>TEST() <span class="overload">[16/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a887727667107c37aaaedd2a823b97419">&#9670;&nbsp;</a></span>TEST() <span class="overload">[18/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -763,11 +1038,22 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит удаление группы </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a887727667107c37aaaedd2a823b97419_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a887727667107c37aaaedd2a823b97419_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a887727667107c37aaaedd2a823b97419_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a887727667107c37aaaedd2a823b97419_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит удаление группы" alt="" coords="5,31,60,57"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a259ff505d9a1cc76f569a9f08ddd3b61" title="HardDataStorage_RemoveGroupTest &#45; Тест физического хранилища, проверяющий удаление группы" alt="" coords="108,5,368,32"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="184,56,292,83"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="416,5,615,32"/>
+</map>
+</div>
 
 </div>
 </div>
 <a id="a24078291842f16737d0c2fc4107acd73"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a24078291842f16737d0c2fc4107acd73">&#9670;&nbsp;</a></span>TEST() <span class="overload">[17/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a24078291842f16737d0c2fc4107acd73">&#9670;&nbsp;</a></span>TEST() <span class="overload">[19/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -793,11 +1079,23 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит удаление пользователя из группы </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a24078291842f16737d0c2fc4107acd73_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a24078291842f16737d0c2fc4107acd73_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a24078291842f16737d0c2fc4107acd73_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a24078291842f16737d0c2fc4107acd73_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит удаление пользователя из группы" alt="" coords="5,60,60,87"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#ac4229f8fd95b8f345b0f1f478e9d42bf" title="HardDataStorage_RemoveGroupUserTest &#45; Тест физического хранилища, проверяющий удаление участника из г..." alt="" coords="108,23,343,65"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="171,89,279,116"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="391,5,589,32"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="395,56,585,83"/>
+</map>
+</div>
 
 </div>
 </div>
 <a id="a2909748a7b55bf6a503b29c5eaaf65ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2909748a7b55bf6a503b29c5eaaf65ee">&#9670;&nbsp;</a></span>TEST() <span class="overload">[18/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a2909748a7b55bf6a503b29c5eaaf65ee">&#9670;&nbsp;</a></span>TEST() <span class="overload">[20/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -823,11 +1121,23 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит удаление сообщения </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2909748a7b55bf6a503b29c5eaaf65ee_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2909748a7b55bf6a503b29c5eaaf65ee_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2909748a7b55bf6a503b29c5eaaf65ee_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a2909748a7b55bf6a503b29c5eaaf65ee_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит удаление сообщения" alt="" coords="5,56,60,83"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a48a1da988762944a781561a6aa8e6116" title="HardDataStorage_RemoveMessageTest &#45; Тест физического хранилища, проверяющий удаление сообщения" alt="" coords="108,31,387,57"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="193,81,301,108"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="465,5,663,32"/>
+<area shape="rect" href="namespacetestscommon.html#a8ab7b7550fa3839ed15e043e1d760d50" title="make_groupmessage &#45; Метод сформирует сообщение для тестирования" alt="" coords="435,56,693,83"/>
+</map>
+</div>
 
 </div>
 </div>
 <a id="a0a3575d82efbbbc4c305a8132c8a26c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a3575d82efbbbc4c305a8132c8a26c2">&#9670;&nbsp;</a></span>TEST() <span class="overload">[19/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a3575d82efbbbc4c305a8132c8a26c2">&#9670;&nbsp;</a></span>TEST() <span class="overload">[21/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -852,12 +1162,23 @@ $(function() {
       </table>
 </div><div class="memdoc">
 
-<p>TEST - Тест проверит удаление пользователя из кеша </p>
+<p>TEST - Тест проверит удаление пользователя из хранилище </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0a3575d82efbbbc4c305a8132c8a26c2_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0a3575d82efbbbc4c305a8132c8a26c2_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0a3575d82efbbbc4c305a8132c8a26c2_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0a3575d82efbbbc4c305a8132c8a26c2_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит удаление пользователя из хранилище" alt="" coords="5,31,60,57"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a391a4c5b38a4ad9c7f8faa8fe823b649" title="HardDataStorage_RemoveUserTest &#45; Тест физического хранилища, проверяющий удаление пользователя" alt="" coords="108,5,359,32"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="179,56,287,83"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="407,5,597,32"/>
+</map>
+</div>
 
 </div>
 </div>
 <a id="ac175dee47b4d5697c01f5290d02037be"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac175dee47b4d5697c01f5290d02037be">&#9670;&nbsp;</a></span>TEST() <span class="overload">[20/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac175dee47b4d5697c01f5290d02037be">&#9670;&nbsp;</a></span>TEST() <span class="overload">[22/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -883,41 +1204,22 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит удаление контакта пользователя </p>
-
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ac175dee47b4d5697c01f5290d02037be_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ac175dee47b4d5697c01f5290d02037be_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ac175dee47b4d5697c01f5290d02037be_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ac175dee47b4d5697c01f5290d02037be_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит удаление контакта пользователя" alt="" coords="5,42,60,69"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#aedb5f7c791d3dd25152657fca28f6ed7" title="HardDataStorage_RemoveUserContactTest &#45; Тест физического хранилища, проверяющий удаление контакта пол..." alt="" coords="108,5,333,47"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="167,71,275,98"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="381,13,572,39"/>
+</map>
 </div>
-</div>
-<a id="a5e0fd6dfc629bcb5d2dea1a3e6a443ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e0fd6dfc629bcb5d2dea1a3e6a443ee">&#9670;&nbsp;</a></span>TEST() <span class="overload">[21/26]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">TEST </td>
-          <td>(</td>
-          <td class="paramtype">CombinedDataStorage&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">removeUserContacts&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>TEST - Тест проверит удаление связи пользователь-контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ) </p>
 
 </div>
 </div>
 <a id="a0120e39c6ba1b684dc22ed603b95e973"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0120e39c6ba1b684dc22ed603b95e973">&#9670;&nbsp;</a></span>TEST() <span class="overload">[22/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a0120e39c6ba1b684dc22ed603b95e973">&#9670;&nbsp;</a></span>TEST() <span class="overload">[23/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -943,11 +1245,23 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит присвоение списка участников группе </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0120e39c6ba1b684dc22ed603b95e973_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0120e39c6ba1b684dc22ed603b95e973_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0120e39c6ba1b684dc22ed603b95e973_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a0120e39c6ba1b684dc22ed603b95e973_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит присвоение списка участников группе" alt="" coords="5,60,60,87"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a61a9cf8ddc1525d7b8ba05c775c2fc8f" title="HardDataStorage_SetGroupUsersTest &#45; Тест физического хранилища, проверяющий присвоение участниковы гр..." alt="" coords="108,23,309,65"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="155,89,263,116"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="357,5,556,32"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="361,56,552,83"/>
+</map>
+</div>
 
 </div>
 </div>
 <a id="ae9ec386ff44b1e99f3f3ff322477a204"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae9ec386ff44b1e99f3f3ff322477a204">&#9670;&nbsp;</a></span>TEST() <span class="overload">[23/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9ec386ff44b1e99f3f3ff322477a204">&#9670;&nbsp;</a></span>TEST() <span class="overload">[24/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -973,11 +1287,22 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит создание связи пользователь-контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ) </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ae9ec386ff44b1e99f3f3ff322477a204_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ae9ec386ff44b1e99f3f3ff322477a204_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ae9ec386ff44b1e99f3f3ff322477a204_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ae9ec386ff44b1e99f3f3ff322477a204_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит создание связи пользователь&#45;контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ)" alt="" coords="5,31,60,57"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a8058a0f646d289c628886b660b2b3f10" title="HardDataStorage_SetUserContactsTest &#45; Тест физического хранилища, проверяющий присвоение контактов по..." alt="" coords="108,5,383,32"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="191,56,299,83"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="431,5,621,32"/>
+</map>
+</div>
 
 </div>
 </div>
 <a id="a8f213a96cb9c166bdbe896c8df400f39"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f213a96cb9c166bdbe896c8df400f39">&#9670;&nbsp;</a></span>TEST() <span class="overload">[24/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f213a96cb9c166bdbe896c8df400f39">&#9670;&nbsp;</a></span>TEST() <span class="overload">[25/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1003,11 +1328,22 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит обновление группы </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a8f213a96cb9c166bdbe896c8df400f39_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a8f213a96cb9c166bdbe896c8df400f39_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a8f213a96cb9c166bdbe896c8df400f39_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_a8f213a96cb9c166bdbe896c8df400f39_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит обновление группы" alt="" coords="5,31,60,57"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#aa0178c0861cd423e083b40e4249b1ef6" title="HardDataStorage_UpdateGroupTest &#45; Тест физического хранилища, проверяющий обновление группы" alt="" coords="108,5,361,32"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="181,56,289,83"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="409,5,608,32"/>
+</map>
+</div>
 
 </div>
 </div>
 <a id="ab50adf53e82fd2714b0521779532d8d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab50adf53e82fd2714b0521779532d8d8">&#9670;&nbsp;</a></span>TEST() <span class="overload">[25/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab50adf53e82fd2714b0521779532d8d8">&#9670;&nbsp;</a></span>TEST() <span class="overload">[26/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1033,11 +1369,23 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит обновление сообщения </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ab50adf53e82fd2714b0521779532d8d8_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ab50adf53e82fd2714b0521779532d8d8_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ab50adf53e82fd2714b0521779532d8d8_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ab50adf53e82fd2714b0521779532d8d8_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит обновление сообщения" alt="" coords="5,56,60,83"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#aad35b1a77e23a6dfec598546b7bf3a92" title="HardDataStorage_UpdateMessageTest &#45; Тест физического хранилища, проверяющий обновление сообщения" alt="" coords="108,31,380,57"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="190,81,298,108"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="458,5,657,32"/>
+<area shape="rect" href="namespacetestscommon.html#a8ab7b7550fa3839ed15e043e1d760d50" title="make_groupmessage &#45; Метод сформирует сообщение для тестирования" alt="" coords="428,56,687,83"/>
+</map>
+</div>
 
 </div>
 </div>
 <a id="ac3ae972982f3a562733af227f066fe2b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3ae972982f3a562733af227f066fe2b">&#9670;&nbsp;</a></span>TEST() <span class="overload">[26/26]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3ae972982f3a562733af227f066fe2b">&#9670;&nbsp;</a></span>TEST() <span class="overload">[27/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1063,10 +1411,69 @@ $(function() {
 </div><div class="memdoc">
 
 <p>TEST - Тест проверит обновление пользователя </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ac3ae972982f3a562733af227f066fe2b_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ac3ae972982f3a562733af227f066fe2b_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ac3ae972982f3a562733af227f066fe2b_cgraph" id="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp_ac3ae972982f3a562733af227f066fe2b_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит обновление пользователя" alt="" coords="5,31,60,57"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a1c667ee8e8485b0b4115ac08bf84c55d" title="HardDataStorage_UpdateUserTest &#45; Тест физического хранилища, проверяющий обновление пользователя" alt="" coords="108,5,352,32"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="176,56,284,83"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="400,5,591,32"/>
+</map>
+</div>
 
 </div>
 </div>
 <h2 class="groupheader">Переменные</h2>
+<a id="aabab7f1f24df46f4134b668431ccd1f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabab7f1f24df46f4134b668431ccd1f5">&#9670;&nbsp;</a></span>C_CACHE_LIFE_END_WAIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::chrono::milliseconds C_CACHE_LIFE_END_WAIT = <a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a1fecb6b2220cc4ace15cbc1a0192854b">C_CACHE_LIFE_TIME_FAST</a> + <a class="el" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#a7290c089c41104fb5c98b697f2760784">C_CACHE_SLEEP_FAST</a> * 2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Время, гарантирующее уничтожение объекта в кеше </p>
+
+</div>
+</div>
+<a id="a1fecb6b2220cc4ace15cbc1a0192854b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fecb6b2220cc4ace15cbc1a0192854b">&#9670;&nbsp;</a></span>C_CACHE_LIFE_TIME_FAST</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::chrono::milliseconds C_CACHE_LIFE_TIME_FAST = std::chrono::duration_cast&lt;std::chrono::milliseconds&gt;(std::chrono::milliseconds(100))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сокращённое время существования объекта в кеше </p>
+
+</div>
+</div>
+<a id="a7290c089c41104fb5c98b697f2760784"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7290c089c41104fb5c98b697f2760784">&#9670;&nbsp;</a></span>C_CACHE_SLEEP_FAST</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const std::chrono::milliseconds C_CACHE_SLEEP_FAST = std::chrono::milliseconds(50)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Сокращённое время ожидания потока контроля кеша </p>
+
+</div>
+</div>
 <a id="ac191795d64548fb36e4249ad030c3f66"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac191795d64548fb36e4249ad030c3f66">&#9670;&nbsp;</a></span>C_JSON_PATH</h2>
 
@@ -1078,6 +1485,8 @@ $(function() {
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Путь к физическому хранилищу данных (JSON) </p>
 
 </div>
 </div>

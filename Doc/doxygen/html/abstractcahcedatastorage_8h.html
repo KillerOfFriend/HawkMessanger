@@ -76,35 +76,39 @@ $(function() {
 
 <p>Содержит описание абстрактного класса кеширующего хранилища данных  
 <a href="#details">Подробнее...</a></p>
-<div class="textblock"><code>#include &lt;thread&gt;</code><br />
+<div class="textblock"><code>#include &lt;mutex&gt;</code><br />
+<code>#include &lt;thread&gt;</code><br />
 <code>#include &lt;atomic&gt;</code><br />
+<code>#include &lt;condition_variable&gt;</code><br />
 <code>#include &quot;<a class="el" href="abstractdatastoragefunctional_8h_source.html">datastorage/interface/abstractdatastoragefunctional.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Граф включаемых заголовочных файлов для abstractcahcedatastorage.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="abstractcahcedatastorage_8h__incl.png" border="0" usemap="#Projects_2libraries_2HawkServerCore_2src_2datastorage_2interface_2abstractcahcedatastorage_8h" alt=""/></div>
 <map name="Projects_2libraries_2HawkServerCore_2src_2datastorage_2interface_2abstractcahcedatastorage_8h" id="Projects_2libraries_2HawkServerCore_2src_2datastorage_2interface_2abstractcahcedatastorage_8h">
-<area shape="rect" title="Содержит описание абстрактного класса кеширующего хранилища данных" alt="" coords="23,5,230,76"/>
+<area shape="rect" title="Содержит описание абстрактного класса кеширующего хранилища данных" alt="" coords="111,5,318,76"/>
 <area shape="rect" title=" " alt="" coords="5,131,69,158"/>
-<area shape="rect" title=" " alt="" coords="93,131,160,158"/>
-<area shape="rect" href="abstractdatastoragefunctional_8h.html" title=" " alt="" coords="184,124,419,165"/>
-<area shape="rect" title=" " alt="" coords="269,512,347,539"/>
-<area shape="rect" href="datastorageinterface_8h.html" title=" " alt="" coords="289,213,460,240"/>
-<area shape="rect" title=" " alt="" coords="267,288,309,315"/>
-<area shape="rect" title=" " alt="" coords="561,512,623,539"/>
-<area shape="rect" title=" " alt="" coords="734,512,842,539"/>
-<area shape="rect" href="HawkCommon_8h.html" title=" " alt="" coords="567,288,697,315"/>
-<area shape="rect" href="user_8h.html" title="Содержит описание пользователя системы" alt="" coords="648,512,709,539"/>
-<area shape="rect" href="group_8h.html" title="Содержит описание группы\чата" alt="" coords="669,437,739,464"/>
-<area shape="rect" href="userlist_8h.html" title="Содержит описание контактов пользователя системы" alt="" coords="460,437,543,464"/>
-<area shape="rect" href="groupmessage_8h.html" title="Содержит описание сообщения группы" alt="" coords="865,437,996,464"/>
-<area shape="rect" href="account_8h.html" title="Содержит описание аккаунта пользователя" alt="" coords="549,363,635,389"/>
-<area shape="rect" title=" " alt="" coords="563,587,626,613"/>
-<area shape="rect" title=" " alt="" coords="650,587,713,613"/>
-<area shape="rect" title=" " alt="" coords="882,587,953,613"/>
-<area shape="rect" title=" " alt="" coords="981,587,1077,613"/>
-<area shape="rect" title=" " alt="" coords="753,587,850,613"/>
-<area shape="rect" title=" " alt="" coords="371,512,485,539"/>
+<area shape="rect" title=" " alt="" coords="93,131,157,158"/>
+<area shape="rect" title=" " alt="" coords="181,131,248,158"/>
+<area shape="rect" title=" " alt="" coords="273,131,415,158"/>
+<area shape="rect" href="abstractdatastoragefunctional_8h.html" title=" " alt="" coords="440,124,675,165"/>
+<area shape="rect" title=" " alt="" coords="525,512,603,539"/>
+<area shape="rect" href="datastorageinterface_8h.html" title=" " alt="" coords="545,213,716,240"/>
+<area shape="rect" title=" " alt="" coords="523,288,565,315"/>
+<area shape="rect" title=" " alt="" coords="817,512,879,539"/>
+<area shape="rect" title=" " alt="" coords="990,512,1098,539"/>
+<area shape="rect" href="HawkCommon_8h.html" title=" " alt="" coords="823,288,953,315"/>
+<area shape="rect" href="user_8h.html" title="Содержит описание пользователя системы" alt="" coords="904,512,965,539"/>
+<area shape="rect" href="group_8h.html" title="Содержит описание группы\чата" alt="" coords="925,437,995,464"/>
+<area shape="rect" href="userlist_8h.html" title="Содержит описание контактов пользователя системы" alt="" coords="716,437,799,464"/>
+<area shape="rect" href="groupmessage_8h.html" title="Содержит описание сообщения группы" alt="" coords="1121,437,1252,464"/>
+<area shape="rect" href="account_8h.html" title="Содержит описание аккаунта пользователя" alt="" coords="805,363,891,389"/>
+<area shape="rect" title=" " alt="" coords="819,587,882,613"/>
+<area shape="rect" title=" " alt="" coords="906,587,969,613"/>
+<area shape="rect" title=" " alt="" coords="1138,587,1209,613"/>
+<area shape="rect" title=" " alt="" coords="1237,587,1333,613"/>
+<area shape="rect" title=" " alt="" coords="1009,587,1106,613"/>
+<area shape="rect" title=" " alt="" coords="627,512,741,539"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -112,21 +116,20 @@ $(function() {
 <div class="dyncontent">
 <div class="center"><img src="abstractcahcedatastorage_8h__dep__incl.png" border="0" usemap="#Projects_2libraries_2HawkServerCore_2src_2datastorage_2interface_2abstractcahcedatastorage_8hdep" alt=""/></div>
 <map name="Projects_2libraries_2HawkServerCore_2src_2datastorage_2interface_2abstractcahcedatastorage_8hdep" id="Projects_2libraries_2HawkServerCore_2src_2datastorage_2interface_2abstractcahcedatastorage_8hdep">
-<area shape="rect" title="Содержит описание абстрактного класса кеширующего хранилища данных" alt="" coords="631,5,837,76"/>
-<area shape="rect" href="cachedmemorydatastorage_8h.html" title="Содержит описание класса кеширующего хранилища данных" alt="" coords="297,124,584,195"/>
-<area shape="rect" href="combineddatastorage_8h.html" title="Содержит описание комбинированного хранилища данных (физическое\хешированное)" alt="" coords="609,124,859,195"/>
-<area shape="rect" href="abstractcahcedatastorage_8cpp.html" title=" " alt="" coords="884,124,1107,195"/>
+<area shape="rect" title="Содержит описание абстрактного класса кеширующего хранилища данных" alt="" coords="852,5,1059,76"/>
+<area shape="rect" href="cachedmemorydatastorage_8h.html" title="Содержит описание класса кеширующего хранилища данных" alt="" coords="519,124,805,195"/>
+<area shape="rect" href="combineddatastorage_8h.html" title="Содержит описание комбинированного хранилища данных (физическое\хешированное)" alt="" coords="830,124,1081,195"/>
+<area shape="rect" href="abstractcahcedatastorage_8cpp.html" title=" " alt="" coords="1105,124,1328,195"/>
 <area shape="rect" href="cachedmemorydatastorage_8cpp.html" title=" " alt="" coords="5,243,292,313"/>
-<area shape="rect" href="DataStorage_8h.html" title=" " alt="" coords="589,250,791,306"/>
+<area shape="rect" href="DataStorage_8h.html" title=" " alt="" coords="823,250,1024,306"/>
 <area shape="rect" href="abstractdatastoragefunctional_8cpp.html" title=" " alt="" coords="316,243,565,313"/>
-<area shape="rect" href="servercore_8h.html" title=" " alt="" coords="403,369,561,425"/>
-<area shape="rect" href="HawkServerCore_8h.html" title=" " alt="" coords="285,480,444,536"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html" title=" " alt="" coords="585,361,795,432"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html" title=" " alt="" coords="819,369,1057,425"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html" title=" " alt="" coords="1080,369,1279,425"/>
-<area shape="rect" href="servercore_8cpp.html" title=" " alt="" coords="468,480,627,536"/>
-<area shape="rect" href="modules_2HawkConsolServer_2src_2main_8cpp.html" title=" " alt="" coords="255,584,474,625"/>
-<area shape="rect" href="combineddatastorage_8cpp.html" title=" " alt="" coords="815,243,1066,313"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html" title=" " alt="" coords="589,243,799,313"/>
+<area shape="rect" href="servercore_8h.html" title=" " alt="" coords="844,361,1003,417"/>
+<area shape="rect" href="HawkServerCore_8h.html" title=" " alt="" coords="727,465,885,521"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html" title=" " alt="" coords="1027,361,1265,417"/>
+<area shape="rect" href="servercore_8cpp.html" title=" " alt="" coords="909,465,1068,521"/>
+<area shape="rect" href="modules_2HawkConsolServer_2src_2main_8cpp.html" title=" " alt="" coords="697,569,915,611"/>
+<area shape="rect" href="combineddatastorage_8cpp.html" title=" " alt="" coords="1049,243,1299,313"/>
 </map>
 </div>
 </div>

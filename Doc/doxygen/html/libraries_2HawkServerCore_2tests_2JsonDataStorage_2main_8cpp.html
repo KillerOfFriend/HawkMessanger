@@ -73,56 +73,48 @@ $(function() {
 <div class="title">Файл main.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;gtest/gtest.h&gt;</code><br />
-<code>#include &lt;thread&gt;</code><br />
+<div class="textblock"><code>#include &lt;memory&gt;</code><br />
 <code>#include &lt;filesystem&gt;</code><br />
-<code>#include &lt;<a class="el" href="systemerrorex_8h_source.html">systemerrorex.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="DataStorage_8h_source.html">datastorage/DataStorage.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="HawkCommonTestUtils_8hpp_source.html">HawkCommonTestUtils.hpp</a>&gt;</code><br />
+<code>#include &lt;gtest/gtest.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="HawkServerCoreHardDataStorageTest_8hpp_source.html">HawkServerCoreHardDataStorageTest.hpp</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="jsondatastorage_8h_source.html">datastorage/jsondatastorage/jsondatastorage.h</a>&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Граф включаемых заголовочных файлов для main.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp__incl.png" border="0" usemap="#Projects_2libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp" alt=""/></div>
 <map name="Projects_2libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp" id="Projects_2libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp">
-<area shape="rect" title=" " alt="" coords="584,5,783,61"/>
-<area shape="rect" title=" " alt="" coords="338,109,442,136"/>
-<area shape="rect" title=" " alt="" coords="746,370,810,397"/>
-<area shape="rect" title=" " alt="" coords="1614,281,1705,307"/>
-<area shape="rect" href="systemerrorex_8h.html" title="Содержит описание категории расширеных системных ошибок" alt="" coords="5,191,135,218"/>
-<area shape="rect" href="DataStorage_8h.html" title=" " alt="" coords="517,109,714,136"/>
-<area shape="rect" href="HawkCommonTestUtils_8hpp.html" title=" " alt="" coords="1449,616,1651,643"/>
-<area shape="rect" title=" " alt="" coords="119,281,178,307"/>
-<area shape="rect" title=" " alt="" coords="443,765,551,792"/>
-<area shape="rect" title=" " alt="" coords="205,281,279,307"/>
-<area shape="rect" href="datastorageerrorcategory_8h.html" title=" " alt="" coords="159,191,357,218"/>
-<area shape="rect" href="datastorageinterface_8h.html" title=" " alt="" coords="487,452,661,493"/>
-<area shape="rect" href="abstractdatastoragefunctional_8h.html" title=" " alt="" coords="941,363,1175,404"/>
-<area shape="rect" href="combineddatastorage_8h.html" title="Содержит описание комбинированного хранилища данных (физическое\хешированное)" alt="" coords="1055,184,1301,225"/>
-<area shape="rect" href="cachedmemorydatastorage_8h.html" title="Содержит описание класса кеширующего хранилища данных" alt="" coords="431,184,714,225"/>
-<area shape="rect" href="jsondatastorage_8h.html" title="Содержит описание класса хранилища данных в файле JSON." alt="" coords="1325,184,1535,225"/>
-<area shape="rect" title=" " alt="" coords="585,691,627,717"/>
-<area shape="rect" title=" " alt="" coords="715,765,777,792"/>
-<area shape="rect" title=" " alt="" coords="1175,765,1253,792"/>
-<area shape="rect" href="HawkCommon_8h.html" title=" " alt="" coords="903,541,1034,568"/>
-<area shape="rect" href="user_8h.html" title="Содержит описание пользователя системы" alt="" coords="1090,765,1151,792"/>
-<area shape="rect" href="group_8h.html" title="Содержит описание группы\чата" alt="" coords="652,691,723,717"/>
-<area shape="rect" href="userlist_8h.html" title="Содержит описание контактов пользователя системы" alt="" coords="849,691,931,717"/>
-<area shape="rect" href="groupmessage_8h.html" title="Содержит описание сообщения группы" alt="" coords="1411,691,1542,717"/>
-<area shape="rect" href="account_8h.html" title="Содержит описание аккаунта пользователя" alt="" coords="926,616,1011,643"/>
-<area shape="rect" title=" " alt="" coords="1328,840,1391,867"/>
-<area shape="rect" title=" " alt="" coords="1089,840,1152,867"/>
-<area shape="rect" title=" " alt="" coords="1545,840,1616,867"/>
-<area shape="rect" title=" " alt="" coords="1425,840,1521,867"/>
-<area shape="rect" title=" " alt="" coords="1188,840,1285,867"/>
-<area shape="rect" title=" " alt="" coords="575,765,690,792"/>
-<area shape="rect" href="abstractharddatastorage_8h.html" title="Содержит описание абстрактного класса физического хранилища данных" alt="" coords="1069,273,1268,315"/>
-<area shape="rect" href="abstractcahcedatastorage_8h.html" title="Содержит описание абстрактного класса кеширующего хранилища данных" alt="" coords="788,273,995,315"/>
-<area shape="rect" title=" " alt="" coords="850,370,917,397"/>
-<area shape="rect" title=" " alt="" coords="457,281,571,307"/>
-<area shape="rect" title=" " alt="" coords="596,281,661,307"/>
-<area shape="rect" href="cached_8h.html" title=" " alt="" coords="759,616,839,643"/>
-<area shape="rect" title=" " alt="" coords="1238,370,1385,397"/>
-<area shape="rect" href="jsondatastoragevalidator_8h.html" title="Содержит описание класса, контролирующего JSON для HMJsonDataStorage." alt="" coords="1343,281,1539,307"/>
+<area shape="rect" title=" " alt="" coords="453,5,651,61"/>
+<area shape="rect" title=" " alt="" coords="1087,691,1164,717"/>
+<area shape="rect" title=" " alt="" coords="517,206,608,233"/>
+<area shape="rect" title=" " alt="" coords="76,385,180,411"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html" title=" " alt="" coords="343,288,585,329"/>
+<area shape="rect" href="jsondatastorage_8h.html" title="Содержит описание класса хранилища данных в файле JSON." alt="" coords="590,109,799,151"/>
+<area shape="rect" title=" " alt="" coords="409,385,473,411"/>
+<area shape="rect" href="systemerrorex_8h.html" title="Содержит описание категории расширеных системных ошибок" alt="" coords="255,385,385,411"/>
+<area shape="rect" href="HawkCommonTestUtils_8hpp.html" title=" " alt="" coords="407,541,609,568"/>
+<area shape="rect" href="datastorageerrorcategory_8h.html" title=" " alt="" coords="497,385,777,411"/>
+<area shape="rect" href="datastorageinterface_8h.html" title=" " alt="" coords="921,377,1095,419"/>
+<area shape="rect" title=" " alt="" coords="404,467,463,493"/>
+<area shape="rect" title=" " alt="" coords="303,691,411,717"/>
+<area shape="rect" title=" " alt="" coords="305,467,380,493"/>
+<area shape="rect" title=" " alt="" coords="503,765,566,792"/>
+<area shape="rect" title=" " alt="" coords="129,765,199,792"/>
+<area shape="rect" title=" " alt="" coords="5,765,101,792"/>
+<area shape="rect" href="user_8h.html" title="Содержит описание пользователя системы" alt="" coords="436,691,497,717"/>
+<area shape="rect" href="group_8h.html" title="Содержит описание группы\чата" alt="" coords="657,616,727,643"/>
+<area shape="rect" href="groupmessage_8h.html" title="Содержит описание сообщения группы" alt="" coords="140,616,271,643"/>
+<area shape="rect" title=" " alt="" coords="417,765,479,792"/>
+<area shape="rect" title=" " alt="" coords="259,765,357,792"/>
+<area shape="rect" title=" " alt="" coords="742,691,805,717"/>
+<area shape="rect" title=" " alt="" coords="1045,467,1088,493"/>
+<area shape="rect" href="HawkCommon_8h.html" title=" " alt="" coords="749,467,880,493"/>
+<area shape="rect" href="userlist_8h.html" title="Содержит описание контактов пользователя системы" alt="" coords="853,616,936,643"/>
+<area shape="rect" href="account_8h.html" title="Содержит описание аккаунта пользователя" alt="" coords="785,541,871,568"/>
+<area shape="rect" title=" " alt="" coords="880,691,995,717"/>
+<area shape="rect" title=" " alt="" coords="624,295,771,322"/>
+<area shape="rect" href="jsondatastoragevalidator_8h.html" title="Содержит описание класса, контролирующего JSON для HMJsonDataStorage." alt="" coords="698,206,894,233"/>
+<area shape="rect" href="abstractharddatastorage_8h.html" title="Содержит описание абстрактного класса физического хранилища данных" alt="" coords="918,199,1117,240"/>
+<area shape="rect" href="abstractdatastoragefunctional_8h.html" title=" " alt="" coords="900,288,1135,329"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -131,12 +123,12 @@ $(function() {
 <tr class="memitem:acf61b12d4beb26dbaf8a58b1e4ba79f0"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; <a class="el" href="classhmservcommon_1_1datastorage_1_1HMDataStorage.html">HMDataStorage</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#acf61b12d4beb26dbaf8a58b1e4ba79f0">makeStorage</a> (const std::filesystem::path &amp;inStoragePath=<a class="el" href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#ac191795d64548fb36e4249ad030c3f66">C_JSON_PATH</a>, const bool inRemoveOld=true)</td></tr>
 <tr class="memdesc:acf61b12d4beb26dbaf8a58b1e4ba79f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">makeStorage - Метод создаст экземпляр хранилища  <a href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#acf61b12d4beb26dbaf8a58b1e4ba79f0">Подробнее...</a><br /></td></tr>
 <tr class="separator:acf61b12d4beb26dbaf8a58b1e4ba79f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fb5678dee12d0a061eac78623d40da1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a5fb5678dee12d0a061eac78623d40da1">TEST</a> (JsonDataStorage, Open)</td></tr>
-<tr class="memdesc:a5fb5678dee12d0a061eac78623d40da1"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит попытку открытия хранилища  <a href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a5fb5678dee12d0a061eac78623d40da1">Подробнее...</a><br /></td></tr>
-<tr class="separator:a5fb5678dee12d0a061eac78623d40da1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8220e8f9cbc56dce44631f4b55bcf29e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a8220e8f9cbc56dce44631f4b55bcf29e">TEST</a> (JsonDataStorage, AddUser)</td></tr>
-<tr class="memdesc:a8220e8f9cbc56dce44631f4b55bcf29e"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит добавление пользователя  <a href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a8220e8f9cbc56dce44631f4b55bcf29e">Подробнее...</a><br /></td></tr>
-<tr class="separator:a8220e8f9cbc56dce44631f4b55bcf29e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a581e4c9acce5dabd20b925beefd42303"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a581e4c9acce5dabd20b925beefd42303">TEST</a> (JsonDataStorage, open)</td></tr>
+<tr class="memdesc:a581e4c9acce5dabd20b925beefd42303"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит попытку открытия хранилища  <a href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a581e4c9acce5dabd20b925beefd42303">Подробнее...</a><br /></td></tr>
+<tr class="separator:a581e4c9acce5dabd20b925beefd42303"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a884ffdd0edcc0664c8d9677b8bf82e98"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a884ffdd0edcc0664c8d9677b8bf82e98">TEST</a> (JsonDataStorage, addUser)</td></tr>
+<tr class="memdesc:a884ffdd0edcc0664c8d9677b8bf82e98"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит добавление пользователя  <a href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a884ffdd0edcc0664c8d9677b8bf82e98">Подробнее...</a><br /></td></tr>
+<tr class="separator:a884ffdd0edcc0664c8d9677b8bf82e98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa51ca2252794860a43fbb430f27aac33"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#aa51ca2252794860a43fbb430f27aac33">TEST</a> (JsonDataStorage, updateUser)</td></tr>
 <tr class="memdesc:aa51ca2252794860a43fbb430f27aac33"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит обновление пользователя  <a href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#aa51ca2252794860a43fbb430f27aac33">Подробнее...</a><br /></td></tr>
 <tr class="separator:aa51ca2252794860a43fbb430f27aac33"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,6 +141,21 @@ $(function() {
 <tr class="memitem:ad9bd25fd066b76557c37ca40c06f7faf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#ad9bd25fd066b76557c37ca40c06f7faf">TEST</a> (JsonDataStorage, removeUser)</td></tr>
 <tr class="memdesc:ad9bd25fd066b76557c37ca40c06f7faf"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит удаление пользователя из хранилище  <a href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#ad9bd25fd066b76557c37ca40c06f7faf">Подробнее...</a><br /></td></tr>
 <tr class="separator:ad9bd25fd066b76557c37ca40c06f7faf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac90ce3a20236ee732d33b237895934dd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#ac90ce3a20236ee732d33b237895934dd">TEST</a> (JsonDataStorage, setUserContacts)</td></tr>
+<tr class="memdesc:ac90ce3a20236ee732d33b237895934dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит создание связи пользователь-контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ)  <a href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#ac90ce3a20236ee732d33b237895934dd">Подробнее...</a><br /></td></tr>
+<tr class="separator:ac90ce3a20236ee732d33b237895934dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ccd279cb9fafef46ac423bba91d8114"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a9ccd279cb9fafef46ac423bba91d8114">TEST</a> (JsonDataStorage, addUserContact)</td></tr>
+<tr class="memdesc:a9ccd279cb9fafef46ac423bba91d8114"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит добавление контакта пользователю  <a href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a9ccd279cb9fafef46ac423bba91d8114">Подробнее...</a><br /></td></tr>
+<tr class="separator:a9ccd279cb9fafef46ac423bba91d8114"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14d52c267576f758b6db03a7a8d30913"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a14d52c267576f758b6db03a7a8d30913">TEST</a> (JsonDataStorage, removeUserContact)</td></tr>
+<tr class="memdesc:a14d52c267576f758b6db03a7a8d30913"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит удаление контакта пользователя  <a href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a14d52c267576f758b6db03a7a8d30913">Подробнее...</a><br /></td></tr>
+<tr class="separator:a14d52c267576f758b6db03a7a8d30913"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a072f59fb036ceed5889986d6c95d98"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a0a072f59fb036ceed5889986d6c95d98">TEST</a> (JsonDataStorage, clearUserContacts)</td></tr>
+<tr class="memdesc:a0a072f59fb036ceed5889986d6c95d98"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит удаление связи пользователь-контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ)  <a href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a0a072f59fb036ceed5889986d6c95d98">Подробнее...</a><br /></td></tr>
+<tr class="separator:a0a072f59fb036ceed5889986d6c95d98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace6ee2287eb3fd5f2cd56b6a00e2c01c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#ace6ee2287eb3fd5f2cd56b6a00e2c01c">TEST</a> (JsonDataStorage, getUserContactList)</td></tr>
+<tr class="memdesc:ace6ee2287eb3fd5f2cd56b6a00e2c01c"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит получение списка контатков пользователя  <a href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#ace6ee2287eb3fd5f2cd56b6a00e2c01c">Подробнее...</a><br /></td></tr>
+<tr class="separator:ace6ee2287eb3fd5f2cd56b6a00e2c01c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a823ca165ce090bf6d74cce6ce8c577db"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a823ca165ce090bf6d74cce6ce8c577db">TEST</a> (JsonDataStorage, getUserGroups)</td></tr>
 <tr class="memdesc:a823ca165ce090bf6d74cce6ce8c577db"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит получение списка UUID'ов групп пользователя  <a href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a823ca165ce090bf6d74cce6ce8c577db">Подробнее...</a><br /></td></tr>
 <tr class="separator:a823ca165ce090bf6d74cce6ce8c577db"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -194,21 +201,6 @@ $(function() {
 <tr class="memitem:a0c2f4ba787435b93de0aa2b4bffb0b3d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a0c2f4ba787435b93de0aa2b4bffb0b3d">TEST</a> (JsonDataStorage, removeMessage)</td></tr>
 <tr class="memdesc:a0c2f4ba787435b93de0aa2b4bffb0b3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит удаление сообщения  <a href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a0c2f4ba787435b93de0aa2b4bffb0b3d">Подробнее...</a><br /></td></tr>
 <tr class="separator:a0c2f4ba787435b93de0aa2b4bffb0b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac90ce3a20236ee732d33b237895934dd"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#ac90ce3a20236ee732d33b237895934dd">TEST</a> (JsonDataStorage, setUserContacts)</td></tr>
-<tr class="memdesc:ac90ce3a20236ee732d33b237895934dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит создание связи пользователь-контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ)  <a href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#ac90ce3a20236ee732d33b237895934dd">Подробнее...</a><br /></td></tr>
-<tr class="separator:ac90ce3a20236ee732d33b237895934dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ccd279cb9fafef46ac423bba91d8114"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a9ccd279cb9fafef46ac423bba91d8114">TEST</a> (JsonDataStorage, addUserContact)</td></tr>
-<tr class="memdesc:a9ccd279cb9fafef46ac423bba91d8114"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит добавление контакта пользователю  <a href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a9ccd279cb9fafef46ac423bba91d8114">Подробнее...</a><br /></td></tr>
-<tr class="separator:a9ccd279cb9fafef46ac423bba91d8114"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a14d52c267576f758b6db03a7a8d30913"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a14d52c267576f758b6db03a7a8d30913">TEST</a> (JsonDataStorage, removeUserContact)</td></tr>
-<tr class="memdesc:a14d52c267576f758b6db03a7a8d30913"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит удаление контакта пользователя  <a href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a14d52c267576f758b6db03a7a8d30913">Подробнее...</a><br /></td></tr>
-<tr class="separator:a14d52c267576f758b6db03a7a8d30913"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9576077c352e23fdc55ab11a72f40df"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#ac9576077c352e23fdc55ab11a72f40df">TEST</a> (JsonDataStorage, removeUserContacts)</td></tr>
-<tr class="memdesc:ac9576077c352e23fdc55ab11a72f40df"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит удаление связи пользователь-контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ)  <a href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#ac9576077c352e23fdc55ab11a72f40df">Подробнее...</a><br /></td></tr>
-<tr class="separator:ac9576077c352e23fdc55ab11a72f40df"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace6ee2287eb3fd5f2cd56b6a00e2c01c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#ace6ee2287eb3fd5f2cd56b6a00e2c01c">TEST</a> (JsonDataStorage, getUserContactList)</td></tr>
-<tr class="memdesc:ace6ee2287eb3fd5f2cd56b6a00e2c01c"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест проверит получение списка контатков пользователя  <a href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#ace6ee2287eb3fd5f2cd56b6a00e2c01c">Подробнее...</a><br /></td></tr>
-<tr class="separator:ace6ee2287eb3fd5f2cd56b6a00e2c01c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1babef04e2b5e096ce7ec312df41d38c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a1babef04e2b5e096ce7ec312df41d38c">TEST</a> (JsonDataStorage, CheckJsonSave)</td></tr>
 <tr class="memdesc:a1babef04e2b5e096ce7ec312df41d38c"><td class="mdescLeft">&#160;</td><td class="mdescRight">TEST - Тест сохранения хранилища в JSON.  <a href="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html#a1babef04e2b5e096ce7ec312df41d38c">Подробнее...</a><br /></td></tr>
 <tr class="separator:a1babef04e2b5e096ce7ec312df41d38c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -331,8 +323,9 @@ $(function() {
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a00336ff25d708f6104b5a58eee7a161f_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a00336ff25d708f6104b5a58eee7a161f_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a00336ff25d708f6104b5a58eee7a161f_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a00336ff25d708f6104b5a58eee7a161f_cgraph">
 <area shape="rect" title="TEST &#45; Тест проверит добавление группы" alt="" coords="5,31,60,57"/>
-<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="108,5,307,32"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="153,56,261,83"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a3d75ea1e1fad5082d6b57e18012dc925" title="HardDataStorage_AddGroupTest &#45; Тест физического хранилища, проверяющий добавление группы" alt="" coords="108,5,339,32"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="169,56,277,83"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="387,5,585,32"/>
 </map>
 </div>
 
@@ -370,10 +363,11 @@ $(function() {
 <div class="dyncontent">
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a6107b91a40775d27702164f36ecc20c1_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a6107b91a40775d27702164f36ecc20c1_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a6107b91a40775d27702164f36ecc20c1_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a6107b91a40775d27702164f36ecc20c1_cgraph">
-<area shape="rect" title="TEST &#45; Тест проверит добавление пользователя в группу" alt="" coords="5,56,60,83"/>
-<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="108,5,307,32"/>
-<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="112,56,303,83"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="153,107,261,133"/>
+<area shape="rect" title="TEST &#45; Тест проверит добавление пользователя в группу" alt="" coords="5,60,60,87"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a8bf1317bb308d78c04fa09f6ff2e1747" title="HardDataStorage_AddGroupUserTest &#45; Тест физического хранилища, проверяющий добавление участника в гру..." alt="" coords="108,23,313,65"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="157,89,265,116"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="361,5,560,32"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="365,56,556,83"/>
 </map>
 </div>
 
@@ -412,16 +406,17 @@ $(function() {
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_acb43ef695e92329570af9e64ad24798f_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_acb43ef695e92329570af9e64ad24798f_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_acb43ef695e92329570af9e64ad24798f_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_acb43ef695e92329570af9e64ad24798f_cgraph">
 <area shape="rect" title="TEST &#45; Тест проверит добовление сообщения" alt="" coords="5,56,60,83"/>
-<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="138,5,337,32"/>
-<area shape="rect" href="namespacetestscommon.html#a8ab7b7550fa3839ed15e043e1d760d50" title="make_groupmessage &#45; Метод сформирует сообщение для тестирования" alt="" coords="108,56,367,83"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="183,107,291,133"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a9dbb08d92a746fc0e122c89a7490ac28" title="HardDataStorage_AddMessageTest &#45; Тест физического хранилища, проверяющий добавление сообщения" alt="" coords="108,31,359,57"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="179,81,287,108"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="437,5,635,32"/>
+<area shape="rect" href="namespacetestscommon.html#a8ab7b7550fa3839ed15e043e1d760d50" title="make_groupmessage &#45; Метод сформирует сообщение для тестирования" alt="" coords="407,56,665,83"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a8220e8f9cbc56dce44631f4b55bcf29e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8220e8f9cbc56dce44631f4b55bcf29e">&#9670;&nbsp;</a></span>TEST() <span class="overload">[4/27]</span></h2>
+<a id="a884ffdd0edcc0664c8d9677b8bf82e98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a884ffdd0edcc0664c8d9677b8bf82e98">&#9670;&nbsp;</a></span>TEST() <span class="overload">[4/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -435,7 +430,7 @@ $(function() {
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">AddUser&#160;</td>
+          <td class="paramtype">addUser&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>
@@ -450,11 +445,12 @@ $(function() {
 <div class="dynheader">
 Граф вызовов:</div>
 <div class="dyncontent">
-<div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a8220e8f9cbc56dce44631f4b55bcf29e_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a8220e8f9cbc56dce44631f4b55bcf29e_cgraph" alt=""/></div>
-<map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a8220e8f9cbc56dce44631f4b55bcf29e_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a8220e8f9cbc56dce44631f4b55bcf29e_cgraph">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a884ffdd0edcc0664c8d9677b8bf82e98_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a884ffdd0edcc0664c8d9677b8bf82e98_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a884ffdd0edcc0664c8d9677b8bf82e98_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a884ffdd0edcc0664c8d9677b8bf82e98_cgraph">
 <area shape="rect" title="TEST &#45; Тест проверит добавление пользователя" alt="" coords="5,31,60,57"/>
-<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="108,5,299,32"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="149,56,257,83"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#aac8b0a0e4c5017fac55607fedc9b7928" title="HardDataStorage_AddUserTest &#45; Тест физического хранилища, проверяющий добавление пользователя" alt="" coords="108,5,331,32"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="165,56,273,83"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="379,5,569,32"/>
 </map>
 </div>
 
@@ -493,8 +489,9 @@ $(function() {
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a9ccd279cb9fafef46ac423bba91d8114_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a9ccd279cb9fafef46ac423bba91d8114_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a9ccd279cb9fafef46ac423bba91d8114_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a9ccd279cb9fafef46ac423bba91d8114_cgraph">
 <area shape="rect" title="TEST &#45; Тест проверит добавление контакта пользователю" alt="" coords="5,31,60,57"/>
-<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="108,5,299,32"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="149,56,257,83"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a29f0a20d6bf7d70e308ec7c2070d88fd" title="HardDataStorage_AddUserContactTest &#45; Тест физического хранилища, проверяющий добавление контакта поль..." alt="" coords="108,5,380,32"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="190,56,298,83"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="428,5,619,32"/>
 </map>
 </div>
 
@@ -536,7 +533,7 @@ $(function() {
 <area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="138,5,337,32"/>
 <area shape="rect" href="namespacetestscommon.html#a8ab7b7550fa3839ed15e043e1d760d50" title="make_groupmessage &#45; Метод сформирует сообщение для тестирования" alt="" coords="108,56,367,83"/>
 <area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="142,107,333,133"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="183,157,291,184"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="183,157,291,184"/>
 </map>
 </div>
 
@@ -574,17 +571,59 @@ $(function() {
 <div class="dyncontent">
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_af65202c41d5996ebb04941b1a869301c_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_af65202c41d5996ebb04941b1a869301c_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_af65202c41d5996ebb04941b1a869301c_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_af65202c41d5996ebb04941b1a869301c_cgraph">
-<area shape="rect" title="TEST &#45; Тест проверит очистку списка участников группы" alt="" coords="5,56,60,83"/>
-<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="108,5,307,32"/>
-<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="112,56,303,83"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="153,107,261,133"/>
+<area shape="rect" title="TEST &#45; Тест проверит очистку списка участников группы" alt="" coords="5,60,60,87"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a49f8fa55d6118dc1b9a97a539e538dd3" title="HardDataStorage_ClearGroupUsersTest &#45; Тест физического хранилища, проверяющий очистку участников груп..." alt="" coords="108,23,323,65"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="161,89,269,116"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="371,5,569,32"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="375,56,565,83"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0a072f59fb036ceed5889986d6c95d98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a072f59fb036ceed5889986d6c95d98">&#9670;&nbsp;</a></span>TEST() <span class="overload">[8/27]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">JsonDataStorage&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">clearUserContacts&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>TEST - Тест проверит удаление связи пользователь-контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ) </p>
+<div class="dynheader">
+Граф вызовов:</div>
+<div class="dyncontent">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a0a072f59fb036ceed5889986d6c95d98_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a0a072f59fb036ceed5889986d6c95d98_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a0a072f59fb036ceed5889986d6c95d98_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a0a072f59fb036ceed5889986d6c95d98_cgraph">
+<area shape="rect" title="TEST &#45; Тест проверит удаление связи пользователь&#45;контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ)" alt="" coords="5,42,60,69"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#afdf3d3212cdec80732f6315e57d60b93" title="HardDataStorage_ClearUserContactsTest &#45; Тест физического хранилища, проверяющий очистку контактов пол..." alt="" coords="108,5,313,47"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="157,71,265,98"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="361,13,552,39"/>
 </map>
 </div>
 
 </div>
 </div>
 <a id="ae1bc09c0d3c075d81ebf9ff305b8a8e2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae1bc09c0d3c075d81ebf9ff305b8a8e2">&#9670;&nbsp;</a></span>TEST() <span class="overload">[8/27]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1bc09c0d3c075d81ebf9ff305b8a8e2">&#9670;&nbsp;</a></span>TEST() <span class="overload">[9/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -615,16 +654,17 @@ $(function() {
 <div class="dyncontent">
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ae1bc09c0d3c075d81ebf9ff305b8a8e2_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ae1bc09c0d3c075d81ebf9ff305b8a8e2_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ae1bc09c0d3c075d81ebf9ff305b8a8e2_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ae1bc09c0d3c075d81ebf9ff305b8a8e2_cgraph">
-<area shape="rect" title="TEST &#45; Тест проверит поиск группы по UUID." alt="" coords="5,31,60,57"/>
-<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="108,5,307,32"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="153,56,261,83"/>
+<area shape="rect" title="TEST &#45; Тест проверит поиск группы по UUID." alt="" coords="5,42,60,69"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a659aa8429707ba7030417dc35dea6598" title="HardDataStorage_FindGroupByUUIDTest &#45; Тест физического хранилища, проверяющий поиск группы" alt="" coords="108,5,315,47"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="157,71,265,98"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="363,13,561,39"/>
 </map>
 </div>
 
 </div>
 </div>
 <a id="a31089dcfe141509b3d4a2b2813474d33"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a31089dcfe141509b3d4a2b2813474d33">&#9670;&nbsp;</a></span>TEST() <span class="overload">[9/27]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a31089dcfe141509b3d4a2b2813474d33">&#9670;&nbsp;</a></span>TEST() <span class="overload">[10/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -656,16 +696,17 @@ $(function() {
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a31089dcfe141509b3d4a2b2813474d33_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a31089dcfe141509b3d4a2b2813474d33_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a31089dcfe141509b3d4a2b2813474d33_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a31089dcfe141509b3d4a2b2813474d33_cgraph">
 <area shape="rect" title="TEST &#45; Тест проверит поиск сообщения по UUID." alt="" coords="5,56,60,83"/>
-<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="138,5,337,32"/>
-<area shape="rect" href="namespacetestscommon.html#a8ab7b7550fa3839ed15e043e1d760d50" title="make_groupmessage &#45; Метод сформирует сообщение для тестирования" alt="" coords="108,56,367,83"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="183,107,291,133"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a639ae4e160acae67a63bc8b61c1ae925" title="HardDataStorage_FindMessageTest &#45; Тест физического хранилища, проверяющий поиск сообщения" alt="" coords="108,31,360,57"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="180,81,288,108"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="438,5,637,32"/>
+<area shape="rect" href="namespacetestscommon.html#a8ab7b7550fa3839ed15e043e1d760d50" title="make_groupmessage &#45; Метод сформирует сообщение для тестирования" alt="" coords="408,56,667,83"/>
 </map>
 </div>
 
 </div>
 </div>
 <a id="a94a04895036c17d8c0c113bfae422059"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94a04895036c17d8c0c113bfae422059">&#9670;&nbsp;</a></span>TEST() <span class="overload">[10/27]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a94a04895036c17d8c0c113bfae422059">&#9670;&nbsp;</a></span>TEST() <span class="overload">[11/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -697,16 +738,17 @@ $(function() {
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a94a04895036c17d8c0c113bfae422059_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a94a04895036c17d8c0c113bfae422059_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a94a04895036c17d8c0c113bfae422059_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a94a04895036c17d8c0c113bfae422059_cgraph">
 <area shape="rect" title="TEST &#45; Тест проверит поиск перечня сообщений по временному промежутку" alt="" coords="5,56,60,83"/>
-<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="138,5,337,32"/>
-<area shape="rect" href="namespacetestscommon.html#a8ab7b7550fa3839ed15e043e1d760d50" title="make_groupmessage &#45; Метод сформирует сообщение для тестирования" alt="" coords="108,56,367,83"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="183,107,291,133"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a8a11bbaf542040109242a496435ba5cc" title="HardDataStorage_FindMessagesTest &#45; Тест физического хранилища, проверяющий поиск сообщений" alt="" coords="108,31,367,57"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="183,81,291,108"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="445,5,643,32"/>
+<area shape="rect" href="namespacetestscommon.html#a8ab7b7550fa3839ed15e043e1d760d50" title="make_groupmessage &#45; Метод сформирует сообщение для тестирования" alt="" coords="415,56,673,83"/>
 </map>
 </div>
 
 </div>
 </div>
 <a id="afe925bdb7f4df4e533817958849488bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe925bdb7f4df4e533817958849488bf">&#9670;&nbsp;</a></span>TEST() <span class="overload">[11/27]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#afe925bdb7f4df4e533817958849488bf">&#9670;&nbsp;</a></span>TEST() <span class="overload">[12/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -737,16 +779,17 @@ $(function() {
 <div class="dyncontent">
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_afe925bdb7f4df4e533817958849488bf_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_afe925bdb7f4df4e533817958849488bf_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_afe925bdb7f4df4e533817958849488bf_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_afe925bdb7f4df4e533817958849488bf_cgraph">
-<area shape="rect" title="TEST &#45; Тест проверит поиск пользователья по данным аутентификации" alt="" coords="5,31,60,57"/>
-<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="108,5,299,32"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="149,56,257,83"/>
+<area shape="rect" title="TEST &#45; Тест проверит поиск пользователья по данным аутентификации" alt="" coords="5,42,60,69"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a84b40af307faf078370a6fbd7723d17c" title="HardDataStorage_FindUserByAuthenticationTest &#45; Тест физического хранилища, проверяющий поиск пользова..." alt="" coords="108,5,307,47"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="153,71,261,98"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="355,13,545,39"/>
 </map>
 </div>
 
 </div>
 </div>
 <a id="ab85d00012b15b009e66295da2632bfd2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab85d00012b15b009e66295da2632bfd2">&#9670;&nbsp;</a></span>TEST() <span class="overload">[12/27]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab85d00012b15b009e66295da2632bfd2">&#9670;&nbsp;</a></span>TEST() <span class="overload">[13/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -777,16 +820,17 @@ $(function() {
 <div class="dyncontent">
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ab85d00012b15b009e66295da2632bfd2_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ab85d00012b15b009e66295da2632bfd2_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ab85d00012b15b009e66295da2632bfd2_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ab85d00012b15b009e66295da2632bfd2_cgraph">
-<area shape="rect" title="TEST &#45; Тест проверит поиск пользователья по UUID." alt="" coords="5,31,60,57"/>
-<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="108,5,299,32"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="149,56,257,83"/>
+<area shape="rect" title="TEST &#45; Тест проверит поиск пользователья по UUID." alt="" coords="5,42,60,69"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a953e0090e298daae01929ad85a82ce59" title="HardDataStorage_FindUserByUUIDTest &#45; Тест физического хранилища, проверяющий поиск пользователя по UU..." alt="" coords="108,5,307,47"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="153,71,261,98"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="355,13,545,39"/>
 </map>
 </div>
 
 </div>
 </div>
 <a id="af51e24fb9000be93b006952d4cf0b946"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af51e24fb9000be93b006952d4cf0b946">&#9670;&nbsp;</a></span>TEST() <span class="overload">[13/27]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#af51e24fb9000be93b006952d4cf0b946">&#9670;&nbsp;</a></span>TEST() <span class="overload">[14/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -817,17 +861,18 @@ $(function() {
 <div class="dyncontent">
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_af51e24fb9000be93b006952d4cf0b946_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_af51e24fb9000be93b006952d4cf0b946_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_af51e24fb9000be93b006952d4cf0b946_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_af51e24fb9000be93b006952d4cf0b946_cgraph">
-<area shape="rect" title="TEST &#45; Тест проверит получение списка UUID&#39;ов участников группы" alt="" coords="5,56,60,83"/>
-<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="108,5,307,32"/>
-<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="112,56,303,83"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="153,107,261,133"/>
+<area shape="rect" title="TEST &#45; Тест проверит получение списка UUID&#39;ов участников группы" alt="" coords="5,60,60,87"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#aaefd6cfeef56b662d054e27a925a3e4f" title="HardDataStorage_GetGroupUserListTest &#45; Тест физического хранилища, проверяющий запрос списка участник..." alt="" coords="108,23,311,65"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="155,89,263,116"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="359,5,557,32"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="363,56,553,83"/>
 </map>
 </div>
 
 </div>
 </div>
 <a id="ace6ee2287eb3fd5f2cd56b6a00e2c01c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace6ee2287eb3fd5f2cd56b6a00e2c01c">&#9670;&nbsp;</a></span>TEST() <span class="overload">[14/27]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ace6ee2287eb3fd5f2cd56b6a00e2c01c">&#9670;&nbsp;</a></span>TEST() <span class="overload">[15/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -858,16 +903,17 @@ $(function() {
 <div class="dyncontent">
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ace6ee2287eb3fd5f2cd56b6a00e2c01c_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ace6ee2287eb3fd5f2cd56b6a00e2c01c_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ace6ee2287eb3fd5f2cd56b6a00e2c01c_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ace6ee2287eb3fd5f2cd56b6a00e2c01c_cgraph">
-<area shape="rect" title="TEST &#45; Тест проверит получение списка контатков пользователя" alt="" coords="5,31,60,57"/>
-<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="108,5,299,32"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="149,56,257,83"/>
+<area shape="rect" title="TEST &#45; Тест проверит получение списка контатков пользователя" alt="" coords="5,42,60,69"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a807635177ec8abda17752ca2310ab385" title="HardDataStorage_GetUserContactListTest&#45; Тест физического хранилища, проверяющий запрос списка контакт..." alt="" coords="108,5,352,47"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="176,71,284,98"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="400,13,591,39"/>
 </map>
 </div>
 
 </div>
 </div>
 <a id="a823ca165ce090bf6d74cce6ce8c577db"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a823ca165ce090bf6d74cce6ce8c577db">&#9670;&nbsp;</a></span>TEST() <span class="overload">[15/27]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a823ca165ce090bf6d74cce6ce8c577db">&#9670;&nbsp;</a></span>TEST() <span class="overload">[16/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -899,16 +945,17 @@ $(function() {
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a823ca165ce090bf6d74cce6ce8c577db_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a823ca165ce090bf6d74cce6ce8c577db_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a823ca165ce090bf6d74cce6ce8c577db_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a823ca165ce090bf6d74cce6ce8c577db_cgraph">
 <area shape="rect" title="TEST &#45; Тест проверит получение списка UUID&#39;ов групп пользователя" alt="" coords="5,56,60,83"/>
-<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="108,5,307,32"/>
-<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="112,56,303,83"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="153,107,261,133"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#afeb896a530cb34bd7bb71b51c0b4097a" title="HardDataStorage_GetUserGroupsTest &#45; Тест физического хранилища, проверяющий запрос списка групп польз..." alt="" coords="108,31,375,57"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="187,81,295,108"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="423,5,621,32"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="427,56,617,83"/>
 </map>
 </div>
 
 </div>
 </div>
-<a id="a5fb5678dee12d0a061eac78623d40da1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5fb5678dee12d0a061eac78623d40da1">&#9670;&nbsp;</a></span>TEST() <span class="overload">[16/27]</span></h2>
+<a id="a581e4c9acce5dabd20b925beefd42303"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a581e4c9acce5dabd20b925beefd42303">&#9670;&nbsp;</a></span>TEST() <span class="overload">[17/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -922,7 +969,7 @@ $(function() {
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">Open&#160;</td>
+          <td class="paramtype">open&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>
@@ -937,17 +984,17 @@ $(function() {
 <div class="dynheader">
 Граф вызовов:</div>
 <div class="dyncontent">
-<div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a5fb5678dee12d0a061eac78623d40da1_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a5fb5678dee12d0a061eac78623d40da1_cgraph" alt=""/></div>
-<map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a5fb5678dee12d0a061eac78623d40da1_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a5fb5678dee12d0a061eac78623d40da1_cgraph">
+<div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a581e4c9acce5dabd20b925beefd42303_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a581e4c9acce5dabd20b925beefd42303_cgraph" alt=""/></div>
+<map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a581e4c9acce5dabd20b925beefd42303_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a581e4c9acce5dabd20b925beefd42303_cgraph">
 <area shape="rect" title="TEST &#45; Тест проверит попытку открытия хранилища" alt="" coords="5,5,60,32"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="108,5,216,32"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="108,5,216,32"/>
 </map>
 </div>
 
 </div>
 </div>
 <a id="a28433154b349404ab299f8874bd9e0f5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a28433154b349404ab299f8874bd9e0f5">&#9670;&nbsp;</a></span>TEST() <span class="overload">[17/27]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a28433154b349404ab299f8874bd9e0f5">&#9670;&nbsp;</a></span>TEST() <span class="overload">[18/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -979,15 +1026,16 @@ $(function() {
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a28433154b349404ab299f8874bd9e0f5_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a28433154b349404ab299f8874bd9e0f5_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a28433154b349404ab299f8874bd9e0f5_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a28433154b349404ab299f8874bd9e0f5_cgraph">
 <area shape="rect" title="TEST &#45; Тест проверит удаление группы" alt="" coords="5,31,60,57"/>
-<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="108,5,307,32"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="153,56,261,83"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a259ff505d9a1cc76f569a9f08ddd3b61" title="HardDataStorage_RemoveGroupTest &#45; Тест физического хранилища, проверяющий удаление группы" alt="" coords="108,5,368,32"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="184,56,292,83"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="416,5,615,32"/>
 </map>
 </div>
 
 </div>
 </div>
 <a id="a89e5a764505bd0eb50cd21981c7b6de6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a89e5a764505bd0eb50cd21981c7b6de6">&#9670;&nbsp;</a></span>TEST() <span class="overload">[18/27]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a89e5a764505bd0eb50cd21981c7b6de6">&#9670;&nbsp;</a></span>TEST() <span class="overload">[19/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1018,17 +1066,18 @@ $(function() {
 <div class="dyncontent">
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a89e5a764505bd0eb50cd21981c7b6de6_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a89e5a764505bd0eb50cd21981c7b6de6_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a89e5a764505bd0eb50cd21981c7b6de6_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a89e5a764505bd0eb50cd21981c7b6de6_cgraph">
-<area shape="rect" title="TEST &#45; Тест проверит удаление пользователя из группы" alt="" coords="5,56,60,83"/>
-<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="108,5,307,32"/>
-<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="112,56,303,83"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="153,107,261,133"/>
+<area shape="rect" title="TEST &#45; Тест проверит удаление пользователя из группы" alt="" coords="5,60,60,87"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#ac4229f8fd95b8f345b0f1f478e9d42bf" title="HardDataStorage_RemoveGroupUserTest &#45; Тест физического хранилища, проверяющий удаление участника из г..." alt="" coords="108,23,343,65"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="171,89,279,116"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="391,5,589,32"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="395,56,585,83"/>
 </map>
 </div>
 
 </div>
 </div>
 <a id="a0c2f4ba787435b93de0aa2b4bffb0b3d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0c2f4ba787435b93de0aa2b4bffb0b3d">&#9670;&nbsp;</a></span>TEST() <span class="overload">[19/27]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c2f4ba787435b93de0aa2b4bffb0b3d">&#9670;&nbsp;</a></span>TEST() <span class="overload">[20/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1060,16 +1109,17 @@ $(function() {
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a0c2f4ba787435b93de0aa2b4bffb0b3d_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a0c2f4ba787435b93de0aa2b4bffb0b3d_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a0c2f4ba787435b93de0aa2b4bffb0b3d_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a0c2f4ba787435b93de0aa2b4bffb0b3d_cgraph">
 <area shape="rect" title="TEST &#45; Тест проверит удаление сообщения" alt="" coords="5,56,60,83"/>
-<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="138,5,337,32"/>
-<area shape="rect" href="namespacetestscommon.html#a8ab7b7550fa3839ed15e043e1d760d50" title="make_groupmessage &#45; Метод сформирует сообщение для тестирования" alt="" coords="108,56,367,83"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="183,107,291,133"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a48a1da988762944a781561a6aa8e6116" title="HardDataStorage_RemoveMessageTest &#45; Тест физического хранилища, проверяющий удаление сообщения" alt="" coords="108,31,387,57"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="193,81,301,108"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="465,5,663,32"/>
+<area shape="rect" href="namespacetestscommon.html#a8ab7b7550fa3839ed15e043e1d760d50" title="make_groupmessage &#45; Метод сформирует сообщение для тестирования" alt="" coords="435,56,693,83"/>
 </map>
 </div>
 
 </div>
 </div>
 <a id="ad9bd25fd066b76557c37ca40c06f7faf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad9bd25fd066b76557c37ca40c06f7faf">&#9670;&nbsp;</a></span>TEST() <span class="overload">[20/27]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9bd25fd066b76557c37ca40c06f7faf">&#9670;&nbsp;</a></span>TEST() <span class="overload">[21/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1101,15 +1151,16 @@ $(function() {
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ad9bd25fd066b76557c37ca40c06f7faf_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ad9bd25fd066b76557c37ca40c06f7faf_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ad9bd25fd066b76557c37ca40c06f7faf_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ad9bd25fd066b76557c37ca40c06f7faf_cgraph">
 <area shape="rect" title="TEST &#45; Тест проверит удаление пользователя из хранилище" alt="" coords="5,31,60,57"/>
-<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="108,5,299,32"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="149,56,257,83"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a391a4c5b38a4ad9c7f8faa8fe823b649" title="HardDataStorage_RemoveUserTest &#45; Тест физического хранилища, проверяющий удаление пользователя" alt="" coords="108,5,359,32"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="179,56,287,83"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="407,5,597,32"/>
 </map>
 </div>
 
 </div>
 </div>
 <a id="a14d52c267576f758b6db03a7a8d30913"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a14d52c267576f758b6db03a7a8d30913">&#9670;&nbsp;</a></span>TEST() <span class="overload">[21/27]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a14d52c267576f758b6db03a7a8d30913">&#9670;&nbsp;</a></span>TEST() <span class="overload">[22/27]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1140,49 +1191,10 @@ $(function() {
 <div class="dyncontent">
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a14d52c267576f758b6db03a7a8d30913_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a14d52c267576f758b6db03a7a8d30913_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a14d52c267576f758b6db03a7a8d30913_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_a14d52c267576f758b6db03a7a8d30913_cgraph">
-<area shape="rect" title="TEST &#45; Тест проверит удаление контакта пользователя" alt="" coords="5,31,60,57"/>
-<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="108,5,299,32"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="149,56,257,83"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="ac9576077c352e23fdc55ab11a72f40df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac9576077c352e23fdc55ab11a72f40df">&#9670;&nbsp;</a></span>TEST() <span class="overload">[22/27]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">TEST </td>
-          <td>(</td>
-          <td class="paramtype">JsonDataStorage&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">removeUserContacts&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>TEST - Тест проверит удаление связи пользователь-контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ) </p>
-<div class="dynheader">
-Граф вызовов:</div>
-<div class="dyncontent">
-<div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac9576077c352e23fdc55ab11a72f40df_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac9576077c352e23fdc55ab11a72f40df_cgraph" alt=""/></div>
-<map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac9576077c352e23fdc55ab11a72f40df_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac9576077c352e23fdc55ab11a72f40df_cgraph">
-<area shape="rect" title="TEST &#45; Тест проверит удаление связи пользователь&#45;контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ)" alt="" coords="5,31,60,57"/>
-<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="108,5,299,32"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="149,56,257,83"/>
+<area shape="rect" title="TEST &#45; Тест проверит удаление контакта пользователя" alt="" coords="5,42,60,69"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#aedb5f7c791d3dd25152657fca28f6ed7" title="HardDataStorage_RemoveUserContactTest &#45; Тест физического хранилища, проверяющий удаление контакта пол..." alt="" coords="108,5,333,47"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="167,71,275,98"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="381,13,572,39"/>
 </map>
 </div>
 
@@ -1220,10 +1232,11 @@ $(function() {
 <div class="dyncontent">
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aed8cb12e20af4150bac076a7e6c8d9d6_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aed8cb12e20af4150bac076a7e6c8d9d6_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aed8cb12e20af4150bac076a7e6c8d9d6_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aed8cb12e20af4150bac076a7e6c8d9d6_cgraph">
-<area shape="rect" title="TEST &#45; Тест проверит присвоение списка участников группе" alt="" coords="5,56,60,83"/>
-<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="108,5,307,32"/>
-<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="112,56,303,83"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="153,107,261,133"/>
+<area shape="rect" title="TEST &#45; Тест проверит присвоение списка участников группе" alt="" coords="5,60,60,87"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a61a9cf8ddc1525d7b8ba05c775c2fc8f" title="HardDataStorage_SetGroupUsersTest &#45; Тест физического хранилища, проверяющий присвоение участниковы гр..." alt="" coords="108,23,309,65"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="155,89,263,116"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="357,5,556,32"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="361,56,552,83"/>
 </map>
 </div>
 
@@ -1262,8 +1275,9 @@ $(function() {
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac90ce3a20236ee732d33b237895934dd_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac90ce3a20236ee732d33b237895934dd_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac90ce3a20236ee732d33b237895934dd_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac90ce3a20236ee732d33b237895934dd_cgraph">
 <area shape="rect" title="TEST &#45; Тест проверит создание связи пользователь&#45;контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ)" alt="" coords="5,31,60,57"/>
-<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="108,5,299,32"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="149,56,257,83"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a8058a0f646d289c628886b660b2b3f10" title="HardDataStorage_SetUserContactsTest &#45; Тест физического хранилища, проверяющий присвоение контактов по..." alt="" coords="108,5,383,32"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="191,56,299,83"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="431,5,621,32"/>
 </map>
 </div>
 
@@ -1302,8 +1316,9 @@ $(function() {
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aebfbb8ab90bf06954442af42904f6224_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aebfbb8ab90bf06954442af42904f6224_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aebfbb8ab90bf06954442af42904f6224_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aebfbb8ab90bf06954442af42904f6224_cgraph">
 <area shape="rect" title="TEST &#45; Тест проверит обновление группы" alt="" coords="5,31,60,57"/>
-<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="108,5,307,32"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="153,56,261,83"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#aa0178c0861cd423e083b40e4249b1ef6" title="HardDataStorage_UpdateGroupTest &#45; Тест физического хранилища, проверяющий обновление группы" alt="" coords="108,5,361,32"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="181,56,289,83"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="409,5,608,32"/>
 </map>
 </div>
 
@@ -1342,9 +1357,10 @@ $(function() {
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac5851275c5c6396bd38f71770056b9c9_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac5851275c5c6396bd38f71770056b9c9_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac5851275c5c6396bd38f71770056b9c9_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_ac5851275c5c6396bd38f71770056b9c9_cgraph">
 <area shape="rect" title="TEST &#45; Тест проверит обновление сообщения" alt="" coords="5,56,60,83"/>
-<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="138,5,337,32"/>
-<area shape="rect" href="namespacetestscommon.html#a8ab7b7550fa3839ed15e043e1d760d50" title="make_groupmessage &#45; Метод сформирует сообщение для тестирования" alt="" coords="108,56,367,83"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="183,107,291,133"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#aad35b1a77e23a6dfec598546b7bf3a92" title="HardDataStorage_UpdateMessageTest &#45; Тест физического хранилища, проверяющий обновление сообщения" alt="" coords="108,31,380,57"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="190,81,298,108"/>
+<area shape="rect" href="namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="458,5,657,32"/>
+<area shape="rect" href="namespacetestscommon.html#a8ab7b7550fa3839ed15e043e1d760d50" title="make_groupmessage &#45; Метод сформирует сообщение для тестирования" alt="" coords="428,56,687,83"/>
 </map>
 </div>
 
@@ -1383,8 +1399,9 @@ $(function() {
 <div class="center"><img src="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aa51ca2252794860a43fbb430f27aac33_cgraph.png" border="0" usemap="#libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aa51ca2252794860a43fbb430f27aac33_cgraph" alt=""/></div>
 <map name="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aa51ca2252794860a43fbb430f27aac33_cgraph" id="libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp_aa51ca2252794860a43fbb430f27aac33_cgraph">
 <area shape="rect" title="TEST &#45; Тест проверит обновление пользователя" alt="" coords="5,31,60,57"/>
-<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="108,5,299,32"/>
-<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="149,56,257,83"/>
+<area shape="rect" href="HawkServerCoreHardDataStorageTest_8hpp.html#a1c667ee8e8485b0b4115ac08bf84c55d" title="HardDataStorage_UpdateUserTest &#45; Тест физического хранилища, проверяющий обновление пользователя" alt="" coords="108,5,352,32"/>
+<area shape="rect" href="libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="176,56,284,83"/>
+<area shape="rect" href="namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="400,5,591,32"/>
 </map>
 </div>
 
