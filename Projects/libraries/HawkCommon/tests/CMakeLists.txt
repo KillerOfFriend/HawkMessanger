@@ -11,7 +11,7 @@ set(TESTS_LINCED_LIBRARYES
     gtest           # Подключаем библиотеку Google тестов
     )
 #====================================================================
-# Формируем список подключаемых папок
+# Формируем список подключаемых директорий
 set(TESTS_INCLUDE_DIRS
     ${LIBRARIES_PATH}/HawkCommon/src
     ${DIR_THIRDPARTY_PATH}/Building/googletest/googletest/include/
