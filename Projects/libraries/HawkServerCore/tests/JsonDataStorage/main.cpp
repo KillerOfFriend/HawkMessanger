@@ -366,7 +366,7 @@ TEST(JsonDataStorage, CheckJsonSave)
     std::shared_ptr<std::set<QUuid>> FindGroupUsers = Storage->getGroupUserList(NewGroup->m_uuid, Error);
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_NE(FindGroupUsers, nullptr); // Должен вернуться валидный указатель
-    EXPECT_EQ(*GroupUsers, *FindGroupUsers); // Сравниваем UUID'ы учасников группы
+    EXPECT_EQ(*GroupUsers, *FindGroupUsers); // Сравниваем UUID'ы участников группы
 
     for (std::size_t Index = 0; Index < MESSAGES; ++Index)
     {

@@ -398,7 +398,7 @@ TEST(CombinedDataStorage, CacheTest)
         std::this_thread::sleep_for(C_CACHE_LIFE_END_WAIT); // Ожидаем время, гарантирующее уничтожение объекта в кеше
 
         Users = Storage->getGroupUserList(GroupUUID, Error); // Запрашиваем список участников группы
-        EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupUserRelationNotExists)); // Должны получить сообщение, что список учасников группы не кеширован
+        EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupUserRelationNotExists)); // Должны получить сообщение, что список участников группы не кеширован
     }
 
     Storage->close();

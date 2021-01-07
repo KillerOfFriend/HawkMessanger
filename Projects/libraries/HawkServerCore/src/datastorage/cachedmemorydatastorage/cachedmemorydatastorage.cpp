@@ -312,7 +312,7 @@ std::error_code HMCachedMemoryDataStorage::setGroupUsers(const QUuid& inGroupUUI
             auto EmplaceRes = m_cachedGroupUsers.emplace(HMCachedGroupUsers(inGroupUUID, inUsers));
 
             if (!EmplaceRes.second) // Если вставка не прошла (Связь уже существует)
-                EmplaceRes.first->m_groupUsers = inUsers; // Заменяем существующий список учасников
+                EmplaceRes.first->m_groupUsers = inUsers; // Заменяем существующий список участников
         }
     }
 

@@ -1,28 +1,25 @@
-#ifndef HMACCOUNTBUILDER_H
-#define HMACCOUNTBUILDER_H
+#ifndef HMBUILDER_H
+#define HMBUILDER_H
 
 /**
- * @file accountbuilder.h
- * @brief Содержит описание билдера аккаунта
+ * @file HMBuilder.h
+ * @brief Содержит описание сборщика
  */
-
-#include <memory>
-#include <system_error>
 
 #include <HawkCommon.h>
 
 #include "datastorage/interface/datastorageinterface.h"
 
-namespace hmservcommon::builders
+namespace hmservcommon
 {
 //-----------------------------------------------------------------------------
 /**
- * @brief The HMAccountBuilder class - Класс, описывающий билдер аккаунтов
+ * @brief The HMBuilder class - Класс, описывающий сборщик
  *
  * @authors Alekseev_s
  * @date 29.12.2020
  */
-class HMAccountBuilder
+class HMBuilder
 {
 private:
 
@@ -31,15 +28,15 @@ private:
 public:
 
     /**
-     * @brief HMAccountBuilder - Инициализирующий конструктор
+     * @brief HMBuilder - Инициализирующий конструктор
      * @param inStorage - Хранилище данных
      */
-    HMAccountBuilder(const std::shared_ptr<datastorage::HMDataStorage> inStorage);
+    HMBuilder(const std::shared_ptr<datastorage::HMDataStorage> inStorage);
 
     /**
-     * @brief HMAccountBuilder - Дефолтный деструктор по умолчанию
+     * @brief HMBuilder - Дефолтный деструктор по умолчанию
      */
-    ~HMAccountBuilder() = default;
+    ~HMBuilder() = default;
 
     /**
      * @brief buildGroup - Метод соберёт экземпляр класса данных группы
@@ -47,7 +44,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр группы или nullptr
      */
-    std::shared_ptr<hmcommon::HMGroupInfo> buildGroup(const QUuid& inGroupUUID, std::error_code& outErrorCode);
+    std::shared_ptr<hmcommon::HMGroup> buildGroup(const QUuid& inGroupUUID, std::error_code& outErrorCode);
 
     /**
      * @brief buildAccount - Метод соберёт экземпляр класса аккаунта пользователя
@@ -55,10 +52,9 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр аккаунта или nullptr
      */
-    std::shared_ptr<hmcommon::HMAccount> buildAccount(const QUuid& inUserUUID, std::error_code& outErrorCode);
-
+    std::shared_ptr<hmcommon::HMUser> buildUser(const QUuid& inUserUUID, std::error_code& outErrorCode);
 };
 //-----------------------------------------------------------------------------
-} // namespace hmservcommon::builders
+}
 
-#endif // HMACCOUNTBUILDER_H
+#endif // HMBUILDER_H

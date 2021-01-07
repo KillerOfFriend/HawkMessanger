@@ -4,7 +4,7 @@
 #include <memory>
 
 #include "datastorage/DataStorage.h"
-#include "builders/accountbuilder.h"
+#include "builder.h"
 
 namespace hmservcommon
 {
@@ -19,7 +19,7 @@ public:
 private:
 
     std::shared_ptr<datastorage::HMDataStorage> m_dataStorage = nullptr;    ///< Хранилище данных
-    std::unique_ptr<builders::HMAccountBuilder> m_accountBuilder = nullptr; ///< "Сборщик"
+    std::unique_ptr<HMBuilder> m_builder = nullptr; ///< "Сборщик"
 
 };
 //-----------------------------------------------------------------------------

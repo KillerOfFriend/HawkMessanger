@@ -16,7 +16,7 @@ HMServerCore::HMServerCore()
     if (Error)
         LOG_ERROR(QString::fromStdString(Error.message()));
 
-    m_accountBuilder = std::make_unique<builders::HMAccountBuilder>(m_dataStorage); // Формируем билдер и передаём в него хранилище
+//    m_accountBuilder = std::make_unique<builders::HMAccountBuilder>(m_dataStorage); // Формируем билдер и передаём в него хранилище
 }
 //-----------------------------------------------------------------------------
 HMServerCore::~HMServerCore()

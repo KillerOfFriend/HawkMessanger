@@ -584,7 +584,7 @@ std::error_code HMJsonDataStorage::setGroupUsers(const QUuid& inGroupUUID, const
                             SuccessfullyAdded.pop_back(); // Выкидываем удалённый UUID
                         }
 
-                        break; // Останавливаем добавление учасников
+                        break; // Останавливаем добавление участников
                     }
                     else // Участник успешно добавлен в группу
                         SuccessfullyAdded.push_back(UserUUID);
@@ -723,7 +723,7 @@ std::error_code HMJsonDataStorage::clearGroupUsers(const QUuid& inGroupUUID)
                         SuccessfullyRemoved.pop_back(); // Выкидываем восстановленный UUID
                     }
 
-                    break; // Останавливаем удаление учасников
+                    break; // Останавливаем удаление участников
                 }
                 else // Участник успешно удалён
                     SuccessfullyRemoved.push_back(UserUUID);
