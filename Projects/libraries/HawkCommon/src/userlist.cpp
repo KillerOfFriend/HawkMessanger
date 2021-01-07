@@ -9,7 +9,7 @@ using namespace hmcommon;
 //-----------------------------------------------------------------------------
 // ContactHashCompare
 //-----------------------------------------------------------------------------
-size_t ContactMakeHash::operator() (const std::shared_ptr<HMUser> &inContact) const noexcept
+size_t ContactMakeHash::operator() (const std::shared_ptr<HMUserInfo> &inContact) const noexcept
 {
     assert(inContact != nullptr);
     return std::hash<std::string>()(inContact->m_uuid.toString().toStdString());
@@ -17,26 +17,26 @@ size_t ContactMakeHash::operator() (const std::shared_ptr<HMUser> &inContact) co
 //-----------------------------------------------------------------------------
 // ContactCheckEqual
 //-----------------------------------------------------------------------------
-bool ContactCheckEqual::operator()(const std::shared_ptr<HMUser>& inLeftContact, const std::shared_ptr<HMUser>& inRightContact) const noexcept
+bool ContactCheckEqual::operator()(const std::shared_ptr<HMUserInfo>& inLeftContact, const std::shared_ptr<HMUserInfo>& inRightContact) const noexcept
 {
     assert((inLeftContact != nullptr) && (inRightContact != nullptr));
     return inLeftContact->m_uuid == inRightContact->m_uuid;
 }
 //-----------------------------------------------------------------------------
-// HMUserList
+// HMUserInfoList
 //-----------------------------------------------------------------------------
-bool HMUserList::isEmpty() const
+bool HMUserInfoList::isEmpty() const
 {  return m_contacts.empty(); }
 //-----------------------------------------------------------------------------
-std::size_t HMUserList::count() const
+std::size_t HMUserInfoList::count() const
 { return m_contacts.size(); }
 //-----------------------------------------------------------------------------
-bool HMUserList::contain(const QUuid& inUserUUID) const
+bool HMUserInfoList::contain(const QUuid& inUserUUID) const
 {
-    return m_contacts.find(std::make_shared<HMUser>(inUserUUID)) != m_contacts.end();;
+    return m_contacts.find(std::make_shared<HMUserInfo>(inUserUUID)) != m_contacts.end();;
 }
 //-----------------------------------------------------------------------------
-bool HMUserList::contain(const std::shared_ptr<HMUser> inUser) const
+bool HMUserInfoList::contain(const std::shared_ptr<HMUserInfo> inUser) const
 {
     if (!inUser)
         return false;
@@ -44,7 +44,7 @@ bool HMUserList::contain(const std::shared_ptr<HMUser> inUser) const
         return m_contacts.find(inUser) != m_contacts.end();
 }
 //-----------------------------------------------------------------------------
-std::error_code HMUserList::add(const std::shared_ptr<HMUser> inNewUser)
+std::error_code HMUserInfoList::add(const std::shared_ptr<HMUserInfo> inNewUser)
 {
     std::error_code Error = make_error_code(eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
 
@@ -59,9 +59,9 @@ std::error_code HMUserList::add(const std::shared_ptr<HMUser> inNewUser)
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<HMUser> HMUserList::get(const std::size_t inIndex, std::error_code& outErrorCode) const
+std::shared_ptr<HMUserInfo> HMUserInfoList::get(const std::size_t inIndex, std::error_code& outErrorCode) const
 {
-    std::shared_ptr<HMUser> Result = nullptr;
+    std::shared_ptr<HMUserInfo> Result = nullptr;
     outErrorCode = make_error_code(eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
 
     if (isEmpty())
@@ -81,12 +81,12 @@ std::shared_ptr<HMUser> HMUserList::get(const std::size_t inIndex, std::error_co
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<HMUser> HMUserList::get(const QUuid inUserUuid, std::error_code& outErrorCode) const
+std::shared_ptr<HMUserInfo> HMUserInfoList::get(const QUuid inUserUuid, std::error_code& outErrorCode) const
 {
-    std::shared_ptr<HMUser> Result = nullptr;
+    std::shared_ptr<HMUserInfo> Result = nullptr;
     outErrorCode = make_error_code(eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
 
-    auto FindRes = m_contacts.find(std::make_shared<HMUser>(inUserUuid));
+    auto FindRes = m_contacts.find(std::make_shared<HMUserInfo>(inUserUuid));
 
     if (FindRes == m_contacts.end())
         outErrorCode = make_error_code(eSystemErrorEx::seNotInContainer);
@@ -96,7 +96,7 @@ std::shared_ptr<HMUser> HMUserList::get(const QUuid inUserUuid, std::error_code&
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMUserList::remove(const std::size_t inIndex)
+std::error_code HMUserInfoList::remove(const std::size_t inIndex)
 {
     std::error_code Error = make_error_code(eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
 
@@ -112,11 +112,11 @@ std::error_code HMUserList::remove(const std::size_t inIndex)
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMUserList::remove(const QUuid inUserUuid)
+std::error_code HMUserInfoList::remove(const QUuid inUserUuid)
 {
     std::error_code Error = make_error_code(eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
 
-    std::shared_ptr<HMUser> TempFind = std::make_shared<HMUser>(inUserUuid); // Формируем пользователя для поиска по UUID
+    std::shared_ptr<HMUserInfo> TempFind = std::make_shared<HMUserInfo>(inUserUuid); // Формируем пользователя для поиска по UUID
     auto FindRes = m_contacts.find(TempFind);
 
     if (FindRes == m_contacts.end())

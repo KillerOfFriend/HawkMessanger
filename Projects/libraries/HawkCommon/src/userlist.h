@@ -1,5 +1,5 @@
-#ifndef HMUserList_H
-#define HMUserList_H
+#ifndef HMUserInfoList_H
+#define HMUserInfoList_H
 
 /**
  * @file userlist.h
@@ -12,7 +12,7 @@
 
 #include <QUuid>
 
-#include "user.h"
+#include "userinfo.h"
 
 namespace hmcommon
 {
@@ -27,7 +27,7 @@ struct ContactMakeHash
      * @param inContact - Указатель на контакт
      * @return Вернёт результат хеш функции сравнения
      */
-    std::size_t operator() (const std::shared_ptr<HMUser>& inContact) const noexcept;
+    std::size_t operator() (const std::shared_ptr<HMUserInfo>& inContact) const noexcept;
 };
 //-----------------------------------------------------------------------------
 /**
@@ -35,32 +35,32 @@ struct ContactMakeHash
  */
 struct ContactCheckEqual
 {
-    bool operator()(const std::shared_ptr<HMUser>& inLeftContact, const std::shared_ptr<HMUser>& inRightContact) const noexcept;
+    bool operator()(const std::shared_ptr<HMUserInfo>& inLeftContact, const std::shared_ptr<HMUserInfo>& inRightContact) const noexcept;
 };
 //-----------------------------------------------------------------------------
 /**
- * @brief The HMUserList class - Класс, содержащий список пользователей системы
+ * @brief The HMUserInfoList class - Класс, содержащий список пользователей системы
  *
  * @authors Alekseev_s
  * @date 05.12.2020
  */
-class HMUserList
+class HMUserInfoList
 {
 private:
 
-    std::unordered_set<std::shared_ptr<HMUser>, ContactMakeHash, ContactCheckEqual> m_contacts; ///< Контейнер, содержащий перечень пользователей
+    std::unordered_set<std::shared_ptr<HMUserInfo>, ContactMakeHash, ContactCheckEqual> m_contacts; ///< Контейнер, содержащий перечень пользователей
 
 public:
 
     /**
-     * @brief HMUserList - Конструктор по умолчанию
+     * @brief HMUserInfoList - Конструктор по умолчанию
      */
-    HMUserList() = default;
+    HMUserInfoList() = default;
 
     /**
-     * @brief ~HMUserList - Деструктор по умолчанию
+     * @brief ~HMUserInfoList - Деструктор по умолчанию
      */
-    ~HMUserList() = default;
+    ~HMUserInfoList() = default;
 
     /**
      * @brief isEmpty - Метод вернёт признак того, что список пользователей пуст
@@ -86,14 +86,14 @@ public:
      * @param inUser - Пользователь
      * @return Вернёт признак существования пользователей
      */
-    bool contain(const std::shared_ptr<HMUser> inUser) const;
+    bool contain(const std::shared_ptr<HMUserInfo> inUser) const;
 
     /**
      * @brief add - Метод добавит нового пользователя в перечень
      * @param inNewUser - Новый пользователь
      * @return Вернёт признак ошибки
      */
-    std::error_code add(const std::shared_ptr<HMUser> inNewUser);
+    std::error_code add(const std::shared_ptr<HMUserInfo> inNewUser);
 
     /**
      * @brief get - Метод вернёт пользователя по его порядковому номеру
@@ -101,7 +101,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на пользователя или null_ptr
      */
-    std::shared_ptr<HMUser> get(const std::size_t inIndex, std::error_code& outErrorCode) const;
+    std::shared_ptr<HMUserInfo> get(const std::size_t inIndex, std::error_code& outErrorCode) const;
 
     /**
      * @brief getContact - Метод вернёт пользователя по его UUID'у
@@ -109,7 +109,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на пользователя или null_ptr
      */
-    std::shared_ptr<HMUser> get(const QUuid inUserUuid, std::error_code& outErrorCode) const;
+    std::shared_ptr<HMUserInfo> get(const QUuid inUserUuid, std::error_code& outErrorCode) const;
 
     /**
      * @brief remove - Метод удалит пользователя по его порядквому номеру
@@ -129,4 +129,4 @@ public:
 //-----------------------------------------------------------------------------
 }
 
-#endif // HMUserList_H
+#endif // HMUserInfoList_H

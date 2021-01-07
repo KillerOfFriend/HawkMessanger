@@ -9,8 +9,8 @@
 #include <memory>
 #include <vector>
 
-#include "user.h"
-#include "group.h"
+#include "userinfo.h"
+#include "groupinfo.h"
 #include "userlist.h"
 
 namespace hmcommon
@@ -29,10 +29,10 @@ public:
     HMAccount();
     ~HMAccount() = default;
 
-    std::shared_ptr<HMUser> m_userInfo = nullptr;           ///< Данные пользователя
-    HMUserList m_cotacts;                                   ///< Контакты пользователя
+    std::shared_ptr<HMUserInfo> m_userInfo = nullptr;           ///< Данные пользователя
+    HMUserInfoList m_cotacts;                                   ///< Контакты пользователя
 
-    std::vector<std::shared_ptr<HMGroup>> m_groups;         ///< Группы пользователя
+    std::vector<std::shared_ptr<HMGroupInfo>> m_groups;         ///< Группы пользователя
 
 };
 //-----------------------------------------------------------------------------

@@ -54,7 +54,7 @@ void HMCombinedDataStorage::close()
         m_CacheStorage->close(); // Закрываем
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::addUser(const std::shared_ptr<hmcommon::HMUser> inUser)
+std::error_code HMCombinedDataStorage::addUser(const std::shared_ptr<hmcommon::HMUserInfo> inUser)
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
@@ -80,7 +80,7 @@ std::error_code HMCombinedDataStorage::addUser(const std::shared_ptr<hmcommon::H
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::updateUser(const std::shared_ptr<hmcommon::HMUser> inUser)
+std::error_code HMCombinedDataStorage::updateUser(const std::shared_ptr<hmcommon::HMUserInfo> inUser)
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
@@ -110,9 +110,9 @@ std::error_code HMCombinedDataStorage::updateUser(const std::shared_ptr<hmcommon
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMUser> HMCombinedDataStorage::findUserByUUID(const QUuid &inUserUUID, std::error_code &outErrorCode) const
+std::shared_ptr<hmcommon::HMUserInfo> HMCombinedDataStorage::findUserByUUID(const QUuid &inUserUUID, std::error_code &outErrorCode) const
 {
-    std::shared_ptr<hmcommon::HMUser> Result = nullptr;
+    std::shared_ptr<hmcommon::HMUserInfo> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open())
@@ -147,9 +147,9 @@ std::shared_ptr<hmcommon::HMUser> HMCombinedDataStorage::findUserByUUID(const QU
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMUser> HMCombinedDataStorage::findUserByAuthentication(const QString &inLogin, const QByteArray &inPasswordHash, std::error_code &outErrorCode) const
+std::shared_ptr<hmcommon::HMUserInfo> HMCombinedDataStorage::findUserByAuthentication(const QString &inLogin, const QByteArray &inPasswordHash, std::error_code &outErrorCode) const
 {
-    std::shared_ptr<hmcommon::HMUser> Result = nullptr;
+    std::shared_ptr<hmcommon::HMUserInfo> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open())
@@ -369,7 +369,7 @@ std::shared_ptr<std::set<QUuid>> HMCombinedDataStorage::getUserGroups(const QUui
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::addGroup(const std::shared_ptr<hmcommon::HMGroup> inGroup)
+std::error_code HMCombinedDataStorage::addGroup(const std::shared_ptr<hmcommon::HMGroupInfo> inGroup)
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
@@ -395,7 +395,7 @@ std::error_code HMCombinedDataStorage::addGroup(const std::shared_ptr<hmcommon::
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::updateGroup(const std::shared_ptr<hmcommon::HMGroup> inGroup)
+std::error_code HMCombinedDataStorage::updateGroup(const std::shared_ptr<hmcommon::HMGroupInfo> inGroup)
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
@@ -425,9 +425,9 @@ std::error_code HMCombinedDataStorage::updateGroup(const std::shared_ptr<hmcommo
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMGroup> HMCombinedDataStorage::findGroupByUUID(const QUuid &inGroupUUID, std::error_code &outErrorCode) const
+std::shared_ptr<hmcommon::HMGroupInfo> HMCombinedDataStorage::findGroupByUUID(const QUuid &inGroupUUID, std::error_code &outErrorCode) const
 {
-    std::shared_ptr<hmcommon::HMGroup> Result = nullptr;
+    std::shared_ptr<hmcommon::HMGroupInfo> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open())
@@ -604,7 +604,7 @@ std::shared_ptr<std::set<QUuid>> HMCombinedDataStorage::getGroupUserList(const Q
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::addMessage(const std::shared_ptr<hmcommon::HMGroupMessage> inMessage)
+std::error_code HMCombinedDataStorage::addMessage(const std::shared_ptr<hmcommon::HMGroupInfoMessage> inMessage)
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
@@ -630,7 +630,7 @@ std::error_code HMCombinedDataStorage::addMessage(const std::shared_ptr<hmcommon
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::updateMessage(const std::shared_ptr<hmcommon::HMGroupMessage> inMessage)
+std::error_code HMCombinedDataStorage::updateMessage(const std::shared_ptr<hmcommon::HMGroupInfoMessage> inMessage)
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
@@ -656,9 +656,9 @@ std::error_code HMCombinedDataStorage::updateMessage(const std::shared_ptr<hmcom
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMGroupMessage> HMCombinedDataStorage::findMessage(const QUuid& inMessageUUID, std::error_code& outErrorCode) const
+std::shared_ptr<hmcommon::HMGroupInfoMessage> HMCombinedDataStorage::findMessage(const QUuid& inMessageUUID, std::error_code& outErrorCode) const
 {
-    std::shared_ptr<hmcommon::HMGroupMessage> Result = nullptr;
+    std::shared_ptr<hmcommon::HMGroupInfoMessage> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open())
@@ -693,9 +693,9 @@ std::shared_ptr<hmcommon::HMGroupMessage> HMCombinedDataStorage::findMessage(con
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> HMCombinedDataStorage::findMessages(const QUuid& inGroupUUID, const hmcommon::MsgRange& inRange,  std::error_code& outErrorCode) const
+std::vector<std::shared_ptr<hmcommon::HMGroupInfoMessage>> HMCombinedDataStorage::findMessages(const QUuid& inGroupUUID, const hmcommon::MsgRange& inRange,  std::error_code& outErrorCode) const
 {
-    std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> Result;
+    std::vector<std::shared_ptr<hmcommon::HMGroupInfoMessage>> Result;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open())

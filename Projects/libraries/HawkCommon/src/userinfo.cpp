@@ -1,18 +1,18 @@
-#include "user.h"
+#include "userinfo.h"
 
 #include <QCryptographicHash>
 
 using namespace hmcommon;
 
 //-----------------------------------------------------------------------------
-HMUser::HMUser(const QUuid &inUuid, const QDateTime& inRegistrationDate)
+HMUserInfo::HMUserInfo(const QUuid &inUuid, const QDateTime& inRegistrationDate)
     : m_uuid(inUuid),
       m_registrationDate(inRegistrationDate)
 {
 
 }
 //-----------------------------------------------------------------------------
-bool HMUser::operator== (const HMUser& inOther) const
+bool HMUserInfo::operator== (const HMUserInfo& inOther) const
 {
     if (&inOther == this) // Если это один экземпляр объекта
         return true;
@@ -28,13 +28,13 @@ bool HMUser::operator== (const HMUser& inOther) const
     }
 }
 //-----------------------------------------------------------------------------
-void HMUser::setLogin(const QString& inLogin)
+void HMUserInfo::setLogin(const QString& inLogin)
 { m_login = inLogin; }
 //-----------------------------------------------------------------------------
-QString HMUser::getLogin() const
+QString HMUserInfo::getLogin() const
 { return m_login; }
 //-----------------------------------------------------------------------------
-bool HMUser::setPassword(const QString& inPassword)
+bool HMUserInfo::setPassword(const QString& inPassword)
 {
     bool Result = true;
 
@@ -46,27 +46,27 @@ bool HMUser::setPassword(const QString& inPassword)
     return Result;
 }
 //-----------------------------------------------------------------------------
-void HMUser::setPasswordHash(const QByteArray& inPasswordHash)
+void HMUserInfo::setPasswordHash(const QByteArray& inPasswordHash)
 { m_passwordHash = inPasswordHash; }
 //-----------------------------------------------------------------------------
-QByteArray HMUser::getPasswordHash() const
+QByteArray HMUserInfo::getPasswordHash() const
 { return m_passwordHash; }
 //-----------------------------------------------------------------------------
-void HMUser::setName(const QString& inName)
+void HMUserInfo::setName(const QString& inName)
 { m_name = inName; }
 //-----------------------------------------------------------------------------
-QString HMUser::getName() const
+QString HMUserInfo::getName() const
 { return m_name; }
 //-----------------------------------------------------------------------------
-void HMUser::setSex(const eSex& inSex)
+void HMUserInfo::setSex(const eSex& inSex)
 { m_sex = inSex; }
 //-----------------------------------------------------------------------------
-eSex HMUser::getSex() const
+eSex HMUserInfo::getSex() const
 { return m_sex; }
 //-----------------------------------------------------------------------------
-void HMUser::setBirthday(const QDate& inBirthday)
+void HMUserInfo::setBirthday(const QDate& inBirthday)
 { m_birthday = inBirthday; }
 //-----------------------------------------------------------------------------
-QDate HMUser::getBirthday() const
+QDate HMUserInfo::getBirthday() const
 { return m_birthday; }
 //-----------------------------------------------------------------------------

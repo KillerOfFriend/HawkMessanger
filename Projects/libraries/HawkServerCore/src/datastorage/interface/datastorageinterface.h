@@ -20,9 +20,11 @@ namespace hmservcommon::datastorage
  * @brief The HMDataStorage class - Интерфейс, описывающий хранилище данных сервера
  *
  * @details Хранит информацию о:
- * 1) Польхователях системы.
- * 2) Группах системы.
- * 3) Переписку групп системы.
+ * 1) Пользователях системы.
+ * 2) Перечень контактов пользователей системы.
+ * 3) Группах системы.
+ * 4) Перечень участников групп системы.
+ * 5) Переписку групп системы.
  *
  * @authors Alekseev_s
  * @date 08.11.2020
@@ -67,14 +69,14 @@ public:
      * @param inUser - Добавляемый пользователь
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code addUser(const std::shared_ptr<hmcommon::HMUser> inUser) = 0;
+    virtual std::error_code addUser(const std::shared_ptr<hmcommon::HMUserInfo> inUser) = 0;
 
     /**
      * @brief updateUser - Метод обновит данные пользователя
      * @param inUser - Обновляемый пользователь
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code updateUser(const std::shared_ptr<hmcommon::HMUser> inUser) = 0;
+    virtual std::error_code updateUser(const std::shared_ptr<hmcommon::HMUserInfo> inUser) = 0;
 
     /**
      * @brief findUserByUUID - Метод найдёт пользователя по его uuid
@@ -82,7 +84,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр пользователя или nullptr
      */
-    virtual std::shared_ptr<hmcommon::HMUser> findUserByUUID(const QUuid& inUserUUID, std::error_code& outErrorCode) const = 0;
+    virtual std::shared_ptr<hmcommon::HMUserInfo> findUserByUUID(const QUuid& inUserUUID, std::error_code& outErrorCode) const = 0;
 
     /**
      * @brief findUserByAuthentication - Метод найдёт пользователя по его данным аутентификации
@@ -91,7 +93,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр пользователя или nullptr
      */
-    virtual std::shared_ptr<hmcommon::HMUser> findUserByAuthentication(const QString& inLogin, const QByteArray& inPasswordHash, std::error_code& outErrorCode) const = 0;
+    virtual std::shared_ptr<hmcommon::HMUserInfo> findUserByAuthentication(const QString& inLogin, const QByteArray& inPasswordHash, std::error_code& outErrorCode) const = 0;
 
     /**
      * @brief removeUser - Метод удалит пользователя
@@ -154,14 +156,14 @@ public:
      * @param inGroup - Добавляемая группа
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code addGroup(const std::shared_ptr<hmcommon::HMGroup> inGroup) = 0;
+    virtual std::error_code addGroup(const std::shared_ptr<hmcommon::HMGroupInfo> inGroup) = 0;
 
     /**
      * @brief updateGroup - Метод обновит данные группы
      * @param inGroup - Обновляемая группа
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code updateGroup(const std::shared_ptr<hmcommon::HMGroup> inGroup) = 0;
+    virtual std::error_code updateGroup(const std::shared_ptr<hmcommon::HMGroupInfo> inGroup) = 0;
 
     /**
      * @brief findGroupByUUID - Метод найдёт пользователя по его uuid
@@ -169,7 +171,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр группы или nullptr
      */
-    virtual std::shared_ptr<hmcommon::HMGroup> findGroupByUUID(const QUuid& inGroupUUID, std::error_code& outErrorCode) const = 0;
+    virtual std::shared_ptr<hmcommon::HMGroupInfo> findGroupByUUID(const QUuid& inGroupUUID, std::error_code& outErrorCode) const = 0;
 
     /**
      * @brief removeGroup - Метод удалит группу
@@ -224,14 +226,14 @@ public:
      * @param inMessage - Добавляемое сообщение
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code addMessage(const std::shared_ptr<hmcommon::HMGroupMessage> inMessage) = 0;
+    virtual std::error_code addMessage(const std::shared_ptr<hmcommon::HMGroupInfoMessage> inMessage) = 0;
 
     /**
      * @brief updateMessage - Метод обновит данные сообщения
      * @param inMessage - Обновляемое сообщение
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code updateMessage(const std::shared_ptr<hmcommon::HMGroupMessage> inMessage) = 0;
+    virtual std::error_code updateMessage(const std::shared_ptr<hmcommon::HMGroupInfoMessage> inMessage) = 0;
 
     /**
      * @brief findMessages - Метод найдёт сообщение по его uuid
@@ -239,7 +241,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр сообщения или nullptr
      */
-    virtual std::shared_ptr<hmcommon::HMGroupMessage> findMessage(const QUuid& inMessageUUID, std::error_code& outErrorCode) const = 0;
+    virtual std::shared_ptr<hmcommon::HMGroupInfoMessage> findMessage(const QUuid& inMessageUUID, std::error_code& outErrorCode) const = 0;
 
     /**
      * @brief findMessages - Метод вернёт перечень сообщений группы за куазаный промежуток времени
@@ -248,7 +250,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт перечень сообщений
      */
-    virtual std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> findMessages(const QUuid& inGroupUUID, const hmcommon::MsgRange& inRange, std::error_code& outErrorCode) const = 0;
+    virtual std::vector<std::shared_ptr<hmcommon::HMGroupInfoMessage>> findMessages(const QUuid& inGroupUUID, const hmcommon::MsgRange& inRange, std::error_code& outErrorCode) const = 0;
 
     /**
      * @brief removeMessage - Метод удалит сообщение

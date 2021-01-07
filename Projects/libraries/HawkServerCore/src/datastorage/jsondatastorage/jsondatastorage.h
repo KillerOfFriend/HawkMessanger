@@ -72,14 +72,14 @@ public:
      * @param inUser - Добавляемый пользователь
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code addUser(const std::shared_ptr<hmcommon::HMUser> inUser) override;
+    virtual std::error_code addUser(const std::shared_ptr<hmcommon::HMUserInfo> inUser) override;
 
     /**
      * @brief updateUser - Метод обновит данные пользователя
      * @param inUser - Обновляемый пользователь
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code updateUser(const std::shared_ptr<hmcommon::HMUser> inUser) override;
+    virtual std::error_code updateUser(const std::shared_ptr<hmcommon::HMUserInfo> inUser) override;
 
     /**
      * @brief findUserByUUID - Метод найдёт пользователя по его uuid
@@ -87,7 +87,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр пользователя или nullptr
      */
-    virtual std::shared_ptr<hmcommon::HMUser> findUserByUUID(const QUuid& inUserUUID, std::error_code& outErrorCode) const override;
+    virtual std::shared_ptr<hmcommon::HMUserInfo> findUserByUUID(const QUuid& inUserUUID, std::error_code& outErrorCode) const override;
 
     /**
      * @brief findUserByAuthentication - Метод найдёт пользователя по его данным аутентификации
@@ -96,7 +96,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр пользователя или nullptr
      */
-    virtual std::shared_ptr<hmcommon::HMUser> findUserByAuthentication(const QString& inLogin, const QByteArray& inPasswordHash, std::error_code& outErrorCode) const override;
+    virtual std::shared_ptr<hmcommon::HMUserInfo> findUserByAuthentication(const QString& inLogin, const QByteArray& inPasswordHash, std::error_code& outErrorCode) const override;
 
     /**
      * @brief removeUser - Метод удалит пользователя
@@ -159,14 +159,14 @@ public:
      * @param inGroup - Добавляемая группа
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code addGroup(const std::shared_ptr<hmcommon::HMGroup> inGroup) override;
+    virtual std::error_code addGroup(const std::shared_ptr<hmcommon::HMGroupInfo> inGroup) override;
 
     /**
      * @brief updateGroup - Метод обновит данные группы
      * @param inGroup - Обновляемая группа
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code updateGroup(const std::shared_ptr<hmcommon::HMGroup> inGroup) override;
+    virtual std::error_code updateGroup(const std::shared_ptr<hmcommon::HMGroupInfo> inGroup) override;
 
     /**
      * @brief findGroupByUUID - Метод найдёт пользователя по его uuid
@@ -174,7 +174,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр группы или nullptr
      */
-    virtual std::shared_ptr<hmcommon::HMGroup> findGroupByUUID(const QUuid& inGroupUUID, std::error_code& outErrorCode) const override;
+    virtual std::shared_ptr<hmcommon::HMGroupInfo> findGroupByUUID(const QUuid& inGroupUUID, std::error_code& outErrorCode) const override;
 
     /**
      * @brief removeGroup - Метод удалит группу
@@ -229,14 +229,14 @@ public:
      * @param inMessage - Добавляемое сообщение
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code addMessage(const std::shared_ptr<hmcommon::HMGroupMessage> inMessage) override;
+    virtual std::error_code addMessage(const std::shared_ptr<hmcommon::HMGroupInfoMessage> inMessage) override;
 
     /**
      * @brief updateMessage - Метод обновит данные сообщения
      * @param inMessage - Обновляемое сообщение
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code updateMessage(const std::shared_ptr<hmcommon::HMGroupMessage> inMessage) override;
+    virtual std::error_code updateMessage(const std::shared_ptr<hmcommon::HMGroupInfoMessage> inMessage) override;
 
     /**
      * @brief findMessage - Метод найдёт сообщение по его uuid
@@ -244,7 +244,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр сообщения или nullptr
      */
-    virtual std::shared_ptr<hmcommon::HMGroupMessage> findMessage(const QUuid& inMessageUUID, std::error_code& outErrorCode) const override;
+    virtual std::shared_ptr<hmcommon::HMGroupInfoMessage> findMessage(const QUuid& inMessageUUID, std::error_code& outErrorCode) const override;
 
     /**
      * @brief findMessages - Метод вернёт перечень сообщений группы за куазаный промежуток времени
@@ -253,7 +253,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт перечень сообщений
      */
-    virtual std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> findMessages(const QUuid& inGroupUUID, const hmcommon::MsgRange& inRange, std::error_code& outErrorCode) const override;
+    virtual std::vector<std::shared_ptr<hmcommon::HMGroupInfoMessage>> findMessages(const QUuid& inGroupUUID, const hmcommon::MsgRange& inRange, std::error_code& outErrorCode) const override;
 
     /**
      * @brief removeMessage - Метод удалит сообщение
@@ -371,7 +371,7 @@ private:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр пользователя или nullptr
      */
-    std::shared_ptr<hmcommon::HMUser> jsonToUser(const nlohmann::json& inUserObject, std::error_code& outErrorCode) const;
+    std::shared_ptr<hmcommon::HMUserInfo> jsonToUser(const nlohmann::json& inUserObject, std::error_code& outErrorCode) const;
 
     /**
      * @brief userToJson - Метод преобразует пользователя в объект Json
@@ -379,7 +379,7 @@ private:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт объект Json
      */
-    nlohmann::json userToJson(std::shared_ptr<hmcommon::HMUser> inUser, std::error_code& outErrorCode) const;
+    nlohmann::json userToJson(std::shared_ptr<hmcommon::HMUserInfo> inUser, std::error_code& outErrorCode) const;
 
     /**
      * @brief jsonToGroup - Метод преобразует Json объект в экземпляр группы
@@ -387,7 +387,7 @@ private:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр группы или nullptr
      */
-    std::shared_ptr<hmcommon::HMGroup> jsonToGroup(const nlohmann::json& inGroupObject, std::error_code& outErrorCode) const;
+    std::shared_ptr<hmcommon::HMGroupInfo> jsonToGroup(const nlohmann::json& inGroupObject, std::error_code& outErrorCode) const;
 
     /**
      * @brief groupToJson - Метод преобразует группу в объект Json
@@ -395,7 +395,7 @@ private:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт объект Json
      */
-    nlohmann::json groupToJson(std::shared_ptr<hmcommon::HMGroup> inGroup, std::error_code& outErrorCode) const;
+    nlohmann::json groupToJson(std::shared_ptr<hmcommon::HMGroupInfo> inGroup, std::error_code& outErrorCode) const;
 
     /**
      * @brief jsonToMessage - Метод преобразует Json объект в экземпляр сообщения
@@ -403,7 +403,7 @@ private:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр сообщения или nullptr
      */
-    std::shared_ptr<hmcommon::HMGroupMessage> jsonToMessage(const nlohmann::json& inMessageObject, std::error_code& outErrorCode) const;
+    std::shared_ptr<hmcommon::HMGroupInfoMessage> jsonToMessage(const nlohmann::json& inMessageObject, std::error_code& outErrorCode) const;
 
     /**
      * @brief messageToJson - Метод преобразует сообщение в объект Json
@@ -411,7 +411,7 @@ private:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт объект Json
      */
-    nlohmann::json messageToJson(std::shared_ptr<hmcommon::HMGroupMessage> inMessage, std::error_code& outErrorCode) const;
+    nlohmann::json messageToJson(std::shared_ptr<hmcommon::HMGroupInfoMessage> inMessage, std::error_code& outErrorCode) const;
 
 };
 //-----------------------------------------------------------------------------

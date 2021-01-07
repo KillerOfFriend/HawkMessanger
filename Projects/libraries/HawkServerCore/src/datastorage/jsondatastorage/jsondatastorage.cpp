@@ -104,7 +104,7 @@ void HMJsonDataStorage::close()
     }
 }
 //-----------------------------------------------------------------------------
-std::error_code HMJsonDataStorage::addUser(const std::shared_ptr<hmcommon::HMUser> inUser)
+std::error_code HMJsonDataStorage::addUser(const std::shared_ptr<hmcommon::HMUserInfo> inUser)
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
@@ -138,7 +138,7 @@ std::error_code HMJsonDataStorage::addUser(const std::shared_ptr<hmcommon::HMUse
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMJsonDataStorage::updateUser(const std::shared_ptr<hmcommon::HMUser> inUser)
+std::error_code HMJsonDataStorage::updateUser(const std::shared_ptr<hmcommon::HMUserInfo> inUser)
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
@@ -164,9 +164,9 @@ std::error_code HMJsonDataStorage::updateUser(const std::shared_ptr<hmcommon::HM
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByUUID(const QUuid &inUserUUID, std::error_code &outErrorCode) const
+std::shared_ptr<hmcommon::HMUserInfo> HMJsonDataStorage::findUserByUUID(const QUuid &inUserUUID, std::error_code &outErrorCode) const
 {
-    std::shared_ptr<hmcommon::HMUser> Result = nullptr;
+    std::shared_ptr<hmcommon::HMUserInfo> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open())
@@ -181,9 +181,9 @@ std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByUUID(const QUuid 
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::findUserByAuthentication(const QString &inLogin, const QByteArray &inPasswordHash, std::error_code &outErrorCode) const
+std::shared_ptr<hmcommon::HMUserInfo> HMJsonDataStorage::findUserByAuthentication(const QString &inLogin, const QByteArray &inPasswordHash, std::error_code &outErrorCode) const
 {
-    std::shared_ptr<hmcommon::HMUser> Result = nullptr;
+    std::shared_ptr<hmcommon::HMUserInfo> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open())
@@ -446,7 +446,7 @@ std::shared_ptr<std::set<QUuid>> HMJsonDataStorage::getUserGroups(const QUuid& i
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMJsonDataStorage::addGroup(const std::shared_ptr<hmcommon::HMGroup> inGroup)
+std::error_code HMJsonDataStorage::addGroup(const std::shared_ptr<hmcommon::HMGroupInfo> inGroup)
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
@@ -472,7 +472,7 @@ std::error_code HMJsonDataStorage::addGroup(const std::shared_ptr<hmcommon::HMGr
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMJsonDataStorage::updateGroup(const std::shared_ptr<hmcommon::HMGroup> inGroup)
+std::error_code HMJsonDataStorage::updateGroup(const std::shared_ptr<hmcommon::HMGroupInfo> inGroup)
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
@@ -498,9 +498,9 @@ std::error_code HMJsonDataStorage::updateGroup(const std::shared_ptr<hmcommon::H
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMGroup> HMJsonDataStorage::findGroupByUUID(const QUuid &inGroupUUID, std::error_code &outErrorCode) const
+std::shared_ptr<hmcommon::HMGroupInfo> HMJsonDataStorage::findGroupByUUID(const QUuid &inGroupUUID, std::error_code &outErrorCode) const
 {
-    std::shared_ptr<hmcommon::HMGroup> Result = nullptr;
+    std::shared_ptr<hmcommon::HMGroupInfo> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open())
@@ -756,7 +756,7 @@ std::shared_ptr<std::set<QUuid>> HMJsonDataStorage::getGroupUserList(const QUuid
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMJsonDataStorage::addMessage(const std::shared_ptr<hmcommon::HMGroupMessage> inMessage)
+std::error_code HMJsonDataStorage::addMessage(const std::shared_ptr<hmcommon::HMGroupInfoMessage> inMessage)
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
@@ -788,7 +788,7 @@ std::error_code HMJsonDataStorage::addMessage(const std::shared_ptr<hmcommon::HM
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMJsonDataStorage::updateMessage(const std::shared_ptr<hmcommon::HMGroupMessage> inMessage)
+std::error_code HMJsonDataStorage::updateMessage(const std::shared_ptr<hmcommon::HMGroupInfoMessage> inMessage)
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
@@ -828,9 +828,9 @@ std::error_code HMJsonDataStorage::updateMessage(const std::shared_ptr<hmcommon:
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMGroupMessage> HMJsonDataStorage::findMessage(const QUuid& inMessageUUID, std::error_code& outErrorCode) const
+std::shared_ptr<hmcommon::HMGroupInfoMessage> HMJsonDataStorage::findMessage(const QUuid& inMessageUUID, std::error_code& outErrorCode) const
 {
-    std::shared_ptr<hmcommon::HMGroupMessage> Result = nullptr;
+    std::shared_ptr<hmcommon::HMGroupInfoMessage> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open())
@@ -865,9 +865,9 @@ std::shared_ptr<hmcommon::HMGroupMessage> HMJsonDataStorage::findMessage(const Q
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> HMJsonDataStorage::findMessages(const QUuid& inGroupUUID, const hmcommon::MsgRange& inRange,  std::error_code& outErrorCode) const
+std::vector<std::shared_ptr<hmcommon::HMGroupInfoMessage>> HMJsonDataStorage::findMessages(const QUuid& inGroupUUID, const hmcommon::MsgRange& inRange,  std::error_code& outErrorCode) const
 {
-    std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> Result;
+    std::vector<std::shared_ptr<hmcommon::HMGroupInfoMessage>> Result;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open())
@@ -911,7 +911,7 @@ std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> HMJsonDataStorage::findMe
             for (auto& Message : FindedMessages.items())
             {   // Все сообщения в списке гарантированно валидны
                 std::error_code ConvertErr;
-                std::shared_ptr<hmcommon::HMGroupMessage> MSG = jsonToMessage(Message.value(), ConvertErr); // Преобразуем объект в сообщение
+                std::shared_ptr<hmcommon::HMGroupInfoMessage> MSG = jsonToMessage(Message.value(), ConvertErr); // Преобразуем объект в сообщение
 
                 if (ConvertErr)
                     LOG_WARNING(QString::fromStdString(ConvertErr.message()));
@@ -919,7 +919,7 @@ std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> HMJsonDataStorage::findMe
                     Result.push_back(MSG); // Помещаем сообщение в итоговый контейнер
             }
             // Сортируем результаты по времени
-            std::sort(Result.begin(), Result.end(), [](std::shared_ptr<hmcommon::HMGroupMessage>& PMes1, std::shared_ptr<hmcommon::HMGroupMessage>& PMes2)
+            std::sort(Result.begin(), Result.end(), [](std::shared_ptr<hmcommon::HMGroupInfoMessage>& PMes1, std::shared_ptr<hmcommon::HMGroupInfoMessage>& PMes2)
             { return PMes1->m_createTime < PMes2->m_createTime; });
 
             if (outErrorCode)
@@ -1193,7 +1193,7 @@ std::error_code HMJsonDataStorage::makeDefault()
 //    m_json[J_RELATIONS][J_REL_GROUP_USERS].push_back(GU2);
 
     // Формируем пользователя администратора
-    std::shared_ptr<hmcommon::HMUser> AdminUser = std::make_shared<hmcommon::HMUser>(QUuid::createUuid());
+    std::shared_ptr<hmcommon::HMUserInfo> AdminUser = std::make_shared<hmcommon::HMUserInfo>(QUuid::createUuid());
     AdminUser->setName("Administrator");
     AdminUser->setLogin("Admin@gmail.com");
     AdminUser->setPassword("password");
@@ -1365,14 +1365,14 @@ std::error_code HMJsonDataStorage::write() const
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::jsonToUser(const nlohmann::json& inUserObject, std::error_code& outErrorCode) const
+std::shared_ptr<hmcommon::HMUserInfo> HMJsonDataStorage::jsonToUser(const nlohmann::json& inUserObject, std::error_code& outErrorCode) const
 {
-    std::shared_ptr<hmcommon::HMUser> Result = nullptr;
+    std::shared_ptr<hmcommon::HMUserInfo> Result = nullptr;
     outErrorCode = m_validator.checkUser(inUserObject); // Проверяем валидность пользователя
 
     if (!outErrorCode) // Если объект валиден
     {   // Инициализируем экземпляр класса пользователя
-        Result = std::make_shared<hmcommon::HMUser>(QUuid::fromString(QString::fromStdString(inUserObject[J_USER_UUID].get<std::string>())),
+        Result = std::make_shared<hmcommon::HMUserInfo>(QUuid::fromString(QString::fromStdString(inUserObject[J_USER_UUID].get<std::string>())),
                                                     QDateTime::fromString(QString::fromStdString(inUserObject[J_USER_REGDATE].get<std::string>()), TIME_FORMAT));
 
         Result->setLogin(QString::fromStdString(inUserObject[J_USER_LOGIN].get<std::string>()));
@@ -1385,7 +1385,7 @@ std::shared_ptr<hmcommon::HMUser> HMJsonDataStorage::jsonToUser(const nlohmann::
     return Result;
 }
 //-----------------------------------------------------------------------------
-nlohmann::json HMJsonDataStorage::userToJson(std::shared_ptr<hmcommon::HMUser> inUser, std::error_code& outErrorCode) const
+nlohmann::json HMJsonDataStorage::userToJson(std::shared_ptr<hmcommon::HMUserInfo> inUser, std::error_code& outErrorCode) const
 {
     nlohmann::json Result = nlohmann::json::value_type::object();
     outErrorCode = make_error_code(hmcommon::eSystemErrorEx::seSuccess);
@@ -1414,14 +1414,14 @@ nlohmann::json HMJsonDataStorage::userToJson(std::shared_ptr<hmcommon::HMUser> i
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMGroup> HMJsonDataStorage::jsonToGroup(const nlohmann::json& inGroupObject, std::error_code& outErrorCode) const
+std::shared_ptr<hmcommon::HMGroupInfo> HMJsonDataStorage::jsonToGroup(const nlohmann::json& inGroupObject, std::error_code& outErrorCode) const
 {
-    std::shared_ptr<hmcommon::HMGroup> Result = nullptr;
+    std::shared_ptr<hmcommon::HMGroupInfo> Result = nullptr;
     outErrorCode = m_validator.checkGroup(inGroupObject); // Проверяем валидность группы
 
     if (!outErrorCode) // Если объект валиден
     {
-        Result = std::make_shared<hmcommon::HMGroup>(QUuid::fromString(QString::fromStdString(inGroupObject[J_GROUP_UUID].get<std::string>())),
+        Result = std::make_shared<hmcommon::HMGroupInfo>(QUuid::fromString(QString::fromStdString(inGroupObject[J_GROUP_UUID].get<std::string>())),
                                                      QDateTime::fromString(QString::fromStdString(inGroupObject[J_GROUP_REGDATE].get<std::string>()), TIME_FORMAT));
 
         Result->setName(QString::fromStdString(inGroupObject[J_GROUP_NAME].get<std::string>()));
@@ -1430,7 +1430,7 @@ std::shared_ptr<hmcommon::HMGroup> HMJsonDataStorage::jsonToGroup(const nlohmann
     return Result;
 }
 //-----------------------------------------------------------------------------
-nlohmann::json HMJsonDataStorage::groupToJson(std::shared_ptr<hmcommon::HMGroup> inGroup, std::error_code& outErrorCode) const
+nlohmann::json HMJsonDataStorage::groupToJson(std::shared_ptr<hmcommon::HMGroupInfo> inGroup, std::error_code& outErrorCode) const
 {
     nlohmann::json Result = nlohmann::json::value_type::object();
     outErrorCode = make_error_code(hmcommon::eSystemErrorEx::seSuccess);
@@ -1454,14 +1454,14 @@ nlohmann::json HMJsonDataStorage::groupToJson(std::shared_ptr<hmcommon::HMGroup>
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMGroupMessage> HMJsonDataStorage::jsonToMessage(const nlohmann::json& inMessageObject, std::error_code& outErrorCode) const
+std::shared_ptr<hmcommon::HMGroupInfoMessage> HMJsonDataStorage::jsonToMessage(const nlohmann::json& inMessageObject, std::error_code& outErrorCode) const
 {
-    std::shared_ptr<hmcommon::HMGroupMessage> Result = nullptr;
+    std::shared_ptr<hmcommon::HMGroupInfoMessage> Result = nullptr;
     outErrorCode = m_validator.checkMessage(inMessageObject); // Проверяем валидность сообщения
 
     if (!outErrorCode) // Если объект валиден
     {
-        Result = std::make_shared<hmcommon::HMGroupMessage>(QUuid::fromString(QString::fromStdString(inMessageObject[J_MESSAGE_UUID].get<std::string>())),
+        Result = std::make_shared<hmcommon::HMGroupInfoMessage>(QUuid::fromString(QString::fromStdString(inMessageObject[J_MESSAGE_UUID].get<std::string>())),
                                                             QUuid::fromString(QString::fromStdString(inMessageObject[J_MESSAGE_GROUP_UUID].get<std::string>())),
                                                             QDateTime::fromString(QString::fromStdString(inMessageObject[J_MESSAGE_REGDATE].get<std::string>()), TIME_FORMAT));
 
@@ -1475,7 +1475,7 @@ std::shared_ptr<hmcommon::HMGroupMessage> HMJsonDataStorage::jsonToMessage(const
     return Result;
 }
 //-----------------------------------------------------------------------------
-nlohmann::json HMJsonDataStorage::messageToJson(std::shared_ptr<hmcommon::HMGroupMessage> inMessage, std::error_code& outErrorCode) const
+nlohmann::json HMJsonDataStorage::messageToJson(std::shared_ptr<hmcommon::HMGroupInfoMessage> inMessage, std::error_code& outErrorCode) const
 {
     nlohmann::json Result = nlohmann::json::value_type::object();
     outErrorCode = make_error_code(hmcommon::eSystemErrorEx::seSuccess);

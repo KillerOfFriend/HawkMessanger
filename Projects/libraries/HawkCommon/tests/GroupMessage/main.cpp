@@ -13,7 +13,7 @@ TEST(Message, Create)
     QUuid MessageGroupUuid = QUuid::createUuid();
     QDateTime CreateTime = QDateTime::currentDateTime();
 
-    hmcommon::HMGroupMessage Message(MessageUuid, MessageGroupUuid, CreateTime);
+    hmcommon::HMGroupInfoMessage Message(MessageUuid, MessageGroupUuid, CreateTime);
 
     EXPECT_EQ(Message.m_uuid, MessageUuid);
     EXPECT_EQ(Message.m_group, MessageGroupUuid);
@@ -38,7 +38,7 @@ TEST(Message, CreateMessageData)
 TEST(Message, CheckParams)
 {
     QString MessageText = "Message text";
-    hmcommon::HMGroupMessage Message(QUuid::createUuid(), QUuid::createUuid());
+    hmcommon::HMGroupInfoMessage Message(QUuid::createUuid(), QUuid::createUuid());
 
     std::error_code Error = Message.setMessage(hmcommon::MsgData(hmcommon::eMsgType::mtText, MessageText.toLocal8Bit()));
     ASSERT_FALSE(Error); // Ошибки быть не должно

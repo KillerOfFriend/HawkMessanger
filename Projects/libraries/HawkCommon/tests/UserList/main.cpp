@@ -1,6 +1,5 @@
 #include <gtest/gtest.h>
 
-#include <user.h>
 #include <userlist.h>
 #include <systemerrorex.h>
 
@@ -13,11 +12,11 @@
  * @param inCreateDate - Дата создания пользователя
  * @return Вернёт указатель на нового пользователя
  */
-std::shared_ptr<hmcommon::HMUser> make_user(const QUuid inUserUuid = QUuid::createUuid(), const QString inUserLogin = "UserLogin@login.com",
+std::shared_ptr<hmcommon::HMUserInfo> make_user(const QUuid inUserUuid = QUuid::createUuid(), const QString inUserLogin = "UserLogin@login.com",
                                             const QString inUserPassword = "P@ssworOfUser123", const QDateTime inCreateDate = QDateTime::currentDateTime())//QDateTime(QDate(), QTime::currentTime()))
 {
     // Формируем нового пользователя
-    std::shared_ptr<hmcommon::HMUser> NewUser = std::make_shared<hmcommon::HMUser>(inUserUuid, inCreateDate);
+    std::shared_ptr<hmcommon::HMUserInfo> NewUser = std::make_shared<hmcommon::HMUserInfo>(inUserUuid, inCreateDate);
     // Задаём основные параметры
     NewUser->setLogin(inUserLogin);
     NewUser->setPassword(inUserPassword);
@@ -30,7 +29,7 @@ std::shared_ptr<hmcommon::HMUser> make_user(const QUuid inUserUuid = QUuid::crea
  */
 TEST(UsertList, Create)
 {
-    hmcommon::HMUserList UsertList;
+    hmcommon::HMUserInfoList UsertList;
 
     EXPECT_TRUE(UsertList.isEmpty());
     EXPECT_EQ(UsertList.count(), 0);
@@ -42,9 +41,9 @@ TEST(UsertList, Create)
 TEST(UsertList, CheckAddContact)
 {
     std::error_code Error; // Метка ошибки
-    hmcommon::HMUserList UsertList; // Список контактов
+    hmcommon::HMUserInfoList UsertList; // Список контактов
 
-    std::shared_ptr<hmcommon::HMUser> NewContact = make_user();
+    std::shared_ptr<hmcommon::HMUserInfo> NewContact = make_user();
 
     EXPECT_TRUE(UsertList.isEmpty());
     EXPECT_EQ(UsertList.count(), 0);
@@ -62,11 +61,11 @@ TEST(UsertList, CheckAddContact)
 TEST(UsertList, FindNotExistsContact)
 {
     std::error_code Error; // Метка ошибки
-    hmcommon::HMUserList ContactList; // Список контактов
+    hmcommon::HMUserInfoList ContactList; // Список контактов
 
-    std::shared_ptr<hmcommon::HMUser> NewContact = make_user();
+    std::shared_ptr<hmcommon::HMUserInfo> NewContact = make_user();
 
-    std::shared_ptr<hmcommon::HMUser> FindRes = ContactList.get(0, Error);
+    std::shared_ptr<hmcommon::HMUserInfo> FindRes = ContactList.get(0, Error);
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
     ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmcommon::eSystemErrorEx::seContainerEmpty)); // И метку, что контейнер пуст
@@ -83,14 +82,14 @@ TEST(UsertList, FindNotExistsContact)
 TEST(UsertList, FindExistsContact)
 {
     std::error_code Error; // Метка ошибки
-    hmcommon::HMUserList ContactList; // Список контактов
+    hmcommon::HMUserInfoList ContactList; // Список контактов
 
-    std::shared_ptr<hmcommon::HMUser> NewContact = make_user();
+    std::shared_ptr<hmcommon::HMUserInfo> NewContact = make_user();
 
     Error = ContactList.add(NewContact); // Добавляем новый контакт
     ASSERT_FALSE(Error); // Ошибки быть не должно;
 
-    std::shared_ptr<hmcommon::HMUser> FindRes = ContactList.get(0, Error);
+    std::shared_ptr<hmcommon::HMUserInfo> FindRes = ContactList.get(0, Error);
 
     ASSERT_NE(FindRes, nullptr); // Должен вернуться валидный указаетль
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -107,10 +106,10 @@ TEST(UsertList, FindExistsContact)
 TEST(UsertList, CheckRemoveContact)
 {
     std::error_code Error; // Метка ошибки
-    hmcommon::HMUserList UsertList; // Список контактов
+    hmcommon::HMUserInfoList UsertList; // Список контактов
 
-    std::shared_ptr<hmcommon::HMUser> NewContact1 = make_user();
-    std::shared_ptr<hmcommon::HMUser> NewContact2 = make_user();
+    std::shared_ptr<hmcommon::HMUserInfo> NewContact1 = make_user();
+    std::shared_ptr<hmcommon::HMUserInfo> NewContact2 = make_user();
 
     Error = UsertList.add(NewContact1); // Добавляем новый контакт
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -132,7 +131,7 @@ TEST(UsertList, CheckRemoveContact)
 }
 //-----------------------------------------------------------------------------
 /**
- * @brief main - Входная точка тестировани функционала HMUserList
+ * @brief main - Входная точка тестировани функционала HMUserInfoList
  * @param argc - Количество аргументов
  * @param argv - Перечень аргументов
  * @return Вернёт признак успешности тестирования

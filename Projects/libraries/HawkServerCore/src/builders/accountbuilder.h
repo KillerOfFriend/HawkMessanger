@@ -47,7 +47,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на экземпляр группы или nullptr
      */
-    std::shared_ptr<hmcommon::HMGroup> buildGroup(const QUuid& inGroupUUID, std::error_code& outErrorCode);
+    std::shared_ptr<hmcommon::HMGroupInfo> buildGroup(const QUuid& inGroupUUID, std::error_code& outErrorCode);
 
     /**
      * @brief buildAccount - Метод соберёт экземпляр класса аккаунта пользователя

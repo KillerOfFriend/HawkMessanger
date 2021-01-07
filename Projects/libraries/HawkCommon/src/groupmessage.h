@@ -1,5 +1,5 @@
-#ifndef HMGROUPMESSAGE_H
-#define HMGROUPMESSAGE_H
+#ifndef HMGroupInfoMESSAGE_H
+#define HMGroupInfoMESSAGE_H
 
 /**
  * @file groupmessage.h
@@ -90,12 +90,12 @@ struct MsgRange
 };
 //-----------------------------------------------------------------------------
 /**
- * @brief The HMGroupMessage class - Класс, описывающий сообщение группы
+ * @brief The HMGroupInfoMessage class - Класс, описывающий сообщение группы
  *
  * @authors Alekseev_s
  * @date 25.11.2020
  */
-class HMGroupMessage
+class HMGroupInfoMessage
 {
 private:
 
@@ -108,17 +108,17 @@ public:
     const QDateTime m_createTime;   ///< Время создания
 
     /**
-     * @brief HMGroupMessage - Инициализирующий конструктор
+     * @brief HMGroupInfoMessage - Инициализирующий конструктор
      * @param inUuid - UUID сообщения
      * @param inGroupUuid - UUID группы
      * @param inCreateTime - Время создания
      */
-    HMGroupMessage(const QUuid& inUuid, const QUuid& inGroupUuid, const QDateTime& inCreateTime = QDateTime::currentDateTime());
+    HMGroupInfoMessage(const QUuid& inUuid, const QUuid& inGroupUuid, const QDateTime& inCreateTime = QDateTime::currentDateTime());
 
     /**
-     * @brief ~HMGroupMessage - Деструктор по умолчанию
+     * @brief ~HMGroupInfoMessage - Деструктор по умолчанию
      */
-    ~HMGroupMessage() = default;
+    ~HMGroupInfoMessage() = default;
 
     /**
      * @brief setMessage - Метод задаст данные сообщения
@@ -137,4 +137,4 @@ public:
 //-----------------------------------------------------------------------------
 }
 
-#endif // HMGROUPMESSAGE_H
+#endif // HMGroupInfoMESSAGE_H

@@ -7,9 +7,7 @@
 #include <QString>
 #include <QDateTime>
 
-#include <user.h>
-#include <group.h>
-#include <groupmessage.h>
+#include <HawkCommon.h>
 
 //-----------------------------------------------------------------------------
 namespace testscommon
@@ -23,11 +21,11 @@ namespace testscommon
  * @param inCreateDate - Дата создания пользователя
  * @return Вернёт указатель на нового пользователя
  */
-std::shared_ptr<hmcommon::HMUser> make_user(const QUuid inUserUuid = QUuid::createUuid(), const QString inUserLogin = "UserLogin@login.com",
+std::shared_ptr<hmcommon::HMUserInfo> make_user(const QUuid inUserUuid = QUuid::createUuid(), const QString inUserLogin = "UserLogin@login.com",
                                             const QString inUserPassword = "P@ssworOfUser123", const QDateTime inCreateDate = QDateTime::currentDateTime())//QDateTime(QDate(), QTime::currentTime()))
 {
     // Формируем нового пользователя
-    std::shared_ptr<hmcommon::HMUser> NewUser = std::make_shared<hmcommon::HMUser>(inUserUuid, inCreateDate);
+    std::shared_ptr<hmcommon::HMUserInfo> NewUser = std::make_shared<hmcommon::HMUserInfo>(inUserUuid, inCreateDate);
     // Задаём основные параметры
     NewUser->setLogin(inUserLogin);
     NewUser->setPassword(inUserPassword);
@@ -42,11 +40,11 @@ std::shared_ptr<hmcommon::HMUser> make_user(const QUuid inUserUuid = QUuid::crea
  * @param inCreateDate - Дата создания группы
  * @return Вернёт указатель на новую группу
  */
-std::shared_ptr<hmcommon::HMGroup> make_group(const QUuid inGroupUuid = QUuid::createUuid(), const QString inGroupName = "New group name",
+std::shared_ptr<hmcommon::HMGroupInfo> make_group(const QUuid inGroupUuid = QUuid::createUuid(), const QString inGroupName = "New group name",
                                               const QDateTime inCreateDate = QDateTime::currentDateTime())//QDateTime(QDate(), QTime::currentTime()))
 {
     // Формируем новую группу
-    std::shared_ptr<hmcommon::HMGroup> NewGroup = std::make_shared<hmcommon::HMGroup>(inGroupUuid, inCreateDate);
+    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = std::make_shared<hmcommon::HMGroupInfo>(inGroupUuid, inCreateDate);
     NewGroup->setName(inGroupName); // Задаём имя группы
 
     return NewGroup;
@@ -60,10 +58,10 @@ std::shared_ptr<hmcommon::HMGroup> make_group(const QUuid inGroupUuid = QUuid::c
  * @param inCreateDate - Дата создания сообщения
  * @return Вернёт указатель на новое сообщение
  */
-std::shared_ptr<hmcommon::HMGroupMessage> make_groupmessage(const hmcommon::MsgData& inData, const QUuid inUuid = QUuid::createUuid(), const QUuid inGroupUuid = QUuid::createUuid(),
+std::shared_ptr<hmcommon::HMGroupInfoMessage> make_groupmessage(const hmcommon::MsgData& inData, const QUuid inUuid = QUuid::createUuid(), const QUuid inGroupUuid = QUuid::createUuid(),
                                                             const QDateTime inCreateDate = QDateTime::currentDateTime())
 {
-    std::shared_ptr<hmcommon::HMGroupMessage> NewMessage = std::make_shared<hmcommon::HMGroupMessage>(inUuid, inGroupUuid, inCreateDate);
+    std::shared_ptr<hmcommon::HMGroupInfoMessage> NewMessage = std::make_shared<hmcommon::HMGroupInfoMessage>(inUuid, inGroupUuid, inCreateDate);
     NewMessage->setMessage(inData);
 
     return NewMessage;

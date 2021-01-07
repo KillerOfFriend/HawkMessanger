@@ -41,9 +41,9 @@ MsgRange::MsgRange(const QDateTime& inFrom, const QDateTime& inTo) :
 
 }
 //-----------------------------------------------------------------------------
-// HMGroupMessage
+// HMGroupInfoMessage
 //-----------------------------------------------------------------------------
-HMGroupMessage::HMGroupMessage(const QUuid& inUuid, const QUuid& inGroupUuid, const QDateTime& inCreateTime) :
+HMGroupInfoMessage::HMGroupInfoMessage(const QUuid& inUuid, const QUuid& inGroupUuid, const QDateTime& inCreateTime) :
     m_message(MsgData(eMsgType::mtEmpty, QByteArray())),
     m_uuid(inUuid),
     m_group(inGroupUuid),
@@ -52,7 +52,7 @@ HMGroupMessage::HMGroupMessage(const QUuid& inUuid, const QUuid& inGroupUuid, co
 
 }
 //-----------------------------------------------------------------------------
-std::error_code HMGroupMessage::setMessage(const MsgData& inMessageData)
+std::error_code HMGroupInfoMessage::setMessage(const MsgData& inMessageData)
 {
     std::error_code Error = make_error_code(eSystemErrorEx::seSuccess);
 
@@ -65,6 +65,6 @@ std::error_code HMGroupMessage::setMessage(const MsgData& inMessageData)
     return Error;
 }
 //-----------------------------------------------------------------------------
-MsgData HMGroupMessage::getMesssage() const
+MsgData HMGroupInfoMessage::getMesssage() const
 { return m_message; }
 //-----------------------------------------------------------------------------

@@ -1,18 +1,18 @@
-#include "group.h"
+#include "groupinfo.h"
 
 #include "systemerrorex.h"
 
 using namespace hmcommon;
 
 //-----------------------------------------------------------------------------
-HMGroup::HMGroup(const QUuid &inUuid, const QDateTime& inRegistrationDate) :
+HMGroupInfo::HMGroupInfo(const QUuid &inUuid, const QDateTime& inRegistrationDate) :
     m_uuid(inUuid),
     m_registrationDate(inRegistrationDate)
 {
 
 }
 //-----------------------------------------------------------------------------
-bool HMGroup::operator== (const HMGroup& inOther) const
+bool HMGroupInfo::operator== (const HMGroupInfo& inOther) const
 {
     if (&inOther == this) // Если это один экземпляр объекта
         return true;
@@ -24,19 +24,19 @@ bool HMGroup::operator== (const HMGroup& inOther) const
     }
 }
 //-----------------------------------------------------------------------------
-void HMGroup::setName(const QString& inName)
+void HMGroupInfo::setName(const QString& inName)
 { m_name = inName; }
 //-----------------------------------------------------------------------------
-QString HMGroup::getName() const
+QString HMGroupInfo::getName() const
 { return m_name; }
 //-----------------------------------------------------------------------------
-//bool HMGroup::isUsersEmpty() const
+//bool HMGroupInfo::isUsersEmpty() const
 //{ return  m_users.empty(); }
 ////-----------------------------------------------------------------------------
-//std::size_t HMGroup::usersCount() const
+//std::size_t HMGroupInfo::usersCount() const
 //{ return m_users.size(); }
 ////-----------------------------------------------------------------------------
-//std::error_code HMGroup::addUser(const std::shared_ptr<HMUser> inUser)
+//std::error_code HMGroupInfo::addUser(const std::shared_ptr<HMUserInfo> inUser)
 //{
 //    std::error_code Result = make_error_code(eSystemErrorEx::seSuccess);
 
@@ -53,11 +53,11 @@ QString HMGroup::getName() const
 //    return Result;
 //}
 ////-----------------------------------------------------------------------------
-//std::error_code HMGroup::removeUser(const QUuid& inUserUuid)
+//std::error_code HMGroupInfo::removeUser(const QUuid& inUserUuid)
 //{
 //    std::error_code Result = make_error_code(eSystemErrorEx::seSuccess);
 
-//    auto It = std::find_if(m_users.begin(), m_users.end(), [&inUserUuid](const std::shared_ptr<HMUser>& User)
+//    auto It = std::find_if(m_users.begin(), m_users.end(), [&inUserUuid](const std::shared_ptr<HMUserInfo>& User)
 //    { return User->m_uuid == inUserUuid; });
 
 //    if (It == m_users.end())
@@ -68,9 +68,9 @@ QString HMGroup::getName() const
 //    return Result;
 //}
 ////-----------------------------------------------------------------------------
-//std::shared_ptr<HMUser> HMGroup::getUser(const std::size_t inIndex, std::error_code& outErrorCode)
+//std::shared_ptr<HMUserInfo> HMGroupInfo::getUser(const std::size_t inIndex, std::error_code& outErrorCode)
 //{
-//    std::shared_ptr<HMUser> Result = nullptr;
+//    std::shared_ptr<HMUserInfo> Result = nullptr;
 //    outErrorCode = make_error_code(eSystemErrorEx::seSuccess);
 
 //    if (isUsersEmpty())
@@ -86,9 +86,9 @@ QString HMGroup::getName() const
 //    return Result;
 //}
 ////-----------------------------------------------------------------------------
-//bool HMGroup::contain(const QUuid& inUserUuid) const
+//bool HMGroupInfo::contain(const QUuid& inUserUuid) const
 //{
-//    return m_users.end() != std::find_if(m_users.begin(), m_users.end(), [&inUserUuid](const std::shared_ptr<HMUser>& User)
+//    return m_users.end() != std::find_if(m_users.begin(), m_users.end(), [&inUserUuid](const std::shared_ptr<HMUserInfo>& User)
 //    { return User->m_uuid == inUserUuid; });
 //}
 ////-----------------------------------------------------------------------------

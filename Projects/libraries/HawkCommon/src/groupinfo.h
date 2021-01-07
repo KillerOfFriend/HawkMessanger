@@ -9,23 +9,24 @@
 #include <vector>
 #include <system_error>
 
-#include "user.h"
+#include <QUuid>
+#include <QDateTime>
 
 namespace hmcommon
 {
 //-----------------------------------------------------------------------------
 /**
- * @brief The HMGroup class - Класс, описывающий группу пользователей системы
+ * @brief The HMGroupInfo class - Класс, описывающий группу пользователей системы
  *
  * @authors Alekseev_s
  * @date 08.11.2020
  */
-class HMGroup
+class HMGroupInfo
 {
 private:
 
     QString m_name;                                 ///< Имя группы
-//    std::vector<std::shared_ptr<HMUser>> m_users;   ///< Перечень пользователей группы
+//    std::vector<std::shared_ptr<HMUserInfo>> m_users;   ///< Перечень пользователей группы
 
 public:
 
@@ -33,23 +34,23 @@ public:
     const QDateTime m_registrationDate; ///< Дата регистрации группы
 
     /**
-     * @brief HMGroup - Инициализирующий конструктор
+     * @brief HMGroupInfo - Инициализирующий конструктор
      * @param inUuid - Uuid группы
      * @param inRegistrationDate - Дата регистрации группы
      */
-    HMGroup(const QUuid& inUuid, const QDateTime& inRegistrationDate = QDateTime::currentDateTime());
+    HMGroupInfo(const QUuid& inUuid, const QDateTime& inRegistrationDate = QDateTime::currentDateTime());
 
     /**
-     * @brief ~HMGroup - Деструктор по умолчанию
+     * @brief ~HMGroupInfo - Деструктор по умолчанию
      */
-    ~HMGroup() = default;
+    ~HMGroupInfo() = default;
 
     /**
      * @brief operator == - Оператор сравнения
      * @param inOther - Сравниваемый объект
      * @return - Вернёт оператор сравнения
      */
-    bool operator== (const HMGroup& inOther) const;
+    bool operator== (const HMGroupInfo& inOther) const;
 
     /**
      * @brief setName - Метод задаст имя группы
@@ -80,7 +81,7 @@ public:
 //     * @param inUser - UUID добавляемого пользователя
 //     * @return Вернёт признак ошибки
 //     */
-//    std::error_code addUser(const std::shared_ptr<HMUser> inUser);
+//    std::error_code addUser(const std::shared_ptr<HMUserInfo> inUser);
 
 //    /**
 //     * @brief removeUser - Метод удалит польоваетля из группы
@@ -94,7 +95,7 @@ public:
 //     * @param outErrorCode - Признак ошибки
 //     * @return Вернёт пользователя или nullptr
 //     */
-//    std::shared_ptr<HMUser> getUser(const std::size_t inIndex, std::error_code& outErrorCode);
+//    std::shared_ptr<HMUserInfo> getUser(const std::size_t inIndex, std::error_code& outErrorCode);
 
 //    /**
 //     * @brief contain - Метод проверит, содержит ли группа пользователя

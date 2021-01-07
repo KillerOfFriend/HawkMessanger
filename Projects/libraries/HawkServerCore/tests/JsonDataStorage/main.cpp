@@ -274,14 +274,14 @@ TEST(JsonDataStorage, CheckJsonSave)
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(Storage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUser> NewUser = testscommon::make_user(); // Формируем пользователя
+    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user(); // Формируем пользователя
 
     Error = Storage->addUser(NewUser);
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     // Формируем для пользователя список контактов
     const std::size_t ContactsCount = 5;
-    std::array<std::shared_ptr<hmcommon::HMUser>, ContactsCount> Contacts;
+    std::array<std::shared_ptr<hmcommon::HMUserInfo>, ContactsCount> Contacts;
 
     for (std::size_t Index = 0; Index < ContactsCount; ++Index)
     {
@@ -296,7 +296,7 @@ TEST(JsonDataStorage, CheckJsonSave)
         EXPECT_FALSE(Error);
     }
 
-    std::shared_ptr<hmcommon::HMGroup> NewGroup = testscommon::make_group(); // Формируем новую группу
+    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group(); // Формируем новую группу
 
     Error = Storage->addGroup(NewGroup);
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -304,7 +304,7 @@ TEST(JsonDataStorage, CheckJsonSave)
     // Добавляем сообщения в группу
 
     const size_t MESSAGES = 5;
-    std::array<std::shared_ptr<hmcommon::HMGroupMessage>, MESSAGES> Messages;
+    std::array<std::shared_ptr<hmcommon::HMGroupInfoMessage>, MESSAGES> Messages;
 
     for (std::size_t Index = 0; Index < MESSAGES; ++Index)
     {
@@ -334,11 +334,11 @@ TEST(JsonDataStorage, CheckJsonSave)
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(Storage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUser> FindUser = Storage->findUserByUUID(NewUser->m_uuid, Error);
+    std::shared_ptr<hmcommon::HMUserInfo> FindUser = Storage->findUserByUUID(NewUser->m_uuid, Error);
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_NE(FindUser, nullptr); // Должен вернуться валидный указатель
 
-    std::shared_ptr<hmcommon::HMGroup> FindGroup = Storage->findGroupByUUID(NewGroup->m_uuid, Error);
+    std::shared_ptr<hmcommon::HMGroupInfo> FindGroup = Storage->findGroupByUUID(NewGroup->m_uuid, Error);
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_NE(FindGroup, nullptr); // Должен вернуться валидный указатель
 
@@ -370,7 +370,7 @@ TEST(JsonDataStorage, CheckJsonSave)
 
     for (std::size_t Index = 0; Index < MESSAGES; ++Index)
     {
-        std::shared_ptr<hmcommon::HMGroupMessage> FindRes = Storage->findMessage(Messages[Index]->m_uuid, Error);
+        std::shared_ptr<hmcommon::HMGroupInfoMessage> FindRes = Storage->findMessage(Messages[Index]->m_uuid, Error);
         ASSERT_FALSE(Error); // Ошибки быть не должно
         ASSERT_NE(FindGroup, nullptr); // Должен вернуться валидный указатель
 

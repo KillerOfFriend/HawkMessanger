@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include <user.h>
+#include <userinfo.h>
 
 #include <QCryptographicHash>
 
@@ -8,12 +8,12 @@
 /**
  * @brief TEST - Тест создания пользователя
  */
-TEST(User, Create)
+TEST(UserInfo, Create)
 {
     QUuid UserUuid = QUuid::createUuid();
     QDateTime CreateTime = QDateTime::currentDateTime();
 
-    hmcommon::HMUser User(UserUuid, CreateTime);
+    hmcommon::HMUserInfo User(UserUuid, CreateTime);
 
     EXPECT_EQ(User.m_uuid, UserUuid);
     EXPECT_EQ(User.m_registrationDate, CreateTime);
@@ -22,14 +22,14 @@ TEST(User, Create)
 /**
  * @brief TEST - Тест хранения параметров пользователя
  */
-TEST(User, CheckParams)
+TEST(UserInfo, CheckParams)
 {
     const QString UserLogin = "UserLogin@random.net";
     const QString UserName = "New User Name";
     const QString UserPassword = "User_P@$$word";
     const QDate UserBirthday = QDate::currentDate();
 
-    hmcommon::HMUser User(QUuid::createUuid());
+    hmcommon::HMUserInfo User(QUuid::createUuid());
 
     User.setLogin(UserLogin);
     EXPECT_EQ(User.getLogin(), UserLogin);

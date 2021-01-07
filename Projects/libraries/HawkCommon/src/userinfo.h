@@ -26,12 +26,12 @@ enum class eSex
 };
 //-----------------------------------------------------------------------------
 /**
- * @brief The HMUser class - Класс, описывающий пользователя системы
+ * @brief The HMUserInfo class - Класс, описывающий пользователя системы
  *
  * @authors Alekseev_s
  * @date 08.11.2020
  */
-class HMUser
+class HMUserInfo
 {
 private:
 
@@ -49,23 +49,23 @@ public:
     const QDateTime m_registrationDate; ///< Дата регистрации пользователя
 
     /**
-     * @brief HMUser - Инициализирующий конструктор
+     * @brief HMUserInfo - Инициализирующий конструктор
      * @param inUuid - Uuid пользователя
      * @param inRegistrationDate - Дата регистрации
      */
-    HMUser(const QUuid& inUuid, const QDateTime& inRegistrationDate = QDateTime::currentDateTime());
+    HMUserInfo(const QUuid& inUuid, const QDateTime& inRegistrationDate = QDateTime::currentDateTime());
 
     /**
-     * @brief ~HMUser - Деструктор по умолчанию
+     * @brief ~HMUserInfo - Деструктор по умолчанию
      */
-    ~HMUser() = default;
+    ~HMUserInfo() = default;
 
     /**
      * @brief operator == - Оператор сравнения
      * @param inOther - Сравниваемый объект
      * @return - Вернёт оператор сравнения
      */
-    bool operator== (const HMUser& inOther) const;
+    bool operator== (const HMUserInfo& inOther) const;
 
     /**
      * @brief setLogin - Метод задаст логин

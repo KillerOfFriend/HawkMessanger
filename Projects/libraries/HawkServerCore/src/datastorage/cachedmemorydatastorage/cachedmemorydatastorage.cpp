@@ -39,7 +39,7 @@ void HMCachedMemoryDataStorage::close()
     clearCached(); // При закрытии чистим кеш
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCachedMemoryDataStorage::addUser(const std::shared_ptr<hmcommon::HMUser> inUser)
+std::error_code HMCachedMemoryDataStorage::addUser(const std::shared_ptr<hmcommon::HMUserInfo> inUser)
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально помечаем как успех
 
@@ -55,7 +55,7 @@ std::error_code HMCachedMemoryDataStorage::addUser(const std::shared_ptr<hmcommo
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCachedMemoryDataStorage::updateUser(const std::shared_ptr<hmcommon::HMUser> inUser)
+std::error_code HMCachedMemoryDataStorage::updateUser(const std::shared_ptr<hmcommon::HMUserInfo> inUser)
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально помечаем как успех
 
@@ -65,7 +65,7 @@ std::error_code HMCachedMemoryDataStorage::updateUser(const std::shared_ptr<hmco
     {
         // ЕСЛИ КОНЦЕПЦИЯ ОДНОГО ОБЪЕКТА РАБОТАЕТ ТО И ОБНОВЛЕНИЕ НА УРОВНЕ кешА УЖЕ ДОЛЖНО ПРОИЗОЙТИ
         // Достаточно проверить что этот объект уже в кеше и указатели равны
-        std::shared_ptr<hmcommon::HMUser> FindRes = findUserByUUID(inUser->m_uuid, Error);
+        std::shared_ptr<hmcommon::HMUserInfo> FindRes = findUserByUUID(inUser->m_uuid, Error);
 
         if (FindRes != inUser)
             Error = make_error_code(hmcommon::eSystemErrorEx::seIncorretData);
@@ -74,14 +74,14 @@ std::error_code HMCachedMemoryDataStorage::updateUser(const std::shared_ptr<hmco
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMUser> HMCachedMemoryDataStorage::findUserByUUID(const QUuid& inUserUUID, std::error_code& outErrorCode) const
+std::shared_ptr<hmcommon::HMUserInfo> HMCachedMemoryDataStorage::findUserByUUID(const QUuid& inUserUUID, std::error_code& outErrorCode) const
 {
-    std::shared_ptr<hmcommon::HMUser> Result = nullptr;
+    std::shared_ptr<hmcommon::HMUserInfo> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально помечаем как успех
 
     std::shared_lock sl(m_usersDefender); // Публично блокируем пользователей
 
-    auto FindRes = m_cachedUsers.find(HMCachedUser(std::make_shared<hmcommon::HMUser>(inUserUUID))); // Ищим пользователя в кеше
+    auto FindRes = m_cachedUsers.find(HMCachedUser(std::make_shared<hmcommon::HMUserInfo>(inUserUUID))); // Ищим пользователя в кеше
 
     if (FindRes == m_cachedUsers.end()) // Нет пользователя в кеше
         outErrorCode = make_error_code(eDataStorageError::dsUserNotExists);
@@ -94,9 +94,9 @@ std::shared_ptr<hmcommon::HMUser> HMCachedMemoryDataStorage::findUserByUUID(cons
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMUser> HMCachedMemoryDataStorage::findUserByAuthentication(const QString& inLogin, const QByteArray& inPasswordHash, std::error_code& outErrorCode) const
+std::shared_ptr<hmcommon::HMUserInfo> HMCachedMemoryDataStorage::findUserByAuthentication(const QString& inLogin, const QByteArray& inPasswordHash, std::error_code& outErrorCode) const
 {
-    std::shared_ptr<hmcommon::HMUser> Result = nullptr;
+    std::shared_ptr<hmcommon::HMUserInfo> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально помечаем как успех
 
     std::shared_lock sl(m_usersDefender); // Публично блокируем пользователей
@@ -124,7 +124,7 @@ std::shared_ptr<hmcommon::HMUser> HMCachedMemoryDataStorage::findUserByAuthentic
 std::error_code HMCachedMemoryDataStorage::removeUser(const QUuid& inUserUUID)
 {
     std::unique_lock ul(m_usersDefender); // Эксклюзивно блокируем доступ к пользователям
-    auto FindRes = m_cachedUsers.find(HMCachedUser(std::make_shared<hmcommon::HMUser>(inUserUUID))); // Ищим пользователя в кеше
+    auto FindRes = m_cachedUsers.find(HMCachedUser(std::make_shared<hmcommon::HMUserInfo>(inUserUUID))); // Ищим пользователя в кеше
 
     if (FindRes != m_cachedUsers.end()) // Если пользователь найден
         m_cachedUsers.erase(FindRes); // Удаляем его из кеша
@@ -230,7 +230,7 @@ std::shared_ptr<std::set<QUuid>> HMCachedMemoryDataStorage::getUserGroups(const 
     return nullptr;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCachedMemoryDataStorage::addGroup(const std::shared_ptr<hmcommon::HMGroup> inGroup)
+std::error_code HMCachedMemoryDataStorage::addGroup(const std::shared_ptr<hmcommon::HMGroupInfo> inGroup)
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально помечаем как успех
 
@@ -246,7 +246,7 @@ std::error_code HMCachedMemoryDataStorage::addGroup(const std::shared_ptr<hmcomm
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCachedMemoryDataStorage::updateGroup(const std::shared_ptr<hmcommon::HMGroup> inGroup)
+std::error_code HMCachedMemoryDataStorage::updateGroup(const std::shared_ptr<hmcommon::HMGroupInfo> inGroup)
 {
     std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально помечаем как успех
 
@@ -256,7 +256,7 @@ std::error_code HMCachedMemoryDataStorage::updateGroup(const std::shared_ptr<hmc
     {
         // ЕСЛИ КОНЦЕПЦИЯ ОДНОГО ОБЪЕКТА РАБОТАЕТ ТО И ОБНОВЛЕНИЕ НА УРОВНЕ кешА УЖЕ ДОЛЖНО ПРОИЗОЙТИ
         // Достаточно проверить что этот объект уже в кеше и указатели равны
-        std::shared_ptr<hmcommon::HMGroup> FindRes = findGroupByUUID(inGroup->m_uuid, Error);
+        std::shared_ptr<hmcommon::HMGroupInfo> FindRes = findGroupByUUID(inGroup->m_uuid, Error);
 
         if (FindRes != inGroup)
             Error = make_error_code(hmcommon::eSystemErrorEx::seIncorretData);
@@ -265,14 +265,14 @@ std::error_code HMCachedMemoryDataStorage::updateGroup(const std::shared_ptr<hmc
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMGroup> HMCachedMemoryDataStorage::findGroupByUUID(const QUuid& inGroupUUID, std::error_code& outErrorCode) const
+std::shared_ptr<hmcommon::HMGroupInfo> HMCachedMemoryDataStorage::findGroupByUUID(const QUuid& inGroupUUID, std::error_code& outErrorCode) const
 {
-    std::shared_ptr<hmcommon::HMGroup> Result = nullptr;
+    std::shared_ptr<hmcommon::HMGroupInfo> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально помечаем как успех
 
     std::shared_lock sl(m_groupsDefender); // Публично блокируем группы
 
-    auto FindRes = m_cachedGroups.find(HMCachedGroup(std::make_shared<hmcommon::HMGroup>(inGroupUUID))); // Ищим группу в кеше
+    auto FindRes = m_cachedGroups.find(HMCachedGroup(std::make_shared<hmcommon::HMGroupInfo>(inGroupUUID))); // Ищим группу в кеше
 
     if (FindRes == m_cachedGroups.end()) // Нет группы в кеше
         outErrorCode = make_error_code(eDataStorageError::dsGroupNotExists);
@@ -288,7 +288,7 @@ std::shared_ptr<hmcommon::HMGroup> HMCachedMemoryDataStorage::findGroupByUUID(co
 std::error_code HMCachedMemoryDataStorage::removeGroup(const QUuid& inGroupUUID)
 {
     std::unique_lock ul(m_groupsDefender); // Эксклюзивно блокируем доступ к группам
-    auto FindRes = m_cachedGroups.find(HMCachedGroup(std::make_shared<hmcommon::HMGroup>(inGroupUUID))); // Ищим пользователя в кеше
+    auto FindRes = m_cachedGroups.find(HMCachedGroup(std::make_shared<hmcommon::HMGroupInfo>(inGroupUUID))); // Ищим пользователя в кеше
 
     if (FindRes != m_cachedGroups.end()) // Если группа найдена
         m_cachedGroups.erase(FindRes); // Удаляем её из кеша
@@ -414,31 +414,31 @@ std::shared_ptr<std::set<QUuid>> HMCachedMemoryDataStorage::getGroupUserList(con
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCachedMemoryDataStorage::addMessage(const std::shared_ptr<hmcommon::HMGroupMessage> inMessage)
+std::error_code HMCachedMemoryDataStorage::addMessage(const std::shared_ptr<hmcommon::HMGroupInfoMessage> inMessage)
 {
     Q_UNUSED(inMessage);
     return make_error_code(hmcommon::eSystemErrorEx::seSuccess); // Много чести кешировать сообщения
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCachedMemoryDataStorage::updateMessage(const std::shared_ptr<hmcommon::HMGroupMessage> inMessage)
+std::error_code HMCachedMemoryDataStorage::updateMessage(const std::shared_ptr<hmcommon::HMGroupInfoMessage> inMessage)
 {
     Q_UNUSED(inMessage);
     return make_error_code(hmcommon::eSystemErrorEx::seSuccess); // Много чести кешировать сообщения
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMGroupMessage> HMCachedMemoryDataStorage::findMessage(const QUuid& inMessageUUID, std::error_code& outErrorCode) const
+std::shared_ptr<hmcommon::HMGroupInfoMessage> HMCachedMemoryDataStorage::findMessage(const QUuid& inMessageUUID, std::error_code& outErrorCode) const
 {
     Q_UNUSED(inMessageUUID);
     outErrorCode = make_error_code(eDataStorageError::dsMessageNotExists); // Чесно говорим, что сообщение не кешировано
     return nullptr;
 }
 //-----------------------------------------------------------------------------
-std::vector<std::shared_ptr<hmcommon::HMGroupMessage>> HMCachedMemoryDataStorage::findMessages(const QUuid& inGroupUUID, const hmcommon::MsgRange& inRange,  std::error_code& outErrorCode) const
+std::vector<std::shared_ptr<hmcommon::HMGroupInfoMessage>> HMCachedMemoryDataStorage::findMessages(const QUuid& inGroupUUID, const hmcommon::MsgRange& inRange,  std::error_code& outErrorCode) const
 {
     Q_UNUSED(inGroupUUID);
     Q_UNUSED(inRange);
     outErrorCode = make_error_code(eDataStorageError::dsMessageNotExists); // Чесно говорим, что сообщения не кешированы
-    return std::vector<std::shared_ptr<hmcommon::HMGroupMessage>>();
+    return std::vector<std::shared_ptr<hmcommon::HMGroupInfoMessage>>();
 }
 //-----------------------------------------------------------------------------
 std::error_code HMCachedMemoryDataStorage::removeMessage(const QUuid& inMessageUUID, const QUuid& inGroupUUID)

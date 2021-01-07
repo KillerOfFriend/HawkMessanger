@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 
-#include <group.h>
+#include <groupinfo.h>
 #include <systemerrorex.h>
 
 #include <HawkCommonTestUtils.hpp>
@@ -9,12 +9,12 @@
 /**
  * @brief TEST - Тест создания группы
  */
-TEST(Group, Create)
+TEST(GroupInfo, Create)
 {
     QUuid GroupUuid = QUuid::createUuid();
     QDateTime CreateTime = QDateTime::currentDateTime();
 
-    hmcommon::HMGroup Group(GroupUuid, CreateTime);
+    hmcommon::HMGroupInfo Group(GroupUuid, CreateTime);
 
     EXPECT_EQ(Group.m_uuid, GroupUuid);
     EXPECT_EQ(Group.m_registrationDate, CreateTime);
@@ -23,15 +23,15 @@ TEST(Group, Create)
 /**
  * @brief TEST - Тест хранения параметров группы
  */
-TEST(Group, CheckParams)
+TEST(GroupInfo, CheckParams)
 {
     std::error_code Error;
 
     const QString GroupName = "New_Group_Name";
     const std::size_t GroupUserCount = 5;
-    std::array<std::shared_ptr<hmcommon::HMUser>, GroupUserCount> Users;
+    std::array<std::shared_ptr<hmcommon::HMUserInfo>, GroupUserCount> Users;
 
-    hmcommon::HMGroup Group(QUuid::createUuid());
+    hmcommon::HMGroupInfo Group(QUuid::createUuid());
 
     Group.setName(GroupName);
     EXPECT_EQ(Group.getName(), GroupName);
@@ -55,7 +55,7 @@ TEST(Group, CheckParams)
 //    {
 //        ASSERT_TRUE(Group.contain(Users[Index]->m_uuid));
 
-//        std::shared_ptr<hmcommon::HMUser> User = Group.getUser(Index, Error);
+//        std::shared_ptr<hmcommon::HMUserInfo> User = Group.getUser(Index, Error);
 //        ASSERT_FALSE(Error); // Ошибки быть не должно
 //        EXPECT_EQ(User, Users[Index]); // И UUID пользователя должен совпадать
 //    }

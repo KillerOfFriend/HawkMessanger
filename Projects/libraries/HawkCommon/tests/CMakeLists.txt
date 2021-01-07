@@ -25,19 +25,19 @@ target_link_libraries(${HC_Test1} PRIVATE ${TESTS_LINCED_LIBRARYES})
 
 add_test(NAME HawkServerCore_Test1 COMMAND UserListTest)
 #====================================================================
-set(HC_Test2 HawkCommon_UserTest)
-add_executable(${HC_Test2} ${CMAKE_CURRENT_SOURCE_DIR}/User/main.cpp)
+set(HC_Test2 HawkCommon_UserInfoTest)
+add_executable(${HC_Test2} ${CMAKE_CURRENT_SOURCE_DIR}/UserInfo/main.cpp)
 target_include_directories(${HC_Test2} PRIVATE ${TESTS_INCLUDE_DIRS})
 target_link_libraries(${HC_Test2} PRIVATE ${TESTS_LINCED_LIBRARYES})
 
-add_test(NAME HawkServerCore_Test2 COMMAND UserTest)
+add_test(NAME HawkServerCore_Test2 COMMAND UserInfoTest)
 #====================================================================
-set(HC_Test3 HawkCommon_GroupTest)
-add_executable(${HC_Test3} ${CMAKE_CURRENT_SOURCE_DIR}/Group/main.cpp)
+set(HC_Test3 HawkCommon_GroupInfoTest)
+add_executable(${HC_Test3} ${CMAKE_CURRENT_SOURCE_DIR}/GroupInfo/main.cpp)
 target_include_directories(${HC_Test3} PRIVATE ${TESTS_INCLUDE_DIRS})
 target_link_libraries(${HC_Test3} PRIVATE ${TESTS_LINCED_LIBRARYES})
 
-add_test(NAME HawkServerCore_Test3 COMMAND GroupTest)
+add_test(NAME HawkServerCore_Test3 COMMAND GroupInfoTest)
 #====================================================================
 set(HC_Test4 HawkCommon_GroupMessageTest)
 add_executable(${HC_Test4} ${CMAKE_CURRENT_SOURCE_DIR}/GroupMessage/main.cpp)

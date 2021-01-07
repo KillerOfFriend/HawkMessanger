@@ -5,9 +5,7 @@
 #include <memory>
 #include <chrono>
 
-#include "user.h"
-#include "group.h"
-#include "userlist.h"
+#include <HawkCommon.h>
 
 namespace hmservcommon
 {
@@ -21,7 +19,7 @@ struct HMCachedUser
      * @brief HMCachedUser - Инициализирующий конструктор
      * @param inUser - Указатель на пользователя
      */
-    HMCachedUser(const std::shared_ptr<hmcommon::HMUser> inUser);
+    HMCachedUser(const std::shared_ptr<hmcommon::HMUserInfo> inUser);
 
     /**
      * @brief HMCachedUser - Конструктор копирования (Удалён)
@@ -53,7 +51,7 @@ struct HMCachedUser
 
     // Данные
 
-    std::shared_ptr<hmcommon::HMUser> m_user = nullptr;                 ///< Пользователь
+    std::shared_ptr<hmcommon::HMUserInfo> m_user = nullptr;                 ///< Пользователь
     mutable std::chrono::system_clock::time_point m_lastRequest;        ///< Время последнего запроса
 };
 //-----------------------------------------------------------------------------
@@ -111,7 +109,7 @@ struct HMCachedGroup
      * @brief HMCachedGroup - Инициализирующий конструктор
      * @param inGroup - Указатель на группу
      */
-    HMCachedGroup(const std::shared_ptr<hmcommon::HMGroup> inGroup);
+    HMCachedGroup(const std::shared_ptr<hmcommon::HMGroupInfo> inGroup);
 
     /**
      * @brief HMCachedGroup - Конструктор копирования (Удалён)
@@ -143,7 +141,7 @@ struct HMCachedGroup
 
     // Данные
 
-    std::shared_ptr<hmcommon::HMGroup> m_group = nullptr;               ///< Группа
+    std::shared_ptr<hmcommon::HMGroupInfo> m_group = nullptr;               ///< Группа
     mutable std::chrono::system_clock::time_point m_lastRequest;        ///< Время последнего запроса
 };
 //-----------------------------------------------------------------------------

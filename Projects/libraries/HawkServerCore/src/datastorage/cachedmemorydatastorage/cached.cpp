@@ -5,7 +5,7 @@ using namespace hmservcommon;
 //-----------------------------------------------------------------------------
 //HMCachedUser
 //-----------------------------------------------------------------------------
-HMCachedUser::HMCachedUser(const std::shared_ptr<hmcommon::HMUser> inUser) :
+HMCachedUser::HMCachedUser(const std::shared_ptr<hmcommon::HMUserInfo> inUser) :
     m_user(inUser),
     m_lastRequest(std::chrono::system_clock::now())
 {
@@ -55,7 +55,7 @@ bool HMCachedUserContacts::operator == (const HMCachedUserContacts& inOther) con
 //-----------------------------------------------------------------------------
 // HMCachedGroup
 //-----------------------------------------------------------------------------
-HMCachedGroup::HMCachedGroup(const std::shared_ptr<hmcommon::HMGroup> inGroup) :
+HMCachedGroup::HMCachedGroup(const std::shared_ptr<hmcommon::HMGroupInfo> inGroup) :
     m_group(inGroup),
     m_lastRequest(std::chrono::system_clock::now())
 {

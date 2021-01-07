@@ -23,9 +23,9 @@ HMAccountBuilder::HMAccountBuilder(const std::shared_ptr<datastorage::HMDataStor
     }
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMGroup> HMAccountBuilder::buildGroup(const QUuid& inGroupUUID, std::error_code& outErrorCode)
+std::shared_ptr<hmcommon::HMGroupInfo> HMAccountBuilder::buildGroup(const QUuid& inGroupUUID, std::error_code& outErrorCode)
 {
-    std::shared_ptr<hmcommon::HMGroup> Result = nullptr;
+    std::shared_ptr<hmcommon::HMGroupInfo> Result = nullptr;
     outErrorCode = make_error_code(hmcommon::eSystemErrorEx::seSuccess); // Изначально помечаем как успех
 
     Result = m_storage->findGroupByUUID(inGroupUUID, outErrorCode);
@@ -64,7 +64,7 @@ std::shared_ptr<hmcommon::HMAccount> HMAccountBuilder::buildAccount(const QUuid&
         {
             for (const QUuid& ContactUUID : *UserContact) // Перебираем список контактов
             {
-                std::shared_ptr<hmcommon::HMUser> Contact = m_storage->findUserByUUID(ContactUUID, outErrorCode); // Ищим контакт
+                std::shared_ptr<hmcommon::HMUserInfo> Contact = m_storage->findUserByUUID(ContactUUID, outErrorCode); // Ищим контакт
 
                 if (outErrorCode) // Если ошибка при получении контакта
                     break; // Останавливаем перебор
@@ -82,7 +82,7 @@ std::shared_ptr<hmcommon::HMAccount> HMAccountBuilder::buildAccount(const QUuid&
 
                     for (const QUuid& GroupUUID : *UserGroups)
                     {
-                        std::shared_ptr<hmcommon::HMGroup> Group = m_storage->findGroupByUUID(GroupUUID, FindGroupError);
+                        std::shared_ptr<hmcommon::HMGroupInfo> Group = m_storage->findGroupByUUID(GroupUUID, FindGroupError);
 
                         if (FindGroupError) // Если не улаось обнаружить группу
                             LOG_WARNING(QString::fromStdString(FindGroupError.message())); // Сообщим об этом в логах

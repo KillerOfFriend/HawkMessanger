@@ -40,14 +40,14 @@ protected:
      * @param inUser - Проверяемый пользователь
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code checkNewUserUnique(const std::shared_ptr<hmcommon::HMUser> inUser) const;
+    virtual std::error_code checkNewUserUnique(const std::shared_ptr<hmcommon::HMUserInfo> inUser) const;
 
     /**
      * @brief checkNewGroupUnique - Метод проверит необходимую уникальность параметров новой группы
      * @param inGroup - Проверяемая группа
      * @return Вернёт признак ошибки
      */
-    virtual std::error_code checkNewGroupUnique(const std::shared_ptr<hmcommon::HMGroup> inGroup) const;
+    virtual std::error_code checkNewGroupUnique(const std::shared_ptr<hmcommon::HMGroupInfo> inGroup) const;
 
 //    /**
 //     * @brief checkUserContactsUnique - Метод проверит необходимую уникальность параметров нового списка контактов
@@ -55,7 +55,7 @@ protected:
 //     * @param inContacts - Список контактов
 //     * @return Вернёт признак ошибки
 //     */
-//    virtual std::error_code checkUserContactsUnique(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUserList> inContacts) const;
+//    virtual std::error_code checkUserContactsUnique(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUserInfoList> inContacts) const;
 
 };
 //-----------------------------------------------------------------------------
