@@ -1,4 +1,4 @@
 <map id="HardDataStorage_RemoveGroupTest" name="HardDataStorage_RemoveGroupTest">
 <area shape="rect" id="node1" title="HardDataStorage_RemoveGroupTest &#45; Тест физического хранилища, проверяющий удаление группы" alt="" coords="5,5,265,32"/>
-<area shape="rect" id="node2" href="$namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="313,5,512,32"/>
+<area shape="rect" id="node2" href="$namespacetestscommon.html#abf135e9ae8d7838442a1550862174473" title="make_group_info &#45; Метод сформирует информацию о группе для тестирования" alt="" coords="313,5,544,32"/>
 </map>

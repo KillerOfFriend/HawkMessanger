@@ -1,29 +1,5 @@
 var searchData=
 [
-  ['hash_3c_20hmservcommon_3a_3ahmcachedgroup_20_3e_467',['hash&lt; hmservcommon::HMCachedGroup &gt;',['../structstd_1_1hash_3_01hmservcommon_1_1HMCachedGroup_01_4.html',1,'std']]],
-  ['hash_3c_20hmservcommon_3a_3ahmcachedgroupusers_20_3e_468',['hash&lt; hmservcommon::HMCachedGroupUsers &gt;',['../structstd_1_1hash_3_01hmservcommon_1_1HMCachedGroupUsers_01_4.html',1,'std']]],
-  ['hash_3c_20hmservcommon_3a_3ahmcacheduser_20_3e_469',['hash&lt; hmservcommon::HMCachedUser &gt;',['../structstd_1_1hash_3_01hmservcommon_1_1HMCachedUser_01_4.html',1,'std']]],
-  ['hash_3c_20hmservcommon_3a_3ahmcachedusercontacts_20_3e_470',['hash&lt; hmservcommon::HMCachedUserContacts &gt;',['../structstd_1_1hash_3_01hmservcommon_1_1HMCachedUserContacts_01_4.html',1,'std']]],
-  ['hmabstractcahcedatastorage_471',['HMAbstractCahceDataStorage',['../classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html',1,'hmservcommon::datastorage']]],
-  ['hmabstractdatastoragefunctional_472',['HMAbstractDataStorageFunctional',['../classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional.html',1,'hmservcommon::datastorage']]],
-  ['hmabstractharddatastorage_473',['HMAbstractHardDataStorage',['../classhmservcommon_1_1datastorage_1_1HMAbstractHardDataStorage.html',1,'hmservcommon::datastorage']]],
-  ['hmaccount_474',['HMAccount',['../classhmcommon_1_1HMAccount.html',1,'hmcommon']]],
-  ['hmaccountbuilder_475',['HMAccountBuilder',['../classhmservcommon_1_1builders_1_1HMAccountBuilder.html',1,'hmservcommon::builders']]],
-  ['hmcachedgroup_476',['HMCachedGroup',['../structhmservcommon_1_1HMCachedGroup.html',1,'hmservcommon']]],
-  ['hmcachedgroupusers_477',['HMCachedGroupUsers',['../structhmservcommon_1_1HMCachedGroupUsers.html',1,'hmservcommon']]],
-  ['hmcachedmemorydatastorage_478',['HMCachedMemoryDataStorage',['../classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html',1,'hmservcommon::datastorage']]],
-  ['hmcacheduser_479',['HMCachedUser',['../structhmservcommon_1_1HMCachedUser.html',1,'hmservcommon']]],
-  ['hmcachedusercontacts_480',['HMCachedUserContacts',['../structhmservcommon_1_1HMCachedUserContacts.html',1,'hmservcommon']]],
-  ['hmcombineddatastorage_481',['HMCombinedDataStorage',['../classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html',1,'hmservcommon::datastorage']]],
-  ['hmdatastorage_482',['HMDataStorage',['../classhmservcommon_1_1datastorage_1_1HMDataStorage.html',1,'hmservcommon::datastorage']]],
-  ['hmeventsystem_483',['HMEventSystem',['../classhmlog_1_1HMEventSystem.html',1,'hmlog']]],
-  ['hmgroup_484',['HMGroup',['../classhmcommon_1_1HMGroup.html',1,'hmcommon']]],
-  ['hmgroupmessage_485',['HMGroupMessage',['../classhmcommon_1_1HMGroupMessage.html',1,'hmcommon']]],
-  ['hmjsondatastorage_486',['HMJsonDataStorage',['../classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html',1,'hmservcommon::datastorage']]],
-  ['hmjsondatastoragevalidator_487',['HMJsonDataStorageValidator',['../classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator.html',1,'hmservcommon::datastorage']]],
-  ['hmlogmessage_488',['HMLogMessage',['../structhmlog_1_1HMLogMessage.html',1,'hmlog']]],
-  ['hmlogsystem_489',['HMLogSystem',['../classhmlog_1_1HMLogSystem.html',1,'hmlog']]],
-  ['hmservercore_490',['HMServerCore',['../classhmservcommon_1_1HMServerCore.html',1,'hmservcommon']]],
-  ['hmuser_491',['HMUser',['../classhmcommon_1_1HMUser.html',1,'hmcommon']]],
-  ['hmuserlist_492',['HMUserList',['../classhmcommon_1_1HMUserList.html',1,'hmcommon']]]
+  ['groupmakehash_478',['GroupMakeHash',['../structhmcommon_1_1GroupMakeHash.html',1,'hmcommon']]],
+  ['groupscheckequal_479',['GroupsCheckEqual',['../structhmcommon_1_1GroupsCheckEqual.html',1,'hmcommon']]]
 ];

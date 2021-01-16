@@ -1,5 +1,5 @@
 <map id="HardDataStorage_AddGroupUserTest" name="HardDataStorage_AddGroupUserTest">
 <area shape="rect" id="node1" title="HardDataStorage_AddGroupUserTest &#45; Тест физического хранилища, проверяющий добавление участника в гру..." alt="" coords="5,23,211,65"/>
-<area shape="rect" id="node2" href="$namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="259,5,457,32"/>
-<area shape="rect" id="node3" href="$namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="263,56,453,83"/>
+<area shape="rect" id="node2" href="$namespacetestscommon.html#abf135e9ae8d7838442a1550862174473" title="make_group_info &#45; Метод сформирует информацию о группе для тестирования" alt="" coords="259,5,489,32"/>
+<area shape="rect" id="node3" href="$namespacetestscommon.html#abf529556a55a5414bb6293a6a9a6de59" title="make_user_info &#45; Метод сформирует информацию о пользователе для тестирования" alt="" coords="263,56,485,83"/>
 </map>

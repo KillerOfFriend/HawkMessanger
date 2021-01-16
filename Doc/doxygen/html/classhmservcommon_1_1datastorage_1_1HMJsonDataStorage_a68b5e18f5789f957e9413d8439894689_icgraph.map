@@ -1,0 +1,5 @@
+<map id="hmservcommon::datastorage::HMJsonDataStorage::groupToJson" name="hmservcommon::datastorage::HMJsonDataStorage::groupToJson">
+<area shape="rect" id="node1" title="groupToJson &#45; Метод преобразует группу в объект Json" alt="" coords="305,39,552,80"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a41ef7f314a45555fbe25bd9505440c47" title="addGroup &#45; Метод добавит новую группу" alt="" coords="16,5,247,47"/>
+<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a3df69da933b05dd628fc60f14c51bee7" title="updateGroup &#45; Метод обновит данные группы" alt="" coords="5,71,257,112"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="hmcommon::HMUserInfoList::remove" name="hmcommon::HMUserInfoList::remove">
+<area shape="rect" id="node1" title="remove &#45; Метод удалит пользователя по его порядквому номеру" alt="" coords="108,5,316,47"/>
+<area shape="rect" id="node2" href="$libraries_2HawkCommon_2tests_2UserList_2main_8cpp.html#a00e0b743c69b4448852ae28a37a96bc4" title="TEST &#45; Тест удаление контакта" alt="" coords="5,13,60,39"/>
+</map>

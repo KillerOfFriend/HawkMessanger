@@ -40,13 +40,13 @@ virtual bool \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStor
 \begin{DoxyCompactList}\small\item\em is\+\_\+open -\/ Метод вернёт признак открытости хранилища данных \end{DoxyCompactList}\item 
 virtual void \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a455fb5ad71c026b9e0a71154c15254e2}{close}} () override
 \begin{DoxyCompactList}\small\item\em close -\/ Метод закроет хранилище данных \end{DoxyCompactList}\item 
-virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_aabb0162c6d3d65e5faf312dd6ff9b1ad}{add\+User}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUser}{hmcommon\+::\+H\+M\+User}} $>$ in\+User) override
+virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a50771be687ef5019cc1f7c85e5845157}{add\+User}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUserInfo}{hmcommon\+::\+H\+M\+User\+Info}} $>$ in\+User) override
 \begin{DoxyCompactList}\small\item\em add\+User -\/ Метод добавит нового пользователя \end{DoxyCompactList}\item 
-virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a1319eca40027cace1bddccb068a315ab}{update\+User}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUser}{hmcommon\+::\+H\+M\+User}} $>$ in\+User) override
+virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_af551450dd5138f1dedca7ba9339cd1d5}{update\+User}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUserInfo}{hmcommon\+::\+H\+M\+User\+Info}} $>$ in\+User) override
 \begin{DoxyCompactList}\small\item\em update\+User -\/ Метод обновит данные пользователя \end{DoxyCompactList}\item 
-virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUser}{hmcommon\+::\+H\+M\+User}} $>$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_afef4c7507fb65d03a581e9598761914f}{find\+User\+By\+U\+U\+ID}} (const Q\+Uuid \&in\+User\+U\+U\+ID, std\+::error\+\_\+code \&out\+Error\+Code) const override
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUserInfo}{hmcommon\+::\+H\+M\+User\+Info}} $>$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a3a65e5f0b1da9591f3f78bafc9662a17}{find\+User\+By\+U\+U\+ID}} (const Q\+Uuid \&in\+User\+U\+U\+ID, std\+::error\+\_\+code \&out\+Error\+Code) const override
 \begin{DoxyCompactList}\small\item\em find\+User\+By\+U\+U\+ID -\/ Метод найдёт пользователя по его uuid \end{DoxyCompactList}\item 
-virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUser}{hmcommon\+::\+H\+M\+User}} $>$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ad3c8ee535dc17ca12422dc3ba57b0f7d}{find\+User\+By\+Authentication}} (const Q\+String \&in\+Login, const Q\+Byte\+Array \&in\+Password\+Hash, std\+::error\+\_\+code \&out\+Error\+Code) const override
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUserInfo}{hmcommon\+::\+H\+M\+User\+Info}} $>$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a0dbeb9c5f155588e794d8b23e1da8884}{find\+User\+By\+Authentication}} (const Q\+String \&in\+Login, const Q\+Byte\+Array \&in\+Password\+Hash, std\+::error\+\_\+code \&out\+Error\+Code) const override
 \begin{DoxyCompactList}\small\item\em find\+User\+By\+Authentication -\/ Метод найдёт пользователя по его данным аутентификации \end{DoxyCompactList}\item 
 virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_aea408c5f20ffe8908f9e706127e11dd9}{remove\+User}} (const Q\+Uuid \&in\+User\+U\+U\+ID) override
 \begin{DoxyCompactList}\small\item\em remove\+User -\/ Метод удалит пользователя \end{DoxyCompactList}\item 
@@ -62,11 +62,11 @@ virtual std\+::shared\+\_\+ptr$<$ std\+::set$<$ Q\+Uuid $>$ $>$ \mbox{\hyperlink
 \begin{DoxyCompactList}\small\item\em get\+User\+Contact\+List -\/ Метод вернёт список контактов пользователя \end{DoxyCompactList}\item 
 virtual std\+::shared\+\_\+ptr$<$ std\+::set$<$ Q\+Uuid $>$ $>$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a69c8ae062f88f8f4dc0771f1dbde7ac1}{get\+User\+Groups}} (const Q\+Uuid \&in\+User\+U\+U\+ID, std\+::error\+\_\+code \&out\+Error\+Code) const override
 \begin{DoxyCompactList}\small\item\em get\+User\+Groups -\/ Метод вернёт список групп пользователя \end{DoxyCompactList}\item 
-virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a7a02a80b8d82a50f3def1e81482cbf9c}{add\+Group}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{hmcommon\+::\+H\+M\+Group}} $>$ in\+Group) override
+virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a41ef7f314a45555fbe25bd9505440c47}{add\+Group}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfo}{hmcommon\+::\+H\+M\+Group\+Info}} $>$ in\+Group) override
 \begin{DoxyCompactList}\small\item\em add\+Group -\/ Метод добавит новую группу \end{DoxyCompactList}\item 
-virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a76a810289a3527343410e83a7d939ce6}{update\+Group}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{hmcommon\+::\+H\+M\+Group}} $>$ in\+Group) override
+virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a3df69da933b05dd628fc60f14c51bee7}{update\+Group}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfo}{hmcommon\+::\+H\+M\+Group\+Info}} $>$ in\+Group) override
 \begin{DoxyCompactList}\small\item\em update\+Group -\/ Метод обновит данные группы \end{DoxyCompactList}\item 
-virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{hmcommon\+::\+H\+M\+Group}} $>$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ac8ba242b00ff9beeaed5c93c5be11a41}{find\+Group\+By\+U\+U\+ID}} (const Q\+Uuid \&in\+Group\+U\+U\+ID, std\+::error\+\_\+code \&out\+Error\+Code) const override
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfo}{hmcommon\+::\+H\+M\+Group\+Info}} $>$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ae556b625dac0b53ff35f01860930ac0f}{find\+Group\+By\+U\+U\+ID}} (const Q\+Uuid \&in\+Group\+U\+U\+ID, std\+::error\+\_\+code \&out\+Error\+Code) const override
 \begin{DoxyCompactList}\small\item\em find\+Group\+By\+U\+U\+ID -\/ Метод найдёт пользователя по его uuid \end{DoxyCompactList}\item 
 virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a97d9b5a2a2d20d652416e72082426ce7}{remove\+Group}} (const Q\+Uuid \&in\+Group\+U\+U\+ID) override
 \begin{DoxyCompactList}\small\item\em remove\+Group -\/ Метод удалит группу \end{DoxyCompactList}\item 
@@ -80,13 +80,13 @@ virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage
 \begin{DoxyCompactList}\small\item\em clear\+Group\+Users -\/ Метод очистит список членов группы \end{DoxyCompactList}\item 
 virtual std\+::shared\+\_\+ptr$<$ std\+::set$<$ Q\+Uuid $>$ $>$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a7363a642ac18060116cd8bc648e85bae}{get\+Group\+User\+List}} (const Q\+Uuid \&in\+Group\+U\+U\+ID, std\+::error\+\_\+code \&out\+Error\+Code) const override
 \begin{DoxyCompactList}\small\item\em get\+Group\+User\+List -\/ Метод вернёт список U\+U\+ID\textquotesingle{}ов членов группы \end{DoxyCompactList}\item 
-virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_aed250a79a512d43ee449a1002438010a}{add\+Message}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupMessage}{hmcommon\+::\+H\+M\+Group\+Message}} $>$ in\+Message) override
+virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ab4e08a1fc076280b53c61311f1b12e2f}{add\+Message}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfoMessage}{hmcommon\+::\+H\+M\+Group\+Info\+Message}} $>$ in\+Message) override
 \begin{DoxyCompactList}\small\item\em add\+Message -\/ Метод добавит новое сообщение \end{DoxyCompactList}\item 
-virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a223338f1c88ead7f56e5bf6e1c07b465}{update\+Message}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupMessage}{hmcommon\+::\+H\+M\+Group\+Message}} $>$ in\+Message) override
+virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a8d4730897ac96561b5abffa00e2115d5}{update\+Message}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfoMessage}{hmcommon\+::\+H\+M\+Group\+Info\+Message}} $>$ in\+Message) override
 \begin{DoxyCompactList}\small\item\em update\+Message -\/ Метод обновит данные сообщения \end{DoxyCompactList}\item 
-virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupMessage}{hmcommon\+::\+H\+M\+Group\+Message}} $>$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_acb3999bb7e6805062bce168d3720b1a2}{find\+Message}} (const Q\+Uuid \&in\+Message\+U\+U\+ID, std\+::error\+\_\+code \&out\+Error\+Code) const override
+virtual std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfoMessage}{hmcommon\+::\+H\+M\+Group\+Info\+Message}} $>$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a997c240134b8cedde3cc0d8f565616a5}{find\+Message}} (const Q\+Uuid \&in\+Message\+U\+U\+ID, std\+::error\+\_\+code \&out\+Error\+Code) const override
 \begin{DoxyCompactList}\small\item\em find\+Message -\/ Метод найдёт сообщение по его uuid \end{DoxyCompactList}\item 
-virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupMessage}{hmcommon\+::\+H\+M\+Group\+Message}} $>$ $>$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ab61a516b9abd905dad0a9cb18a034d1f}{find\+Messages}} (const Q\+Uuid \&in\+Group\+U\+U\+ID, const \mbox{\hyperlink{structhmcommon_1_1MsgRange}{hmcommon\+::\+Msg\+Range}} \&in\+Range, std\+::error\+\_\+code \&out\+Error\+Code) const override
+virtual std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfoMessage}{hmcommon\+::\+H\+M\+Group\+Info\+Message}} $>$ $>$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_abd1b54bf40f464196935e335218f4221}{find\+Messages}} (const Q\+Uuid \&in\+Group\+U\+U\+ID, const \mbox{\hyperlink{structhmcommon_1_1MsgRange}{hmcommon\+::\+Msg\+Range}} \&in\+Range, std\+::error\+\_\+code \&out\+Error\+Code) const override
 \begin{DoxyCompactList}\small\item\em find\+Messages -\/ Метод вернёт перечень сообщений группы за куазаный промежуток времени \end{DoxyCompactList}\item 
 virtual std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_afd99e713e31a40fc994c5b5fd1696e46}{remove\+Message}} (const Q\+Uuid \&in\+Message\+U\+U\+ID, const Q\+Uuid \&in\+Group\+U\+U\+ID) override
 \begin{DoxyCompactList}\small\item\em remove\+Message -\/ Метод удалит сообщение \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -124,17 +124,17 @@ std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJs
 \begin{DoxyCompactList}\small\item\em check\+Messages -\/ Метод проверит корректность структуры сообщений \end{DoxyCompactList}\item 
 std\+::error\+\_\+code \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a1f7d4d306e6001e8253ed48b9501f9ef}{write}} () const
 \begin{DoxyCompactList}\small\item\em write -\/ Метод запишет изменения в J\+S\+ON файл \end{DoxyCompactList}\item 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUser}{hmcommon\+::\+H\+M\+User}} $>$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_af9464140b13ffe77e33cd69aa9f32693}{json\+To\+User}} (const nlohmann\+::json \&in\+User\+Object, std\+::error\+\_\+code \&out\+Error\+Code) const
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUserInfo}{hmcommon\+::\+H\+M\+User\+Info}} $>$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a09df40c3daa6283ced4795b92fe3151d}{json\+To\+User}} (const nlohmann\+::json \&in\+User\+Object, std\+::error\+\_\+code \&out\+Error\+Code) const
 \begin{DoxyCompactList}\small\item\em json\+To\+User -\/ Метод преобразует Json объект в экземпляр пользователя \end{DoxyCompactList}\item 
-nlohmann\+::json \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ade4ff1ea38c77c3259d66e165c1b61ef}{user\+To\+Json}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUser}{hmcommon\+::\+H\+M\+User}} $>$ in\+User, std\+::error\+\_\+code \&out\+Error\+Code) const
+nlohmann\+::json \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a518bd0a8f88931b8db0ee71cb7cb3ea3}{user\+To\+Json}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUserInfo}{hmcommon\+::\+H\+M\+User\+Info}} $>$ in\+User, std\+::error\+\_\+code \&out\+Error\+Code) const
 \begin{DoxyCompactList}\small\item\em user\+To\+Json -\/ Метод преобразует пользователя в объект Json \end{DoxyCompactList}\item 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{hmcommon\+::\+H\+M\+Group}} $>$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_aef0caa89976ed87d13040619b1837a43}{json\+To\+Group}} (const nlohmann\+::json \&in\+Group\+Object, std\+::error\+\_\+code \&out\+Error\+Code) const
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfo}{hmcommon\+::\+H\+M\+Group\+Info}} $>$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ab8780a6688fe870f726b2fee1393a782}{json\+To\+Group}} (const nlohmann\+::json \&in\+Group\+Object, std\+::error\+\_\+code \&out\+Error\+Code) const
 \begin{DoxyCompactList}\small\item\em json\+To\+Group -\/ Метод преобразует Json объект в экземпляр группы \end{DoxyCompactList}\item 
-nlohmann\+::json \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a1f90be54f3ad9decb53f64fc16c79f20}{group\+To\+Json}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{hmcommon\+::\+H\+M\+Group}} $>$ in\+Group, std\+::error\+\_\+code \&out\+Error\+Code) const
+nlohmann\+::json \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a68b5e18f5789f957e9413d8439894689}{group\+To\+Json}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfo}{hmcommon\+::\+H\+M\+Group\+Info}} $>$ in\+Group, std\+::error\+\_\+code \&out\+Error\+Code) const
 \begin{DoxyCompactList}\small\item\em group\+To\+Json -\/ Метод преобразует группу в объект Json \end{DoxyCompactList}\item 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupMessage}{hmcommon\+::\+H\+M\+Group\+Message}} $>$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_adcd903702d4be86bdb1a8e5de3fd9da1}{json\+To\+Message}} (const nlohmann\+::json \&in\+Message\+Object, std\+::error\+\_\+code \&out\+Error\+Code) const
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfoMessage}{hmcommon\+::\+H\+M\+Group\+Info\+Message}} $>$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a5524321b528f44af0c71fd23ab21168c}{json\+To\+Message}} (const nlohmann\+::json \&in\+Message\+Object, std\+::error\+\_\+code \&out\+Error\+Code) const
 \begin{DoxyCompactList}\small\item\em json\+To\+Message -\/ Метод преобразует Json объект в экземпляр сообщения \end{DoxyCompactList}\item 
-nlohmann\+::json \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a59a5122d6102a703f1a16840c601fb4a}{message\+To\+Json}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupMessage}{hmcommon\+::\+H\+M\+Group\+Message}} $>$ in\+Message, std\+::error\+\_\+code \&out\+Error\+Code) const
+nlohmann\+::json \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_afd37c58460ebd7dceb309326b2ffde89}{message\+To\+Json}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfoMessage}{hmcommon\+::\+H\+M\+Group\+Info\+Message}} $>$ in\+Message, std\+::error\+\_\+code \&out\+Error\+Code) const
 \begin{DoxyCompactList}\small\item\em message\+To\+Json -\/ Метод преобразует сообщение в объект Json \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Закрытые данные}
 \begin{DoxyCompactItemize}
@@ -230,11 +230,11 @@ add\+Contact\+UC -\/ Метод добавит контакт пользоват
 \includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a74cac3dc28dba35021dfa1884660e4b7_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a7a02a80b8d82a50f3def1e81482cbf9c}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a7a02a80b8d82a50f3def1e81482cbf9c}} 
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a41ef7f314a45555fbe25bd9505440c47}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a41ef7f314a45555fbe25bd9505440c47}} 
 \index{hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}!addGroup@{addGroup}}
 \index{addGroup@{addGroup}!hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}}
 \doxysubsubsection{\texorpdfstring{addGroup()}{addGroup()}}
-{\footnotesize\ttfamily std\+::error\+\_\+code H\+M\+Json\+Data\+Storage\+::add\+Group (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{hmcommon\+::\+H\+M\+Group}} $>$}]{in\+Group }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::error\+\_\+code H\+M\+Json\+Data\+Storage\+::add\+Group (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfo}{hmcommon\+::\+H\+M\+Group\+Info}} $>$}]{in\+Group }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -250,13 +250,14 @@ add\+Group -\/ Метод добавит новую группу
 \end{DoxyReturn}
 
 
-Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a084b842e26a5eaa9c6811a36792e9e1b}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
+Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a2d7310c0ca84859b44978eed2cc83080}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:\nopagebreak
+Граф вызовов\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a7a02a80b8d82a50f3def1e81482cbf9c_cgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a41ef7f314a45555fbe25bd9505440c47_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a89c7d6e8863cd3ca11a6b2474a109b2a}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a89c7d6e8863cd3ca11a6b2474a109b2a}} 
@@ -297,11 +298,11 @@ set\+Group\+Users -\/ Метод добавит пользователя в гр
 \includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a89c7d6e8863cd3ca11a6b2474a109b2a_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_aed250a79a512d43ee449a1002438010a}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_aed250a79a512d43ee449a1002438010a}} 
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ab4e08a1fc076280b53c61311f1b12e2f}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ab4e08a1fc076280b53c61311f1b12e2f}} 
 \index{hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}!addMessage@{addMessage}}
 \index{addMessage@{addMessage}!hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}}
 \doxysubsubsection{\texorpdfstring{addMessage()}{addMessage()}}
-{\footnotesize\ttfamily std\+::error\+\_\+code H\+M\+Json\+Data\+Storage\+::add\+Message (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupMessage}{hmcommon\+::\+H\+M\+Group\+Message}} $>$}]{in\+Message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::error\+\_\+code H\+M\+Json\+Data\+Storage\+::add\+Message (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfoMessage}{hmcommon\+::\+H\+M\+Group\+Info\+Message}} $>$}]{in\+Message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -317,20 +318,21 @@ add\+Message -\/ Метод добавит новое сообщение
 \end{DoxyReturn}
 
 
-Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_acc7fe7ac22b15909432934bf4a7529eb}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
+Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a6e7d64ea2fc609aeba540b9b2c467295}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:\nopagebreak
+Граф вызовов\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_aed250a79a512d43ee449a1002438010a_cgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ab4e08a1fc076280b53c61311f1b12e2f_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_aabb0162c6d3d65e5faf312dd6ff9b1ad}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_aabb0162c6d3d65e5faf312dd6ff9b1ad}} 
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a50771be687ef5019cc1f7c85e5845157}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a50771be687ef5019cc1f7c85e5845157}} 
 \index{hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}!addUser@{addUser}}
 \index{addUser@{addUser}!hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}}
 \doxysubsubsection{\texorpdfstring{addUser()}{addUser()}}
-{\footnotesize\ttfamily std\+::error\+\_\+code H\+M\+Json\+Data\+Storage\+::add\+User (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUser}{hmcommon\+::\+H\+M\+User}} $>$}]{in\+User }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::error\+\_\+code H\+M\+Json\+Data\+Storage\+::add\+User (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUserInfo}{hmcommon\+::\+H\+M\+User\+Info}} $>$}]{in\+User }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -346,13 +348,14 @@ add\+User -\/ Метод добавит нового пользователя
 \end{DoxyReturn}
 
 
-Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_ac4bdb8c8b3743471115cbd05d5990f4f}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
+Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a88d273dc0d1a340101c9cfd27cf7d1e0}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:\nopagebreak
+Граф вызовов\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_aabb0162c6d3d65e5faf312dd6ff9b1ad_cgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a50771be687ef5019cc1f7c85e5845157_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_abfdf94d5dca87303a3dc3c253df331a2}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_abfdf94d5dca87303a3dc3c253df331a2}} 
@@ -538,16 +541,14 @@ clear\+User\+Contacts -\/ Метод очистит контакты польз�
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a3d5add9a9cda2b08727f09e6bd944c04}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a7fc56117718d56551ba0e4d2d5b243f9_cgraph}
 \end{center}
 \end{figure}
-Граф вызова функции\+:
-\nopagebreak
+Граф вызова функции\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -609,7 +610,8 @@ find\+Const\+Group -\/ Метод вернёт константную ссылк
 \includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a03c4fcd80735293dcffa25ce0a7c9246_cgraph}
 \end{center}
 \end{figure}
-Граф вызова функции\+:\nopagebreak
+Граф вызова функции\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -643,7 +645,8 @@ find\+Const\+User -\/ Метод вернёт константную ссылк�
 \includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a1fc056cb19ff8571cf9212f12e892346_cgraph}
 \end{center}
 \end{figure}
-Граф вызова функции\+:\nopagebreak
+Граф вызова функции\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -677,18 +680,19 @@ find\+Group -\/ Метод вернёт ссылку на json объект гр
 \includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_af4451dde155385d6ec4679f1755337cd_cgraph}
 \end{center}
 \end{figure}
-Граф вызова функции\+:\nopagebreak
+Граф вызова функции\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_af4451dde155385d6ec4679f1755337cd_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ac8ba242b00ff9beeaed5c93c5be11a41}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ac8ba242b00ff9beeaed5c93c5be11a41}} 
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ae556b625dac0b53ff35f01860930ac0f}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ae556b625dac0b53ff35f01860930ac0f}} 
 \index{hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}!findGroupByUUID@{findGroupByUUID}}
 \index{findGroupByUUID@{findGroupByUUID}!hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}}
 \doxysubsubsection{\texorpdfstring{findGroupByUUID()}{findGroupByUUID()}}
-{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{hmcommon\+::\+H\+M\+Group}} $>$ H\+M\+Json\+Data\+Storage\+::find\+Group\+By\+U\+U\+ID (\begin{DoxyParamCaption}\item[{const Q\+Uuid \&}]{in\+Group\+U\+U\+ID,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfo}{hmcommon\+::\+H\+M\+Group\+Info}} $>$ H\+M\+Json\+Data\+Storage\+::find\+Group\+By\+U\+U\+ID (\begin{DoxyParamCaption}\item[{const Q\+Uuid \&}]{in\+Group\+U\+U\+ID,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -706,27 +710,29 @@ find\+Group\+By\+U\+U\+ID -\/ Метод найдёт пользователя �
 \end{DoxyReturn}
 
 
-Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a69b796166a22d31a57032aaec90b47a4}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
+Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a1e0e35d69bd03aa700f1f4e9b33f405d}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:\nopagebreak
+Граф вызовов\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ac8ba242b00ff9beeaed5c93c5be11a41_cgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ae556b625dac0b53ff35f01860930ac0f_cgraph}
 \end{center}
 \end{figure}
-Граф вызова функции\+:\nopagebreak
+Граф вызова функции\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ac8ba242b00ff9beeaed5c93c5be11a41_icgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ae556b625dac0b53ff35f01860930ac0f_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_acb3999bb7e6805062bce168d3720b1a2}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_acb3999bb7e6805062bce168d3720b1a2}} 
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a997c240134b8cedde3cc0d8f565616a5}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a997c240134b8cedde3cc0d8f565616a5}} 
 \index{hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}!findMessage@{findMessage}}
 \index{findMessage@{findMessage}!hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}}
 \doxysubsubsection{\texorpdfstring{findMessage()}{findMessage()}}
-{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupMessage}{hmcommon\+::\+H\+M\+Group\+Message}} $>$ H\+M\+Json\+Data\+Storage\+::find\+Message (\begin{DoxyParamCaption}\item[{const Q\+Uuid \&}]{in\+Message\+U\+U\+ID,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfoMessage}{hmcommon\+::\+H\+M\+Group\+Info\+Message}} $>$ H\+M\+Json\+Data\+Storage\+::find\+Message (\begin{DoxyParamCaption}\item[{const Q\+Uuid \&}]{in\+Message\+U\+U\+ID,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -744,27 +750,29 @@ find\+Message -\/ Метод найдёт сообщение по его uuid
 \end{DoxyReturn}
 
 
-Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_ae9861e10c67a208a2cc25f5c77af6ee4}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
+Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_acb9f3694e8354989d9cabc406089858b}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:\nopagebreak
+Граф вызовов\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_acb3999bb7e6805062bce168d3720b1a2_cgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a997c240134b8cedde3cc0d8f565616a5_cgraph}
 \end{center}
 \end{figure}
-Граф вызова функции\+:\nopagebreak
+Граф вызова функции\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_acb3999bb7e6805062bce168d3720b1a2_icgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a997c240134b8cedde3cc0d8f565616a5_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ab61a516b9abd905dad0a9cb18a034d1f}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ab61a516b9abd905dad0a9cb18a034d1f}} 
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_abd1b54bf40f464196935e335218f4221}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_abd1b54bf40f464196935e335218f4221}} 
 \index{hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}!findMessages@{findMessages}}
 \index{findMessages@{findMessages}!hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}}
 \doxysubsubsection{\texorpdfstring{findMessages()}{findMessages()}}
-{\footnotesize\ttfamily std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupMessage}{hmcommon\+::\+H\+M\+Group\+Message}} $>$ $>$ H\+M\+Json\+Data\+Storage\+::find\+Messages (\begin{DoxyParamCaption}\item[{const Q\+Uuid \&}]{in\+Group\+U\+U\+ID,  }\item[{const \mbox{\hyperlink{structhmcommon_1_1MsgRange}{hmcommon\+::\+Msg\+Range}} \&}]{in\+Range,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfoMessage}{hmcommon\+::\+H\+M\+Group\+Info\+Message}} $>$ $>$ H\+M\+Json\+Data\+Storage\+::find\+Messages (\begin{DoxyParamCaption}\item[{const Q\+Uuid \&}]{in\+Group\+U\+U\+ID,  }\item[{const \mbox{\hyperlink{structhmcommon_1_1MsgRange}{hmcommon\+::\+Msg\+Range}} \&}]{in\+Range,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -784,13 +792,14 @@ find\+Messages -\/ Метод вернёт перечень сообщений �
 \end{DoxyReturn}
 
 
-Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a9711f5b122a6435267ca023a0d58b557}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
+Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a6dcf42fac6ffa5a2542a4351d58ab8aa}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:\nopagebreak
+Граф вызовов\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ab61a516b9abd905dad0a9cb18a034d1f_cgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_abd1b54bf40f464196935e335218f4221_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a164e9512ed6667ef3ef0bdcee8836ea5}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a164e9512ed6667ef3ef0bdcee8836ea5}} 
@@ -828,11 +837,11 @@ find\+User -\/ Метод вернёт ссылку на json объект по�
 \includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a164e9512ed6667ef3ef0bdcee8836ea5_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ad3c8ee535dc17ca12422dc3ba57b0f7d}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ad3c8ee535dc17ca12422dc3ba57b0f7d}} 
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a0dbeb9c5f155588e794d8b23e1da8884}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a0dbeb9c5f155588e794d8b23e1da8884}} 
 \index{hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}!findUserByAuthentication@{findUserByAuthentication}}
 \index{findUserByAuthentication@{findUserByAuthentication}!hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}}
 \doxysubsubsection{\texorpdfstring{findUserByAuthentication()}{findUserByAuthentication()}}
-{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUser}{hmcommon\+::\+H\+M\+User}} $>$ H\+M\+Json\+Data\+Storage\+::find\+User\+By\+Authentication (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{in\+Login,  }\item[{const Q\+Byte\+Array \&}]{in\+Password\+Hash,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUserInfo}{hmcommon\+::\+H\+M\+User\+Info}} $>$ H\+M\+Json\+Data\+Storage\+::find\+User\+By\+Authentication (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{in\+Login,  }\item[{const Q\+Byte\+Array \&}]{in\+Password\+Hash,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -852,20 +861,21 @@ find\+User\+By\+Authentication -\/ Метод найдёт пользовате�
 \end{DoxyReturn}
 
 
-Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a174b743bc27f9784270e1d77fe3d4055}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
+Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a798e6d590156fc55161657976d358ef9}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:\nopagebreak
+Граф вызовов\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ad3c8ee535dc17ca12422dc3ba57b0f7d_cgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a0dbeb9c5f155588e794d8b23e1da8884_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_afef4c7507fb65d03a581e9598761914f}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_afef4c7507fb65d03a581e9598761914f}} 
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a3a65e5f0b1da9591f3f78bafc9662a17}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a3a65e5f0b1da9591f3f78bafc9662a17}} 
 \index{hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}!findUserByUUID@{findUserByUUID}}
 \index{findUserByUUID@{findUserByUUID}!hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}}
 \doxysubsubsection{\texorpdfstring{findUserByUUID()}{findUserByUUID()}}
-{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUser}{hmcommon\+::\+H\+M\+User}} $>$ H\+M\+Json\+Data\+Storage\+::find\+User\+By\+U\+U\+ID (\begin{DoxyParamCaption}\item[{const Q\+Uuid \&}]{in\+User\+U\+U\+ID,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUserInfo}{hmcommon\+::\+H\+M\+User\+Info}} $>$ H\+M\+Json\+Data\+Storage\+::find\+User\+By\+U\+U\+ID (\begin{DoxyParamCaption}\item[{const Q\+Uuid \&}]{in\+User\+U\+U\+ID,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -883,13 +893,14 @@ find\+User\+By\+U\+U\+ID -\/ Метод найдёт пользователя п
 \end{DoxyReturn}
 
 
-Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a17ce90091313c898df64f544edf979b1}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
+Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a174253b6da2f91bedb3eea3cd93bdbc3}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:\nopagebreak
+Граф вызовов\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_afef4c7507fb65d03a581e9598761914f_cgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a3a65e5f0b1da9591f3f78bafc9662a17_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a7363a642ac18060116cd8bc648e85bae}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a7363a642ac18060116cd8bc648e85bae}} 
@@ -999,11 +1010,11 @@ get\+User\+Groups -\/ Метод вернёт список групп польз
 \includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a69c8ae062f88f8f4dc0771f1dbde7ac1_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a1f90be54f3ad9decb53f64fc16c79f20}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a1f90be54f3ad9decb53f64fc16c79f20}} 
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a68b5e18f5789f957e9413d8439894689}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a68b5e18f5789f957e9413d8439894689}} 
 \index{hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}!groupToJson@{groupToJson}}
 \index{groupToJson@{groupToJson}!hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}}
 \doxysubsubsection{\texorpdfstring{groupToJson()}{groupToJson()}}
-{\footnotesize\ttfamily nlohmann\+::json H\+M\+Json\+Data\+Storage\+::group\+To\+Json (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{hmcommon\+::\+H\+M\+Group}} $>$}]{in\+Group,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily nlohmann\+::json H\+M\+Json\+Data\+Storage\+::group\+To\+Json (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfo}{hmcommon\+::\+H\+M\+Group\+Info}} $>$}]{in\+Group,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1019,18 +1030,20 @@ group\+To\+Json -\/ Метод преобразует группу в объек
 \begin{DoxyReturn}{Возвращает}
 Вернёт объект Json 
 \end{DoxyReturn}
-Граф вызовов\+:\nopagebreak
+Граф вызовов\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a1f90be54f3ad9decb53f64fc16c79f20_cgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a68b5e18f5789f957e9413d8439894689_cgraph}
 \end{center}
 \end{figure}
-Граф вызова функции\+:\nopagebreak
+Граф вызова функции\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a1f90be54f3ad9decb53f64fc16c79f20_icgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a68b5e18f5789f957e9413d8439894689_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_af7129f6ff8883d6b59a187a375992aeb}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_af7129f6ff8883d6b59a187a375992aeb}} 
@@ -1058,11 +1071,11 @@ is\+\_\+open -\/ Метод вернёт признак открытости х�
 \includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_af7129f6ff8883d6b59a187a375992aeb_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_aef0caa89976ed87d13040619b1837a43}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_aef0caa89976ed87d13040619b1837a43}} 
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ab8780a6688fe870f726b2fee1393a782}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ab8780a6688fe870f726b2fee1393a782}} 
 \index{hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}!jsonToGroup@{jsonToGroup}}
 \index{jsonToGroup@{jsonToGroup}!hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}}
 \doxysubsubsection{\texorpdfstring{jsonToGroup()}{jsonToGroup()}}
-{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{hmcommon\+::\+H\+M\+Group}} $>$ H\+M\+Json\+Data\+Storage\+::json\+To\+Group (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{in\+Group\+Object,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfo}{hmcommon\+::\+H\+M\+Group\+Info}} $>$ H\+M\+Json\+Data\+Storage\+::json\+To\+Group (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{in\+Group\+Object,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1078,25 +1091,27 @@ json\+To\+Group -\/ Метод преобразует Json объект в эк�
 \begin{DoxyReturn}{Возвращает}
 Вернёт указатель на экземпляр группы или nullptr 
 \end{DoxyReturn}
-Граф вызовов\+:\nopagebreak
+Граф вызовов\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_aef0caa89976ed87d13040619b1837a43_cgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ab8780a6688fe870f726b2fee1393a782_cgraph}
 \end{center}
 \end{figure}
-Граф вызова функции\+:\nopagebreak
+Граф вызова функции\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_aef0caa89976ed87d13040619b1837a43_icgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ab8780a6688fe870f726b2fee1393a782_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_adcd903702d4be86bdb1a8e5de3fd9da1}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_adcd903702d4be86bdb1a8e5de3fd9da1}} 
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a5524321b528f44af0c71fd23ab21168c}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a5524321b528f44af0c71fd23ab21168c}} 
 \index{hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}!jsonToMessage@{jsonToMessage}}
 \index{jsonToMessage@{jsonToMessage}!hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}}
 \doxysubsubsection{\texorpdfstring{jsonToMessage()}{jsonToMessage()}}
-{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupMessage}{hmcommon\+::\+H\+M\+Group\+Message}} $>$ H\+M\+Json\+Data\+Storage\+::json\+To\+Message (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{in\+Message\+Object,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfoMessage}{hmcommon\+::\+H\+M\+Group\+Info\+Message}} $>$ H\+M\+Json\+Data\+Storage\+::json\+To\+Message (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{in\+Message\+Object,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1112,18 +1127,19 @@ json\+To\+Message -\/ Метод преобразует Json объект в э�
 \begin{DoxyReturn}{Возвращает}
 Вернёт указатель на экземпляр сообщения или nullptr 
 \end{DoxyReturn}
-Граф вызовов\+:\nopagebreak
+Граф вызовов\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_adcd903702d4be86bdb1a8e5de3fd9da1_cgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a5524321b528f44af0c71fd23ab21168c_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_af9464140b13ffe77e33cd69aa9f32693}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_af9464140b13ffe77e33cd69aa9f32693}} 
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a09df40c3daa6283ced4795b92fe3151d}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a09df40c3daa6283ced4795b92fe3151d}} 
 \index{hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}!jsonToUser@{jsonToUser}}
 \index{jsonToUser@{jsonToUser}!hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}}
 \doxysubsubsection{\texorpdfstring{jsonToUser()}{jsonToUser()}}
-{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUser}{hmcommon\+::\+H\+M\+User}} $>$ H\+M\+Json\+Data\+Storage\+::json\+To\+User (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{in\+User\+Object,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUserInfo}{hmcommon\+::\+H\+M\+User\+Info}} $>$ H\+M\+Json\+Data\+Storage\+::json\+To\+User (\begin{DoxyParamCaption}\item[{const nlohmann\+::json \&}]{in\+User\+Object,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1139,18 +1155,20 @@ json\+To\+User -\/ Метод преобразует Json объект в экз
 \begin{DoxyReturn}{Возвращает}
 Вернёт указатель на экземпляр пользователя или nullptr 
 \end{DoxyReturn}
-Граф вызовов\+:\nopagebreak
+Граф вызовов\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_af9464140b13ffe77e33cd69aa9f32693_cgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a09df40c3daa6283ced4795b92fe3151d_cgraph}
 \end{center}
 \end{figure}
-Граф вызова функции\+:\nopagebreak
+Граф вызова функции\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_af9464140b13ffe77e33cd69aa9f32693_icgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a09df40c3daa6283ced4795b92fe3151d_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ac25055f4e691caa8aa828a4b39446d41}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ac25055f4e691caa8aa828a4b39446d41}} 
@@ -1184,11 +1202,11 @@ make\+Default -\/ Метод сформирует дефолтную струк�
 \includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ac25055f4e691caa8aa828a4b39446d41_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a59a5122d6102a703f1a16840c601fb4a}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a59a5122d6102a703f1a16840c601fb4a}} 
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_afd37c58460ebd7dceb309326b2ffde89}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_afd37c58460ebd7dceb309326b2ffde89}} 
 \index{hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}!messageToJson@{messageToJson}}
 \index{messageToJson@{messageToJson}!hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}}
 \doxysubsubsection{\texorpdfstring{messageToJson()}{messageToJson()}}
-{\footnotesize\ttfamily nlohmann\+::json H\+M\+Json\+Data\+Storage\+::message\+To\+Json (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupMessage}{hmcommon\+::\+H\+M\+Group\+Message}} $>$}]{in\+Message,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily nlohmann\+::json H\+M\+Json\+Data\+Storage\+::message\+To\+Json (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfoMessage}{hmcommon\+::\+H\+M\+Group\+Info\+Message}} $>$}]{in\+Message,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1204,18 +1222,20 @@ message\+To\+Json -\/ Метод преобразует сообщение в о
 \begin{DoxyReturn}{Возвращает}
 Вернёт объект Json 
 \end{DoxyReturn}
-Граф вызовов\+:\nopagebreak
+Граф вызовов\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a59a5122d6102a703f1a16840c601fb4a_cgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_afd37c58460ebd7dceb309326b2ffde89_cgraph}
 \end{center}
 \end{figure}
-Граф вызова функции\+:\nopagebreak
+Граф вызова функции\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a59a5122d6102a703f1a16840c601fb4a_icgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_afd37c58460ebd7dceb309326b2ffde89_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a98f52fc8d8c672d5c0e91a67a4a0995b}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a98f52fc8d8c672d5c0e91a67a4a0995b}} 
@@ -1236,8 +1256,7 @@ on\+Create\+User -\/ Метод выполнится при создании п�
 \begin{DoxyReturn}{Возвращает}
 Вернёт признак ошибки 
 \end{DoxyReturn}
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1262,8 +1281,7 @@ on\+Remove\+User -\/ Метод выполнится при удалении п�
 \begin{DoxyReturn}{Возвращает}
 Вернёт признак ошибки 
 \end{DoxyReturn}
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1548,8 +1566,7 @@ set\+User\+Contacts -\/ Метод задаст пользователю спи�
 
 Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a5ea3bd9d2d620b2a3716eeb0715c30b6}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:
-\nopagebreak
+Граф вызовов\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1563,11 +1580,11 @@ set\+User\+Contacts -\/ Метод задаст пользователю спи�
 \includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a8fe994f6f1a05bb97c1a4af8607a5690_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a76a810289a3527343410e83a7d939ce6}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a76a810289a3527343410e83a7d939ce6}} 
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a3df69da933b05dd628fc60f14c51bee7}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a3df69da933b05dd628fc60f14c51bee7}} 
 \index{hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}!updateGroup@{updateGroup}}
 \index{updateGroup@{updateGroup}!hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}}
 \doxysubsubsection{\texorpdfstring{updateGroup()}{updateGroup()}}
-{\footnotesize\ttfamily std\+::error\+\_\+code H\+M\+Json\+Data\+Storage\+::update\+Group (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{hmcommon\+::\+H\+M\+Group}} $>$}]{in\+Group }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::error\+\_\+code H\+M\+Json\+Data\+Storage\+::update\+Group (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfo}{hmcommon\+::\+H\+M\+Group\+Info}} $>$}]{in\+Group }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -1583,20 +1600,21 @@ update\+Group -\/ Метод обновит данные группы
 \end{DoxyReturn}
 
 
-Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a5fba4d873704c4afa24293d00722436c}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
+Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a36fbe973edaebe833480903d7bb164f3}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:\nopagebreak
+Граф вызовов\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a76a810289a3527343410e83a7d939ce6_cgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a3df69da933b05dd628fc60f14c51bee7_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a223338f1c88ead7f56e5bf6e1c07b465}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a223338f1c88ead7f56e5bf6e1c07b465}} 
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a8d4730897ac96561b5abffa00e2115d5}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a8d4730897ac96561b5abffa00e2115d5}} 
 \index{hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}!updateMessage@{updateMessage}}
 \index{updateMessage@{updateMessage}!hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}}
 \doxysubsubsection{\texorpdfstring{updateMessage()}{updateMessage()}}
-{\footnotesize\ttfamily std\+::error\+\_\+code H\+M\+Json\+Data\+Storage\+::update\+Message (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupMessage}{hmcommon\+::\+H\+M\+Group\+Message}} $>$}]{in\+Message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::error\+\_\+code H\+M\+Json\+Data\+Storage\+::update\+Message (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfoMessage}{hmcommon\+::\+H\+M\+Group\+Info\+Message}} $>$}]{in\+Message }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -1612,20 +1630,21 @@ update\+Message -\/ Метод обновит данные сообщения
 \end{DoxyReturn}
 
 
-Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a2c4f1de3495a74d5966479dd6dc11e16}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
+Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_aa30a4ecbae3d50ddfde694dadb7d4e8c}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:\nopagebreak
+Граф вызовов\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a223338f1c88ead7f56e5bf6e1c07b465_cgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a8d4730897ac96561b5abffa00e2115d5_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a1319eca40027cace1bddccb068a315ab}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a1319eca40027cace1bddccb068a315ab}} 
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_af551450dd5138f1dedca7ba9339cd1d5}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_af551450dd5138f1dedca7ba9339cd1d5}} 
 \index{hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}!updateUser@{updateUser}}
 \index{updateUser@{updateUser}!hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}}
 \doxysubsubsection{\texorpdfstring{updateUser()}{updateUser()}}
-{\footnotesize\ttfamily std\+::error\+\_\+code H\+M\+Json\+Data\+Storage\+::update\+User (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUser}{hmcommon\+::\+H\+M\+User}} $>$}]{in\+User }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily std\+::error\+\_\+code H\+M\+Json\+Data\+Storage\+::update\+User (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUserInfo}{hmcommon\+::\+H\+M\+User\+Info}} $>$}]{in\+User }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
 
 
 
@@ -1641,20 +1660,21 @@ update\+User -\/ Метод обновит данные пользователя
 \end{DoxyReturn}
 
 
-Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_a952f09b0b7f80ddcbd81e61074c5d648}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
+Замещает \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage_aba200a8d72e1c211d74b86e624d36f46}{hmservcommon\+::datastorage\+::\+H\+M\+Data\+Storage}}.
 
-Граф вызовов\+:\nopagebreak
+Граф вызовов\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a1319eca40027cace1bddccb068a315ab_cgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_af551450dd5138f1dedca7ba9339cd1d5_cgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ade4ff1ea38c77c3259d66e165c1b61ef}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ade4ff1ea38c77c3259d66e165c1b61ef}} 
+\mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a518bd0a8f88931b8db0ee71cb7cb3ea3}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a518bd0a8f88931b8db0ee71cb7cb3ea3}} 
 \index{hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}!userToJson@{userToJson}}
 \index{userToJson@{userToJson}!hmservcommon::datastorage::HMJsonDataStorage@{hmservcommon::datastorage::HMJsonDataStorage}}
 \doxysubsubsection{\texorpdfstring{userToJson()}{userToJson()}}
-{\footnotesize\ttfamily nlohmann\+::json H\+M\+Json\+Data\+Storage\+::user\+To\+Json (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUser}{hmcommon\+::\+H\+M\+User}} $>$}]{in\+User,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+{\footnotesize\ttfamily nlohmann\+::json H\+M\+Json\+Data\+Storage\+::user\+To\+Json (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUserInfo}{hmcommon\+::\+H\+M\+User\+Info}} $>$}]{in\+User,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -1670,18 +1690,20 @@ user\+To\+Json -\/ Метод преобразует пользователя в
 \begin{DoxyReturn}{Возвращает}
 Вернёт объект Json 
 \end{DoxyReturn}
-Граф вызовов\+:\nopagebreak
+Граф вызовов\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ade4ff1ea38c77c3259d66e165c1b61ef_cgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a518bd0a8f88931b8db0ee71cb7cb3ea3_cgraph}
 \end{center}
 \end{figure}
-Граф вызова функции\+:\nopagebreak
+Граф вызова функции\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_ade4ff1ea38c77c3259d66e165c1b61ef_icgraph}
+\includegraphics[width=350pt]{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a518bd0a8f88931b8db0ee71cb7cb3ea3_icgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a1f7d4d306e6001e8253ed48b9501f9ef}\label{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage_a1f7d4d306e6001e8253ed48b9501f9ef}} 

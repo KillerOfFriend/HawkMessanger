@@ -2,5 +2,5 @@
 <area shape="rect" id="node1" title="TEST &#45; Тест проверит получение списка контатков пользователя" alt="" coords="5,42,60,69"/>
 <area shape="rect" id="node2" href="$HawkServerCoreHardDataStorageTest_8hpp.html#a807635177ec8abda17752ca2310ab385" title="HardDataStorage_GetUserContactListTest&#45; Тест физического хранилища, проверяющий запрос списка контакт..." alt="" coords="108,5,352,47"/>
 <area shape="rect" id="node4" href="$libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="176,71,284,98"/>
-<area shape="rect" id="node3" href="$namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="400,13,591,39"/>
+<area shape="rect" id="node3" href="$namespacetestscommon.html#abf529556a55a5414bb6293a6a9a6de59" title="make_user_info &#45; Метод сформирует информацию о пользователе для тестирования" alt="" coords="400,13,623,39"/>
 </map>

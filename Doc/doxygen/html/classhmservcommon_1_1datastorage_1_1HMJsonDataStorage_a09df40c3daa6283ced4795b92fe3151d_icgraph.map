@@ -1,0 +1,4 @@
+<map id="hmservcommon::datastorage::HMJsonDataStorage::jsonToUser" name="hmservcommon::datastorage::HMJsonDataStorage::jsonToUser">
+<area shape="rect" id="node1" title="jsonToUser &#45; Метод преобразует Json объект в экземпляр пользователя" alt="" coords="327,5,565,47"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a3a65e5f0b1da9591f3f78bafc9662a17" title="findUserByUUID &#45; Метод найдёт пользователя по его uuid" alt="" coords="5,5,279,47"/>
+</map>

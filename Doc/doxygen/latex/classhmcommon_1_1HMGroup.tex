@@ -2,69 +2,61 @@
 \label{classhmcommon_1_1HMGroup}\index{hmcommon::HMGroup@{hmcommon::HMGroup}}
 
 
-The \mbox{\hyperlink{classhmcommon_1_1HMGroup}{H\+M\+Group}} class -\/ Класс, описывающий группу пользователей системы  
+The \mbox{\hyperlink{classhmcommon_1_1HMGroup}{H\+M\+Group}} class -\/ Класс, описывающий группу\textbackslash{}чат  
 
 
 
 
 {\ttfamily \#include $<$group.\+h$>$}
 
+
+
+Граф связей класса hmcommon\+::H\+M\+Group\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{classhmcommon_1_1HMGroup__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Открытые члены}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classhmcommon_1_1HMGroup_a82331808a003f3d99f356e3d591a5ceb}{H\+M\+Group}} (const Q\+Uuid \&in\+Uuid, const Q\+Date\+Time \&in\+Registration\+Date=Q\+Date\+Time\+::current\+Date\+Time())
-\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classhmcommon_1_1HMGroup}{H\+M\+Group}} -\/ Инициализирующий конструктор \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmcommon_1_1HMGroup_a42ccd15ebc8d36d8dff0255c17561c79}{H\+M\+Group}} ()=default
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classhmcommon_1_1HMGroup}{H\+M\+Group}} -\/ Конструктор по умолчанию \end{DoxyCompactList}\item 
 \mbox{\hyperlink{classhmcommon_1_1HMGroup_acb573c0abe7ae4049ca38675f4aa3104}{$\sim$\+H\+M\+Group}} ()=default
-\begin{DoxyCompactList}\small\item\em $\sim$\+H\+M\+Group -\/ Деструктор по умолчанию \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{classhmcommon_1_1HMGroup_a7eed9e8ec97feb42e2cd1939cef99305}{operator==}} (const \mbox{\hyperlink{classhmcommon_1_1HMGroup}{H\+M\+Group}} \&in\+Other) const
-\begin{DoxyCompactList}\small\item\em operator == -\/ Оператор сравнения \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{classhmcommon_1_1HMGroup_ad56808c904e737de1d7167d93e40f646}{set\+Name}} (const Q\+String \&in\+Name)
-\begin{DoxyCompactList}\small\item\em set\+Name -\/ Метод задаст имя группы \end{DoxyCompactList}\item 
-Q\+String \mbox{\hyperlink{classhmcommon_1_1HMGroup_a68ecf108f6b48a5fbb94015e9fb9b49a}{get\+Name}} () const
-\begin{DoxyCompactList}\small\item\em get\+Name -\/ Метод вернёт имя группы \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em $\sim$\+H\+M\+Group -\/ Деструктор по умолчанию \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Открытые атрибуты}
 \begin{DoxyCompactItemize}
 \item 
-const Q\+Uuid \mbox{\hyperlink{classhmcommon_1_1HMGroup_afc34093af63659de5bfacaf66f966af9}{m\+\_\+uuid}}
-\begin{DoxyCompactList}\small\item\em U\+U\+ID группы \end{DoxyCompactList}\item 
-const Q\+Date\+Time \mbox{\hyperlink{classhmcommon_1_1HMGroup_a24bde2d05f5e698551997ae9c0b0e6d2}{m\+\_\+registration\+Date}}
-\begin{DoxyCompactList}\small\item\em Дата регистрации группы \end{DoxyCompactList}\end{DoxyCompactItemize}
-\doxysubsection*{Закрытые данные}
-\begin{DoxyCompactItemize}
-\item 
-Q\+String \mbox{\hyperlink{classhmcommon_1_1HMGroup_a6b753a50436fbaf6fe9537b114beda62}{m\+\_\+name}}
-\begin{DoxyCompactList}\small\item\em Имя группы \end{DoxyCompactList}\end{DoxyCompactItemize}
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfo}{H\+M\+Group\+Info}} $>$ \mbox{\hyperlink{classhmcommon_1_1HMGroup_a92890f78f44bafa1994e8186ded45df9}{m\+\_\+info}} = nullptr
+\begin{DoxyCompactList}\small\item\em Информация о группе \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmcommon_1_1HMUserInfoList}{H\+M\+User\+Info\+List}} \mbox{\hyperlink{classhmcommon_1_1HMGroup_aa3bebf8729f85346106060beeb1a93b9}{m\+\_\+users}}
+\begin{DoxyCompactList}\small\item\em Перечень участников группы \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Подробное описание}
-The \mbox{\hyperlink{classhmcommon_1_1HMGroup}{H\+M\+Group}} class -\/ Класс, описывающий группу пользователей системы 
+The \mbox{\hyperlink{classhmcommon_1_1HMGroup}{H\+M\+Group}} class -\/ Класс, описывающий группу\textbackslash{}чат 
 
 \begin{DoxyAuthor}{Авторы}
 Alekseev\+\_\+s 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Дата}
-08.\+11.\+2020 
+07.\+01.\+2021 
 \end{DoxyDate}
 
 
 \doxysubsection{Конструктор(ы)}
-\mbox{\Hypertarget{classhmcommon_1_1HMGroup_a82331808a003f3d99f356e3d591a5ceb}\label{classhmcommon_1_1HMGroup_a82331808a003f3d99f356e3d591a5ceb}} 
+\mbox{\Hypertarget{classhmcommon_1_1HMGroup_a42ccd15ebc8d36d8dff0255c17561c79}\label{classhmcommon_1_1HMGroup_a42ccd15ebc8d36d8dff0255c17561c79}} 
 \index{hmcommon::HMGroup@{hmcommon::HMGroup}!HMGroup@{HMGroup}}
 \index{HMGroup@{HMGroup}!hmcommon::HMGroup@{hmcommon::HMGroup}}
 \doxysubsubsection{\texorpdfstring{HMGroup()}{HMGroup()}}
-{\footnotesize\ttfamily H\+M\+Group\+::\+H\+M\+Group (\begin{DoxyParamCaption}\item[{const Q\+Uuid \&}]{in\+Uuid,  }\item[{const Q\+Date\+Time \&}]{in\+Registration\+Date = {\ttfamily QDateTime\+:\+:currentDateTime()} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily hmcommon\+::\+H\+M\+Group\+::\+H\+M\+Group (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
 
 
 
-\mbox{\hyperlink{classhmcommon_1_1HMGroup}{H\+M\+Group}} -\/ Инициализирующий конструктор 
+\mbox{\hyperlink{classhmcommon_1_1HMGroup}{H\+M\+Group}} -\/ Конструктор по умолчанию 
 
-
-\begin{DoxyParams}{Аргументы}
-{\em in\+Uuid} & -\/ Uuid группы \\
-\hline
-{\em in\+Registration\+Date} & -\/ Дата регистрации группы \\
-\hline
-\end{DoxyParams}
 \mbox{\Hypertarget{classhmcommon_1_1HMGroup_acb573c0abe7ae4049ca38675f4aa3104}\label{classhmcommon_1_1HMGroup_acb573c0abe7ae4049ca38675f4aa3104}} 
 \index{hmcommon::HMGroup@{hmcommon::HMGroup}!````~HMGroup@{$\sim$HMGroup}}
 \index{````~HMGroup@{$\sim$HMGroup}!hmcommon::HMGroup@{hmcommon::HMGroup}}
@@ -77,103 +69,29 @@ $\sim$\+H\+M\+Group -\/ Деструктор по умолчанию
 
 
 
-\doxysubsection{Методы}
-\mbox{\Hypertarget{classhmcommon_1_1HMGroup_a68ecf108f6b48a5fbb94015e9fb9b49a}\label{classhmcommon_1_1HMGroup_a68ecf108f6b48a5fbb94015e9fb9b49a}} 
-\index{hmcommon::HMGroup@{hmcommon::HMGroup}!getName@{getName}}
-\index{getName@{getName}!hmcommon::HMGroup@{hmcommon::HMGroup}}
-\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
-{\footnotesize\ttfamily Q\+String H\+M\+Group\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
-
-
-
-get\+Name -\/ Метод вернёт имя группы 
-
-\begin{DoxyReturn}{Возвращает}
-Вернёт имя группы 
-\end{DoxyReturn}
-Граф вызова функции\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=290pt]{classhmcommon_1_1HMGroup_a68ecf108f6b48a5fbb94015e9fb9b49a_icgraph}
-\end{center}
-\end{figure}
-\mbox{\Hypertarget{classhmcommon_1_1HMGroup_a7eed9e8ec97feb42e2cd1939cef99305}\label{classhmcommon_1_1HMGroup_a7eed9e8ec97feb42e2cd1939cef99305}} 
-\index{hmcommon::HMGroup@{hmcommon::HMGroup}!operator==@{operator==}}
-\index{operator==@{operator==}!hmcommon::HMGroup@{hmcommon::HMGroup}}
-\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
-{\footnotesize\ttfamily bool H\+M\+Group\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classhmcommon_1_1HMGroup}{H\+M\+Group}} \&}]{in\+Other }\end{DoxyParamCaption}) const}
-
-
-
-operator == -\/ Оператор сравнения 
-
-
-\begin{DoxyParams}{Аргументы}
-{\em in\+Other} & -\/ Сравниваемый объект \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
--\/ Вернёт оператор сравнения 
-\end{DoxyReturn}
-\mbox{\Hypertarget{classhmcommon_1_1HMGroup_ad56808c904e737de1d7167d93e40f646}\label{classhmcommon_1_1HMGroup_ad56808c904e737de1d7167d93e40f646}} 
-\index{hmcommon::HMGroup@{hmcommon::HMGroup}!setName@{setName}}
-\index{setName@{setName}!hmcommon::HMGroup@{hmcommon::HMGroup}}
-\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
-{\footnotesize\ttfamily void H\+M\+Group\+::set\+Name (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{in\+Name }\end{DoxyParamCaption})}
-
-
-
-set\+Name -\/ Метод задаст имя группы 
-
-
-\begin{DoxyParams}{Аргументы}
-{\em in\+Name} & -\/ Новое имя группы \\
-\hline
-\end{DoxyParams}
-Граф вызова функции\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=290pt]{classhmcommon_1_1HMGroup_ad56808c904e737de1d7167d93e40f646_icgraph}
-\end{center}
-\end{figure}
-
-
 \doxysubsection{Данные класса}
-\mbox{\Hypertarget{classhmcommon_1_1HMGroup_a6b753a50436fbaf6fe9537b114beda62}\label{classhmcommon_1_1HMGroup_a6b753a50436fbaf6fe9537b114beda62}} 
-\index{hmcommon::HMGroup@{hmcommon::HMGroup}!m\_name@{m\_name}}
-\index{m\_name@{m\_name}!hmcommon::HMGroup@{hmcommon::HMGroup}}
-\doxysubsubsection{\texorpdfstring{m\_name}{m\_name}}
-{\footnotesize\ttfamily Q\+String hmcommon\+::\+H\+M\+Group\+::m\+\_\+name\hspace{0.3cm}{\ttfamily [private]}}
+\mbox{\Hypertarget{classhmcommon_1_1HMGroup_a92890f78f44bafa1994e8186ded45df9}\label{classhmcommon_1_1HMGroup_a92890f78f44bafa1994e8186ded45df9}} 
+\index{hmcommon::HMGroup@{hmcommon::HMGroup}!m\_info@{m\_info}}
+\index{m\_info@{m\_info}!hmcommon::HMGroup@{hmcommon::HMGroup}}
+\doxysubsubsection{\texorpdfstring{m\_info}{m\_info}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classhmcommon_1_1HMGroupInfo}{H\+M\+Group\+Info}}$>$ hmcommon\+::\+H\+M\+Group\+::m\+\_\+info = nullptr}
 
 
 
-Имя группы 
+Информация о группе 
 
-\mbox{\Hypertarget{classhmcommon_1_1HMGroup_a24bde2d05f5e698551997ae9c0b0e6d2}\label{classhmcommon_1_1HMGroup_a24bde2d05f5e698551997ae9c0b0e6d2}} 
-\index{hmcommon::HMGroup@{hmcommon::HMGroup}!m\_registrationDate@{m\_registrationDate}}
-\index{m\_registrationDate@{m\_registrationDate}!hmcommon::HMGroup@{hmcommon::HMGroup}}
-\doxysubsubsection{\texorpdfstring{m\_registrationDate}{m\_registrationDate}}
-{\footnotesize\ttfamily const Q\+Date\+Time hmcommon\+::\+H\+M\+Group\+::m\+\_\+registration\+Date}
-
-
-
-Дата регистрации группы 
-
-\mbox{\Hypertarget{classhmcommon_1_1HMGroup_afc34093af63659de5bfacaf66f966af9}\label{classhmcommon_1_1HMGroup_afc34093af63659de5bfacaf66f966af9}} 
-\index{hmcommon::HMGroup@{hmcommon::HMGroup}!m\_uuid@{m\_uuid}}
-\index{m\_uuid@{m\_uuid}!hmcommon::HMGroup@{hmcommon::HMGroup}}
-\doxysubsubsection{\texorpdfstring{m\_uuid}{m\_uuid}}
-{\footnotesize\ttfamily const Q\+Uuid hmcommon\+::\+H\+M\+Group\+::m\+\_\+uuid}
+\mbox{\Hypertarget{classhmcommon_1_1HMGroup_aa3bebf8729f85346106060beeb1a93b9}\label{classhmcommon_1_1HMGroup_aa3bebf8729f85346106060beeb1a93b9}} 
+\index{hmcommon::HMGroup@{hmcommon::HMGroup}!m\_users@{m\_users}}
+\index{m\_users@{m\_users}!hmcommon::HMGroup@{hmcommon::HMGroup}}
+\doxysubsubsection{\texorpdfstring{m\_users}{m\_users}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classhmcommon_1_1HMUserInfoList}{H\+M\+User\+Info\+List}} hmcommon\+::\+H\+M\+Group\+::m\+\_\+users}
 
 
 
-U\+U\+ID группы 
+Перечень участников группы 
 
 
 
-Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+Объявления и описания членов класса находятся в файле\+:\begin{DoxyCompactItemize}
 \item 
-Projects/libraries/\+Hawk\+Common/src/\mbox{\hyperlink{group_8h}{group.\+h}}\item 
-Projects/libraries/\+Hawk\+Common/src/\mbox{\hyperlink{group_8cpp}{group.\+cpp}}\end{DoxyCompactItemize}
+Projects/libraries/\+Hawk\+Common/src/\mbox{\hyperlink{group_8h}{group.\+h}}\end{DoxyCompactItemize}

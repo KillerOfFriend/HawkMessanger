@@ -1,0 +1,11 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="node1" title="TEST &#45; Тест удаление контакта" alt="" coords="5,129,60,156"/>
+<area shape="rect" id="node2" href="$classhmcommon_1_1HMGroupList.html#ad853fd44ee920512549568d612c41682" title="add &#45; Метод добавит новую группу в перечень" alt="" coords="108,5,332,32"/>
+<area shape="rect" id="node5" href="$classhmcommon_1_1HMGroupList.html#a2487840eec053d201aba7fae3b3bef7d" title="count &#45; Метод вернёт количество групп в списке" alt="" coords="124,57,316,98"/>
+<area shape="rect" id="node6" href="$classhmcommon_1_1HMGroupList.html#a861663e1bd343e766df8ee7ca990059f" title="isEmpty &#45; Метод вернёт признак того, что список групп пуст" alt="" coords="124,122,316,163"/>
+<area shape="rect" id="node7" href="$libraries_2HawkCommon_2tests_2GroupList_2main_8cpp.html#af5f73d74e545c2a01ea87fdc17d325df" title=" " alt="" coords="169,253,271,280"/>
+<area shape="rect" id="node9" href="$classhmcommon_1_1HMGroupList.html#a457af0b5a82a4ed91444a95581de8e50" title="remove &#45; Метод удалит группу по её порядквому номеру" alt="" coords="124,187,316,229"/>
+<area shape="rect" id="node3" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="428,100,563,127"/>
+<area shape="rect" id="node4" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="659,93,865,134"/>
+<area shape="rect" id="node8" href="$namespacetestscommon.html#abf135e9ae8d7838442a1550862174473" title="make_group_info &#45; Метод сформирует информацию о группе для тестирования" alt="" coords="380,253,611,280"/>
+</map>

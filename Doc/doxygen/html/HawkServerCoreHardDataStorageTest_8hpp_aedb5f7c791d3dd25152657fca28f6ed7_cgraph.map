@@ -1,4 +1,4 @@
 <map id="HardDataStorage_RemoveUserContactTest" name="HardDataStorage_RemoveUserContactTest">
 <area shape="rect" id="node1" title="HardDataStorage_RemoveUserContactTest &#45; Тест физического хранилища, проверяющий удаление контакта пол..." alt="" coords="5,5,231,47"/>
-<area shape="rect" id="node2" href="$namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="279,13,469,39"/>
+<area shape="rect" id="node2" href="$namespacetestscommon.html#abf529556a55a5414bb6293a6a9a6de59" title="make_user_info &#45; Метод сформирует информацию о пользователе для тестирования" alt="" coords="279,13,501,39"/>
 </map>

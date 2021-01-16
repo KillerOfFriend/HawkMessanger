@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['main_2ecpp_549',['main.cpp',['../libraries_2HawkCommon_2tests_2Group_2main_8cpp.html',1,'(Глобальное пространство имён)'],['../libraries_2HawkCommon_2tests_2GroupMessage_2main_8cpp.html',1,'(Глобальное пространство имён)'],['../libraries_2HawkCommon_2tests_2User_2main_8cpp.html',1,'(Глобальное пространство имён)'],['../libraries_2HawkCommon_2tests_2UserList_2main_8cpp.html',1,'(Глобальное пространство имён)'],['../libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html',1,'(Глобальное пространство имён)'],['../libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html',1,'(Глобальное пространство имён)'],['../libraries_2HawkServerCore_2tests_2JsonDataStorage_2main_8cpp.html',1,'(Глобальное пространство имён)'],['../modules_2HawkConsolServer_2src_2main_8cpp.html',1,'(Глобальное пространство имён)']]]
+  ['logmessage_2ecpp_561',['logmessage.cpp',['../logmessage_8cpp.html',1,'']]],
+  ['logmessage_2eh_562',['logmessage.h',['../logmessage_8h.html',1,'']]],
+  ['logsystem_2ecpp_563',['logsystem.cpp',['../logsystem_8cpp.html',1,'']]],
+  ['logsystem_2eh_564',['logsystem.h',['../logsystem_8h.html',1,'']]]
 ];

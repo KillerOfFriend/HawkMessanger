@@ -1,0 +1,6 @@
+<map id="hmservcommon::datastorage::HMJsonDataStorage::jsonToMessage" name="hmservcommon::datastorage::HMJsonDataStorage::jsonToMessage">
+<area shape="rect" id="node1" title="jsonToMessage &#45; Метод преобразует Json объект в экземпляр сообщения" alt="" coords="5,13,272,54"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator.html#a3530ea2565fda57cf662e1c5530d5b52" title="checkMessage &#45; Метод проверит валидность JSON объекта сообщения" alt="" coords="320,5,539,61"/>
+<area shape="rect" id="node3" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="587,20,721,47"/>
+<area shape="rect" id="node4" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="769,13,976,54"/>
+</map>

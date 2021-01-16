@@ -1,4 +1,4 @@
 <map id="HardDataStorage_UpdateUserTest" name="HardDataStorage_UpdateUserTest">
 <area shape="rect" id="node1" title="HardDataStorage_UpdateUserTest &#45; Тест физического хранилища, проверяющий обновление пользователя" alt="" coords="5,5,249,32"/>
-<area shape="rect" id="node2" href="$namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="297,5,488,32"/>
+<area shape="rect" id="node2" href="$namespacetestscommon.html#abf529556a55a5414bb6293a6a9a6de59" title="make_user_info &#45; Метод сформирует информацию о пользователе для тестирования" alt="" coords="297,5,520,32"/>
 </map>

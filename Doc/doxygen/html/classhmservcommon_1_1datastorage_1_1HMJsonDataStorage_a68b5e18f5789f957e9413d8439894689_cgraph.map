@@ -1,0 +1,5 @@
+<map id="hmservcommon::datastorage::HMJsonDataStorage::groupToJson" name="hmservcommon::datastorage::HMJsonDataStorage::groupToJson">
+<area shape="rect" id="node1" title="groupToJson &#45; Метод преобразует группу в объект Json" alt="" coords="5,5,252,47"/>
+<area shape="rect" id="node2" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="300,13,435,39"/>
+<area shape="rect" id="node3" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="483,5,689,47"/>
+</map>

@@ -2,6 +2,6 @@
 <area shape="rect" id="node1" title="TEST &#45; Тест проверит поиск сообщения по UUID." alt="" coords="5,56,60,83"/>
 <area shape="rect" id="node2" href="$HawkServerCoreHardDataStorageTest_8hpp.html#a639ae4e160acae67a63bc8b61c1ae925" title="HardDataStorage_FindMessageTest &#45; Тест физического хранилища, проверяющий поиск сообщения" alt="" coords="108,31,360,57"/>
 <area shape="rect" id="node5" href="$libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="180,81,288,108"/>
-<area shape="rect" id="node3" href="$namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="438,5,637,32"/>
-<area shape="rect" id="node4" href="$namespacetestscommon.html#a8ab7b7550fa3839ed15e043e1d760d50" title="make_groupmessage &#45; Метод сформирует сообщение для тестирования" alt="" coords="408,56,667,83"/>
+<area shape="rect" id="node3" href="$namespacetestscommon.html#abf135e9ae8d7838442a1550862174473" title="make_group_info &#45; Метод сформирует информацию о группе для тестирования" alt="" coords="422,5,653,32"/>
+<area shape="rect" id="node4" href="$namespacetestscommon.html#a98f8f306c8d7b3980b759dc84de73c58" title="make_groupmessage &#45; Метод сформирует сообщение для тестирования" alt="" coords="408,56,667,83"/>
 </map>

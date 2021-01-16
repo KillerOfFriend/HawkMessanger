@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>HawkMessanger: Исходный файл Projects/libraries/HawkCommon/src/grouplist.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">HawkMessanger
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Создано системой Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Поиск');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Поиск');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_7a6499598ddcfcabe96e224cb4a6d834.html">Projects</a></li><li class="navelem"><a class="el" href="dir_e58a87a21221f9da698103351b870c05.html">libraries</a></li><li class="navelem"><a class="el" href="dir_1ea90edc7b256d5238b2bba3b9bb95dc.html">HawkCommon</a></li><li class="navelem"><a class="el" href="dir_67803fc46832aab7dbb8b538e12f66ef.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">grouplist.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="grouplist_8h.html">См. документацию.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef HMGROUPINFOLIST_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define HMGROUPINFOLIST_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;system_error&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;unordered_set&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;QUuid&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="group_8h.html">group.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacehmcommon.html">hmcommon</a></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structhmcommon_1_1GroupMakeHash.html">   22</a></span>&#160;<span class="comment"></span><span class="keyword">struct </span><a class="code" href="structhmcommon_1_1GroupMakeHash.html">GroupMakeHash</a></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    std::size_t <a class="code" href="structhmcommon_1_1GroupMakeHash.html#a3b770b64e7bc26d0946fd570bf322fc6">operator() </a>(<span class="keyword">const</span> std::shared_ptr&lt;HMGroup&gt;&amp; inGroup) <span class="keyword">const</span> noexcept;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structhmcommon_1_1GroupsCheckEqual.html">   35</a></span>&#160;<span class="comment"></span><span class="keyword">struct </span><a class="code" href="structhmcommon_1_1GroupsCheckEqual.html">GroupsCheckEqual</a></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structhmcommon_1_1GroupsCheckEqual.html#a24b785adcfaafbff2065ecc094e1d39a">operator()</a>(<span class="keyword">const</span> std::shared_ptr&lt;HMGroup&gt;&amp; inFirstGroup, <span class="keyword">const</span> std::shared_ptr&lt;HMGroup&gt;&amp; inSecondGroup) <span class="keyword">const</span> noexcept;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classhmcommon_1_1HMGroupList.html">   46</a></span>&#160;<span class="keyword">class </span><a class="code" href="classhmcommon_1_1HMGroupList.html">HMGroupList</a></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{   </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classhmcommon_1_1HMGroupList.html#a3777f9c5658df16d95e2f336f355cf54">   50</a></span>&#160;    std::unordered_set&lt;std::shared_ptr&lt;HMGroup&gt;, <a class="code" href="structhmcommon_1_1GroupMakeHash.html">GroupMakeHash</a>, <a class="code" href="structhmcommon_1_1GroupsCheckEqual.html">GroupsCheckEqual</a>&gt; <a class="code" href="classhmcommon_1_1HMGroupList.html#a3777f9c5658df16d95e2f336f355cf54">m_contacts</a>; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="classhmcommon_1_1HMGroupList.html#a6d5813ec1cea9e38322ee537ab4604e6">HMGroupList</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <a class="code" href="classhmcommon_1_1HMGroupList.html#a1552dbf7a9356a3eab82b5ca4d7257f4">~HMGroupList</a>() = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classhmcommon_1_1HMGroupList.html#a861663e1bd343e766df8ee7ca990059f">isEmpty</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    std::size_t <a class="code" href="classhmcommon_1_1HMGroupList.html#a2487840eec053d201aba7fae3b3bef7d">count</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classhmcommon_1_1HMGroupList.html#a9ae6c23916a261b3dad18e6b5c100187">contain</a>(<span class="keyword">const</span> QUuid&amp; inUserUUID) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classhmcommon_1_1HMGroupList.html#a9ae6c23916a261b3dad18e6b5c100187">contain</a>(<span class="keyword">const</span> std::shared_ptr&lt;HMGroup&gt; inGroup) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    std::error_code <a class="code" href="classhmcommon_1_1HMGroupList.html#ad853fd44ee920512549568d612c41682">add</a>(<span class="keyword">const</span> std::shared_ptr&lt;HMGroup&gt; inNewGroup);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    std::shared_ptr&lt;HMGroup&gt; <a class="code" href="classhmcommon_1_1HMGroupList.html#a64625ede00aa5f4611cbdf957fdef267">get</a>(<span class="keyword">const</span> std::size_t inIndex, std::error_code&amp; outErrorCode) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    std::shared_ptr&lt;HMGroup&gt; <a class="code" href="classhmcommon_1_1HMGroupList.html#a64625ede00aa5f4611cbdf957fdef267">get</a>(<span class="keyword">const</span> QUuid inGroupUuid, std::error_code&amp; outErrorCode) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    std::error_code <a class="code" href="classhmcommon_1_1HMGroupList.html#a457af0b5a82a4ed91444a95581de8e50">remove</a>(<span class="keyword">const</span> std::size_t inIndex);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    std::error_code <a class="code" href="classhmcommon_1_1HMGroupList.html#a457af0b5a82a4ed91444a95581de8e50">remove</a>(<span class="keyword">const</span> QUuid inUserUuid);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;};</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="preprocessor">#endif // HMGROUPINFOLIST_H</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructhmcommon_1_1GroupMakeHash_html"><div class="ttname"><a href="structhmcommon_1_1GroupMakeHash.html">hmcommon::GroupMakeHash</a></div><div class="ttdoc">The GroupMakeHash struct - Структура, реализующая оператор взятия хеша от группы</div><div class="ttdef"><b>Definition:</b> grouplist.h:22</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074ae1cd8086c4e84519196dd8ea7b324ff2"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074ae1cd8086c4e84519196dd8ea7b324ff2">hmcommon::eSystemErrorEx::seAlredyInContainer</a></div><div class="ttdeci">@ seAlredyInContainer</div><div class="ttdoc">Объект уже в контейнере</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074a075fedc58218682904f396b745bb5a5f"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074a075fedc58218682904f396b745bb5a5f">hmcommon::eSystemErrorEx::seInvalidPtr</a></div><div class="ttdeci">@ seInvalidPtr</div><div class="ttdoc">Не валидный указатель</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMGroupList_html_a3777f9c5658df16d95e2f336f355cf54"><div class="ttname"><a href="classhmcommon_1_1HMGroupList.html#a3777f9c5658df16d95e2f336f355cf54">hmcommon::HMGroupList::m_contacts</a></div><div class="ttdeci">std::unordered_set&lt; std::shared_ptr&lt; HMGroup &gt;, GroupMakeHash, GroupsCheckEqual &gt; m_contacts</div><div class="ttdoc">Контейнер, содержащий перечень групп</div><div class="ttdef"><b>Definition:</b> grouplist.h:50</div></div>
+<div class="ttc" id="agroup_8h_html"><div class="ttname"><a href="group_8h.html">group.h</a></div><div class="ttdoc">Содержит описание группы\чата</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMGroupList_html_a457af0b5a82a4ed91444a95581de8e50"><div class="ttname"><a href="classhmcommon_1_1HMGroupList.html#a457af0b5a82a4ed91444a95581de8e50">hmcommon::HMGroupList::remove</a></div><div class="ttdeci">std::error_code remove(const std::size_t inIndex)</div><div class="ttdoc">remove - Метод удалит группу по её порядквому номеру</div><div class="ttdef"><b>Definition:</b> grouplist.cpp:105</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074aaab0146e021aca2a47fc5e1882d76562"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074aaab0146e021aca2a47fc5e1882d76562">hmcommon::eSystemErrorEx::seContainerEmpty</a></div><div class="ttdeci">@ seContainerEmpty</div><div class="ttdoc">Контейнер пуст</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMGroupList_html_a2487840eec053d201aba7fae3b3bef7d"><div class="ttname"><a href="classhmcommon_1_1HMGroupList.html#a2487840eec053d201aba7fae3b3bef7d">hmcommon::HMGroupList::count</a></div><div class="ttdeci">std::size_t count() const</div><div class="ttdoc">count - Метод вернёт количество групп в списке</div><div class="ttdef"><b>Definition:</b> grouplist.cpp:31</div></div>
+<div class="ttc" id="astructhmcommon_1_1GroupsCheckEqual_html_a24b785adcfaafbff2065ecc094e1d39a"><div class="ttname"><a href="structhmcommon_1_1GroupsCheckEqual.html#a24b785adcfaafbff2065ecc094e1d39a">hmcommon::GroupsCheckEqual::operator()</a></div><div class="ttdeci">bool operator()(const std::shared_ptr&lt; HMGroup &gt; &amp;inFirstGroup, const std::shared_ptr&lt; HMGroup &gt; &amp;inSecondGroup) const noexcept</div><div class="ttdoc">operator () - Оператор сравнения групп</div><div class="ttdef"><b>Definition:</b> grouplist.cpp:20</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMGroupList_html_a861663e1bd343e766df8ee7ca990059f"><div class="ttname"><a href="classhmcommon_1_1HMGroupList.html#a861663e1bd343e766df8ee7ca990059f">hmcommon::HMGroupList::isEmpty</a></div><div class="ttdeci">bool isEmpty() const</div><div class="ttdoc">isEmpty - Метод вернёт признак того, что список групп пуст</div><div class="ttdef"><b>Definition:</b> grouplist.cpp:28</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074afce0c62359706b88ab0e7962ef9f24d8"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074afce0c62359706b88ab0e7962ef9f24d8">hmcommon::eSystemErrorEx::seNotInContainer</a></div><div class="ttdeci">@ seNotInContainer</div><div class="ttdoc">Объект не в контейнере</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMGroupList_html_a9ae6c23916a261b3dad18e6b5c100187"><div class="ttname"><a href="classhmcommon_1_1HMGroupList.html#a9ae6c23916a261b3dad18e6b5c100187">hmcommon::HMGroupList::contain</a></div><div class="ttdeci">bool contain(const QUuid &amp;inUserUUID) const</div><div class="ttdoc">contain - Метод проверит существование группы по UUID</div><div class="ttdef"><b>Definition:</b> grouplist.cpp:34</div></div>
+<div class="ttc" id="agrouplist_8h_html"><div class="ttname"><a href="grouplist_8h.html">grouplist.h</a></div><div class="ttdoc">Содержит описание участников групп</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMGroupList_html_a64625ede00aa5f4611cbdf957fdef267"><div class="ttname"><a href="classhmcommon_1_1HMGroupList.html#a64625ede00aa5f4611cbdf957fdef267">hmcommon::HMGroupList::get</a></div><div class="ttdeci">std::shared_ptr&lt; HMGroup &gt; get(const std::size_t inIndex, std::error_code &amp;outErrorCode) const</div><div class="ttdoc">get - Метод вернёт группу по её порядковому номеру</div><div class="ttdef"><b>Definition:</b> grouplist.cpp:65</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMGroupList_html_a1552dbf7a9356a3eab82b5ca4d7257f4"><div class="ttname"><a href="classhmcommon_1_1HMGroupList.html#a1552dbf7a9356a3eab82b5ca4d7257f4">hmcommon::HMGroupList::~HMGroupList</a></div><div class="ttdeci">~HMGroupList()=default</div><div class="ttdoc">~HMGroupList - Деструктор по умолчанию</div></div>
+<div class="ttc" id="asystemerrorex_8h_html"><div class="ttname"><a href="systemerrorex_8h.html">systemerrorex.h</a></div><div class="ttdoc">Содержит описание категории расширеных системных ошибок</div></div>
+<div class="ttc" id="anamespacehmcommon_html"><div class="ttname"><a href="namespacehmcommon.html">hmcommon</a></div><div class="ttdef"><b>Definition:</b> group.h:14</div></div>
+<div class="ttc" id="asystemerrorex_8cpp_html_aacc415fb080ba818238619f5ab0676c3"><div class="ttname"><a href="systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3">make_error_code</a></div><div class="ttdeci">std::error_code make_error_code(hmcommon::eSystemErrorEx inErrCode)</div><div class="ttdoc">make_error_code - Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени...</div><div class="ttdef"><b>Definition:</b> systemerrorex.cpp:82</div></div>
+<div class="ttc" id="astructhmcommon_1_1GroupsCheckEqual_html"><div class="ttname"><a href="structhmcommon_1_1GroupsCheckEqual.html">hmcommon::GroupsCheckEqual</a></div><div class="ttdoc">The GroupsCheckEqual struct - Структура, реализующая оператор сравнения групп</div><div class="ttdef"><b>Definition:</b> grouplist.h:35</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074aa330e55c3e289df2376203fce3c17925"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074aa330e55c3e289df2376203fce3c17925">hmcommon::eSystemErrorEx::seSuccess</a></div><div class="ttdeci">@ seSuccess</div><div class="ttdoc">0 Не явялется ошибкой</div></div>
+<div class="ttc" id="astructhmcommon_1_1GroupMakeHash_html_a3b770b64e7bc26d0946fd570bf322fc6"><div class="ttname"><a href="structhmcommon_1_1GroupMakeHash.html#a3b770b64e7bc26d0946fd570bf322fc6">hmcommon::GroupMakeHash::operator()</a></div><div class="ttdeci">std::size_t operator()(const std::shared_ptr&lt; HMGroup &gt; &amp;inGroup) const noexcept</div><div class="ttdoc">operator () - Оператор сравнения пользователей</div><div class="ttdef"><b>Definition:</b> grouplist.cpp:12</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMGroupList_html_ad853fd44ee920512549568d612c41682"><div class="ttname"><a href="classhmcommon_1_1HMGroupList.html#ad853fd44ee920512549568d612c41682">hmcommon::HMGroupList::add</a></div><div class="ttdeci">std::error_code add(const std::shared_ptr&lt; HMGroup &gt; inNewGroup)</div><div class="ttdoc">add - Метод добавит новую группу в перечень</div><div class="ttdef"><b>Definition:</b> grouplist.cpp:50</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMGroupList_html"><div class="ttname"><a href="classhmcommon_1_1HMGroupList.html">hmcommon::HMGroupList</a></div><div class="ttdef"><b>Definition:</b> grouplist.h:46</div></div>
+<div class="ttc" id="aclasshmcommon_1_1HMGroupList_html_a6d5813ec1cea9e38322ee537ab4604e6"><div class="ttname"><a href="classhmcommon_1_1HMGroupList.html#a6d5813ec1cea9e38322ee537ab4604e6">hmcommon::HMGroupList::HMGroupList</a></div><div class="ttdeci">HMGroupList()=default</div><div class="ttdoc">HMGroupList - Конструктор по умолчанию</div></div>
+<div class="ttc" id="anamespacehmcommon_html_aa623151570760a868235b187863ad074a1b7ef58f826b0d541714443e96260a40"><div class="ttname"><a href="namespacehmcommon.html#aa623151570760a868235b187863ad074a1b7ef58f826b0d541714443e96260a40">hmcommon::eSystemErrorEx::seIndexOutOfContainerRange</a></div><div class="ttdeci">@ seIndexOutOfContainerRange</div><div class="ttdoc">Индекс за пределами контейнера</div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Создано системой &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

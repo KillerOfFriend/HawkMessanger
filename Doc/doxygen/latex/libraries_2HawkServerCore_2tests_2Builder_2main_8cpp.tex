@@ -1,0 +1,131 @@
+\hypertarget{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp}{}\doxysection{Файл Projects/libraries/\+Hawk\+Server\+Core/tests/\+Builder/main.cpp}
+\label{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp}\index{Projects/libraries/HawkServerCore/tests/Builder/main.cpp@{Projects/libraries/HawkServerCore/tests/Builder/main.cpp}}
+{\ttfamily \#include $<$gtest/gtest.\+h$>$}\newline
+{\ttfamily \#include $<$filesystem$>$}\newline
+{\ttfamily \#include $<$builder.\+h$>$}\newline
+{\ttfamily \#include $<$Hawk\+Log.\+h$>$}\newline
+{\ttfamily \#include $<$systemerrorex.\+h$>$}\newline
+{\ttfamily \#include $<$datastorage/\+Data\+Storage.\+h$>$}\newline
+{\ttfamily \#include $<$Hawk\+Common\+Test\+Utils.\+hpp$>$}\newline
+Граф включаемых заголовочных файлов для main.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_a3a3ce4d1058bb5071ba5842cf76c05ad}{make\+\_\+storage}} ()
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1HMBuilder}{hmservcommon\+::\+H\+M\+Builder}} $>$ \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_a0c2c6078fa99b58f1a8e71691719d489}{make\+\_\+builder}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$ in\+Storage=\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_a3a3ce4d1058bb5071ba5842cf76c05ad}{make\+\_\+storage}}())
+\item 
+\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_a0af6f13dc06ec6646b539bd0154b3e5d}{T\+E\+ST}} (Builder, Build\+Group)
+\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест сбора группы \end{DoxyCompactList}\item 
+\mbox{\hyperlink{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_ad4947a7a302b85d121c8bc87eab4532d}{T\+E\+ST}} (Builder, Build\+User)
+\begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест сбора пользователя \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em main -\/ Входная точка тестировани функционала H\+M\+Group\+List \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Переменные}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::filesystem\+::path \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_ac191795d64548fb36e4249ad030c3f66}{C\+\_\+\+J\+S\+O\+N\+\_\+\+P\+A\+TH}} = std\+::filesystem\+::current\+\_\+path() / \char`\"{}Data\+Storage.\+json\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+main -\/ Входная точка тестировани функционала H\+M\+Group\+List 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em argc} & -\/ Количество аргументов \\
+\hline
+{\em argv} & -\/ Перечень аргументов \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт признак успешности тестирования 
+\end{DoxyReturn}
+\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_a0c2c6078fa99b58f1a8e71691719d489}\label{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_a0c2c6078fa99b58f1a8e71691719d489}} 
+\index{main.cpp@{main.cpp}!make\_builder@{make\_builder}}
+\index{make\_builder@{make\_builder}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{make\_builder()}{make\_builder()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classhmservcommon_1_1HMBuilder}{hmservcommon\+::\+H\+M\+Builder}}$>$ make\+\_\+builder (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}} $>$}]{in\+Storage = {\ttfamily \mbox{\hyperlink{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_a3a3ce4d1058bb5071ba5842cf76c05ad}{make\+\_\+storage}}()} }\end{DoxyParamCaption})}
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_a0c2c6078fa99b58f1a8e71691719d489_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_a3a3ce4d1058bb5071ba5842cf76c05ad}\label{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_a3a3ce4d1058bb5071ba5842cf76c05ad}} 
+\index{main.cpp@{main.cpp}!make\_storage@{make\_storage}}
+\index{make\_storage@{make\_storage}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{make\_storage()}{make\_storage()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{H\+M\+Data\+Storage}}$>$ make\+\_\+storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_a3a3ce4d1058bb5071ba5842cf76c05ad_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_a0af6f13dc06ec6646b539bd0154b3e5d}\label{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_a0af6f13dc06ec6646b539bd0154b3e5d}} 
+\index{main.cpp@{main.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Builder}]{,  }\item[{Build\+Group}]{ }\end{DoxyParamCaption})}
+
+
+
+T\+E\+ST -\/ Тест сбора группы 
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_a0af6f13dc06ec6646b539bd0154b3e5d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_ad4947a7a302b85d121c8bc87eab4532d}\label{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_ad4947a7a302b85d121c8bc87eab4532d}} 
+\index{main.cpp@{main.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Builder}]{,  }\item[{Build\+User}]{ }\end{DoxyParamCaption})}
+
+
+
+T\+E\+ST -\/ Тест сбора пользователя 
+
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=330pt]{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_ad4947a7a302b85d121c8bc87eab4532d_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Переменные}
+\mbox{\Hypertarget{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_ac191795d64548fb36e4249ad030c3f66}\label{libraries_2HawkServerCore_2tests_2Builder_2main_8cpp_ac191795d64548fb36e4249ad030c3f66}} 
+\index{main.cpp@{main.cpp}!C\_JSON\_PATH@{C\_JSON\_PATH}}
+\index{C\_JSON\_PATH@{C\_JSON\_PATH}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{C\_JSON\_PATH}{C\_JSON\_PATH}}
+{\footnotesize\ttfamily const std\+::filesystem\+::path C\+\_\+\+J\+S\+O\+N\+\_\+\+P\+A\+TH = std\+::filesystem\+::current\+\_\+path() / \char`\"{}Data\+Storage.\+json\char`\"{}}
+

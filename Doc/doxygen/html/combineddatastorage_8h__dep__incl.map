@@ -2,9 +2,10 @@
 <area shape="rect" id="node1" title="Содержит описание комбинированного хранилища данных (физическое\хешированное)" alt="" coords="131,5,381,76"/>
 <area shape="rect" id="node2" href="$combineddatastorage_8cpp.html" title=" " alt="" coords="5,124,256,195"/>
 <area shape="rect" id="node3" href="$DataStorage_8h.html" title=" " alt="" coords="281,131,482,187"/>
-<area shape="rect" id="node4" href="$servercore_8h.html" title=" " alt="" coords="302,243,461,299"/>
-<area shape="rect" id="node5" href="$HawkServerCore_8h.html" title=" " alt="" coords="185,347,343,403"/>
-<area shape="rect" id="node8" href="$libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html" title=" " alt="" coords="485,243,723,299"/>
-<area shape="rect" id="node7" href="$servercore_8cpp.html" title=" " alt="" coords="367,347,526,403"/>
-<area shape="rect" id="node6" href="$modules_2HawkConsolServer_2src_2main_8cpp.html" title=" " alt="" coords="155,451,373,492"/>
+<area shape="rect" id="node4" href="$servercore_8h.html" title=" " alt="" coords="207,243,366,299"/>
+<area shape="rect" id="node5" href="$HawkServerCore_8h.html" title=" " alt="" coords="90,347,249,403"/>
+<area shape="rect" id="node8" href="$libraries_2HawkServerCore_2tests_2Builder_2main_8cpp.html" title=" " alt="" coords="391,243,561,299"/>
+<area shape="rect" id="node9" href="$libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html" title=" " alt="" coords="585,243,823,299"/>
+<area shape="rect" id="node7" href="$servercore_8cpp.html" title=" " alt="" coords="273,347,431,403"/>
+<area shape="rect" id="node6" href="$modules_2HawkConsolServer_2src_2main_8cpp.html" title=" " alt="" coords="60,451,279,492"/>
 </map>

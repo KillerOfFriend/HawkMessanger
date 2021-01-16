@@ -1,5 +1,5 @@
 <map id="hmservcommon::datastorage::HMJsonDataStorageValidator::checkUser" name="hmservcommon::datastorage::HMJsonDataStorageValidator::checkUser">
 <area shape="rect" id="node1" title="checkUser &#45; Метод проверит валидность JSON объекта пользователя" alt="" coords="613,5,832,61"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#af9464140b13ffe77e33cd69aa9f32693" title="jsonToUser &#45; Метод преобразует Json объект в экземпляр пользователя" alt="" coords="327,13,565,54"/>
-<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#afef4c7507fb65d03a581e9598761914f" title="findUserByUUID &#45; Метод найдёт пользователя по его uuid" alt="" coords="5,13,279,54"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a09df40c3daa6283ced4795b92fe3151d" title="jsonToUser &#45; Метод преобразует Json объект в экземпляр пользователя" alt="" coords="327,13,565,54"/>
+<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a3a65e5f0b1da9591f3f78bafc9662a17" title="findUserByUUID &#45; Метод найдёт пользователя по его uuid" alt="" coords="5,13,279,54"/>
 </map>

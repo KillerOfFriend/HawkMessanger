@@ -3,7 +3,7 @@
 <area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a89c7d6e8863cd3ca11a6b2474a109b2a" title="setGroupUsers &#45; Метод добавит пользователя в группу" alt="" coords="334,5,595,47"/>
 <area shape="rect" id="node4" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#ab847270a178228e732a2d0d115c89362" title="clearGroupUsers &#45; Метод очистит список членов группы" alt="" coords="327,71,603,112"/>
 <area shape="rect" id="node5" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a4459561f4b1cff34960e4092859aa83f" title="removeGroupUser &#45; Метод удалит пользователя из группы" alt="" coords="321,136,608,177"/>
-<area shape="rect" id="node7" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a76a810289a3527343410e83a7d939ce6" title="updateGroup &#45; Метод обновит данные группы" alt="" coords="339,201,591,243"/>
+<area shape="rect" id="node7" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a3df69da933b05dd628fc60f14c51bee7" title="updateGroup &#45; Метод обновит данные группы" alt="" coords="339,201,591,243"/>
 <area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aaecb72687a39e65f93d88cc149014140" title="setGroupUsers &#45; Метод задаст список членов группы" alt="" coords="7,71,271,112"/>
 <area shape="rect" id="node6" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a87839428ae2d26d0ebd2db35ca0828d3" title="onRemoveUser &#45; Метод выполнится при удалении пользователя" alt="" coords="5,136,273,177"/>
 </map>

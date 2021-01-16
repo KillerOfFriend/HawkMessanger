@@ -1,0 +1,9 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="node1" title="TEST &#45; Тест поиска не существующей группы" alt="" coords="5,97,60,123"/>
+<area shape="rect" id="node2" href="$classhmcommon_1_1HMGroupList.html#a64625ede00aa5f4611cbdf957fdef267" title="get &#45; Метод вернёт группу по её порядковому номеру" alt="" coords="108,71,329,98"/>
+<area shape="rect" id="node6" href="$libraries_2HawkCommon_2tests_2GroupList_2main_8cpp.html#af5f73d74e545c2a01ea87fdc17d325df" title=" " alt="" coords="167,122,270,149"/>
+<area shape="rect" id="node3" href="$classhmcommon_1_1HMGroupList.html#a861663e1bd343e766df8ee7ca990059f" title="isEmpty &#45; Метод вернёт признак того, что список групп пуст" alt="" coords="397,5,589,47"/>
+<area shape="rect" id="node4" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="425,71,560,98"/>
+<area shape="rect" id="node5" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="656,64,863,105"/>
+<area shape="rect" id="node7" href="$namespacetestscommon.html#abf135e9ae8d7838442a1550862174473" title="make_group_info &#45; Метод сформирует информацию о группе для тестирования" alt="" coords="377,122,608,149"/>
+</map>

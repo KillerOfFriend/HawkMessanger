@@ -3,24 +3,24 @@
 \doxysubsection*{Функции}
 \begin{DoxyCompactItemize}
 \item 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUser}{hmcommon\+::\+H\+M\+User}} $>$ \mbox{\hyperlink{namespacetestscommon_a36bd4b86d6e623924532028e8aa25794}{make\+\_\+user}} (const Q\+Uuid in\+User\+Uuid=Q\+Uuid\+::create\+Uuid(), const Q\+String in\+User\+Login=\char`\"{}User\+Login@login.\+com\char`\"{}, const Q\+String in\+User\+Password=\char`\"{}P@sswor\+Of\+User123\char`\"{}, const Q\+Date\+Time in\+Create\+Date=Q\+Date\+Time\+::current\+Date\+Time())
-\begin{DoxyCompactList}\small\item\em make\+\_\+user -\/ Метод сформирует пользователя для тестирования \end{DoxyCompactList}\item 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{hmcommon\+::\+H\+M\+Group}} $>$ \mbox{\hyperlink{namespacetestscommon_a1e118fb8fb94664294f3d9e23364569e}{make\+\_\+group}} (const Q\+Uuid in\+Group\+Uuid=Q\+Uuid\+::create\+Uuid(), const Q\+String in\+Group\+Name=\char`\"{}New group name\char`\"{}, const Q\+Date\+Time in\+Create\+Date=Q\+Date\+Time\+::current\+Date\+Time())
-\begin{DoxyCompactList}\small\item\em make\+\_\+group -\/ Метод сформирует группу для тестирования \end{DoxyCompactList}\item 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupMessage}{hmcommon\+::\+H\+M\+Group\+Message}} $>$ \mbox{\hyperlink{namespacetestscommon_a8ab7b7550fa3839ed15e043e1d760d50}{make\+\_\+groupmessage}} (const \mbox{\hyperlink{structhmcommon_1_1MsgData}{hmcommon\+::\+Msg\+Data}} \&in\+Data, const Q\+Uuid in\+Uuid=Q\+Uuid\+::create\+Uuid(), const Q\+Uuid in\+Group\+Uuid=Q\+Uuid\+::create\+Uuid(), const Q\+Date\+Time in\+Create\+Date=Q\+Date\+Time\+::current\+Date\+Time())
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUserInfo}{hmcommon\+::\+H\+M\+User\+Info}} $>$ \mbox{\hyperlink{namespacetestscommon_abf529556a55a5414bb6293a6a9a6de59}{make\+\_\+user\+\_\+info}} (const Q\+Uuid in\+User\+Uuid=Q\+Uuid\+::create\+Uuid(), const Q\+String in\+User\+Login=\char`\"{}User\+Login@login.\+com\char`\"{}, const Q\+String in\+User\+Password=\char`\"{}P@sswor\+Of\+User123\char`\"{}, const Q\+Date\+Time in\+Create\+Date=Q\+Date\+Time\+::current\+Date\+Time())
+\begin{DoxyCompactList}\small\item\em make\+\_\+user\+\_\+info -\/ Метод сформирует информацию о пользователе для тестирования \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfo}{hmcommon\+::\+H\+M\+Group\+Info}} $>$ \mbox{\hyperlink{namespacetestscommon_abf135e9ae8d7838442a1550862174473}{make\+\_\+group\+\_\+info}} (const Q\+Uuid in\+Group\+Uuid=Q\+Uuid\+::create\+Uuid(), const Q\+String in\+Group\+Name=\char`\"{}New group name\char`\"{}, const Q\+Date\+Time in\+Create\+Date=Q\+Date\+Time\+::current\+Date\+Time())
+\begin{DoxyCompactList}\small\item\em make\+\_\+group\+\_\+info -\/ Метод сформирует информацию о группе для тестирования \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroupInfoMessage}{hmcommon\+::\+H\+M\+Group\+Info\+Message}} $>$ \mbox{\hyperlink{namespacetestscommon_a98f8f306c8d7b3980b759dc84de73c58}{make\+\_\+groupmessage}} (const \mbox{\hyperlink{structhmcommon_1_1MsgData}{hmcommon\+::\+Msg\+Data}} \&in\+Data, const Q\+Uuid in\+Uuid=Q\+Uuid\+::create\+Uuid(), const Q\+Uuid in\+Group\+Uuid=Q\+Uuid\+::create\+Uuid(), const Q\+Date\+Time in\+Create\+Date=Q\+Date\+Time\+::current\+Date\+Time())
 \begin{DoxyCompactList}\small\item\em make\+\_\+groupmessage -\/ Метод сформирует сообщение для тестирования \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Функции}
-\mbox{\Hypertarget{namespacetestscommon_a1e118fb8fb94664294f3d9e23364569e}\label{namespacetestscommon_a1e118fb8fb94664294f3d9e23364569e}} 
-\index{testscommon@{testscommon}!make\_group@{make\_group}}
-\index{make\_group@{make\_group}!testscommon@{testscommon}}
-\doxysubsubsection{\texorpdfstring{make\_group()}{make\_group()}}
-{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classhmcommon_1_1HMGroup}{hmcommon\+::\+H\+M\+Group}}$>$ testscommon\+::make\+\_\+group (\begin{DoxyParamCaption}\item[{const Q\+Uuid}]{in\+Group\+Uuid = {\ttfamily QUuid\+:\+:createUuid()},  }\item[{const Q\+String}]{in\+Group\+Name = {\ttfamily \char`\"{}New~group~name\char`\"{}},  }\item[{const Q\+Date\+Time}]{in\+Create\+Date = {\ttfamily QDateTime\+:\+:currentDateTime()} }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{namespacetestscommon_abf135e9ae8d7838442a1550862174473}\label{namespacetestscommon_abf135e9ae8d7838442a1550862174473}} 
+\index{testscommon@{testscommon}!make\_group\_info@{make\_group\_info}}
+\index{make\_group\_info@{make\_group\_info}!testscommon@{testscommon}}
+\doxysubsubsection{\texorpdfstring{make\_group\_info()}{make\_group\_info()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classhmcommon_1_1HMGroupInfo}{hmcommon\+::\+H\+M\+Group\+Info}}$>$ testscommon\+::make\+\_\+group\+\_\+info (\begin{DoxyParamCaption}\item[{const Q\+Uuid}]{in\+Group\+Uuid = {\ttfamily QUuid\+:\+:createUuid()},  }\item[{const Q\+String}]{in\+Group\+Name = {\ttfamily \char`\"{}New~group~name\char`\"{}},  }\item[{const Q\+Date\+Time}]{in\+Create\+Date = {\ttfamily QDateTime\+:\+:currentDateTime()} }\end{DoxyParamCaption})}
 
 
 
-make\+\_\+group -\/ Метод сформирует группу для тестирования 
+make\+\_\+group\+\_\+info -\/ Метод сформирует информацию о группе для тестирования 
 
 
 \begin{DoxyParams}{Аргументы}
@@ -39,14 +39,14 @@ make\+\_\+group -\/ Метод сформирует группу для тест
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=550pt]{namespacetestscommon_a1e118fb8fb94664294f3d9e23364569e_icgraph}
+\includegraphics[height=550pt]{namespacetestscommon_abf135e9ae8d7838442a1550862174473_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{namespacetestscommon_a8ab7b7550fa3839ed15e043e1d760d50}\label{namespacetestscommon_a8ab7b7550fa3839ed15e043e1d760d50}} 
+\mbox{\Hypertarget{namespacetestscommon_a98f8f306c8d7b3980b759dc84de73c58}\label{namespacetestscommon_a98f8f306c8d7b3980b759dc84de73c58}} 
 \index{testscommon@{testscommon}!make\_groupmessage@{make\_groupmessage}}
 \index{make\_groupmessage@{make\_groupmessage}!testscommon@{testscommon}}
 \doxysubsubsection{\texorpdfstring{make\_groupmessage()}{make\_groupmessage()}}
-{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classhmcommon_1_1HMGroupMessage}{hmcommon\+::\+H\+M\+Group\+Message}}$>$ testscommon\+::make\+\_\+groupmessage (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmcommon_1_1MsgData}{hmcommon\+::\+Msg\+Data}} \&}]{in\+Data,  }\item[{const Q\+Uuid}]{in\+Uuid = {\ttfamily QUuid\+:\+:createUuid()},  }\item[{const Q\+Uuid}]{in\+Group\+Uuid = {\ttfamily QUuid\+:\+:createUuid()},  }\item[{const Q\+Date\+Time}]{in\+Create\+Date = {\ttfamily QDateTime\+:\+:currentDateTime()} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classhmcommon_1_1HMGroupInfoMessage}{hmcommon\+::\+H\+M\+Group\+Info\+Message}}$>$ testscommon\+::make\+\_\+groupmessage (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structhmcommon_1_1MsgData}{hmcommon\+::\+Msg\+Data}} \&}]{in\+Data,  }\item[{const Q\+Uuid}]{in\+Uuid = {\ttfamily QUuid\+:\+:createUuid()},  }\item[{const Q\+Uuid}]{in\+Group\+Uuid = {\ttfamily QUuid\+:\+:createUuid()},  }\item[{const Q\+Date\+Time}]{in\+Create\+Date = {\ttfamily QDateTime\+:\+:currentDateTime()} }\end{DoxyParamCaption})}
 
 
 
@@ -71,18 +71,18 @@ make\+\_\+groupmessage -\/ Метод сформирует сообщение д
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{namespacetestscommon_a8ab7b7550fa3839ed15e043e1d760d50_icgraph}
+\includegraphics[width=350pt]{namespacetestscommon_a98f8f306c8d7b3980b759dc84de73c58_icgraph}
 \end{center}
 \end{figure}
-\mbox{\Hypertarget{namespacetestscommon_a36bd4b86d6e623924532028e8aa25794}\label{namespacetestscommon_a36bd4b86d6e623924532028e8aa25794}} 
-\index{testscommon@{testscommon}!make\_user@{make\_user}}
-\index{make\_user@{make\_user}!testscommon@{testscommon}}
-\doxysubsubsection{\texorpdfstring{make\_user()}{make\_user()}}
-{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classhmcommon_1_1HMUser}{hmcommon\+::\+H\+M\+User}}$>$ testscommon\+::make\+\_\+user (\begin{DoxyParamCaption}\item[{const Q\+Uuid}]{in\+User\+Uuid = {\ttfamily QUuid\+:\+:createUuid()},  }\item[{const Q\+String}]{in\+User\+Login = {\ttfamily \char`\"{}UserLogin@login.com\char`\"{}},  }\item[{const Q\+String}]{in\+User\+Password = {\ttfamily \char`\"{}P@ssworOfUser123\char`\"{}},  }\item[{const Q\+Date\+Time}]{in\+Create\+Date = {\ttfamily QDateTime\+:\+:currentDateTime()} }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{namespacetestscommon_abf529556a55a5414bb6293a6a9a6de59}\label{namespacetestscommon_abf529556a55a5414bb6293a6a9a6de59}} 
+\index{testscommon@{testscommon}!make\_user\_info@{make\_user\_info}}
+\index{make\_user\_info@{make\_user\_info}!testscommon@{testscommon}}
+\doxysubsubsection{\texorpdfstring{make\_user\_info()}{make\_user\_info()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classhmcommon_1_1HMUserInfo}{hmcommon\+::\+H\+M\+User\+Info}}$>$ testscommon\+::make\+\_\+user\+\_\+info (\begin{DoxyParamCaption}\item[{const Q\+Uuid}]{in\+User\+Uuid = {\ttfamily QUuid\+:\+:createUuid()},  }\item[{const Q\+String}]{in\+User\+Login = {\ttfamily \char`\"{}UserLogin@login.com\char`\"{}},  }\item[{const Q\+String}]{in\+User\+Password = {\ttfamily \char`\"{}P@ssworOfUser123\char`\"{}},  }\item[{const Q\+Date\+Time}]{in\+Create\+Date = {\ttfamily QDateTime\+:\+:currentDateTime()} }\end{DoxyParamCaption})}
 
 
 
-make\+\_\+user -\/ Метод сформирует пользователя для тестирования 
+make\+\_\+user\+\_\+info -\/ Метод сформирует информацию о пользователе для тестирования 
 
 
 \begin{DoxyParams}{Аргументы}
@@ -103,6 +103,6 @@ make\+\_\+user -\/ Метод сформирует пользователя дл
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=550pt]{namespacetestscommon_a36bd4b86d6e623924532028e8aa25794_icgraph}
+\includegraphics[height=550pt]{namespacetestscommon_abf529556a55a5414bb6293a6a9a6de59_icgraph}
 \end{center}
 \end{figure}

@@ -1,4 +1,4 @@
 <map id="hmservcommon::datastorage::HMJsonDataStorageValidator::checkMessage" name="hmservcommon::datastorage::HMJsonDataStorageValidator::checkMessage">
 <area shape="rect" id="node1" title="checkMessage &#45; Метод проверит валидность JSON объекта сообщения" alt="" coords="320,5,539,61"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#adcd903702d4be86bdb1a8e5de3fd9da1" title="jsonToMessage &#45; Метод преобразует Json объект в экземпляр сообщения" alt="" coords="5,13,272,54"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a5524321b528f44af0c71fd23ab21168c" title="jsonToMessage &#45; Метод преобразует Json объект в экземпляр сообщения" alt="" coords="5,13,272,54"/>
 </map>

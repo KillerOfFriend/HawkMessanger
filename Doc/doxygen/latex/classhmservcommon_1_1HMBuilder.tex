@@ -1,0 +1,152 @@
+\hypertarget{classhmservcommon_1_1HMBuilder}{}\doxysection{Класс hmservcommon\+::H\+M\+Builder}
+\label{classhmservcommon_1_1HMBuilder}\index{hmservcommon::HMBuilder@{hmservcommon::HMBuilder}}
+
+
+The \mbox{\hyperlink{classhmservcommon_1_1HMBuilder}{H\+M\+Builder}} class -\/ Класс, описывающий сборщик  
+
+
+
+
+{\ttfamily \#include $<$builder.\+h$>$}
+
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhmservcommon_1_1HMBuilder_a309e37aaae7addee05fcc2d497d007f2}{H\+M\+Builder}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{datastorage\+::\+H\+M\+Data\+Storage}} $>$ in\+Storage)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classhmservcommon_1_1HMBuilder}{H\+M\+Builder}} -\/ Инициализирующий конструктор \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmservcommon_1_1HMBuilder_a28f964947288968068fd3af5be2919eb}{$\sim$\+H\+M\+Builder}} ()=default
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classhmservcommon_1_1HMBuilder}{H\+M\+Builder}} -\/ Дефолтный деструктор по умолчанию \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{hmcommon\+::\+H\+M\+Group}} $>$ \mbox{\hyperlink{classhmservcommon_1_1HMBuilder_a37657cfcfa210d1be5e9f57e03730b98}{build\+Group}} (const Q\+Uuid \&in\+Group\+U\+U\+ID, std\+::error\+\_\+code \&out\+Error\+Code)
+\begin{DoxyCompactList}\small\item\em build\+Group -\/ Метод соберёт экземпляр класса данных группы \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUser}{hmcommon\+::\+H\+M\+User}} $>$ \mbox{\hyperlink{classhmservcommon_1_1HMBuilder_a2ea2c5af5b4d96367a4881416e938c9d}{build\+User}} (const Q\+Uuid \&in\+User\+U\+U\+ID, std\+::error\+\_\+code \&out\+Error\+Code)
+\begin{DoxyCompactList}\small\item\em build\+Account -\/ Метод соберёт экземпляр класса аккаунта пользователя \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{datastorage\+::\+H\+M\+Data\+Storage}} $>$ \mbox{\hyperlink{classhmservcommon_1_1HMBuilder_a83b2ccab80b9dc3aa714d22855cc36a4}{m\+\_\+storage}} = nullptr
+\begin{DoxyCompactList}\small\item\em Хранилище данных \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+The \mbox{\hyperlink{classhmservcommon_1_1HMBuilder}{H\+M\+Builder}} class -\/ Класс, описывающий сборщик 
+
+\begin{DoxyAuthor}{Авторы}
+Alekseev\+\_\+s 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Дата}
+29.\+12.\+2020 
+\end{DoxyDate}
+
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{classhmservcommon_1_1HMBuilder_a309e37aaae7addee05fcc2d497d007f2}\label{classhmservcommon_1_1HMBuilder_a309e37aaae7addee05fcc2d497d007f2}} 
+\index{hmservcommon::HMBuilder@{hmservcommon::HMBuilder}!HMBuilder@{HMBuilder}}
+\index{HMBuilder@{HMBuilder}!hmservcommon::HMBuilder@{hmservcommon::HMBuilder}}
+\doxysubsubsection{\texorpdfstring{HMBuilder()}{HMBuilder()}}
+{\footnotesize\ttfamily H\+M\+Builder\+::\+H\+M\+Builder (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{datastorage\+::\+H\+M\+Data\+Storage}} $>$}]{in\+Storage }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classhmservcommon_1_1HMBuilder}{H\+M\+Builder}} -\/ Инициализирующий конструктор 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Storage} & -\/ Хранилище данных \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classhmservcommon_1_1HMBuilder_a28f964947288968068fd3af5be2919eb}\label{classhmservcommon_1_1HMBuilder_a28f964947288968068fd3af5be2919eb}} 
+\index{hmservcommon::HMBuilder@{hmservcommon::HMBuilder}!````~HMBuilder@{$\sim$HMBuilder}}
+\index{````~HMBuilder@{$\sim$HMBuilder}!hmservcommon::HMBuilder@{hmservcommon::HMBuilder}}
+\doxysubsubsection{\texorpdfstring{$\sim$HMBuilder()}{~HMBuilder()}}
+{\footnotesize\ttfamily hmservcommon\+::\+H\+M\+Builder\+::$\sim$\+H\+M\+Builder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\mbox{\hyperlink{classhmservcommon_1_1HMBuilder}{H\+M\+Builder}} -\/ Дефолтный деструктор по умолчанию 
+
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classhmservcommon_1_1HMBuilder_a37657cfcfa210d1be5e9f57e03730b98}\label{classhmservcommon_1_1HMBuilder_a37657cfcfa210d1be5e9f57e03730b98}} 
+\index{hmservcommon::HMBuilder@{hmservcommon::HMBuilder}!buildGroup@{buildGroup}}
+\index{buildGroup@{buildGroup}!hmservcommon::HMBuilder@{hmservcommon::HMBuilder}}
+\doxysubsubsection{\texorpdfstring{buildGroup()}{buildGroup()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{hmcommon\+::\+H\+M\+Group}} $>$ H\+M\+Builder\+::build\+Group (\begin{DoxyParamCaption}\item[{const Q\+Uuid \&}]{in\+Group\+U\+U\+ID,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption})}
+
+
+
+build\+Group -\/ Метод соберёт экземпляр класса данных группы 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Group\+U\+U\+ID} & -\/ U\+U\+ID группы \\
+\hline
+{\em out\+Error\+Code} & -\/ Признак ошибки \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт указатель на экземпляр группы или nullptr 
+\end{DoxyReturn}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmservcommon_1_1HMBuilder_a37657cfcfa210d1be5e9f57e03730b98_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmservcommon_1_1HMBuilder_a37657cfcfa210d1be5e9f57e03730b98_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classhmservcommon_1_1HMBuilder_a2ea2c5af5b4d96367a4881416e938c9d}\label{classhmservcommon_1_1HMBuilder_a2ea2c5af5b4d96367a4881416e938c9d}} 
+\index{hmservcommon::HMBuilder@{hmservcommon::HMBuilder}!buildUser@{buildUser}}
+\index{buildUser@{buildUser}!hmservcommon::HMBuilder@{hmservcommon::HMBuilder}}
+\doxysubsubsection{\texorpdfstring{buildUser()}{buildUser()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUser}{hmcommon\+::\+H\+M\+User}} $>$ H\+M\+Builder\+::build\+User (\begin{DoxyParamCaption}\item[{const Q\+Uuid \&}]{in\+User\+U\+U\+ID,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption})}
+
+
+
+build\+Account -\/ Метод соберёт экземпляр класса аккаунта пользователя 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+User\+U\+U\+ID} & -\/ U\+U\+ID пользователя \\
+\hline
+{\em out\+Error\+Code} & -\/ Признак ошибки \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт указатель на экземпляр аккаунта или nullptr 
+\end{DoxyReturn}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmservcommon_1_1HMBuilder_a2ea2c5af5b4d96367a4881416e938c9d_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{classhmservcommon_1_1HMBuilder_a83b2ccab80b9dc3aa714d22855cc36a4}\label{classhmservcommon_1_1HMBuilder_a83b2ccab80b9dc3aa714d22855cc36a4}} 
+\index{hmservcommon::HMBuilder@{hmservcommon::HMBuilder}!m\_storage@{m\_storage}}
+\index{m\_storage@{m\_storage}!hmservcommon::HMBuilder@{hmservcommon::HMBuilder}}
+\doxysubsubsection{\texorpdfstring{m\_storage}{m\_storage}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMDataStorage}{datastorage\+::\+H\+M\+Data\+Storage}}$>$ hmservcommon\+::\+H\+M\+Builder\+::m\+\_\+storage = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Хранилище данных 
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Projects/libraries/\+Hawk\+Server\+Core/src/\mbox{\hyperlink{builder_8h}{builder.\+h}}\item 
+Projects/libraries/\+Hawk\+Server\+Core/src/\mbox{\hyperlink{builder_8cpp}{builder.\+cpp}}\end{DoxyCompactItemize}

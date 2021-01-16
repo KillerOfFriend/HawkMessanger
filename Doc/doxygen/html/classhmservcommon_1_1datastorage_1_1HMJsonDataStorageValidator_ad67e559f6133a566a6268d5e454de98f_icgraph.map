@@ -1,6 +1,6 @@
 <map id="hmservcommon::datastorage::HMJsonDataStorageValidator::checkGroup" name="hmservcommon::datastorage::HMJsonDataStorageValidator::checkGroup">
 <area shape="rect" id="node1" title="checkGroup &#45; Метод проверит валидность JSON объекта группы" alt="" coords="879,5,1097,61"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aef0caa89976ed87d13040619b1837a43" title="jsonToGroup &#45; Метод преобразует Json объект в экземпляр группы" alt="" coords="583,13,831,54"/>
-<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#ac8ba242b00ff9beeaed5c93c5be11a41" title="findGroupByUUID &#45; Метод найдёт пользователя по его uuid" alt="" coords="304,5,535,61"/>
-<area shape="rect" id="node4" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aed250a79a512d43ee449a1002438010a" title="addMessage &#45; Метод добавит новое сообщение" alt="" coords="5,13,256,54"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#ab8780a6688fe870f726b2fee1393a782" title="jsonToGroup &#45; Метод преобразует Json объект в экземпляр группы" alt="" coords="583,13,831,54"/>
+<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#ae556b625dac0b53ff35f01860930ac0f" title="findGroupByUUID &#45; Метод найдёт пользователя по его uuid" alt="" coords="304,5,535,61"/>
+<area shape="rect" id="node4" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#ab4e08a1fc076280b53c61311f1b12e2f" title="addMessage &#45; Метод добавит новое сообщение" alt="" coords="5,13,256,54"/>
 </map>

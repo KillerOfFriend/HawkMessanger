@@ -2,5 +2,5 @@
 <area shape="rect" id="node1" title="TEST &#45; Тест проверит обновление пользователя" alt="" coords="5,42,60,69"/>
 <area shape="rect" id="node2" href="$HawkServerCoreCachedDataStorageTest_8hpp.html#add3cc35d946538a2cb18335126511d00" title="CachedDataStorage_UpdateUserTest &#45; Тест физического хранилища, проверяющий обновление пользователя" alt="" coords="108,5,313,47"/>
 <area shape="rect" id="node4" href="$libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="157,71,265,98"/>
-<area shape="rect" id="node3" href="$namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="361,13,552,39"/>
+<area shape="rect" id="node3" href="$namespacetestscommon.html#abf529556a55a5414bb6293a6a9a6de59" title="make_user_info &#45; Метод сформирует информацию о пользователе для тестирования" alt="" coords="361,13,584,39"/>
 </map>

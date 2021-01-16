@@ -1,9 +1,9 @@
 <map id="TEST" name="TEST">
 <area shape="rect" id="node1" title="TEST &#45; Тест поиска существующего контакта" alt="" coords="5,63,60,90"/>
-<area shape="rect" id="node2" href="$classhmcommon_1_1HMUserList.html#a6a573ed62c535316765066a710966721" title="add &#45; Метод добавит нового пользователя в перечень" alt="" coords="108,13,323,39"/>
-<area shape="rect" id="node5" href="$classhmcommon_1_1HMUserList.html#ae0f201708908b217b38f37135a47e6f0" title="get &#45; Метод вернёт пользователя по его порядковому номеру" alt="" coords="109,63,321,90"/>
-<area shape="rect" id="node7" href="$libraries_2HawkCommon_2tests_2UserList_2main_8cpp.html#a3e44660770eba1698411e0d2d6f4b832" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="169,114,262,141"/>
-<area shape="rect" id="node3" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="395,13,529,39"/>
-<area shape="rect" id="node4" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="601,5,808,47"/>
-<area shape="rect" id="node6" href="$classhmcommon_1_1HMUserList.html#abea6f02f24d81a5262953ee081c2f0d0" title="isEmpty &#45; Метод вернёт признак того, что список пользователей пуст" alt="" coords="371,64,553,105"/>
+<area shape="rect" id="node2" href="$classhmcommon_1_1HMUserInfoList.html#a51aaf655636a5a2f5fbd9c430bf7f64f" title="add &#45; Метод добавит нового пользователя в перечень" alt="" coords="108,13,348,39"/>
+<area shape="rect" id="node5" href="$classhmcommon_1_1HMUserInfoList.html#a2617ee502c47c22fbc48e7fa6adc5318" title="get &#45; Метод вернёт пользователя по его порядковому номеру" alt="" coords="109,63,347,90"/>
+<area shape="rect" id="node7" href="$namespacetestscommon.html#abf529556a55a5414bb6293a6a9a6de59" title="make_user_info &#45; Метод сформирует информацию о пользователе для тестирования" alt="" coords="117,114,339,141"/>
+<area shape="rect" id="node3" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="433,13,567,39"/>
+<area shape="rect" id="node4" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="652,5,859,47"/>
+<area shape="rect" id="node6" href="$classhmcommon_1_1HMUserInfoList.html#af2fe35858573481ae21cff8f90f8d710" title="isEmpty &#45; Метод вернёт признак того, что список пользователей пуст" alt="" coords="396,64,604,105"/>
 </map>

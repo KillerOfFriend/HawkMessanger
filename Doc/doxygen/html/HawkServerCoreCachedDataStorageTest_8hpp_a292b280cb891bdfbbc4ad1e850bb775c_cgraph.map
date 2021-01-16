@@ -1,4 +1,4 @@
 <map id="CachedDataStorage_ClearUserContactsTest" name="CachedDataStorage_ClearUserContactsTest">
 <area shape="rect" id="node1" title="CachedDataStorage_ClearUserContactsTest &#45; Тест физического хранилища, проверяющий очистку контактов п..." alt="" coords="5,5,228,47"/>
-<area shape="rect" id="node2" href="$namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="276,13,467,39"/>
+<area shape="rect" id="node2" href="$namespacetestscommon.html#abf529556a55a5414bb6293a6a9a6de59" title="make_user_info &#45; Метод сформирует информацию о пользователе для тестирования" alt="" coords="276,13,499,39"/>
 </map>

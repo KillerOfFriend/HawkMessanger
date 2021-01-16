@@ -1,5 +1,5 @@
 <map id="CachedDataStorage_AddGroupUserTest" name="CachedDataStorage_AddGroupUserTest">
 <area shape="rect" id="node1" title="CachedDataStorage_AddGroupUserTest &#45; Тест физического хранилища, проверяющий добавление участника в г..." alt="" coords="5,23,228,65"/>
-<area shape="rect" id="node2" href="$namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="276,5,475,32"/>
-<area shape="rect" id="node3" href="$namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="280,56,471,83"/>
+<area shape="rect" id="node2" href="$namespacetestscommon.html#abf135e9ae8d7838442a1550862174473" title="make_group_info &#45; Метод сформирует информацию о группе для тестирования" alt="" coords="276,5,507,32"/>
+<area shape="rect" id="node3" href="$namespacetestscommon.html#abf529556a55a5414bb6293a6a9a6de59" title="make_user_info &#45; Метод сформирует информацию о пользователе для тестирования" alt="" coords="280,56,503,83"/>
 </map>

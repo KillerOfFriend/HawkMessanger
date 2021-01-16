@@ -1,4 +1,4 @@
 <map id="CachedDataStorage_FindUserByAuthenticationTest" name="CachedDataStorage_FindUserByAuthenticationTest">
 <area shape="rect" id="node1" title="CachedDataStorage_FindUserByAuthenticationTest &#45; Тест физического хранилища, проверяющий поиск пользо..." alt="" coords="5,5,220,47"/>
-<area shape="rect" id="node2" href="$namespacetestscommon.html#a36bd4b86d6e623924532028e8aa25794" title="make_user &#45; Метод сформирует пользователя для тестирования" alt="" coords="268,13,459,39"/>
+<area shape="rect" id="node2" href="$namespacetestscommon.html#abf529556a55a5414bb6293a6a9a6de59" title="make_user_info &#45; Метод сформирует информацию о пользователе для тестирования" alt="" coords="268,13,491,39"/>
 </map>

@@ -1,0 +1,333 @@
+\hypertarget{classhmcommon_1_1HMGroupList}{}\doxysection{Класс hmcommon\+::H\+M\+Group\+List}
+\label{classhmcommon_1_1HMGroupList}\index{hmcommon::HMGroupList@{hmcommon::HMGroupList}}
+
+
+{\ttfamily \#include $<$grouplist.\+h$>$}
+
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classhmcommon_1_1HMGroupList_a6d5813ec1cea9e38322ee537ab4604e6}{H\+M\+Group\+List}} ()=default
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classhmcommon_1_1HMGroupList}{H\+M\+Group\+List}} -\/ Конструктор по умолчанию \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classhmcommon_1_1HMGroupList_a1552dbf7a9356a3eab82b5ca4d7257f4}{$\sim$\+H\+M\+Group\+List}} ()=default
+\begin{DoxyCompactList}\small\item\em $\sim$\+H\+M\+Group\+List -\/ Деструктор по умолчанию \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classhmcommon_1_1HMGroupList_a861663e1bd343e766df8ee7ca990059f}{is\+Empty}} () const
+\begin{DoxyCompactList}\small\item\em is\+Empty -\/ Метод вернёт признак того, что список групп пуст \end{DoxyCompactList}\item 
+std\+::size\+\_\+t \mbox{\hyperlink{classhmcommon_1_1HMGroupList_a2487840eec053d201aba7fae3b3bef7d}{count}} () const
+\begin{DoxyCompactList}\small\item\em count -\/ Метод вернёт количество групп в списке \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classhmcommon_1_1HMGroupList_a9ae6c23916a261b3dad18e6b5c100187}{contain}} (const Q\+Uuid \&in\+User\+U\+U\+ID) const
+\begin{DoxyCompactList}\small\item\em contain -\/ Метод проверит существование группы по U\+U\+ID \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classhmcommon_1_1HMGroupList_a355e2afcdf215130d3babeb022bc2781}{contain}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{H\+M\+Group}} $>$ in\+Group) const
+\begin{DoxyCompactList}\small\item\em contain -\/ Метод проверит существование группы \end{DoxyCompactList}\item 
+std\+::error\+\_\+code \mbox{\hyperlink{classhmcommon_1_1HMGroupList_ad853fd44ee920512549568d612c41682}{add}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{H\+M\+Group}} $>$ in\+New\+Group)
+\begin{DoxyCompactList}\small\item\em add -\/ Метод добавит новую группу в перечень \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{H\+M\+Group}} $>$ \mbox{\hyperlink{classhmcommon_1_1HMGroupList_a64625ede00aa5f4611cbdf957fdef267}{get}} (const std\+::size\+\_\+t in\+Index, std\+::error\+\_\+code \&out\+Error\+Code) const
+\begin{DoxyCompactList}\small\item\em get -\/ Метод вернёт группу по её порядковому номеру \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{H\+M\+Group}} $>$ \mbox{\hyperlink{classhmcommon_1_1HMGroupList_a02aa8531918eca1a4bd6da8746f8d5d2}{get}} (const Q\+Uuid in\+Group\+Uuid, std\+::error\+\_\+code \&out\+Error\+Code) const
+\begin{DoxyCompactList}\small\item\em get\+Contact -\/ Метод вернёт группу по её U\+U\+ID\textquotesingle{}у \end{DoxyCompactList}\item 
+std\+::error\+\_\+code \mbox{\hyperlink{classhmcommon_1_1HMGroupList_a457af0b5a82a4ed91444a95581de8e50}{remove}} (const std\+::size\+\_\+t in\+Index)
+\begin{DoxyCompactList}\small\item\em remove -\/ Метод удалит группу по её порядквому номеру \end{DoxyCompactList}\item 
+std\+::error\+\_\+code \mbox{\hyperlink{classhmcommon_1_1HMGroupList_a377589032575a9d0147244b26cc6af70}{remove}} (const Q\+Uuid in\+User\+Uuid)
+\begin{DoxyCompactList}\small\item\em remove -\/ Метод удалит группу по её U\+U\+ID\textquotesingle{}у \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+std\+::unordered\+\_\+set$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{H\+M\+Group}} $>$, \mbox{\hyperlink{structhmcommon_1_1GroupMakeHash}{Group\+Make\+Hash}}, \mbox{\hyperlink{structhmcommon_1_1GroupsCheckEqual}{Groups\+Check\+Equal}} $>$ \mbox{\hyperlink{classhmcommon_1_1HMGroupList_a3777f9c5658df16d95e2f336f355cf54}{m\+\_\+contacts}}
+\begin{DoxyCompactList}\small\item\em Контейнер, содержащий перечень групп \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{classhmcommon_1_1HMGroupList_a6d5813ec1cea9e38322ee537ab4604e6}\label{classhmcommon_1_1HMGroupList_a6d5813ec1cea9e38322ee537ab4604e6}} 
+\index{hmcommon::HMGroupList@{hmcommon::HMGroupList}!HMGroupList@{HMGroupList}}
+\index{HMGroupList@{HMGroupList}!hmcommon::HMGroupList@{hmcommon::HMGroupList}}
+\doxysubsubsection{\texorpdfstring{HMGroupList()}{HMGroupList()}}
+{\footnotesize\ttfamily hmcommon\+::\+H\+M\+Group\+List\+::\+H\+M\+Group\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+\mbox{\hyperlink{classhmcommon_1_1HMGroupList}{H\+M\+Group\+List}} -\/ Конструктор по умолчанию 
+
+\mbox{\Hypertarget{classhmcommon_1_1HMGroupList_a1552dbf7a9356a3eab82b5ca4d7257f4}\label{classhmcommon_1_1HMGroupList_a1552dbf7a9356a3eab82b5ca4d7257f4}} 
+\index{hmcommon::HMGroupList@{hmcommon::HMGroupList}!````~HMGroupList@{$\sim$HMGroupList}}
+\index{````~HMGroupList@{$\sim$HMGroupList}!hmcommon::HMGroupList@{hmcommon::HMGroupList}}
+\doxysubsubsection{\texorpdfstring{$\sim$HMGroupList()}{~HMGroupList()}}
+{\footnotesize\ttfamily hmcommon\+::\+H\+M\+Group\+List\+::$\sim$\+H\+M\+Group\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+$\sim$\+H\+M\+Group\+List -\/ Деструктор по умолчанию 
+
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classhmcommon_1_1HMGroupList_ad853fd44ee920512549568d612c41682}\label{classhmcommon_1_1HMGroupList_ad853fd44ee920512549568d612c41682}} 
+\index{hmcommon::HMGroupList@{hmcommon::HMGroupList}!add@{add}}
+\index{add@{add}!hmcommon::HMGroupList@{hmcommon::HMGroupList}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily std\+::error\+\_\+code H\+M\+Group\+List\+::add (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{H\+M\+Group}} $>$}]{in\+New\+Group }\end{DoxyParamCaption})}
+
+
+
+add -\/ Метод добавит новую группу в перечень 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+New\+Group} & -\/ Новая группа \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт признак ошибки 
+\end{DoxyReturn}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmcommon_1_1HMGroupList_ad853fd44ee920512549568d612c41682_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=325pt]{classhmcommon_1_1HMGroupList_ad853fd44ee920512549568d612c41682_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classhmcommon_1_1HMGroupList_a9ae6c23916a261b3dad18e6b5c100187}\label{classhmcommon_1_1HMGroupList_a9ae6c23916a261b3dad18e6b5c100187}} 
+\index{hmcommon::HMGroupList@{hmcommon::HMGroupList}!contain@{contain}}
+\index{contain@{contain}!hmcommon::HMGroupList@{hmcommon::HMGroupList}}
+\doxysubsubsection{\texorpdfstring{contain()}{contain()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool H\+M\+Group\+List\+::contain (\begin{DoxyParamCaption}\item[{const Q\+Uuid \&}]{in\+User\+U\+U\+ID }\end{DoxyParamCaption}) const}
+
+
+
+contain -\/ Метод проверит существование группы по U\+U\+ID 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+User\+U\+U\+ID} & -\/ U\+U\+ID группы \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт признак существования группы 
+\end{DoxyReturn}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmcommon_1_1HMGroupList_a9ae6c23916a261b3dad18e6b5c100187_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classhmcommon_1_1HMGroupList_a355e2afcdf215130d3babeb022bc2781}\label{classhmcommon_1_1HMGroupList_a355e2afcdf215130d3babeb022bc2781}} 
+\index{hmcommon::HMGroupList@{hmcommon::HMGroupList}!contain@{contain}}
+\index{contain@{contain}!hmcommon::HMGroupList@{hmcommon::HMGroupList}}
+\doxysubsubsection{\texorpdfstring{contain()}{contain()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool H\+M\+Group\+List\+::contain (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{H\+M\+Group}} $>$}]{in\+Group }\end{DoxyParamCaption}) const}
+
+
+
+contain -\/ Метод проверит существование группы 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Group} & -\/ Группа \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт признак существования группы 
+\end{DoxyReturn}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmcommon_1_1HMGroupList_a355e2afcdf215130d3babeb022bc2781_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classhmcommon_1_1HMGroupList_a2487840eec053d201aba7fae3b3bef7d}\label{classhmcommon_1_1HMGroupList_a2487840eec053d201aba7fae3b3bef7d}} 
+\index{hmcommon::HMGroupList@{hmcommon::HMGroupList}!count@{count}}
+\index{count@{count}!hmcommon::HMGroupList@{hmcommon::HMGroupList}}
+\doxysubsubsection{\texorpdfstring{count()}{count()}}
+{\footnotesize\ttfamily std\+::size\+\_\+t H\+M\+Group\+List\+::count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+count -\/ Метод вернёт количество групп в списке 
+
+\begin{DoxyReturn}{Возвращает}
+Вернёт количество групп в списке 
+\end{DoxyReturn}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=301pt]{classhmcommon_1_1HMGroupList_a2487840eec053d201aba7fae3b3bef7d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classhmcommon_1_1HMGroupList_a02aa8531918eca1a4bd6da8746f8d5d2}\label{classhmcommon_1_1HMGroupList_a02aa8531918eca1a4bd6da8746f8d5d2}} 
+\index{hmcommon::HMGroupList@{hmcommon::HMGroupList}!get@{get}}
+\index{get@{get}!hmcommon::HMGroupList@{hmcommon::HMGroupList}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{H\+M\+Group}} $>$ H\+M\+Group\+List\+::get (\begin{DoxyParamCaption}\item[{const Q\+Uuid}]{in\+Group\+Uuid,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const}
+
+
+
+get\+Contact -\/ Метод вернёт группу по её U\+U\+ID\textquotesingle{}у 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+User\+Uuid} & -\/ U\+U\+ID группы \\
+\hline
+{\em out\+Error\+Code} & -\/ Признак ошибки \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт указатель на группу или null\+\_\+ptr 
+\end{DoxyReturn}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmcommon_1_1HMGroupList_a02aa8531918eca1a4bd6da8746f8d5d2_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classhmcommon_1_1HMGroupList_a64625ede00aa5f4611cbdf957fdef267}\label{classhmcommon_1_1HMGroupList_a64625ede00aa5f4611cbdf957fdef267}} 
+\index{hmcommon::HMGroupList@{hmcommon::HMGroupList}!get@{get}}
+\index{get@{get}!hmcommon::HMGroupList@{hmcommon::HMGroupList}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMGroup}{H\+M\+Group}} $>$ H\+M\+Group\+List\+::get (\begin{DoxyParamCaption}\item[{const std\+::size\+\_\+t}]{in\+Index,  }\item[{std\+::error\+\_\+code \&}]{out\+Error\+Code }\end{DoxyParamCaption}) const}
+
+
+
+get -\/ Метод вернёт группу по её порядковому номеру 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Index} & -\/ Порядковый номер группы \\
+\hline
+{\em out\+Error\+Code} & -\/ Признак ошибки \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт указатель на группу или null\+\_\+ptr 
+\end{DoxyReturn}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmcommon_1_1HMGroupList_a64625ede00aa5f4611cbdf957fdef267_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=323pt]{classhmcommon_1_1HMGroupList_a64625ede00aa5f4611cbdf957fdef267_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classhmcommon_1_1HMGroupList_a861663e1bd343e766df8ee7ca990059f}\label{classhmcommon_1_1HMGroupList_a861663e1bd343e766df8ee7ca990059f}} 
+\index{hmcommon::HMGroupList@{hmcommon::HMGroupList}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!hmcommon::HMGroupList@{hmcommon::HMGroupList}}
+\doxysubsubsection{\texorpdfstring{isEmpty()}{isEmpty()}}
+{\footnotesize\ttfamily bool H\+M\+Group\+List\+::is\+Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+is\+Empty -\/ Метод вернёт признак того, что список групп пуст 
+
+\begin{DoxyReturn}{Возвращает}
+Вернёт признак того, что список групп пуст 
+\end{DoxyReturn}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmcommon_1_1HMGroupList_a861663e1bd343e766df8ee7ca990059f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classhmcommon_1_1HMGroupList_a377589032575a9d0147244b26cc6af70}\label{classhmcommon_1_1HMGroupList_a377589032575a9d0147244b26cc6af70}} 
+\index{hmcommon::HMGroupList@{hmcommon::HMGroupList}!remove@{remove}}
+\index{remove@{remove}!hmcommon::HMGroupList@{hmcommon::HMGroupList}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::error\+\_\+code H\+M\+Group\+List\+::remove (\begin{DoxyParamCaption}\item[{const Q\+Uuid}]{in\+User\+Uuid }\end{DoxyParamCaption})}
+
+
+
+remove -\/ Метод удалит группу по её U\+U\+ID\textquotesingle{}у 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+User\+Uuid} & -\/ U\+U\+ID группы \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт признак ошибки 
+\end{DoxyReturn}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmcommon_1_1HMGroupList_a377589032575a9d0147244b26cc6af70_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classhmcommon_1_1HMGroupList_a457af0b5a82a4ed91444a95581de8e50}\label{classhmcommon_1_1HMGroupList_a457af0b5a82a4ed91444a95581de8e50}} 
+\index{hmcommon::HMGroupList@{hmcommon::HMGroupList}!remove@{remove}}
+\index{remove@{remove}!hmcommon::HMGroupList@{hmcommon::HMGroupList}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::error\+\_\+code H\+M\+Group\+List\+::remove (\begin{DoxyParamCaption}\item[{const std\+::size\+\_\+t}]{in\+Index }\end{DoxyParamCaption})}
+
+
+
+remove -\/ Метод удалит группу по её порядквому номеру 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em in\+Index} & -\/ Порядковый номер группы \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вернёт признак ошибки 
+\end{DoxyReturn}
+Граф вызовов\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classhmcommon_1_1HMGroupList_a457af0b5a82a4ed91444a95581de8e50_cgraph}
+\end{center}
+\end{figure}
+Граф вызова функции\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=301pt]{classhmcommon_1_1HMGroupList_a457af0b5a82a4ed91444a95581de8e50_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{classhmcommon_1_1HMGroupList_a3777f9c5658df16d95e2f336f355cf54}\label{classhmcommon_1_1HMGroupList_a3777f9c5658df16d95e2f336f355cf54}} 
+\index{hmcommon::HMGroupList@{hmcommon::HMGroupList}!m\_contacts@{m\_contacts}}
+\index{m\_contacts@{m\_contacts}!hmcommon::HMGroupList@{hmcommon::HMGroupList}}
+\doxysubsubsection{\texorpdfstring{m\_contacts}{m\_contacts}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+set$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classhmcommon_1_1HMGroup}{H\+M\+Group}}$>$, \mbox{\hyperlink{structhmcommon_1_1GroupMakeHash}{Group\+Make\+Hash}}, \mbox{\hyperlink{structhmcommon_1_1GroupsCheckEqual}{Groups\+Check\+Equal}}$>$ hmcommon\+::\+H\+M\+Group\+List\+::m\+\_\+contacts\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Контейнер, содержащий перечень групп 
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+Projects/libraries/\+Hawk\+Common/src/\mbox{\hyperlink{grouplist_8h}{grouplist.\+h}}\item 
+Projects/libraries/\+Hawk\+Common/src/\mbox{\hyperlink{grouplist_8cpp}{grouplist.\+cpp}}\end{DoxyCompactItemize}

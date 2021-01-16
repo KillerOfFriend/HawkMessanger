@@ -65,14 +65,14 @@ $(function() {
 <div class="textblock">Список всех членов классов со ссылками на классы, к которым они принадлежат.</div>
 
 <h3><a id="index_m"></a>- m -</h3><ul>
-<li>m_accountBuilder
-: <a class="el" href="classhmservcommon_1_1HMServerCore.html#a6c9f74952c216029c3a52ed962ea3195">hmservcommon::HMServerCore</a>
-</li>
 <li>m_birthday
-: <a class="el" href="classhmcommon_1_1HMUser.html#a1210f2a52a49da31e2a975498736a733">hmcommon::HMUser</a>
+: <a class="el" href="classhmcommon_1_1HMUserInfo.html#afc0e24fb47fba638d5943bc13003b3bc">hmcommon::HMUserInfo</a>
 </li>
 <li>m_break
 : <a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#aa8a2e9b347223d383142adc55350be69">hmservcommon::datastorage::HMAbstractCahceDataStorage</a>
+</li>
+<li>m_builder
+: <a class="el" href="classhmservcommon_1_1HMServerCore.html#a689c46d99fe9abaa24df98386789cbf0">hmservcommon::HMServerCore</a>
 </li>
 <li>m_cachedGroups
 : <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#ac5e92be6f37c4f9f1e90db3f143b67b7">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>
@@ -103,13 +103,12 @@ $(function() {
 : <a class="el" href="structhmservcommon_1_1HMCachedUserContacts.html#a393c3dc104cf0050aec94016cd551aa9">hmservcommon::HMCachedUserContacts</a>
 </li>
 <li>m_contacts
-: <a class="el" href="classhmcommon_1_1HMUserList.html#a8c14b712ea37f53abf16f4dd29c005a6">hmcommon::HMUserList</a>
-</li>
-<li>m_cotacts
-: <a class="el" href="classhmcommon_1_1HMAccount.html#af6864251f335daa68ea95c2b2cc05f9f">hmcommon::HMAccount</a>
+: <a class="el" href="classhmcommon_1_1HMGroupList.html#a3777f9c5658df16d95e2f336f355cf54">hmcommon::HMGroupList</a>
+, <a class="el" href="classhmcommon_1_1HMUser.html#a4e77ee604e1aa2ee5753e3ae6ce171fe">hmcommon::HMUser</a>
+, <a class="el" href="classhmcommon_1_1HMUserInfoList.html#a08efeec2d5812938c5852a84c51d0c42">hmcommon::HMUserInfoList</a>
 </li>
 <li>m_createTime
-: <a class="el" href="classhmcommon_1_1HMGroupMessage.html#ae1603e3fecf7fef24fbfa94e59d9b0eb">hmcommon::HMGroupMessage</a>
+: <a class="el" href="classhmcommon_1_1HMGroupInfoMessage.html#a19c451858095902396cba6f3c096fa0f">hmcommon::HMGroupInfoMessage</a>
 </li>
 <li>m_data
 : <a class="el" href="structhmcommon_1_1MsgData.html#ad50b5d97a32f06744fe4126f7081403c">hmcommon::MsgData</a>
@@ -124,12 +123,12 @@ $(function() {
 : <a class="el" href="structhmcommon_1_1MsgRange.html#a7c7ab1f2fbdf9532c7f078711bd41546">hmcommon::MsgRange</a>
 </li>
 <li>m_group
-: <a class="el" href="classhmcommon_1_1HMGroupMessage.html#af1d574c3aa6b411a9e440d25e5ff9a34">hmcommon::HMGroupMessage</a>
-, <a class="el" href="structhmservcommon_1_1HMCachedGroup.html#a8f7b105fb0d8012de8d4fe9b1f6d8c34">hmservcommon::HMCachedGroup</a>
+: <a class="el" href="classhmcommon_1_1HMGroupInfoMessage.html#a047463d0f19b19672a223b20df6ff81a">hmcommon::HMGroupInfoMessage</a>
+, <a class="el" href="structhmservcommon_1_1HMCachedGroup.html#a3e45e3db4ab5f2dbc3298ac3ea2d0937">hmservcommon::HMCachedGroup</a>
 , <a class="el" href="structhmservcommon_1_1HMCachedGroupUsers.html#a7f2007e72e3d981a51bb90b969e07254">hmservcommon::HMCachedGroupUsers</a>
 </li>
 <li>m_groups
-: <a class="el" href="classhmcommon_1_1HMAccount.html#af5a994595a22804347c1d9344cebb37c">hmcommon::HMAccount</a>
+: <a class="el" href="classhmcommon_1_1HMUser.html#ab56e80898567ebb243258d9e1e688cb7">hmcommon::HMUser</a>
 </li>
 <li>m_groupsDefender
 : <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a7f85effd347e8f8f3ab8200706b98608">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>
@@ -139,6 +138,10 @@ $(function() {
 </li>
 <li>m_HardStorage
 : <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a10e8423e842b1e38b51d7d140f8e413d">hmservcommon::datastorage::HMCombinedDataStorage</a>
+</li>
+<li>m_info
+: <a class="el" href="classhmcommon_1_1HMGroup.html#a92890f78f44bafa1994e8186ded45df9">hmcommon::HMGroup</a>
+, <a class="el" href="classhmcommon_1_1HMUser.html#ab144992ba361d99a728a4740831b63ae">hmcommon::HMUser</a>
 </li>
 <li>m_invalidObject
 : <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aaffd2faec932fd614f72da7fcb0d9a1b">hmservcommon::datastorage::HMJsonDataStorage</a>
@@ -162,37 +165,37 @@ $(function() {
 : <a class="el" href="classhmlog_1_1HMLogSystem.html#a3fe4e5d98c1539df137a2a5aff9b40e6">hmlog::HMLogSystem</a>
 </li>
 <li>m_login
-: <a class="el" href="classhmcommon_1_1HMUser.html#ad6cee67ae60e730fa74a2c1f39b97b4b">hmcommon::HMUser</a>
+: <a class="el" href="classhmcommon_1_1HMUserInfo.html#ae76c29e674e920bd243c83c1cf62aab9">hmcommon::HMUserInfo</a>
 </li>
 <li>m_maxContainMessages
 : <a class="el" href="classhmlog_1_1HMLogSystem.html#a52923cc9c1e03a579ae9565bbf22515a">hmlog::HMLogSystem</a>
 </li>
 <li>m_message
-: <a class="el" href="classhmcommon_1_1HMGroupMessage.html#aef4e2939c615a94961849eb35bde3721">hmcommon::HMGroupMessage</a>
+: <a class="el" href="classhmcommon_1_1HMGroupInfoMessage.html#a37e2fec4dc29c59925717f1eb87c238a">hmcommon::HMGroupInfoMessage</a>
 , <a class="el" href="structhmlog_1_1HMLogMessage.html#a1c2709eb1a98218126b311e677891204">hmlog::HMLogMessage</a>
 </li>
 <li>m_messages
 : <a class="el" href="classhmlog_1_1HMLogSystem.html#adc90d05bb4570ac74b77e3ba2886b5f7">hmlog::HMLogSystem</a>
 </li>
 <li>m_name
-: <a class="el" href="classhmcommon_1_1HMGroup.html#a6b753a50436fbaf6fe9537b114beda62">hmcommon::HMGroup</a>
-, <a class="el" href="classhmcommon_1_1HMUser.html#a1e7df869478156248d45f3bf37c96ba1">hmcommon::HMUser</a>
+: <a class="el" href="classhmcommon_1_1HMGroupInfo.html#a7cacc6a31b196c35839e3d3a7aada868">hmcommon::HMGroupInfo</a>
+, <a class="el" href="classhmcommon_1_1HMUserInfo.html#a84852b6279f0dfbc828f74f5f1961b7e">hmcommon::HMUserInfo</a>
 </li>
 <li>m_passwordHash
-: <a class="el" href="classhmcommon_1_1HMUser.html#a368306b8c263ee54074a779ed2f3bd7b">hmcommon::HMUser</a>
+: <a class="el" href="classhmcommon_1_1HMUserInfo.html#a3925861305c829965c0cf997ca4816af">hmcommon::HMUserInfo</a>
 </li>
 <li>m_registrationDate
-: <a class="el" href="classhmcommon_1_1HMGroup.html#a24bde2d05f5e698551997ae9c0b0e6d2">hmcommon::HMGroup</a>
-, <a class="el" href="classhmcommon_1_1HMUser.html#afb42e701a2f8de4a40aa65c1bc9aaf69">hmcommon::HMUser</a>
+: <a class="el" href="classhmcommon_1_1HMGroupInfo.html#aab76f7deb2ceaa10ce08e8a2bda77b6e">hmcommon::HMGroupInfo</a>
+, <a class="el" href="classhmcommon_1_1HMUserInfo.html#aa101ac534b8e3da15ce61521b4694763">hmcommon::HMUserInfo</a>
 </li>
 <li>m_sex
-: <a class="el" href="classhmcommon_1_1HMUser.html#aa79bada657144a3fad2b91755ef734ce">hmcommon::HMUser</a>
+: <a class="el" href="classhmcommon_1_1HMUserInfo.html#a33da8a0fc7e08301e6061632fa2da482">hmcommon::HMUserInfo</a>
 </li>
 <li>m_sleep
 : <a class="el" href="classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a10ef9f6a7a7dc9c7dba86b7732626e26">hmservcommon::datastorage::HMAbstractCahceDataStorage</a>
 </li>
 <li>m_storage
-: <a class="el" href="classhmservcommon_1_1builders_1_1HMAccountBuilder.html#acea83ebdab2577c7aa03b813bcfef469">hmservcommon::builders::HMAccountBuilder</a>
+: <a class="el" href="classhmservcommon_1_1HMBuilder.html#a83b2ccab80b9dc3aa714d22855cc36a4">hmservcommon::HMBuilder</a>
 </li>
 <li>m_streamDefender
 : <a class="el" href="classhmlog_1_1HMLogSystem.html#a6451f0e6683110a6254511af17467640">hmlog::HMLogSystem</a>
@@ -211,7 +214,7 @@ $(function() {
 , <a class="el" href="structhmlog_1_1HMLogMessage.html#a860c68ba6ffcd9300717f2e456c8f03d">hmlog::HMLogMessage</a>
 </li>
 <li>m_user
-: <a class="el" href="structhmservcommon_1_1HMCachedUser.html#afda139338b8aa98881ae2dd91676002a">hmservcommon::HMCachedUser</a>
+: <a class="el" href="structhmservcommon_1_1HMCachedUser.html#a628f083015400426eb0a600f7ed48af7">hmservcommon::HMCachedUser</a>
 </li>
 <li>m_userContactsDefender
 : <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#ab88c7afd236fbea18bb10fcfcb72e87c">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>
@@ -225,8 +228,8 @@ $(function() {
 <li>m_userHandlesDefender
 : <a class="el" href="classhmlog_1_1HMEventSystem.html#a42001d342ae7e847ad84cd99e475cc19">hmlog::HMEventSystem</a>
 </li>
-<li>m_userInfo
-: <a class="el" href="classhmcommon_1_1HMAccount.html#ae6f15053fd481ff9cc66531f5b5e5959">hmcommon::HMAccount</a>
+<li>m_users
+: <a class="el" href="classhmcommon_1_1HMGroup.html#aa3bebf8729f85346106060beeb1a93b9">hmcommon::HMGroup</a>
 </li>
 <li>m_usersDefender
 : <a class="el" href="classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a925fe677b12046e7126a59d032cf5c48">hmservcommon::datastorage::HMCachedMemoryDataStorage</a>
@@ -235,9 +238,9 @@ $(function() {
 : <a class="el" href="structhmservcommon_1_1HMCachedUserContacts.html#aadaaf0ab49fde730b6f0490006ab1ff5">hmservcommon::HMCachedUserContacts</a>
 </li>
 <li>m_uuid
-: <a class="el" href="classhmcommon_1_1HMGroup.html#afc34093af63659de5bfacaf66f966af9">hmcommon::HMGroup</a>
-, <a class="el" href="classhmcommon_1_1HMGroupMessage.html#a36ea45d6686425bd06124ce97655d1b4">hmcommon::HMGroupMessage</a>
-, <a class="el" href="classhmcommon_1_1HMUser.html#a4f63b27380701c6f76a04b9513834177">hmcommon::HMUser</a>
+: <a class="el" href="classhmcommon_1_1HMGroupInfo.html#a0a0df6f44fc2f21a82968e3b73b03bff">hmcommon::HMGroupInfo</a>
+, <a class="el" href="classhmcommon_1_1HMGroupInfoMessage.html#a707219785664fa96f34d083ae1dd6436">hmcommon::HMGroupInfoMessage</a>
+, <a class="el" href="classhmcommon_1_1HMUserInfo.html#abecf415381b22d524b53b22b9bfc547c">hmcommon::HMUserInfo</a>
 </li>
 <li>m_validator
 : <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#ad88e9df768644b7cdeada4bc784fe5d8">hmservcommon::datastorage::HMJsonDataStorage</a>
@@ -257,7 +260,7 @@ $(function() {
 , <a class="el" href="classhmservcommon_1_1datastorage_1_1DataStorageErrorCategory.html#ac20213ed86e1b8abef59da4c6e73f610">hmservcommon::datastorage::DataStorageErrorCategory</a>
 </li>
 <li>messageToJson()
-: <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a59a5122d6102a703f1a16840c601fb4a">hmservcommon::datastorage::HMJsonDataStorage</a>
+: <a class="el" href="classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#afd37c58460ebd7dceb309326b2ffde89">hmservcommon::datastorage::HMJsonDataStorage</a>
 </li>
 <li>MsgData()
 : <a class="el" href="structhmcommon_1_1MsgData.html#aa8ebe6b61f2903b2e4894c88d8b35b0f">hmcommon::MsgData</a>

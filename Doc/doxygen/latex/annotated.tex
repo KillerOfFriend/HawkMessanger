@@ -6,6 +6,8 @@
 \begin{DoxyItemize}
 \item Класс, определяющий категорию ошибко хранилища данных 
 \end{DoxyItemize}}{\pageref{classhmservcommon_1_1datastorage_1_1DataStorageErrorCategory}}{}
+\item\contentsline{section}{\mbox{\hyperlink{structhmcommon_1_1GroupMakeHash}{hmcommon\+::\+Group\+Make\+Hash}} \\*The \mbox{\hyperlink{structhmcommon_1_1GroupMakeHash}{Group\+Make\+Hash}} struct -\/ Структура, реализующая оператор взятия хеша от группы }{\pageref{structhmcommon_1_1GroupMakeHash}}{}
+\item\contentsline{section}{\mbox{\hyperlink{structhmcommon_1_1GroupsCheckEqual}{hmcommon\+::\+Groups\+Check\+Equal}} \\*The \mbox{\hyperlink{structhmcommon_1_1GroupsCheckEqual}{Groups\+Check\+Equal}} struct -\/ Структура, реализующая оператор сравнения групп }{\pageref{structhmcommon_1_1GroupsCheckEqual}}{}
 \item\contentsline{section}{\mbox{\hyperlink{structstd_1_1hash_3_01hmservcommon_1_1HMCachedGroup_01_4}{std\+::hash$<$ hmservcommon\+::\+H\+M\+Cached\+Group $>$}} \\*The \mbox{\hyperlink{structstd_1_1hash_3_01hmservcommon_1_1HMCachedGroup_01_4}{hash$<$hmservcommon\+::\+H\+M\+Cached\+Group$>$}} struct -\/ Структура, определяющая функцию взятия хеша от хешируемой группы }{\pageref{structstd_1_1hash_3_01hmservcommon_1_1HMCachedGroup_01_4}}{}
 \item\contentsline{section}{\mbox{\hyperlink{structstd_1_1hash_3_01hmservcommon_1_1HMCachedGroupUsers_01_4}{std\+::hash$<$ hmservcommon\+::\+H\+M\+Cached\+Group\+Users $>$}} \\*The \mbox{\hyperlink{structstd_1_1hash_3_01hmservcommon_1_1HMCachedGroupUsers_01_4}{hash$<$hmservcommon\+::\+H\+M\+Cached\+Group\+Users$>$}} struct -\/ Структура, определяющая функцию взятия хеша от хешируемого перечня участников группы }{\pageref{structstd_1_1hash_3_01hmservcommon_1_1HMCachedGroupUsers_01_4}}{}
 \item\contentsline{section}{\mbox{\hyperlink{structstd_1_1hash_3_01hmservcommon_1_1HMCachedUser_01_4}{std\+::hash$<$ hmservcommon\+::\+H\+M\+Cached\+User $>$}} \\*The \mbox{\hyperlink{structstd_1_1hash_3_01hmservcommon_1_1HMCachedUser_01_4}{hash$<$hmservcommon\+::\+H\+M\+Cached\+User$>$}} struct -\/ Структура, определяющая функцию взятия хеша от хешируемого пользователя }{\pageref{structstd_1_1hash_3_01hmservcommon_1_1HMCachedUser_01_4}}{}
@@ -22,14 +24,10 @@
 \begin{DoxyItemize}
 \item Класс, описывающий абстракцию физического хранилища данных 
 \end{DoxyItemize}}{\pageref{classhmservcommon_1_1datastorage_1_1HMAbstractHardDataStorage}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classhmcommon_1_1HMAccount}{hmcommon\+::\+H\+M\+Account}} \\*
+\item\contentsline{section}{\mbox{\hyperlink{classhmservcommon_1_1HMBuilder}{hmservcommon\+::\+H\+M\+Builder}} \\*
 \begin{DoxyItemize}
-\item Класс, описывающий аккаунт системы 
-\end{DoxyItemize}}{\pageref{classhmcommon_1_1HMAccount}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classhmservcommon_1_1builders_1_1HMAccountBuilder}{hmservcommon\+::builders\+::\+H\+M\+Account\+Builder}} \\*
-\begin{DoxyItemize}
-\item Класс, описывающий билдер аккаунтов 
-\end{DoxyItemize}}{\pageref{classhmservcommon_1_1builders_1_1HMAccountBuilder}}{}
+\item Класс, описывающий сборщик 
+\end{DoxyItemize}}{\pageref{classhmservcommon_1_1HMBuilder}}{}
 \item\contentsline{section}{\mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup}{hmservcommon\+::\+H\+M\+Cached\+Group}} \\*The \mbox{\hyperlink{structhmservcommon_1_1HMCachedGroup}{H\+M\+Cached\+Group}} struct -\/ Структура, описывающая кешированную группу }{\pageref{structhmservcommon_1_1HMCachedGroup}}{}
 \item\contentsline{section}{\mbox{\hyperlink{structhmservcommon_1_1HMCachedGroupUsers}{hmservcommon\+::\+H\+M\+Cached\+Group\+Users}} \\*The \mbox{\hyperlink{structhmservcommon_1_1HMCachedGroupUsers}{H\+M\+Cached\+Group\+Users}} struct -\/ Структура, описывающая кешированный перечень участников группы }{\pageref{structhmservcommon_1_1HMCachedGroupUsers}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage}{hmservcommon\+::datastorage\+::\+H\+M\+Cached\+Memory\+Data\+Storage}} \\*
@@ -52,12 +50,17 @@
 \end{DoxyItemize}}{\pageref{classhmlog_1_1HMEventSystem}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classhmcommon_1_1HMGroup}{hmcommon\+::\+H\+M\+Group}} \\*
 \begin{DoxyItemize}
-\item Класс, описывающий группу пользователей системы 
+\item Класс, описывающий группу\textbackslash{}чат 
 \end{DoxyItemize}}{\pageref{classhmcommon_1_1HMGroup}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classhmcommon_1_1HMGroupMessage}{hmcommon\+::\+H\+M\+Group\+Message}} \\*
+\item\contentsline{section}{\mbox{\hyperlink{classhmcommon_1_1HMGroupInfo}{hmcommon\+::\+H\+M\+Group\+Info}} \\*
+\begin{DoxyItemize}
+\item Класс, описывающий информацию группы пользователей системы 
+\end{DoxyItemize}}{\pageref{classhmcommon_1_1HMGroupInfo}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classhmcommon_1_1HMGroupInfoMessage}{hmcommon\+::\+H\+M\+Group\+Info\+Message}} \\*
 \begin{DoxyItemize}
 \item Класс, описывающий сообщение группы 
-\end{DoxyItemize}}{\pageref{classhmcommon_1_1HMGroupMessage}}{}
+\end{DoxyItemize}}{\pageref{classhmcommon_1_1HMGroupInfoMessage}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classhmcommon_1_1HMGroupList}{hmcommon\+::\+H\+M\+Group\+List}} }{\pageref{classhmcommon_1_1HMGroupList}}{}
 \item\contentsline{section}{\mbox{\hyperlink{classhmservcommon_1_1datastorage_1_1HMJsonDataStorage}{hmservcommon\+::datastorage\+::\+H\+M\+Json\+Data\+Storage}} \\*
 \begin{DoxyItemize}
 \item Класс, описывающий хранилище данных сервера в файле J\+S\+ON 
@@ -76,10 +79,14 @@
 \begin{DoxyItemize}
 \item Класс, описывающий пользователя системы 
 \end{DoxyItemize}}{\pageref{classhmcommon_1_1HMUser}}{}
-\item\contentsline{section}{\mbox{\hyperlink{classhmcommon_1_1HMUserList}{hmcommon\+::\+H\+M\+User\+List}} \\*
+\item\contentsline{section}{\mbox{\hyperlink{classhmcommon_1_1HMUserInfo}{hmcommon\+::\+H\+M\+User\+Info}} \\*
+\begin{DoxyItemize}
+\item Класс, описывающий информацию пользователя системы 
+\end{DoxyItemize}}{\pageref{classhmcommon_1_1HMUserInfo}}{}
+\item\contentsline{section}{\mbox{\hyperlink{classhmcommon_1_1HMUserInfoList}{hmcommon\+::\+H\+M\+User\+Info\+List}} \\*
 \begin{DoxyItemize}
 \item Класс, содержащий список пользователей системы 
-\end{DoxyItemize}}{\pageref{classhmcommon_1_1HMUserList}}{}
+\end{DoxyItemize}}{\pageref{classhmcommon_1_1HMUserInfoList}}{}
 \item\contentsline{section}{\mbox{\hyperlink{structstd_1_1is__error__code__enum_3_01hmcommon_1_1eSystemErrorEx_01_4}{std\+::is\+\_\+error\+\_\+code\+\_\+enum$<$ hmcommon\+::e\+System\+Error\+Ex $>$}} }{\pageref{structstd_1_1is__error__code__enum_3_01hmcommon_1_1eSystemErrorEx_01_4}}{}
 \item\contentsline{section}{\mbox{\hyperlink{structstd_1_1is__error__code__enum_3_01hmservcommon_1_1datastorage_1_1eDataStorageError_01_4}{std\+::is\+\_\+error\+\_\+code\+\_\+enum$<$ hmservcommon\+::datastorage\+::e\+Data\+Storage\+Error $>$}} }{\pageref{structstd_1_1is__error__code__enum_3_01hmservcommon_1_1datastorage_1_1eDataStorageError_01_4}}{}
 \item\contentsline{section}{\mbox{\hyperlink{structhmcommon_1_1MsgData}{hmcommon\+::\+Msg\+Data}} \\*The \mbox{\hyperlink{structhmcommon_1_1MsgData}{Msg\+Data}} struct -\/ Структура, хранящая данные сообщения }{\pageref{structhmcommon_1_1MsgData}}{}

@@ -1,0 +1,4 @@
+<map id="hmservcommon::datastorage::HMJsonDataStorage::messageToJson" name="hmservcommon::datastorage::HMJsonDataStorage::messageToJson">
+<area shape="rect" id="node1" title="messageToJson &#45; Метод преобразует сообщение в объект Json" alt="" coords="304,5,572,47"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#ab4e08a1fc076280b53c61311f1b12e2f" title="addMessage &#45; Метод добавит новое сообщение" alt="" coords="5,5,256,47"/>
+</map>

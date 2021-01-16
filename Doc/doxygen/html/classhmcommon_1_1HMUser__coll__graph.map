@@ -1,0 +1,5 @@
+<map id="hmcommon::HMUser" name="hmcommon::HMUser">
+<area shape="rect" id="node1" title="The HMUser class &#45; Класс, описывающий пользователя системы" alt="" coords="141,95,301,121"/>
+<area shape="rect" id="node2" href="$classhmcommon_1_1HMUserInfoList.html" title="The HMUserInfoList class &#45; Класс, содержащий список пользователей системы" alt="" coords="5,5,213,32"/>
+<area shape="rect" id="node3" href="$classhmcommon_1_1HMGroupList.html" title=" " alt="" coords="237,5,429,32"/>
+</map>

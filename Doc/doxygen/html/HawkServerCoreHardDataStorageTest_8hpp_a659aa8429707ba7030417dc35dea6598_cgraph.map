@@ -1,4 +1,4 @@
 <map id="HardDataStorage_FindGroupByUUIDTest" name="HardDataStorage_FindGroupByUUIDTest">
 <area shape="rect" id="node1" title="HardDataStorage_FindGroupByUUIDTest &#45; Тест физического хранилища, проверяющий поиск группы" alt="" coords="5,5,212,47"/>
-<area shape="rect" id="node2" href="$namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="260,13,459,39"/>
+<area shape="rect" id="node2" href="$namespacetestscommon.html#abf135e9ae8d7838442a1550862174473" title="make_group_info &#45; Метод сформирует информацию о группе для тестирования" alt="" coords="260,13,491,39"/>
 </map>

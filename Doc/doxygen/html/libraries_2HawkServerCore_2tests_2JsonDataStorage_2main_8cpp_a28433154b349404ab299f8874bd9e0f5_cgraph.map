@@ -2,5 +2,5 @@
 <area shape="rect" id="node1" title="TEST &#45; Тест проверит удаление группы" alt="" coords="5,31,60,57"/>
 <area shape="rect" id="node2" href="$HawkServerCoreHardDataStorageTest_8hpp.html#a259ff505d9a1cc76f569a9f08ddd3b61" title="HardDataStorage_RemoveGroupTest &#45; Тест физического хранилища, проверяющий удаление группы" alt="" coords="108,5,368,32"/>
 <area shape="rect" id="node4" href="$libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="184,56,292,83"/>
-<area shape="rect" id="node3" href="$namespacetestscommon.html#a1e118fb8fb94664294f3d9e23364569e" title="make_group &#45; Метод сформирует группу для тестирования" alt="" coords="416,5,615,32"/>
+<area shape="rect" id="node3" href="$namespacetestscommon.html#abf135e9ae8d7838442a1550862174473" title="make_group_info &#45; Метод сформирует информацию о группе для тестирования" alt="" coords="416,5,647,32"/>
 </map>

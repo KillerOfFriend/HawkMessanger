@@ -1,10 +1,11 @@
 \hypertarget{libraries_2HawkCommon_2tests_2UserList_2main_8cpp}{}\doxysection{Файл Projects/libraries/\+Hawk\+Common/tests/\+User\+List/main.cpp}
 \label{libraries_2HawkCommon_2tests_2UserList_2main_8cpp}\index{Projects/libraries/HawkCommon/tests/UserList/main.cpp@{Projects/libraries/HawkCommon/tests/UserList/main.cpp}}
 {\ttfamily \#include $<$gtest/gtest.\+h$>$}\newline
-{\ttfamily \#include $<$user.\+h$>$}\newline
 {\ttfamily \#include $<$userlist.\+h$>$}\newline
 {\ttfamily \#include $<$systemerrorex.\+h$>$}\newline
-Граф включаемых заголовочных файлов для main.\+cpp\+:\nopagebreak
+{\ttfamily \#include $<$Hawk\+Common\+Test\+Utils.\+hpp$>$}\newline
+Граф включаемых заголовочных файлов для main.\+cpp\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -14,8 +15,6 @@
 \doxysubsection*{Функции}
 \begin{DoxyCompactItemize}
 \item 
-std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUser}{hmcommon\+::\+H\+M\+User}} $>$ \mbox{\hyperlink{libraries_2HawkCommon_2tests_2UserList_2main_8cpp_a3e44660770eba1698411e0d2d6f4b832}{make\+\_\+user}} (const Q\+Uuid in\+User\+Uuid=Q\+Uuid\+::create\+Uuid(), const Q\+String in\+User\+Login=\char`\"{}User\+Login@login.\+com\char`\"{}, const Q\+String in\+User\+Password=\char`\"{}P@sswor\+Of\+User123\char`\"{}, const Q\+Date\+Time in\+Create\+Date=Q\+Date\+Time\+::current\+Date\+Time())
-\begin{DoxyCompactList}\small\item\em make\+\_\+user -\/ Метод сформирует пользователя для тестирования \end{DoxyCompactList}\item 
 \mbox{\hyperlink{libraries_2HawkCommon_2tests_2UserList_2main_8cpp_a937714e3cdb84c94e3e3fe91d4f1cc22}{T\+E\+ST}} (Usert\+List, Create)
 \begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест создания списка контактов \end{DoxyCompactList}\item 
 \mbox{\hyperlink{libraries_2HawkCommon_2tests_2UserList_2main_8cpp_a43a11fdb22bdbfb18f9f4f1b21f5211e}{T\+E\+ST}} (Usert\+List, Check\+Add\+Contact)
@@ -27,7 +26,7 @@ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classhmcommon_1_1HMUser}{hmcommon\+::
 \mbox{\hyperlink{libraries_2HawkCommon_2tests_2UserList_2main_8cpp_a00e0b743c69b4448852ae28a37a96bc4}{T\+E\+ST}} (Usert\+List, Check\+Remove\+Contact)
 \begin{DoxyCompactList}\small\item\em T\+E\+ST -\/ Тест удаление контакта \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{libraries_2HawkCommon_2tests_2UserList_2main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
-\begin{DoxyCompactList}\small\item\em main -\/ Входная точка тестировани функционала H\+M\+User\+List \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em main -\/ Входная точка тестировани функционала H\+M\+User\+Info\+List \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Функции}
@@ -39,7 +38,7 @@ int \mbox{\hyperlink{libraries_2HawkCommon_2tests_2UserList_2main_8cpp_a0ddf1224
 
 
 
-main -\/ Входная точка тестировани функционала H\+M\+User\+List 
+main -\/ Входная точка тестировани функционала H\+M\+User\+Info\+List 
 
 
 \begin{DoxyParams}{Аргументы}
@@ -51,37 +50,6 @@ main -\/ Входная точка тестировани функционала
 \begin{DoxyReturn}{Возвращает}
 Вернёт признак успешности тестирования 
 \end{DoxyReturn}
-\mbox{\Hypertarget{libraries_2HawkCommon_2tests_2UserList_2main_8cpp_a3e44660770eba1698411e0d2d6f4b832}\label{libraries_2HawkCommon_2tests_2UserList_2main_8cpp_a3e44660770eba1698411e0d2d6f4b832}} 
-\index{main.cpp@{main.cpp}!make\_user@{make\_user}}
-\index{make\_user@{make\_user}!main.cpp@{main.cpp}}
-\doxysubsubsection{\texorpdfstring{make\_user()}{make\_user()}}
-{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classhmcommon_1_1HMUser}{hmcommon\+::\+H\+M\+User}}$>$ make\+\_\+user (\begin{DoxyParamCaption}\item[{const Q\+Uuid}]{in\+User\+Uuid = {\ttfamily QUuid\+:\+:createUuid()},  }\item[{const Q\+String}]{in\+User\+Login = {\ttfamily \char`\"{}UserLogin@login.com\char`\"{}},  }\item[{const Q\+String}]{in\+User\+Password = {\ttfamily \char`\"{}P@ssworOfUser123\char`\"{}},  }\item[{const Q\+Date\+Time}]{in\+Create\+Date = {\ttfamily QDateTime\+:\+:currentDateTime()} }\end{DoxyParamCaption})}
-
-
-
-make\+\_\+user -\/ Метод сформирует пользователя для тестирования 
-
-
-\begin{DoxyParams}{Аргументы}
-{\em in\+User\+Uuid} & -\/ U\+U\+ID пользователя \\
-\hline
-{\em in\+User\+Login} & -\/ Логин пользователя \\
-\hline
-{\em in\+User\+Password} & -\/ Пароль пользователя \\
-\hline
-{\em in\+Create\+Date} & -\/ Дата создания пользователя \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Возвращает}
-Вернёт указатель на нового пользователя 
-\end{DoxyReturn}
-Граф вызова функции\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=227pt]{libraries_2HawkCommon_2tests_2UserList_2main_8cpp_a3e44660770eba1698411e0d2d6f4b832_icgraph}
-\end{center}
-\end{figure}
 \mbox{\Hypertarget{libraries_2HawkCommon_2tests_2UserList_2main_8cpp_a43a11fdb22bdbfb18f9f4f1b21f5211e}\label{libraries_2HawkCommon_2tests_2UserList_2main_8cpp_a43a11fdb22bdbfb18f9f4f1b21f5211e}} 
 \index{main.cpp@{main.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!main.cpp@{main.cpp}}
@@ -92,7 +60,8 @@ make\+\_\+user -\/ Метод сформирует пользователя дл
 
 T\+E\+ST -\/ Тест добавления контакта 
 
-Граф вызовов\+:\nopagebreak
+Граф вызовов\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -109,7 +78,8 @@ T\+E\+ST -\/ Тест добавления контакта
 
 T\+E\+ST -\/ Тест удаление контакта 
 
-Граф вызовов\+:\nopagebreak
+Граф вызовов\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -126,11 +96,12 @@ T\+E\+ST -\/ Тест удаление контакта
 
 T\+E\+ST -\/ Тест создания списка контактов 
 
-Граф вызовов\+:\nopagebreak
+Граф вызовов\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=294pt]{libraries_2HawkCommon_2tests_2UserList_2main_8cpp_a937714e3cdb84c94e3e3fe91d4f1cc22_cgraph}
+\includegraphics[width=313pt]{libraries_2HawkCommon_2tests_2UserList_2main_8cpp_a937714e3cdb84c94e3e3fe91d4f1cc22_cgraph}
 \end{center}
 \end{figure}
 \mbox{\Hypertarget{libraries_2HawkCommon_2tests_2UserList_2main_8cpp_a8a86c848ea6308828d829d657c970d18}\label{libraries_2HawkCommon_2tests_2UserList_2main_8cpp_a8a86c848ea6308828d829d657c970d18}} 
@@ -143,7 +114,8 @@ T\+E\+ST -\/ Тест создания списка контактов
 
 T\+E\+ST -\/ Тест поиска существующего контакта 
 
-Граф вызовов\+:\nopagebreak
+Граф вызовов\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -160,7 +132,8 @@ T\+E\+ST -\/ Тест поиска существующего контакта
 
 T\+E\+ST -\/ Тест поиска не существующего контакта 
 
-Граф вызовов\+:\nopagebreak
+Граф вызовов\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

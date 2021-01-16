@@ -1,0 +1,11 @@
+<map id="hmservcommon::datastorage::HMJsonDataStorage::addUser" name="hmservcommon::datastorage::HMJsonDataStorage::addUser">
+<area shape="rect" id="node1" title="addUser &#45; Метод добавит нового пользователя" alt="" coords="5,195,228,236"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional.html#a3548af77a3cab2ee4229b20b6d1d3cbc" title="checkNewUserUnique &#45; Метод проверит необходимую уникальность параметров нового пользователя" alt="" coords="276,93,531,149"/>
+<area shape="rect" id="node6" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="665,202,799,229"/>
+<area shape="rect" id="node8" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#af7129f6ff8883d6b59a187a375992aeb" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="294,224,513,265"/>
+<area shape="rect" id="node9" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a518bd0a8f88931b8db0ee71cb7cb3ea3" title="userToJson &#45; Метод преобразует пользователя в объект Json" alt="" coords="285,289,522,331"/>
+<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a798e6d590156fc55161657976d358ef9" title="findUserByAuthentication &#45; Метод найдёт пользователя по его данным аутентификации" alt="" coords="579,5,885,47"/>
+<area shape="rect" id="node4" href="$classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a174253b6da2f91bedb3eea3cd93bdbc3" title="findUserByUUID &#45; Метод найдёт пользователя по его uuid" alt="" coords="609,71,855,112"/>
+<area shape="rect" id="node5" href="$classhmservcommon_1_1datastorage_1_1HMDataStorage.html#a229a1917e9b16d4107e56768fc2df7a7" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="625,136,839,177"/>
+<area shape="rect" id="node7" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="933,195,1140,236"/>
+</map>

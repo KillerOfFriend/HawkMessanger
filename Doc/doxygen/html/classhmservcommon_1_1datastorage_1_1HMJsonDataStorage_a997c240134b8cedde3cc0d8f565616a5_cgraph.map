@@ -1,0 +1,6 @@
+<map id="hmservcommon::datastorage::HMJsonDataStorage::findMessage" name="hmservcommon::datastorage::HMJsonDataStorage::findMessage">
+<area shape="rect" id="node1" title="findMessage &#45; Метод найдёт сообщение по его uuid" alt="" coords="5,35,256,76"/>
+<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#af7129f6ff8883d6b59a187a375992aeb" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="304,5,523,47"/>
+<area shape="rect" id="node3" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="346,71,481,98"/>
+<area shape="rect" id="node4" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="571,64,777,105"/>
+</map>

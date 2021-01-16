@@ -76,7 +76,7 @@ $(function() {
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;memory&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="DataStorage_8h.html">datastorage/DataStorage.h</a>&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="accountbuilder_8h.html">builders/accountbuilder.h</a>&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="builder_8h.html">builder.h</a>&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacehmservcommon.html">hmservcommon</a></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;{</div>
@@ -91,7 +91,7 @@ $(function() {
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
 <div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classhmservcommon_1_1HMServerCore.html#a99802a2ef0e7c0d5aae207bb4ac1c272">   21</a></span>&#160;    std::shared_ptr&lt;datastorage::HMDataStorage&gt; <a class="code" href="classhmservcommon_1_1HMServerCore.html#a99802a2ef0e7c0d5aae207bb4ac1c272">m_dataStorage</a> = <span class="keyword">nullptr</span>;    </div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classhmservcommon_1_1HMServerCore.html#a6c9f74952c216029c3a52ed962ea3195">   22</a></span>&#160;    std::unique_ptr&lt;builders::HMAccountBuilder&gt; <a class="code" href="classhmservcommon_1_1HMServerCore.html#a6c9f74952c216029c3a52ed962ea3195">m_accountBuilder</a> = <span class="keyword">nullptr</span>; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classhmservcommon_1_1HMServerCore.html#a689c46d99fe9abaa24df98386789cbf0">   22</a></span>&#160;    std::unique_ptr&lt;HMBuilder&gt; <a class="code" href="classhmservcommon_1_1HMServerCore.html#a689c46d99fe9abaa24df98386789cbf0">m_builder</a> = <span class="keyword">nullptr</span>; </div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">//-----------------------------------------------------------------------------</span></div>
@@ -104,12 +104,12 @@ $(function() {
 <div class="ttc" id="aDataStorage_8h_html"><div class="ttname"><a href="DataStorage_8h.html">DataStorage.h</a></div></div>
 <div class="ttc" id="aservercore_8h_html"><div class="ttname"><a href="servercore_8h.html">servercore.h</a></div></div>
 <div class="ttc" id="aclasshmservcommon_1_1HMServerCore_html_a99802a2ef0e7c0d5aae207bb4ac1c272"><div class="ttname"><a href="classhmservcommon_1_1HMServerCore.html#a99802a2ef0e7c0d5aae207bb4ac1c272">hmservcommon::HMServerCore::m_dataStorage</a></div><div class="ttdeci">std::shared_ptr&lt; datastorage::HMDataStorage &gt; m_dataStorage</div><div class="ttdoc">Хранилище данных</div><div class="ttdef"><b>Definition:</b> servercore.h:21</div></div>
-<div class="ttc" id="aclasshmservcommon_1_1HMServerCore_html_a6c9f74952c216029c3a52ed962ea3195"><div class="ttname"><a href="classhmservcommon_1_1HMServerCore.html#a6c9f74952c216029c3a52ed962ea3195">hmservcommon::HMServerCore::m_accountBuilder</a></div><div class="ttdeci">std::unique_ptr&lt; builders::HMAccountBuilder &gt; m_accountBuilder</div><div class="ttdoc">&quot;Сборщик&quot;</div><div class="ttdef"><b>Definition:</b> servercore.h:22</div></div>
 <div class="ttc" id="aHawkLog_8h_html"><div class="ttname"><a href="HawkLog_8h.html">HawkLog.h</a></div></div>
-<div class="ttc" id="anamespacehmservcommon_html"><div class="ttname"><a href="namespacehmservcommon.html">hmservcommon</a></div><div class="ttdef"><b>Definition:</b> accountbuilder.h:16</div></div>
+<div class="ttc" id="anamespacehmservcommon_html"><div class="ttname"><a href="namespacehmservcommon.html">hmservcommon</a></div><div class="ttdef"><b>Definition:</b> builder.h:13</div></div>
 <div class="ttc" id="aclasshmservcommon_1_1HMServerCore_html_a288573b2f364637f214440851493d6ba"><div class="ttname"><a href="classhmservcommon_1_1HMServerCore.html#a288573b2f364637f214440851493d6ba">hmservcommon::HMServerCore::HMServerCore</a></div><div class="ttdeci">HMServerCore()</div><div class="ttdef"><b>Definition:</b> servercore.cpp:8</div></div>
-<div class="ttc" id="aaccountbuilder_8h_html"><div class="ttname"><a href="accountbuilder_8h.html">accountbuilder.h</a></div><div class="ttdoc">Содержит описание билдера аккаунта</div></div>
 <div class="ttc" id="aclasshmservcommon_1_1HMServerCore_html_aacec7ad6600d8e694dbd5b99bad7f0cd"><div class="ttname"><a href="classhmservcommon_1_1HMServerCore.html#aacec7ad6600d8e694dbd5b99bad7f0cd">hmservcommon::HMServerCore::~HMServerCore</a></div><div class="ttdeci">~HMServerCore()</div><div class="ttdef"><b>Definition:</b> servercore.cpp:22</div></div>
+<div class="ttc" id="aclasshmservcommon_1_1HMServerCore_html_a689c46d99fe9abaa24df98386789cbf0"><div class="ttname"><a href="classhmservcommon_1_1HMServerCore.html#a689c46d99fe9abaa24df98386789cbf0">hmservcommon::HMServerCore::m_builder</a></div><div class="ttdeci">std::unique_ptr&lt; HMBuilder &gt; m_builder</div><div class="ttdoc">&quot;Сборщик&quot;</div><div class="ttdef"><b>Definition:</b> servercore.h:22</div></div>
+<div class="ttc" id="abuilder_8h_html"><div class="ttname"><a href="builder_8h.html">builder.h</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Создано системой &#160;<a href="http://www.doxygen.org/index.html">

@@ -1,0 +1,7 @@
+<map id="TEST" name="TEST">
+<area shape="rect" id="node1" title="TEST &#45; Тест сбора группы" alt="" coords="5,81,60,108"/>
+<area shape="rect" id="node2" href="$libraries_2HawkServerCore_2tests_2Builder_2main_8cpp.html#a0c2c6078fa99b58f1a8e71691719d489" title=" " alt="" coords="168,5,279,32"/>
+<area shape="rect" id="node3" href="$namespacetestscommon.html#abf135e9ae8d7838442a1550862174473" title="make_group_info &#45; Метод сформирует информацию о группе для тестирования" alt="" coords="108,56,339,83"/>
+<area shape="rect" id="node4" href="$libraries_2HawkServerCore_2tests_2Builder_2main_8cpp.html#a3a3ce4d1058bb5071ba5842cf76c05ad" title=" " alt="" coords="166,107,281,133"/>
+<area shape="rect" id="node5" href="$namespacetestscommon.html#abf529556a55a5414bb6293a6a9a6de59" title="make_user_info &#45; Метод сформирует информацию о пользователе для тестирования" alt="" coords="112,157,335,184"/>
+</map>

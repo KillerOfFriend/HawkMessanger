@@ -1,3 +1,6 @@
 <map id="Иерархия классов. Графический вид." name="Иерархия классов. Графический вид.">
-<area shape="rect" id="node1" href="$classhmservcommon_1_1builders_1_1HMAccountBuilder.html" title="The HMAccountBuilder class &#45; Класс, описывающий билдер аккаунтов" alt="" coords="5,5,193,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,8,123,35"/>
+<area shape="rect" id="node2" href="$classhmcommon_1_1SystemErrorExCategory.html" title="The SystemErrorExCategory class &#45; Класс, определяющий категорию расширеных системных ошибки" alt="" coords="171,5,433,32"/>
+<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1DataStorageErrorCategory.html" title="The DataStorageErrorCategory class &#45; Класс, определяющий категорию ошибко хранилища данных" alt="" coords="195,57,409,98"/>
+<area shape="rect" id="node4" title=" " alt="" coords="27,60,101,87"/>
 </map>
