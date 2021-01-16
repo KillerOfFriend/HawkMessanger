@@ -3,26 +3,8 @@
 #include <userlist.h>
 #include <systemerrorex.h>
 
-//-----------------------------------------------------------------------------
-/**
- * @brief make_user - Метод сформирует пользователя для тестирования
- * @param inUserUuid - UUID пользователя
- * @param inUserLogin - Логин пользователя
- * @param inUserPassword - Пароль пользователя
- * @param inCreateDate - Дата создания пользователя
- * @return Вернёт указатель на нового пользователя
- */
-std::shared_ptr<hmcommon::HMUserInfo> make_user(const QUuid inUserUuid = QUuid::createUuid(), const QString inUserLogin = "UserLogin@login.com",
-                                            const QString inUserPassword = "P@ssworOfUser123", const QDateTime inCreateDate = QDateTime::currentDateTime())//QDateTime(QDate(), QTime::currentTime()))
-{
-    // Формируем нового пользователя
-    std::shared_ptr<hmcommon::HMUserInfo> NewUser = std::make_shared<hmcommon::HMUserInfo>(inUserUuid, inCreateDate);
-    // Задаём основные параметры
-    NewUser->setLogin(inUserLogin);
-    NewUser->setPassword(inUserPassword);
+#include <HawkCommonTestUtils.hpp>
 
-    return NewUser;
-}
 //-----------------------------------------------------------------------------
 /**
  * @brief TEST - Тест создания списка контактов
@@ -43,7 +25,7 @@ TEST(UsertList, CheckAddContact)
     std::error_code Error; // Метка ошибки
     hmcommon::HMUserInfoList UsertList; // Список контактов
 
-    std::shared_ptr<hmcommon::HMUserInfo> NewContact = make_user();
+    std::shared_ptr<hmcommon::HMUserInfo> NewContact = testscommon::make_user_info();
 
     EXPECT_TRUE(UsertList.isEmpty());
     EXPECT_EQ(UsertList.count(), 0);
@@ -63,7 +45,7 @@ TEST(UsertList, FindNotExistsContact)
     std::error_code Error; // Метка ошибки
     hmcommon::HMUserInfoList ContactList; // Список контактов
 
-    std::shared_ptr<hmcommon::HMUserInfo> NewContact = make_user();
+    std::shared_ptr<hmcommon::HMUserInfo> NewContact = testscommon::make_user_info();
 
     std::shared_ptr<hmcommon::HMUserInfo> FindRes = ContactList.get(0, Error);
 
@@ -84,7 +66,7 @@ TEST(UsertList, FindExistsContact)
     std::error_code Error; // Метка ошибки
     hmcommon::HMUserInfoList ContactList; // Список контактов
 
-    std::shared_ptr<hmcommon::HMUserInfo> NewContact = make_user();
+    std::shared_ptr<hmcommon::HMUserInfo> NewContact = testscommon::make_user_info();
 
     Error = ContactList.add(NewContact); // Добавляем новый контакт
     ASSERT_FALSE(Error); // Ошибки быть не должно;
@@ -108,8 +90,8 @@ TEST(UsertList, CheckRemoveContact)
     std::error_code Error; // Метка ошибки
     hmcommon::HMUserInfoList UsertList; // Список контактов
 
-    std::shared_ptr<hmcommon::HMUserInfo> NewContact1 = make_user();
-    std::shared_ptr<hmcommon::HMUserInfo> NewContact2 = make_user();
+    std::shared_ptr<hmcommon::HMUserInfo> NewContact1 = testscommon::make_user_info();
+    std::shared_ptr<hmcommon::HMUserInfo> NewContact2 = testscommon::make_user_info();
 
     Error = UsertList.add(NewContact1); // Добавляем новый контакт
     ASSERT_FALSE(Error); // Ошибки быть не должно

@@ -274,7 +274,7 @@ TEST(JsonDataStorage, CheckJsonSave)
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(Storage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user(); // Формируем пользователя
+    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user_info(); // Формируем пользователя
 
     Error = Storage->addUser(NewUser);
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -286,7 +286,7 @@ TEST(JsonDataStorage, CheckJsonSave)
     for (std::size_t Index = 0; Index < ContactsCount; ++Index)
     {
         QString ContactLogin = "Contact@login." + QString::number(Index); // У каждого пользователья должен быть уникальный UUID и логин
-        Contacts[Index] = testscommon::make_user(QUuid::createUuid(), ContactLogin);
+        Contacts[Index] = testscommon::make_user_info(QUuid::createUuid(), ContactLogin);
         Contacts[Index]->setName("User contact " + QString::number(Index));
         // Добавляем контакт в хранилище (Потому что контакт должен существовать)
         Error = Storage->addUser(Contacts[Index]);
@@ -296,7 +296,7 @@ TEST(JsonDataStorage, CheckJsonSave)
         EXPECT_FALSE(Error);
     }
 
-    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group(); // Формируем новую группу
+    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group_info(); // Формируем новую группу
 
     Error = Storage->addGroup(NewGroup);
     ASSERT_FALSE(Error); // Ошибки быть не должно

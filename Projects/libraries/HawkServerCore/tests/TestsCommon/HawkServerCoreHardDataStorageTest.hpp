@@ -27,7 +27,7 @@ void HardDataStorage_AddUserTest(std::unique_ptr<HMDataStorage> inHardDataStorag
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user();
+    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user_info();
 
     Error = inHardDataStorage->addUser(NewUser); // Пытаемся добавить пользователя
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -35,12 +35,12 @@ void HardDataStorage_AddUserTest(std::unique_ptr<HMDataStorage> inHardDataStorag
     Error = inHardDataStorage->addUser(NewUser); // Пытаемся добавить повторно
     EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserAlreadyExists)); // Должны получить сообщение о том, что пользователь с таким UUID уже зарегистрирован
 
-    NewUser = testscommon::make_user(QUuid::createUuid()); // Формируем такого же пользователя но с другим UUID
+    NewUser = testscommon::make_user_info(QUuid::createUuid()); // Формируем такого же пользователя но с другим UUID
 
     Error = inHardDataStorage->addUser(NewUser); // Пытаемся добавить с новым UUID
     EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserLoginAlreadyRegistered)); // Должны получить сообщение о том, что этот логин уже занят
 
-    NewUser = testscommon::make_user(QUuid::createUuid(), "OtherUser@login.com"); // Формируем с другим UUID и логином
+    NewUser = testscommon::make_user_info(QUuid::createUuid(), "OtherUser@login.com"); // Формируем с другим UUID и логином
 
     Error = inHardDataStorage->addUser(NewUser); // Пытаемся добавить с другим UUID и логином
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -60,7 +60,7 @@ void HardDataStorage_UpdateUserTest(std::unique_ptr<HMDataStorage> inHardDataSto
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user();
+    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user_info();
 
     Error = inHardDataStorage->addUser(NewUser); // Пытаемся добавить пользователя
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -75,7 +75,7 @@ void HardDataStorage_UpdateUserTest(std::unique_ptr<HMDataStorage> inHardDataSto
     ASSERT_FALSE(Error); // Ошибки быть не должно
     EXPECT_EQ(NewUser->getName(), FindRes->getName()); // Имя должно измениться
 
-    NewUser = testscommon::make_user(); // Формируем нового пользователя
+    NewUser = testscommon::make_user_info(); // Формируем нового пользователя
 
     Error = inHardDataStorage->updateUser(NewUser); // Пытаемся обновить пользователя, не добавленного в хранилище
     EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что нет такого пользователя
@@ -95,7 +95,7 @@ void HardDataStorage_FindUserByUUIDTest(std::unique_ptr<HMDataStorage> inHardDat
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user();
+    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user_info();
 
     std::shared_ptr<hmcommon::HMUserInfo> FindRes = inHardDataStorage->findUserByUUID(NewUser->m_uuid, Error); // Попытка получить не существующего пользователя
 
@@ -109,7 +109,7 @@ void HardDataStorage_FindUserByUUIDTest(std::unique_ptr<HMDataStorage> inHardDat
     for (size_t Index = 0; Index < SilCount; ++Index)
     {
         QString TrashUserLogin = "TrashUser" + QString::number(Index); // Логины мусорных пользователей должны быть уникальными
-        Error = inHardDataStorage->addUser(testscommon::make_user(QUuid::createUuid(), TrashUserLogin)); // Пытаемся добавить пользователя
+        Error = inHardDataStorage->addUser(testscommon::make_user_info(QUuid::createUuid(), TrashUserLogin)); // Пытаемся добавить пользователя
         ASSERT_FALSE(Error); // Ошибки быть не должно
     }
 
@@ -135,7 +135,7 @@ void HardDataStorage_FindUserByAuthenticationTest(std::unique_ptr<HMDataStorage>
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user();
+    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user_info();
 
     std::shared_ptr<hmcommon::HMUserInfo> FindRes = inHardDataStorage->findUserByAuthentication(NewUser->getLogin(), NewUser->getPasswordHash(), Error); // Попытка получить не существующего пользователя
 
@@ -149,7 +149,7 @@ void HardDataStorage_FindUserByAuthenticationTest(std::unique_ptr<HMDataStorage>
     for (size_t Index = 0; Index < SilCount; ++Index)
     {
         QString TrashUserLogin = "TrashUser" + QString::number(Index); // Логины мусорных пользователей должны быть уникальными
-        Error = inHardDataStorage->addUser(testscommon::make_user(QUuid::createUuid(), TrashUserLogin)); // Пытаемся добавить пользователя
+        Error = inHardDataStorage->addUser(testscommon::make_user_info(QUuid::createUuid(), TrashUserLogin)); // Пытаемся добавить пользователя
         ASSERT_FALSE(Error); // Ошибки быть не должно
     }
 
@@ -175,7 +175,7 @@ void HardDataStorage_RemoveUserTest(std::unique_ptr<HMDataStorage> inHardDataSto
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user();
+    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user_info();
 
     Error = inHardDataStorage->addUser(NewUser); // Пытаемся добавить пользователя в хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -206,9 +206,9 @@ void HardDataStorage_SetUserContactsTest(std::unique_ptr<HMDataStorage> inHardDa
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user(QUuid::createUuid(), "TestUser@login.com");
-    std::shared_ptr<hmcommon::HMUserInfo> NewContact1 = testscommon::make_user(QUuid::createUuid(), "TestContact1@login.com");
-    std::shared_ptr<hmcommon::HMUserInfo> NewContact2 = testscommon::make_user(QUuid::createUuid(), "TestContact2@login.com");
+    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user_info(QUuid::createUuid(), "TestUser@login.com");
+    std::shared_ptr<hmcommon::HMUserInfo> NewContact1 = testscommon::make_user_info(QUuid::createUuid(), "TestContact1@login.com");
+    std::shared_ptr<hmcommon::HMUserInfo> NewContact2 = testscommon::make_user_info(QUuid::createUuid(), "TestContact2@login.com");
 
     std::shared_ptr<std::set<QUuid>> NewContactList = std::make_shared<std::set<QUuid>>();
 
@@ -236,8 +236,8 @@ void HardDataStorage_AddUserContactTest(std::unique_ptr<HMDataStorage> inHardDat
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user(QUuid::createUuid(), "TestUser@login.com");
-    std::shared_ptr<hmcommon::HMUserInfo> NewContact = testscommon::make_user(QUuid::createUuid(), "TestContact@login.com");
+    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user_info(QUuid::createUuid(), "TestUser@login.com");
+    std::shared_ptr<hmcommon::HMUserInfo> NewContact = testscommon::make_user_info(QUuid::createUuid(), "TestContact@login.com");
 
     Error = inHardDataStorage->addUserContact(NewUser->m_uuid, NewContact->m_uuid); // Пытаемся добавить контакт без добавления пользователя
     ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что пользователь (вледелец) не существует в хранилище
@@ -269,8 +269,8 @@ void HardDataStorage_RemoveUserContactTest(std::unique_ptr<HMDataStorage> inHard
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user(QUuid::createUuid(), "TestUser@login.com");
-    std::shared_ptr<hmcommon::HMUserInfo> NewContact = testscommon::make_user(QUuid::createUuid(), "TestContact@login.com");
+    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user_info(QUuid::createUuid(), "TestUser@login.com");
+    std::shared_ptr<hmcommon::HMUserInfo> NewContact = testscommon::make_user_info(QUuid::createUuid(), "TestContact@login.com");
 
     Error = inHardDataStorage->removeUserContact(NewUser->m_uuid, NewContact->m_uuid); // Пытаемся удалить контакт без добавления пользователя
     ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что пользователь (вледелец) не существует в хранилище
@@ -305,9 +305,9 @@ void HardDataStorage_ClearUserContactsTest(std::unique_ptr<HMDataStorage> inHard
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user(QUuid::createUuid(), "TestUser@login.com");
-    std::shared_ptr<hmcommon::HMUserInfo> NewContact1 = testscommon::make_user(QUuid::createUuid(), "TestContact1@login.com");
-    std::shared_ptr<hmcommon::HMUserInfo> NewContact2 = testscommon::make_user(QUuid::createUuid(), "TestContact2@login.com");
+    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user_info(QUuid::createUuid(), "TestUser@login.com");
+    std::shared_ptr<hmcommon::HMUserInfo> NewContact1 = testscommon::make_user_info(QUuid::createUuid(), "TestContact1@login.com");
+    std::shared_ptr<hmcommon::HMUserInfo> NewContact2 = testscommon::make_user_info(QUuid::createUuid(), "TestContact2@login.com");
 
     Error = inHardDataStorage->clearUserContacts(NewUser->m_uuid); // Пытаемся удалить не сущестующую связь
     ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что пользователь в хранилище не найден
@@ -348,9 +348,9 @@ void HardDataStorage_GetUserContactListTest(std::unique_ptr<HMDataStorage> inHar
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user(QUuid::createUuid(), "TestUser@login.com");
-    std::shared_ptr<hmcommon::HMUserInfo> NewContact1 = testscommon::make_user(QUuid::createUuid(), "TestContact1@login.com");
-    std::shared_ptr<hmcommon::HMUserInfo> NewContact2 = testscommon::make_user(QUuid::createUuid(), "TestContact2@login.com");
+    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user_info(QUuid::createUuid(), "TestUser@login.com");
+    std::shared_ptr<hmcommon::HMUserInfo> NewContact1 = testscommon::make_user_info(QUuid::createUuid(), "TestContact1@login.com");
+    std::shared_ptr<hmcommon::HMUserInfo> NewContact2 = testscommon::make_user_info(QUuid::createUuid(), "TestContact2@login.com");
 
     std::shared_ptr<std::set<QUuid>> FindRes = inHardDataStorage->getUserContactList(NewUser->m_uuid, Error); // Пытаемся получить список контактов не существующего пользователя
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться валидный указатель
@@ -408,7 +408,7 @@ void HardDataStorage_GetUserGroupsTest(std::unique_ptr<HMDataStorage> inHardData
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group(); // Создаём группу
+    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group_info(); // Создаём группу
     Error = inHardDataStorage->addGroup(NewGroup); // Добавляем группу в хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
@@ -419,7 +419,7 @@ void HardDataStorage_GetUserGroupsTest(std::unique_ptr<HMDataStorage> inHardData
     for (size_t Index = 0; Index < UsersCount; ++Index)
     {
         QString TestUserLogin = "TestUser" + QString::number(Index); // Логины тестовых пользователей должны быть уникальными
-        std::shared_ptr<hmcommon::HMUserInfo> User = testscommon::make_user(QUuid::createUuid(), TestUserLogin);
+        std::shared_ptr<hmcommon::HMUserInfo> User = testscommon::make_user_info(QUuid::createUuid(), TestUserLogin);
 
         UserGroups = inHardDataStorage->getUserGroups(User->m_uuid, Error); // Запрашиваем перечень групп не существующего в хранилище пользователя
         ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Получаем метку, что пользователь не найден в хранилище
@@ -461,7 +461,7 @@ void HardDataStorage_AddGroupTest(std::unique_ptr<HMDataStorage> inHardDataStora
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group();
+    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group_info();
 
     Error = inHardDataStorage->addGroup(NewGroup);
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -484,7 +484,7 @@ void HardDataStorage_UpdateGroupTest(std::unique_ptr<HMDataStorage> inHardDataSt
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group();
+    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group_info();
 
     Error = inHardDataStorage->addGroup(NewGroup);
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -499,7 +499,7 @@ void HardDataStorage_UpdateGroupTest(std::unique_ptr<HMDataStorage> inHardDataSt
     ASSERT_FALSE(Error); // Ошибки быть не должно
     EXPECT_EQ(NewGroup->getName(), FindRes->getName()); // Имя должно измениться
 
-    NewGroup = testscommon::make_group(); // Формируем новую группу
+    NewGroup = testscommon::make_group_info(); // Формируем новую группу
 
     Error = inHardDataStorage->updateGroup(NewGroup); // Пытаемся обновить группу, не добавленную в хранилище
     EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // Должны получить сообщение о том, что нет такой группы
@@ -519,7 +519,7 @@ void HardDataStorage_FindGroupByUUIDTest(std::unique_ptr<HMDataStorage> inHardDa
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group();
+    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group_info();
 
     std::shared_ptr<hmcommon::HMGroupInfo> FindRes = inHardDataStorage->findGroupByUUID(NewGroup->m_uuid, Error); // Попытка получить не существующую группу
 
@@ -533,7 +533,7 @@ void HardDataStorage_FindGroupByUUIDTest(std::unique_ptr<HMDataStorage> inHardDa
     for (size_t Index = 0; Index < SilCount; ++Index)
     {
         QString TrashGroupName = "TrashGroup" + QString::number(Index); // Логины мусорных пользователей должны быть уникальными
-        Error = inHardDataStorage->addGroup(testscommon::make_group(QUuid::createUuid(), TrashGroupName)); // Пытаемся добавить группу
+        Error = inHardDataStorage->addGroup(testscommon::make_group_info(QUuid::createUuid(), TrashGroupName)); // Пытаемся добавить группу
         ASSERT_FALSE(Error); // Ошибки быть не должно
     }
 
@@ -558,7 +558,7 @@ void HardDataStorage_RemoveGroupTest(std::unique_ptr<HMDataStorage> inHardDataSt
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group();
+    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group_info();
 
     Error = inHardDataStorage->addGroup(NewGroup); // Пытаемся добавить группу в хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -595,14 +595,14 @@ void HardDataStorage_SetGroupUsersTest(std::unique_ptr<HMDataStorage> inHardData
     for (size_t Index = 0; Index < UsersCount; ++Index)
     {
         QString TestUserLogin = "TestUser" + QString::number(Index); // Логины тестовых пользователей должны быть уникальными
-        std::shared_ptr<hmcommon::HMUserInfo> User = testscommon::make_user(QUuid::createUuid(), TestUserLogin);
+        std::shared_ptr<hmcommon::HMUserInfo> User = testscommon::make_user_info(QUuid::createUuid(), TestUserLogin);
 
         Error = inHardDataStorage->addUser(User); // Пытаемся добавить пользователя
         ASSERT_FALSE(Error); // Ошибки быть не должно
         UserUUIDs->insert(User->m_uuid); // Запоминаем UUID добавленого в хранилище пользователя
     }
 
-    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group(); // Создаём группу
+    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group_info(); // Создаём группу
 
     Error = inHardDataStorage->setGroupUsers(NewGroup->m_uuid, UserUUIDs); // Пытаемся добавить пользователей в не существующую в хранилище группу
     ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // Получаем метку, что группа не найдена в хранилище
@@ -641,8 +641,8 @@ void HardDataStorage_AddGroupUserTest(std::unique_ptr<HMDataStorage> inHardDataS
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group(); // Создаём группу
-    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user(); // Создаём пользовтаеля
+    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group_info(); // Создаём группу
+    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user_info(); // Создаём пользовтаеля
 
     Error = inHardDataStorage->addGroupUser(NewGroup->m_uuid, NewUser->m_uuid); // Пытаемся добавить пользователя в не существующую в хранилище группу
     ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // Получаем метку, что группа не найдена в хранилище
@@ -687,11 +687,11 @@ void HardDataStorage_RemoveGroupUserTest(std::unique_ptr<HMDataStorage> inHardDa
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group(); // Создаём группу
+    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group_info(); // Создаём группу
     Error = inHardDataStorage->addGroup(NewGroup); // Добавляем группу в хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
-    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user(); // Создаём пользовтаеля
+    std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user_info(); // Создаём пользовтаеля
     Error = inHardDataStorage->addUser(NewUser); // Добавляем пользователя в хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
@@ -739,7 +739,7 @@ void HardDataStorage_ClearGroupUsersTest(std::unique_ptr<HMDataStorage> inHardDa
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group(); // Создаём группу
+    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group_info(); // Создаём группу
 
     Error = inHardDataStorage->clearGroupUsers(NewGroup->m_uuid); // Пытаемся очистить перечень участников не существующей группы
     ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // Получаем метку, что группа не существует
@@ -753,7 +753,7 @@ void HardDataStorage_ClearGroupUsersTest(std::unique_ptr<HMDataStorage> inHardDa
     for (size_t Index = 0; Index < UsersCount; ++Index)
     {
         QString TestUserLogin = "TestUser" + QString::number(Index); // Логины тестовых пользователей должны быть уникальными
-        std::shared_ptr<hmcommon::HMUserInfo> User = testscommon::make_user(QUuid::createUuid(), TestUserLogin);
+        std::shared_ptr<hmcommon::HMUserInfo> User = testscommon::make_user_info(QUuid::createUuid(), TestUserLogin);
 
         Error = inHardDataStorage->addUser(User); // Пытаемся добавить пользователя
         ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -807,7 +807,7 @@ void HardDataStorage_GetGroupUserListTest(std::unique_ptr<HMDataStorage> inHardD
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group(); // Создаём группу
+    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group_info(); // Создаём группу
 
     std::shared_ptr<std::set<QUuid>> GroupUsers = inHardDataStorage->getGroupUserList(NewGroup->m_uuid, Error); // Запрашиваем список участников не существующей в хранилище группы
     ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // Получаем метку, что группы не существует
@@ -826,7 +826,7 @@ void HardDataStorage_GetGroupUserListTest(std::unique_ptr<HMDataStorage> inHardD
     for (size_t Index = 0; Index < UsersCount; ++Index)
     {
         QString TestUserLogin = "TestUser" + QString::number(Index); // Логины тестовых пользователей должны быть уникальными
-        std::shared_ptr<hmcommon::HMUserInfo> User = testscommon::make_user(QUuid::createUuid(), TestUserLogin);
+        std::shared_ptr<hmcommon::HMUserInfo> User = testscommon::make_user_info(QUuid::createUuid(), TestUserLogin);
 
         Error = inHardDataStorage->addUser(User); // Пытаемся добавить пользователя
         ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -857,7 +857,7 @@ void HardDataStorage_AddMessageTest(std::unique_ptr<HMDataStorage> inHardDataSto
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
     // Сообщениее может быть добавлено только в группу
-    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group();
+    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group_info();
 
     hmcommon::MsgData TextData(hmcommon::eMsgType::mtText, "Текст сообщения"); // Формируем данные сообщения
     std::shared_ptr<hmcommon::HMGroupInfoMessage> NewMessage = testscommon::make_groupmessage(TextData, QUuid::createUuid(), NewGroup->m_uuid); // Формируем сообщение
@@ -890,7 +890,7 @@ void HardDataStorage_UpdateMessageTest(std::unique_ptr<HMDataStorage> inHardData
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
     // Сообщениее может быть добавлено только в группу
-    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group();
+    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group_info();
 
     Error = inHardDataStorage->addGroup(NewGroup);
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -926,7 +926,7 @@ void HardDataStorage_FindMessageTest(std::unique_ptr<HMDataStorage> inHardDataSt
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
     // Сообщениее может быть добавлено только в группу
-    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group();
+    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group_info();
 
     hmcommon::MsgData TextData(hmcommon::eMsgType::mtText, "Текст сообщения"); // Формируем данные сообщения
     std::shared_ptr<hmcommon::HMGroupInfoMessage> NewMessage = testscommon::make_groupmessage(TextData, QUuid::createUuid(), NewGroup->m_uuid); // Формируем сообщение
@@ -962,7 +962,7 @@ void HardDataStorage_FindMessagesTest(std::unique_ptr<HMDataStorage> inHardDataS
     ASSERT_FALSE(Error); // Ошибки быть не должно
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
-    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group();
+    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group_info();
 
     Error = inHardDataStorage->addGroup(NewGroup); // добавляем группу сообщения
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -1018,7 +1018,7 @@ void HardDataStorage_RemoveMessageTest(std::unique_ptr<HMDataStorage> inHardData
     ASSERT_TRUE(inHardDataStorage->is_open()); // Хранилище должно считаться открытым
 
     // Сообщениее может быть добавлено только в группу
-    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group();
+    std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group_info();
 
     hmcommon::MsgData TextData(hmcommon::eMsgType::mtText, "Текст сообщения"); // Формируем данные сообщения
     std::shared_ptr<hmcommon::HMGroupInfoMessage> NewMessage = testscommon::make_groupmessage(TextData, QUuid::createUuid(), NewGroup->m_uuid); // Формируем сообщение

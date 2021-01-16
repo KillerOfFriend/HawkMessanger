@@ -25,7 +25,7 @@ std::unique_ptr<HMDataStorage> makeStorage(const std::chrono::milliseconds inCac
     std::error_code Error; // Метка ошибки
 
     std::shared_ptr<HMAbstractHardDataStorage> HardStorage = nullptr;
-    std::shared_ptr<HMAbstractCahceDataStorage> inCacheStorage = nullptr;
+    std::shared_ptr<HMAbstractCahceDataStorage> CacheStorage = nullptr;
 
     //---
     {   // Формируем физическое хранилище
@@ -35,12 +35,12 @@ std::unique_ptr<HMDataStorage> makeStorage(const std::chrono::milliseconds inCac
          HardStorage = std::make_shared<HMJsonDataStorage>(C_JSON_PATH); // Формируем хранилище CombinedDataStorage
     }
     //---
-    {   // ФОрмируем кеширующее хранилище
-        inCacheStorage = std::make_shared<HMCachedMemoryDataStorage>(inCacheLifeTime, inSleep); // Формируем хранилище HMCachedMemoryDataStorage
+    {   // Формируем кеширующее хранилище
+        CacheStorage = std::make_shared<HMCachedMemoryDataStorage>(inCacheLifeTime, inSleep); // Формируем хранилище HMCachedMemoryDataStorage
     }
     //---
 
-    return std::make_unique<HMCombinedDataStorage>(HardStorage, inCacheStorage); // Создаём экземпляр комбинированного хранилища HMCombinedDataStorage
+    return std::make_unique<HMCombinedDataStorage>(HardStorage, CacheStorage); // Создаём экземпляр комбинированного хранилища HMCombinedDataStorage
 }
 //-----------------------------------------------------------------------------
 /**
@@ -277,7 +277,7 @@ TEST(CombinedDataStorage, CacheTest)
     //-----
     {
         QUuid UserUUID = QUuid::createUuid();
-        std::shared_ptr<hmcommon::HMUserInfo> User = testscommon::make_user(UserUUID, "CachedUser@login.com"); // Формируем нового пользователя
+        std::shared_ptr<hmcommon::HMUserInfo> User = testscommon::make_user_info(UserUUID, "CachedUser@login.com"); // Формируем нового пользователя
 
         Error = Storage->addUser(User); // Добавляем пользователя в хранилище
         ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -308,7 +308,7 @@ TEST(CombinedDataStorage, CacheTest)
     //-----
     {
         QUuid GroupUUID = QUuid::createUuid();
-        std::shared_ptr<hmcommon::HMGroupInfo> Group = testscommon::make_group(GroupUUID, "CachedGroup");
+        std::shared_ptr<hmcommon::HMGroupInfo> Group = testscommon::make_group_info(GroupUUID, "CachedGroup");
 
         Error = Storage->addGroup(Group); // Добавляем группу в хранилище
         ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -346,7 +346,7 @@ TEST(CombinedDataStorage, CacheTest)
     //-----
     {
         QUuid UserUUID = QUuid::createUuid();
-        std::shared_ptr<hmcommon::HMUserInfo> User = testscommon::make_user(UserUUID, "UserWithContacts@login.com"); // Формируем нового пользователя
+        std::shared_ptr<hmcommon::HMUserInfo> User = testscommon::make_user_info(UserUUID, "UserWithContacts@login.com"); // Формируем нового пользователя
 
         Error = Storage->addUser(User); // Добавляем пользователя в хранилище
         ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -357,7 +357,7 @@ TEST(CombinedDataStorage, CacheTest)
         for (std::size_t Index = 0; Index < ContactsCount; ++Index)
         {
             QString UserLogin = "Contact@login.com" + QString::number(Index); // Логин должен быть униакальным
-            std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user(QUuid::createUuid(), UserLogin); // Формируем нового пользователя
+            std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user_info(QUuid::createUuid(), UserLogin); // Формируем нового пользователя
 
             Error = Storage->addUser(NewUser);
             ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -393,7 +393,7 @@ TEST(CombinedDataStorage, CacheTest)
     //-----
     {
         QUuid GroupUUID = QUuid::createUuid();
-        std::shared_ptr<hmcommon::HMGroupInfo> Group = testscommon::make_group(GroupUUID, "GroupWithUsers");
+        std::shared_ptr<hmcommon::HMGroupInfo> Group = testscommon::make_group_info(GroupUUID, "GroupWithUsers");
 
         Error = Storage->addGroup(Group); // Добавляем группу в хранилище
         ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -404,7 +404,7 @@ TEST(CombinedDataStorage, CacheTest)
         for (std::size_t Index = 0; Index < UserssCount; ++Index)
         {
             QString UserLogin = "GroupUser@login.com" + QString::number(Index); // Логин должен быть униакальным
-            std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user(QUuid::createUuid(), UserLogin); // Формируем нового пользователя
+            std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user_info(QUuid::createUuid(), UserLogin); // Формируем нового пользователя
 
             Error = Storage->addUser(NewUser);
             ASSERT_FALSE(Error); // Ошибки быть не должно

@@ -40,4 +40,10 @@ target_link_libraries(${Test3} PRIVATE ${TESTS_LINCED_LIBRARYES})
 
 add_test(NAME HawkServerCore_Test3 COMMAND CombinedDataStorage_Test)
 #====================================================================
+set(Test4 Builder_Test)
+add_executable(${Test4} ${CMAKE_CURRENT_SOURCE_DIR}/Builder/main.cpp)
+target_include_directories(${Test4} PRIVATE ${TESTS_INCLUDE_DIRS})
+target_link_libraries(${Test4} PRIVATE ${TESTS_LINCED_LIBRARYES})
 
+add_test(NAME HawkServerCore_Test4 COMMAND Builder_Test)
+#====================================================================
