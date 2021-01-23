@@ -35,21 +35,21 @@ public:
      * @param inUserObject - Проверяемый объект
      * @return Вернёт признак ошибки
      */
-    hmcommon::error_code checkUser(const nlohmann::json& inUserObject) const;
+    errors::error_code checkUser(const nlohmann::json& inUserObject) const;
 
     /**
      * @brief checkGroup - Метод проверит валидность JSON объекта группы
      * @param inGroupObject - Проверяемый объект
      * @return Вернёт признак ошибки
      */
-    hmcommon::error_code checkGroup(const nlohmann::json& inGroupObject) const;
+    errors::error_code checkGroup(const nlohmann::json& inGroupObject) const;
 
     /**
      * @brief checkMessage - Метод проверит валидность JSON объекта сообщения
      * @param inMesssageObject - Проверяемый объект
      * @return Вернёт признак ошибки
      */
-    hmcommon::error_code checkMessage(const nlohmann::json& inMesssageObject) const;
+    errors::error_code checkMessage(const nlohmann::json& inMesssageObject) const;
 
     /**
      * @brief jsonToByteArr - Функция преобразует JSON в QByteArray

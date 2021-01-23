@@ -1,6 +1,6 @@
 #include "groupmessage.h"
 
-#include "systemerrorex.h"
+#include <systemerrorex.h>
 
 using namespace hmcommon;
 
@@ -52,13 +52,13 @@ HMGroupInfoMessage::HMGroupInfoMessage(const QUuid& inUuid, const QUuid& inGroup
 
 }
 //-----------------------------------------------------------------------------
-hmcommon::error_code HMGroupInfoMessage::setMessage(const MsgData& inMessageData)
+errors::error_code HMGroupInfoMessage::setMessage(const MsgData& inMessageData)
 {
-    hmcommon::error_code Error = make_error_code(eSystemErrorEx::seSuccess);
+    errors::error_code Error = make_error_code(errors::eSystemErrorEx::seSuccess);
 
 
     if (inMessageData.m_type == eMsgType::mtEmpty)
-        Error = make_error_code(eSystemErrorEx::seIncorretData);
+        Error = make_error_code(errors::eSystemErrorEx::seIncorretData);
     else
         m_message = inMessageData;
 

@@ -29,7 +29,7 @@ std::unique_ptr<HMDataStorage> makeStorage(const std::chrono::milliseconds inCac
  */
 TEST(CachedMemoryDataStorage, open)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
     std::unique_ptr<HMDataStorage> CachedStorage = makeStorage(); // Создаём кеширующее хранилище
 
     Error = CachedStorage->open();
@@ -246,7 +246,7 @@ TEST(CachedMemoryDataStorage, removeMessage)
  */
 TEST(CombinedDataStorage, CacheTest)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
     std::unique_ptr<HMDataStorage> Storage = makeStorage(C_CACHE_LIFE_TIME_FAST, C_CACHE_SLEEP_FAST); // Создаём кеширующее хранилище (С короткой жизнью объектов)
 
     Error = Storage->open();
@@ -278,7 +278,7 @@ TEST(CombinedDataStorage, CacheTest)
         std::this_thread::sleep_for(C_CACHE_LIFE_END_WAIT); // Ожидаем время, гарантирующее уничтожение объекта в кеше
 
         User = Storage->findUserByUUID(UserUUID, Error); // Ищим пользователя по UUID
-        EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Должны получить сообщение, что пользователь в кеше не существует
+        EXPECT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserNotExists)); // Должны получить сообщение, что пользователь в кеше не существует
     }
 
     //-----
@@ -305,7 +305,7 @@ TEST(CombinedDataStorage, CacheTest)
         std::this_thread::sleep_for(C_CACHE_LIFE_END_WAIT); // Ожидаем время, гарантирующее уничтожение объекта в кеше
 
         Group = Storage->findGroupByUUID(GroupUUID, Error); // Ищим пользователя по UUID
-        EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // Должны получить сообщение, что группы в кеше не существует
+        EXPECT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsGroupNotExists)); // Должны получить сообщение, что группы в кеше не существует
     }
 
     //-----
@@ -355,7 +355,7 @@ TEST(CombinedDataStorage, CacheTest)
         std::this_thread::sleep_for(C_CACHE_LIFE_END_WAIT); // Ожидаем время, гарантирующее уничтожение объекта в кеше
 
         Contacts = Storage->getUserContactList(UserUUID, Error); // Запрашиваем список контактов пользователя
-        EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserContactRelationNotExists)); // Должны получить сообщение, что список контактов не кеширован
+        EXPECT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserContactRelationNotExists)); // Должны получить сообщение, что список контактов не кеширован
     }
 
     //-----
@@ -398,7 +398,7 @@ TEST(CombinedDataStorage, CacheTest)
         std::this_thread::sleep_for(C_CACHE_LIFE_END_WAIT); // Ожидаем время, гарантирующее уничтожение объекта в кеше
 
         Users = Storage->getGroupUserList(GroupUUID, Error); // Запрашиваем список участников группы
-        EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupUserRelationNotExists)); // Должны получить сообщение, что список участников группы не кеширован
+        EXPECT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsGroupUserRelationNotExists)); // Должны получить сообщение, что список участников группы не кеширован
     }
 
     Storage->close();

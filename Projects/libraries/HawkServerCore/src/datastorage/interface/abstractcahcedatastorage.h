@@ -56,7 +56,7 @@ public:
      * @brief open - Метод откроет хранилище данных
      * @return Вернёт признак ошибки
      */
-    virtual hmcommon::error_code open() override;
+    virtual errors::error_code open() override;
 
     /**
      * @brief is_open - Метод вернёт признак открытости хранилища данных
@@ -91,7 +91,7 @@ protected:
      * @brief startCacheWatchdogThread - Метод запустит поток, котролирующий объекты кеша
      * @return Вернёт признак ошибки
      */
-    virtual hmcommon::error_code startCacheWatchdogThread();
+    virtual errors::error_code startCacheWatchdogThread();
 
     /**
      * @brief stopCacheWatchdogThread - Метод остановит поток, котролирующий объекты кеша

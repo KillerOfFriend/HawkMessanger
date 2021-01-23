@@ -25,7 +25,7 @@ TEST(GroupInfo, Create)
  */
 TEST(GroupInfo, CheckParams)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     const QString GroupName = "New_Group_Name";
     const std::size_t GroupUserCount = 5;
@@ -49,7 +49,7 @@ TEST(GroupInfo, CheckParams)
 //    EXPECT_EQ(Group.isUsersEmpty(), false);
 
 //    Error = Group.addUser(Users[0]);
-//    ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmcommon::eSystemErrorEx::seAlredyInContainer));
+//    ASSERT_TRUE(Error.value() == static_cast<int32_t>(errors::eSystemErrorEx::seAlredyInContainer));
 
 //    for (std::size_t Index = 0; Index < GroupUserCount; ++Index)
 //    {

@@ -1,6 +1,6 @@
 #include "datastorageerrorcategory.h"
 
-using namespace hmservcommon::datastorage;
+using namespace errors;
 
 //-----------------------------------------------------------------------------
 DataStorageErrorCategory::DataStorageErrorCategory() :
@@ -72,14 +72,14 @@ std::string DataStorageErrorCategory::message(int inCode) const
 //-----------------------------------------------------------------------------
 
 //-----------------------------------------------------------------------------
-DATASTORAGE_API_DECL const hmservcommon::datastorage::DataStorageErrorCategory &hmservcommon::datastorage::ConversionErrc_category()
+extern inline const errors::DataStorageErrorCategory &errors::ConversionDataStorageError_category()
 {
-  static hmservcommon::datastorage::DataStorageErrorCategory category;
+  static errors::DataStorageErrorCategory category;
   return category;
 }
 //-----------------------------------------------------------------------------
-hmcommon::error_code make_error_code(hmservcommon::datastorage::eDataStorageError inErrCode)
+errors::error_code make_error_code(errors::eDataStorageError inErrCode)
 {
-  return {static_cast<int>(inErrCode), hmservcommon::datastorage::ConversionErrc_category()};
+  return { static_cast<int>(inErrCode), errors::ConversionDataStorageError_category() };
 }
 //-----------------------------------------------------------------------------

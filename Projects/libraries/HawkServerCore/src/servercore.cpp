@@ -11,7 +11,7 @@ HMServerCore::HMServerCore()
                 std::make_shared<datastorage::HMJsonDataStorage>(std::filesystem::path("Storage.JSON")), // Из фисического (медленного) хранилища
                 std::make_shared<datastorage::HMCachedMemoryDataStorage>()); // И кеширующего (быстрого) хранилища
 
-    hmcommon::error_code Error = m_dataStorage->open(); // Пытаемся открыть хранилище
+    errors::error_code Error = m_dataStorage->open(); // Пытаемся открыть хранилище
 
     if (Error)
         LOG_ERROR(Error.message_qstr());

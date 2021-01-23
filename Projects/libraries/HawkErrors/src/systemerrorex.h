@@ -12,7 +12,7 @@
 
 #include "errorcode.h"
 
-namespace hmcommon
+namespace errors
 {
 //-----------------------------------------------------------------------------
 static const std::int32_t C_SYSTEMERROR_START = 200; ///< Начальное значение расширеных ошибок
@@ -83,17 +83,11 @@ public:
     virtual std::string message(int inCode) const override final;
 };
 //-----------------------------------------------------------------------------
-// Define the linkage for this function to be used by external code.
-// This would be the usual __declspec(dllexport) or __declspec(dllimport)
-// if we were in a Windows DLL etc. But for this example use a global
-// instance but with inline linkage so multiple definitions do not collide.
-#define SYSTEMERREX_API_DECL extern inline
-//-----------------------------------------------------------------------------
 /**
- * @brief ConversionErrc_category - Функцию, возвращающую статический экземпляр пользовательской категории
+ * @brief ConversionSystemErrorEx_category - Функцию, возвращающую статический экземпляр пользовательской категории
  * @return Вернёт статический экземпляр пользовательской категории
  */
-SYSTEMERREX_API_DECL const SystemErrorExCategory &ConversionErrc_category();
+extern inline const SystemErrorExCategory &ConversionSystemErrorEx_category();
 //-----------------------------------------------------------------------------
 } // namespace hmcommon
 //-----------------------------------------------------------------------------
@@ -101,16 +95,16 @@ namespace std
 {
 // Сообщаем метапрограммированию C++ 11 STL, что enum
 // зарегистрирован в стандартной системе кодов ошибок
-template <> struct is_error_code_enum<hmcommon::eSystemErrorEx> : true_type
+template <> struct is_error_code_enum<errors::eSystemErrorEx> : true_type
 {};
 }
 //-----------------------------------------------------------------------------
 /**
  * @brief make_error_code - Перегрузка глобальной функции make_error_code () нашем пользовательским перечислением.
  * @param inErrCode - Код ошибки
- * @return Вернёт сформированный экемпляр hmcommon::error_code
+ * @return Вернёт сформированный экемпляр errors::error_code
  */
-hmcommon::error_code make_error_code(hmcommon::eSystemErrorEx inErrCode);
+errors::error_code make_error_code(errors::eSystemErrorEx inErrCode);
 //-----------------------------------------------------------------------------
 
 

@@ -8,7 +8,7 @@
  */
 TEST(ErrorCode, Create)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
     EXPECT_FALSE(Error); // Созданый пустой объект не должен являться ошибкой
 
     Error = std::make_error_code(std::errc::bad_address);
@@ -21,8 +21,8 @@ TEST(ErrorCode, Create)
  */
 TEST(ErrorCode, Compare)
 {
-    hmcommon::error_code Error1 = std::make_error_code(std::errc::connection_aborted);
-    hmcommon::error_code Error2 = std::make_error_code(std::errc::connection_refused);
+    errors::error_code Error1 = std::make_error_code(std::errc::connection_aborted);
+    errors::error_code Error2 = std::make_error_code(std::errc::connection_refused);
 
     EXPECT_NE(Error1, Error2);
 }
@@ -32,21 +32,21 @@ TEST(ErrorCode, Compare)
  */
 TEST(ErrorCode, Assignment)
 {
-    hmcommon::error_code Error1 = std::make_error_code(std::errc::connection_aborted); // Инициализация стандартной ошибкой
+    errors::error_code Error1 = std::make_error_code(std::errc::connection_aborted); // Инициализация стандартной ошибкой
     EXPECT_EQ(Error1.value(), static_cast<std::int32_t>(std::errc::connection_aborted)); // И код ошибки должен совпасть
-    hmcommon::error_code Error2 = std::make_error_code(std::errc::connection_refused); // Инициализация стандартной ошибкой
+    errors::error_code Error2 = std::make_error_code(std::errc::connection_refused); // Инициализация стандартной ошибкой
     EXPECT_EQ(Error2.value(), static_cast<std::int32_t>(std::errc::connection_refused)); // И код ошибки должен совпасть
 
-    hmcommon::error_code Error3(Error1); // Копирование расширенной ошибки
+    errors::error_code Error3(Error1); // Копирование расширенной ошибки
     EXPECT_EQ(Error3, Error1); // Должны совпасть
 
-    hmcommon::error_code Error4(std::make_error_code(std::errc::connection_refused)); // Копирование стандартной ошибки
+    errors::error_code Error4(std::make_error_code(std::errc::connection_refused)); // Копирование стандартной ошибки
     EXPECT_EQ(Error4, Error2); // Должны совпасть
 
     Error1 = Error2; // Присвоение расширеной ошибки
     EXPECT_EQ(Error1, Error2); // Должны совпасть
 
-    hmcommon::error_code StdErr = std::make_error_code(std::errc::connection_reset);
+    errors::error_code StdErr = std::make_error_code(std::errc::connection_reset);
     Error2 = StdErr; // Присвоение стандартной ошибки
     EXPECT_EQ(Error2, StdErr); // Должны совпасть
 }
@@ -56,7 +56,7 @@ TEST(ErrorCode, Assignment)
  */
 TEST(ErrorCode, Messages)
 {
-    hmcommon::error_code Error = std::make_error_code(std::errc::bad_address);
+    errors::error_code Error = std::make_error_code(std::errc::bad_address);
 
     std::string StdStr = Error.message();
     EXPECT_EQ(StdStr, "Bad address");
@@ -68,7 +68,7 @@ TEST(ErrorCode, Messages)
 }
 //-----------------------------------------------------------------------------
 /**
- * @brief main - Входная точка тестировани функционала hmcommon::error_code
+ * @brief main - Входная точка тестировани функционала errors::error_code
  * @param argc - Количество аргументов
  * @param argv - Перечень аргументов
  * @return Вернёт признак успешности тестирования

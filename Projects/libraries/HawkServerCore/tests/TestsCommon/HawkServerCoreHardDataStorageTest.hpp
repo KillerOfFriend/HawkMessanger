@@ -3,13 +3,13 @@
 
 #include <thread>
 #include <memory>
-#include <systemerrorex.h>
 
 #include <gtest/gtest.h>
 
 #include <HawkCommonTestUtils.hpp>
 
-#include <datastorage/datastorageerrorcategory.h>
+#include <systemerrorex.h>
+#include <datastorageerrorcategory.h>
 #include <datastorage/interface/datastorageinterface.h>
 
 //-----------------------------------------------------------------------------
@@ -21,7 +21,7 @@ using namespace hmservcommon::datastorage;
  */
 void HardDataStorage_AddUserTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -33,12 +33,12 @@ void HardDataStorage_AddUserTest(std::unique_ptr<HMDataStorage> inHardDataStorag
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     Error = inHardDataStorage->addUser(NewUser); // Пытаемся добавить повторно
-    EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserAlreadyExists)); // Должны получить сообщение о том, что пользователь с таким UUID уже зарегистрирован
+    EXPECT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserAlreadyExists)); // Должны получить сообщение о том, что пользователь с таким UUID уже зарегистрирован
 
     NewUser = testscommon::make_user_info(QUuid::createUuid()); // Формируем такого же пользователя но с другим UUID
 
     Error = inHardDataStorage->addUser(NewUser); // Пытаемся добавить с новым UUID
-    EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserLoginAlreadyRegistered)); // Должны получить сообщение о том, что этот логин уже занят
+    EXPECT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserLoginAlreadyRegistered)); // Должны получить сообщение о том, что этот логин уже занят
 
     NewUser = testscommon::make_user_info(QUuid::createUuid(), "OtherUser@login.com"); // Формируем с другим UUID и логином
 
@@ -54,7 +54,7 @@ void HardDataStorage_AddUserTest(std::unique_ptr<HMDataStorage> inHardDataStorag
  */
 void HardDataStorage_UpdateUserTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -78,7 +78,7 @@ void HardDataStorage_UpdateUserTest(std::unique_ptr<HMDataStorage> inHardDataSto
     NewUser = testscommon::make_user_info(); // Формируем нового пользователя
 
     Error = inHardDataStorage->updateUser(NewUser); // Пытаемся обновить пользователя, не добавленного в хранилище
-    EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что нет такого пользователя
+    EXPECT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что нет такого пользователя
 
     inHardDataStorage->close();
 }
@@ -89,7 +89,7 @@ void HardDataStorage_UpdateUserTest(std::unique_ptr<HMDataStorage> inHardDataSto
  */
 void HardDataStorage_FindUserByUUIDTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -100,7 +100,7 @@ void HardDataStorage_FindUserByUUIDTest(std::unique_ptr<HMDataStorage> inHardDat
     std::shared_ptr<hmcommon::HMUserInfo> FindRes = inHardDataStorage->findUserByUUID(NewUser->m_uuid, Error); // Попытка получить не существующего пользователя
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // И метку, что пользователь не найден в хранилище
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserNotExists)); // И метку, что пользователь не найден в хранилище
 
     Error = inHardDataStorage->addUser(NewUser); // Пытаемся добавить пользователя в хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -129,7 +129,7 @@ void HardDataStorage_FindUserByUUIDTest(std::unique_ptr<HMDataStorage> inHardDat
  */
 void HardDataStorage_FindUserByAuthenticationTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -140,7 +140,7 @@ void HardDataStorage_FindUserByAuthenticationTest(std::unique_ptr<HMDataStorage>
     std::shared_ptr<hmcommon::HMUserInfo> FindRes = inHardDataStorage->findUserByAuthentication(NewUser->getLogin(), NewUser->getPasswordHash(), Error); // Попытка получить не существующего пользователя
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // И метку, что пользователь не добавлен в хранилище
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserNotExists)); // И метку, что пользователь не добавлен в хранилище
 
     Error = inHardDataStorage->addUser(NewUser); // Пытаемся добавить пользователя в хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -169,7 +169,7 @@ void HardDataStorage_FindUserByAuthenticationTest(std::unique_ptr<HMDataStorage>
  */
 void HardDataStorage_RemoveUserTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -186,7 +186,7 @@ void HardDataStorage_RemoveUserTest(std::unique_ptr<HMDataStorage> inHardDataSto
     std::shared_ptr<hmcommon::HMUserInfo> FindRes = inHardDataStorage->findUserByUUID(NewUser->m_uuid, Error); // Попытка получить удалённого пользователя
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // И метку, что пользователь не найден в хранилище
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserNotExists)); // И метку, что пользователь не найден в хранилище
 
     Error = inHardDataStorage->removeUser(NewUser->m_uuid); // Пытаемся удалить не существующего пользователя
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -200,7 +200,7 @@ void HardDataStorage_RemoveUserTest(std::unique_ptr<HMDataStorage> inHardDataSto
  */
 void HardDataStorage_SetUserContactsTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -216,7 +216,7 @@ void HardDataStorage_SetUserContactsTest(std::unique_ptr<HMDataStorage> inHardDa
     NewContactList->insert(NewContact2->m_uuid);
 
     Error = inHardDataStorage->setUserContacts(NewUser->m_uuid, NewContactList); // Пытаемся добавить список контактов без добавления пользователя
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что не существует пользователя, к которому нужно привязать список
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что не существует пользователя, к которому нужно привязать список
 
     Error = inHardDataStorage->addUser(NewUser); // Теперь добавим пользователя в хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -230,7 +230,7 @@ void HardDataStorage_SetUserContactsTest(std::unique_ptr<HMDataStorage> inHardDa
  */
 void HardDataStorage_AddUserContactTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -240,13 +240,13 @@ void HardDataStorage_AddUserContactTest(std::unique_ptr<HMDataStorage> inHardDat
     std::shared_ptr<hmcommon::HMUserInfo> NewContact = testscommon::make_user_info(QUuid::createUuid(), "TestContact@login.com");
 
     Error = inHardDataStorage->addUserContact(NewUser->m_uuid, NewContact->m_uuid); // Пытаемся добавить контакт без добавления пользователя
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что пользователь (вледелец) не существует в хранилище
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что пользователь (вледелец) не существует в хранилище
 
     Error = inHardDataStorage->addUser(NewUser); // Теперь добавим пользователя в хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     Error = inHardDataStorage->addUserContact(NewUser->m_uuid, NewContact->m_uuid); // И теперь добавляем контакт
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что пользователь (контакт) не существует в хранилище
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что пользователь (контакт) не существует в хранилище
 
     Error = inHardDataStorage->addUser(NewContact); // Теперь добавим пользователя, который будет выступать новым контактом
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -263,7 +263,7 @@ void HardDataStorage_AddUserContactTest(std::unique_ptr<HMDataStorage> inHardDat
  */
 void HardDataStorage_RemoveUserContactTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -273,13 +273,13 @@ void HardDataStorage_RemoveUserContactTest(std::unique_ptr<HMDataStorage> inHard
     std::shared_ptr<hmcommon::HMUserInfo> NewContact = testscommon::make_user_info(QUuid::createUuid(), "TestContact@login.com");
 
     Error = inHardDataStorage->removeUserContact(NewUser->m_uuid, NewContact->m_uuid); // Пытаемся удалить контакт без добавления пользователя
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что пользователь (вледелец) не существует в хранилище
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что пользователь (вледелец) не существует в хранилище
 
     Error = inHardDataStorage->addUser(NewUser); // Теперь добавим пользователя в хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     Error = inHardDataStorage->removeUserContact(NewUser->m_uuid, NewContact->m_uuid); // И теперь добавляем контакт
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserContactNotExists)); // Должны получить сообщение о том, что у пользователя нет такого контакта
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserContactNotExists)); // Должны получить сообщение о том, что у пользователя нет такого контакта
 
     Error = inHardDataStorage->addUser(NewContact); // Теперь добавим пользователя, который будет выступать новым контактом
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -299,7 +299,7 @@ void HardDataStorage_RemoveUserContactTest(std::unique_ptr<HMDataStorage> inHard
  */
 void HardDataStorage_ClearUserContactsTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -310,13 +310,13 @@ void HardDataStorage_ClearUserContactsTest(std::unique_ptr<HMDataStorage> inHard
     std::shared_ptr<hmcommon::HMUserInfo> NewContact2 = testscommon::make_user_info(QUuid::createUuid(), "TestContact2@login.com");
 
     Error = inHardDataStorage->clearUserContacts(NewUser->m_uuid); // Пытаемся удалить не сущестующую связь
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что пользователь в хранилище не найден
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что пользователь в хранилище не найден
 
     Error = inHardDataStorage->addUser(NewUser);
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     Error = inHardDataStorage->addUserContact(NewUser->m_uuid, NewUser->m_uuid); // Пытаемся добавить в список контактов самого себя
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(hmcommon::eSystemErrorEx::seIncorretData)); // Должны получить сообщение о том, что данные не корректны
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eSystemErrorEx::seIncorretData)); // Должны получить сообщение о том, что данные не корректны
 
     Error = inHardDataStorage->addUser(NewContact1);
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -342,7 +342,7 @@ void HardDataStorage_ClearUserContactsTest(std::unique_ptr<HMDataStorage> inHard
  */
 void HardDataStorage_GetUserContactListTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -354,7 +354,7 @@ void HardDataStorage_GetUserContactListTest(std::unique_ptr<HMDataStorage> inHar
 
     std::shared_ptr<std::set<QUuid>> FindRes = inHardDataStorage->getUserContactList(NewUser->m_uuid, Error); // Пытаемся получить список контактов не существующего пользователя
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться валидный указатель
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что пользователь в хранилище не найден
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserNotExists)); // Должны получить сообщение о том, что пользователь в хранилище не найден
     // Добавляем пользователей
     Error = inHardDataStorage->addUser(NewUser);
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -402,7 +402,7 @@ void HardDataStorage_GetUserContactListTest(std::unique_ptr<HMDataStorage> inHar
  */
 void HardDataStorage_GetUserGroupsTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -422,7 +422,7 @@ void HardDataStorage_GetUserGroupsTest(std::unique_ptr<HMDataStorage> inHardData
         std::shared_ptr<hmcommon::HMUserInfo> User = testscommon::make_user_info(QUuid::createUuid(), TestUserLogin);
 
         UserGroups = inHardDataStorage->getUserGroups(User->m_uuid, Error); // Запрашиваем перечень групп не существующего в хранилище пользователя
-        ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Получаем метку, что пользователь не найден в хранилище
+        ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserNotExists)); // Получаем метку, что пользователь не найден в хранилище
 
         Error = inHardDataStorage->addUser(User); // Пытаемся добавить пользователя
         ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -455,7 +455,7 @@ void HardDataStorage_GetUserGroupsTest(std::unique_ptr<HMDataStorage> inHardData
  */
 void HardDataStorage_AddGroupTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -467,7 +467,7 @@ void HardDataStorage_AddGroupTest(std::unique_ptr<HMDataStorage> inHardDataStora
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     Error = inHardDataStorage->addGroup(NewGroup);
-    EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupUUIDAlreadyRegistered)); // Должны получить сообщение о том, что этот UUID уже зарегистрирован
+    EXPECT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsGroupUUIDAlreadyRegistered)); // Должны получить сообщение о том, что этот UUID уже зарегистрирован
 
     inHardDataStorage->close();
 }
@@ -478,7 +478,7 @@ void HardDataStorage_AddGroupTest(std::unique_ptr<HMDataStorage> inHardDataStora
  */
 void HardDataStorage_UpdateGroupTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -502,7 +502,7 @@ void HardDataStorage_UpdateGroupTest(std::unique_ptr<HMDataStorage> inHardDataSt
     NewGroup = testscommon::make_group_info(); // Формируем новую группу
 
     Error = inHardDataStorage->updateGroup(NewGroup); // Пытаемся обновить группу, не добавленную в хранилище
-    EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // Должны получить сообщение о том, что нет такой группы
+    EXPECT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsGroupNotExists)); // Должны получить сообщение о том, что нет такой группы
 
     inHardDataStorage->close();
 }
@@ -513,7 +513,7 @@ void HardDataStorage_UpdateGroupTest(std::unique_ptr<HMDataStorage> inHardDataSt
  */
 void HardDataStorage_FindGroupByUUIDTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -524,7 +524,7 @@ void HardDataStorage_FindGroupByUUIDTest(std::unique_ptr<HMDataStorage> inHardDa
     std::shared_ptr<hmcommon::HMGroupInfo> FindRes = inHardDataStorage->findGroupByUUID(NewGroup->m_uuid, Error); // Попытка получить не существующую группу
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // И метку, что группа не найдена в хранилище
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsGroupNotExists)); // И метку, что группа не найдена в хранилище
 
     Error = inHardDataStorage->addGroup(NewGroup); // Пытаемся добавить группу в хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -552,7 +552,7 @@ void HardDataStorage_FindGroupByUUIDTest(std::unique_ptr<HMDataStorage> inHardDa
  */
 void HardDataStorage_RemoveGroupTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -569,7 +569,7 @@ void HardDataStorage_RemoveGroupTest(std::unique_ptr<HMDataStorage> inHardDataSt
     std::shared_ptr<hmcommon::HMGroupInfo> FindRes = inHardDataStorage->findGroupByUUID(NewGroup->m_uuid, Error); // Попытка получить удалённую группу
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // И метку, что группа не найдена в хранилище
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsGroupNotExists)); // И метку, что группа не найдена в хранилище
 
     Error = inHardDataStorage->removeGroup(NewGroup->m_uuid); // Пытаемся удалить не существующую группу
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -583,7 +583,7 @@ void HardDataStorage_RemoveGroupTest(std::unique_ptr<HMDataStorage> inHardDataSt
  */
 void HardDataStorage_SetGroupUsersTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -605,7 +605,7 @@ void HardDataStorage_SetGroupUsersTest(std::unique_ptr<HMDataStorage> inHardData
     std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group_info(); // Создаём группу
 
     Error = inHardDataStorage->setGroupUsers(NewGroup->m_uuid, UserUUIDs); // Пытаемся добавить пользователей в не существующую в хранилище группу
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // Получаем метку, что группа не найдена в хранилище
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsGroupNotExists)); // Получаем метку, что группа не найдена в хранилище
 
     Error = inHardDataStorage->addGroup(NewGroup); // Добавляем группу в хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -635,7 +635,7 @@ void HardDataStorage_SetGroupUsersTest(std::unique_ptr<HMDataStorage> inHardData
  */
 void HardDataStorage_AddGroupUserTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -645,13 +645,13 @@ void HardDataStorage_AddGroupUserTest(std::unique_ptr<HMDataStorage> inHardDataS
     std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user_info(); // Создаём пользовтаеля
 
     Error = inHardDataStorage->addGroupUser(NewGroup->m_uuid, NewUser->m_uuid); // Пытаемся добавить пользователя в не существующую в хранилище группу
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // Получаем метку, что группа не найдена в хранилище
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsGroupNotExists)); // Получаем метку, что группа не найдена в хранилище
 
     Error = inHardDataStorage->addGroup(NewGroup); // Добавляем группу в хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     Error = inHardDataStorage->addGroupUser(NewGroup->m_uuid, NewUser->m_uuid); // Пытаемся добавить не существующего в хранилище пользователя в группу
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Получаем метку, что пользователь не найдена в хранилище
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserNotExists)); // Получаем метку, что пользователь не найдена в хранилище
 
     Error = inHardDataStorage->addUser(NewUser); // Добавляем пользователя в хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -670,7 +670,7 @@ void HardDataStorage_AddGroupUserTest(std::unique_ptr<HMDataStorage> inHardDataS
     EXPECT_NE(UserGroups->find(NewGroup->m_uuid), UserGroups->cend()); // Группа должна быть успешно найдена в списке групп пользователей
 
     Error = inHardDataStorage->addGroupUser(NewGroup->m_uuid, NewUser->m_uuid); // Пытаемся повторно добавить пользователя в группу
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupUserRelationAlredyExists)); // Получаем метку, что группа и пользователь уже связаны
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsGroupUserRelationAlredyExists)); // Получаем метку, что группа и пользователь уже связаны
 
     inHardDataStorage->close();
 }
@@ -681,7 +681,7 @@ void HardDataStorage_AddGroupUserTest(std::unique_ptr<HMDataStorage> inHardDataS
  */
 void HardDataStorage_RemoveGroupUserTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -696,7 +696,7 @@ void HardDataStorage_RemoveGroupUserTest(std::unique_ptr<HMDataStorage> inHardDa
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     Error = inHardDataStorage->removeGroupUser(NewGroup->m_uuid, NewUser->m_uuid); // Пытаемся удалить из группы, не существующего в ней пользователя
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupUserRelationNotExists)); // Получаем метку, что группа и пользователь не связаны
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsGroupUserRelationNotExists)); // Получаем метку, что группа и пользователь не связаны
 
     Error = inHardDataStorage->addGroupUser(NewGroup->m_uuid, NewUser->m_uuid); // Пытаемся добавить пользователя в группу
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -733,7 +733,7 @@ void HardDataStorage_RemoveGroupUserTest(std::unique_ptr<HMDataStorage> inHardDa
  */
 void HardDataStorage_ClearGroupUsersTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -742,7 +742,7 @@ void HardDataStorage_ClearGroupUsersTest(std::unique_ptr<HMDataStorage> inHardDa
     std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group_info(); // Создаём группу
 
     Error = inHardDataStorage->clearGroupUsers(NewGroup->m_uuid); // Пытаемся очистить перечень участников не существующей группы
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // Получаем метку, что группа не существует
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsGroupNotExists)); // Получаем метку, что группа не существует
 
     Error = inHardDataStorage->addGroup(NewGroup); // Добавляем группу в хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -801,7 +801,7 @@ void HardDataStorage_ClearGroupUsersTest(std::unique_ptr<HMDataStorage> inHardDa
  */
 void HardDataStorage_GetGroupUserListTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -810,7 +810,7 @@ void HardDataStorage_GetGroupUserListTest(std::unique_ptr<HMDataStorage> inHardD
     std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group_info(); // Создаём группу
 
     std::shared_ptr<std::set<QUuid>> GroupUsers = inHardDataStorage->getGroupUserList(NewGroup->m_uuid, Error); // Запрашиваем список участников не существующей в хранилище группы
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // Получаем метку, что группы не существует
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsGroupNotExists)); // Получаем метку, что группы не существует
 
     Error = inHardDataStorage->addGroup(NewGroup); // Добавляем группу в хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -850,7 +850,7 @@ void HardDataStorage_GetGroupUserListTest(std::unique_ptr<HMDataStorage> inHardD
  */
 void HardDataStorage_AddMessageTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error; // Метка ошибки
+    errors::error_code Error; // Метка ошибки
 
     Error = inHardDataStorage->open(); // Пытаемся открыть хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -863,7 +863,7 @@ void HardDataStorage_AddMessageTest(std::unique_ptr<HMDataStorage> inHardDataSto
     std::shared_ptr<hmcommon::HMGroupInfoMessage> NewMessage = testscommon::make_groupmessage(TextData, QUuid::createUuid(), NewGroup->m_uuid); // Формируем сообщение
 
     Error = inHardDataStorage->addMessage(NewMessage); // Пытаемся добавить сообщение без группы
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // И метку, что группа не найдена в хранилище
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsGroupNotExists)); // И метку, что группа не найдена в хранилище
 
     Error = inHardDataStorage->addGroup(NewGroup); // Теперь добавим группу
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -872,7 +872,7 @@ void HardDataStorage_AddMessageTest(std::unique_ptr<HMDataStorage> inHardDataSto
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     Error = inHardDataStorage->addMessage(NewMessage); // Пытаемся добавить сообщение повторно
-    EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsMessageAlreadyExists)); // Должны получить сообщение о том, что этот UUID уже зарегистрирован
+    EXPECT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsMessageAlreadyExists)); // Должны получить сообщение о том, что этот UUID уже зарегистрирован
 
     inHardDataStorage->close();
 }
@@ -883,7 +883,7 @@ void HardDataStorage_AddMessageTest(std::unique_ptr<HMDataStorage> inHardDataSto
  */
 void HardDataStorage_UpdateMessageTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error; // Метка ошибки
+    errors::error_code Error; // Метка ошибки
 
     Error = inHardDataStorage->open(); // Пытаемся открыть хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -899,7 +899,7 @@ void HardDataStorage_UpdateMessageTest(std::unique_ptr<HMDataStorage> inHardData
     std::shared_ptr<hmcommon::HMGroupInfoMessage> NewMessage = testscommon::make_groupmessage(TextData, QUuid::createUuid(), NewGroup->m_uuid); // Формируем сообщение
 
     Error = inHardDataStorage->updateMessage(NewMessage); // Пытаемся обновить сообщение не добавляя
-    EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsMessageNotExists)); // Должны получить сообщение о том, что не удалось найти сообщение для обновления
+    EXPECT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsMessageNotExists)); // Должны получить сообщение о том, что не удалось найти сообщение для обновления
 
     Error = inHardDataStorage->addMessage(NewMessage); // Пытаемся добавить сообщение
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -920,7 +920,7 @@ void HardDataStorage_UpdateMessageTest(std::unique_ptr<HMDataStorage> inHardData
  */
 void HardDataStorage_FindMessageTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error; // Метка ошибки
+    errors::error_code Error; // Метка ошибки
 
     Error = inHardDataStorage->open(); // Пытаемся открыть хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -935,7 +935,7 @@ void HardDataStorage_FindMessageTest(std::unique_ptr<HMDataStorage> inHardDataSt
     std::shared_ptr<hmcommon::HMGroupInfoMessage> FindRes = inHardDataStorage->findMessage(NewMessage->m_uuid, Error); // Пытаемся найти не добавленное сообщение
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsMessageNotExists)); // Должны получить сообщение о том, что сообщение не найдено
+    EXPECT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsMessageNotExists)); // Должны получить сообщение о том, что сообщение не найдено
 
     Error = inHardDataStorage->addGroup(NewGroup); // Добавим группу
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -957,7 +957,7 @@ void HardDataStorage_FindMessageTest(std::unique_ptr<HMDataStorage> inHardDataSt
  */
 void HardDataStorage_FindMessagesTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error; // Метка ошибки
+    errors::error_code Error; // Метка ошибки
 
     Error = inHardDataStorage->open(); // Пытаемся открыть хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -1012,7 +1012,7 @@ void HardDataStorage_FindMessagesTest(std::unique_ptr<HMDataStorage> inHardDataS
  */
 void HardDataStorage_RemoveMessageTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -1033,7 +1033,7 @@ void HardDataStorage_RemoveMessageTest(std::unique_ptr<HMDataStorage> inHardData
     std::shared_ptr<hmcommon::HMGroupInfoMessage> FindRes = inHardDataStorage->findMessage(NewGroup->m_uuid, Error); // Попытка получить удалённое сообщение
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsMessageNotExists)); // И метку, что сообщение не найдено в хранилище
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsMessageNotExists)); // И метку, что сообщение не найдено в хранилище
 
     Error = inHardDataStorage->removeGroup(NewGroup->m_uuid); // Пытаемся удалить не существующее сообщение
     ASSERT_FALSE(Error); // Ошибки быть не должно

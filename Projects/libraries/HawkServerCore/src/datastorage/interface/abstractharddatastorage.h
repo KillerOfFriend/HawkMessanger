@@ -37,7 +37,7 @@ protected:
      * @brief makeDefault - Метод сформирует дефолтную структуру хранилища
      * @return Вернёт признак ошибки
      */
-    virtual hmcommon::error_code makeDefault() = 0;
+    virtual errors::error_code makeDefault() = 0;
 
 };
 //-----------------------------------------------------------------------------

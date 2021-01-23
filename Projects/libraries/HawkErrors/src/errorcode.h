@@ -5,7 +5,7 @@
 
 #include <QString>
 
-namespace hmcommon
+namespace errors
 {
 //-----------------------------------------------------------------------------
 /**
@@ -44,7 +44,7 @@ public:
 
     /**
      * @brief error_code - Конструктор копирования
-     * @param inOther - Копируемый объект hmcommon::error_code
+     * @param inOther - Копируемый объект errors::error_code
      */
     error_code(const error_code& inOther);
 

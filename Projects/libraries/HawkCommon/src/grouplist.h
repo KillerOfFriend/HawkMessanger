@@ -92,7 +92,7 @@ public:
      * @param inNewGroup - Новая группа
      * @return Вернёт признак ошибки
      */
-    hmcommon::error_code add(const std::shared_ptr<HMGroup> inNewGroup);
+    errors::error_code add(const std::shared_ptr<HMGroup> inNewGroup);
 
     /**
      * @brief get - Метод вернёт группу по её порядковому номеру
@@ -100,7 +100,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на группу или null_ptr
      */
-    std::shared_ptr<HMGroup> get(const std::size_t inIndex, hmcommon::error_code& outErrorCode) const;
+    std::shared_ptr<HMGroup> get(const std::size_t inIndex, errors::error_code& outErrorCode) const;
 
     /**
      * @brief getContact - Метод вернёт группу по её UUID'у
@@ -108,21 +108,21 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на группу или null_ptr
      */
-    std::shared_ptr<HMGroup> get(const QUuid inGroupUuid, hmcommon::error_code& outErrorCode) const;
+    std::shared_ptr<HMGroup> get(const QUuid inGroupUuid, errors::error_code& outErrorCode) const;
 
     /**
      * @brief remove - Метод удалит группу по её порядквому номеру
      * @param inIndex - Порядковый номер группы
      * @return Вернёт признак ошибки
      */
-    hmcommon::error_code remove(const std::size_t inIndex);
+    errors::error_code remove(const std::size_t inIndex);
 
     /**
      * @brief remove - Метод удалит группу по её UUID'у
      * @param inUserUuid - UUID группы
      * @return Вернёт признак ошибки
      */
-    hmcommon::error_code remove(const QUuid inUserUuid);
+    errors::error_code remove(const QUuid inUserUuid);
 };
 //-----------------------------------------------------------------------------
 }

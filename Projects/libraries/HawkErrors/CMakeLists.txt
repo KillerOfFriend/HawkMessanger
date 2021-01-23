@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 
-project(HawkCommon VERSION 1.0.0 LANGUAGES CXX)
+project(HawkErrors VERSION 1.0.0 LANGUAGES CXX)
 
 #====================================================================
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)    # Разрешаем автоматический экспорт всех символов
@@ -23,19 +23,18 @@ set(CMAKE_AUTOMOC ON)       # Автоматическая компиляция 
 #====================================================================
 # Формируем список используемых библиотек
 set(LINCED_LIBRARYES
-    Qt6::Core       # Подключаем ядро Qt6
-    HawkErrors      # Подключаем библиотеку ошибок
+    Qt6::Core
     )
 #====================================================================
 # Формируем список подключаемых папок
-set(INCLUDE_DIRS
-    ${LIBRARIES_PATH}/HawkErrors/src    # Подключаем хидеры библиотеки ошибок
-    )
+#set(INCLUDE_DIRS
+#
+#    )
 #====================================================================
 # Собираем динамическую библиотеку
 add_library(${PROJECT_NAME} ${LIB_TYPE} ${LIB_HEADERS} ${LIB_SOURCES})
 # Подключаем папки с хидерами
-target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIRS})
+#target_include_directories(${PROJECT_NAME} PUBLIC ${INCLUDE_DIRS})
 # Линкуем библиотеки
 target_link_libraries(${PROJECT_NAME} PUBLIC ${LINCED_LIBRARYES})
 #====================================================================

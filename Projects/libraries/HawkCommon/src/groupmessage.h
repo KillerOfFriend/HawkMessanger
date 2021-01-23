@@ -125,7 +125,7 @@ public:
      * @param inMessageData - Новые данные сообщения
      * @return Вернёт признак ошибки
      */
-    hmcommon::error_code setMessage(const MsgData& inMessageData);
+    errors::error_code setMessage(const MsgData& inMessageData);
 
     /**
      * @brief getMesssage - Метод вернёт данные сообщения

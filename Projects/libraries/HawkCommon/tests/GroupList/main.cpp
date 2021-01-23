@@ -29,7 +29,7 @@ TEST(GrouptList, Create)
  */
 TEST(GrouptList, CheckAddContact)
 {
-    hmcommon::error_code Error; // Метка ошибки
+    errors::error_code Error; // Метка ошибки
     hmcommon::HMGroupList GroupList; // Создаём список групп
 
     std::shared_ptr<hmcommon::HMGroup> NewGroup = make_group();
@@ -49,7 +49,7 @@ TEST(GrouptList, CheckAddContact)
  */
 TEST(GrouptList, FindNotExistsContact)
 {
-    hmcommon::error_code Error; // Метка ошибки
+    errors::error_code Error; // Метка ошибки
     hmcommon::HMGroupList GroupList; // Создаём список групп
 
     std::shared_ptr<hmcommon::HMGroup> NewGroup = make_group();
@@ -57,12 +57,12 @@ TEST(GrouptList, FindNotExistsContact)
     std::shared_ptr<hmcommon::HMGroup> FindRes = GroupList.get(0, Error);
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmcommon::eSystemErrorEx::seContainerEmpty)); // И метку, что контейнер пуст
+    ASSERT_TRUE(Error.value() == static_cast<int32_t>(errors::eSystemErrorEx::seContainerEmpty)); // И метку, что контейнер пуст
 
     FindRes = GroupList.get(NewGroup->m_info->m_uuid, Error);
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmcommon::eSystemErrorEx::seNotInContainer)); // И метку, что контакт в контейнере не найден
+    ASSERT_TRUE(Error.value() == static_cast<int32_t>(errors::eSystemErrorEx::seNotInContainer)); // И метку, что контакт в контейнере не найден
 }
 //-----------------------------------------------------------------------------
 /**
@@ -70,7 +70,7 @@ TEST(GrouptList, FindNotExistsContact)
  */
 TEST(GrouptList, FindExistsContact)
 {
-    hmcommon::error_code Error; // Метка ошибки
+    errors::error_code Error; // Метка ошибки
     hmcommon::HMGroupList GroupList; // Создаём список групп
 
     std::shared_ptr<hmcommon::HMGroup> NewGroup = make_group();
@@ -94,7 +94,7 @@ TEST(GrouptList, FindExistsContact)
  */
 TEST(GrouptList, CheckRemoveContact)
 {
-    hmcommon::error_code Error; // Метка ошибки
+    errors::error_code Error; // Метка ошибки
     hmcommon::HMGroupList GroupList; // Создаём список групп
 
     std::shared_ptr<hmcommon::HMGroup> NewGroup1 = make_group();

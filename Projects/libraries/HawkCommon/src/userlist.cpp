@@ -2,7 +2,7 @@
 
 #include <cassert>
 
-#include "systemerrorex.h"
+#include <systemerrorex.h>
 
 using namespace hmcommon;
 
@@ -44,32 +44,32 @@ bool HMUserInfoList::contain(const std::shared_ptr<HMUserInfo> inUser) const
         return m_contacts.find(inUser) != m_contacts.end();
 }
 //-----------------------------------------------------------------------------
-hmcommon::error_code HMUserInfoList::add(const std::shared_ptr<HMUserInfo> inNewUser)
+errors::error_code HMUserInfoList::add(const std::shared_ptr<HMUserInfo> inNewUser)
 {
-    hmcommon::error_code Error = make_error_code(eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
+    errors::error_code Error = make_error_code(errors::eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
 
     if (!inNewUser) // Проверяем валидность указателя
-        Error = make_error_code(eSystemErrorEx::seInvalidPtr);
+        Error = make_error_code(errors::eSystemErrorEx::seInvalidPtr);
     else
     {
         if (!m_contacts.insert(inNewUser).second) // Добавляем пользователя в контейнер
-            Error = make_error_code(eSystemErrorEx::seAlredyInContainer);
+            Error = make_error_code(errors::eSystemErrorEx::seAlredyInContainer);
     }
 
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<HMUserInfo> HMUserInfoList::get(const std::size_t inIndex, hmcommon::error_code& outErrorCode) const
+std::shared_ptr<HMUserInfo> HMUserInfoList::get(const std::size_t inIndex, errors::error_code& outErrorCode) const
 {
     std::shared_ptr<HMUserInfo> Result = nullptr;
-    outErrorCode = make_error_code(eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
+    outErrorCode = make_error_code(errors::eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
 
     if (isEmpty())
-        outErrorCode = make_error_code(eSystemErrorEx::seContainerEmpty);
+        outErrorCode = make_error_code(errors::eSystemErrorEx::seContainerEmpty);
     else
     {
         if (inIndex >= m_contacts.size())
-            outErrorCode = make_error_code(eSystemErrorEx::seIndexOutOfContainerRange);
+            outErrorCode = make_error_code(errors::eSystemErrorEx::seIndexOutOfContainerRange);
         else
         {
             auto It = m_contacts.begin();
@@ -81,27 +81,27 @@ std::shared_ptr<HMUserInfo> HMUserInfoList::get(const std::size_t inIndex, hmcom
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<HMUserInfo> HMUserInfoList::get(const QUuid inUserUuid, hmcommon::error_code& outErrorCode) const
+std::shared_ptr<HMUserInfo> HMUserInfoList::get(const QUuid inUserUuid, errors::error_code& outErrorCode) const
 {
     std::shared_ptr<HMUserInfo> Result = nullptr;
-    outErrorCode = make_error_code(eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
+    outErrorCode = make_error_code(errors::eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
 
     auto FindRes = m_contacts.find(std::make_shared<HMUserInfo>(inUserUuid));
 
     if (FindRes == m_contacts.end())
-        outErrorCode = make_error_code(eSystemErrorEx::seNotInContainer);
+        outErrorCode = make_error_code(errors::eSystemErrorEx::seNotInContainer);
     else
         Result = *FindRes;
 
     return Result;
 }
 //-----------------------------------------------------------------------------
-hmcommon::error_code HMUserInfoList::remove(const std::size_t inIndex)
+errors::error_code HMUserInfoList::remove(const std::size_t inIndex)
 {
-    hmcommon::error_code Error = make_error_code(eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
+    errors::error_code Error = make_error_code(errors::eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
 
     if (inIndex >= m_contacts.size())
-        Error = make_error_code(eSystemErrorEx::seIndexOutOfContainerRange);
+        Error = make_error_code(errors::eSystemErrorEx::seIndexOutOfContainerRange);
     else
     {
         auto It = m_contacts.begin();
@@ -112,15 +112,15 @@ hmcommon::error_code HMUserInfoList::remove(const std::size_t inIndex)
     return Error;
 }
 //-----------------------------------------------------------------------------
-hmcommon::error_code HMUserInfoList::remove(const QUuid inUserUuid)
+errors::error_code HMUserInfoList::remove(const QUuid inUserUuid)
 {
-    hmcommon::error_code Error = make_error_code(eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
+    errors::error_code Error = make_error_code(errors::eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
 
     std::shared_ptr<HMUserInfo> TempFind = std::make_shared<HMUserInfo>(inUserUuid); // Формируем пользователя для поиска по UUID
     auto FindRes = m_contacts.find(TempFind);
 
     if (FindRes == m_contacts.end())
-        Error = make_error_code(eSystemErrorEx::seNotInContainer);
+        Error = make_error_code(errors::eSystemErrorEx::seNotInContainer);
     else
         m_contacts.erase(FindRes);
 

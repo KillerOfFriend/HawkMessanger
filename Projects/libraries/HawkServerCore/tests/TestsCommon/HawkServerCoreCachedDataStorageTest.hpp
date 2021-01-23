@@ -2,13 +2,13 @@
 #define HAWKSERVERCORECACHEDDATASTORAGETEST_HPP
 
 #include <memory>
-#include <systemerrorex.h>
 
 #include <gtest/gtest.h>
 
 #include <HawkCommonTestUtils.hpp>
 
-#include <datastorage/datastorageerrorcategory.h>
+#include <systemerrorex.h>
+#include <datastorageerrorcategory.h>
 #include <datastorage/interface/datastorageinterface.h>
 
 //-----------------------------------------------------------------------------
@@ -20,7 +20,7 @@ using namespace hmservcommon::datastorage;
  */
 void CachedDataStorage_AddUserTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -32,7 +32,7 @@ void CachedDataStorage_AddUserTest(std::unique_ptr<HMDataStorage> inCachedDataSt
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     Error = inCachedDataStorage->addUser(NewUser); // Пытаемся добавить повторно
-    EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserAlreadyExists)); // Должны получить сообщение что пользователь уже кеширован
+    EXPECT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserAlreadyExists)); // Должны получить сообщение что пользователь уже кеширован
 
     inCachedDataStorage->close();
 }
@@ -43,7 +43,7 @@ void CachedDataStorage_AddUserTest(std::unique_ptr<HMDataStorage> inCachedDataSt
  */
 void CachedDataStorage_UpdateUserTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -68,7 +68,7 @@ void CachedDataStorage_UpdateUserTest(std::unique_ptr<HMDataStorage> inCachedDat
  */
 void CachedDataStorage_FindUserByUUIDTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -79,7 +79,7 @@ void CachedDataStorage_FindUserByUUIDTest(std::unique_ptr<HMDataStorage> inCache
     std::shared_ptr<hmcommon::HMUserInfo> FindRes = inCachedDataStorage->findUserByUUID(NewUser->m_uuid, Error); // Попытка получить не существующего пользователя
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // И метку, что пользователь не кеширован
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserNotExists)); // И метку, что пользователь не кеширован
 
     Error = inCachedDataStorage->addUser(NewUser); // Пытаемся добавить пользователя в кеш
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -108,7 +108,7 @@ void CachedDataStorage_FindUserByUUIDTest(std::unique_ptr<HMDataStorage> inCache
  */
 void CachedDataStorage_FindUserByAuthenticationTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -119,7 +119,7 @@ void CachedDataStorage_FindUserByAuthenticationTest(std::unique_ptr<HMDataStorag
     std::shared_ptr<hmcommon::HMUserInfo> FindRes = inCachedDataStorage->findUserByAuthentication(NewUser->getLogin(), NewUser->getPasswordHash(), Error); // Попытка получить не существующего пользователя
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // И метку, что пользователь не кеширован
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserNotExists)); // И метку, что пользователь не кеширован
 
     Error = inCachedDataStorage->addUser(NewUser); // Пытаемся добавить пользователя в кеш
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -148,7 +148,7 @@ void CachedDataStorage_FindUserByAuthenticationTest(std::unique_ptr<HMDataStorag
  */
 void CachedDataStorage_RemoveUserTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -165,7 +165,7 @@ void CachedDataStorage_RemoveUserTest(std::unique_ptr<HMDataStorage> inCachedDat
     std::shared_ptr<hmcommon::HMUserInfo> FindRes = inCachedDataStorage->findUserByUUID(NewUser->m_uuid, Error); // Попытка получить удалённого пользователя
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // И метку, что пользователь не кеширован
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserNotExists)); // И метку, что пользователь не кеширован
 
     inCachedDataStorage->close();
 }
@@ -176,7 +176,7 @@ void CachedDataStorage_RemoveUserTest(std::unique_ptr<HMDataStorage> inCachedDat
  */
 void CachedDataStorage_SetUserContactsTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -203,7 +203,7 @@ void CachedDataStorage_SetUserContactsTest(std::unique_ptr<HMDataStorage> inCach
  */
 void CachedDataStorage_AddUserContactTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -213,7 +213,7 @@ void CachedDataStorage_AddUserContactTest(std::unique_ptr<HMDataStorage> inCache
     std::shared_ptr<hmcommon::HMUserInfo> NewContact = testscommon::make_user_info(QUuid::createUuid(), "TestContact@login.com");
 
     Error = inCachedDataStorage->addUserContact(NewUser->m_uuid, NewContact->m_uuid);
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserContactRelationNotExists)); // Должны получить сообщение о том, что связь не существует
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserContactRelationNotExists)); // Должны получить сообщение о том, что связь не существует
 
     std::shared_ptr<std::set<QUuid>> NewContactList = std::make_shared<std::set<QUuid>>();
 
@@ -223,7 +223,7 @@ void CachedDataStorage_AddUserContactTest(std::unique_ptr<HMDataStorage> inCache
     ASSERT_FALSE(Error); // Ошибки быть не должно (Наличие пользователя в кеше не обязательно)
 
     Error = inCachedDataStorage->addUserContact(NewUser->m_uuid, NewContact->m_uuid); // Повторно добавляем контакт
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(hmcommon::eSystemErrorEx::seAlredyInContainer)); // Должны получить сообщение о том, что контакт уже в кеше
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eSystemErrorEx::seAlredyInContainer)); // Должны получить сообщение о том, что контакт уже в кеше
 
     inCachedDataStorage->close();
 }
@@ -234,7 +234,7 @@ void CachedDataStorage_AddUserContactTest(std::unique_ptr<HMDataStorage> inCache
  */
 void CachedDataStorage_RemoveUserContactTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -244,7 +244,7 @@ void CachedDataStorage_RemoveUserContactTest(std::unique_ptr<HMDataStorage> inCa
     std::shared_ptr<hmcommon::HMUserInfo> NewContact = testscommon::make_user_info(QUuid::createUuid(), "TestContact@login.com");
 
     Error = inCachedDataStorage->removeUserContact(NewUser->m_uuid, NewContact->m_uuid); // Пытаемся удалсть не существующий контакт
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserContactRelationNotExists)); // Должны получить сообщение о том, что связи не существует
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserContactRelationNotExists)); // Должны получить сообщение о том, что связи не существует
 
     std::shared_ptr<std::set<QUuid>> NewContactList = std::make_shared<std::set<QUuid>>();
 
@@ -266,7 +266,7 @@ void CachedDataStorage_RemoveUserContactTest(std::unique_ptr<HMDataStorage> inCa
  */
 void CachedDataStorage_ClearUserContactsTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -277,7 +277,7 @@ void CachedDataStorage_ClearUserContactsTest(std::unique_ptr<HMDataStorage> inCa
     std::shared_ptr<hmcommon::HMUserInfo> NewContact2 = testscommon::make_user_info(QUuid::createUuid(), "TestContact2@login.com");
 
     Error = inCachedDataStorage->clearUserContacts(NewUser->m_uuid); // Пытаемся удалить не сущестующую связь
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsSuccess)); // Вне зависимости от наличия в кеше, удаление валидно
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsSuccess)); // Вне зависимости от наличия в кеше, удаление валидно
 
     std::shared_ptr<std::set<QUuid>> NewContactList = std::make_shared<std::set<QUuid>>();
 
@@ -285,7 +285,7 @@ void CachedDataStorage_ClearUserContactsTest(std::unique_ptr<HMDataStorage> inCa
     ASSERT_FALSE(Error); // Ошибки быть не должно (Наличие пользователя в кеше не обязательно)
 
     Error = inCachedDataStorage->addUserContact(NewUser->m_uuid, NewUser->m_uuid); // Пытаемся добавить в список контактов самого себя
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(hmcommon::eSystemErrorEx::seIncorretData)); // Должны получить сообщение о том, что данные не корректны
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eSystemErrorEx::seIncorretData)); // Должны получить сообщение о том, что данные не корректны
 
     Error = inCachedDataStorage->addUserContact(NewUser->m_uuid, NewContact1->m_uuid); // И добавляем контакт1 пользователю
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -305,7 +305,7 @@ void CachedDataStorage_ClearUserContactsTest(std::unique_ptr<HMDataStorage> inCa
  */
 void CachedDataStorage_GetUserContactListTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -318,7 +318,7 @@ void CachedDataStorage_GetUserContactListTest(std::unique_ptr<HMDataStorage> inC
     std::shared_ptr<std::set<QUuid>> FindRes = inCachedDataStorage->getUserContactList(NewUser->m_uuid, Error); // Пытаемся получить список контактов не существующего пользователя
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться валидный указатель
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserContactRelationNotExists)); // Должны получить сообщение о том, что связь не существует
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserContactRelationNotExists)); // Должны получить сообщение о том, что связь не существует
 
     std::shared_ptr<std::set<QUuid>> NewContactList = std::make_shared<std::set<QUuid>>();
 
@@ -348,7 +348,7 @@ void CachedDataStorage_GetUserContactListTest(std::unique_ptr<HMDataStorage> inC
  */
 void CachedDataStorage_GetUserGroupsTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -365,7 +365,7 @@ void CachedDataStorage_GetUserGroupsTest(std::unique_ptr<HMDataStorage> inCached
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     std::shared_ptr<std::set<QUuid>> UserGroups = inCachedDataStorage->getUserGroups(NewGroup->m_uuid, Error); // Запрашиваем список групп пользователя
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsUserGroupsRelationNotExists)); // СВЯЗИ ДЛЯ ПОЛЬЗОВАТЕЛЯ НЕ КЕШИРУЮТСЯ
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsUserGroupsRelationNotExists)); // СВЯЗИ ДЛЯ ПОЛЬЗОВАТЕЛЯ НЕ КЕШИРУЮТСЯ
     ASSERT_EQ(UserGroups, nullptr); // Должен вернуться nullptr
 
     inCachedDataStorage->close();
@@ -377,7 +377,7 @@ void CachedDataStorage_GetUserGroupsTest(std::unique_ptr<HMDataStorage> inCached
  */
 void CachedDataStorage_AddGroupTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -389,7 +389,7 @@ void CachedDataStorage_AddGroupTest(std::unique_ptr<HMDataStorage> inCachedDataS
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     Error = inCachedDataStorage->addGroup(NewGroup);
-    EXPECT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupAlreadyExists)); // Должны получить сообщение что группа уже кеширована
+    EXPECT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsGroupAlreadyExists)); // Должны получить сообщение что группа уже кеширована
 
     inCachedDataStorage->close();
 }
@@ -400,7 +400,7 @@ void CachedDataStorage_AddGroupTest(std::unique_ptr<HMDataStorage> inCachedDataS
  */
 void CachedDataStorage_UpdateGroupTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -425,7 +425,7 @@ void CachedDataStorage_UpdateGroupTest(std::unique_ptr<HMDataStorage> inCachedDa
  */
 void CachedDataStorage_FindGroupByUUIDTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -436,7 +436,7 @@ void CachedDataStorage_FindGroupByUUIDTest(std::unique_ptr<HMDataStorage> inCach
     std::shared_ptr<hmcommon::HMGroupInfo> FindRes = inCachedDataStorage->findGroupByUUID(NewGroup->m_uuid, Error); // Попытка получить не существующую группу
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // И метку, что группа не кеширована
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsGroupNotExists)); // И метку, что группа не кеширована
 
     Error = inCachedDataStorage->addGroup(NewGroup); // Пытаемся добавить группу в кеш
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -465,7 +465,7 @@ void CachedDataStorage_FindGroupByUUIDTest(std::unique_ptr<HMDataStorage> inCach
  */
 void CachedDataStorage_RemoveGroupTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -482,7 +482,7 @@ void CachedDataStorage_RemoveGroupTest(std::unique_ptr<HMDataStorage> inCachedDa
     std::shared_ptr<hmcommon::HMGroupInfo> FindRes = inCachedDataStorage->findGroupByUUID(NewGroup->m_uuid, Error); // Попытка получить удалённую группу
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // И метку, что группа не кеширована
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsGroupNotExists)); // И метку, что группа не кеширована
 
     inCachedDataStorage->close();
 }
@@ -493,7 +493,7 @@ void CachedDataStorage_RemoveGroupTest(std::unique_ptr<HMDataStorage> inCachedDa
  */
 void CachedDataStorage_SetGroupUsersTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -529,7 +529,7 @@ void CachedDataStorage_SetGroupUsersTest(std::unique_ptr<HMDataStorage> inCached
  */
 void CachedDataStorage_AddGroupUserTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -539,7 +539,7 @@ void CachedDataStorage_AddGroupUserTest(std::unique_ptr<HMDataStorage> inCachedD
     std::shared_ptr<hmcommon::HMUserInfo> NewUser = testscommon::make_user_info(); // Создаём пользователя (в кеш добавлять не обязательно)
 
     Error = inCachedDataStorage->addGroupUser(NewGroup->m_uuid, NewUser->m_uuid); // Добавляем участника в группу
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupUserRelationNotExists)); // Дложны получить сообщение, что нет связь не кеширована
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsGroupUserRelationNotExists)); // Дложны получить сообщение, что нет связь не кеширована
     // Кешируем полный список
     std::shared_ptr<std::set<QUuid>> UserUuids = std::make_shared<std::set<QUuid>>(); // Формируем пустой перечень участников группы
 
@@ -563,7 +563,7 @@ void CachedDataStorage_AddGroupUserTest(std::unique_ptr<HMDataStorage> inCachedD
  */
 void CachedDataStorage_RemoveGroupUserTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -603,7 +603,7 @@ void CachedDataStorage_RemoveGroupUserTest(std::unique_ptr<HMDataStorage> inCach
  */
 void CachedDataStorage_ClearGroupUsersTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -647,7 +647,7 @@ void CachedDataStorage_ClearGroupUsersTest(std::unique_ptr<HMDataStorage> inCach
  */
 void CachedDataStorage_GetGroupUserListTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -656,7 +656,7 @@ void CachedDataStorage_GetGroupUserListTest(std::unique_ptr<HMDataStorage> inCac
     std::shared_ptr<hmcommon::HMGroupInfo> NewGroup = testscommon::make_group_info(); // Создаём группу
 
     std::shared_ptr<std::set<QUuid>> GroupUsers = inCachedDataStorage->getGroupUserList(NewGroup->m_uuid, Error); // Запрашиваем список участников группы
-    ASSERT_EQ(Error.value(), static_cast<int32_t>(eDataStorageError::dsGroupUserRelationNotExists)); // Получаем метку, связь не кеширована
+    ASSERT_EQ(Error.value(), static_cast<int32_t>(errors::eDataStorageError::dsGroupUserRelationNotExists)); // Получаем метку, связь не кеширована
     ASSERT_EQ(GroupUsers, nullptr); // Должен вернуться валидный указаетль
 
     const std::size_t UsersCount = 5; // Контейнер, хранащий пользователей

@@ -40,7 +40,7 @@ TEST(Message, CheckParams)
     QString MessageText = "Message text";
     hmcommon::HMGroupInfoMessage Message(QUuid::createUuid(), QUuid::createUuid());
 
-    hmcommon::error_code Error = Message.setMessage(hmcommon::MsgData(hmcommon::eMsgType::mtText, MessageText.toLocal8Bit()));
+    errors::error_code Error = Message.setMessage(hmcommon::MsgData(hmcommon::eMsgType::mtText, MessageText.toLocal8Bit()));
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     hmcommon::MsgData RetData = Message.getMesssage();

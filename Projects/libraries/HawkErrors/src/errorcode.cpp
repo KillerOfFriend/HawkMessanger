@@ -1,6 +1,6 @@
 #include "errorcode.h"
 
-using namespace hmcommon;
+using namespace errors;
 
 //-----------------------------------------------------------------------------
 error_code::error_code(int inCode, const std::error_category& inErrCat) : std::error_code(inCode, inErrCat)

@@ -10,9 +10,9 @@
 
 #include <QObject>
 
-#include <errorcode.h>
+#include "errorcode.h"
 
-namespace hmservcommon::datastorage
+namespace errors
 {
 //-----------------------------------------------------------------------------
 static const std::int32_t C_STORAGE_ERROR_START = 300; ///< Начальное значение ошибок хранилища данных
@@ -106,18 +106,11 @@ public:
     virtual std::string message(int inCode) const override final;
 };
 //-----------------------------------------------------------------------------
-// Define the linkage for this function to be used by external code.
-// This would be the usual __declspec(dllexport) or __declspec(dllimport)
-// if we were in a Windows DLL etc. But for this example use a global
-// instance but with inline linkage so multiple definitions do not collide.
-#define DATASTORAGE_API_DECL extern inline
-//-----------------------------------------------------------------------------
 /**
- * @brief ConversionErrc_category - Функцию, возвращающую статический экземпляр пользовательской категории
+ * @brief ConversionDataStorageError_category - Функцию, возвращающую статический экземпляр пользовательской категории
  * @return Вернёт статический экземпляр пользовательской категории
  */
-//DATASTORAGE_API_DECL
-const DataStorageErrorCategory &ConversionErrc_category();
+extern inline const DataStorageErrorCategory &ConversionDataStorageError_category();
 //-----------------------------------------------------------------------------
 } // namespace hmservcommon::datastorage
 //-----------------------------------------------------------------------------
@@ -125,16 +118,16 @@ namespace std
 {
 // Сообщаем метапрограммированию C++ 11 STL, что enum
 // зарегистрирован в стандартной системе кодов ошибок
-template <> struct is_error_code_enum<hmservcommon::datastorage::eDataStorageError> : true_type
+template <> struct is_error_code_enum<errors::eDataStorageError> : true_type
 {};
 }
 //-----------------------------------------------------------------------------
 /**
  * @brief make_error_code - Перегрузка глобальной функции make_error_code () нашем пользовательским перечислением.
  * @param inErrCode - Код ошибки
- * @return Вернёт сформированный экемпляр hmcommon::error_code
+ * @return Вернёт сформированный экемпляр errors::error_code
  */
-hmcommon::error_code make_error_code(hmservcommon::datastorage::eDataStorageError inErrCode);
+errors::error_code make_error_code(errors::eDataStorageError inErrCode);
 //-----------------------------------------------------------------------------
 
 #endif // DATASTORAGEERRORCATEGORY_H

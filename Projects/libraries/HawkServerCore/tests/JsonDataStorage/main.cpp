@@ -17,7 +17,7 @@ const std::filesystem::path C_JSON_PATH = std::filesystem::current_path() / "Dat
  */
 std::unique_ptr<HMDataStorage> makeStorage(const std::filesystem::path& inStoragePath = C_JSON_PATH, const bool inRemoveOld = true)
 {
-    hmcommon::error_code Error; // Метка ошибки
+    errors::error_code Error; // Метка ошибки
 
     if (inRemoveOld && std::filesystem::exists(inStoragePath, Error)) // При необходимости
         std::filesystem::remove(inStoragePath, Error); // Удаляем хранилище по указанному пути
@@ -30,7 +30,7 @@ std::unique_ptr<HMDataStorage> makeStorage(const std::filesystem::path& inStorag
  */
 TEST(JsonDataStorage, open)
 {
-    hmcommon::error_code Error;
+    errors::error_code Error;
 
     {   // Попытка открыть хранилище (ИСТОЧНИК ДИРЕКТОРИЯ)
         std::filesystem::path DirPath = std::filesystem::temp_directory_path(Error) / "JDS_OFP";
@@ -43,7 +43,7 @@ TEST(JsonDataStorage, open)
         Error = Storage->open(); // Пытаемся открыть по невалидному пути
 
         // Результат должен вернуть ошибку не соответствия пути файлу
-        ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmcommon::eSystemErrorEx::seObjectNotFile));
+        ASSERT_TRUE(Error.value() == static_cast<int32_t>(errors::eSystemErrorEx::seObjectNotFile));
         ASSERT_FALSE(Storage->is_open()); // Хранилище не должно считаться открытым
 
         std::filesystem::remove_all(DirPath); // Удаляем временную папку
@@ -266,7 +266,7 @@ TEST(JsonDataStorage, removeMessage)
  */
 TEST(JsonDataStorage, CheckJsonSave)
 {
-    hmcommon::error_code Error; // Метка ошибки
+    errors::error_code Error; // Метка ошибки
     std::unique_ptr<HMDataStorage> Storage = makeStorage(); // Создаём JSON хранилище
 
     Error = Storage->open(); // Пытаемся открыть хранилище

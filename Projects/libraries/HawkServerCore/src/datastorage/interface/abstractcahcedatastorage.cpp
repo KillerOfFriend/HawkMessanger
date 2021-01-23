@@ -2,9 +2,9 @@
 
 #include <cassert>
 
-#include "HawkLog.h"
-#include "systemerrorex.h"
-#include "datastorage/datastorageerrorcategory.h"
+#include <HawkLog.h>
+#include <systemerrorex.h>
+#include <datastorageerrorcategory.h>
 
 using namespace hmservcommon::datastorage;
 
@@ -19,7 +19,7 @@ HMAbstractCahceDataStorage::HMAbstractCahceDataStorage(const std::chrono::millis
     std::atomic_init(&m_threadWork, false); // По умолчанию не разрешаем работу потока
 }
 //-----------------------------------------------------------------------------
-hmcommon::error_code HMAbstractCahceDataStorage::open()
+errors::error_code HMAbstractCahceDataStorage::open()
 {
     return startCacheWatchdogThread(); // Запускаем поток
 }
@@ -46,7 +46,7 @@ void HMAbstractCahceDataStorage::setThreadSleep(const std::chrono::milliseconds 
 std::chrono::milliseconds HMAbstractCahceDataStorage::getThreadSleep() const
 { return m_sleep; }
 //-----------------------------------------------------------------------------
-hmcommon::error_code HMAbstractCahceDataStorage::startCacheWatchdogThread()
+errors::error_code HMAbstractCahceDataStorage::startCacheWatchdogThread()
 {
     stopCacheWatchdogThread(); // Убедимся, что поток стоит
 
@@ -56,10 +56,10 @@ hmcommon::error_code HMAbstractCahceDataStorage::startCacheWatchdogThread()
     if (!m_watchdogThread.joinable())
     {
         stopCacheWatchdogThread();
-        return make_error_code(hmcommon::eSystemErrorEx::seIncorretData);
+        return make_error_code(errors::eSystemErrorEx::seIncorretData);
     }
     else
-        return make_error_code(eDataStorageError::dsSuccess);
+        return make_error_code(errors::eDataStorageError::dsSuccess);
 }
 //-----------------------------------------------------------------------------
 void HMAbstractCahceDataStorage::stopCacheWatchdogThread()

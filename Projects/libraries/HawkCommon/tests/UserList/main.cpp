@@ -22,7 +22,7 @@ TEST(UsertList, Create)
  */
 TEST(UsertList, CheckAddContact)
 {
-    hmcommon::error_code Error; // Метка ошибки
+    errors::error_code Error; // Метка ошибки
     hmcommon::HMUserInfoList UsertList; // Список контактов
 
     std::shared_ptr<hmcommon::HMUserInfo> NewContact = testscommon::make_user_info();
@@ -42,7 +42,7 @@ TEST(UsertList, CheckAddContact)
  */
 TEST(UsertList, FindNotExistsContact)
 {
-    hmcommon::error_code Error; // Метка ошибки
+    errors::error_code Error; // Метка ошибки
     hmcommon::HMUserInfoList ContactList; // Список контактов
 
     std::shared_ptr<hmcommon::HMUserInfo> NewContact = testscommon::make_user_info();
@@ -50,12 +50,12 @@ TEST(UsertList, FindNotExistsContact)
     std::shared_ptr<hmcommon::HMUserInfo> FindRes = ContactList.get(0, Error);
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmcommon::eSystemErrorEx::seContainerEmpty)); // И метку, что контейнер пуст
+    ASSERT_TRUE(Error.value() == static_cast<int32_t>(errors::eSystemErrorEx::seContainerEmpty)); // И метку, что контейнер пуст
 
     FindRes = ContactList.get(NewContact->m_uuid, Error);
 
     ASSERT_EQ(FindRes, nullptr); // Должен вернуться nullptr
-    ASSERT_TRUE(Error.value() == static_cast<int32_t>(hmcommon::eSystemErrorEx::seNotInContainer)); // И метку, что контакт в контейнере не найден
+    ASSERT_TRUE(Error.value() == static_cast<int32_t>(errors::eSystemErrorEx::seNotInContainer)); // И метку, что контакт в контейнере не найден
 }
 //-----------------------------------------------------------------------------
 /**
@@ -63,7 +63,7 @@ TEST(UsertList, FindNotExistsContact)
  */
 TEST(UsertList, FindExistsContact)
 {
-    hmcommon::error_code Error; // Метка ошибки
+    errors::error_code Error; // Метка ошибки
     hmcommon::HMUserInfoList ContactList; // Список контактов
 
     std::shared_ptr<hmcommon::HMUserInfo> NewContact = testscommon::make_user_info();
@@ -87,7 +87,7 @@ TEST(UsertList, FindExistsContact)
  */
 TEST(UsertList, CheckRemoveContact)
 {
-    hmcommon::error_code Error; // Метка ошибки
+    errors::error_code Error; // Метка ошибки
     hmcommon::HMUserInfoList UsertList; // Список контактов
 
     std::shared_ptr<hmcommon::HMUserInfo> NewContact1 = testscommon::make_user_info();

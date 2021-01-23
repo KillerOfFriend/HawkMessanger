@@ -5,6 +5,7 @@
 #include <builder.h>
 #include <HawkLog.h>
 #include <systemerrorex.h>
+#include <datastorageerrorcategory.h>
 #include <datastorage/DataStorage.h>
 
 #include <HawkCommonTestUtils.hpp>
@@ -16,7 +17,7 @@ const std::filesystem::path C_JSON_PATH = std::filesystem::current_path() / "Dat
 //-----------------------------------------------------------------------------
 std::shared_ptr<HMDataStorage> make_storage()
 {
-    hmcommon::error_code Error; // Метка ошибки
+    errors::error_code Error; // Метка ошибки
 
     std::shared_ptr<HMAbstractHardDataStorage> HardStorage = nullptr;
     std::shared_ptr<HMAbstractCahceDataStorage> CacheStorage = nullptr;
@@ -47,7 +48,7 @@ std::shared_ptr<hmservcommon::HMBuilder> make_builder(const std::shared_ptr<HMDa
  */
 TEST(Builder, BuildGroup)
 {
-    hmcommon::error_code Error; // Метка ошибки
+    errors::error_code Error; // Метка ошибки
     std::shared_ptr<HMDataStorage> Storage = make_storage(); // Формируем хранилище данных
 
     Error = Storage->open(); // Пытаемся открыть хранилище
@@ -57,7 +58,7 @@ TEST(Builder, BuildGroup)
 
     QUuid GroupUUID = QUuid::createUuid(); // Создаём UUID группы
     std::shared_ptr<hmcommon::HMGroup> BuildGroup = Builder->buildGroup(GroupUUID, Error); // Пытаемся собрать группу не существующую в хранилище
-    ASSERT_TRUE(Error.value() == static_cast<int32_t>(eDataStorageError::dsGroupNotExists)); // Должны получить сообщение, о том, что группа не существует в хранилище
+    ASSERT_TRUE(Error.value() == static_cast<int32_t>(errors::eDataStorageError::dsGroupNotExists)); // Должны получить сообщение, о том, что группа не существует в хранилище
     ASSERT_EQ(BuildGroup, nullptr); // Должен вернуться nullptr
 
     // Формируем данные в хранилище
@@ -116,7 +117,7 @@ TEST(Builder, BuildGroup)
  */
 TEST(Builder, BuildUser)
 {
-    hmcommon::error_code Error; // Метка ошибки
+    errors::error_code Error; // Метка ошибки
     std::shared_ptr<HMDataStorage> Storage = make_storage(); // Формируем хранилище данных
 
     Error = Storage->open(); // Пытаемся открыть хранилище
@@ -126,7 +127,7 @@ TEST(Builder, BuildUser)
 
     QUuid UserUUID = QUuid::createUuid(); // Создаём UUID пользователя
     std::shared_ptr<hmcommon::HMUser> BuildUser = Builder->buildUser(UserUUID, Error); // Пытаемся собрать пользователя не существующего в хранилище
-    ASSERT_TRUE(Error.value() == static_cast<int32_t>(eDataStorageError::dsUserNotExists)); // Должны получить сообщение, о том, что пользователь не существует в хранилище
+    ASSERT_TRUE(Error.value() == static_cast<int32_t>(errors::eDataStorageError::dsUserNotExists)); // Должны получить сообщение, о том, что пользователь не существует в хранилище
     ASSERT_EQ(BuildUser, nullptr); // Должен вернуться nullptr
     
     std::shared_ptr<hmcommon::HMUser> NewUser = std::make_shared<hmcommon::HMUser>(); // Формируем нового пользователя
