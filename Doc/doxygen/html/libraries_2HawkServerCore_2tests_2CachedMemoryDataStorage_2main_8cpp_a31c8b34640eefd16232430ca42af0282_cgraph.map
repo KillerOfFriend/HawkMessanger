@@ -1,6 +1,0 @@
-<map id="TEST" name="TEST">
-<area shape="rect" id="node1" title="TEST &#45; Тест проверит поиск пользователья по UUID." alt="" coords="5,42,60,69"/>
-<area shape="rect" id="node2" href="$HawkServerCoreCachedDataStorageTest_8hpp.html#a3d974d91144dbd6706627bd518996274" title="CachedDataStorage_FindUserByUUIDTest &#45; Тест физического хранилища, проверяющий поиск пользователя по ..." alt="" coords="108,5,323,47"/>
-<area shape="rect" id="node4" href="$libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="161,71,269,98"/>
-<area shape="rect" id="node3" href="$namespacetestscommon.html#abf529556a55a5414bb6293a6a9a6de59" title="make_user_info &#45; Метод сформирует информацию о пользователе для тестирования" alt="" coords="371,13,593,39"/>
-</map>

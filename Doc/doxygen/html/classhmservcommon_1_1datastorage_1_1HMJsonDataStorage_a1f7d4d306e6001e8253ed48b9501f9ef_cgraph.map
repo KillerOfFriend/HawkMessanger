@@ -1,5 +1,0 @@
-<map id="hmservcommon::datastorage::HMJsonDataStorage::write" name="hmservcommon::datastorage::HMJsonDataStorage::write">
-<area shape="rect" id="node1" title="write &#45; Метод запишет изменения в JSON файл" alt="" coords="5,5,220,47"/>
-<area shape="rect" id="node2" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="268,13,403,39"/>
-<area shape="rect" id="node3" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="451,5,657,47"/>
-</map>

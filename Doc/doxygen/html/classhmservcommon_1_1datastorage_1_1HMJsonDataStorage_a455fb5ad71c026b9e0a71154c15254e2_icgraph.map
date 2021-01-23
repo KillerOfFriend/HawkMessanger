@@ -1,6 +1,0 @@
-<map id="hmservcommon::datastorage::HMJsonDataStorage::close" name="hmservcommon::datastorage::HMJsonDataStorage::close">
-<area shape="rect" id="node1" title="close &#45; Метод закроет хранилище данных" alt="" coords="575,64,789,105"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#ac25055f4e691caa8aa828a4b39446d41" title="makeDefault &#45; Метод сформирует дефолтную структуру хранилища" alt="" coords="271,5,523,47"/>
-<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a657aae996bc68cfb3d8f1d9f332ad812" title="open &#45; Метод откроет хранилище данных" alt="" coords="5,35,220,76"/>
-<area shape="rect" id="node4" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a55270d07df8e59979b49ca996466b1b1" title="~HMJsonDataStorage &#45; Виртуальный деструктор" alt="" coords="268,122,527,178"/>
-</map>

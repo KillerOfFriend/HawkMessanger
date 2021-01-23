@@ -1,4 +1,0 @@
-<map id="hmservcommon::datastorage::HMJsonDataStorage::findMessage" name="hmservcommon::datastorage::HMJsonDataStorage::findMessage">
-<area shape="rect" id="node1" title="findMessage &#45; Метод найдёт сообщение по его uuid" alt="" coords="304,5,555,47"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aed250a79a512d43ee449a1002438010a" title="addMessage &#45; Метод добавит новое сообщение" alt="" coords="5,5,256,47"/>
-</map>

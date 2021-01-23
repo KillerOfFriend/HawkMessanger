@@ -1,7 +1,0 @@
-<map id="hmservcommon::datastorage::HMDataStorage::is_open" name="hmservcommon::datastorage::HMDataStorage::is_open">
-<area shape="rect" id="node1" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="587,53,801,94"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional.html#a640002c547d6836a64652efb1afd762e" title="checkNewGroupUnique &#45; Метод проверит необходимую уникальность параметров новой группы" alt="" coords="284,5,539,61"/>
-<area shape="rect" id="node4" href="$classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional.html#a3548af77a3cab2ee4229b20b6d1d3cbc" title="checkNewUserUnique &#45; Метод проверит необходимую уникальность параметров нового пользователя" alt="" coords="284,85,539,141"/>
-<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a41ef7f314a45555fbe25bd9505440c47" title="addGroup &#45; Метод добавит новую группу" alt="" coords="5,13,236,54"/>
-<area shape="rect" id="node5" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a50771be687ef5019cc1f7c85e5845157" title="addUser &#45; Метод добавит нового пользователя" alt="" coords="9,93,232,134"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="hmcommon::HMGroupMessage" name="hmcommon::HMGroupMessage">
-<area shape="rect" id="node1" title="The HMGroupMessage class &#45; Класс, описывающий сообщение группы" alt="" coords="5,95,232,121"/>
-<area shape="rect" id="node2" href="$structhmcommon_1_1MsgData.html" title="The MsgData struct &#45; Структура, хранящая данные сообщения" alt="" coords="35,5,202,32"/>
-</map>

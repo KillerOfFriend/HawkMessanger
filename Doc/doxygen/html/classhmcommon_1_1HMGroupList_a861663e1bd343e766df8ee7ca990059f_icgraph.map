@@ -1,6 +1,0 @@
-<map id="hmcommon::HMGroupList::isEmpty" name="hmcommon::HMGroupList::isEmpty">
-<area shape="rect" id="node1" title="isEmpty &#45; Метод вернёт признак того, что список групп пуст" alt="" coords="377,23,569,65"/>
-<area shape="rect" id="node2" href="$classhmcommon_1_1HMGroupList.html#a64625ede00aa5f4611cbdf957fdef267" title="get &#45; Метод вернёт группу по её порядковому номеру" alt="" coords="108,5,329,32"/>
-<area shape="rect" id="node4" href="$libraries_2HawkCommon_2tests_2GroupList_2main_8cpp.html#a6cf5ec9236799e21e206dbc78eb5edd0" title="TEST &#45; Тест создания списка контактов" alt="" coords="191,56,246,83"/>
-<area shape="rect" id="node3" href="$libraries_2HawkCommon_2tests_2GroupList_2main_8cpp.html#a8994f06586ec192379939248184df915" title="TEST &#45; Тест поиска не существующей группы" alt="" coords="5,5,60,32"/>
-</map>

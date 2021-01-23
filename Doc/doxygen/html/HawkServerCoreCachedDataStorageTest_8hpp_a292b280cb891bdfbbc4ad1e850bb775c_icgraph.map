@@ -1,4 +1,0 @@
-<map id="CachedDataStorage_ClearUserContactsTest" name="CachedDataStorage_ClearUserContactsTest">
-<area shape="rect" id="node1" title="CachedDataStorage_ClearUserContactsTest &#45; Тест физического хранилища, проверяющий очистку контактов п..." alt="" coords="108,5,331,47"/>
-<area shape="rect" id="node2" href="$libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a49c1a583367400479484341744b4e803" title="TEST &#45; Тест проверит удаление связи пользователь&#45;контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ)" alt="" coords="5,13,60,39"/>
-</map>

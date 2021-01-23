@@ -1,7 +1,0 @@
-<map id="hmlog::HMEventSystem::acceptConfig" name="hmlog::HMEventSystem::acceptConfig">
-<area shape="rect" id="node1" title="acceptConfig &#45; Метод задаст обработчики событий согласно настройкам" alt="" coords="561,35,740,76"/>
-<area shape="rect" id="node2" href="$classhmlog_1_1HMEventSystem.html#ae3142b29af023073240d225d9bd076f5" title="setConfig &#45; Метод задаст настройки системы перехвата системных событий" alt="" coords="335,35,513,76"/>
-<area shape="rect" id="node3" href="$classhmlog_1_1HMEventSystem.html#a38a9c3959b4269b8b58b9d3abac27365" title="HMLogSystem &#45; Конструктор по умолчанию" alt="" coords="108,5,287,47"/>
-<area shape="rect" id="node4" href="$modules_2HawkConsolServer_2src_2main_8cpp.html#a673ba203f393f401e6d2a94d7294ca7b" title=" " alt="" coords="140,71,255,98"/>
-<area shape="rect" id="node5" href="$modules_2HawkConsolServer_2src_2main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,71,60,98"/>
-</map>

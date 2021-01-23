@@ -1,4 +1,0 @@
-<map id="hmservcommon::datastorage::HMCachedMemoryDataStorage::findUserByUUID" name="hmservcommon::datastorage::HMCachedMemoryDataStorage::findUserByUUID">
-<area shape="rect" id="node1" title="findUserByUUID &#45; Метод найдёт пользователя по его uuid" alt="" coords="288,5,523,61"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#ac750a6dc6927e9d466751b0e7f8af5a4" title="updateUser &#45; Метод обновит данные пользователя" alt="" coords="5,5,240,61"/>
-</map>

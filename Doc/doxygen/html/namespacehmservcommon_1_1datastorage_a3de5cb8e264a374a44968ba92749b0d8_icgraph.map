@@ -1,4 +1,0 @@
-<map id="hmservcommon::datastorage::ConversionErrc_category" name="hmservcommon::datastorage::ConversionErrc_category">
-<area shape="rect" id="node1" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="188,5,403,47"/>
-<area shape="rect" id="node2" href="$datastorageerrorcategory_8h.html#afda789d12c345785f7a3e649f83c4d2b" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="5,13,140,39"/>
-</map>

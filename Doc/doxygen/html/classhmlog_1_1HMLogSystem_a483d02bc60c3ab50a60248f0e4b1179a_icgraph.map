@@ -1,5 +1,0 @@
-<map id="hmlog::HMLogSystem::getInstance" name="hmlog::HMLogSystem::getInstance">
-<area shape="rect" id="node1" title="getInstance &#45; Метод вернёт единственный экземпляр системы логирования" alt="" coords="271,5,436,47"/>
-<area shape="rect" id="node2" href="$modules_2HawkConsolServer_2src_2main_8cpp.html#a673ba203f393f401e6d2a94d7294ca7b" title=" " alt="" coords="108,13,223,39"/>
-<area shape="rect" id="node3" href="$modules_2HawkConsolServer_2src_2main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,13,60,39"/>
-</map>

@@ -1,4 +1,0 @@
-<map id="TEST" name="TEST">
-<area shape="rect" id="node1" title="TEST &#45; Тест проверит попытку открытия хранилища" alt="" coords="5,5,60,32"/>
-<area shape="rect" id="node2" href="$libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a0b4f6771133f750fee6eef138cf68e98" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="108,5,216,32"/>
-</map>

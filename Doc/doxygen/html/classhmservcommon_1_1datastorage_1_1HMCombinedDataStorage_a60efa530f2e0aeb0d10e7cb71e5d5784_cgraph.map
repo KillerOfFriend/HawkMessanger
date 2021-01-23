@@ -1,6 +1,0 @@
-<map id="hmservcommon::datastorage::HMCombinedDataStorage::updateUser" name="hmservcommon::datastorage::HMCombinedDataStorage::updateUser">
-<area shape="rect" id="node1" title="updateUser &#45; Метод обновит данные пользователя" alt="" coords="5,39,220,95"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMCombinedDataStorage.html#a7997d3495b3efa912e1e8bf2fef0ac10" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="268,5,483,61"/>
-<area shape="rect" id="node3" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="308,85,443,112"/>
-<area shape="rect" id="node4" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="531,78,737,119"/>
-</map>

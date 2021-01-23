@@ -1,4 +1,0 @@
-<map id="hmservcommon::datastorage::HMCachedMemoryDataStorage::is_open" name="hmservcommon::datastorage::HMCachedMemoryDataStorage::is_open">
-<area shape="rect" id="node1" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="5,5,240,61"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#a6a6932677f1662b09c2a29a2ef12ecf6" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="288,5,515,61"/>
-</map>

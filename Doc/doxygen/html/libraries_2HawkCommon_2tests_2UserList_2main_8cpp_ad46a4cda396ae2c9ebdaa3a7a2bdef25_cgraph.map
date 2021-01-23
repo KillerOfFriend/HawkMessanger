@@ -1,8 +1,0 @@
-<map id="TEST" name="TEST">
-<area shape="rect" id="node1" title="TEST &#45; Тест поиска не существующего контакта" alt="" coords="5,67,60,94"/>
-<area shape="rect" id="node2" href="$classhmcommon_1_1HMUserInfoList.html#a2617ee502c47c22fbc48e7fa6adc5318" title="get &#45; Метод вернёт пользователя по его порядковому номеру" alt="" coords="108,42,345,69"/>
-<area shape="rect" id="node6" href="$namespacetestscommon.html#abf529556a55a5414bb6293a6a9a6de59" title="make_user_info &#45; Метод сформирует информацию о пользователе для тестирования" alt="" coords="115,93,338,119"/>
-<area shape="rect" id="node3" href="$classhmcommon_1_1HMUserInfoList.html#af2fe35858573481ae21cff8f90f8d710" title="isEmpty &#45; Метод вернёт признак того, что список пользователей пуст" alt="" coords="393,5,601,47"/>
-<area shape="rect" id="node4" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="430,71,565,98"/>
-<area shape="rect" id="node5" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="649,64,856,105"/>
-</map>

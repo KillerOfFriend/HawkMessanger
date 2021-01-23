@@ -1,9 +1,0 @@
-<map id="hmlog::HMEventSystem::getInstance" name="hmlog::HMEventSystem::getInstance">
-<area shape="rect" id="node1" title="getInstance &#45; Метод вернёт единственный экземпляр системы перехвата системных событий" alt="" coords="395,132,573,173"/>
-<area shape="rect" id="node2" href="$eventsystem_8cpp.html#a24053345c06ac213e52524b322420637" title="Handle &#45; Финальный обработчик события" alt="" coords="255,78,323,105"/>
-<area shape="rect" id="node6" href="$modules_2HawkConsolServer_2src_2main_8cpp.html#a673ba203f393f401e6d2a94d7294ca7b" title=" " alt="" coords="232,165,347,191"/>
-<area shape="rect" id="node3" href="$classhmlog_1_1HMEventSystem.html#aafb64fee0d36578706518c86445db6b1" title="dropHandel &#45; Метод удалит пользовательский обработчик" alt="" coords="5,5,184,47"/>
-<area shape="rect" id="node4" href="$classhmlog_1_1HMEventSystem.html#ad47dec282871b0e6ec3e443e1afb27f9" title="processUserHadles &#45; Метод вызовет все пользовательские обработчики" alt="" coords="5,71,184,112"/>
-<area shape="rect" id="node5" href="$classhmlog_1_1HMEventSystem.html#a309b1d0afb0f1a815bd7efd96ecce45b" title="setHandler &#45; Метод добавит пользовательский обработчик" alt="" coords="5,136,184,177"/>
-<area shape="rect" id="node7" href="$modules_2HawkConsolServer_2src_2main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="67,202,122,229"/>
-</map>

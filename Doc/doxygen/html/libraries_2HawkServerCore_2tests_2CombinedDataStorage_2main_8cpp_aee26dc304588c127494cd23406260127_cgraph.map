@@ -1,6 +1,0 @@
-<map id="TEST" name="TEST">
-<area shape="rect" id="node1" title="TEST &#45; Тест проверит добавление группы" alt="" coords="5,31,60,57"/>
-<area shape="rect" id="node2" href="$HawkServerCoreHardDataStorageTest_8hpp.html#a3d75ea1e1fad5082d6b57e18012dc925" title="HardDataStorage_AddGroupTest &#45; Тест физического хранилища, проверяющий добавление группы" alt="" coords="108,5,339,32"/>
-<area shape="rect" id="node4" href="$libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="169,56,277,83"/>
-<area shape="rect" id="node3" href="$namespacetestscommon.html#abf135e9ae8d7838442a1550862174473" title="make_group_info &#45; Метод сформирует информацию о группе для тестирования" alt="" coords="387,5,617,32"/>
-</map>

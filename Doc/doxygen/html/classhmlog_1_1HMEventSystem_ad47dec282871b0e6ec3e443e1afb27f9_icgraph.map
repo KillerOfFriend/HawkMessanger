@@ -1,6 +1,0 @@
-<map id="hmlog::HMEventSystem::processUserHadles" name="hmlog::HMEventSystem::processUserHadles">
-<area shape="rect" id="node1" title="processUserHadles &#45; Метод вызовет все пользовательские обработчики" alt="" coords="348,39,527,80"/>
-<area shape="rect" id="node2" href="$eventsystem_8cpp.html#a24053345c06ac213e52524b322420637" title="Handle &#45; Финальный обработчик события" alt="" coords="232,46,300,73"/>
-<area shape="rect" id="node3" href="$classhmlog_1_1HMEventSystem.html#aafb64fee0d36578706518c86445db6b1" title="dropHandel &#45; Метод удалит пользовательский обработчик" alt="" coords="5,5,184,47"/>
-<area shape="rect" id="node4" href="$classhmlog_1_1HMEventSystem.html#a309b1d0afb0f1a815bd7efd96ecce45b" title="setHandler &#45; Метод добавит пользовательский обработчик" alt="" coords="5,71,184,112"/>
-</map>

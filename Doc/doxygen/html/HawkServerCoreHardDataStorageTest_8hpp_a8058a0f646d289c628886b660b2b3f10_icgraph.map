@@ -1,4 +1,0 @@
-<map id="HardDataStorage_SetUserContactsTest" name="HardDataStorage_SetUserContactsTest">
-<area shape="rect" id="node1" title="HardDataStorage_SetUserContactsTest &#45; Тест физического хранилища, проверяющий присвоение контактов по..." alt="" coords="108,5,383,32"/>
-<area shape="rect" id="node2" href="$libraries_2HawkServerCore_2tests_2CombinedDataStorage_2main_8cpp.html#ae9ec386ff44b1e99f3f3ff322477a204" title="TEST &#45; Тест проверит создание связи пользователь&#45;контакты (НЕ ДОЛЖНО ВЫПОЛНЯТЬСЯ ПОЛЬЗОВАТЕЛЕМ)" alt="" coords="5,5,60,32"/>
-</map>

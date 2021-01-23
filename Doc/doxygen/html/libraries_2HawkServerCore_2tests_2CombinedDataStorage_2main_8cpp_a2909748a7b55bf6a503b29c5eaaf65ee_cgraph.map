@@ -1,7 +1,0 @@
-<map id="TEST" name="TEST">
-<area shape="rect" id="node1" title="TEST &#45; Тест проверит удаление сообщения" alt="" coords="5,56,60,83"/>
-<area shape="rect" id="node2" href="$HawkServerCoreHardDataStorageTest_8hpp.html#a48a1da988762944a781561a6aa8e6116" title="HardDataStorage_RemoveMessageTest &#45; Тест физического хранилища, проверяющий удаление сообщения" alt="" coords="108,31,387,57"/>
-<area shape="rect" id="node5" href="$libraries_2HawkServerCore_2tests_2CachedMemoryDataStorage_2main_8cpp.html#a324574ea38cd8b2ee41ac60f545b8115" title="makeStorage &#45; Метод создаст экземпляр хранилища" alt="" coords="193,81,301,108"/>
-<area shape="rect" id="node3" href="$namespacetestscommon.html#abf135e9ae8d7838442a1550862174473" title="make_group_info &#45; Метод сформирует информацию о группе для тестирования" alt="" coords="449,5,679,32"/>
-<area shape="rect" id="node4" href="$namespacetestscommon.html#a98f8f306c8d7b3980b759dc84de73c58" title="make_groupmessage &#45; Метод сформирует сообщение для тестирования" alt="" coords="435,56,693,83"/>
-</map>

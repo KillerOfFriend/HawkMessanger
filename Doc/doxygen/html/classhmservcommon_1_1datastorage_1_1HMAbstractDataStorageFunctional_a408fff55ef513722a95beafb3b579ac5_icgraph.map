@@ -1,4 +1,0 @@
-<map id="hmservcommon::datastorage::HMAbstractDataStorageFunctional::checkNewGroupUnique" name="hmservcommon::datastorage::HMAbstractDataStorageFunctional::checkNewGroupUnique">
-<area shape="rect" id="node1" title="checkNewGroupUnique &#45; Метод проверит необходимую уникальность параметров новой группы" alt="" coords="284,5,539,61"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a7a02a80b8d82a50f3def1e81482cbf9c" title="addGroup &#45; Метод добавит новую группу" alt="" coords="5,13,236,54"/>
-</map>

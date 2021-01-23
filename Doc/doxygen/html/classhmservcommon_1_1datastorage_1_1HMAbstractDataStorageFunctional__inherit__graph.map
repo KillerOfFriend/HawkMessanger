@@ -1,8 +1,0 @@
-<map id="hmservcommon::datastorage::HMAbstractDataStorageFunctional" name="hmservcommon::datastorage::HMAbstractDataStorageFunctional">
-<area shape="rect" id="node1" title="The HMAbstractDataStorageFunctional class &#45; Класс, описывающий абстрактное хранилище даннх с дополнит..." alt="" coords="268,39,523,80"/>
-<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html" title="The HMAbstractCahceDataStorage class &#45; Класс, описывающий абстракцию кеширующего хранилища данных" alt="" coords="571,5,797,47"/>
-<area shape="rect" id="node5" href="$classhmservcommon_1_1datastorage_1_1HMAbstractHardDataStorage.html" title="The HMAbstractHardDataStorage class &#45; Класс, описывающий абстракцию физического хранилища данных" alt="" coords="575,71,793,112"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMDataStorage.html" title="The HMDataStorage class &#45; Интерфейс, описывающий хранилище данных сервера" alt="" coords="5,39,220,80"/>
-<area shape="rect" id="node4" href="$classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html" title="The HMCachedMemoryDataStorage class &#45; Класс, описывающий кеширующее хранилище данных в оперативной па..." alt="" coords="845,5,1080,47"/>
-<area shape="rect" id="node6" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html" title="The HMJsonDataStorage class &#45; Класс, описывающий хранилище данных сервера в файле JSON." alt="" coords="855,71,1070,112"/>
-</map>

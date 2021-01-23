@@ -1,7 +1,0 @@
-<map id="hmservcommon::datastorage::HMJsonDataStorage::findConstUser" name="hmservcommon::datastorage::HMJsonDataStorage::findConstUser">
-<area shape="rect" id="node1" title="findConstUser &#45; Метод вернёт константную ссылку на json объект пользователя в хранилище" alt="" coords="661,71,920,112"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a3a65e5f0b1da9591f3f78bafc9662a17" title="findUserByUUID &#45; Метод найдёт пользователя по его uuid" alt="" coords="331,5,604,47"/>
-<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a25efe7999dbe8fa55b28ded9e4bd23f3" title="getUserContactList &#45; Метод вернёт список контактов пользователя" alt="" coords="321,71,613,112"/>
-<area shape="rect" id="node5" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a69c8ae062f88f8f4dc0771f1dbde7ac1" title="getUserGroups &#45; Метод вернёт список групп пользователя" alt="" coords="335,136,600,177"/>
-<area shape="rect" id="node4" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a87839428ae2d26d0ebd2db35ca0828d3" title="onRemoveUser &#45; Метод выполнится при удалении пользователя" alt="" coords="5,104,273,145"/>
-</map>

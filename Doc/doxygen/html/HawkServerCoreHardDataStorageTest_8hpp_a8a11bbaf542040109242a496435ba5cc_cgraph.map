@@ -1,5 +1,0 @@
-<map id="HardDataStorage_FindMessagesTest" name="HardDataStorage_FindMessagesTest">
-<area shape="rect" id="node1" title="HardDataStorage_FindMessagesTest &#45; Тест физического хранилища, проверяющий поиск сообщений" alt="" coords="5,31,264,57"/>
-<area shape="rect" id="node2" href="$namespacetestscommon.html#abf135e9ae8d7838442a1550862174473" title="make_group_info &#45; Метод сформирует информацию о группе для тестирования" alt="" coords="326,5,557,32"/>
-<area shape="rect" id="node3" href="$namespacetestscommon.html#a98f8f306c8d7b3980b759dc84de73c58" title="make_groupmessage &#45; Метод сформирует сообщение для тестирования" alt="" coords="312,56,571,83"/>
-</map>

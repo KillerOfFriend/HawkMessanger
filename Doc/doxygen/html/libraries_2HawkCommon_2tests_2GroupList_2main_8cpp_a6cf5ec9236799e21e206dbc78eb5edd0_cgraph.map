@@ -1,5 +1,0 @@
-<map id="TEST" name="TEST">
-<area shape="rect" id="node1" title="TEST &#45; Тест создания списка контактов" alt="" coords="5,46,60,73"/>
-<area shape="rect" id="node2" href="$classhmcommon_1_1HMGroupList.html#a2487840eec053d201aba7fae3b3bef7d" title="count &#45; Метод вернёт количество групп в списке" alt="" coords="108,5,300,47"/>
-<area shape="rect" id="node3" href="$classhmcommon_1_1HMGroupList.html#a861663e1bd343e766df8ee7ca990059f" title="isEmpty &#45; Метод вернёт признак того, что список групп пуст" alt="" coords="108,71,300,112"/>
-</map>

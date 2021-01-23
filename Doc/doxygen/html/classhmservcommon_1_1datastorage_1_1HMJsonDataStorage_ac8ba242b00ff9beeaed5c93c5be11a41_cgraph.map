@@ -1,9 +1,0 @@
-<map id="hmservcommon::datastorage::HMJsonDataStorage::findGroupByUUID" name="hmservcommon::datastorage::HMJsonDataStorage::findGroupByUUID">
-<area shape="rect" id="node1" title="findGroupByUUID &#45; Метод найдёт пользователя по его uuid" alt="" coords="5,83,236,139"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a03c4fcd80735293dcffa25ce0a7c9246" title="findConstGroup &#45; Метод вернёт константную ссылку на json объект группы в хранилище" alt="" coords="284,61,552,103"/>
-<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#af7129f6ff8883d6b59a187a375992aeb" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="600,5,819,47"/>
-<area shape="rect" id="node4" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="867,127,1001,154"/>
-<area shape="rect" id="node6" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aef0caa89976ed87d13040619b1837a43" title="jsonToGroup &#45; Метод преобразует Json объект в экземпляр группы" alt="" coords="294,181,542,223"/>
-<area shape="rect" id="node5" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="1049,120,1256,161"/>
-<area shape="rect" id="node7" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorageValidator.html#ad67e559f6133a566a6268d5e454de98f" title="checkGroup &#45; Метод проверит валидность JSON объекта группы" alt="" coords="600,178,819,234"/>
-</map>

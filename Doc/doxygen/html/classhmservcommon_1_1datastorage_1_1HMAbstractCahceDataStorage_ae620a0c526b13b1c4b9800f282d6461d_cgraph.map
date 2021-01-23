@@ -1,4 +1,0 @@
-<map id="hmservcommon::datastorage::HMAbstractCahceDataStorage::close" name="hmservcommon::datastorage::HMAbstractCahceDataStorage::close">
-<area shape="rect" id="node1" title="close &#45; Метод закроет хранилище данных" alt="" coords="5,13,275,54"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html#af31c7d4680c9785f515e433ab79e9049" title="stopCacheWatchdogThread &#45; Метод остановит поток, котролирующий объекты кеша" alt="" coords="323,5,549,61"/>
-</map>

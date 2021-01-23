@@ -1,6 +1,0 @@
-<map id="hmservcommon::datastorage::HMCachedMemoryDataStorage" name="hmservcommon::datastorage::HMCachedMemoryDataStorage">
-<area shape="rect" id="node1" title="The HMCachedMemoryDataStorage class &#45; Класс, описывающий кеширующее хранилище данных в оперативной па..." alt="" coords="15,273,250,315"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMAbstractCahceDataStorage.html" title="The HMAbstractCahceDataStorage class &#45; Класс, описывающий абстракцию кеширующего хранилища данных" alt="" coords="19,184,246,225"/>
-<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional.html" title="The HMAbstractDataStorageFunctional class &#45; Класс, описывающий абстрактное хранилище даннх с дополнит..." alt="" coords="5,95,260,136"/>
-<area shape="rect" id="node4" href="$classhmservcommon_1_1datastorage_1_1HMDataStorage.html" title="The HMDataStorage class &#45; Интерфейс, описывающий хранилище данных сервера" alt="" coords="25,5,240,47"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="hmservcommon::datastorage::HMCachedMemoryDataStorage::close" name="hmservcommon::datastorage::HMCachedMemoryDataStorage::close">
-<area shape="rect" id="node1" title="close &#45; Метод закроет хранилище данных" alt="" coords="328,43,605,84"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a07c4e3bad5ced7d8a929b77a3df67197" title="open &#45; Метод откроет хранилище данных" alt="" coords="5,5,280,47"/>
-<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#aba844641d544b031bbbe89d001be3a50" title="~HMCachedDataStorage &#45; Виртуальный деструктор" alt="" coords="19,71,266,127"/>
-</map>

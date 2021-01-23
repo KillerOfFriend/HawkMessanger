@@ -1,6 +1,0 @@
-<map id="hmservcommon::HMBuilder::buildUser" name="hmservcommon::HMBuilder::buildUser">
-<area shape="rect" id="node1" title="buildAccount &#45; Метод соберёт экземпляр класса аккаунта пользователя" alt="" coords="5,35,209,76"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1HMBuilder.html#a37657cfcfa210d1be5e9f57e03730b98" title="buildGroup &#45; Метод соберёт экземпляр класса данных группы" alt="" coords="257,5,461,47"/>
-<area shape="rect" id="node3" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="509,42,644,69"/>
-<area shape="rect" id="node4" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="692,35,899,76"/>
-</map>

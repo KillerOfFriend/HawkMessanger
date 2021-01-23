@@ -1,5 +1,0 @@
-<map id="hmservcommon::datastorage::HMJsonDataStorage::userToJson" name="hmservcommon::datastorage::HMJsonDataStorage::userToJson">
-<area shape="rect" id="node1" title="userToJson &#45; Метод преобразует пользователя в объект Json" alt="" coords="296,39,533,80"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aabb0162c6d3d65e5faf312dd6ff9b1ad" title="addUser &#45; Метод добавит нового пользователя" alt="" coords="15,5,238,47"/>
-<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a1319eca40027cace1bddccb068a315ab" title="updateUser &#45; Метод обновит данные пользователя" alt="" coords="5,71,248,112"/>
-</map>

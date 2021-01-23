@@ -1,5 +1,0 @@
-<map id="hmservcommon::datastorage::HMDataStorage::findUserByAuthentication" name="hmservcommon::datastorage::HMDataStorage::findUserByAuthentication">
-<area shape="rect" id="node1" title="findUserByAuthentication &#45; Метод найдёт пользователя по его данным аутентификации" alt="" coords="579,13,885,54"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional.html#aa277c38e68d58396d55db76900b18823" title="checkNewUserUnique &#45; Метод проверит необходимую уникальность параметров нового пользователя" alt="" coords="276,5,531,61"/>
-<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#aabb0162c6d3d65e5faf312dd6ff9b1ad" title="addUser &#45; Метод добавит нового пользователя" alt="" coords="5,13,228,54"/>
-</map>

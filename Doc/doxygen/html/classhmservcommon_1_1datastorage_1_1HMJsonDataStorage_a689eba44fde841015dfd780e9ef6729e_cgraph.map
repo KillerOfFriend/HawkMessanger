@@ -1,6 +1,0 @@
-<map id="hmservcommon::datastorage::HMJsonDataStorage::checkCorrectStruct" name="hmservcommon::datastorage::HMJsonDataStorage::checkCorrectStruct">
-<area shape="rect" id="node1" title="checkCorrectStruct &#45; Метод проверит корректность структуры файла" alt="" coords="5,27,259,83"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#af7129f6ff8883d6b59a187a375992aeb" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="307,5,525,47"/>
-<area shape="rect" id="node3" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="349,71,483,98"/>
-<area shape="rect" id="node4" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="573,64,780,105"/>
-</map>

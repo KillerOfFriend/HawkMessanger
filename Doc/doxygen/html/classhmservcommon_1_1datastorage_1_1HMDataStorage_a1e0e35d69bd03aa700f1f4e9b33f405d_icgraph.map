@@ -1,5 +1,0 @@
-<map id="hmservcommon::datastorage::HMDataStorage::findGroupByUUID" name="hmservcommon::datastorage::HMDataStorage::findGroupByUUID">
-<area shape="rect" id="node1" title="findGroupByUUID &#45; Метод найдёт пользователя по его uuid" alt="" coords="587,13,841,54"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMAbstractDataStorageFunctional.html#a640002c547d6836a64652efb1afd762e" title="checkNewGroupUnique &#45; Метод проверит необходимую уникальность параметров новой группы" alt="" coords="284,5,539,61"/>
-<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a41ef7f314a45555fbe25bd9505440c47" title="addGroup &#45; Метод добавит новую группу" alt="" coords="5,13,236,54"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="hmlog::HMLogSystem::setConfig" name="hmlog::HMLogSystem::setConfig">
-<area shape="rect" id="node1" title="setConfig &#45; Метод задаст настройки системы логирования" alt="" coords="321,35,487,76"/>
-<area shape="rect" id="node2" href="$classhmlog_1_1HMLogSystem.html#a09a75fff6981c288bfc193392912f01f" title="HMLogSystem &#45; Конструктор по умолчанию" alt="" coords="108,5,273,47"/>
-<area shape="rect" id="node3" href="$modules_2HawkConsolServer_2src_2main_8cpp.html#a673ba203f393f401e6d2a94d7294ca7b" title=" " alt="" coords="133,71,248,98"/>
-<area shape="rect" id="node4" href="$modules_2HawkConsolServer_2src_2main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,71,60,98"/>
-</map>

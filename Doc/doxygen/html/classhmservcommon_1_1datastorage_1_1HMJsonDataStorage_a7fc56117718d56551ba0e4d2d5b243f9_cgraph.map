@@ -1,7 +1,0 @@
-<map id="hmservcommon::datastorage::HMJsonDataStorage::clearUserContacts" name="hmservcommon::datastorage::HMJsonDataStorage::clearUserContacts">
-<area shape="rect" id="node1" title="clearUserContacts &#45; Метод очистит контакты пользователя" alt="" coords="5,42,236,98"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a164e9512ed6667ef3ef0bdcee8836ea5" title="findUser &#45; Метод вернёт ссылку на json объект пользователя в хранилище" alt="" coords="284,49,507,91"/>
-<area shape="rect" id="node3" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#af7129f6ff8883d6b59a187a375992aeb" title="is_open &#45; Метод вернёт признак открытости хранилища данных" alt="" coords="555,5,773,47"/>
-<area shape="rect" id="node4" href="$systemerrorex_8cpp.html#aacc415fb080ba818238619f5ab0676c3" title="make_error_code &#45; Перегрузка глобальной функции make_error_code () нашем пользовательским перечислени..." alt="" coords="597,86,731,113"/>
-<area shape="rect" id="node5" href="$namespacehmcommon.html#a3f63bf15ae19c09b498ea755e90e78b9" title="ConversionErrc_category &#45; Функцию, возвращающую статический экземпляр пользовательской категории" alt="" coords="821,79,1028,120"/>
-</map>

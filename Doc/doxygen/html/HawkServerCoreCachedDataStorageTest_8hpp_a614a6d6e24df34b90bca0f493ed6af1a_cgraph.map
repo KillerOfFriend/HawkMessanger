@@ -1,5 +1,0 @@
-<map id="CachedDataStorage_ClearGroupUsersTest" name="CachedDataStorage_ClearGroupUsersTest">
-<area shape="rect" id="node1" title="CachedDataStorage_ClearGroupUsersTest &#45; Тест физического хранилища, проверяющий очистку участников гр..." alt="" coords="5,23,236,65"/>
-<area shape="rect" id="node2" href="$namespacetestscommon.html#abf135e9ae8d7838442a1550862174473" title="make_group_info &#45; Метод сформирует информацию о группе для тестирования" alt="" coords="284,5,515,32"/>
-<area shape="rect" id="node3" href="$namespacetestscommon.html#abf529556a55a5414bb6293a6a9a6de59" title="make_user_info &#45; Метод сформирует информацию о пользователе для тестирования" alt="" coords="288,56,511,83"/>
-</map>

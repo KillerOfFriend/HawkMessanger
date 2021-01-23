@@ -1,8 +1,0 @@
-<map id="hmlog::HMLogSystem::fileClose" name="hmlog::HMLogSystem::fileClose">
-<area shape="rect" id="node1" title="fileClose &#45; Метод закроет файл" alt="" coords="535,68,700,109"/>
-<area shape="rect" id="node2" href="$classhmlog_1_1HMLogSystem.html#a114ddb14886434dd283f13c2668c4dac" title="setConfig &#45; Метод задаст настройки системы логирования" alt="" coords="321,35,487,76"/>
-<area shape="rect" id="node6" href="$classhmlog_1_1HMLogSystem.html#a4fc3e290a327d5187d1d2108d24ffd44" title="~HMLogSystem &#45; Деструктор" alt="" coords="321,100,487,141"/>
-<area shape="rect" id="node3" href="$classhmlog_1_1HMLogSystem.html#a09a75fff6981c288bfc193392912f01f" title="HMLogSystem &#45; Конструктор по умолчанию" alt="" coords="108,5,273,47"/>
-<area shape="rect" id="node4" href="$modules_2HawkConsolServer_2src_2main_8cpp.html#a673ba203f393f401e6d2a94d7294ca7b" title=" " alt="" coords="133,71,248,98"/>
-<area shape="rect" id="node5" href="$modules_2HawkConsolServer_2src_2main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,71,60,98"/>
-</map>

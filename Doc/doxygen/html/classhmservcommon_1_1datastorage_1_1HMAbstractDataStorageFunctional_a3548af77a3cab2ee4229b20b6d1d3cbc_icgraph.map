@@ -1,4 +1,0 @@
-<map id="hmservcommon::datastorage::HMAbstractDataStorageFunctional::checkNewUserUnique" name="hmservcommon::datastorage::HMAbstractDataStorageFunctional::checkNewUserUnique">
-<area shape="rect" id="node1" title="checkNewUserUnique &#45; Метод проверит необходимую уникальность параметров нового пользователя" alt="" coords="276,5,531,61"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMJsonDataStorage.html#a50771be687ef5019cc1f7c85e5845157" title="addUser &#45; Метод добавит нового пользователя" alt="" coords="5,13,228,54"/>
-</map>

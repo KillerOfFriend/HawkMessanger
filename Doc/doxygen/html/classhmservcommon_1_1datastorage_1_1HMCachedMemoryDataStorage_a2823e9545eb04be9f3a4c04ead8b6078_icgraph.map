@@ -1,4 +1,0 @@
-<map id="hmservcommon::datastorage::HMCachedMemoryDataStorage::findGroupByUUID" name="hmservcommon::datastorage::HMCachedMemoryDataStorage::findGroupByUUID">
-<area shape="rect" id="node1" title="findGroupByUUID &#45; Метод найдёт пользователя по его uuid" alt="" coords="288,5,523,61"/>
-<area shape="rect" id="node2" href="$classhmservcommon_1_1datastorage_1_1HMCachedMemoryDataStorage.html#a6778b3b2ba83c803efcfe460ab9de2e2" title="updateGroup &#45; Метод обновит данные группы" alt="" coords="5,5,240,61"/>
-</map>
