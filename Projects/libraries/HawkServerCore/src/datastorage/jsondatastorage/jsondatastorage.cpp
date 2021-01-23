@@ -98,7 +98,7 @@ void HMJsonDataStorage::close()
         hmcommon::error_code Error = write(); // Вызываем запись
 
         if (Error)
-            LOG_ERROR(QString::fromStdString(Error.message()));
+            LOG_ERROR(Error.message_qstr());
 
         m_json = nlohmann::json(); // Очищаем хранилище
     }
@@ -197,7 +197,7 @@ std::shared_ptr<hmcommon::HMUserInfo> HMJsonDataStorage::findUserByAuthenticatio
             hmcommon::error_code ValidError = m_validator.checkUser(UserObject); // Проверяем валидность объекта пользователя
             if (ValidError)
             {
-                LOG_WARNING(QString::fromStdString(ValidError.message()));
+                LOG_WARNING(ValidError.message_qstr());
                 return false; // Повреждённый пользователь игнорируется
             }
             else
@@ -237,7 +237,7 @@ hmcommon::error_code HMJsonDataStorage::removeUser(const QUuid& inUserUUID)
             hmcommon::error_code ValidError = m_validator.checkUser(UserObject); // Проверяем валидность объекта пользователя
             if (ValidError)
             {
-                LOG_WARNING(QString::fromStdString(ValidError.message()));
+                LOG_WARNING(ValidError.message_qstr());
                 return false; // Повреждённый пользователь игнорируется
             }
             else
@@ -285,7 +285,7 @@ hmcommon::error_code HMJsonDataStorage::setUserContacts(const QUuid& inUserUUID,
                             hmcommon::error_code RemoveError = removeUserContact(inUserUUID, SuccessfullyAdded.back()); // Удаляем добавленную связь
 
                             if (!RemoveError) // Ошибку удаления обрабатываем отдельно
-                                LOG_ERROR(QString::fromStdString(RemoveError.message()));
+                                LOG_ERROR(RemoveError.message_qstr());
 
                             SuccessfullyAdded.pop_back(); // Выкидываем удалённый UUID
                         }
@@ -324,7 +324,7 @@ hmcommon::error_code HMJsonDataStorage::addUserContact(const QUuid& inUserUUID, 
                 {
                     hmcommon::error_code RemoveError = removeContactUC(inUserUUID, inContactUUID); // Рвём ПЕРВУЮ успешную связь
                     if (RemoveError) // Ошибки удаления обрабатываем отдельно
-                        LOG_WARNING(QString::fromStdString(RemoveError.message()));
+                        LOG_WARNING(RemoveError.message_qstr());
                 }
             }
         }
@@ -351,7 +351,7 @@ hmcommon::error_code HMJsonDataStorage::removeUserContact(const QUuid& inUserUUI
             {
                 hmcommon::error_code AddError = addContactUC(inUserUUID, inContactUUID); // Восстанавливаем ПЕРВУЮ успешную связь
                 if (AddError) // Ошибки удаления обрабатываем отдельно
-                    LOG_WARNING(QString::fromStdString(AddError.message()));
+                    LOG_WARNING(AddError.message_qstr());
             }
         }
     }
@@ -385,7 +385,7 @@ hmcommon::error_code HMJsonDataStorage::clearUserContacts(const QUuid& inUserUUI
                         hmcommon::error_code AddError = addUserContact(inUserUUID, SuccessfullyRemoved.back()); // Возвращаем удалённую связь
 
                         if (!AddError) // Ошибку добавления обрабатываем отдельно
-                            LOG_ERROR(QString::fromStdString(AddError.message()));
+                            LOG_ERROR(AddError.message_qstr());
 
                         SuccessfullyRemoved.pop_back(); // Выкидываем восстановленный UUID
                     }
@@ -535,7 +535,7 @@ hmcommon::error_code HMJsonDataStorage::removeGroup(const QUuid& inGroupUUID)
             hmcommon::error_code ValidError = m_validator.checkGroup(GroupObject); // Проверяем валидность объекта группы
             if (ValidError)
             {
-                LOG_WARNING(QString::fromStdString(ValidError.message()));
+                LOG_WARNING(ValidError.message_qstr());
                 return false; // Повреждённая группа игнорируется
             }
             else
@@ -579,7 +579,7 @@ hmcommon::error_code HMJsonDataStorage::setGroupUsers(const QUuid& inGroupUUID, 
                             hmcommon::error_code RemoveError = removeGroupUser(inGroupUUID, SuccessfullyAdded.back()); // Удаляем добавленную связь
 
                             if (!RemoveError) // Ошибку удаления обрабатываем отдельно
-                                LOG_ERROR(QString::fromStdString(RemoveError.message()));
+                                LOG_ERROR(RemoveError.message_qstr());
 
                             SuccessfullyAdded.pop_back(); // Выкидываем удалённый UUID
                         }
@@ -718,7 +718,7 @@ hmcommon::error_code HMJsonDataStorage::clearGroupUsers(const QUuid& inGroupUUID
                         hmcommon::error_code AddError = addGroupUser(inGroupUUID, SuccessfullyRemoved.back()); // Возвращаем удалённую связь
 
                         if (!AddError) // Ошибку добавления обрабатываем отдельно
-                            LOG_ERROR(QString::fromStdString(AddError.message()));
+                            LOG_ERROR(AddError.message_qstr());
 
                         SuccessfullyRemoved.pop_back(); // Выкидываем восстановленный UUID
                     }
@@ -806,7 +806,7 @@ hmcommon::error_code HMJsonDataStorage::updateMessage(const std::shared_ptr<hmco
                 hmcommon::error_code ValidError = m_validator.checkMessage(MessageObject); // Проверяем валидность объекта сообщения
                 if (ValidError)
                 {
-                    LOG_WARNING(QString::fromStdString(ValidError.message()));
+                    LOG_WARNING(ValidError.message_qstr());
                     return false; // Повреждённное сообщение игнорируется
                 }
                 else
@@ -844,7 +844,7 @@ std::shared_ptr<hmcommon::HMGroupInfoMessage> HMJsonDataStorage::findMessage(con
             hmcommon::error_code ValidError = m_validator.checkMessage(MessageObject); // Проверяем валидность объекта сообщения
             if (ValidError)
             {
-                LOG_WARNING(QString::fromStdString(ValidError.message()));
+                LOG_WARNING(ValidError.message_qstr());
                 return false; // Повреждённное сообщение игнорируется
             }
             else
@@ -885,7 +885,7 @@ std::vector<std::shared_ptr<hmcommon::HMGroupInfoMessage>> HMJsonDataStorage::fi
             hmcommon::error_code ValidError = m_validator.checkMessage(MessageObject); // Проверяем валидность объекта сообщения
             if (ValidError)
             {
-                LOG_WARNING(QString::fromStdString(ValidError.message()));
+                LOG_WARNING(ValidError.message_qstr());
                 FRes = false; // Повреждённное сообщение игнорируется
             }
             else
@@ -914,7 +914,7 @@ std::vector<std::shared_ptr<hmcommon::HMGroupInfoMessage>> HMJsonDataStorage::fi
                 std::shared_ptr<hmcommon::HMGroupInfoMessage> MSG = jsonToMessage(Message.value(), ConvertErr); // Преобразуем объект в сообщение
 
                 if (ConvertErr)
-                    LOG_WARNING(QString::fromStdString(ConvertErr.message()));
+                    LOG_WARNING(ConvertErr.message_qstr());
                 else
                     Result.push_back(MSG); // Помещаем сообщение в итоговый контейнер
             }
@@ -946,7 +946,7 @@ hmcommon::error_code HMJsonDataStorage::removeMessage(const QUuid& inMessageUUID
             hmcommon::error_code ValidError = m_validator.checkMessage(MessageObject); // Проверяем валидность объекта сообщения
             if (ValidError)
             {
-                LOG_WARNING(QString::fromStdString(ValidError.message()));
+                LOG_WARNING(ValidError.message_qstr());
                 return false; // Повреждённное сообщение игнорируется
             }
             else
@@ -978,7 +978,7 @@ nlohmann::json& HMJsonDataStorage::findUser(const QUuid &inUserUUID, hmcommon::e
             hmcommon::error_code ValidError = m_validator.checkUser(UserObject); // Проверяем валидность объекта пользователя
             if (ValidError)
             {
-                LOG_WARNING(QString::fromStdString(ValidError.message()));
+                LOG_WARNING(ValidError.message_qstr());
                 return false; // Повреждённый пользователь игнорируется
             }
             else
@@ -1009,7 +1009,7 @@ const nlohmann::json& HMJsonDataStorage::findConstUser(const QUuid &inUserUUID, 
             hmcommon::error_code ValidError = m_validator.checkUser(UserObject); // Проверяем валидность объекта пользователя
             if (ValidError)
             {
-                LOG_WARNING(QString::fromStdString(ValidError.message()));
+                LOG_WARNING(ValidError.message_qstr());
                 return false; // Повреждённый пользователь игнорируется
             }
             else
@@ -1040,7 +1040,7 @@ nlohmann::json& HMJsonDataStorage::findGroup(const QUuid &inGroupUUID, hmcommon:
             hmcommon::error_code ValidError = m_validator.checkGroup(GroupObject); // Проверяем валидность объекта группы
             if (ValidError)
             {
-                LOG_WARNING(QString::fromStdString(ValidError.message()));
+                LOG_WARNING(ValidError.message_qstr());
                 return false; // Повреждённая группа игнорируется
             }
             else
@@ -1071,7 +1071,7 @@ const nlohmann::json& HMJsonDataStorage::findConstGroup(const QUuid &inGroupUUID
             hmcommon::error_code ValidError = m_validator.checkGroup(GroupObject); // Проверяем валидность объекта группы
             if (ValidError)
             {
-                LOG_WARNING(QString::fromStdString(ValidError.message()));
+                LOG_WARNING(ValidError.message_qstr());
                 return false; // Повреждённая группа игнорируется
             }
             else
@@ -1114,7 +1114,7 @@ hmcommon::error_code HMJsonDataStorage::onRemoveUser(const QUuid &inUserUUID)
     std::shared_ptr<std::set<QUuid>> ContactList = getUserContactList(inUserUUID, Error); // Получаем список контактов
 
     if (Error) // Если не удалось получить список контактов
-        LOG_WARNING(QString::fromStdString(Error.message()));
+        LOG_WARNING(Error.message_qstr());
     else // Список контактов успешно плучен
     {
         for (const QUuid& ContactUUID : *ContactList) // Перебираем все контакты пользователя
@@ -1134,7 +1134,7 @@ hmcommon::error_code HMJsonDataStorage::onRemoveUser(const QUuid &inUserUUID)
             {
                 GroupRemoveError = removeGroupUser(GroupUuid, inUserUUID); // Удаляем пользователя их группы
                 if (GroupRemoveError) // Ошибки удаления обрабатываем отдельно
-                    LOG_WARNING(QString::fromStdString(GroupRemoveError.message()));
+                    LOG_WARNING(GroupRemoveError.message_qstr());
             }
         }
     }

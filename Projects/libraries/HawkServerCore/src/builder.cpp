@@ -17,7 +17,7 @@ HMBuilder::HMBuilder(const std::shared_ptr<datastorage::HMDataStorage> inStorage
         hmcommon::error_code Error = m_storage->open(); // Пытаемся открыть самостоятельно
 
         if (Error)
-            LOG_WARNING(QString::fromStdString(Error.message()));
+            LOG_WARNING(Error.message_qstr());
     }
 }
 //-----------------------------------------------------------------------------
@@ -44,7 +44,7 @@ std::shared_ptr<hmcommon::HMGroup> HMBuilder::buildGroup(const QUuid& inGroupUUI
                 {
                     hmcommon::error_code AddError = Result->m_users.add(UserInfo); // Добавляем участника
                     if (!AddError)
-                        LOG_ERROR(QString::fromStdString(AddError.message()));
+                        LOG_ERROR(AddError.message_qstr());
                 }
             }
         }
@@ -79,7 +79,7 @@ std::shared_ptr<hmcommon::HMUser> HMBuilder::buildUser(const QUuid& inUserUUID, 
                 {
                     hmcommon::error_code AddError = Result->m_contacts.add(UserInfo); // Добавляем контакт
                     if (!AddError)
-                        LOG_ERROR(QString::fromStdString(AddError.message()));
+                        LOG_ERROR(AddError.message_qstr());
                 }
             }
 
@@ -99,7 +99,7 @@ std::shared_ptr<hmcommon::HMUser> HMBuilder::buildUser(const QUuid& inUserUUID, 
                         {
                             hmcommon::error_code AddError = Result->m_groups.add(Group); // Добавляем группу
                             if (!AddError)
-                                LOG_ERROR(QString::fromStdString(AddError.message()));
+                                LOG_ERROR(AddError.message_qstr());
                         }
                     }
                 }

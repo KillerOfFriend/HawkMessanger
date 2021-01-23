@@ -72,7 +72,7 @@ hmcommon::error_code HMCombinedDataStorage::addUser(const std::shared_ptr<hmcomm
             {
                 hmcommon::error_code CacheError = m_CacheStorage->addUser(inUser); // Добавляем пользователя в кеш
                 if (CacheError) // Ошибки кеша обрабатывам отдельно
-                    LOG_WARNING(QString::fromStdString(CacheError.message()));
+                    LOG_WARNING(CacheError.message_qstr());
             }
         }
     }
@@ -101,7 +101,7 @@ hmcommon::error_code HMCombinedDataStorage::updateUser(const std::shared_ptr<hmc
                 {
                     CacheError = m_CacheStorage->addUser(inUser); // Добавляем в кеш обновлённый объект
                     if (CacheError) // Если и добавление не прошло то обрабатываем ошибку отдельно
-                        LOG_WARNING(QString::fromStdString(CacheError.message()));
+                        LOG_WARNING(CacheError.message_qstr());
                 }
             }
         }
@@ -125,7 +125,7 @@ std::shared_ptr<hmcommon::HMUserInfo> HMCombinedDataStorage::findUserByUUID(cons
         {
             Result = m_CacheStorage->findUserByUUID(inUserUUID, CacheError); // Сначала ищим пользователя в кеше
             if (CacheError && CacheError.value() != static_cast<int32_t>(eDataStorageError::dsUserNotExists)) // Если ошибка отличается от "объект не найден"
-                 LOG_WARNING(QString::fromStdString(CacheError.message())); // Пишим её в лог
+                 LOG_WARNING(CacheError.message_qstr()); // Пишим её в лог
         }
 
         if (CacheError) // Если в кеше не удалось найти пользователя
@@ -136,7 +136,7 @@ std::shared_ptr<hmcommon::HMUserInfo> HMCombinedDataStorage::findUserByUUID(cons
             {   // Добавим его в кеш
                 CacheError = m_CacheStorage->addUser(Result);
                 if (CacheError) // Ошибки кеша обрабатывам отдельно
-                    LOG_WARNING(QString::fromStdString(CacheError.message()));
+                    LOG_WARNING(CacheError.message_qstr());
             }
         }   // Поиск в самом хранилище
 
@@ -162,7 +162,7 @@ std::shared_ptr<hmcommon::HMUserInfo> HMCombinedDataStorage::findUserByAuthentic
         {
             Result = m_CacheStorage->findUserByAuthentication(inLogin, inPasswordHash, CacheError); // Сначала ищим пользователя в кеше
             if (CacheError && CacheError.value() != static_cast<int32_t>(eDataStorageError::dsUserNotExists)) // Если ошибка отличается от "объект не найден"
-                 LOG_WARNING(QString::fromStdString(CacheError.message())); // Пишим её в лог
+                 LOG_WARNING(CacheError.message_qstr()); // Пишим её в лог
         }
 
         if (CacheError.value() != static_cast<int32_t>(eDataStorageError::dsUserPasswordIncorrect)) // Если просто не совпал пароль
@@ -177,7 +177,7 @@ std::shared_ptr<hmcommon::HMUserInfo> HMCombinedDataStorage::findUserByAuthentic
                 {   // Добавим его в кеш
                     CacheError = m_CacheStorage->addUser(Result);
                     if (CacheError) // Ошибки кеша обрабатывам отдельно
-                        LOG_WARNING(QString::fromStdString(CacheError.message()));
+                        LOG_WARNING(CacheError.message_qstr());
                 }
             }   // Поиск в самом хранилище
         }
@@ -203,7 +203,7 @@ hmcommon::error_code HMCombinedDataStorage::removeUser(const QUuid& inUserUUID)
         {
             hmcommon::error_code CacheError = m_CacheStorage->removeUser(inUserUUID); // Удаляем пользователя из кеша
             if (CacheError) // Ошибки кеша обрабатывам отдельно
-                LOG_WARNING(QString::fromStdString(CacheError.message()));
+                LOG_WARNING(CacheError.message_qstr());
         }
     }
 
@@ -228,7 +228,7 @@ hmcommon::error_code HMCombinedDataStorage::setUserContacts(const QUuid& inUserU
             {
                 hmcommon::error_code CacheError = m_CacheStorage->setUserContacts(inUserUUID, inContacts); // Добавляем связь в кеш
                 if (CacheError) // Ошибки кеша обрабатывам отдельно
-                    LOG_WARNING(QString::fromStdString(CacheError.message()));
+                    LOG_WARNING(CacheError.message_qstr());
             }
         }
     }
@@ -250,7 +250,7 @@ hmcommon::error_code HMCombinedDataStorage::addUserContact(const QUuid& inUserUU
         {
             hmcommon::error_code CacheError = m_CacheStorage->addUserContact(inUserUUID, inContactUUID); // Добавляем контакт в связь в кеше
             if (CacheError) // Ошибки кеша обрабатывам отдельно
-                LOG_WARNING(QString::fromStdString(CacheError.message()));
+                LOG_WARNING(CacheError.message_qstr());
         }
     }
 
@@ -271,7 +271,7 @@ hmcommon::error_code HMCombinedDataStorage::removeUserContact(const QUuid& inUse
         {
             hmcommon::error_code CacheError = m_CacheStorage->removeUserContact(inUserUUID, inContactUUID); // Удаляем контакт из связи в кеше
             if (CacheError) // Ошибки кеша обрабатывам отдельно
-                LOG_WARNING(QString::fromStdString(CacheError.message()));
+                LOG_WARNING(CacheError.message_qstr());
         }
     }
 
@@ -292,7 +292,7 @@ hmcommon::error_code HMCombinedDataStorage::clearUserContacts(const QUuid& inUse
         {
             hmcommon::error_code CacheError = m_CacheStorage->clearUserContacts(inUserUUID); // Удаляем связь в кеше
             if (CacheError) // Ошибки кеша обрабатывам отдельно
-                LOG_WARNING(QString::fromStdString(CacheError.message()));
+                LOG_WARNING(CacheError.message_qstr());
         }
     }
 
@@ -314,7 +314,7 @@ std::shared_ptr<std::set<QUuid>> HMCombinedDataStorage::getUserContactList(const
         {
             Result = m_CacheStorage->getUserContactList(inUserUUID, CacheError); // Сначала ищим сообщения в кеше
             if (CacheError && CacheError.value() != static_cast<int32_t>(eDataStorageError::dsUserContactRelationNotExists)) // Если ошибка отличается от "объект не найден"
-                 LOG_WARNING(QString::fromStdString(CacheError.message())); // Пишим её в лог
+                 LOG_WARNING(CacheError.message_qstr()); // Пишим её в лог
         }
 
         if (CacheError) // Если в кеше не удалось найти связь
@@ -325,7 +325,7 @@ std::shared_ptr<std::set<QUuid>> HMCombinedDataStorage::getUserContactList(const
             {
                 CacheError = m_CacheStorage->setUserContacts(inUserUUID, Result); // Добавим его в кеш
                 if (CacheError) // Ошибки кеша обрабатывам отдельно
-                    LOG_WARNING(QString::fromStdString(CacheError.message()));
+                    LOG_WARNING(CacheError.message_qstr());
             }
         }   // Поиск в самом хранилище
 
@@ -351,7 +351,7 @@ std::shared_ptr<std::set<QUuid>> HMCombinedDataStorage::getUserGroups(const QUui
         {
             Result = m_CacheStorage->getUserGroups(inUserUUID, CacheError); // Сначала ищим сообщения в кеше
             if (CacheError && CacheError.value() != static_cast<int32_t>(eDataStorageError::dsUserGroupsRelationNotExists)) // Если ошибка отличается от "объект не найден"
-                 LOG_WARNING(QString::fromStdString(CacheError.message())); // Пишим её в лог
+                 LOG_WARNING(CacheError.message_qstr()); // Пишим её в лог
         }
 
         if (CacheError) // Если в кеше не удалось найти связь
@@ -387,7 +387,7 @@ hmcommon::error_code HMCombinedDataStorage::addGroup(const std::shared_ptr<hmcom
             {
                 hmcommon::error_code CacheError = m_CacheStorage->addGroup(inGroup); // Добавляем группу в кеш
                 if (CacheError) // Ошибки кеша обрабатывам отдельно
-                    LOG_WARNING(QString::fromStdString(CacheError.message()));
+                    LOG_WARNING(CacheError.message_qstr());
             }
         }
     }
@@ -416,7 +416,7 @@ hmcommon::error_code HMCombinedDataStorage::updateGroup(const std::shared_ptr<hm
                 {
                     CacheError = m_CacheStorage->addGroup(inGroup); // То добавляем в кеш уже обновлённый объект
                     if (CacheError) // Если и добавление не прошло
-                        LOG_WARNING(QString::fromStdString(CacheError.message())); // Обрабатываем ошибку
+                        LOG_WARNING(CacheError.message_qstr()); // Обрабатываем ошибку
                 }
             }
         }
@@ -440,7 +440,7 @@ std::shared_ptr<hmcommon::HMGroupInfo> HMCombinedDataStorage::findGroupByUUID(co
         {
             Result = m_CacheStorage->findGroupByUUID(inGroupUUID, CacheError); // Сначала ищим пользователя в кеше
             if (CacheError && CacheError.value() != static_cast<int32_t>(eDataStorageError::dsGroupNotExists)) // Если ошибка отличается от "объект не найден"
-                 LOG_WARNING(QString::fromStdString(CacheError.message())); // Пишим её в лог
+                 LOG_WARNING(CacheError.message_qstr()); // Пишим её в лог
         }
 
         if (CacheError) // Если в кеше не удалось найти группу
@@ -451,7 +451,7 @@ std::shared_ptr<hmcommon::HMGroupInfo> HMCombinedDataStorage::findGroupByUUID(co
             {   // Добавим её в кеш
                 CacheError = m_CacheStorage->addGroup(Result);
                 if (CacheError) // Ошибки кеша обрабатывам отдельно
-                    LOG_WARNING(QString::fromStdString(CacheError.message()));
+                    LOG_WARNING(CacheError.message_qstr());
             }
         }   // Поиск в самом хранилище
 
@@ -476,7 +476,7 @@ hmcommon::error_code HMCombinedDataStorage::removeGroup(const QUuid& inGroupUUID
         {
             hmcommon::error_code CacheError = m_CacheStorage->removeGroup(inGroupUUID); // Удаляем группу из кеша
             if (CacheError) // Ошибки кеша обрабатывам отдельно
-                LOG_WARNING(QString::fromStdString(CacheError.message()));
+                LOG_WARNING(CacheError.message_qstr());
         }
     }
 
@@ -497,7 +497,7 @@ hmcommon::error_code HMCombinedDataStorage::setGroupUsers(const QUuid& inGroupUU
         {
             hmcommon::error_code CacheError = m_CacheStorage->setGroupUsers(inGroupUUID, inUsers); // Добавляем связь в кеш
             if (CacheError) // Ошибки кеша обрабатывам отдельно
-                LOG_WARNING(QString::fromStdString(CacheError.message()));
+                LOG_WARNING(CacheError.message_qstr());
         }
     }
 
@@ -518,7 +518,7 @@ hmcommon::error_code HMCombinedDataStorage::addGroupUser(const QUuid& inGroupUUI
         {
             hmcommon::error_code CacheError = m_CacheStorage->addGroupUser(inGroupUUID, inUserUUID); // Добавляем пользователя в связь в кеше
             if (CacheError) // Ошибки кеша обрабатывам отдельно
-                LOG_WARNING(QString::fromStdString(CacheError.message()));
+                LOG_WARNING(CacheError.message_qstr());
         }
     }
 
@@ -539,7 +539,7 @@ hmcommon::error_code HMCombinedDataStorage::removeGroupUser(const QUuid& inGroup
         {
             hmcommon::error_code CacheError = m_CacheStorage->removeGroupUser(inGroupUUID, inUserUUID); // Удаляем контакт из связи в кеше
             if (CacheError) // Ошибки кеша обрабатывам отдельно
-                LOG_WARNING(QString::fromStdString(CacheError.message()));
+                LOG_WARNING(CacheError.message_qstr());
         }
     }
 
@@ -560,7 +560,7 @@ hmcommon::error_code HMCombinedDataStorage::clearGroupUsers(const QUuid& inGroup
         {
             hmcommon::error_code CacheError = m_CacheStorage->clearGroupUsers(inGroupUUID); // Удаляем связь в кеше
             if (CacheError) // Ошибки кеша обрабатывам отдельно
-                LOG_WARNING(QString::fromStdString(CacheError.message()));
+                LOG_WARNING(CacheError.message_qstr());
         }
     }
 
@@ -582,7 +582,7 @@ std::shared_ptr<std::set<QUuid>> HMCombinedDataStorage::getGroupUserList(const Q
         {
             Result = m_CacheStorage->getGroupUserList(inGroupUUID, CacheError); // Сначала ищим сообщения в кеше
             if (CacheError && CacheError.value() != static_cast<int32_t>(eDataStorageError::dsGroupUserRelationNotExists)) // Если ошибка отличается от "объект не найден"
-                 LOG_WARNING(QString::fromStdString(CacheError.message())); // Пишим её в лог
+                 LOG_WARNING(CacheError.message_qstr()); // Пишим её в лог
         }
 
         if (CacheError) // Если в кеше не удалось найти связь
@@ -593,7 +593,7 @@ std::shared_ptr<std::set<QUuid>> HMCombinedDataStorage::getGroupUserList(const Q
             {
                 CacheError = m_CacheStorage->setGroupUsers(inGroupUUID, Result); // Добавим его в кеш
                 if (CacheError) // Ошибки кеша обрабатывам отдельно
-                    LOG_WARNING(QString::fromStdString(CacheError.message()));
+                    LOG_WARNING(CacheError.message_qstr());
             }
         }   // Поиск в самом хранилище
 
@@ -622,7 +622,7 @@ hmcommon::error_code HMCombinedDataStorage::addMessage(const std::shared_ptr<hmc
             {
                 hmcommon::error_code CacheError = m_CacheStorage->addMessage(inMessage); // Добавляем сообщение в кеш
                 if (CacheError) // Ошибки кеша обрабатывам отдельно
-                    LOG_WARNING(QString::fromStdString(CacheError.message()));
+                    LOG_WARNING(CacheError.message_qstr());
             }
         }
     }
@@ -648,7 +648,7 @@ hmcommon::error_code HMCombinedDataStorage::updateMessage(const std::shared_ptr<
             {
                 hmcommon::error_code CacheError = m_CacheStorage->updateMessage(inMessage); // Обновляем данные о сообщение в кеше
                 if (CacheError) // Ошибки кеша обрабатывам отдельно
-                    LOG_WARNING(QString::fromStdString(CacheError.message()));
+                    LOG_WARNING(CacheError.message_qstr());
             }
         }
     }
@@ -671,7 +671,7 @@ std::shared_ptr<hmcommon::HMGroupInfoMessage> HMCombinedDataStorage::findMessage
         {
             Result = m_CacheStorage->findMessage(inMessageUUID, CacheError); // Сначала ищим сообщение в кеше
             if (CacheError && CacheError.value() != static_cast<int32_t>(eDataStorageError::dsMessageNotExists)) // Если ошибка отличается от "объект не найден"
-                 LOG_WARNING(QString::fromStdString(CacheError.message())); // Пишим её в лог
+                 LOG_WARNING(CacheError.message_qstr()); // Пишим её в лог
         }
 
         if (CacheError) // Если в кеше не удалось найти сообщение
@@ -682,7 +682,7 @@ std::shared_ptr<hmcommon::HMGroupInfoMessage> HMCombinedDataStorage::findMessage
             {   // Добавим его в кеш
                 CacheError = m_CacheStorage->addMessage(Result);
                 if (CacheError) // Ошибки кеша обрабатывам отдельно
-                    LOG_WARNING(QString::fromStdString(CacheError.message()));
+                    LOG_WARNING(CacheError.message_qstr());
             }
         }   // Поиск в самом хранилище
 
@@ -708,7 +708,7 @@ std::vector<std::shared_ptr<hmcommon::HMGroupInfoMessage>> HMCombinedDataStorage
         {
             Result = m_CacheStorage->findMessages(inGroupUUID, inRange, CacheError); // Сначала ищим сообщения в кеше
             if (CacheError && CacheError.value() != static_cast<int32_t>(eDataStorageError::dsMessageNotExists)) // Если ошибка отличается от "объект не найден"
-                 LOG_WARNING(QString::fromStdString(CacheError.message())); // Пишим её в лог
+                 LOG_WARNING(CacheError.message_qstr()); // Пишим её в лог
         }
 
         if (CacheError) // Если в кеше не удалось найти сообщения
@@ -721,7 +721,7 @@ std::vector<std::shared_ptr<hmcommon::HMGroupInfoMessage>> HMCombinedDataStorage
                 {
                     CacheError = m_CacheStorage->addMessage(Message);
                     if (CacheError) // Ошибки кеша обрабатывам отдельно
-                        LOG_WARNING(QString::fromStdString(CacheError.message()));
+                        LOG_WARNING(CacheError.message_qstr());
                 }
             }
         }   // Поиск в самом хранилище
@@ -747,7 +747,7 @@ hmcommon::error_code HMCombinedDataStorage::removeMessage(const QUuid& inMessage
         {
             hmcommon::error_code CacheError = m_CacheStorage->removeMessage(inMessageUUID, inGroupUUID); // Удаляем сообщение из кеша
             if (CacheError) // Ошибки кеша обрабатывам отдельно
-                LOG_WARNING(QString::fromStdString(CacheError.message()));
+                LOG_WARNING(CacheError.message_qstr());
         }
     }
 

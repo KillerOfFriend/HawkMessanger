@@ -14,7 +14,7 @@ HMServerCore::HMServerCore()
     hmcommon::error_code Error = m_dataStorage->open(); // Пытаемся открыть хранилище
 
     if (Error)
-        LOG_ERROR(QString::fromStdString(Error.message()));
+        LOG_ERROR(Error.message_qstr());
 
 //    m_accountBuilder = std::make_unique<builders::HMAccountBuilder>(m_dataStorage); // Формируем билдер и передаём в него хранилище
 }
