@@ -8,44 +8,41 @@
 
 #include <string>
 
-#include <QObject>
-
 #include "errorcode.h"
+#include "categoryconst.h"
 
 namespace errors
 {
-//-----------------------------------------------------------------------------
-static const std::int32_t C_SYSTEMERROR_START = 200; ///< Начальное значение расширеных ошибок
 //-----------------------------------------------------------------------------
 /**
  * @brief The eSystemErrorEx enum - Перечень расширеных системных ошибок
  */
 enum class eSystemErrorEx
 {
-    seSuccess = 0,                      ///< 0 Не явялется ошибкой
+    seSuccess = C_SUCCESS,                          ///< 0 Не явялется ошибкой
 
-    seInvalidPtr = C_SYSTEMERROR_START, ///< Не валидный указатель
-    seIncorrecVersion,                  ///< Не корректная версия
-    seIncorretData,                     ///< Не корректные данные
-    seOperationNotSupported,            ///< Операция не поддерживается
+    seInvalidPtr = C_CATEGORY_SYSTEMERROREX_START,  ///< Не валидный указатель
+    seIncorrecVersion,                              ///< Не корректная версия
+    seIncorretData,                                 ///< Не корректные данные
+    seOperationNotSupported,                        ///< Операция не поддерживается
 
-    seInputOperationFail,               ///< Операция ввода прошла с ошибкой
-    seOutputOperationFail,              ///< Операция вывода прошла с ошибкой
+    seInputOperationFail,                           ///< Операция ввода прошла с ошибкой
+    seOutputOperationFail,                          ///< Операция вывода прошла с ошибкой
 
-    seFileNotExists,                    ///< Файл не существует
-    seDirNotExists,                     ///< Директория не существует
-    seObjectNotFile,                    ///< Объект не является файлом
-    seObjectNotDir,                     ///< Объект не является директорией
-    seFileNotOpen,                      ///< Файл не открыт
-    seOpenFileFail,                     ///< Не удалось открыть файл
-    seReadFileFail,                     ///< Ошибка при чтении файла
+    seFileNotExists,                                ///< Файл не существует
+    seDirNotExists,                                 ///< Директория не существует
+    seObjectNotFile,                                ///< Объект не является файлом
+    seObjectNotDir,                                 ///< Объект не является директорией
+    seFileNotOpen,                                  ///< Файл не открыт
+    seOpenFileFail,                                 ///< Не удалось открыть файл
+    seReadFileFail,                                 ///< Ошибка при чтении файла
 
-    seContainerEmpty,                   ///< Контейнер пуст
-    seNotInContainer,                   ///< Объект не в контейнере
-    seAlredyInContainer,                ///< Объект уже в контейнере
-    seIndexOutOfContainerRange,         ///< Индекс за пределами контейнера
+    seContainerEmpty,                               ///< Контейнер пуст
+    seNotInContainer,                               ///< Объект не в контейнере
+    seAlredyInContainer,                            ///< Объект уже в контейнере
+    seIndexOutOfContainerRange,                     ///< Индекс за пределами контейнера
 
-    seCount
+    seCount                                         ///< Количество
 };
 //---------------------------------------------------------------------------
 /**
@@ -54,9 +51,8 @@ enum class eSystemErrorEx
  * @authors Alekseev_s
  * @date 21.11.2020
  */
-class SystemErrorExCategory : public QObject, public std::error_category
+class SystemErrorExCategory : public std::error_category
 {
-    Q_OBJECT
 public:
 
     /**

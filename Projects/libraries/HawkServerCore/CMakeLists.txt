@@ -23,8 +23,9 @@ set(CMAKE_AUTOMOC ON)       # Автоматическая компиляция 
 #====================================================================
 # Формируем список используемых библиотек
 set(LINCED_LIBRARYES
-    HawkCommon
     HawkLog
+    HawkCommon
+    HawkNet
 
     # Qt6::Core подтягивается от HawkCommon
     )
@@ -33,8 +34,10 @@ set(LINCED_LIBRARYES
 set(INCLUDE_DIRS
     ${CMAKE_CURRENT_SOURCE_DIR}/src/        # Подключаем собственный корневой каталог
     ${DIR_THIRDPARTY_PATH}/HPP/json/include # Подключаем библиотеку JSON
-    ${LIBRARIES_PATH}/HawkCommon/src        # Подключаем общую библиотеку
+
     ${LIBRARIES_PATH}/HawkLog/src           # Подключаем библиотеку логирования
+    ${LIBRARIES_PATH}/HawkCommon/src        # Подключаем общую библиотеку
+    ${LIBRARIES_PATH}/HawkNet/src           # Подключаем сетевую библиотеку
     )
 #====================================================================
 # Собираем динамическую библиотеку

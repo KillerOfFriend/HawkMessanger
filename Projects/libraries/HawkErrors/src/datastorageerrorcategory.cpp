@@ -3,17 +3,14 @@
 using namespace errors;
 
 //-----------------------------------------------------------------------------
-DataStorageErrorCategory::DataStorageErrorCategory() :
-    QObject(nullptr),
-    std::error_category()
+DataStorageErrorCategory::DataStorageErrorCategory() : std::error_category()
 {
 
 }
 //-----------------------------------------------------------------------------
 const char* DataStorageErrorCategory::name() const noexcept
 {
-    static const std::string CategoryName = tr("Ошибки хранилища данных").toStdString();
-    return CategoryName.c_str();
+    return C_CATEGORY_DATASTORAGE_NAME.c_str();
 }
 //-----------------------------------------------------------------------------
 std::string DataStorageErrorCategory::message(int inCode) const
@@ -22,50 +19,50 @@ std::string DataStorageErrorCategory::message(int inCode) const
 
     switch (static_cast<eDataStorageError>(inCode))
     {
-        case eDataStorageError::dsSuccess:                          { Result = tr("Успех").toStdString(); break; }
+        case eDataStorageError::dsSuccess:                          { Result = C_ERROR_SUCESS_TEXT; break; }
 
-        case eDataStorageError::dsNotOpen:                          { Result = tr("Хранилище не открыто").toStdString(); break; }
+        case eDataStorageError::dsNotOpen:                          { Result = "Хранилище не открыто"; break; }
 
-        case eDataStorageError::dsUserLoginAlreadyRegistered:       { Result = tr("Пользователь с таким логином уже зарегистрирован").toStdString(); break; }
-        case eDataStorageError::dsUserPasswordIncorrect:            { Result = tr("Не верный пароль").toStdString(); break; }
-        case eDataStorageError::dsUserNotExists:                    { Result = tr("Пользователь не существует").toStdString(); break; }
-        case eDataStorageError::dsUserAlreadyExists:                { Result = tr("Пользователь уже существует").toStdString(); break; }
-        case eDataStorageError::dsUserUUIDCorrupted:                { Result = tr("UUID пользователя повреждён").toStdString(); break; }
-        case eDataStorageError::dsUserRegistrationDateCorrupted:    { Result = tr("Дата регистрации пользователя повреждена").toStdString(); break; }
-        case eDataStorageError::dsUserLoginCorrupted:               { Result = tr("Логин пользователя повреждён").toStdString(); break; }
-        case eDataStorageError::dsUserPasswordHashCorrupted:        { Result = tr("Хеш пароля пользователя повреждён").toStdString(); break; }
-        case eDataStorageError::dsUserNameCorrupted:                { Result = tr("Имя пользователя повреждено").toStdString(); break; }
-        case eDataStorageError::dsUserSexCorrupted:                 { Result = tr("Пол пользователя повреждён").toStdString(); break; }
-        case eDataStorageError::dsUserBirthdayCorrupted:            { Result = tr("День рождения пользователя повреждён").toStdString(); break; }
-        case eDataStorageError::dsUserContactsCorrupted:            { Result = tr("Контакты пользователя повреждены").toStdString(); break; }
-        case eDataStorageError::dsUserGroupsCorrupted:              { Result = tr("Группы пользователя повреждены").toStdString(); break; }
-        case eDataStorageError::dsUserContactRelationAlredyExists:  { Result = tr("Связь пользователь-контакт уже существует").toStdString(); break; }
-        case eDataStorageError::dsUserContactRelationNotExists:     { Result = tr("Связь пользователь-контакт не существует").toStdString(); break; }
-        case eDataStorageError::dsUserContactAlredyExists:          { Result = tr("Контакт пользователя уже существует").toStdString(); break; }
-        case eDataStorageError::dsUserContactNotExists:             { Result = tr("Контакт пользователя не существует").toStdString(); break; }
-        case eDataStorageError::dsUserGroupsRelationAlredyExists:   { Result = tr("Связь пользователь-группы уже существует").toStdString(); break; }
-        case eDataStorageError::dsUserGroupsRelationNotExists:      { Result = tr("Связь пользователь-группы не существует").toStdString(); break; }
+        case eDataStorageError::dsUserLoginAlreadyRegistered:       { Result = "Пользователь с таким логином уже зарегистрирован"; break; }
+        case eDataStorageError::dsUserPasswordIncorrect:            { Result = "Не верный пароль"; break; }
+        case eDataStorageError::dsUserNotExists:                    { Result = "Пользователь не существует"; break; }
+        case eDataStorageError::dsUserAlreadyExists:                { Result = "Пользователь уже существует"; break; }
+        case eDataStorageError::dsUserUUIDCorrupted:                { Result = "UUID пользователя повреждён"; break; }
+        case eDataStorageError::dsUserRegistrationDateCorrupted:    { Result = "Дата регистрации пользователя повреждена"; break; }
+        case eDataStorageError::dsUserLoginCorrupted:               { Result = "Логин пользователя повреждён"; break; }
+        case eDataStorageError::dsUserPasswordHashCorrupted:        { Result = "Хеш пароля пользователя повреждён"; break; }
+        case eDataStorageError::dsUserNameCorrupted:                { Result = "Имя пользователя повреждено"; break; }
+        case eDataStorageError::dsUserSexCorrupted:                 { Result = "Пол пользователя повреждён"; break; }
+        case eDataStorageError::dsUserBirthdayCorrupted:            { Result = "День рождения пользователя повреждён"; break; }
+        case eDataStorageError::dsUserContactsCorrupted:            { Result = "Контакты пользователя повреждены"; break; }
+        case eDataStorageError::dsUserGroupsCorrupted:              { Result = "Группы пользователя повреждены"; break; }
+        case eDataStorageError::dsUserContactRelationAlredyExists:  { Result = "Связь пользователь-контакт уже существует"; break; }
+        case eDataStorageError::dsUserContactRelationNotExists:     { Result = "Связь пользователь-контакт не существует"; break; }
+        case eDataStorageError::dsUserContactAlredyExists:          { Result = "Контакт пользователя уже существует"; break; }
+        case eDataStorageError::dsUserContactNotExists:             { Result = "Контакт пользователя не существует"; break; }
+        case eDataStorageError::dsUserGroupsRelationAlredyExists:   { Result = "Связь пользователь-группы уже существует"; break; }
+        case eDataStorageError::dsUserGroupsRelationNotExists:      { Result = "Связь пользователь-группы не существует"; break; }
 
-        case eDataStorageError::dsGroupUUIDAlreadyRegistered:       { Result = tr("Группа с таким UUID уже зарегистрирована").toStdString(); break; }
-        case eDataStorageError::dsGroupNotExists:                   { Result = tr("Группа не существует").toStdString(); break; }
-        case eDataStorageError::dsGroupAlreadyExists:               { Result = tr("Группа уже существует").toStdString(); break; }
-        case eDataStorageError::dsGroupUUIDCorrupted:               { Result = tr("UUID группы повреждён").toStdString(); break; }
-        case eDataStorageError::dsGroupNameCorrupted:               { Result = tr("Имя группы повреждено").toStdString(); break; }
-        case eDataStorageError::dsGroupRegistrationDateCorrupted:   { Result = tr("Дата группы повреждена").toStdString(); break; }
-        case eDataStorageError::dsGroupUsersCorrupted:              { Result = tr("Участники группы повреждены").toStdString(); break; }
-        case eDataStorageError::dsGroupUserRelationAlredyExists:    { Result = tr("Связь группа-пользователь уже существует").toStdString(); break; }
-        case eDataStorageError::dsGroupUserRelationNotExists:       { Result = tr("Связь группа-пользователь не существует").toStdString(); break; }
+        case eDataStorageError::dsGroupUUIDAlreadyRegistered:       { Result = "Группа с таким UUID уже зарегистрирована"; break; }
+        case eDataStorageError::dsGroupNotExists:                   { Result = "Группа не существует"; break; }
+        case eDataStorageError::dsGroupAlreadyExists:               { Result = "Группа уже существует"; break; }
+        case eDataStorageError::dsGroupUUIDCorrupted:               { Result = "UUID группы повреждён"; break; }
+        case eDataStorageError::dsGroupNameCorrupted:               { Result = "Имя группы повреждено"; break; }
+        case eDataStorageError::dsGroupRegistrationDateCorrupted:   { Result = "Дата группы повреждена"; break; }
+        case eDataStorageError::dsGroupUsersCorrupted:              { Result = "Участники группы повреждены"; break; }
+        case eDataStorageError::dsGroupUserRelationAlredyExists:    { Result = "Связь группа-пользователь уже существует"; break; }
+        case eDataStorageError::dsGroupUserRelationNotExists:       { Result = "Связь группа-пользователь не существует"; break; }
 
-        case eDataStorageError::dsMessageNotExists:                 { Result = tr("Сообщение не существует").toStdString(); break; }
-        case eDataStorageError::dsMessageAlreadyExists:             { Result = tr("Сообщение уже существует").toStdString(); break; }
-        case eDataStorageError::dsMessageUUIDCorrupted:             { Result = tr("UUID сообщения повреждён").toStdString(); break; }
-        case eDataStorageError::dsMessageGroupUUIDCorrupted:        { Result = tr("UUID группы сообщения повреждён").toStdString(); break; }
-        case eDataStorageError::dsMessageRegistrationDateCorrupted: { Result = tr("Дата сообщения повреждена").toStdString(); break; }
-        case eDataStorageError::dsMessageTypeCorrupted:             { Result = tr("Тип сообщения повреждён").toStdString(); break; }
-        case eDataStorageError::dsMessageDataCorrupted:             { Result = tr("Данные сообщения повреждены").toStdString(); break; }
+        case eDataStorageError::dsMessageNotExists:                 { Result = "Сообщение не существует"; break; }
+        case eDataStorageError::dsMessageAlreadyExists:             { Result = "Сообщение уже существует"; break; }
+        case eDataStorageError::dsMessageUUIDCorrupted:             { Result = "UUID сообщения повреждён"; break; }
+        case eDataStorageError::dsMessageGroupUUIDCorrupted:        { Result = "UUID группы сообщения повреждён"; break; }
+        case eDataStorageError::dsMessageRegistrationDateCorrupted: { Result = "Дата сообщения повреждена"; break; }
+        case eDataStorageError::dsMessageTypeCorrupted:             { Result = "Тип сообщения повреждён"; break; }
+        case eDataStorageError::dsMessageDataCorrupted:             { Result = "Данные сообщения повреждены"; break; }
 
-        default: Result = ( tr("Не известная ошибка с кодом: ") + QString::number(inCode) ).toStdString();
-}
+        default: Result = C_ERROR_UNKNOWN_TEXT + std::to_string(inCode);
+    }
 
     return Result;
 }
