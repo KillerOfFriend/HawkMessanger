@@ -79,7 +79,7 @@ SYSTEMERREX_API_DECL const hmcommon::SystemErrorExCategory &hmcommon::Conversion
   return category;
 }
 //-----------------------------------------------------------------------------
-std::error_code make_error_code(hmcommon::eSystemErrorEx inErrCode)
+hmcommon::error_code make_error_code(hmcommon::eSystemErrorEx inErrCode)
 {
   return {static_cast<int>(inErrCode), hmcommon::ConversionErrc_category()};
 }

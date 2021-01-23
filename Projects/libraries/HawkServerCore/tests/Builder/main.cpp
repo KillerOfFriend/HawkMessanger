@@ -16,7 +16,7 @@ const std::filesystem::path C_JSON_PATH = std::filesystem::current_path() / "Dat
 //-----------------------------------------------------------------------------
 std::shared_ptr<HMDataStorage> make_storage()
 {
-    std::error_code Error; // Метка ошибки
+    hmcommon::error_code Error; // Метка ошибки
 
     std::shared_ptr<HMAbstractHardDataStorage> HardStorage = nullptr;
     std::shared_ptr<HMAbstractCahceDataStorage> CacheStorage = nullptr;
@@ -47,7 +47,7 @@ std::shared_ptr<hmservcommon::HMBuilder> make_builder(const std::shared_ptr<HMDa
  */
 TEST(Builder, BuildGroup)
 {
-    std::error_code Error; // Метка ошибки
+    hmcommon::error_code Error; // Метка ошибки
     std::shared_ptr<HMDataStorage> Storage = make_storage(); // Формируем хранилище данных
 
     Error = Storage->open(); // Пытаемся открыть хранилище
@@ -80,7 +80,8 @@ TEST(Builder, BuildGroup)
         Error = Storage->addUser(NewGroupUser); // Добавляеяем пользователья в хранилище
         ASSERT_FALSE(Error); // Ошибки быть не должно
 
-        Storage->addGroupUser(NewGroup->m_info->m_uuid, NewGroupUser->m_uuid); // Добавляем пользователя в группу (в хранилище)
+        Error = Storage->addGroupUser(NewGroup->m_info->m_uuid, NewGroupUser->m_uuid); // Добавляем пользователя в группу (в хранилище)
+        ASSERT_FALSE(Error); // Ошибки быть не должно
     }
     // Данные в хранилище сформированы
 
@@ -115,7 +116,7 @@ TEST(Builder, BuildGroup)
  */
 TEST(Builder, BuildUser)
 {
-    std::error_code Error; // Метка ошибки
+    hmcommon::error_code Error; // Метка ошибки
     std::shared_ptr<HMDataStorage> Storage = make_storage(); // Формируем хранилище данных
 
     Error = Storage->open(); // Пытаемся открыть хранилище

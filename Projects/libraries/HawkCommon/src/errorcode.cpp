@@ -3,6 +3,11 @@
 using namespace hmcommon;
 
 //-----------------------------------------------------------------------------
+error_code::error_code(int inCode, const std::error_category& inErrCat) : std::error_code(inCode, inErrCat)
+{
+
+}
+//-----------------------------------------------------------------------------
 error_code::error_code(const std::error_code& inOtherEC) : std::error_code(inOtherEC)
 {
 

@@ -29,7 +29,7 @@ std::unique_ptr<HMDataStorage> makeStorage(const std::chrono::milliseconds inCac
  */
 TEST(CachedMemoryDataStorage, open)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
     std::unique_ptr<HMDataStorage> CachedStorage = makeStorage(); // Создаём кеширующее хранилище
 
     Error = CachedStorage->open();
@@ -246,7 +246,7 @@ TEST(CachedMemoryDataStorage, removeMessage)
  */
 TEST(CombinedDataStorage, CacheTest)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
     std::unique_ptr<HMDataStorage> Storage = makeStorage(C_CACHE_LIFE_TIME_FAST, C_CACHE_SLEEP_FAST); // Создаём кеширующее хранилище (С короткой жизнью объектов)
 
     Error = Storage->open();

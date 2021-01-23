@@ -8,9 +8,9 @@
 using namespace hmservcommon::datastorage;
 
 //-----------------------------------------------------------------------------
-std::error_code HMJsonDataStorageValidator::checkUser(const nlohmann::json& inUserObject) const
+hmcommon::error_code HMJsonDataStorageValidator::checkUser(const nlohmann::json& inUserObject) const
 {
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (inUserObject.find(J_USER_UUID) == inUserObject.end() || inUserObject[J_USER_UUID].is_null() || inUserObject[J_USER_UUID].type() != nlohmann::json::value_t::string)
         Error = make_error_code(eDataStorageError::dsUserUUIDCorrupted);
@@ -50,9 +50,9 @@ std::error_code HMJsonDataStorageValidator::checkUser(const nlohmann::json& inUs
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMJsonDataStorageValidator::checkGroup(const nlohmann::json& inGroupObject) const
+hmcommon::error_code HMJsonDataStorageValidator::checkGroup(const nlohmann::json& inGroupObject) const
 {
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (inGroupObject.find(J_GROUP_UUID) == inGroupObject.end() || inGroupObject[J_GROUP_UUID].is_null() || inGroupObject[J_GROUP_UUID].type() != nlohmann::json::value_t::string)
         Error = make_error_code(eDataStorageError::dsGroupUUIDCorrupted);
@@ -73,9 +73,9 @@ std::error_code HMJsonDataStorageValidator::checkGroup(const nlohmann::json& inG
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMJsonDataStorageValidator::checkMessage(const nlohmann::json& inMesssageObject) const
+hmcommon::error_code HMJsonDataStorageValidator::checkMessage(const nlohmann::json& inMesssageObject) const
 {
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (inMesssageObject.find(J_MESSAGE_UUID) == inMesssageObject.end() || inMesssageObject[J_MESSAGE_UUID].is_null() || inMesssageObject[J_MESSAGE_UUID].type() != nlohmann::json::value_t::string)
         Error = make_error_code(eDataStorageError::dsMessageUUIDCorrupted);

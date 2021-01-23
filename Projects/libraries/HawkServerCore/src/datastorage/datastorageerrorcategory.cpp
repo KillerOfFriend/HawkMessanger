@@ -78,7 +78,7 @@ DATASTORAGE_API_DECL const hmservcommon::datastorage::DataStorageErrorCategory &
   return category;
 }
 //-----------------------------------------------------------------------------
-std::error_code make_error_code(hmservcommon::datastorage::eDataStorageError inErrCode)
+hmcommon::error_code make_error_code(hmservcommon::datastorage::eDataStorageError inErrCode)
 {
   return {static_cast<int>(inErrCode), hmservcommon::datastorage::ConversionErrc_category()};
 }

@@ -19,7 +19,7 @@ HMAbstractCahceDataStorage::HMAbstractCahceDataStorage(const std::chrono::millis
     std::atomic_init(&m_threadWork, false); // По умолчанию не разрешаем работу потока
 }
 //-----------------------------------------------------------------------------
-std::error_code HMAbstractCahceDataStorage::open()
+hmcommon::error_code HMAbstractCahceDataStorage::open()
 {
     return startCacheWatchdogThread(); // Запускаем поток
 }
@@ -46,7 +46,7 @@ void HMAbstractCahceDataStorage::setThreadSleep(const std::chrono::milliseconds 
 std::chrono::milliseconds HMAbstractCahceDataStorage::getThreadSleep() const
 { return m_sleep; }
 //-----------------------------------------------------------------------------
-std::error_code HMAbstractCahceDataStorage::startCacheWatchdogThread()
+hmcommon::error_code HMAbstractCahceDataStorage::startCacheWatchdogThread()
 {
     stopCacheWatchdogThread(); // Убедимся, что поток стоит
 

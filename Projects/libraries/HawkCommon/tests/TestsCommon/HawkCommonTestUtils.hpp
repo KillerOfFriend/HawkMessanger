@@ -60,7 +60,9 @@ std::shared_ptr<hmcommon::HMGroupInfoMessage> make_groupmessage(const hmcommon::
                                                             const QDateTime inCreateDate = QDateTime::currentDateTime())
 {
     std::shared_ptr<hmcommon::HMGroupInfoMessage> NewMessage = std::make_shared<hmcommon::HMGroupInfoMessage>(inUuid, inGroupUuid, inCreateDate);
-    NewMessage->setMessage(inData);
+
+    hmcommon::error_code Error = NewMessage->setMessage(inData);
+    assert(!Error);
 
     return NewMessage;
 }

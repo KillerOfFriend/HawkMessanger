@@ -52,9 +52,9 @@ HMGroupInfoMessage::HMGroupInfoMessage(const QUuid& inUuid, const QUuid& inGroup
 
 }
 //-----------------------------------------------------------------------------
-std::error_code HMGroupInfoMessage::setMessage(const MsgData& inMessageData)
+hmcommon::error_code HMGroupInfoMessage::setMessage(const MsgData& inMessageData)
 {
-    std::error_code Error = make_error_code(eSystemErrorEx::seSuccess);
+    hmcommon::error_code Error = make_error_code(eSystemErrorEx::seSuccess);
 
 
     if (inMessageData.m_type == eMsgType::mtEmpty)

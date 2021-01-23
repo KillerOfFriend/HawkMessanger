@@ -22,7 +22,7 @@ const std::chrono::milliseconds C_CACHE_LIFE_END_WAIT = C_CACHE_LIFE_TIME_FAST +
 std::unique_ptr<HMDataStorage> makeStorage(const std::chrono::milliseconds inCacheLifeTime = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::minutes(15)),
                                            const std::chrono::milliseconds inSleep = std::chrono::milliseconds(1000))
 {
-    std::error_code Error; // Метка ошибки
+    hmcommon::error_code Error; // Метка ошибки
 
     std::shared_ptr<HMAbstractHardDataStorage> HardStorage = nullptr;
     std::shared_ptr<HMAbstractCahceDataStorage> CacheStorage = nullptr;
@@ -48,7 +48,7 @@ std::unique_ptr<HMDataStorage> makeStorage(const std::chrono::milliseconds inCac
  */
 TEST(CombinedDataStorage, open)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
     std::unique_ptr<HMDataStorage> Storage = makeStorage(); // Создаём JSON хранилище с путём к файлу
 
     Error = Storage->open();
@@ -264,7 +264,7 @@ TEST(CombinedDataStorage, removeMessage)
  */
 TEST(CombinedDataStorage, CacheTest)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
     std::unique_ptr<HMDataStorage> Storage = makeStorage(C_CACHE_LIFE_TIME_FAST, C_CACHE_SLEEP_FAST); // Создаём кеширующее хранилище (С короткой жизнью объектов)
 
     Error = Storage->open();

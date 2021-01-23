@@ -2,7 +2,6 @@
 
 #include <errorcode.h>
 
-
 //-----------------------------------------------------------------------------
 /**
  * @brief TEST - Тест создания ошибки
@@ -47,7 +46,7 @@ TEST(ErrorCode, Assignment)
     Error1 = Error2; // Присвоение расширеной ошибки
     EXPECT_EQ(Error1, Error2); // Должны совпасть
 
-    std::error_code StdErr = std::make_error_code(std::errc::connection_reset);
+    hmcommon::error_code StdErr = std::make_error_code(std::errc::connection_reset);
     Error2 = StdErr; // Присвоение стандартной ошибки
     EXPECT_EQ(Error2, StdErr); // Должны совпасть
 }

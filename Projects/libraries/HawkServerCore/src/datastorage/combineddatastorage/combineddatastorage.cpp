@@ -16,9 +16,9 @@ HMCombinedDataStorage::HMCombinedDataStorage(const std::shared_ptr<HMAbstractHar
     assert(m_HardStorage != nullptr);
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::open()
+hmcommon::error_code HMCombinedDataStorage::open()
 {
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     close();
 
@@ -54,9 +54,9 @@ void HMCombinedDataStorage::close()
         m_CacheStorage->close(); // Закрываем
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::addUser(const std::shared_ptr<hmcommon::HMUserInfo> inUser)
+hmcommon::error_code HMCombinedDataStorage::addUser(const std::shared_ptr<hmcommon::HMUserInfo> inUser)
 {
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
         Error = make_error_code(eDataStorageError::dsNotOpen);
@@ -70,7 +70,7 @@ std::error_code HMCombinedDataStorage::addUser(const std::shared_ptr<hmcommon::H
 
             if (!Error && m_CacheStorage) // Если пользователь успешно добавлен в физическое хранилище и доступен кеш
             {
-                std::error_code CacheError = m_CacheStorage->addUser(inUser); // Добавляем пользователя в кеш
+                hmcommon::error_code CacheError = m_CacheStorage->addUser(inUser); // Добавляем пользователя в кеш
                 if (CacheError) // Ошибки кеша обрабатывам отдельно
                     LOG_WARNING(QString::fromStdString(CacheError.message()));
             }
@@ -80,9 +80,9 @@ std::error_code HMCombinedDataStorage::addUser(const std::shared_ptr<hmcommon::H
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::updateUser(const std::shared_ptr<hmcommon::HMUserInfo> inUser)
+hmcommon::error_code HMCombinedDataStorage::updateUser(const std::shared_ptr<hmcommon::HMUserInfo> inUser)
 {
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
         Error = make_error_code(eDataStorageError::dsNotOpen);
@@ -96,7 +96,7 @@ std::error_code HMCombinedDataStorage::updateUser(const std::shared_ptr<hmcommon
 
             if (!Error && m_CacheStorage) // Если пользователь успешно обновлён в физическое хранилище и доступен кеш
             {
-                std::error_code CacheError = m_CacheStorage->updateUser(inUser); // Обновляем данные о пользователе в кеше
+                hmcommon::error_code CacheError = m_CacheStorage->updateUser(inUser); // Обновляем данные о пользователе в кеше
                 if (CacheError) // Не удалось обновить пользователя в кеше
                 {
                     CacheError = m_CacheStorage->addUser(inUser); // Добавляем в кеш обновлённый объект
@@ -110,7 +110,7 @@ std::error_code HMCombinedDataStorage::updateUser(const std::shared_ptr<hmcommon
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMUserInfo> HMCombinedDataStorage::findUserByUUID(const QUuid &inUserUUID, std::error_code &outErrorCode) const
+std::shared_ptr<hmcommon::HMUserInfo> HMCombinedDataStorage::findUserByUUID(const QUuid &inUserUUID, hmcommon::error_code &outErrorCode) const
 {
     std::shared_ptr<hmcommon::HMUserInfo> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
@@ -119,7 +119,7 @@ std::shared_ptr<hmcommon::HMUserInfo> HMCombinedDataStorage::findUserByUUID(cons
         outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
-        std::error_code CacheError = make_error_code(eDataStorageError::dsUserNotExists); // Отдельный результат для поиска в кеше
+        hmcommon::error_code CacheError = make_error_code(eDataStorageError::dsUserNotExists); // Отдельный результат для поиска в кеше
 
         if (m_CacheStorage) // Если доступен кеш
         {
@@ -147,7 +147,7 @@ std::shared_ptr<hmcommon::HMUserInfo> HMCombinedDataStorage::findUserByUUID(cons
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMUserInfo> HMCombinedDataStorage::findUserByAuthentication(const QString &inLogin, const QByteArray &inPasswordHash, std::error_code &outErrorCode) const
+std::shared_ptr<hmcommon::HMUserInfo> HMCombinedDataStorage::findUserByAuthentication(const QString &inLogin, const QByteArray &inPasswordHash, hmcommon::error_code &outErrorCode) const
 {
     std::shared_ptr<hmcommon::HMUserInfo> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
@@ -156,7 +156,7 @@ std::shared_ptr<hmcommon::HMUserInfo> HMCombinedDataStorage::findUserByAuthentic
         outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
-        std::error_code CacheError = make_error_code(eDataStorageError::dsUserNotExists); // Отдельный результат для поиска в кеше
+        hmcommon::error_code CacheError = make_error_code(eDataStorageError::dsUserNotExists); // Отдельный результат для поиска в кеше
 
         if (m_CacheStorage) // Если доступен кеш
         {
@@ -189,9 +189,9 @@ std::shared_ptr<hmcommon::HMUserInfo> HMCombinedDataStorage::findUserByAuthentic
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::removeUser(const QUuid& inUserUUID)
+hmcommon::error_code HMCombinedDataStorage::removeUser(const QUuid& inUserUUID)
 {
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
         Error = make_error_code(eDataStorageError::dsNotOpen);
@@ -201,7 +201,7 @@ std::error_code HMCombinedDataStorage::removeUser(const QUuid& inUserUUID)
 
         if (!Error && m_CacheStorage) // Если пользователь успешно удалён в физическое хранилище и доступен кеш
         {
-            std::error_code CacheError = m_CacheStorage->removeUser(inUserUUID); // Удаляем пользователя из кеша
+            hmcommon::error_code CacheError = m_CacheStorage->removeUser(inUserUUID); // Удаляем пользователя из кеша
             if (CacheError) // Ошибки кеша обрабатывам отдельно
                 LOG_WARNING(QString::fromStdString(CacheError.message()));
         }
@@ -210,9 +210,9 @@ std::error_code HMCombinedDataStorage::removeUser(const QUuid& inUserUUID)
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::setUserContacts(const QUuid& inUserUUID, const std::shared_ptr<std::set<QUuid>> inContacts)
+hmcommon::error_code HMCombinedDataStorage::setUserContacts(const QUuid& inUserUUID, const std::shared_ptr<std::set<QUuid>> inContacts)
 {
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
         Error = make_error_code(eDataStorageError::dsNotOpen);
@@ -226,7 +226,7 @@ std::error_code HMCombinedDataStorage::setUserContacts(const QUuid& inUserUUID, 
 
             if (!Error && m_CacheStorage) // Если связь успешно добавлена в физическое хранилище и доступен кеш
             {
-                std::error_code CacheError = m_CacheStorage->setUserContacts(inUserUUID, inContacts); // Добавляем связь в кеш
+                hmcommon::error_code CacheError = m_CacheStorage->setUserContacts(inUserUUID, inContacts); // Добавляем связь в кеш
                 if (CacheError) // Ошибки кеша обрабатывам отдельно
                     LOG_WARNING(QString::fromStdString(CacheError.message()));
             }
@@ -236,9 +236,9 @@ std::error_code HMCombinedDataStorage::setUserContacts(const QUuid& inUserUUID, 
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::addUserContact(const QUuid& inUserUUID, const QUuid& inContactUUID)
+hmcommon::error_code HMCombinedDataStorage::addUserContact(const QUuid& inUserUUID, const QUuid& inContactUUID)
 {
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
         Error = make_error_code(eDataStorageError::dsNotOpen);
@@ -248,7 +248,7 @@ std::error_code HMCombinedDataStorage::addUserContact(const QUuid& inUserUUID, c
 
         if (!Error && m_CacheStorage) // Если контакт успешно добавлен в связь физического хранилища и доступен кеш
         {
-            std::error_code CacheError = m_CacheStorage->addUserContact(inUserUUID, inContactUUID); // Добавляем контакт в связь в кеше
+            hmcommon::error_code CacheError = m_CacheStorage->addUserContact(inUserUUID, inContactUUID); // Добавляем контакт в связь в кеше
             if (CacheError) // Ошибки кеша обрабатывам отдельно
                 LOG_WARNING(QString::fromStdString(CacheError.message()));
         }
@@ -257,9 +257,9 @@ std::error_code HMCombinedDataStorage::addUserContact(const QUuid& inUserUUID, c
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::removeUserContact(const QUuid& inUserUUID, const QUuid& inContactUUID)
+hmcommon::error_code HMCombinedDataStorage::removeUserContact(const QUuid& inUserUUID, const QUuid& inContactUUID)
 {
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
         Error = make_error_code(eDataStorageError::dsNotOpen);
@@ -269,7 +269,7 @@ std::error_code HMCombinedDataStorage::removeUserContact(const QUuid& inUserUUID
 
         if (!Error && m_CacheStorage) // Если контакт успешно удалён из связи в физическом хранилище и доступен кеш
         {
-            std::error_code CacheError = m_CacheStorage->removeUserContact(inUserUUID, inContactUUID); // Удаляем контакт из связи в кеше
+            hmcommon::error_code CacheError = m_CacheStorage->removeUserContact(inUserUUID, inContactUUID); // Удаляем контакт из связи в кеше
             if (CacheError) // Ошибки кеша обрабатывам отдельно
                 LOG_WARNING(QString::fromStdString(CacheError.message()));
         }
@@ -278,9 +278,9 @@ std::error_code HMCombinedDataStorage::removeUserContact(const QUuid& inUserUUID
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::clearUserContacts(const QUuid& inUserUUID)
+hmcommon::error_code HMCombinedDataStorage::clearUserContacts(const QUuid& inUserUUID)
 {
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
         Error = make_error_code(eDataStorageError::dsNotOpen);
@@ -290,7 +290,7 @@ std::error_code HMCombinedDataStorage::clearUserContacts(const QUuid& inUserUUID
 
         if (!Error && m_CacheStorage) // Если связь удалена в физическом хранилище и доступен кеш
         {
-            std::error_code CacheError = m_CacheStorage->clearUserContacts(inUserUUID); // Удаляем связь в кеше
+            hmcommon::error_code CacheError = m_CacheStorage->clearUserContacts(inUserUUID); // Удаляем связь в кеше
             if (CacheError) // Ошибки кеша обрабатывам отдельно
                 LOG_WARNING(QString::fromStdString(CacheError.message()));
         }
@@ -299,7 +299,7 @@ std::error_code HMCombinedDataStorage::clearUserContacts(const QUuid& inUserUUID
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<std::set<QUuid>> HMCombinedDataStorage::getUserContactList(const QUuid& inUserUUID, std::error_code& outErrorCode) const
+std::shared_ptr<std::set<QUuid>> HMCombinedDataStorage::getUserContactList(const QUuid& inUserUUID, hmcommon::error_code& outErrorCode) const
 {
     std::shared_ptr<std::set<QUuid>> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
@@ -308,7 +308,7 @@ std::shared_ptr<std::set<QUuid>> HMCombinedDataStorage::getUserContactList(const
         outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
-        std::error_code CacheError = make_error_code(eDataStorageError::dsUserContactRelationNotExists); // Отдельный результат для поиска в кеше
+        hmcommon::error_code CacheError = make_error_code(eDataStorageError::dsUserContactRelationNotExists); // Отдельный результат для поиска в кеше
 
         if (m_CacheStorage) // Если доступен кеш
         {
@@ -336,7 +336,7 @@ std::shared_ptr<std::set<QUuid>> HMCombinedDataStorage::getUserContactList(const
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<std::set<QUuid>> HMCombinedDataStorage::getUserGroups(const QUuid& inUserUUID, std::error_code& outErrorCode) const
+std::shared_ptr<std::set<QUuid>> HMCombinedDataStorage::getUserGroups(const QUuid& inUserUUID, hmcommon::error_code& outErrorCode) const
 {
     std::shared_ptr<std::set<QUuid>> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
@@ -345,7 +345,7 @@ std::shared_ptr<std::set<QUuid>> HMCombinedDataStorage::getUserGroups(const QUui
         outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
-        std::error_code CacheError = make_error_code(eDataStorageError::dsUserGroupsRelationNotExists); // Отдельный результат для поиска в кеше
+        hmcommon::error_code CacheError = make_error_code(eDataStorageError::dsUserGroupsRelationNotExists); // Отдельный результат для поиска в кеше
 
         if (m_CacheStorage) // Если доступен кеш
         {
@@ -369,9 +369,9 @@ std::shared_ptr<std::set<QUuid>> HMCombinedDataStorage::getUserGroups(const QUui
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::addGroup(const std::shared_ptr<hmcommon::HMGroupInfo> inGroup)
+hmcommon::error_code HMCombinedDataStorage::addGroup(const std::shared_ptr<hmcommon::HMGroupInfo> inGroup)
 {
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
         Error = make_error_code(eDataStorageError::dsNotOpen);
@@ -385,7 +385,7 @@ std::error_code HMCombinedDataStorage::addGroup(const std::shared_ptr<hmcommon::
 
             if (!Error && m_CacheStorage) // Если группа успешно добавлена в физическое хранилище и доступен кеш
             {
-                std::error_code CacheError = m_CacheStorage->addGroup(inGroup); // Добавляем группу в кеш
+                hmcommon::error_code CacheError = m_CacheStorage->addGroup(inGroup); // Добавляем группу в кеш
                 if (CacheError) // Ошибки кеша обрабатывам отдельно
                     LOG_WARNING(QString::fromStdString(CacheError.message()));
             }
@@ -395,9 +395,9 @@ std::error_code HMCombinedDataStorage::addGroup(const std::shared_ptr<hmcommon::
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::updateGroup(const std::shared_ptr<hmcommon::HMGroupInfo> inGroup)
+hmcommon::error_code HMCombinedDataStorage::updateGroup(const std::shared_ptr<hmcommon::HMGroupInfo> inGroup)
 {
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
         Error = make_error_code(eDataStorageError::dsNotOpen);
@@ -411,7 +411,7 @@ std::error_code HMCombinedDataStorage::updateGroup(const std::shared_ptr<hmcommo
 
             if (!Error && m_CacheStorage) // Если группа успешно обновлёна в физическое хранилище и доступен кеш
             {
-                std::error_code CacheError = m_CacheStorage->updateGroup(inGroup); // Обновляем данные о группе в кеше
+                hmcommon::error_code CacheError = m_CacheStorage->updateGroup(inGroup); // Обновляем данные о группе в кеше
                 if (CacheError) // Если не удалось обновить объект
                 {
                     CacheError = m_CacheStorage->addGroup(inGroup); // То добавляем в кеш уже обновлённый объект
@@ -425,7 +425,7 @@ std::error_code HMCombinedDataStorage::updateGroup(const std::shared_ptr<hmcommo
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMGroupInfo> HMCombinedDataStorage::findGroupByUUID(const QUuid &inGroupUUID, std::error_code &outErrorCode) const
+std::shared_ptr<hmcommon::HMGroupInfo> HMCombinedDataStorage::findGroupByUUID(const QUuid &inGroupUUID, hmcommon::error_code &outErrorCode) const
 {
     std::shared_ptr<hmcommon::HMGroupInfo> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
@@ -434,7 +434,7 @@ std::shared_ptr<hmcommon::HMGroupInfo> HMCombinedDataStorage::findGroupByUUID(co
         outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
-        std::error_code CacheError = make_error_code(eDataStorageError::dsGroupNotExists); // Отдельный результат для поиска в кеше
+        hmcommon::error_code CacheError = make_error_code(eDataStorageError::dsGroupNotExists); // Отдельный результат для поиска в кеше
 
         if (m_CacheStorage) // Если доступен кеш
         {
@@ -462,9 +462,9 @@ std::shared_ptr<hmcommon::HMGroupInfo> HMCombinedDataStorage::findGroupByUUID(co
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::removeGroup(const QUuid& inGroupUUID)
+hmcommon::error_code HMCombinedDataStorage::removeGroup(const QUuid& inGroupUUID)
 {
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
         Error = make_error_code(eDataStorageError::dsNotOpen);
@@ -474,7 +474,7 @@ std::error_code HMCombinedDataStorage::removeGroup(const QUuid& inGroupUUID)
 
         if (!Error && m_CacheStorage) // Если группа успешно удалёна в физическое хранилище и доступен кеш
         {
-            std::error_code CacheError = m_CacheStorage->removeGroup(inGroupUUID); // Удаляем группу из кеша
+            hmcommon::error_code CacheError = m_CacheStorage->removeGroup(inGroupUUID); // Удаляем группу из кеша
             if (CacheError) // Ошибки кеша обрабатывам отдельно
                 LOG_WARNING(QString::fromStdString(CacheError.message()));
         }
@@ -483,9 +483,9 @@ std::error_code HMCombinedDataStorage::removeGroup(const QUuid& inGroupUUID)
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::setGroupUsers(const QUuid& inGroupUUID, const std::shared_ptr<std::set<QUuid>> inUsers)
+hmcommon::error_code HMCombinedDataStorage::setGroupUsers(const QUuid& inGroupUUID, const std::shared_ptr<std::set<QUuid>> inUsers)
 {
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
         Error = make_error_code(eDataStorageError::dsNotOpen);
@@ -495,7 +495,7 @@ std::error_code HMCombinedDataStorage::setGroupUsers(const QUuid& inGroupUUID, c
 
         if (!Error && m_CacheStorage) // Если связь успешно добавлена в физическое хранилище и доступен кеш
         {
-            std::error_code CacheError = m_CacheStorage->setGroupUsers(inGroupUUID, inUsers); // Добавляем связь в кеш
+            hmcommon::error_code CacheError = m_CacheStorage->setGroupUsers(inGroupUUID, inUsers); // Добавляем связь в кеш
             if (CacheError) // Ошибки кеша обрабатывам отдельно
                 LOG_WARNING(QString::fromStdString(CacheError.message()));
         }
@@ -504,9 +504,9 @@ std::error_code HMCombinedDataStorage::setGroupUsers(const QUuid& inGroupUUID, c
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::addGroupUser(const QUuid& inGroupUUID, const QUuid& inUserUUID)
+hmcommon::error_code HMCombinedDataStorage::addGroupUser(const QUuid& inGroupUUID, const QUuid& inUserUUID)
 {
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
         Error = make_error_code(eDataStorageError::dsNotOpen);
@@ -516,7 +516,7 @@ std::error_code HMCombinedDataStorage::addGroupUser(const QUuid& inGroupUUID, co
 
         if (!Error && m_CacheStorage) // Если пользователь успешно добавлен в связь физического хранилища и доступен кеш
         {
-            std::error_code CacheError = m_CacheStorage->addGroupUser(inGroupUUID, inUserUUID); // Добавляем пользователя в связь в кеше
+            hmcommon::error_code CacheError = m_CacheStorage->addGroupUser(inGroupUUID, inUserUUID); // Добавляем пользователя в связь в кеше
             if (CacheError) // Ошибки кеша обрабатывам отдельно
                 LOG_WARNING(QString::fromStdString(CacheError.message()));
         }
@@ -525,9 +525,9 @@ std::error_code HMCombinedDataStorage::addGroupUser(const QUuid& inGroupUUID, co
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::removeGroupUser(const QUuid& inGroupUUID, const QUuid& inUserUUID)
+hmcommon::error_code HMCombinedDataStorage::removeGroupUser(const QUuid& inGroupUUID, const QUuid& inUserUUID)
 {
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
         Error = make_error_code(eDataStorageError::dsNotOpen);
@@ -537,7 +537,7 @@ std::error_code HMCombinedDataStorage::removeGroupUser(const QUuid& inGroupUUID,
 
         if (!Error && m_CacheStorage) // Если контакт успешно удалён из связи в физическом хранилище и доступен кеш
         {
-            std::error_code CacheError = m_CacheStorage->removeGroupUser(inGroupUUID, inUserUUID); // Удаляем контакт из связи в кеше
+            hmcommon::error_code CacheError = m_CacheStorage->removeGroupUser(inGroupUUID, inUserUUID); // Удаляем контакт из связи в кеше
             if (CacheError) // Ошибки кеша обрабатывам отдельно
                 LOG_WARNING(QString::fromStdString(CacheError.message()));
         }
@@ -546,9 +546,9 @@ std::error_code HMCombinedDataStorage::removeGroupUser(const QUuid& inGroupUUID,
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::clearGroupUsers(const QUuid& inGroupUUID)
+hmcommon::error_code HMCombinedDataStorage::clearGroupUsers(const QUuid& inGroupUUID)
 {
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
         Error = make_error_code(eDataStorageError::dsNotOpen);
@@ -558,7 +558,7 @@ std::error_code HMCombinedDataStorage::clearGroupUsers(const QUuid& inGroupUUID)
 
         if (!Error && m_CacheStorage) // Если связь удалена в физическом хранилище и доступен кеш
         {
-            std::error_code CacheError = m_CacheStorage->clearGroupUsers(inGroupUUID); // Удаляем связь в кеше
+            hmcommon::error_code CacheError = m_CacheStorage->clearGroupUsers(inGroupUUID); // Удаляем связь в кеше
             if (CacheError) // Ошибки кеша обрабатывам отдельно
                 LOG_WARNING(QString::fromStdString(CacheError.message()));
         }
@@ -567,7 +567,7 @@ std::error_code HMCombinedDataStorage::clearGroupUsers(const QUuid& inGroupUUID)
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<std::set<QUuid>> HMCombinedDataStorage::getGroupUserList(const QUuid& inGroupUUID, std::error_code& outErrorCode) const
+std::shared_ptr<std::set<QUuid>> HMCombinedDataStorage::getGroupUserList(const QUuid& inGroupUUID, hmcommon::error_code& outErrorCode) const
 {
     std::shared_ptr<std::set<QUuid>> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
@@ -576,7 +576,7 @@ std::shared_ptr<std::set<QUuid>> HMCombinedDataStorage::getGroupUserList(const Q
         outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
-        std::error_code CacheError = make_error_code(eDataStorageError::dsGroupUserRelationNotExists); // Отдельный результат для поиска в кеше
+        hmcommon::error_code CacheError = make_error_code(eDataStorageError::dsGroupUserRelationNotExists); // Отдельный результат для поиска в кеше
 
         if (m_CacheStorage) // Если доступен кеш
         {
@@ -604,9 +604,9 @@ std::shared_ptr<std::set<QUuid>> HMCombinedDataStorage::getGroupUserList(const Q
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::addMessage(const std::shared_ptr<hmcommon::HMGroupInfoMessage> inMessage)
+hmcommon::error_code HMCombinedDataStorage::addMessage(const std::shared_ptr<hmcommon::HMGroupInfoMessage> inMessage)
 {
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
         Error = make_error_code(eDataStorageError::dsNotOpen);
@@ -620,7 +620,7 @@ std::error_code HMCombinedDataStorage::addMessage(const std::shared_ptr<hmcommon
 
             if (!Error && m_CacheStorage) // Если сообщение успешно добавлено в физическое хранилище и доступен кеш
             {
-                std::error_code CacheError = m_CacheStorage->addMessage(inMessage); // Добавляем сообщение в кеш
+                hmcommon::error_code CacheError = m_CacheStorage->addMessage(inMessage); // Добавляем сообщение в кеш
                 if (CacheError) // Ошибки кеша обрабатывам отдельно
                     LOG_WARNING(QString::fromStdString(CacheError.message()));
             }
@@ -630,9 +630,9 @@ std::error_code HMCombinedDataStorage::addMessage(const std::shared_ptr<hmcommon
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::updateMessage(const std::shared_ptr<hmcommon::HMGroupInfoMessage> inMessage)
+hmcommon::error_code HMCombinedDataStorage::updateMessage(const std::shared_ptr<hmcommon::HMGroupInfoMessage> inMessage)
 {
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
         Error = make_error_code(eDataStorageError::dsNotOpen);
@@ -646,7 +646,7 @@ std::error_code HMCombinedDataStorage::updateMessage(const std::shared_ptr<hmcom
 
             if (!Error && m_CacheStorage) // Если сообщение успешно обновлено в физическом хранилище и доступен кеш
             {
-                std::error_code CacheError = m_CacheStorage->updateMessage(inMessage); // Обновляем данные о сообщение в кеше
+                hmcommon::error_code CacheError = m_CacheStorage->updateMessage(inMessage); // Обновляем данные о сообщение в кеше
                 if (CacheError) // Ошибки кеша обрабатывам отдельно
                     LOG_WARNING(QString::fromStdString(CacheError.message()));
             }
@@ -656,7 +656,7 @@ std::error_code HMCombinedDataStorage::updateMessage(const std::shared_ptr<hmcom
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMGroupInfoMessage> HMCombinedDataStorage::findMessage(const QUuid& inMessageUUID, std::error_code& outErrorCode) const
+std::shared_ptr<hmcommon::HMGroupInfoMessage> HMCombinedDataStorage::findMessage(const QUuid& inMessageUUID, hmcommon::error_code& outErrorCode) const
 {
     std::shared_ptr<hmcommon::HMGroupInfoMessage> Result = nullptr;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
@@ -665,7 +665,7 @@ std::shared_ptr<hmcommon::HMGroupInfoMessage> HMCombinedDataStorage::findMessage
         outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
-        std::error_code CacheError = make_error_code(eDataStorageError::dsMessageNotExists); // Отдельный результат для поиска в кеше
+        hmcommon::error_code CacheError = make_error_code(eDataStorageError::dsMessageNotExists); // Отдельный результат для поиска в кеше
 
         if (m_CacheStorage) // Если доступен кеш
         {
@@ -693,7 +693,7 @@ std::shared_ptr<hmcommon::HMGroupInfoMessage> HMCombinedDataStorage::findMessage
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::vector<std::shared_ptr<hmcommon::HMGroupInfoMessage>> HMCombinedDataStorage::findMessages(const QUuid& inGroupUUID, const hmcommon::MsgRange& inRange,  std::error_code& outErrorCode) const
+std::vector<std::shared_ptr<hmcommon::HMGroupInfoMessage>> HMCombinedDataStorage::findMessages(const QUuid& inGroupUUID, const hmcommon::MsgRange& inRange,  hmcommon::error_code& outErrorCode) const
 {
     std::vector<std::shared_ptr<hmcommon::HMGroupInfoMessage>> Result;
     outErrorCode = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
@@ -702,7 +702,7 @@ std::vector<std::shared_ptr<hmcommon::HMGroupInfoMessage>> HMCombinedDataStorage
         outErrorCode = make_error_code(eDataStorageError::dsNotOpen);
     else
     {
-        std::error_code CacheError = make_error_code(eDataStorageError::dsMessageNotExists); // Отдельный результат для поиска в кеше
+        hmcommon::error_code CacheError = make_error_code(eDataStorageError::dsMessageNotExists); // Отдельный результат для поиска в кеше
 
         if (m_CacheStorage) // Если доступен кеш
         {
@@ -733,9 +733,9 @@ std::vector<std::shared_ptr<hmcommon::HMGroupInfoMessage>> HMCombinedDataStorage
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMCombinedDataStorage::removeMessage(const QUuid& inMessageUUID, const QUuid& inGroupUUID)
+hmcommon::error_code HMCombinedDataStorage::removeMessage(const QUuid& inMessageUUID, const QUuid& inGroupUUID)
 {
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
         Error = make_error_code(eDataStorageError::dsNotOpen);
@@ -745,7 +745,7 @@ std::error_code HMCombinedDataStorage::removeMessage(const QUuid& inMessageUUID,
 
         if (!Error && m_CacheStorage) // Если сообщение успешно удалено в физическом хранилище и доступен кеш
         {
-            std::error_code CacheError = m_CacheStorage->removeMessage(inMessageUUID, inGroupUUID); // Удаляем сообщение из кеша
+            hmcommon::error_code CacheError = m_CacheStorage->removeMessage(inMessageUUID, inGroupUUID); // Удаляем сообщение из кеша
             if (CacheError) // Ошибки кеша обрабатывам отдельно
                 LOG_WARNING(QString::fromStdString(CacheError.message()));
         }

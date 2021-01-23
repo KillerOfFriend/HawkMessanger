@@ -29,7 +29,7 @@ TEST(GrouptList, Create)
  */
 TEST(GrouptList, CheckAddContact)
 {
-    std::error_code Error; // Метка ошибки
+    hmcommon::error_code Error; // Метка ошибки
     hmcommon::HMGroupList GroupList; // Создаём список групп
 
     std::shared_ptr<hmcommon::HMGroup> NewGroup = make_group();
@@ -49,7 +49,7 @@ TEST(GrouptList, CheckAddContact)
  */
 TEST(GrouptList, FindNotExistsContact)
 {
-    std::error_code Error; // Метка ошибки
+    hmcommon::error_code Error; // Метка ошибки
     hmcommon::HMGroupList GroupList; // Создаём список групп
 
     std::shared_ptr<hmcommon::HMGroup> NewGroup = make_group();
@@ -70,7 +70,7 @@ TEST(GrouptList, FindNotExistsContact)
  */
 TEST(GrouptList, FindExistsContact)
 {
-    std::error_code Error; // Метка ошибки
+    hmcommon::error_code Error; // Метка ошибки
     hmcommon::HMGroupList GroupList; // Создаём список групп
 
     std::shared_ptr<hmcommon::HMGroup> NewGroup = make_group();
@@ -94,7 +94,7 @@ TEST(GrouptList, FindExistsContact)
  */
 TEST(GrouptList, CheckRemoveContact)
 {
-    std::error_code Error; // Метка ошибки
+    hmcommon::error_code Error; // Метка ошибки
     hmcommon::HMGroupList GroupList; // Создаём список групп
 
     std::shared_ptr<hmcommon::HMGroup> NewGroup1 = make_group();

@@ -6,12 +6,12 @@
  * @brief Содержит описание сообщения группы
  */
 
-#include <system_error>
-
 #include <QUuid>
 #include <QString>
 #include <QDateTime>
 #include <QByteArray>
+
+#include "errorcode.h"
 
 namespace hmcommon
 {
@@ -125,7 +125,7 @@ public:
      * @param inMessageData - Новые данные сообщения
      * @return Вернёт признак ошибки
      */
-    std::error_code setMessage(const MsgData& inMessageData);
+    hmcommon::error_code setMessage(const MsgData& inMessageData);
 
     /**
      * @brief getMesssage - Метод вернёт данные сообщения

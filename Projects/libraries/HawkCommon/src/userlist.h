@@ -7,12 +7,12 @@
  */
 
 #include <memory>
-#include <system_error>
 #include <unordered_set>
 
 #include <QUuid>
 
 #include "userinfo.h"
+#include "errorcode.h"
 
 namespace hmcommon
 {
@@ -93,7 +93,7 @@ public:
      * @param inNewUser - Новый пользователь
      * @return Вернёт признак ошибки
      */
-    std::error_code add(const std::shared_ptr<HMUserInfo> inNewUser);
+    hmcommon::error_code add(const std::shared_ptr<HMUserInfo> inNewUser);
 
     /**
      * @brief get - Метод вернёт пользователя по его порядковому номеру
@@ -101,7 +101,7 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на пользователя или null_ptr
      */
-    std::shared_ptr<HMUserInfo> get(const std::size_t inIndex, std::error_code& outErrorCode) const;
+    std::shared_ptr<HMUserInfo> get(const std::size_t inIndex, hmcommon::error_code& outErrorCode) const;
 
     /**
      * @brief getContact - Метод вернёт пользователя по его UUID'у
@@ -109,21 +109,21 @@ public:
      * @param outErrorCode - Признак ошибки
      * @return Вернёт указатель на пользователя или null_ptr
      */
-    std::shared_ptr<HMUserInfo> get(const QUuid inUserUuid, std::error_code& outErrorCode) const;
+    std::shared_ptr<HMUserInfo> get(const QUuid inUserUuid, hmcommon::error_code& outErrorCode) const;
 
     /**
      * @brief remove - Метод удалит пользователя по его порядквому номеру
      * @param inIndex - Порядковый номер пользователя
      * @return Вернёт признак ошибки
      */
-    std::error_code remove(const std::size_t inIndex);
+    hmcommon::error_code remove(const std::size_t inIndex);
 
     /**
      * @brief remove - Метод удалит пользователя по его UUID'у
      * @param inUserUuid - UUID пользователя
      * @return Вернёт признак ошибки
      */
-    std::error_code remove(const QUuid inUserUuid);
+    hmcommon::error_code remove(const QUuid inUserUuid);
 
 };
 //-----------------------------------------------------------------------------

@@ -25,6 +25,13 @@ public:
     error_code() = default;
 
     /**
+     * @brief error_code - Инициализирующий конструктор
+     * @param inCode - Код ошибки
+     * @param inErrCat - Категория
+     */
+    error_code(int inCode, const std::error_category& inErrCat);
+
+    /**
      * @brief ~error_code - Деструктор по умолчанию
      */
     ~error_code() = default;

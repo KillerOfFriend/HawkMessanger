@@ -20,7 +20,7 @@ using namespace hmservcommon::datastorage;
  */
 void CachedDataStorage_AddUserTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -43,7 +43,7 @@ void CachedDataStorage_AddUserTest(std::unique_ptr<HMDataStorage> inCachedDataSt
  */
 void CachedDataStorage_UpdateUserTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -68,7 +68,7 @@ void CachedDataStorage_UpdateUserTest(std::unique_ptr<HMDataStorage> inCachedDat
  */
 void CachedDataStorage_FindUserByUUIDTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -108,7 +108,7 @@ void CachedDataStorage_FindUserByUUIDTest(std::unique_ptr<HMDataStorage> inCache
  */
 void CachedDataStorage_FindUserByAuthenticationTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -148,7 +148,7 @@ void CachedDataStorage_FindUserByAuthenticationTest(std::unique_ptr<HMDataStorag
  */
 void CachedDataStorage_RemoveUserTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -176,7 +176,7 @@ void CachedDataStorage_RemoveUserTest(std::unique_ptr<HMDataStorage> inCachedDat
  */
 void CachedDataStorage_SetUserContactsTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -203,7 +203,7 @@ void CachedDataStorage_SetUserContactsTest(std::unique_ptr<HMDataStorage> inCach
  */
 void CachedDataStorage_AddUserContactTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -234,7 +234,7 @@ void CachedDataStorage_AddUserContactTest(std::unique_ptr<HMDataStorage> inCache
  */
 void CachedDataStorage_RemoveUserContactTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -266,7 +266,7 @@ void CachedDataStorage_RemoveUserContactTest(std::unique_ptr<HMDataStorage> inCa
  */
 void CachedDataStorage_ClearUserContactsTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -305,7 +305,7 @@ void CachedDataStorage_ClearUserContactsTest(std::unique_ptr<HMDataStorage> inCa
  */
 void CachedDataStorage_GetUserContactListTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -348,7 +348,7 @@ void CachedDataStorage_GetUserContactListTest(std::unique_ptr<HMDataStorage> inC
  */
 void CachedDataStorage_GetUserGroupsTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -377,7 +377,7 @@ void CachedDataStorage_GetUserGroupsTest(std::unique_ptr<HMDataStorage> inCached
  */
 void CachedDataStorage_AddGroupTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -400,7 +400,7 @@ void CachedDataStorage_AddGroupTest(std::unique_ptr<HMDataStorage> inCachedDataS
  */
 void CachedDataStorage_UpdateGroupTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -425,7 +425,7 @@ void CachedDataStorage_UpdateGroupTest(std::unique_ptr<HMDataStorage> inCachedDa
  */
 void CachedDataStorage_FindGroupByUUIDTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -465,7 +465,7 @@ void CachedDataStorage_FindGroupByUUIDTest(std::unique_ptr<HMDataStorage> inCach
  */
 void CachedDataStorage_RemoveGroupTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -493,7 +493,7 @@ void CachedDataStorage_RemoveGroupTest(std::unique_ptr<HMDataStorage> inCachedDa
  */
 void CachedDataStorage_SetGroupUsersTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -529,7 +529,7 @@ void CachedDataStorage_SetGroupUsersTest(std::unique_ptr<HMDataStorage> inCached
  */
 void CachedDataStorage_AddGroupUserTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -563,7 +563,7 @@ void CachedDataStorage_AddGroupUserTest(std::unique_ptr<HMDataStorage> inCachedD
  */
 void CachedDataStorage_RemoveGroupUserTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -603,7 +603,7 @@ void CachedDataStorage_RemoveGroupUserTest(std::unique_ptr<HMDataStorage> inCach
  */
 void CachedDataStorage_ClearGroupUsersTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -647,7 +647,7 @@ void CachedDataStorage_ClearGroupUsersTest(std::unique_ptr<HMDataStorage> inCach
  */
 void CachedDataStorage_GetGroupUserListTest(std::unique_ptr<HMDataStorage> inCachedDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inCachedDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно

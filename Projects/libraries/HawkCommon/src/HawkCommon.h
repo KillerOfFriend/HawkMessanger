@@ -1,6 +1,8 @@
 #ifndef HAWKCOMMON_H
 #define HAWKCOMMON_H
 
+#include "errorcode.h"
+
 #include "user.h"
 #include "userinfo.h"
 #include "groupinfo.h"

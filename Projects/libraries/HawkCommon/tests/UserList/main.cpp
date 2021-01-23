@@ -22,7 +22,7 @@ TEST(UsertList, Create)
  */
 TEST(UsertList, CheckAddContact)
 {
-    std::error_code Error; // Метка ошибки
+    hmcommon::error_code Error; // Метка ошибки
     hmcommon::HMUserInfoList UsertList; // Список контактов
 
     std::shared_ptr<hmcommon::HMUserInfo> NewContact = testscommon::make_user_info();
@@ -42,7 +42,7 @@ TEST(UsertList, CheckAddContact)
  */
 TEST(UsertList, FindNotExistsContact)
 {
-    std::error_code Error; // Метка ошибки
+    hmcommon::error_code Error; // Метка ошибки
     hmcommon::HMUserInfoList ContactList; // Список контактов
 
     std::shared_ptr<hmcommon::HMUserInfo> NewContact = testscommon::make_user_info();
@@ -63,7 +63,7 @@ TEST(UsertList, FindNotExistsContact)
  */
 TEST(UsertList, FindExistsContact)
 {
-    std::error_code Error; // Метка ошибки
+    hmcommon::error_code Error; // Метка ошибки
     hmcommon::HMUserInfoList ContactList; // Список контактов
 
     std::shared_ptr<hmcommon::HMUserInfo> NewContact = testscommon::make_user_info();
@@ -87,7 +87,7 @@ TEST(UsertList, FindExistsContact)
  */
 TEST(UsertList, CheckRemoveContact)
 {
-    std::error_code Error; // Метка ошибки
+    hmcommon::error_code Error; // Метка ошибки
     hmcommon::HMUserInfoList UsertList; // Список контактов
 
     std::shared_ptr<hmcommon::HMUserInfo> NewContact1 = testscommon::make_user_info();

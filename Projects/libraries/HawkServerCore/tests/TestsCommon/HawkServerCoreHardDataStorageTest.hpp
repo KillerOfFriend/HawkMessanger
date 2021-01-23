@@ -21,7 +21,7 @@ using namespace hmservcommon::datastorage;
  */
 void HardDataStorage_AddUserTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -54,7 +54,7 @@ void HardDataStorage_AddUserTest(std::unique_ptr<HMDataStorage> inHardDataStorag
  */
 void HardDataStorage_UpdateUserTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -89,7 +89,7 @@ void HardDataStorage_UpdateUserTest(std::unique_ptr<HMDataStorage> inHardDataSto
  */
 void HardDataStorage_FindUserByUUIDTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -129,7 +129,7 @@ void HardDataStorage_FindUserByUUIDTest(std::unique_ptr<HMDataStorage> inHardDat
  */
 void HardDataStorage_FindUserByAuthenticationTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -169,7 +169,7 @@ void HardDataStorage_FindUserByAuthenticationTest(std::unique_ptr<HMDataStorage>
  */
 void HardDataStorage_RemoveUserTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -200,7 +200,7 @@ void HardDataStorage_RemoveUserTest(std::unique_ptr<HMDataStorage> inHardDataSto
  */
 void HardDataStorage_SetUserContactsTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -230,7 +230,7 @@ void HardDataStorage_SetUserContactsTest(std::unique_ptr<HMDataStorage> inHardDa
  */
 void HardDataStorage_AddUserContactTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -263,7 +263,7 @@ void HardDataStorage_AddUserContactTest(std::unique_ptr<HMDataStorage> inHardDat
  */
 void HardDataStorage_RemoveUserContactTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -299,7 +299,7 @@ void HardDataStorage_RemoveUserContactTest(std::unique_ptr<HMDataStorage> inHard
  */
 void HardDataStorage_ClearUserContactsTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -342,7 +342,7 @@ void HardDataStorage_ClearUserContactsTest(std::unique_ptr<HMDataStorage> inHard
  */
 void HardDataStorage_GetUserContactListTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -402,7 +402,7 @@ void HardDataStorage_GetUserContactListTest(std::unique_ptr<HMDataStorage> inHar
  */
 void HardDataStorage_GetUserGroupsTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -455,7 +455,7 @@ void HardDataStorage_GetUserGroupsTest(std::unique_ptr<HMDataStorage> inHardData
  */
 void HardDataStorage_AddGroupTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -478,7 +478,7 @@ void HardDataStorage_AddGroupTest(std::unique_ptr<HMDataStorage> inHardDataStora
  */
 void HardDataStorage_UpdateGroupTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -513,7 +513,7 @@ void HardDataStorage_UpdateGroupTest(std::unique_ptr<HMDataStorage> inHardDataSt
  */
 void HardDataStorage_FindGroupByUUIDTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -552,7 +552,7 @@ void HardDataStorage_FindGroupByUUIDTest(std::unique_ptr<HMDataStorage> inHardDa
  */
 void HardDataStorage_RemoveGroupTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -583,7 +583,7 @@ void HardDataStorage_RemoveGroupTest(std::unique_ptr<HMDataStorage> inHardDataSt
  */
 void HardDataStorage_SetGroupUsersTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -635,7 +635,7 @@ void HardDataStorage_SetGroupUsersTest(std::unique_ptr<HMDataStorage> inHardData
  */
 void HardDataStorage_AddGroupUserTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -681,7 +681,7 @@ void HardDataStorage_AddGroupUserTest(std::unique_ptr<HMDataStorage> inHardDataS
  */
 void HardDataStorage_RemoveGroupUserTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -733,7 +733,7 @@ void HardDataStorage_RemoveGroupUserTest(std::unique_ptr<HMDataStorage> inHardDa
  */
 void HardDataStorage_ClearGroupUsersTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -801,7 +801,7 @@ void HardDataStorage_ClearGroupUsersTest(std::unique_ptr<HMDataStorage> inHardDa
  */
 void HardDataStorage_GetGroupUserListTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -850,7 +850,7 @@ void HardDataStorage_GetGroupUserListTest(std::unique_ptr<HMDataStorage> inHardD
  */
 void HardDataStorage_AddMessageTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error; // Метка ошибки
+    hmcommon::error_code Error; // Метка ошибки
 
     Error = inHardDataStorage->open(); // Пытаемся открыть хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -883,7 +883,7 @@ void HardDataStorage_AddMessageTest(std::unique_ptr<HMDataStorage> inHardDataSto
  */
 void HardDataStorage_UpdateMessageTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error; // Метка ошибки
+    hmcommon::error_code Error; // Метка ошибки
 
     Error = inHardDataStorage->open(); // Пытаемся открыть хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -905,7 +905,8 @@ void HardDataStorage_UpdateMessageTest(std::unique_ptr<HMDataStorage> inHardData
     ASSERT_FALSE(Error); // Ошибки быть не должно
 
     TextData.m_data = QString("Новый текст сообщения").toLocal8Bit(); // Меняем текст
-    NewMessage->setMessage(TextData);
+    Error = NewMessage->setMessage(TextData);
+    ASSERT_FALSE(Error); // Ошибки быть не должно
 
     Error = inHardDataStorage->updateMessage(NewMessage); // Пытаемся обновить сообщение
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -919,7 +920,7 @@ void HardDataStorage_UpdateMessageTest(std::unique_ptr<HMDataStorage> inHardData
  */
 void HardDataStorage_FindMessageTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error; // Метка ошибки
+    hmcommon::error_code Error; // Метка ошибки
 
     Error = inHardDataStorage->open(); // Пытаемся открыть хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -956,7 +957,7 @@ void HardDataStorage_FindMessageTest(std::unique_ptr<HMDataStorage> inHardDataSt
  */
 void HardDataStorage_FindMessagesTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error; // Метка ошибки
+    hmcommon::error_code Error; // Метка ошибки
 
     Error = inHardDataStorage->open(); // Пытаемся открыть хранилище
     ASSERT_FALSE(Error); // Ошибки быть не должно
@@ -1011,7 +1012,7 @@ void HardDataStorage_FindMessagesTest(std::unique_ptr<HMDataStorage> inHardDataS
  */
 void HardDataStorage_RemoveMessageTest(std::unique_ptr<HMDataStorage> inHardDataStorage)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     Error = inHardDataStorage->open();
     ASSERT_FALSE(Error); // Ошибки быть не должно

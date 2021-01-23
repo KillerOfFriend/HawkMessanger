@@ -7,9 +7,10 @@
  */
 
 #include <string>
-#include <system_error>
 
 #include <QObject>
+
+#include <errorcode.h>
 
 namespace hmservcommon::datastorage
 {
@@ -131,9 +132,9 @@ template <> struct is_error_code_enum<hmservcommon::datastorage::eDataStorageErr
 /**
  * @brief make_error_code - Перегрузка глобальной функции make_error_code () нашем пользовательским перечислением.
  * @param inErrCode - Код ошибки
- * @return Вернёт сформированный экемпляр std::error_code
+ * @return Вернёт сформированный экемпляр hmcommon::error_code
  */
-std::error_code make_error_code(hmservcommon::datastorage::eDataStorageError inErrCode);
+hmcommon::error_code make_error_code(hmservcommon::datastorage::eDataStorageError inErrCode);
 //-----------------------------------------------------------------------------
 
 #endif // DATASTORAGEERRORCATEGORY_H

@@ -25,7 +25,7 @@ TEST(GroupInfo, Create)
  */
 TEST(GroupInfo, CheckParams)
 {
-    std::error_code Error;
+    hmcommon::error_code Error;
 
     const QString GroupName = "New_Group_Name";
     const std::size_t GroupUserCount = 5;

@@ -13,9 +13,9 @@ HMAbstractDataStorageFunctional::HMAbstractDataStorageFunctional() :
 
 }
 //-----------------------------------------------------------------------------
-std::error_code HMAbstractDataStorageFunctional::checkNewUserUnique(const std::shared_ptr<hmcommon::HMUserInfo> inUser) const
+hmcommon::error_code HMAbstractDataStorageFunctional::checkNewUserUnique(const std::shared_ptr<hmcommon::HMUserInfo> inUser) const
 {   // ДАННЫЙ МЕТОД НЕ ДОЛЖЕН ПРОВЕРЯТЬ КЕШ!
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
         Error = make_error_code(eDataStorageError::dsNotOpen);
@@ -29,7 +29,7 @@ std::error_code HMAbstractDataStorageFunctional::checkNewUserUnique(const std::s
             // I) UUID должен быть уникальным
             // II) Логин должен быть уникальным
 
-            std::error_code ErrorFindByUUID = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+            hmcommon::error_code ErrorFindByUUID = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
             std::shared_ptr<hmcommon::HMUserInfo> FindUUIDRes = findUserByUUID(inUser->m_uuid, ErrorFindByUUID); // Ищим пользователя по UUID
 
             // I) findUserByUUID Вернёт либо:
@@ -37,7 +37,7 @@ std::error_code HMAbstractDataStorageFunctional::checkNewUserUnique(const std::s
             // 2) Пользователь не найден (функция должна вернуть dlSuccess)
             // 3) Одна из многих ошибок парсинга (функция должна вернуть эту ошибку)
 
-            std::error_code ErrorFindByAutData = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+            hmcommon::error_code ErrorFindByAutData = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
             std::shared_ptr<hmcommon::HMUserInfo> FindAutDataRes = findUserByAuthentication(inUser->getLogin(), inUser->getPasswordHash(), ErrorFindByAutData); // Ищим пользователя по данным аутентификации
 
             // II) findUserByAuthentication Вернёт либо:
@@ -78,9 +78,9 @@ std::error_code HMAbstractDataStorageFunctional::checkNewUserUnique(const std::s
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMAbstractDataStorageFunctional::checkNewGroupUnique(const std::shared_ptr<hmcommon::HMGroupInfo> inGroup) const
+hmcommon::error_code HMAbstractDataStorageFunctional::checkNewGroupUnique(const std::shared_ptr<hmcommon::HMGroupInfo> inGroup) const
 {   // ДАННЫЙ МЕТОД НЕ ДОЛЖЕН ПРОВЕРЯТЬ КЕШ!
-    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
     if (!is_open()) // Хранилище должно быть открыто
         Error = make_error_code(eDataStorageError::dsNotOpen);
@@ -90,7 +90,7 @@ std::error_code HMAbstractDataStorageFunctional::checkNewGroupUnique(const std::
             Error = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
         else
         {
-            std::error_code ErrorFindByUUID = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+            hmcommon::error_code ErrorFindByUUID = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
             std::shared_ptr<hmcommon::HMGroupInfo> FindUUIDRes = findGroupByUUID(inGroup->m_uuid, ErrorFindByUUID); // Ищим группу по UUID
 
             // I) findGroupByUUID Вернёт либо:
@@ -114,9 +114,9 @@ std::error_code HMAbstractDataStorageFunctional::checkNewGroupUnique(const std::
     return Error;
 }
 //-----------------------------------------------------------------------------
-//std::error_code HMAbstractDataStorageFunctional::checkUserContactsUnique(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUserInfoList> inContacts) const
+//hmcommon::error_code HMAbstractDataStorageFunctional::checkUserContactsUnique(const QUuid& inUserUUID, const std::shared_ptr<hmcommon::HMUserInfoList> inContacts) const
 //{   // ДАННЫЙ МЕТОД НЕ ДОЛЖЕН ПРОВЕРЯТЬ КЕШ!
-//    std::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+//    hmcommon::error_code Error = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 
 //    if (!is_open()) // Хранилище должно быть открыто
 //        Error = make_error_code(eDataStorageError::dsNotOpen);
@@ -126,7 +126,7 @@ std::error_code HMAbstractDataStorageFunctional::checkNewGroupUnique(const std::
 //            Error = make_error_code(hmcommon::eSystemErrorEx::seInvalidPtr);
 //        else
 //        {
-//            std::error_code ErrorFindByUUID = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
+//            hmcommon::error_code ErrorFindByUUID = make_error_code(eDataStorageError::dsSuccess); // Изначально метим как успех
 //            std::shared_ptr<hmcommon::HMUserInfoList> FindRes = getUserContactList(inUserUUID, ErrorFindByUUID); // Ищим связь по UUID
 
 //            // I) getUserContactList Вернёт либо:

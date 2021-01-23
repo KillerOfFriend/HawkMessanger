@@ -47,9 +47,9 @@ bool HMGroupList::contain(const std::shared_ptr<HMGroup> inGroup) const
         return contain(inGroup->m_info->m_uuid);
 }
 //-----------------------------------------------------------------------------
-std::error_code HMGroupList::add(const std::shared_ptr<HMGroup> inNewGroup)
+hmcommon::error_code HMGroupList::add(const std::shared_ptr<HMGroup> inNewGroup)
 {
-    std::error_code Error = make_error_code(eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
+    hmcommon::error_code Error = make_error_code(eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
 
     if (!inNewGroup) // Проверяем валидность указателя
         Error = make_error_code(eSystemErrorEx::seInvalidPtr);
@@ -62,7 +62,7 @@ std::error_code HMGroupList::add(const std::shared_ptr<HMGroup> inNewGroup)
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<HMGroup> HMGroupList::get(const std::size_t inIndex, std::error_code& outErrorCode) const
+std::shared_ptr<HMGroup> HMGroupList::get(const std::size_t inIndex, hmcommon::error_code& outErrorCode) const
 {
     std::shared_ptr<HMGroup> Result = nullptr;
     outErrorCode = make_error_code(eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
@@ -84,7 +84,7 @@ std::shared_ptr<HMGroup> HMGroupList::get(const std::size_t inIndex, std::error_
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<HMGroup> HMGroupList::get(const QUuid inGroupUUID, std::error_code& outErrorCode) const
+std::shared_ptr<HMGroup> HMGroupList::get(const QUuid inGroupUUID, hmcommon::error_code& outErrorCode) const
 {
     std::shared_ptr<HMGroup> Result = nullptr;
     outErrorCode = make_error_code(eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
@@ -102,9 +102,9 @@ std::shared_ptr<HMGroup> HMGroupList::get(const QUuid inGroupUUID, std::error_co
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMGroupList::remove(const std::size_t inIndex)
+hmcommon::error_code HMGroupList::remove(const std::size_t inIndex)
 {
-    std::error_code Error = make_error_code(eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
+    hmcommon::error_code Error = make_error_code(eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
 
     if (inIndex >= m_contacts.size())
         Error = make_error_code(eSystemErrorEx::seIndexOutOfContainerRange);
@@ -118,9 +118,9 @@ std::error_code HMGroupList::remove(const std::size_t inIndex)
     return Error;
 }
 //-----------------------------------------------------------------------------
-std::error_code HMGroupList::remove(const QUuid inGroupUUID)
+hmcommon::error_code HMGroupList::remove(const QUuid inGroupUUID)
 {
-    std::error_code Error = make_error_code(eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
+    hmcommon::error_code Error = make_error_code(eSystemErrorEx::seSuccess); // Изначально считаем что ошбки нет
 
     auto FindRes = std::find_if(m_contacts.begin(), m_contacts.end(), [&inGroupUUID](const std::shared_ptr<HMGroup>& Group)
     {

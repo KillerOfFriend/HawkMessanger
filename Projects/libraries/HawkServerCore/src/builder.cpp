@@ -14,14 +14,14 @@ HMBuilder::HMBuilder(const std::shared_ptr<datastorage::HMDataStorage> inStorage
 
     if (!m_storage->is_open()) // Если хранилище не открыто
     {
-        std::error_code Error = m_storage->open(); // Пытаемся открыть самостоятельно
+        hmcommon::error_code Error = m_storage->open(); // Пытаемся открыть самостоятельно
 
         if (Error)
             LOG_WARNING(QString::fromStdString(Error.message()));
     }
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMGroup> HMBuilder::buildGroup(const QUuid& inGroupUUID, std::error_code& outErrorCode)
+std::shared_ptr<hmcommon::HMGroup> HMBuilder::buildGroup(const QUuid& inGroupUUID, hmcommon::error_code& outErrorCode)
 {
     std::shared_ptr<hmcommon::HMGroup> Result = std::make_shared<hmcommon::HMGroup>();
     outErrorCode = make_error_code(hmcommon::eSystemErrorEx::seSuccess); // Изначально помечаем как успех
@@ -42,7 +42,7 @@ std::shared_ptr<hmcommon::HMGroup> HMBuilder::buildGroup(const QUuid& inGroupUUI
                     break; // Сбрасываем перебор
                 else // Данные успешно получены
                 {
-                    std::error_code AddError = Result->m_users.add(UserInfo); // Добавляем участника
+                    hmcommon::error_code AddError = Result->m_users.add(UserInfo); // Добавляем участника
                     if (!AddError)
                         LOG_ERROR(QString::fromStdString(AddError.message()));
                 }
@@ -56,7 +56,7 @@ std::shared_ptr<hmcommon::HMGroup> HMBuilder::buildGroup(const QUuid& inGroupUUI
     return Result;
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<hmcommon::HMUser> HMBuilder::buildUser(const QUuid& inUserUUID, std::error_code& outErrorCode)
+std::shared_ptr<hmcommon::HMUser> HMBuilder::buildUser(const QUuid& inUserUUID, hmcommon::error_code& outErrorCode)
 {
     std::shared_ptr<hmcommon::HMUser> Result = std::make_shared<hmcommon::HMUser>();
     outErrorCode = make_error_code(hmcommon::eSystemErrorEx::seSuccess); // Изначально помечаем как успех
@@ -77,7 +77,7 @@ std::shared_ptr<hmcommon::HMUser> HMBuilder::buildUser(const QUuid& inUserUUID, 
                     break; // Сбрасываем перебор
                 else // Данные успешно получены
                 {
-                    std::error_code AddError = Result->m_contacts.add(UserInfo); // Добавляем контакт
+                    hmcommon::error_code AddError = Result->m_contacts.add(UserInfo); // Добавляем контакт
                     if (!AddError)
                         LOG_ERROR(QString::fromStdString(AddError.message()));
                 }
@@ -97,7 +97,7 @@ std::shared_ptr<hmcommon::HMUser> HMBuilder::buildUser(const QUuid& inUserUUID, 
                             break; // Сбрасываем перебор
                         else // Данные успешно получены
                         {
-                            std::error_code AddError = Result->m_groups.add(Group); // Добавляем группу
+                            hmcommon::error_code AddError = Result->m_groups.add(Group); // Добавляем группу
                             if (!AddError)
                                 LOG_ERROR(QString::fromStdString(AddError.message()));
                         }
