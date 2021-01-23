@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
 
+#include <algorithm>
+
 #include <errorcode.h>
 
 //-----------------------------------------------------------------------------
@@ -59,10 +61,11 @@ TEST(ErrorCode, Messages)
     errors::error_code Error = std::make_error_code(std::errc::bad_address);
 
     std::string StdStr = Error.message();
-    EXPECT_EQ(StdStr, "Bad address");
+    std::transform(StdStr.begin(), StdStr.end(), StdStr.begin(), [](unsigned char c){ return std::tolower(c); }); // Принудительно приводим к нижнему регистру для корректного сравнения
+    EXPECT_EQ(StdStr, "bad address");
 
     QString QStr = Error.message_qstr();
-    EXPECT_EQ(QStr, "Bad address");
+    EXPECT_EQ(QStr.toLower(), QString("bad address"));
 
     EXPECT_EQ(StdStr, QStr.toStdString());
 }
