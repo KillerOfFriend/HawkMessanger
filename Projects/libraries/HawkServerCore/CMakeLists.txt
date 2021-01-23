@@ -25,7 +25,6 @@ set(CMAKE_AUTOMOC ON)       # Автоматическая компиляция 
 set(LINCED_LIBRARYES
     HawkLog
     HawkCommon
-    HawkNet
 
     # Qt6::Core подтягивается от HawkCommon
     )
