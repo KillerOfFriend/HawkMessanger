@@ -64,8 +64,8 @@ TEST(ErrorCode, Messages)
     std::transform(StdStr.begin(), StdStr.end(), StdStr.begin(), [](unsigned char c){ return std::tolower(c); }); // Принудительно приводим к нижнему регистру для корректного сравнения
     EXPECT_EQ(StdStr, "bad address");
 
-    QString QStr = Error.message_qstr();
-    EXPECT_EQ(QStr.toLower(), QString("bad address"));
+    QString QStr = Error.message_qstr().toLower(); // Получем Qt строку в нижнем регистре
+    EXPECT_EQ(QStr, QString("bad address"));
 
     EXPECT_EQ(StdStr, QStr.toStdString());
 }
