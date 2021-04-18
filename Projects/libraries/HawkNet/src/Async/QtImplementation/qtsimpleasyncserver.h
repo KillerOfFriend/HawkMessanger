@@ -16,7 +16,7 @@ public:
     /**
      * @brief HMQtSimpleAsyncServer - Инициализирующий конструктор
      */
-    HMQtSimpleAsyncServer(const uint16_t inPort, const ServCallbacks& inCallbacks);
+    HMQtSimpleAsyncServer(const std::uint16_t inPort, const ServCallbacks& inCallbacks);
 
     /**
      * @brief ~HMQtSimpleAsyncServer - Виртуальный деструктор по умолчанию
@@ -43,7 +43,7 @@ public:
 private:
 
     QTcpServer m_server; ///< Простой сервер Qt
-    uint16_t m_port = 0; ///< Рабочий порт
+    std::uint16_t m_port = 0; ///< Рабочий порт
 
 private slots:
 

@@ -15,7 +15,7 @@ static const std::string C_HOST = "127.0.0.1";              ///< Адрес хо
 constexpr std::uint16_t C_PORT = 57427;                     ///< Порт по умолчанию
 // Условные единицы времени ожидания обработки событий Qt
 constexpr auto C_PROC_STOP = std::chrono::milliseconds(10); ///< Пауза между обработками    10ms
-constexpr auto C_WAIT_FAST = C_PROC_STOP * 2;               ///< короткое ожидание          20ms
+constexpr auto C_WAIT_FAST = C_PROC_STOP * 2;               ///< Короткое ожидание          20ms
 constexpr auto C_WAIT_NORM = C_PROC_STOP * 5;               ///< Нормальное ожидание        50ms
 constexpr auto C_WAIT_LONG = C_PROC_STOP * 10;              ///< Долгое ожидание            100ms
 //-----------------------------------------------------------------------------
@@ -67,7 +67,7 @@ void QtProcessEvents(const std::chrono::duration<_Rep, _Period>& inProcessTime)
 /**
  * @brief TEST - Тест создания сервера
  */
-TEST(QtServerClient, ServerStart)
+TEST(QtSimpleNet, ServerStart)
 {
     errors::error_code Error; // Метка ошибки
     net::ServCallbacks EmptpCallBacks; // Пустые обработчики
@@ -93,7 +93,7 @@ TEST(QtServerClient, ServerStart)
 /**
  * @brief TEST - Тест подключения клиента
  */
-TEST(QtServerClient, ClientConnect)
+TEST(QtSimpleNet, ClientConnect)
 {
     errors::error_code Error; // Метка ошибки
     net::ServCallbacks ServCallBacks;
@@ -134,7 +134,7 @@ TEST(QtServerClient, ClientConnect)
 /**
  * @brief TEST - Тест подключения клиента
  */
-TEST(QtServerClient, CliendReconnect)
+TEST(QtSimpleNet, CliendReconnect)
 {
     errors::error_code Error; // Метка ошибки
     net::ServCallbacks ServCallBacks;
@@ -172,7 +172,7 @@ TEST(QtServerClient, CliendReconnect)
 /**
  * @brief TEST - Тест отключения клиента
  */
-TEST(QtServerClient, ClientDisconnect)
+TEST(QtSimpleNet, ClientDisconnect)
 {
     errors::error_code Error; // Метка ошибки
     std::size_t ConnectionID = 0; // Идентификатор подключения
@@ -222,7 +222,7 @@ TEST(QtServerClient, ClientDisconnect)
 /**
  * @brief TEST - Тест отключения всех клиентов
  */
-TEST(QtServerClient, ForcedDisconnectClient)
+TEST(QtSimpleNet, ForcedDisconnectClient)
 {
     errors::error_code Error; // Метка ошибки
     std::size_t ConnectionID = 0; // Идентификатор подключения
@@ -260,7 +260,7 @@ TEST(QtServerClient, ForcedDisconnectClient)
 /**
  * @brief TEST - Тест отключения всех клиентов
  */
-TEST(QtServerClient, ForcedDisconnectAllClients)
+TEST(QtSimpleNet, ForcedDisconnectAllClients)
 {
     errors::error_code Error; // Метка ошибки
     net::ServCallbacks ServCallBacks;
@@ -301,7 +301,7 @@ TEST(QtServerClient, ForcedDisconnectAllClients)
 /**
  * @brief TEST - Тест отключения сервера
  */
-TEST(QtServerClient, ServerStop)
+TEST(QtSimpleNet, ServerStop)
 {
     errors::error_code Error; // Метка ошибки
     net::ServCallbacks ServCallBacks;
@@ -337,7 +337,7 @@ TEST(QtServerClient, ServerStop)
 /**
  * @brief TEST - Тест подключения клиента
  */
-TEST(QtServerClient, CommonDisconnectEvents)
+TEST(QtSimpleNet, CommonDisconnectEvents)
 {
     errors::error_code Error; // Метка ошибки
 
@@ -384,7 +384,7 @@ TEST(QtServerClient, CommonDisconnectEvents)
 /**
  * @brief TEST - Тест присвоения идентификатора соединения
  */
-TEST(QtServerClient, SetConnectionID)
+TEST(QtSimpleNet, SetConnectionID)
 {
     errors::error_code Error; // Метка ошибки
     std::vector<std::size_t> ConnectionsID; // Контейнер идентификаторов соединений
@@ -444,7 +444,7 @@ TEST(QtServerClient, SetConnectionID)
 /**
  * @brief TEST - Тест передачи данных: Сервер - клиент
  */
-TEST(QtServerClient, ServerToClientSendData)
+TEST(QtSimpleNet, ServerToClientSendData)
 {
     errors::error_code Error; // Метка ошибки
     std::string TextData = R"_({ name: "John", age: 31, city: "New York" })_";
@@ -499,7 +499,7 @@ TEST(QtServerClient, ServerToClientSendData)
 /**
  * @brief TEST - Тест передачи данны: Клиент - сервер
  */
-TEST(QtServerClient, ClientToServerSendData)
+TEST(QtSimpleNet, ClientToServerSendData)
 {
     errors::error_code Error; // Метка ошибки
     std::string TextData = R"_({ name: "John", age: 31, city: "New York" })_";
@@ -551,7 +551,7 @@ TEST(QtServerClient, ClientToServerSendData)
 /**
  * @brief TEST - Тест эхо сервера
  */
-TEST(QtServerClient, Echo)
+TEST(QtSimpleNet, Echo)
 {
     errors::error_code Error; // Метка ошибки
     std::string TextData = R"_({ name: "John", age: 31, city: "New York" })_";
@@ -609,7 +609,7 @@ TEST(QtServerClient, Echo)
 /**
  * @brief TEST - Тест нагрузки
  */
-TEST(QtServerClient, StressTest)
+TEST(QtSimpleNet, StressTest)
 {
     errors::error_code Error; // Метка ошибки
     std::string Data(10240, 'z'); // Формируем длинное сообщение

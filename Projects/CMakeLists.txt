@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 
-project(HawkMessanger VERSION 1.0.0 LANGUAGES CXX)
+#====================================================================
+set(HM_VERSION 1.0.0)                   # Указываем версию собираемого софта
+#====================================================================
+project(HawkMessanger VERSION ${HM_VERSION} LANGUAGES CXX)
 #====================================================================
 # Задаём опции проекта
 option(BUILD_HAWK_TESTS "Собрать тесты модулей системы?" ON)

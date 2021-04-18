@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 
-project(HawkConsolServer VERSION 1.0.0 LANGUAGES CXX)
+project(HawkConsolServer VERSION ${HM_VERSION} LANGUAGES CXX)
 
 #====================================================================
 set(CMAKE_INCLUDE_CURRENT_DIR ON) # Разрешаем работу с собственной папкой

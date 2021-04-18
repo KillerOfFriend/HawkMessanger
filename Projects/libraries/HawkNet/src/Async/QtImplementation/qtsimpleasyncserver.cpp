@@ -7,7 +7,7 @@
 using namespace net;
 
 //-----------------------------------------------------------------------------
-HMQtSimpleAsyncServer::HMQtSimpleAsyncServer(const uint16_t inPort, const ServCallbacks& inCallbacks) :
+HMQtSimpleAsyncServer::HMQtSimpleAsyncServer(const std::uint16_t inPort, const ServCallbacks& inCallbacks) :
     QObject(nullptr),
     HMAbstractAsyncServer(inCallbacks),
     m_port(inPort)

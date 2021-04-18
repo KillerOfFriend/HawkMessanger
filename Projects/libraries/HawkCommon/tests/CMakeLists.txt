@@ -1,6 +1,6 @@
-﻿cmake_minimum_required(VERSION 2.15.0 FATAL_ERROR)
+﻿cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 
-project(HawkCommon_Tests)
+project(HawkCommon_Tests VERSION ${HM_VERSION} LANGUAGES CXX)
 
 #====================================================================
 set(EXECUTABLE_OUTPUT_PATH ${TETSTS_OUT_PATH}) # Переопределяем путь к папке сборки тестов

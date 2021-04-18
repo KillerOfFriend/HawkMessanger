@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 
-project(HawkCommon VERSION 1.0.0 LANGUAGES CXX)
+project(HawkCommon VERSION ${HM_VERSION} LANGUAGES CXX)
 
 #====================================================================
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)    # Разрешаем автоматический экспорт всех символов
