@@ -17,30 +17,30 @@ std::string SystemErrorExCategory::message(int inCode) const
 {
     std::string Result;
 
-    switch (static_cast<errors::eSystemErrorEx>(inCode))
+    switch (static_cast<eSystemErrorEx>(inCode))
     {
-        case errors::eSystemErrorEx::seSuccess:                     { Result = C_ERROR_SUCESS_TEXT; break; }
+        case eSystemErrorEx::seSuccess:                     { Result = C_ERROR_SUCESS_TEXT; break; }
 
-        case errors::eSystemErrorEx::seInvalidPtr:                  { Result = "Не валидный указатель"; break; }
-        case errors::eSystemErrorEx::seIncorrecVersion:             { Result = "Версия не соответствует"; break; }
-        case errors::eSystemErrorEx::seIncorretData:                { Result = "Не корректные данные"; break; }
-        case errors::eSystemErrorEx::seOperationNotSupported:       { Result = "Операция не поддерживается"; break; }
+        case eSystemErrorEx::seInvalidPtr:                  { Result = "Не валидный указатель"; break; }
+        case eSystemErrorEx::seIncorrecVersion:             { Result = "Версия не соответствует"; break; }
+        case eSystemErrorEx::seIncorretData:                { Result = "Не корректные данные"; break; }
+        case eSystemErrorEx::seOperationNotSupported:       { Result = "Операция не поддерживается"; break; }
 
-        case errors::eSystemErrorEx::seInputOperationFail:          { Result = "Во время операции чтения произошла ошибка"; break; }
-        case errors::eSystemErrorEx::seOutputOperationFail:         { Result = "Во время операции записи произошла ошибка"; break; }
+        case eSystemErrorEx::seInputOperationFail:          { Result = "Во время операции чтения произошла ошибка"; break; }
+        case eSystemErrorEx::seOutputOperationFail:         { Result = "Во время операции записи произошла ошибка"; break; }
 
-        case errors::eSystemErrorEx::seFileNotExists:               { Result = "Файл не существует"; break; }
-        case errors::eSystemErrorEx::seDirNotExists:                { Result = "Директория не существует"; break; }
-        case errors::eSystemErrorEx::seObjectNotFile:               { Result = "Объект не является файлом"; break; }
-        case errors::eSystemErrorEx::seObjectNotDir:                { Result = "Объект не является директорией"; break; }
-        case errors::eSystemErrorEx::seFileNotOpen:                 { Result = "Файл не открыт"; break; }
-        case errors::eSystemErrorEx::seOpenFileFail:                { Result = "Не удалость открыть файл"; break; }
-        case errors::eSystemErrorEx::seReadFileFail:                { Result = "При чтении файла произошла ошибка"; break; }
+        case eSystemErrorEx::seFileNotExists:               { Result = "Файл не существует"; break; }
+        case eSystemErrorEx::seDirNotExists:                { Result = "Директория не существует"; break; }
+        case eSystemErrorEx::seObjectNotFile:               { Result = "Объект не является файлом"; break; }
+        case eSystemErrorEx::seObjectNotDir:                { Result = "Объект не является директорией"; break; }
+        case eSystemErrorEx::seFileNotOpen:                 { Result = "Файл не открыт"; break; }
+        case eSystemErrorEx::seOpenFileFail:                { Result = "Не удалость открыть файл"; break; }
+        case eSystemErrorEx::seReadFileFail:                { Result = "При чтении файла произошла ошибка"; break; }
 
-        case errors::eSystemErrorEx::seContainerEmpty:              { Result = "Контейнер пуст"; break; }
-        case errors::eSystemErrorEx::seNotInContainer:              { Result = "Объект не в контейнере"; break; }
-        case errors::eSystemErrorEx::seAlredyInContainer:           { Result = "Объект уже в контейнере"; break; }
-        case errors::eSystemErrorEx::seIndexOutOfContainerRange:    { Result = "Индекс за пределами контейнера"; break; }
+        case eSystemErrorEx::seContainerEmpty:              { Result = "Контейнер пуст"; break; }
+        case eSystemErrorEx::seNotInContainer:              { Result = "Объект не в контейнере"; break; }
+        case eSystemErrorEx::seAlredyInContainer:           { Result = "Объект уже в контейнере"; break; }
+        case eSystemErrorEx::seIndexOutOfContainerRange:    { Result = "Индекс за пределами контейнера"; break; }
 
         default: Result = C_ERROR_UNKNOWN_TEXT + std::to_string(inCode);
     }

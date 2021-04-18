@@ -108,7 +108,7 @@ public:
  */
 extern inline const DataStorageErrorCategory &ConversionDataStorageError_category();
 //-----------------------------------------------------------------------------
-} // namespace hmservcommon::datastorage
+} // namespace errors
 //-----------------------------------------------------------------------------
 namespace std
 {

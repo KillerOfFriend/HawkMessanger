@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 
-project(HawkServerCore VERSION 1.0.0 LANGUAGES CXX)
+project(HawkNet VERSION 1.0.0 LANGUAGES CXX)
 
 #====================================================================
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)    # Разрешаем автоматический экспорт всех символов
@@ -16,28 +16,22 @@ file(GLOB_RECURSE LIB_SOURCES
 )
 #====================================================================
 # Ищим используемые библиотеки
-find_package(Qt6 COMPONENTS Core REQUIRED) # Ищим библиотеки QT
+find_package(Qt6 COMPONENTS Core Network REQUIRED) # Ищим библиотеки QT
 #====================================================================
 # Автоматизируем Qt сборку
 set(CMAKE_AUTOMOC ON)       # Автоматическая компиляция MOC
 #====================================================================
 # Формируем список используемых библиотек
 set(LINCED_LIBRARYES
-    HawkLog
-    HawkCommon
-    HawkNet
-
-    # Qt6::Core подтягивается от HawkCommon
+    Qt6::Core
+    Qt6::Network
+    HawkErrors      # Подключаем библиотеку ошибок
     )
 #====================================================================
 # Формируем список подключаемых папок
 set(INCLUDE_DIRS
-    ${CMAKE_CURRENT_SOURCE_DIR}/src         # Подключаем собственный корневой каталог
-    ${DIR_THIRDPARTY_PATH}/HPP/json/include # Подключаем библиотеку JSON
-
-    ${LIBRARIES_PATH}/HawkLog/src           # Подключаем библиотеку логирования
-    ${LIBRARIES_PATH}/HawkCommon/src        # Подключаем общую библиотеку
-    ${LIBRARIES_PATH}/HawkNet/src           # Подключаем сетевую библиотеку
+    ${LIBRARIES_PATH}/HawkErrors/src    # Подключаем хидеры библиотеки ошибок
+    ${CMAKE_CURRENT_SOURCE_DIR}/src     # Подключаем собственный корневой каталог
     )
 #====================================================================
 # Собираем динамическую библиотеку

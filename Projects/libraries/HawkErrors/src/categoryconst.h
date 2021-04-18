@@ -13,9 +13,11 @@ static const std::string C_ERROR_UNKNOWN_TEXT               = "Не извест
 static const std::int32_t C_SUCCESS                         = 0x0;          ///< Код успеха. Общий для всех категорий
 static const std::int32_t C_CATEGORY_SYSTEMERROREX_START    = 0x00001000;   ///< Начальное значение расширеных ошибок
 static const std::int32_t C_CATEGORY_DATASTORAGE_START      = 0x00002000;   ///< Начальное значение ошибок хранилища данных
+static const std::int32_t C_CATEGORY_NET_START              = 0x00003000;   ///< Начальное значение ошибок сети
 //-----------------------------------------------------------------------------
 static const std::string C_CATEGORY_SYSTEMERROREX_NAME      = "Расширеные системные ошибки";
 static const std::string C_CATEGORY_DATASTORAGE_NAME        = "Ошибки хранилища данных";
+static const std::string C_CATEGORY_NET_NAME                = "Ошибки сети";
 //-----------------------------------------------------------------------------
 } // namespace errors
 

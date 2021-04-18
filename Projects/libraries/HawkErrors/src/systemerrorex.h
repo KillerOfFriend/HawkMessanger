@@ -85,7 +85,7 @@ public:
  */
 extern inline const SystemErrorExCategory &ConversionSystemErrorEx_category();
 //-----------------------------------------------------------------------------
-} // namespace hmcommon
+} // namespace error
 //-----------------------------------------------------------------------------
 namespace std
 {
