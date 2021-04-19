@@ -1,11 +1,11 @@
-#ifndef HMQTSIMPLEASYNCCONNECTION_H
-#define HMQTSIMPLEASYNCCONNECTION_H
+#ifndef HMQTABSTRACTASYNCCONNECTION_H
+#define HMQTABSTRACTASYNCCONNECTION_H
 
 #include <memory>
 
 #include <QTcpSocket>
 
-#include "Async/abstractasyncconnection.h"
+#include "Async/Abstract/abstractasyncconnection.h"
 
 namespace net
 {
@@ -14,28 +14,34 @@ typedef std::function<void(QTcpSocket*)> QTcpSocketDeleter;
 //-----------------------------------------------------------------------------
 typedef std::unique_ptr<QTcpSocket, QTcpSocketDeleter> QTcpSocketPtr;
 //-----------------------------------------------------------------------------
-class HMQtSimpleAsyncConnection : public QObject, public HMAbstractAsyncConnection
+/**
+ * @brief The HMQtAbstractAsyncConnection class - Абстракция, реализующая базовый функционал асинхронного соединения Qt
+ *
+ * @authors Alekseev_s
+ * @date 19.04.2021
+ */
+class HMQtAbstractAsyncConnection : public QObject, public HMAbstractAsyncConnection
 {
     Q_OBJECT
 public:
 
     /**
-     * @brief HMQtSimpleAsyncConnection - Инициализирующий конструктор
+     * @brief HMQtAbstractAsyncConnection - Инициализирующий конструктор
      * @param inCallbacks - Перечень калбеков
      */
-    HMQtSimpleAsyncConnection(const std::string& inHost, const uint16_t inPort, const ConCallbacks& inCallbacks);
+    HMQtAbstractAsyncConnection(const std::string& inHost, const uint16_t inPort, const ConCallbacks& inCallbacks);
 
     /**
-     * @brief HMQtSimpleAsyncConnection - Инициализирующий конструктор
+     * @brief HMQtAbstractAsyncConnection - Инициализирующий конструктор
      * @param inSoket - Сокет соединения
      * @param inCallbacks - Перечень калбеков
      */
-    HMQtSimpleAsyncConnection(QTcpSocketPtr&& inSoket, const ConCallbacks& inCallbacks);
+    HMQtAbstractAsyncConnection(QTcpSocketPtr&& inSoket, const ConCallbacks& inCallbacks);
 
     /**
      * @brief ~HMQtSimpleAsyncConnection - Виртуальный деструктор
      */
-    virtual ~HMQtSimpleAsyncConnection() override;
+    virtual ~HMQtAbstractAsyncConnection() override;
 
     /**
      * @brief connect - Метод произведёт подключение
@@ -55,6 +61,13 @@ public:
      */
     virtual void disconnect() override;
 
+    /**
+     * @brief convertingError - Метод преобразует ошибку QtSocket в стандартную
+     * @param inQtSocketError - Признак ошибки QtSocket
+     * @return Вернтё стандартную ошибка
+     */
+    static errors::error_code convertingError(const QAbstractSocket::SocketError inQtSocketError);
+
 protected:
 
     /**
@@ -68,6 +81,19 @@ protected:
      */
     virtual void write() override;
 
+    /**
+     * @brief makeSocket - Метод, формирующий экземпляр Qt сокета
+     * @param outError - Признак ошибки
+     * @return Венёт указатель на экземпляр сервера или nullptr
+     */
+    virtual QTcpSocketPtr makeSocket(errors::error_code& outError) = 0;
+
+    /**
+     * @brief connectionSigSlotConnect - Метод выполнит линковку сигналов\слотов
+     * @return Вернёт признак ошибки
+     */
+    virtual errors::error_code connectionSigSlotConnect();
+
 private:
 
     std::string m_host = "";            ///< Адрес хоста
@@ -77,13 +103,6 @@ private:
 
     QByteArray m_writeBuffer;           ///< Буфер, из которого происходит отправка
     QByteArray m_readBuffer;            ///< Буфер, в который происходит чтение
-
-    /**
-     * @brief convertingError - Метод преобразует ошибку QtSocket в стандартную
-     * @param inQtSocketError - Признак ошибки QtSocket
-     * @return Вернтё стандартную ошибка
-     */
-    static errors::error_code convertingError(const QAbstractSocket::SocketError inQtSocketError);
 
 private slots:
 
@@ -108,9 +127,8 @@ private slots:
      * @param inQtSocketError - Признак ошибки QtSocket
      */
     void slot_onErrorOccurred(QAbstractSocket::SocketError inQtSocketError);
-
 };
 //-----------------------------------------------------------------------------
 } // namespace net
 
-#endif // HMQTSIMPLEASYNCCONNECTION_H
+#endif // HMQTABSTRACTASYNCCONNECTION_H

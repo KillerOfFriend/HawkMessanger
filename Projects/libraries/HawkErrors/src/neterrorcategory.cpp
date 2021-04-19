@@ -20,6 +20,8 @@ std::string NetErrorCategory::message(int inCode) const
     switch (static_cast<errors::eNetError>(inCode))
     {
         case eNetError::neTimeOut:                          { Result = "Время ожидания истекло"; break; }
+        case eNetError::neServerNotInit:                    { Result = "Сервер не инициализирован"; break; }
+        case eNetError::neSocketNotInit:                    { Result = "Сокет не инициализирован"; break; }
         case eNetError::neNotConnected:                     { Result = "Соединение не установлено"; break; }
         case eNetError::neClientNotFound:                   { Result = "Указанный клиент не найден"; break; }
         case eNetError::neClientIdAlredyExists:             { Result = "Клиент с таким ID уже существует"; break; }

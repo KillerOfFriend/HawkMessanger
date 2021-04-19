@@ -1,80 +1,89 @@
-#include "qtsimpleasyncconnection.h"
+#include "qtabstractasyncconnection.h"
 
 #include <QHostAddress>
 
 #include <neterrorcategory.h>
 
+
 using namespace net;
 
 //-----------------------------------------------------------------------------
-HMQtSimpleAsyncConnection::HMQtSimpleAsyncConnection(const std::string& inHost, const uint16_t inPort, const ConCallbacks &inCallbacks) :
+HMQtAbstractAsyncConnection::HMQtAbstractAsyncConnection(const std::string& inHost, const uint16_t inPort, const ConCallbacks& inCallbacks) :
     QObject(nullptr),
     HMAbstractAsyncConnection(inCallbacks),
     m_host(inHost),
     m_port(inPort)
 {
-    m_socket = std::make_unique<QTcpSocket>();
-
-    QObject::connect(m_socket.get(), &QTcpSocket::readyRead, this, &HMQtSimpleAsyncConnection::slot_onReadyRead); // Линкуем событие "К чению готов"
-    QObject::connect(m_socket.get(), &QTcpSocket::bytesWritten, this, &HMQtSimpleAsyncConnection::slot_onBytesWritten); // Линкуем событие "Байт записано"
-    QObject::connect(m_socket.get(), &QTcpSocket::errorOccurred, this, &HMQtSimpleAsyncConnection::slot_onErrorOccurred); // Линкуем событие "Произошла ошибка"
-    QObject::connect(m_socket.get(), &QTcpSocket::disconnected, this, &HMQtSimpleAsyncConnection::slot_onDisconnected); // Линкуем событие "разрыв соеденения"
+    // Тут создавать сокет нельзя
 }
 //-----------------------------------------------------------------------------
-HMQtSimpleAsyncConnection::HMQtSimpleAsyncConnection(QTcpSocketPtr &&inConnection, const ConCallbacks& inCallbacks) :
+HMQtAbstractAsyncConnection::HMQtAbstractAsyncConnection(QTcpSocketPtr &&inConnection, const ConCallbacks& inCallbacks) :
     QObject(nullptr),
     HMAbstractAsyncConnection(inCallbacks),
     m_socket(std::move(inConnection))
 {
-    assert(m_socket != nullptr);
-
-    QObject::connect(m_socket.get(), &QTcpSocket::readyRead, this, &HMQtSimpleAsyncConnection::slot_onReadyRead); // Линкуем событие "К чению готов"
-    QObject::connect(m_socket.get(), &QTcpSocket::bytesWritten, this, &HMQtSimpleAsyncConnection::slot_onBytesWritten); // Линкуем событие "Байт записано"
-    QObject::connect(m_socket.get(), &QTcpSocket::errorOccurred, this, &HMQtSimpleAsyncConnection::slot_onErrorOccurred); // Линкуем событие "Произошла ошибка"
-    QObject::connect(m_socket.get(), &QTcpSocket::disconnected, this, &HMQtSimpleAsyncConnection::slot_onDisconnected); // Линкуем событие "разрыв соеденения"
+    assert(m_socket != nullptr); // Сокет должен быть валидным
+    assert(!connectionSigSlotConnect()); // Сигналы должны слинковаться успешно
 
     m_host = m_socket->peerAddress().toString().toStdString();
     m_port = m_socket->localPort();
 }
 //-----------------------------------------------------------------------------
-HMQtSimpleAsyncConnection::~HMQtSimpleAsyncConnection()
+HMQtAbstractAsyncConnection::~HMQtAbstractAsyncConnection()
 {
-    disconnect();
+//    disconnect();
 }
 //-----------------------------------------------------------------------------
-errors::error_code HMQtSimpleAsyncConnection::connect(const std::chrono::milliseconds inWaitTime)
+errors::error_code HMQtAbstractAsyncConnection::connect(const std::chrono::milliseconds inWaitTime)
 {
     errors::error_code Error = make_error_code(errors::eNetError::neSuccess); // Изначально метим как успех
 
-    disconnect();
+    disconnect(); // Принудительный разрыв соединения
 
-    m_socket->connectToHost(QString::fromStdString(m_host), static_cast<quint16>(m_port),
-                           QIODevice::ReadWrite, QAbstractSocket::AnyIPProtocol);
-
-    if (!m_socket->waitForConnected(inWaitTime.count())) // Ожидаем подключения указанное время
-        Error = make_error_code(errors::eNetError::neTimeOut);
-    else
+    if (!m_socket) // Если сокет не инициализирован
     {
-        if (!isConnected())
-            Error = make_error_code(errors::eNetError::neCreateConnectionFail);
+        m_socket = makeSocket(Error); // Инициализируем новый сокет
+        if (!Error) // Если сокет создан
+            Error = connectionSigSlotConnect(); // Линкуем сигналы\слоты
+    }
+
+    if (!Error) // Если сокет успешно сформирован
+    {   // Пытаемся подключиться
+        m_socket->connectToHost(QString::fromStdString(m_host), static_cast<quint16>(m_port),
+                               QIODevice::ReadWrite, QAbstractSocket::AnyIPProtocol);
+
+        if (m_socket->state() != QAbstractSocket::ConnectedState) // Всё ещё не подключён
+            if (!m_socket->waitForConnected(inWaitTime.count())) // Ожидаем подключения указанное время
+                Error = make_error_code(errors::eNetError::neTimeOut);
     }
 
     return Error;
 }
 //-----------------------------------------------------------------------------
-bool HMQtSimpleAsyncConnection::isConnected() const
+bool HMQtAbstractAsyncConnection::isConnected() const
 {
-    return m_socket->state() == QAbstractSocket::ConnectedState;
+    bool Result = false;
+
+    if (m_socket) // Если сокет инициализирован
+        Result = m_socket->state() == QAbstractSocket::ConnectedState; // Вернёт результат на основе его статуса
+
+    return Result;
 }
 //-----------------------------------------------------------------------------
-void HMQtSimpleAsyncConnection::disconnect()
+void HMQtAbstractAsyncConnection::disconnect()
 {
     if (!isConnected())
         return;
 
-    m_socket->abort(); // Прерываем текущее действие
-    m_socket->close(); // Закрываем соединение
-    m_socket->waitForDisconnected();
+    if (m_socket) // Только если сокет инициализирован
+    {
+        m_socket->abort(); // Прерываем текущее действие
+        m_socket->close(); // Закрываем соединение
+
+        if (m_socket->state() != QAbstractSocket::UnconnectedState) // Всё ещё не отключён
+            m_socket->waitForDisconnected(); // Ожидаем разрыва соединения
+    }
+
     // И очищаем буферы
     m_writeBuffer.clear();
     m_readBuffer.clear();
@@ -82,12 +91,12 @@ void HMQtSimpleAsyncConnection::disconnect()
     HMAbstractAsyncConnection::disconnect(); // Вызываем метод предка
 }
 //-----------------------------------------------------------------------------
-void HMQtSimpleAsyncConnection::prepateNextData(oByteStream&& inData)
+void HMQtAbstractAsyncConnection::prepateNextData(oByteStream&& inData)
 {
     m_writeBuffer = QByteArray::fromStdString(inData.str()); // Преобразуем в понятный Qt контейнер
 }
 //-----------------------------------------------------------------------------
-void HMQtSimpleAsyncConnection::write()
+void HMQtAbstractAsyncConnection::write()
 {
     if (!isConnected() || m_writeBuffer.isEmpty())
         return;
@@ -95,7 +104,7 @@ void HMQtSimpleAsyncConnection::write()
     m_socket->write(m_writeBuffer); // Начинаем отправку
 }
 //-----------------------------------------------------------------------------
-errors::error_code HMQtSimpleAsyncConnection::convertingError(const QAbstractSocket::SocketError inQtSocketError)
+errors::error_code HMQtAbstractAsyncConnection::convertingError(const QAbstractSocket::SocketError inQtSocketError)
 {
     errors::eNetError neErrorCode;
 
@@ -130,7 +139,24 @@ errors::error_code HMQtSimpleAsyncConnection::convertingError(const QAbstractSoc
     return make_error_code(neErrorCode);
 }
 //-----------------------------------------------------------------------------
-void HMQtSimpleAsyncConnection::slot_onBytesWritten(qint64 inBytes)
+errors::error_code HMQtAbstractAsyncConnection::connectionSigSlotConnect()
+{
+    errors::error_code Error = make_error_code(errors::eNetError::neSuccess); // Изначально метим как успех
+
+    if (!m_socket)
+        Error = make_error_code(errors::eNetError::neSocketNotInit);
+    else
+    {
+        QObject::connect(m_socket.get(), &QTcpSocket::readyRead, this, &HMQtAbstractAsyncConnection::slot_onReadyRead); // Линкуем событие "К чению готов"
+        QObject::connect(m_socket.get(), &QTcpSocket::bytesWritten, this, &HMQtAbstractAsyncConnection::slot_onBytesWritten); // Линкуем событие "Байт записано"
+        QObject::connect(m_socket.get(), &QTcpSocket::errorOccurred, this, &HMQtAbstractAsyncConnection::slot_onErrorOccurred); // Линкуем событие "Произошла ошибка"
+        QObject::connect(m_socket.get(), &QTcpSocket::disconnected, this, &HMQtAbstractAsyncConnection::slot_onDisconnected); // Линкуем событие "разрыв соеденения"
+    }
+
+    return Error;
+}
+//-----------------------------------------------------------------------------
+void HMQtAbstractAsyncConnection::slot_onBytesWritten(qint64 inBytes)
 {
     m_writeBuffer = m_writeBuffer.mid(inBytes); // Выкидываем из контейнера отправленые байты
 
@@ -140,8 +166,11 @@ void HMQtSimpleAsyncConnection::slot_onBytesWritten(qint64 inBytes)
         afterWrite(); // Обрабатываем завершение записи
 }
 //-----------------------------------------------------------------------------
-void HMQtSimpleAsyncConnection::slot_onReadyRead()
+void HMQtAbstractAsyncConnection::slot_onReadyRead()
 {
+    if (!m_socket)
+        return;
+
     m_readBuffer += m_socket->readAll(); // Читаем пришедший объём данных
 
     auto SepPos = m_readBuffer.indexOf(C_DATA_SEPARATOR); // Ищим разделитель потока
@@ -156,12 +185,12 @@ void HMQtSimpleAsyncConnection::slot_onReadyRead()
     }
 }
 //-----------------------------------------------------------------------------
-void HMQtSimpleAsyncConnection::slot_onDisconnected()
+void HMQtAbstractAsyncConnection::slot_onDisconnected()
 {
     onDisconnect();
 }
 //-----------------------------------------------------------------------------
-void HMQtSimpleAsyncConnection::slot_onErrorOccurred(QAbstractSocket::SocketError inError)
+void HMQtAbstractAsyncConnection::slot_onErrorOccurred(QAbstractSocket::SocketError inError)
 {
     onError(convertingError(inError)); // Преобразуем ошибку QtSocket в стандартную и отправляем обработчику
 }

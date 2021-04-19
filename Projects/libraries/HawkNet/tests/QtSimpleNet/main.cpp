@@ -7,8 +7,7 @@
 #include <QCoreApplication>
 
 #include <neterrorcategory.h>
-#include <Async/QtImplementation/qtsimpleasyncconnection.h>
-#include <Async/QtImplementation/qtsimpleasyncserver.h>
+#include <HawkNet.h>
 
 //-----------------------------------------------------------------------------
 static const std::string C_HOST = "127.0.0.1";              ///< Адрес хоста по умолчанию
@@ -56,7 +55,6 @@ void QtProcessEvents(const std::chrono::duration<_Rep, _Period>& inProcessTime)
     do
     {
         QCoreApplication::processEvents(); // Принудительно обрабатываем события Qt
-        std::this_thread::sleep_for(C_PROC_STOP); // Прерываем обработку
     }
     while (std::chrono::high_resolution_clock::now() < TimeOut); // Пока текущее время дойдёт до тамаута
 }

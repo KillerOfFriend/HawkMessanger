@@ -17,6 +17,9 @@ HMServerCore::HMServerCore()
         LOG_ERROR(Error.message_qstr());
 
 //    m_accountBuilder = std::make_unique<builders::HMAccountBuilder>(m_dataStorage); // Формируем билдер и передаём в него хранилище
+
+    net::ServCallbacks CallBacks;
+    m_server = std::make_unique<net::HMQtSimpleAsyncServer>(24680, CallBacks);
 }
 //-----------------------------------------------------------------------------
 HMServerCore::~HMServerCore()

@@ -22,6 +22,8 @@ enum class eNetError
     neSuccess = C_SUCCESS,                          ///< 0 Не явялется ошибкой
 
     neTimeOut = C_CATEGORY_NET_START,               ///< Время ожидания истекло
+    neServerNotInit,                                ///< Сервер не инициализирован
+    neSocketNotInit,                                ///< Сокет не инициализирован
     neNotConnected,                                 ///< Соединение не установлено
     neClientNotFound,                               ///< Указанный клиент не найден
     neClientIdAlredyExists,                         ///< Клиент с таким ID уже существует
