@@ -47,7 +47,7 @@ public:
     /**
      * @brief ~HMAbstractAsyncServer - Виртуальный деструктор по умолчанию
      */
-    virtual ~HMAbstractAsyncServer() = default;
+    virtual ~HMAbstractAsyncServer() override = default;
 
 protected:
 
@@ -56,8 +56,9 @@ protected:
     /**
      * @brief onNewConnection - Метод обработает подключение нового соединения
      * @param inConnection - Новое соединение
+     * @return Вернёт идентификатор, присвоеный  соединению
      */
-    virtual void onNewConnection(std::shared_ptr<HMAbstractConnection> inConnection) override;
+    virtual std::size_t onNewConnection(std::unique_ptr<HMAbstractConnection>&& inConnection) override;
 
     /**
      * @brief onDisconnect - Метод обработает отключение соединения

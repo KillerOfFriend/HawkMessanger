@@ -87,10 +87,10 @@ void HMQtAbstractAsyncServer::slot_newConnection()
 
     // Qt гарантирует удаление сокета, по этому задаём свой делетер, который просто занулит указатель
     QTcpSocketPtr NewSocket(m_server->nextPendingConnection(), [](QTcpSocket* inPtr){ inPtr = nullptr; });
-    std::shared_ptr<HMQtAbstractAsyncConnection> NewConnection = makeConnection(std::move(NewSocket)); // Формируем новое соединение
+    std::unique_ptr<HMQtAbstractAsyncConnection> NewConnection = makeConnection(std::move(NewSocket)); // Формируем новое соединение
 
     if (NewConnection) // Если соединение успешно сформировано
-        onNewConnection(NewConnection); // Отправляем его на регистрацию
+        onNewConnection(std::move(NewConnection)); // Отправляем его на регистрацию
 }
 //-----------------------------------------------------------------------------
 void HMQtAbstractAsyncServer::slot_acceptError(QAbstractSocket::SocketError socketError)

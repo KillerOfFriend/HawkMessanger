@@ -2,8 +2,8 @@
 
 #include <QHostAddress>
 
+#include <cassert>
 #include <neterrorcategory.h>
-
 
 using namespace net;
 
@@ -17,21 +17,18 @@ HMQtAbstractAsyncConnection::HMQtAbstractAsyncConnection(const std::string& inHo
     // Тут создавать сокет нельзя
 }
 //-----------------------------------------------------------------------------
-HMQtAbstractAsyncConnection::HMQtAbstractAsyncConnection(QTcpSocketPtr &&inConnection, const ConCallbacks& inCallbacks) :
+HMQtAbstractAsyncConnection::HMQtAbstractAsyncConnection(QTcpSocketPtr&& inConnection, const ConCallbacks& inCallbacks) :
     QObject(nullptr),
     HMAbstractAsyncConnection(inCallbacks),
     m_socket(std::move(inConnection))
 {
     assert(m_socket != nullptr); // Сокет должен быть валидным
-    assert(!connectionSigSlotConnect()); // Сигналы должны слинковаться успешно
+    errors::error_code ConnectError = connectionSigSlotConnect(); // Линкуем сигналы\сокеты
+    assert(!ConnectError); // Сигналы должны слинковаться успешно
+    ConnectError.clear();
 
     m_host = m_socket->peerAddress().toString().toStdString();
     m_port = m_socket->localPort();
-}
-//-----------------------------------------------------------------------------
-HMQtAbstractAsyncConnection::~HMQtAbstractAsyncConnection()
-{
-//    disconnect();
 }
 //-----------------------------------------------------------------------------
 errors::error_code HMQtAbstractAsyncConnection::connect(const std::chrono::milliseconds inWaitTime)
@@ -47,7 +44,7 @@ errors::error_code HMQtAbstractAsyncConnection::connect(const std::chrono::milli
             Error = connectionSigSlotConnect(); // Линкуем сигналы\слоты
     }
 
-    if (!Error) // Если сокет успешно сформирован
+    if (!Error && m_socket) // Если сокет успешно сформирован
     {   // Пытаемся подключиться
         m_socket->connectToHost(QString::fromStdString(m_host), static_cast<quint16>(m_port),
                                QIODevice::ReadWrite, QAbstractSocket::AnyIPProtocol);

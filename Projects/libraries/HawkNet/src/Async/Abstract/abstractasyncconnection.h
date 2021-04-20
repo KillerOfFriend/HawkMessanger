@@ -78,7 +78,7 @@ public:
 
 protected:
 
-    ConCallbacks m_Callbacks; ///< Набор сторонних обработчиков
+    const ConCallbacks m_Callbacks; ///< Набор сторонних обработчиков
 
     /**
      * @brief beforeWrite - Метод проверит, можно ли выполнить запись
@@ -137,6 +137,10 @@ private:
      */
     bool getNextData(oByteStream& outData);
 
+    /**
+     * @brief writeNext - Метод начнёт запись следующих данных из очереди
+     * @return Вернёт признак успеха операции
+     */
     bool writeNext();
 };
 //-----------------------------------------------------------------------------

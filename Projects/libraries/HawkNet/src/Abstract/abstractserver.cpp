@@ -125,23 +125,25 @@ void HMAbstractServer::closeAllConnections()
 
     {
         std::lock_guard lg(m_clientsDefender);
-        std::transform(m_clients.begin(), m_clients.end(), IDs.begin(), [](auto inPair){ return inPair.first; }); // Получам список ключей
+        std::transform(m_clients.begin(), m_clients.end(), IDs.begin(), [](const auto& inPair){ return inPair.first; }); // Получам список ключей
     }
 
     for (const std::size_t& ID : IDs) // Перебираем все соединения
         closeConnection(ID); // Закрываем каждое
 }
 //-----------------------------------------------------------------------------
-void HMAbstractServer::onNewConnection(std::shared_ptr<HMAbstractConnection> inConnection)
+std::size_t HMAbstractServer::onNewConnection(std::unique_ptr<HMAbstractConnection>&& inConnection)
 {
     if (!inConnection)
-        return;
+        return 0;
 
     while(connected(inConnection->getID())) // Если идентификатор занят
         inConnection->setID(inConnection->getID() + 1); // Подменяем идентификатор
 
     std::lock_guard lg(m_clientsDefender);
-    m_clients.insert(std::make_pair(inConnection->getID(), inConnection)); // Помещаем в контейнер нового анонимного клиента
+    auto InsertRes = m_clients.insert(std::make_pair(inConnection->getID(), std::move(inConnection))); // Помещаем в контейнер нового анонимного клиента
+
+    return (InsertRes.second) ? InsertRes.first->first : 0;
 }
 //-----------------------------------------------------------------------------
 void HMAbstractServer::onDisconnect(const size_t inConnectionID)

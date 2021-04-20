@@ -63,7 +63,7 @@ protected:
      * @param inSocket - Сокет соединения
      * @return Вернёт указатель на новое соединение или nullptr
      */
-    virtual std::shared_ptr<HMQtAbstractAsyncConnection> makeConnection(QTcpSocketPtr&& inSocket) = 0;
+    virtual std::unique_ptr<HMQtAbstractAsyncConnection> makeConnection(QTcpSocketPtr&& inSocket) = 0;
 
     /**
      * @brief serverSigSlotConnect - Метод выполнит линковку сигналов\слотов

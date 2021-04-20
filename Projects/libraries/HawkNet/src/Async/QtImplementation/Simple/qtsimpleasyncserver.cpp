@@ -24,8 +24,8 @@ std::unique_ptr<QTcpServer> HMQtSimpleAsyncServer::makeServer(errors::error_code
     return std::make_unique<QTcpServer>(nullptr); // Формируем простой сервер QTcp
 }
 //-----------------------------------------------------------------------------
-std::shared_ptr<HMQtAbstractAsyncConnection> HMQtSimpleAsyncServer::makeConnection(QTcpSocketPtr&& inSocket)
+std::unique_ptr<HMQtAbstractAsyncConnection> HMQtSimpleAsyncServer::makeConnection(QTcpSocketPtr&& inSocket)
 {
-    return std::make_shared<HMQtSimpleAsyncConnection>(std::move(inSocket), m_Callbacks.m_conCalbacks);
+    return std::make_unique<HMQtSimpleAsyncConnection>(std::move(inSocket), m_Callbacks.m_conCalbacks);
 }
 //-----------------------------------------------------------------------------

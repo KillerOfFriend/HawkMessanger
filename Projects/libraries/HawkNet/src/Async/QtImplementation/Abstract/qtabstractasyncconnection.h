@@ -39,9 +39,9 @@ public:
     HMQtAbstractAsyncConnection(QTcpSocketPtr&& inSoket, const ConCallbacks& inCallbacks);
 
     /**
-     * @brief ~HMQtSimpleAsyncConnection - Виртуальный деструктор
+     * @brief ~HMQtSimpleAsyncConnection - Виртуальный деструктор по умолчанию
      */
-    virtual ~HMQtAbstractAsyncConnection() override;
+    virtual ~HMQtAbstractAsyncConnection() override = default;
 
     /**
      * @brief connect - Метод произведёт подключение

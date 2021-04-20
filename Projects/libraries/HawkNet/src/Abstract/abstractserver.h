@@ -83,8 +83,9 @@ protected:
     /**
      * @brief onNewConnection - Метод обработает подключение нового соединения
      * @param inConnection - Новое соединение
+     * @return Вернёт идентификатор, присвоеный  соединению
      */
-    virtual void onNewConnection(std::shared_ptr<HMAbstractConnection> inConnection);
+    virtual std::size_t onNewConnection(std::unique_ptr<HMAbstractConnection>&& inConnection);
 
     /**
      * @brief onDisconnect - Метод обработает отключение соединения
@@ -95,7 +96,7 @@ protected:
 private:
 
     mutable std::recursive_mutex m_clientsDefender; ///< Мьютекс, защищающий контейнер авторизированных клиентов
-    std::unordered_map<std::size_t, std::shared_ptr<HMAbstractConnection>> m_clients; ///< Контейнер, содержащий перечень авторизированных клиентов
+    std::unordered_map<std::size_t, std::unique_ptr<HMAbstractConnection>> m_clients; ///< Контейнер, содержащий перечень авторизированных клиентов
 };
 //-----------------------------------------------------------------------------
 } // namespace net
