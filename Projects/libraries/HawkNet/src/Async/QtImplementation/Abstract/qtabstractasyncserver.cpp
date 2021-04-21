@@ -82,11 +82,11 @@ errors::error_code HMQtAbstractAsyncServer::serverSigSlotConnect()
 //-----------------------------------------------------------------------------
 void HMQtAbstractAsyncServer::slot_newConnection()
 {
-    if (!m_server)
+    if (!m_server || !m_server->hasPendingConnections())
         return;
 
-    // Qt гарантирует удаление сокета, по этому задаём свой делетер, который просто занулит указатель
-    QTcpSocketPtr NewSocket(m_server->nextPendingConnection(), [](QTcpSocket* inPtr){ inPtr = nullptr; });
+    std::unique_ptr<QTcpSocket> NewSocket(m_server->nextPendingConnection());
+    NewSocket->setParent(nullptr); // У объекта сокета не должно быть предка (отключаем механихм удаления потомков)
     std::unique_ptr<HMQtAbstractAsyncConnection> NewConnection = makeConnection(std::move(NewSocket)); // Формируем новое соединение
 
     if (NewConnection) // Если соединение успешно сформировано

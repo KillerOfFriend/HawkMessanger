@@ -14,13 +14,13 @@ HMQtAbstractAsyncConnection::HMQtAbstractAsyncConnection(const std::string& inHo
     m_host(inHost),
     m_port(inPort)
 {
-    // Тут создавать сокет нельзя
+    // Тут создавать сокет нельзя!
 }
 //-----------------------------------------------------------------------------
-HMQtAbstractAsyncConnection::HMQtAbstractAsyncConnection(QTcpSocketPtr&& inConnection, const ConCallbacks& inCallbacks) :
+HMQtAbstractAsyncConnection::HMQtAbstractAsyncConnection(std::unique_ptr<QTcpSocket>&& inSocket, const ConCallbacks& inCallbacks) :
     QObject(nullptr),
     HMAbstractAsyncConnection(inCallbacks),
-    m_socket(std::move(inConnection))
+    m_socket(std::move(inSocket))
 {
     assert(m_socket != nullptr); // Сокет должен быть валидным
     errors::error_code ConnectError = connectionSigSlotConnect(); // Линкуем сигналы\сокеты
@@ -57,16 +57,6 @@ errors::error_code HMQtAbstractAsyncConnection::connect(const std::chrono::milli
     return Error;
 }
 //-----------------------------------------------------------------------------
-bool HMQtAbstractAsyncConnection::isConnected() const
-{
-    bool Result = false;
-
-    if (m_socket) // Если сокет инициализирован
-        Result = m_socket->state() == QAbstractSocket::ConnectedState; // Вернёт результат на основе его статуса
-
-    return Result;
-}
-//-----------------------------------------------------------------------------
 void HMQtAbstractAsyncConnection::disconnect()
 {
     if (!isConnected())
@@ -86,6 +76,29 @@ void HMQtAbstractAsyncConnection::disconnect()
     m_readBuffer.clear();
 
     HMAbstractAsyncConnection::disconnect(); // Вызываем метод предка
+}
+//-----------------------------------------------------------------------------
+eConnectionStatus HMQtAbstractAsyncConnection::status() const
+{
+    eConnectionStatus Result = eConnectionStatus::csUnknown;
+
+    if (m_socket)
+    {
+        switch (m_socket->state())
+        {
+            case QTcpSocket::UnconnectedState:  { Result = eConnectionStatus::csDisconnected; break; }
+            case QTcpSocket::ClosingState:      { Result = eConnectionStatus::csConnecting; break; }
+
+            case QTcpSocket::HostLookupState:
+            case QTcpSocket::ConnectingState:   { Result = eConnectionStatus::csConnecting; break; }
+
+            case QTcpSocket::ConnectedState:    { Result = eConnectionStatus::csConnected; break; }
+
+            default:                            { Result = eConnectionStatus::csUnknown; }
+        }
+    }
+
+    return Result;
 }
 //-----------------------------------------------------------------------------
 void HMQtAbstractAsyncConnection::prepateNextData(oByteStream&& inData)

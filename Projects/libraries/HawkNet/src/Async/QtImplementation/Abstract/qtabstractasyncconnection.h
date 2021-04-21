@@ -10,10 +10,6 @@
 namespace net
 {
 //-----------------------------------------------------------------------------
-typedef std::function<void(QTcpSocket*)> QTcpSocketDeleter;
-//-----------------------------------------------------------------------------
-typedef std::unique_ptr<QTcpSocket, QTcpSocketDeleter> QTcpSocketPtr;
-//-----------------------------------------------------------------------------
 /**
  * @brief The HMQtAbstractAsyncConnection class - Абстракция, реализующая базовый функционал асинхронного соединения Qt
  *
@@ -33,10 +29,10 @@ public:
 
     /**
      * @brief HMQtAbstractAsyncConnection - Инициализирующий конструктор
-     * @param inSoket - Сокет соединения
+     * @param inSocket - Сокет соединения
      * @param inCallbacks - Перечень калбеков
      */
-    HMQtAbstractAsyncConnection(QTcpSocketPtr&& inSoket, const ConCallbacks& inCallbacks);
+    HMQtAbstractAsyncConnection(std::unique_ptr<QTcpSocket>&& inSocket, const ConCallbacks& inCallbacks);
 
     /**
      * @brief ~HMQtSimpleAsyncConnection - Виртуальный деструктор по умолчанию
@@ -51,15 +47,15 @@ public:
     virtual errors::error_code connect(const std::chrono::milliseconds inWaitTime = std::chrono::seconds(5)) override;
 
     /**
-     * @brief isConnected - Метод вернёт состояние подключение
-     * @return Вернёт состояние подключения
-     */
-    virtual bool isConnected() const override;
-
-    /**
      * @brief disconnect - Метод разорвёт соединение
      */
     virtual void disconnect() override;
+
+    /**
+     * @brief status - Метод вернёт текущий статус соединения
+     * @return Вернёт текущий статус соединения
+     */
+    virtual eConnectionStatus status() const override;
 
     /**
      * @brief convertingError - Метод преобразует ошибку QtSocket в стандартную
@@ -69,6 +65,10 @@ public:
     static errors::error_code convertingError(const QAbstractSocket::SocketError inQtSocketError);
 
 protected:
+
+    std::string m_host = "";            ///< Адрес хоста
+    uint16_t m_port = 0;                ///< Рабочий порт
+    std::unique_ptr<QTcpSocket> m_socket = nullptr;   ///< Простой сокет Qt
 
     /**
      * @brief prepateNextData - Метод подготовит данные перед началом записи
@@ -86,7 +86,7 @@ protected:
      * @param outError - Признак ошибки
      * @return Венёт указатель на экземпляр сервера или nullptr
      */
-    virtual QTcpSocketPtr makeSocket(errors::error_code& outError) = 0;
+    virtual std::unique_ptr<QTcpSocket> makeSocket(errors::error_code& outError) = 0;
 
     /**
      * @brief connectionSigSlotConnect - Метод выполнит линковку сигналов\слотов
@@ -95,11 +95,6 @@ protected:
     virtual errors::error_code connectionSigSlotConnect();
 
 private:
-
-    std::string m_host = "";            ///< Адрес хоста
-    uint16_t m_port = 0;                ///< Рабочий порт
-
-    QTcpSocketPtr m_socket = nullptr;   ///< Простой сокет Qt
 
     QByteArray m_writeBuffer;           ///< Буфер, из которого происходит отправка
     QByteArray m_readBuffer;            ///< Буфер, в который происходит чтение

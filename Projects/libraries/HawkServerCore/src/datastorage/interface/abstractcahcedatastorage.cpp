@@ -15,8 +15,6 @@ HMAbstractCahceDataStorage::HMAbstractCahceDataStorage(const std::chrono::millis
 {
     assert(m_cacheLifeTime.count() != 0);
     assert(m_sleep.count() != 0);
-
-    std::atomic_init(&m_threadWork, false); // По умолчанию не разрешаем работу потока
 }
 //-----------------------------------------------------------------------------
 errors::error_code HMAbstractCahceDataStorage::open()
@@ -26,7 +24,7 @@ errors::error_code HMAbstractCahceDataStorage::open()
 //-----------------------------------------------------------------------------
 bool HMAbstractCahceDataStorage::is_open() const
 {
-    return m_threadWork && m_watchdogThread.joinable();
+    return m_hreadControl.doWork() && m_watchdogThread.joinable();
 }
 //-----------------------------------------------------------------------------
 void HMAbstractCahceDataStorage::close()
@@ -50,7 +48,7 @@ errors::error_code HMAbstractCahceDataStorage::startCacheWatchdogThread()
 {
     stopCacheWatchdogThread(); // Убедимся, что поток стоит
 
-    m_threadWork = true; // Разрешаем запуск потока
+    m_hreadControl.start(); // Разрешаем запуск потока
     m_watchdogThread = std::thread(std::bind(&HMAbstractCahceDataStorage::cacheWatchdogThreadFunc, this)); // Запускаем поток-надзиратель
 
     if (!m_watchdogThread.joinable())
@@ -64,13 +62,9 @@ errors::error_code HMAbstractCahceDataStorage::startCacheWatchdogThread()
 //-----------------------------------------------------------------------------
 void HMAbstractCahceDataStorage::stopCacheWatchdogThread()
 {
-    if (m_threadWork)
+    if (m_hreadControl.doWork())
     {
-        {
-            std::lock_guard<std::mutex> lk(m_conditionDefender);
-            m_threadWork.store(false); // Останавливаем поток
-        }
-        m_break.notify_one(); // Шлём сигнал прирывания потока
+        m_hreadControl.stop();
 
         if (m_watchdogThread.joinable())
             m_watchdogThread.join(); // Ожидаем завершения потока
@@ -81,12 +75,10 @@ void HMAbstractCahceDataStorage::cacheWatchdogThreadFunc()
 {
     LOG_DEBUG("cacheWatchdogThreadFunc Started");
 
-    while (m_threadWork)
+    while (m_hreadControl.doWork())
     {
         processCacheInThread(); // Обрабатываем кеш
-
-        std::unique_lock ul(m_conditionDefender);
-        m_break.wait_for(ul, m_sleep, [&] { return !m_threadWork; }); // Ожидаем либо срабатывания m_break (по !m_threadWork) либо таймаута m_sleep
+        m_hreadControl.wait_for(m_sleep); // Ожидаем завершения или прирываания
     }
 
     LOG_DEBUG("cacheWatchdogThreadFunc Finished");

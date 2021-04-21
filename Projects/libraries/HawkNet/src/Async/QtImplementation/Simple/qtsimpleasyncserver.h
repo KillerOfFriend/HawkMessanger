@@ -43,7 +43,7 @@ protected:
      * @param inSocket - Сокет соединения
      * @return Вернёт указатель на новое соединение или nullptr
      */
-    virtual std::unique_ptr<HMQtAbstractAsyncConnection> makeConnection(QTcpSocketPtr&& inSocket) override;
+    virtual std::unique_ptr<HMQtAbstractAsyncConnection> makeConnection(std::unique_ptr<QTcpSocket>&& inSocket) override;
 
 };
 //-----------------------------------------------------------------------------

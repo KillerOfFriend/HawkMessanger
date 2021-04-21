@@ -14,6 +14,20 @@
 namespace net
 {
 //-----------------------------------------------------------------------------
+/**
+ * @brief The eConnectionStatus enum - Перечисление статусов соединения
+ */
+enum class eConnectionStatus
+{
+    csUnknown = 0,      ///< Соединение не определено
+    csDisconnected,     ///< Соединение отсутствует
+    csDisconnecting,    ///< Соединение разрывается
+    csConnecting,       ///< Соединени устанавливается
+    csConnected,        ///< Соединение установлено
+
+    csCount             ///< Счётчик
+};
+//-----------------------------------------------------------------------------
 typedef std::basic_istringstream<char> iByteStream; ///< Буфер получаемых данных
 typedef std::basic_ostringstream<char> oByteStream; ///< Буфер отправляемых данных
 //-----------------------------------------------------------------------------
@@ -54,6 +68,12 @@ public:
      * @brief disconnect - Метод разорвёт соединение
      */
     virtual void disconnect() = 0;
+
+    /**
+     * @brief status - Метод вернёт текущий статус соединения
+     * @return Вернёт текущий статус соединения
+     */
+    virtual eConnectionStatus status() const = 0;
 
     /**
      * @brief send - Метод отправит переданные данные

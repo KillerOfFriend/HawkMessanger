@@ -12,6 +12,11 @@ HMAbstractAsyncConnection::HMAbstractAsyncConnection(const ConCallbacks &inCallb
     std::atomic_init(&m_isWrite, false);
 }
 //-----------------------------------------------------------------------------
+bool HMAbstractAsyncConnection::isConnected() const
+{
+    return status() == eConnectionStatus::csConnected;
+}
+//-----------------------------------------------------------------------------
 void HMAbstractAsyncConnection::disconnect()
 {
     std::lock_guard lg(m_dataDefender);

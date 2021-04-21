@@ -2,8 +2,12 @@
 #define HMABSTRACTSERVER_H
 
 #include <set>
+#include <list>
 #include <mutex>
+#include <thread>
 #include <unordered_map>
+
+#include <threadwaitcontrol.h>
 
 #include "Interface/server.h"
 #include "Abstract/abstractconnection.h"
@@ -24,12 +28,12 @@ public:
     /**
      * @brief HMAbstractServer - Конструктор по умолчанию
      */
-    HMAbstractServer() = default;
+    HMAbstractServer();
 
     /**
-     * @brief ~HMAbstractServer - Виртуальный деструктор по умолчанию
+     * @brief ~HMAbstractServer - Виртуальный деструктор
      */
-    virtual ~HMAbstractServer() override = default;
+    virtual ~HMAbstractServer() override;
 
     /**
      * @brief connected - Метод проверит наличие соединения
@@ -95,8 +99,27 @@ protected:
 
 private:
 
+    typedef std::unordered_map<std::size_t, std::unique_ptr<HMAbstractConnection>> ClientsContainer;
+
     mutable std::recursive_mutex m_clientsDefender; ///< Мьютекс, защищающий контейнер авторизированных клиентов
-    std::unordered_map<std::size_t, std::unique_ptr<HMAbstractConnection>> m_clients; ///< Контейнер, содержащий перечень авторизированных клиентов
+    ClientsContainer m_clients; ///< Контейнер, содержащий перечень авторизированных клиентов
+
+    mutable std::recursive_mutex m_m_deletingClientsDefender; ///< Мьютекс, защищающий контейнер с удаляемыми клиентами
+    std::list<std::unique_ptr<HMAbstractConnection>> m_deletingClients; ///< Контейнер с удаляемыми клиентами
+
+    hmcommon::HMThreadWaitControl m_threadControl;   ///< Контролёр потока
+    std::thread m_deleterThread;                    ///< Дескриптер потока, выполняющего удаление клиентов
+
+    /**
+     * @brief deleteConnection - Метод отправит отключённого клиента на удаление
+     * @param inConnection - Удаляемый клиент
+     */
+    void deleteConnection(std::unique_ptr<HMAbstractConnection>&& inConnection);
+
+    /**
+     * @brief deleteConnectionThread - Поток, выполняющий удаление клиентов
+     */
+    void deleteConnectionThread();
 };
 //-----------------------------------------------------------------------------
 } // namespace net

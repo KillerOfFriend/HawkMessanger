@@ -9,6 +9,7 @@
 
 namespace net
 {
+//-----------------------------------------------------------------------------
 /**
  * @brief The HMQtSslAsyncServer class - Абстракция, описывающая простое асинхронное соединение Qt
  *
@@ -22,16 +23,18 @@ public:
 
     /**
      * @brief HMQtSimpleAsyncConnection - Инициализирующий конструктор
+     * @param inHost - Адрес хоста
+     * @param inPort - Рабочий порт хоста
      * @param inCallbacks - Перечень калбеков
      */
     HMQtSimpleAsyncConnection(const std::string& inHost, const uint16_t inPort, const ConCallbacks& inCallbacks);
 
     /**
      * @brief HMQtSimpleAsyncConnection - Инициализирующий конструктор
-     * @param inSoket - Сокет соединения
+     * @param inSocket - Сокет соединения
      * @param inCallbacks - Перечень калбеков
      */
-    HMQtSimpleAsyncConnection(QTcpSocketPtr&& inSoket, const ConCallbacks& inCallbacks);
+    HMQtSimpleAsyncConnection(std::unique_ptr<QTcpSocket>&& inSocket, const ConCallbacks& inCallbacks);
 
     /**
      * @brief ~HMQtSimpleAsyncConnection - Виртуальный деструктор
@@ -45,7 +48,7 @@ protected:
      * @param outError - Признак ошибки
      * @return Венёт указатель на экземпляр сервера или nullptr
      */
-    virtual QTcpSocketPtr makeSocket(errors::error_code& outError) override;
+    virtual std::unique_ptr<QTcpSocket> makeSocket(errors::error_code& outError) override;
 
 };
 //-----------------------------------------------------------------------------

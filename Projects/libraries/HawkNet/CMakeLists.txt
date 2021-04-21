@@ -25,11 +25,13 @@ set(CMAKE_AUTOMOC ON)       # Автоматическая компиляция 
 set(LINCED_LIBRARYES
     Qt6::Core
     Qt6::Network
+    HawkCommon      # Подключаем общую библиотеку
     HawkErrors      # Подключаем библиотеку ошибок
     )
 #====================================================================
 # Формируем список подключаемых папок
 set(INCLUDE_DIRS
+    ${LIBRARIES_PATH}/HawkCommon/src    # Подключаем хидеры общей библиотеки
     ${LIBRARIES_PATH}/HawkErrors/src    # Подключаем хидеры библиотеки ошибок
     ${CMAKE_CURRENT_SOURCE_DIR}/src     # Подключаем собственный корневой каталог
     )

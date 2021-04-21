@@ -13,8 +13,8 @@ HMQtSimpleAsyncConnection::HMQtSimpleAsyncConnection(const std::string& inHost, 
 
 }
 //-----------------------------------------------------------------------------
-HMQtSimpleAsyncConnection::HMQtSimpleAsyncConnection(QTcpSocketPtr &&inConnection, const ConCallbacks& inCallbacks) :
-    HMQtAbstractAsyncConnection(std::move(inConnection), inCallbacks)
+HMQtSimpleAsyncConnection::HMQtSimpleAsyncConnection(std::unique_ptr<QTcpSocket>&& inSocket, const ConCallbacks& inCallbacks) :
+    HMQtAbstractAsyncConnection(std::move(inSocket), inCallbacks)
 {
 
 }
@@ -24,7 +24,7 @@ HMQtSimpleAsyncConnection::~HMQtSimpleAsyncConnection()
     disconnect();
 }
 //-----------------------------------------------------------------------------
-QTcpSocketPtr HMQtSimpleAsyncConnection::makeSocket(errors::error_code& outError)
+std::unique_ptr<QTcpSocket> HMQtSimpleAsyncConnection::makeSocket(errors::error_code& outError)
 {
     outError = make_error_code(errors::eNetError::neSuccess); // Изначально метим как успех
     return std::make_unique<QTcpSocket>();

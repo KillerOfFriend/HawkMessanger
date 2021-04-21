@@ -65,6 +65,12 @@ public:
     virtual ~HMAbstractAsyncConnection() override = default;
 
     /**
+     * @brief isConnected - Метод вернёт состояние подключение
+     * @return Вернёт состояние подключения
+     */
+    virtual bool isConnected() const override;
+
+    /**
      * @brief disconnect - Метод разорвёт соединение
      */
     virtual void disconnect() override;

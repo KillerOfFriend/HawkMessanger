@@ -1,9 +1,25 @@
 #include "abstractserver.h"
 
+#include <algorithm>
+#include <functional>
+
 #include <neterrorcategory.h>
 
 using namespace net;
 
+//-----------------------------------------------------------------------------
+HMAbstractServer::HMAbstractServer()
+{
+    m_threadControl.start();
+    m_deleterThread = std::thread(std::bind(&HMAbstractServer::deleteConnectionThread, this)); // Запускаем удаляющий соединения поток
+}
+//-----------------------------------------------------------------------------
+HMAbstractServer::~HMAbstractServer()
+{
+    m_threadControl.stop();
+    if (m_deleterThread.joinable())
+        m_deleterThread.join(); // Ожидаем заверешния потока
+}
 //-----------------------------------------------------------------------------
 bool HMAbstractServer::connected(const std::size_t inID) const
 {
@@ -109,11 +125,17 @@ void HMAbstractServer::closeConnection(const size_t inID)
      * А может дело в том что уже первый час ночи и я реально верю что один поток
      * одновременно может быть в разных местах...
      */
-    std::lock_guard lg(m_clientsDefender);
-    auto FindRes = m_clients.find(inID); // Ищим соединение в контейнере
 
-    if (FindRes != m_clients.end()) // Если оно найдено
-        m_clients.erase(FindRes); // Удаляем соединение (disconnect будет вызван автоматически!)
+    ClientsContainer::node_type Node; // Формируем пустую ноду
+
+    {
+        std::lock_guard lg(m_clientsDefender);
+        Node = m_clients.extract(inID); // Извлекаем ноду из контейнера соединений
+    }
+
+    if (!Node.empty()) // Если по указанному ключу существовали данные
+        deleteConnection(std::move(Node.mapped())); // Отправляем соединение на удаление
+    // А пустая нода будет уничтожена
 }
 //-----------------------------------------------------------------------------
 void HMAbstractServer::closeAllConnections()
@@ -141,7 +163,7 @@ std::size_t HMAbstractServer::onNewConnection(std::unique_ptr<HMAbstractConnecti
         inConnection->setID(inConnection->getID() + 1); // Подменяем идентификатор
 
     std::lock_guard lg(m_clientsDefender);
-    auto InsertRes = m_clients.insert(std::make_pair(inConnection->getID(), std::move(inConnection))); // Помещаем в контейнер нового анонимного клиента
+    auto InsertRes = m_clients.insert(std::make_pair(inConnection->getID(), std::move(inConnection))); // Помещаем в контейнер нового клиента
 
     return (InsertRes.second) ? InsertRes.first->first : 0;
 }
@@ -149,5 +171,29 @@ std::size_t HMAbstractServer::onNewConnection(std::unique_ptr<HMAbstractConnecti
 void HMAbstractServer::onDisconnect(const size_t inConnectionID)
 {
     closeConnection(inConnectionID);
+}
+//-----------------------------------------------------------------------------
+void HMAbstractServer::deleteConnection(std::unique_ptr<HMAbstractConnection>&& inConnection)
+{
+    inConnection->disconnect(); // Разрываем соединение
+    std::lock_guard lg(m_m_deletingClientsDefender);
+    m_deletingClients.emplace_back(std::move(inConnection)); // Помещаем на удаление
+}
+//-----------------------------------------------------------------------------
+void HMAbstractServer::deleteConnectionThread()
+{
+    while (m_threadControl.doWork())
+    {
+        {
+            std::lock_guard lg(m_m_deletingClientsDefender);
+            // Произведём "сортировку" на удаление
+            auto RemoveStartIt = std::remove_if(m_deletingClients.begin(), m_deletingClients.end(), [](const std::unique_ptr<HMAbstractConnection>& Connection)
+            { return (Connection) ? Connection->status() == eConnectionStatus::csDisconnected : false; }); // Удаляем только соединения, полностью разорвавшие соединения
+
+            m_deletingClients.erase(RemoveStartIt, m_deletingClients.end()); // Удалим с полученной позиции до конца
+        }
+
+        m_threadControl.wait_for(std::chrono::seconds(5));
+    }
 }
 //-----------------------------------------------------------------------------

@@ -11,6 +11,7 @@
 #include <atomic>
 #include <condition_variable>
 
+#include <threadwaitcontrol.h>
 #include "datastorage/interface/abstractdatastoragefunctional.h"
 
 namespace hmservcommon::datastorage
@@ -26,14 +27,11 @@ class HMAbstractCahceDataStorage : public HMAbstractDataStorageFunctional
 {
 private:
 
-    std::chrono::milliseconds m_cacheLifeTime;  ///< Время жизни объектов кеша (в милисекундах)
-    std::chrono::milliseconds m_sleep;          ///< Время ожидания потока контроля кеша (в милисекундах)
+    std::chrono::milliseconds m_cacheLifeTime;      ///< Время жизни объектов кеша (в милисекундах)
+    std::chrono::milliseconds m_sleep;              ///< Время ожидания потока контроля кеша (в милисекундах)
 
-    std::mutex m_conditionDefender;             ///< Мьютекс, защищающий условную переменную
-    std::condition_variable m_break;            ///< Условная переменная прерывания ожидания потока
-
-    std::atomic_bool m_threadWork;              ///< Флаг работы потока
-    std::thread m_watchdogThread;               ///< Поток контроля кеша
+    hmcommon::HMThreadWaitControl m_hreadControl;   ///< Контролёр потока
+    std::thread m_watchdogThread;                   ///< Поток контроля кеша
 
 public:
 
