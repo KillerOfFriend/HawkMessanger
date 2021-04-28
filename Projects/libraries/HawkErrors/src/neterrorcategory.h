@@ -21,7 +21,8 @@ enum class eNetError
 {
     neSuccess = C_SUCCESS,                          ///< 0 Не явялется ошибкой
 
-    neTimeOut = C_CATEGORY_NET_START,               ///< Время ожидания истекло
+    neIgnored = C_CATEGORY_NET_START,               ///< Ошибка проигнорирована системой
+    neTimeOut,                                      ///< Время ожидания истекло
     neServerNotInit,                                ///< Сервер не инициализирован
     neSocketNotInit,                                ///< Сокет не инициализирован
     neNotConnected,                                 ///< Соединение не установлено
@@ -56,6 +57,43 @@ enum class eNetError
     neSslInternalError,
     neSslInvalidUserDataError,
     neTemporaryError,
+    // QSslSoket errors
+    neUnableToGetIssuerCertificate,
+    neUnableToDecryptCertificateSignature,
+    neUnableToDecodeIssuerPublicKey,
+    neCertificateSignatureFailed,
+    neCertificateNotYetValid,
+    neCertificateExpired,
+    neInvalidNotBeforeField,
+    neInvalidNotAfterField,
+    neSelfSignedCertificate,
+    neSelfSignedCertificateInChain,
+    neUnableToGetLocalIssuerCertificate,
+    neUnableToVerifyFirstCertificate,
+    neCertificateRevoked,
+    neInvalidCaCertificate,
+    nePathLengthExceeded,
+    neInvalidPurpose,
+    neCertificateUntrusted,
+    neCertificateRejected,
+    neSubjectIssuerMismatch,
+    neAuthorityIssuerSerialNumberMismatch,
+    neNoPeerCertificate,
+    neHostNameMismatch,
+    neNoSslSupport,
+    neCertificateBlacklisted,
+    neCertificateStatusUnknown,
+    neOcspNoResponseFound,
+    neOcspMalformedRequest,
+    neOcspMalformedResponse,
+    neOcspInternalError,
+    neOcspTryLater,
+    neOcspSigRequred,
+    neOcspUnauthorized,
+    neOcspResponseCannotBeTrusted,
+    neOcspResponseCertIdUnknown,
+    neOcspResponseExpired,
+    neOcspStatusUnknown,
 
     neCount
 };

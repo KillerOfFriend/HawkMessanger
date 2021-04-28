@@ -47,6 +47,13 @@ public:
      */
     virtual errors::error_code connect(const std::chrono::milliseconds inWaitTime = std::chrono::seconds(5)) override;
 
+    /**
+     * @brief convertingError - Метод преобразует ошибку QSslError в стандартную
+     * @param inQSslError - Признак ошибки QSslError
+     * @return Вернтёт стандартную ошибка
+     */
+    static errors::error_code convertingError(const QSslError& inQSslError);
+
 protected:
 
     /**
@@ -64,19 +71,41 @@ protected:
 
 private slots:
 
+    /**
+     * @brief slot_onEncrypted - Слот, обрабатывающий успешное зашифрованное соединение
+     */
     void slot_onEncrypted();
-    void slot_onPeerVerifyError(const QSslError &error);
-    void slot_onSslErrors(const QList<QSslError> &errors);
-    void slot_onModeChanged(QSslSocket::SslMode newMode);
-    void slot_onEncryptedBytesWritten(qint64 totalBytes);
-    void slot_onPreSharedKeyAuthenticationRequired(QSslPreSharedKeyAuthenticator *authenticator);
-    void slot_onNewSessionTicketReceived();
-    void slot_onAlertSent(QSsl::AlertLevel level, QSsl::AlertType type, const QString &description);
-    void slot_onAlertReceived(QSsl::AlertLevel level, QSsl::AlertType type, const QString &description);
-    void slot_onHandshakeInterruptedOnError(const QSslError &error);
+
+    /**
+     * @brief slot_onPeerVerifyError - Слот, обрабатывающий ошибку идентификации надежно однорангового узла.
+     * @param inSslError - Признак ошибки QSslError
+     */
+    void slot_onPeerVerifyError(const QSslError &inSslError);
+
+    /**
+     * @brief slot_onSslErrors - Слот, обрабатывающий ошибки QSslError
+     * @param inSslErrors - Признак ошибки QSslError
+     */
+    void slot_onSslErrors(const QList<QSslError> &inSslErrors);
+
+    /**
+     * @brief slot_onEncryptedBytesWritten - Слот, обрабатывающий результат записи
+     * @param inBytesWritten - Количество записанных байт
+     */
+    void slot_onEncryptedBytesWritten(qint64 inBytesWritten);
+
+    /**
+     * @brief slot_onHandshakeInterruptedOnError - Слот, обрабатывающий прерывание рукопожатия из за ошибки
+     * @param inSslError - Признак ошибки QSslError
+     */
+    void slot_onHandshakeInterruptedOnError(const QSslError &inSslError);
 
 private:
 
+    /**
+     * @brief sslSocket - Метод вернёт указатель на QSslSoket соединения
+     * @return Вернёт указатель на QSslSoket соединения
+     */
     QSslSocket* sslSocket() const;
 
 };

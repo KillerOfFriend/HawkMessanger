@@ -111,7 +111,8 @@ void HMAbstractAsyncConnection::onReadEnd(iByteStream&& inData) const
 //-----------------------------------------------------------------------------
 void HMAbstractAsyncConnection::onError(const errors::error_code inError) const
 {
-    if (m_Callbacks.m_ErrorCallBack)
+    // Если ошика не игнорируемая и есть калбэк
+    if (inError.value() != static_cast<std::int32_t>(errors::eNetError::neIgnored) && m_Callbacks.m_ErrorCallBack)
         m_Callbacks.m_ErrorCallBack(inError, getID());
 }
 //-----------------------------------------------------------------------------

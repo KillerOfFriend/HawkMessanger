@@ -157,10 +157,10 @@ errors::error_code HMQtAbstractAsyncConnection::connectionSigSlotConnect()
         Error = make_error_code(errors::eNetError::neSocketNotInit);
     else
     {
-        QObject::connect(m_socket.get(), &QTcpSocket::readyRead, this, &HMQtAbstractAsyncConnection::slot_onReadyRead); // Линкуем событие "К чению готов"
+        QObject::connect(m_socket.get(), &QTcpSocket::readyRead, this, &HMQtAbstractAsyncConnection::slot_onReadyRead); // Линкуем событие "К чтению готов"
         QObject::connect(m_socket.get(), &QTcpSocket::bytesWritten, this, &HMQtAbstractAsyncConnection::slot_onBytesWritten); // Линкуем событие "Байт записано"
         QObject::connect(m_socket.get(), &QTcpSocket::errorOccurred, this, &HMQtAbstractAsyncConnection::slot_onErrorOccurred); // Линкуем событие "Произошла ошибка"
-        QObject::connect(m_socket.get(), &QTcpSocket::disconnected, this, &HMQtAbstractAsyncConnection::slot_onDisconnected); // Линкуем событие "разрыв соеденения"
+        QObject::connect(m_socket.get(), &QTcpSocket::disconnected, this, &HMQtAbstractAsyncConnection::slot_onDisconnected); // Линкуем событие "Разрыв соеденения"
     }
 
     return Error;

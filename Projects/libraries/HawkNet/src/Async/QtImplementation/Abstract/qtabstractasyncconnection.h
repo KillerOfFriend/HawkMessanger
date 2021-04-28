@@ -60,7 +60,7 @@ public:
     /**
      * @brief convertingError - Метод преобразует ошибку QtSocket в стандартную
      * @param inQtSocketError - Признак ошибки QtSocket
-     * @return Вернтё стандартную ошибка
+     * @return Вернтёт стандартную ошибка
      */
     static errors::error_code convertingError(const QAbstractSocket::SocketError inQtSocketError);
 
@@ -102,10 +102,10 @@ private:
 protected slots:
 
     /**
-     * @brief bytesWritten - Слот, обрабатывающий результат записи
-     * @param slot_onBytesWritten - Количество записанных байт
+     * @brief slot_onBytesWritten - Слот, обрабатывающий результат записи
+     * @param inBytesWritten - Количество записанных байт
      */
-    void slot_onBytesWritten(qint64 inBytes);
+    void slot_onBytesWritten(qint64 inBytesWritten);
 
     /**
      * @brief slot_onReadyRead - Слот, выполняющий чтение
