@@ -96,5 +96,6 @@ void HMQtAbstractAsyncServer::slot_newConnection()
 void HMQtAbstractAsyncServer::slot_acceptError(QAbstractSocket::SocketError socketError)
 {
     //onError(convertingError(socketError)); // Преобразуем ошибку QtSocket в стандартную и отправляем обработчику
+    qDebug() << socketError;
 }
 //-----------------------------------------------------------------------------

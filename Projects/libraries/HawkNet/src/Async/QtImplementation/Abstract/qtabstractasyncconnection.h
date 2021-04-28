@@ -99,7 +99,7 @@ private:
     QByteArray m_writeBuffer;           ///< Буфер, из которого происходит отправка
     QByteArray m_readBuffer;            ///< Буфер, в который происходит чтение
 
-private slots:
+protected slots:
 
     /**
      * @brief bytesWritten - Слот, обрабатывающий результат записи

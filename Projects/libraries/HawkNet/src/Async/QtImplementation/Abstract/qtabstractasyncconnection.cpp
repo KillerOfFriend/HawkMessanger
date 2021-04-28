@@ -202,6 +202,7 @@ void HMQtAbstractAsyncConnection::slot_onDisconnected()
 //-----------------------------------------------------------------------------
 void HMQtAbstractAsyncConnection::slot_onErrorOccurred(QAbstractSocket::SocketError inError)
 {
+    qDebug() << inError;
     onError(convertingError(inError)); // Преобразуем ошибку QtSocket в стандартную и отправляем обработчику
 }
 //-----------------------------------------------------------------------------
