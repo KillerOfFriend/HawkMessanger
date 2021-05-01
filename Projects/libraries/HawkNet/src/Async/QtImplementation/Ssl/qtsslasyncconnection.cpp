@@ -77,7 +77,43 @@ errors::error_code HMQtSslAsyncConnection::convertingError(const QSslError &inQS
     {   // Преобразуем её к стандартной
         switch (inQSslError.error())
         {
-            // ToDo
+            case QSslError::UnableToGetIssuerCertificate:           { neErrorCode = errors::eNetError::neUnableToGetIssuerCertificate; break; }
+            case QSslError::UnableToDecryptCertificateSignature:    { neErrorCode = errors::eNetError::neUnableToDecryptCertificateSignature; break; }
+            case QSslError::UnableToDecodeIssuerPublicKey:          { neErrorCode = errors::eNetError::neUnableToDecodeIssuerPublicKey; break; }
+            case QSslError::CertificateSignatureFailed:             { neErrorCode = errors::eNetError::neCertificateSignatureFailed; break; }
+            case QSslError::CertificateNotYetValid:                 { neErrorCode = errors::eNetError::neCertificateNotYetValid; break; }
+            case QSslError::CertificateExpired:                     { neErrorCode = errors::eNetError::neCertificateExpired; break; }
+            case QSslError::InvalidNotBeforeField:                  { neErrorCode = errors::eNetError::neInvalidNotBeforeField; break; }
+            case QSslError::InvalidNotAfterField:                   { neErrorCode = errors::eNetError::neInvalidNotAfterField; break; }
+            case QSslError::SelfSignedCertificate:                  { neErrorCode = errors::eNetError::neSelfSignedCertificate; break; }
+            case QSslError::SelfSignedCertificateInChain:           { neErrorCode = errors::eNetError::neSelfSignedCertificateInChain; break; }
+            case QSslError::UnableToGetLocalIssuerCertificate:      { neErrorCode = errors::eNetError::neUnableToGetLocalIssuerCertificate; break; }
+            case QSslError::UnableToVerifyFirstCertificate:         { neErrorCode = errors::eNetError::neUnableToVerifyFirstCertificate; break; }
+            case QSslError::CertificateRevoked:                     { neErrorCode = errors::eNetError::neCertificateRevoked; break; }
+            case QSslError::InvalidCaCertificate:                   { neErrorCode = errors::eNetError::neInvalidCaCertificate; break; }
+            case QSslError::PathLengthExceeded:                     { neErrorCode = errors::eNetError::nePathLengthExceeded; break; }
+            case QSslError::InvalidPurpose:                         { neErrorCode = errors::eNetError::neInvalidPurpose; break; }
+            case QSslError::CertificateUntrusted:                   { neErrorCode = errors::eNetError::neCertificateUntrusted; break; }
+            case QSslError::CertificateRejected:                    { neErrorCode = errors::eNetError::neCertificateRejected; break; }
+            case QSslError::SubjectIssuerMismatch:                  { neErrorCode = errors::eNetError::neSubjectIssuerMismatch; break; }
+            case QSslError::AuthorityIssuerSerialNumberMismatch:    { neErrorCode = errors::eNetError::neAuthorityIssuerSerialNumberMismatch; break; }
+            case QSslError::NoPeerCertificate:                      { neErrorCode = errors::eNetError::neNoPeerCertificate; break; }
+            case QSslError::HostNameMismatch:                       { neErrorCode = errors::eNetError::neHostNameMismatch; break; }
+            case QSslError::NoSslSupport:                           { neErrorCode = errors::eNetError::neNoSslSupport; break; }
+            case QSslError::CertificateBlacklisted:                 { neErrorCode = errors::eNetError::neCertificateBlacklisted; break; }
+            case QSslError::CertificateStatusUnknown:               { neErrorCode = errors::eNetError::neCertificateStatusUnknown; break; }
+            case QSslError::OcspNoResponseFound:                    { neErrorCode = errors::eNetError::neOcspNoResponseFound; break; }
+            case QSslError::OcspMalformedRequest:                   { neErrorCode = errors::eNetError::neOcspMalformedRequest; break; }
+            case QSslError::OcspMalformedResponse:                  { neErrorCode = errors::eNetError::neOcspMalformedResponse; break; }
+            case QSslError::OcspInternalError:                      { neErrorCode = errors::eNetError::neOcspInternalError; break; }
+            case QSslError::OcspTryLater:                           { neErrorCode = errors::eNetError::neOcspTryLater; break; }
+            case QSslError::OcspSigRequred:                         { neErrorCode = errors::eNetError::neOcspSigRequred; break; }
+            case QSslError::OcspUnauthorized:                       { neErrorCode = errors::eNetError::neOcspUnauthorized; break; }
+            case QSslError::OcspResponseCannotBeTrusted:            { neErrorCode = errors::eNetError::neOcspResponseCannotBeTrusted; break; }
+            case QSslError::OcspResponseCertIdUnknown:              { neErrorCode = errors::eNetError::neOcspResponseCertIdUnknown; break; }
+            case QSslError::OcspResponseExpired:                    { neErrorCode = errors::eNetError::neOcspResponseExpired; break; }
+            case QSslError::OcspStatusUnknown:                      { neErrorCode = errors::eNetError::neOcspStatusUnknown; break; }
+
             default:                                                { neErrorCode = errors::eNetError::neUnknownQtSocketError; }
         }
     }
