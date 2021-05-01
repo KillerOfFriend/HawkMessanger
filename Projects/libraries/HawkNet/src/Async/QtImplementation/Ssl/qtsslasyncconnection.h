@@ -21,7 +21,7 @@ class HMQtSslAsyncConnection : public HMQtAbstractAsyncConnection
 public:
 
     /**
-     * @brief HMQtSslAsyncConnection - Инициализирующий конструктор
+     * @brief HMQtSslAsyncConnection - Инициализирующий конструктор (Сторона клиента)
      * @param inHost - Адрес хоста
      * @param inPort - Рабочий порт хоста
      * @param inCallbacks - Перечень калбеков
@@ -29,8 +29,8 @@ public:
     HMQtSslAsyncConnection(const std::string& inHost, const uint16_t inPort, const ConCallbacks& inCallbacks);
 
     /**
-     * @brief HMQtSslAsyncConnection - Инициализирующий конструктор
-     * @param inSocket - Сокет соединения
+     * @brief HMQtSslAsyncConnection - Инициализирующий конструктор (Сторона сервера)
+     * @param inSocket - Сокет соединения со стороны сервера
      * @param inCallbacks - Перечень калбеков
      */
     HMQtSslAsyncConnection(std::unique_ptr<QTcpSocket>&& inSocket, const ConCallbacks& inCallbacks);

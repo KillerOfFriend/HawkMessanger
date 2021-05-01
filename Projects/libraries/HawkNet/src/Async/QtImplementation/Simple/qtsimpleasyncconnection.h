@@ -22,7 +22,7 @@ class HMQtSimpleAsyncConnection : public HMQtAbstractAsyncConnection
 public:
 
     /**
-     * @brief HMQtSimpleAsyncConnection - Инициализирующий конструктор
+     * @brief HMQtSimpleAsyncConnection - Инициализирующий конструктор (Сторона клиента)
      * @param inHost - Адрес хоста
      * @param inPort - Рабочий порт хоста
      * @param inCallbacks - Перечень калбеков
@@ -30,8 +30,8 @@ public:
     HMQtSimpleAsyncConnection(const std::string& inHost, const uint16_t inPort, const ConCallbacks& inCallbacks);
 
     /**
-     * @brief HMQtSimpleAsyncConnection - Инициализирующий конструктор
-     * @param inSocket - Сокет соединения
+     * @brief HMQtSimpleAsyncConnection - Инициализирующий конструктор (Сторона сервера)
+     * @param inSocket - Сокет соединения со стороны сервера
      * @param inCallbacks - Перечень калбеков
      */
     HMQtSimpleAsyncConnection(std::unique_ptr<QTcpSocket>&& inSocket, const ConCallbacks& inCallbacks);

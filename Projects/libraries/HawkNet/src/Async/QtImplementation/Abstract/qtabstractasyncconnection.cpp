@@ -8,13 +8,14 @@
 using namespace net;
 
 //-----------------------------------------------------------------------------
-HMQtAbstractAsyncConnection::HMQtAbstractAsyncConnection(const std::string& inHost, const uint16_t inPort, const ConCallbacks& inCallbacks) :
+HMQtAbstractAsyncConnection::HMQtAbstractAsyncConnection(const std::string& inHost, const uint16_t inPort, const ConCallbacks& inCallbacks, std::unique_ptr<QTcpSocket>&& inSocket) :
     QObject(nullptr),
     HMAbstractAsyncConnection(inCallbacks),
     m_host(inHost),
-    m_port(inPort)
+    m_port(inPort),
+    m_socket(std::move(inSocket))
 {
-
+    assert(m_socket != nullptr); // Сокет должен быть валидным
 }
 //-----------------------------------------------------------------------------
 HMQtAbstractAsyncConnection::HMQtAbstractAsyncConnection(std::unique_ptr<QTcpSocket>&& inSocket, const ConCallbacks& inCallbacks) :

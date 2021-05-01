@@ -22,14 +22,17 @@ class HMQtAbstractAsyncConnection : public QObject, public HMAbstractAsyncConnec
 public:
 
     /**
-     * @brief HMQtAbstractAsyncConnection - Инициализирующий конструктор
+     * @brief HMQtAbstractAsyncConnection - Инициализирующий конструктор (Сторона клиента)
+     * @param inHost - Адрес хоста
+     * @param inPort - Рабочий порт хоста
      * @param inCallbacks - Перечень калбеков
+     * @param inSocket - Сокет соединения со стороны клиента
      */
-    HMQtAbstractAsyncConnection(const std::string& inHost, const uint16_t inPort, const ConCallbacks& inCallbacks);
+    HMQtAbstractAsyncConnection(const std::string& inHost, const uint16_t inPort, const ConCallbacks& inCallbacks, std::unique_ptr<QTcpSocket>&& inSocket);
 
     /**
-     * @brief HMQtAbstractAsyncConnection - Инициализирующий конструктор
-     * @param inSocket - Сокет соединения
+     * @brief HMQtAbstractAsyncConnection - Инициализирующий конструктор (Сторона сервера)
+     * @param inSocket - Сокет соединения со стороны сервера
      * @param inCallbacks - Перечень калбеков
      */
     HMQtAbstractAsyncConnection(std::unique_ptr<QTcpSocket>&& inSocket, const ConCallbacks& inCallbacks);

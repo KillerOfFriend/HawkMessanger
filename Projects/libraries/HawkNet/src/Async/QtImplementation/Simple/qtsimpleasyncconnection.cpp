@@ -8,10 +8,8 @@ using namespace net;
 
 //-----------------------------------------------------------------------------
 HMQtSimpleAsyncConnection::HMQtSimpleAsyncConnection(const std::string& inHost, const uint16_t inPort, const ConCallbacks &inCallbacks) :
-    HMQtAbstractAsyncConnection(inHost, inPort, inCallbacks)
+    HMQtAbstractAsyncConnection(inHost, inPort, inCallbacks, std::make_unique<QTcpSocket>())
 {
-    m_socket = std::make_unique<QTcpSocket>();
-
     errors::error_code ConnectError = connectionSigSlotConnect(); // Линкуем сигналы\сокеты
     assert(!ConnectError); // Сигналы должны слинковаться успешно
     ConnectError.clear();
