@@ -41,14 +41,13 @@ public:
      */
     virtual ~HMQtSimpleAsyncConnection() override;
 
-protected:
+private:
 
     /**
-     * @brief makeSocket - Метод, формирующий экземпляр Qt сокета
-     * @param outError - Признак ошибки
-     * @return Венёт указатель на экземпляр сервера или nullptr
+     * @brief connectionSigSlotConnect - Метод выполнит линковку сигналов\слотов
+     * @return Вернёт признак ошибки
      */
-    virtual std::unique_ptr<QTcpSocket> makeSocket(errors::error_code& outError) override;
+    errors::error_code connectionSigSlotConnect();
 
 };
 //-----------------------------------------------------------------------------

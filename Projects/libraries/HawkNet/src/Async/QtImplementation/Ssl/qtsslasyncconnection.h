@@ -54,21 +54,6 @@ public:
      */
     static errors::error_code convertingError(const QSslError& inQSslError);
 
-protected:
-
-    /**
-     * @brief makeSocket - Метод, формирующий экземпляр Qt сокета
-     * @param outError - Признак ошибки
-     * @return Венёт указатель на экземпляр сервера или nullptr
-     */
-    virtual std::unique_ptr<QTcpSocket> makeSocket(errors::error_code& outError) override;
-
-    /**
-     * @brief connectionSigSlotConnect - Метод выполнит линковку сигналов\слотов
-     * @return Вернёт признак ошибки
-     */
-    virtual errors::error_code connectionSigSlotConnect() override;
-
 private slots:
 
     /**
@@ -101,6 +86,12 @@ private slots:
     void slot_onHandshakeInterruptedOnError(const QSslError &inSslError);
 
 private:
+
+    /**
+     * @brief connectionSigSlotConnect - Метод выполнит линковку сигналов\слотов
+     * @return Вернёт признак ошибки
+     */
+    errors::error_code connectionSigSlotConnect();
 
     /**
      * @brief sslSocket - Метод вернёт указатель на QSslSoket соединения

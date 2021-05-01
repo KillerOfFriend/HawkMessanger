@@ -81,19 +81,6 @@ protected:
      */
     virtual void write() override;
 
-    /**
-     * @brief makeSocket - Метод, формирующий экземпляр Qt сокета
-     * @param outError - Признак ошибки
-     * @return Венёт указатель на экземпляр сервера или nullptr
-     */
-    virtual std::unique_ptr<QTcpSocket> makeSocket(errors::error_code& outError) = 0;
-
-    /**
-     * @brief connectionSigSlotConnect - Метод выполнит линковку сигналов\слотов
-     * @return Вернёт признак ошибки
-     */
-    virtual errors::error_code connectionSigSlotConnect();
-
 private:
 
     QByteArray m_writeBuffer;           ///< Буфер, из которого происходит отправка
