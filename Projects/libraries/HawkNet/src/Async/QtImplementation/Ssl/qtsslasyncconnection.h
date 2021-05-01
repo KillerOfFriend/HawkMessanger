@@ -94,10 +94,10 @@ private:
     errors::error_code connectionSigSlotConnect();
 
     /**
-     * @brief sslSocket - Метод вернёт указатель на QSslSoket соединения
-     * @return Вернёт указатель на QSslSoket соединения
+     * @brief getSslSocket - Метод вернёт сокет SSL соединения
+     * @return Вернёт указатель на сокет SSL соединения
      */
-    QSslSocket* sslSocket() const;
+    QSslSocket* getSslSocket();
 
 };
 //-----------------------------------------------------------------------------

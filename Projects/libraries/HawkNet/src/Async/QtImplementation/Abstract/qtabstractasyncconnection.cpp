@@ -93,6 +93,16 @@ eConnectionStatus HMQtAbstractAsyncConnection::status() const
     return Result;
 }
 //-----------------------------------------------------------------------------
+std::string HMQtAbstractAsyncConnection::getHost() const
+{
+    return m_host;
+}
+//-----------------------------------------------------------------------------
+uint16_t HMQtAbstractAsyncConnection::getPort() const
+{
+    return m_port;
+}
+//-----------------------------------------------------------------------------
 void HMQtAbstractAsyncConnection::prepateNextData(oByteStream&& inData)
 {
     m_writeBuffer = QByteArray::fromStdString(inData.str()); // Преобразуем в понятный Qt контейнер
@@ -104,6 +114,11 @@ void HMQtAbstractAsyncConnection::write()
         return;
 
     m_socket->write(m_writeBuffer); // Начинаем отправку
+}
+//-----------------------------------------------------------------------------
+std::unique_ptr<QTcpSocket>& HMQtAbstractAsyncConnection::getSocket()
+{
+    return m_socket;
 }
 //-----------------------------------------------------------------------------
 errors::error_code HMQtAbstractAsyncConnection::convertingError(const QAbstractSocket::SocketError inQtSocketError)

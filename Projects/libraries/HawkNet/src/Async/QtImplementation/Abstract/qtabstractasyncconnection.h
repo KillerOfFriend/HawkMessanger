@@ -61,6 +61,18 @@ public:
     virtual eConnectionStatus status() const override;
 
     /**
+     * @brief getHost - Метод вернёт адрес хоста
+     * @return Вернёт адрес хоста
+     */
+    std::string getHost() const;
+
+    /**
+     * @brief getPort - Метод вернёт рабочй порт
+     * @return Вернёт рабочй порт
+     */
+    uint16_t getPort() const;
+
+    /**
      * @brief convertingError - Метод преобразует ошибку QtSocket в стандартную
      * @param inQtSocketError - Признак ошибки QtSocket
      * @return Вернтёт стандартную ошибка
@@ -68,10 +80,6 @@ public:
     static errors::error_code convertingError(const QAbstractSocket::SocketError inQtSocketError);
 
 protected:
-
-    std::string m_host = "";            ///< Адрес хоста
-    uint16_t m_port = 0;                ///< Рабочий порт
-    std::unique_ptr<QTcpSocket> m_socket = nullptr;   ///< Простой сокет Qt
 
     /**
      * @brief prepateNextData - Метод подготовит данные перед началом записи
@@ -84,7 +92,18 @@ protected:
      */
     virtual void write() override;
 
+    /**
+     * @brief getSocket - Метод вернёт сокет соединения
+     * @return Вернёт сокет соединения
+     */
+    std::unique_ptr<QTcpSocket>& getSocket();
+
 private:
+
+
+    std::string m_host = "";                        ///< Адрес хоста
+    uint16_t m_port = 0;                            ///< Рабочий порт
+    std::unique_ptr<QTcpSocket> m_socket = nullptr; ///< Простой сокет Qt
 
     QByteArray m_writeBuffer;           ///< Буфер, из которого происходит отправка
     QByteArray m_readBuffer;            ///< Буфер, в который происходит чтение

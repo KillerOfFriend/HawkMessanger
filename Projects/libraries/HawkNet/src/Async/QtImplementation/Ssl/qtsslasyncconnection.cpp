@@ -31,10 +31,11 @@ HMQtSslAsyncConnection::~HMQtSslAsyncConnection()
 errors::error_code HMQtSslAsyncConnection::connect(const std::chrono::milliseconds inWaitTime)
 {
     errors::error_code Error = make_error_code(errors::eNetError::neSuccess); // Изначально метим как успех
+    QSslSocket* CurrentSocket = getSslSocket(); // Получаем указатель на текущий сокет
 
     disconnect(); // Принудительный разрыв соединения
 
-    if (!m_socket) // Сокет не инициализирован
+    if (!CurrentSocket) // Сокет не инициализирован
         Error = make_error_code(errors::eNetError::neSocketNotInit);
     else // Если сокет успешно сформирован
     {
@@ -42,13 +43,13 @@ errors::error_code HMQtSslAsyncConnection::connect(const std::chrono::millisecon
             Error = make_error_code(errors::eNetError::neNoSslSupport);
         else
         {   // Пытаемся подключиться
-            sslSocket()->setPeerVerifyMode(QSslSocket::QueryPeer);
+            CurrentSocket->setPeerVerifyMode(QSslSocket::QueryPeer);
 
-            sslSocket()->connectToHostEncrypted(QString::fromStdString(m_host), static_cast<quint16>(m_port),
+            CurrentSocket->connectToHostEncrypted(QString::fromStdString(getHost()), static_cast<quint16>(getPort()),
                                    QIODevice::ReadWrite, QAbstractSocket::AnyIPProtocol);
 
             //if (!sslSocket()->waitForEncrypted(inWaitTime.count())) // По хорошему требуется, но блокирует поток в тестах...
-            if (!sslSocket()->waitForConnected(inWaitTime.count()))
+            if (!CurrentSocket->waitForConnected(inWaitTime.count()))
                 Error = make_error_code(errors::eNetError::neTimeOut);
         }
     }
@@ -111,29 +112,37 @@ void HMQtSslAsyncConnection::slot_onHandshakeInterruptedOnError(const QSslError 
     disconnect(); // Нет рукопожатия, нет защищённого соединения
 }
 //-----------------------------------------------------------------------------
-QSslSocket* HMQtSslAsyncConnection::sslSocket() const
+QSslSocket* HMQtSslAsyncConnection::getSslSocket()
 {
-    return dynamic_cast<QSslSocket*>(m_socket.get());
+    /*
+     * БЕЗОПАСНО, т.к. вернёт перекастованый указатель,
+     * владельцем которого является предок класса, являющийся
+     * его единоличным владельцем (хранит в приватной секции).
+     * А значит никуда не денется, пока не будет разрушен
+     * текущий потомок.
+    */
+    return dynamic_cast<QSslSocket*>(getSocket().get());
 }
 //-----------------------------------------------------------------------------
 errors::error_code HMQtSslAsyncConnection::connectionSigSlotConnect()
 {
     errors::error_code Error = make_error_code(errors::eNetError::neSuccess); // Изначально метим как успех
+    const QSslSocket* CurrentSocket = getSslSocket(); // Получаем указатель на текущий сокет
 
-    if (!m_socket)
+    if (!CurrentSocket)
         Error = make_error_code(errors::eNetError::neSocketNotInit);
     else
     {
-        QObject::connect(sslSocket(), &QSslSocket::readyRead, this, &HMQtSslAsyncConnection::slot_onReadyRead); // Линкуем событие "К чтению готов"
-        QObject::connect(sslSocket(), &QSslSocket::errorOccurred, this, &HMQtSslAsyncConnection::slot_onErrorOccurred); // Линкуем событие "Произошла ошибка"
-        QObject::connect(sslSocket(), &QSslSocket::disconnected, this, &HMQtSslAsyncConnection::slot_onDisconnected); // Линкуем событие "разрыв соеденения"
+        QObject::connect(CurrentSocket, &QSslSocket::readyRead, this, &HMQtSslAsyncConnection::slot_onReadyRead); // Линкуем событие "К чтению готов"
+        QObject::connect(CurrentSocket, &QSslSocket::errorOccurred, this, &HMQtSslAsyncConnection::slot_onErrorOccurred); // Линкуем событие "Произошла ошибка"
+        QObject::connect(CurrentSocket, &QSslSocket::disconnected, this, &HMQtSslAsyncConnection::slot_onDisconnected); // Линкуем событие "разрыв соеденения"
 
-        QObject::connect(sslSocket(), &QSslSocket::encrypted, this, &HMQtSslAsyncConnection::slot_onEncrypted); // Линкуем событие "Установлено защищённое соединение"
-        QObject::connect(sslSocket(), &QSslSocket::peerVerifyError, this, &HMQtSslAsyncConnection::slot_onPeerVerifyError); // Линкуем событие "Ошибка идентификации надежно однорангового узла"
-        QObject::connect(sslSocket(), &QSslSocket::sslErrors, this, &HMQtSslAsyncConnection::slot_onSslErrors); // Линкуем событие "Ошибка SSL"
+        QObject::connect(CurrentSocket, &QSslSocket::encrypted, this, &HMQtSslAsyncConnection::slot_onEncrypted); // Линкуем событие "Установлено защищённое соединение"
+        QObject::connect(CurrentSocket, &QSslSocket::peerVerifyError, this, &HMQtSslAsyncConnection::slot_onPeerVerifyError); // Линкуем событие "Ошибка идентификации надежно однорангового узла"
+        QObject::connect(CurrentSocket, &QSslSocket::sslErrors, this, &HMQtSslAsyncConnection::slot_onSslErrors); // Линкуем событие "Ошибка SSL"
 
-        QObject::connect(sslSocket(), &QSslSocket::encryptedBytesWritten, this, &HMQtSslAsyncConnection::slot_onEncryptedBytesWritten); // Линкуем событие "Зашифрованных байт записано"
-        QObject::connect(sslSocket(), &QSslSocket::handshakeInterruptedOnError, this, &HMQtSslAsyncConnection::slot_onHandshakeInterruptedOnError); // Линкуем событие "Прерывание рукопожатия по ошибке"
+        QObject::connect(CurrentSocket, &QSslSocket::encryptedBytesWritten, this, &HMQtSslAsyncConnection::slot_onEncryptedBytesWritten); // Линкуем событие "Зашифрованных байт записано"
+        QObject::connect(CurrentSocket, &QSslSocket::handshakeInterruptedOnError, this, &HMQtSslAsyncConnection::slot_onHandshakeInterruptedOnError); // Линкуем событие "Прерывание рукопожатия по ошибке"
     }
 
     return Error;
