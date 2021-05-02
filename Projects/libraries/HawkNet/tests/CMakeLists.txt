@@ -15,6 +15,7 @@ set(TESTS_LINCED_LIBRARYES
 set(TESTS_INCLUDE_DIRS
     ${LIBRARIES_PATH}/HawkErrors/src
     ${DIR_THIRDPARTY_PATH}/Building/googletest/googletest/include/
+    ${LIBRARIES_PATH}/HawkNet/tests/TestsCommon
     )
 #====================================================================
 set(NT_Test1 HawkNet_QtSimpleNetTest)
