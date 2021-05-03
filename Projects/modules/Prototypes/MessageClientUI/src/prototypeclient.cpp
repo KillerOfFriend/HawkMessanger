@@ -70,17 +70,24 @@ void PrototypeClient::onReceiveData(net::iByteStream&& inData, const std::size_t
     QString Text = QString::fromStdString(inData.str());
 
     LOG_TEXT(Text);
+    sig_textReceived(Text);
 }
 //-----------------------------------------------------------------------------
 void PrototypeClient::onDisconnect(const std::size_t inSenderID)
 {
     HM_UNUSED(inSenderID);
-    LOG_INFO("Disconnect");
+    QString Text = "Disconnect";
+
+    LOG_INFO(Text);
+    sig_textReceived(Text);
 }
 //-----------------------------------------------------------------------------
 void PrototypeClient::onError(const errors::error_code inError, const std::size_t inSenderID)
 {
     HM_UNUSED(inSenderID);
-    LOG_ERROR("ERROR: "+ inError.message_qstr());
+    QString Text = "ERROR: "+ inError.message_qstr();
+
+    LOG_ERROR(Text);
+    sig_textReceived(Text);
 }
 //-----------------------------------------------------------------------------

@@ -3,11 +3,14 @@
 
 #include <memory>
 
+#include <QObject>
+
 #include <HawkNet.h>
 
 //-----------------------------------------------------------------------------
-class PrototypeClient
+class PrototypeClient : public QObject
 {
+    Q_OBJECT
 public:
 
     /**
@@ -80,6 +83,14 @@ private:
      * @param inSenderID - Идентификатор соединения
      */
     void onError(const errors::error_code inError, const std::size_t inSenderID);
+
+signals:
+
+    /**
+     * @brief sig_textReceived - Сигнал, передающий полученный текст
+     * @param inText - Полученный текст
+     */
+    void sig_textReceived(QString& inText);
 
 };
 //-----------------------------------------------------------------------------

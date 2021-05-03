@@ -7,5 +7,5 @@ set(CMAKE_AUTORCC   ON) # Автоматическая обработка рес
 set(CMAKE_AUTOUIC   ON) # Автоматическая обработка UI
 #====================================================================
 # Ищим используемые библиотеки
-find_package(Qt${QT_VERSION} COMPONENTS Core Network REQUIRED) # Ищим библиотеки QT
+find_package(Qt${QT_VERSION} COMPONENTS Core Network Widgets REQUIRED) # Ищим библиотеки QT
 #====================================================================
