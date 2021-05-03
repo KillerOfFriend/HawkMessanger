@@ -36,7 +36,7 @@ set(INCLUDE_DIRS
     )
 #====================================================================
 # Создаём бинарь
-add_executable(${PROJECT_NAME} WIN32 ${BIN_HEADERS} ${BIN_SOURCES})
+add_executable(${PROJECT_NAME} ${BIN_HEADERS} ${BIN_SOURCES})
 # Подключаем папки с хидерами
 target_include_directories(${PROJECT_NAME} PRIVATE ${INCLUDE_DIRS})
 # Линкуем библиотеки
