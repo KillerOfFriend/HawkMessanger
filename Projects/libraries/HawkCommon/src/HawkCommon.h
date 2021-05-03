@@ -1,6 +1,7 @@
 #ifndef HAWKCOMMON_H
 #define HAWKCOMMON_H
 
+#include "defines.h"
 #include "errorcode.h"
 
 #include "user.h"

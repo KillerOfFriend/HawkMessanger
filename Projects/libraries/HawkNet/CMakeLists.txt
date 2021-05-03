@@ -25,9 +25,10 @@ set(LINCED_LIBRARYES
 #====================================================================
 # Формируем список подключаемых папок
 set(INCLUDE_DIRS
-    ${LIBRARIES_PATH}/HawkCommon/src    # Подключаем хидеры общей библиотеки
-    ${LIBRARIES_PATH}/HawkErrors/src    # Подключаем хидеры библиотеки ошибок
-    ${CMAKE_CURRENT_SOURCE_DIR}/src     # Подключаем собственный корневой каталог
+    ${LIBRARIES_PATH}/HawkCommon/src        # Подключаем хидеры общей библиотеки
+    ${LIBRARIES_PATH}/HawkErrors/src        # Подключаем хидеры библиотеки ошибок
+    ${CMAKE_CURRENT_SOURCE_DIR}/src         # Подключаем собственный корневой каталог
+    ${DIR_THIRDPARTY_PATH}/HPP/json/include # Подключаем библиотеку JSON
     )
 #====================================================================
 # Собираем динамическую библиотеку

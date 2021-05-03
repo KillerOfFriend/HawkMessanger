@@ -18,12 +18,19 @@ set(TESTS_INCLUDE_DIRS
     ${LIBRARIES_PATH}/HawkNet/tests/TestsCommon
     )
 #====================================================================
-set(NT_Test1 HawkNet_QtSimpleNetTest)
-add_executable(${NT_Test1} ${CMAKE_CURRENT_SOURCE_DIR}/QtSimpleNet/main.cpp)
+set(NT_Test1 HawkNet_Utils)
+add_executable(${NT_Test1} ${CMAKE_CURRENT_SOURCE_DIR}/NetUtils/main.cpp)
 target_include_directories(${NT_Test1} PRIVATE ${TESTS_INCLUDE_DIRS})
 target_link_libraries(${NT_Test1} PRIVATE ${TESTS_LINCED_LIBRARYES})
 
-add_test(NAME ${PROJECT_NAME}1 COMMAND QtSimpleNet)
+add_test(NAME ${PROJECT_NAME}1 COMMAND NetUtils)
+#====================================================================
+set(NT_Test2 HawkNet_QtSimpleNetTest)
+add_executable(${NT_Test2} ${CMAKE_CURRENT_SOURCE_DIR}/QtSimpleNet/main.cpp)
+target_include_directories(${NT_Test2} PRIVATE ${TESTS_INCLUDE_DIRS})
+target_link_libraries(${NT_Test2} PRIVATE ${TESTS_LINCED_LIBRARYES})
+
+add_test(NAME ${PROJECT_NAME}2 COMMAND QtSimpleNet)
 #====================================================================
 # Для теста QtSslNet нужно создать сертификаты
 if (UNIX)
@@ -32,10 +39,10 @@ if (UNIX)
 endif (UNIX)
 
 # А уже после запускать тест
-set(NT_Test2 HawkNet_QtSslNetTest)
-add_executable(${NT_Test2} ${CMAKE_CURRENT_SOURCE_DIR}/QtSslNet/main.cpp)
-target_include_directories(${NT_Test2} PRIVATE ${TESTS_INCLUDE_DIRS})
-target_link_libraries(${NT_Test2} PRIVATE ${TESTS_LINCED_LIBRARYES})
+set(NT_Test3 HawkNet_QtSslNetTest)
+add_executable(${NT_Test3} ${CMAKE_CURRENT_SOURCE_DIR}/QtSslNet/main.cpp)
+target_include_directories(${NT_Test3} PRIVATE ${TESTS_INCLUDE_DIRS})
+target_link_libraries(${NT_Test3} PRIVATE ${TESTS_LINCED_LIBRARYES})
 
-add_test(NAME ${PROJECT_NAME}2 COMMAND QtSslNet)
+add_test(NAME ${PROJECT_NAME}3 COMMAND QtSslNet)
 #====================================================================

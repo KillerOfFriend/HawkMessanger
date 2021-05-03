@@ -7,29 +7,13 @@
  */
 
 #include <chrono>
-#include <sstream>
 
 #include <errorcode.h>
 
+#include "nettypes.h"
+
 namespace net
 {
-//-----------------------------------------------------------------------------
-/**
- * @brief The eConnectionStatus enum - Перечисление статусов соединения
- */
-enum class eConnectionStatus
-{
-    csUnknown = 0,      ///< Соединение не определено
-    csDisconnected,     ///< Соединение отсутствует
-    csDisconnecting,    ///< Соединение разрывается
-    csConnecting,       ///< Соединени устанавливается
-    csConnected,        ///< Соединение установлено
-
-    csCount             ///< Счётчик
-};
-//-----------------------------------------------------------------------------
-typedef std::basic_istringstream<char> iByteStream; ///< Буфер получаемых данных
-typedef std::basic_ostringstream<char> oByteStream; ///< Буфер отправляемых данных
 //-----------------------------------------------------------------------------
 /**
  * @brief The HMConnection class - Интерфейс, описывающий соединение

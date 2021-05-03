@@ -28,7 +28,7 @@ set(LINCED_LIBRARYES
 # Формируем список подключаемых папок
 set(INCLUDE_DIRS
     ${LIBRARIES_PATH}/HawkLog/src           # Подключаем библиотеку логирования
-    ${LIBRARIES_PATH}/HawkCommon/src        # Подключаем библиотеку логирования
+    ${LIBRARIES_PATH}/HawkCommon/src        # Подключаем общую библиотеку
     ${LIBRARIES_PATH}/HawkServerCore/src    # Подключаем библиотеку ядро сервера
     )
 #====================================================================

@@ -1,6 +1,9 @@
 #ifndef HAWKNET_H
 #define HAWKNET_H
 
+#include "nettypes.h"
+#include "netutils.h"
+
 #include "Interface/server.h"
 #include "Interface/connection.h"
 
