@@ -1,8 +1,7 @@
 #include "netutils.h"
 
 #include <cassert>
-
-#include <nlohmann/json.hpp>
+#include <algorithm>
 
 //-----------------------------------------------------------------------------
 /**
@@ -33,23 +32,55 @@ nlohmann::json makeJsonWrap(const std::string& inReplacedStrData, const std::str
     Json["HEAD"]["replace_sequence"] = inReplaceSequence; // Заменяющая последовательность
     Json["HEAD"]["replace_count"] = inReplaceCount; // Количество замен
     // Формируем данные
-    Json["DATA"] = inReplacedStrData; // Данные
+    Json["DATA"] = net::strToBinaryJson(inReplacedStrData); // Данные
 
     return Json;
 }
 //-----------------------------------------------------------------------------
 bool isJsonWrap(const nlohmann::json& inWrap)
 {
-    return inWrap.find("HEAD") == inWrap.end() ||
-            inWrap["HEAD"].is_null() ||
-            inWrap["HEAD"].type() != nlohmann::json::value_t::object ||
-            inWrap["HEAD"].find("replace_sequence") == inWrap["HEAD"].end() ||
-            inWrap["HEAD"]["replace_sequence"].type() != nlohmann::json::value_t::string ||
-            inWrap["HEAD"].find("replace_count") == inWrap["HEAD"].end() ||
-            inWrap["HEAD"]["replace_count"].type() != nlohmann::json::value_t::number_unsigned ||
-            inWrap.find("DATA") == inWrap.end() ||
-            inWrap["DATA"].is_null() ||
-            inWrap["DATA"].type() != nlohmann::json::value_t::string;
+    return inWrap.find("HEAD") != inWrap.end() ||
+            !inWrap["HEAD"].is_null() ||
+            inWrap["HEAD"].is_object() ||
+            inWrap["HEAD"].find("replace_sequence") != inWrap["HEAD"].end() ||
+            inWrap["HEAD"]["replace_sequence"].is_string() ||
+            inWrap["HEAD"].find("replace_count") != inWrap["HEAD"].end() ||
+            inWrap["HEAD"]["replace_count"].is_number_unsigned() ||
+            inWrap.find("DATA") != inWrap.end() ||
+            !inWrap["DATA"].is_null() ||
+            inWrap["DATA"].is_array();
+}
+//-----------------------------------------------------------------------------
+nlohmann::json net::strToBinaryJson(const std::string& inStr)
+{
+    nlohmann::json Result;
+
+    if (!inStr.empty())
+    {
+        std::vector<std::uint8_t> BinarVector(inStr.size());
+        std::transform(inStr.cbegin(), inStr.cend(), BinarVector.begin(), [](const char& Char){ return static_cast<std::uint8_t>(Char); });
+        Result = BinarVector;
+    }
+
+    return Result;
+}
+//-----------------------------------------------------------------------------
+std::string net::binaryJsonToStr(const nlohmann::json& inJson)
+{
+    std::string Result = "";
+
+    if (!inJson.empty() && inJson.is_array())
+    {
+        std::vector<std::uint8_t> BinarVector = inJson.get<std::vector<std::uint8_t>>();
+
+        if (!BinarVector.empty())
+        {
+            //Result.reserve(BinarVector.size());
+            std::transform(BinarVector.cbegin(), BinarVector.cend(),  std::back_inserter(Result), [](const std::uint8_t& Byte){ return static_cast<char>(Byte); });
+        }
+    }
+
+    return Result;
 }
 //-----------------------------------------------------------------------------
 net::oByteStream net::wrap(oByteStream&& inData)
@@ -95,11 +126,11 @@ net::iByteStream net::unwrap(iByteStream&& inData)
     // "Приёмник" обёртки
     nlohmann::json Json = nlohmann::json::parse(inData.str(), nullptr, false); // Пытаемся распарсить обёртку
 
-    if (Json.is_discarded() || isJsonWrap(Json) ) // Если при парсинге произошла ошибка или данные не являются обёрткой
+    if (Json.is_discarded() || !isJsonWrap(Json) ) // Если при парсинге произошла ошибка или данные не являются обёрткой
         Result = std::move(inData); // Вернём как есть
     else // Обёртка распаршена успешно
     {
-        std::string StrData = Json["DATA"].get<std::string>(); // Получаем обёрнутые данные
+        std::string StrData = binaryJsonToStr(Json["DATA"]); // Получаем обёрнутые данные
 
         if (Json["HEAD"]["replace_count"] > 0) // Если были замещения
         {   // Нужно развернуть обратно

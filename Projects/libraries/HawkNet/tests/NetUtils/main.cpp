@@ -6,12 +6,13 @@
 #include <nlohmann/json.hpp>
 
 //-----------------------------------------------------------------------------
+static const std::string Data = "0123456789";
+//-----------------------------------------------------------------------------
 /**
  * @brief TEST - Тест обёртывания данных не требующих замены символов
  */
 TEST(NetUtils, WrapWithoutReplace)
 {
-    const std::string Data = "01234567890";
     net::oByteStream outS(Data);
 
     outS = net::wrap(std::move(outS)); // Оборачиваем строку, не содержащую символа разделителя потока
@@ -21,7 +22,7 @@ TEST(NetUtils, WrapWithoutReplace)
 
     EXPECT_TRUE(Json["HEAD"]["replace_sequence"].get<std::string>().empty()); // Замещающая последовательность не задана
     EXPECT_EQ(Json["HEAD"]["replace_count"].get<std::uint64_t>(), 0); // Количество замен = 0
-    EXPECT_EQ(Data, Json["DATA"].get<std::string>()); // Запакованные данные должны быть идентичны исзодным
+    EXPECT_EQ(net::binaryJsonToStr(Json["DATA"]), Data); // Запакованные данные должны быть идентичны созданным
 }
 //-----------------------------------------------------------------------------
 /**
@@ -29,7 +30,6 @@ TEST(NetUtils, WrapWithoutReplace)
  */
 TEST(NetUtils, Wrap)
 {
-    const std::string Data = "01234567890";
     const std::string Seq = {'{', net::C_DATA_REPLACER, '}'};
 
     {
@@ -46,7 +46,7 @@ TEST(NetUtils, Wrap)
 
         EXPECT_EQ(Json["HEAD"]["replace_sequence"].get<std::string>(), Seq); // Замещающая последовательность идентична
         EXPECT_EQ(Json["HEAD"]["replace_count"].get<std::uint64_t>(), 1); // Количество замен = 1
-        EXPECT_EQ(Json["DATA"].get<std::string>(), Ret1); // Запакованные данные должны быть идентичны исходным
+        EXPECT_EQ(net::binaryJsonToStr(Json["DATA"]), Ret1); // Запакованные данные должны быть идентичны ожидаемым
     }
 
     {
@@ -63,7 +63,7 @@ TEST(NetUtils, Wrap)
 
         EXPECT_EQ(Json["HEAD"]["replace_sequence"].get<std::string>(), Seq); // Замещающая последовательность идентична
         EXPECT_EQ(Json["HEAD"]["replace_count"].get<std::uint64_t>(), 1); // Количество замен = 1
-        EXPECT_EQ(Json["DATA"].get<std::string>(), Ret2); // Запакованные данные должны быть идентичны исходным
+        EXPECT_EQ(net::binaryJsonToStr(Json["DATA"]), Ret2); // Запакованные данные должны быть идентичны ожидаемым
     }
 
     {
@@ -82,7 +82,7 @@ TEST(NetUtils, Wrap)
 
         EXPECT_EQ(Json["HEAD"]["replace_sequence"].get<std::string>(), Seq); // Замещающая последовательность идентична
         EXPECT_EQ(Json["HEAD"]["replace_count"].get<std::uint64_t>(), 1); // Количество замен = 1
-        EXPECT_EQ(Json["DATA"].get<std::string>(), Ret3); // Запакованные данные должны быть идентичны исходным
+        EXPECT_EQ(net::binaryJsonToStr(Json["DATA"]), Ret3); // Запакованные данные должны быть идентичны ожидаемым
     }
 
     {
@@ -103,7 +103,7 @@ TEST(NetUtils, Wrap)
 
         EXPECT_EQ(Json["HEAD"]["replace_sequence"].get<std::string>(), Seq); // Замещающая последовательность идентична
         EXPECT_EQ(Json["HEAD"]["replace_count"].get<std::uint64_t>(), 3); // Количество замен = 3
-        EXPECT_EQ(Json["DATA"].get<std::string>(), Ret3); // Запакованные данные должны быть идентичны исходным
+        EXPECT_EQ(net::binaryJsonToStr(Json["DATA"]), Ret3); // Запакованные данные должны быть идентичны ожидаемым
     }
 }
 //-----------------------------------------------------------------------------
@@ -112,8 +112,6 @@ TEST(NetUtils, Wrap)
  */
 TEST(NetUtils, UnWrap)
 {
-    const std::string Data = "01234567890";
-
     {
         std::string Data1 = net::C_DATA_SEPARATOR + Data; // Вставляем разделитель в начало
 
@@ -164,6 +162,19 @@ TEST(NetUtils, UnWrap)
 
         EXPECT_EQ(Data4, inS.str()); // Исходные и развёрнутые данные должны совпасть
     }
+}
+//-----------------------------------------------------------------------------
+/**
+ * @brief TEST - Тест иммитирующий отправку\приём данных
+ */
+TEST(NetUtils, SendReceiveEmitation)
+{
+    std::string Text = Data;
+    Text.insert(5, 1, net::C_DATA_SEPARATOR); // Вставляем разделитель в середину
+    Text = net::C_DATA_SEPARATOR + Text + net::C_DATA_SEPARATOR; // И с обеих сторон
+
+    std::string ReceiveText = net::unwrap(net::iByteStream(net::wrap(net::oByteStream(Text)).str())).str();
+    ASSERT_EQ(Text, ReceiveText);
 }
 //-----------------------------------------------------------------------------
 /**
