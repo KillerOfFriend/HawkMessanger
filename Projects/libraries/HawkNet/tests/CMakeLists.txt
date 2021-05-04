@@ -33,10 +33,12 @@ target_link_libraries(${NT_Test2} PRIVATE ${TESTS_LINCED_LIBRARYES})
 add_test(NAME ${PROJECT_NAME}2 COMMAND QtSimpleNet)
 #====================================================================
 # Для теста QtSslNet нужно создать сертификаты
-if (UNIX)
-    message("Create certificate and private key")
+message("Create certificate and private key")
+IF (WIN32)
+    execute_process(COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/QtSslNet/WindowsCreateCertificate.bat WORKING_DIRECTORY ${TETSTS_OUT_PATH})
+ELSE()
     execute_process(COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/QtSslNet/LinuxCreateCertificate.sh WORKING_DIRECTORY ${TETSTS_OUT_PATH})
-endif (UNIX)
+ENDIF()
 
 # А уже после запускать тест
 set(NT_Test3 HawkNet_QtSslNetTest)

@@ -7,7 +7,7 @@ project(HawkMessanger VERSION ${HM_VERSION} LANGUAGES CXX)
 #====================================================================
 # Задаём опции проекта
 option(BUILD_HAWK_TESTS                 "Собрать тесты модулей системы?"                    ON  )
-option(BUILD_HAWK_PROTOTYPES            "Собрать модули-прототипы?"                         OFF )
+option(BUILD_HAWK_PROTOTYPES            "Собрать модули-прототипы?"                         ON  )
 option(USE_PVS_STUDIO_STATIC_ANALYSIS   "Использовать статический анализатор PVS-STUDIO?"   OFF )
 #====================================================================
 # Задаём настройик компиляции
