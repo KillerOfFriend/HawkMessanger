@@ -84,3 +84,9 @@ void PrototypeClient::onError(const errors::error_code inError, const std::size_
     LOG_ERROR("ERROR: "+ inError.message_qstr());
 }
 //-----------------------------------------------------------------------------
+
+
+errors::error_code PrototypeClient::slot_send(std::string inStrData)
+{
+    return send(net::oByteStream(inStrData));
+}

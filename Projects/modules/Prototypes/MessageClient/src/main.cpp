@@ -5,7 +5,10 @@
 
 #include <HawkLog.h>
 
+#include <QThread>
+
 #include "prototypeclient.h"
+#include "qinteractive.h"
 
 //-----------------------------------------------------------------------------
 void wait(const std::chrono::milliseconds inWaitTime)
@@ -63,8 +66,15 @@ int main(int argc, char *argv[])
 
     initLogSystem();
 
-    PrototypeClient PClient;
+    QThread Thread;
+    QInteractive Interactive;
 
+    Interactive.moveToThread(&Thread);
+
+    QObject::connect(&Thread, SIGNAL(started()), &Interactive, SLOT(slot_startInteractive()));
+    QObject::connect(&Thread, SIGNAL(finished()), &Interactive, SLOT(slot_stopInteractive()));
+
+    PrototypeClient PClient;
     errors::error_code Error = PClient.connect("127.0.0.1", 32112);
 
     if (Error)
@@ -72,8 +82,9 @@ int main(int argc, char *argv[])
     else
     {
         LOG_INFO("Клиент успешно подключен к серверу.");
-        clientProcess(PClient);
-        PClient.disconnect();
+
+        QObject::connect(&Interactive, &QInteractive::sig_sendMessage, &PClient, &PrototypeClient::slot_send);
+        Thread.start();
     }
 
     return a.exec();

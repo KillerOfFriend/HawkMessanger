@@ -26,6 +26,7 @@ set(LINCED_LIBRARYES
     HawkLog
     HawkCommon
     HawkNet
+    HawkErrors
     )
 #====================================================================
 # Формируем список подключаемых папок
@@ -33,6 +34,7 @@ set(INCLUDE_DIRS
     ${LIBRARIES_PATH}/HawkLog/src           # Подключаем библиотеку логирования
     ${LIBRARIES_PATH}/HawkCommon/src        # Подключаем общую логирования
     ${LIBRARIES_PATH}/HawkNet/src           # Подключаем сетевую библиотеку
+    ${LIBRARIES_PATH}/HawkErrors/src        # Подключаем библиотеку ошибок
     )
 #====================================================================
 # Создаём бинарь

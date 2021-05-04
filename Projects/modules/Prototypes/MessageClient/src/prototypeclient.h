@@ -3,11 +3,14 @@
 
 #include <memory>
 
+#include <QObject>
+
 #include <HawkNet.h>
 
 //-----------------------------------------------------------------------------
-class PrototypeClient
+class PrototypeClient : public QObject
 {
+    Q_OBJECT
 public:
 
     /**
@@ -80,6 +83,9 @@ private:
      * @param inSenderID - Идентификатор соединения
      */
     void onError(const errors::error_code inError, const std::size_t inSenderID);
+
+public slots:
+    errors::error_code slot_send(std::string inStrData);
 
 };
 //-----------------------------------------------------------------------------
