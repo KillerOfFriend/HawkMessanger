@@ -17,10 +17,17 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
+    std::uint16_t Port = 32112;
+
+    QStringList Args = a.arguments();
+
+    if (Args.size() >= 2)
+        Port = Args[1].toUShort();
+
     initLogSystem();
 
     PrototypeServer PServer;
-    errors::error_code Error = PServer.start(32112);
+    errors::error_code Error = PServer.start(Port);
 
     if (Error)
         LOG_ERROR(Error.message_qstr());

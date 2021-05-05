@@ -11,47 +11,6 @@
 #include "qinteractive.h"
 
 //-----------------------------------------------------------------------------
-void wait(const std::chrono::milliseconds inWaitTime)
-{
-    auto TimeOut = std::chrono::high_resolution_clock::now() + inWaitTime;
-
-    do
-    {
-        QCoreApplication::processEvents();
-    }
-    while(std::chrono::high_resolution_clock::now() < TimeOut);
-
-}
-//-----------------------------------------------------------------------------
-void clientProcess(PrototypeClient& inClient)
-{
-    bool Continue = true;
-
-    do
-    {
-        std::cout << "Print your message: ";
-        std::string Message;
-        std::getline(std::cin, Message);
-
-        if (!Message.empty())
-        {
-            if (Message == "/q")
-                Continue = false;
-            else
-            {
-                net::oByteStream Data(Message);
-                errors::error_code Error = inClient.send(std::move(Data));
-
-                if (Error)
-                    LOG_ERROR(Error.message_qstr());
-                else
-                    wait(std::chrono::milliseconds(300));
-            }
-        }
-    }
-    while (Continue);
-}
-//-----------------------------------------------------------------------------
 void initLogSystem()
 {
     // Настравиваем вывод логов в терминал и в файл
@@ -64,6 +23,16 @@ int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
 
+    std::string Host = "127.0.0.1";
+    std::uint16_t Port = 32112;
+
+    QStringList Args = a.arguments();
+
+    if (Args.size() >= 2)
+        Host = Args[1].toStdString();
+    if (Args.size() >= 3)
+        Port = Args[2].toUShort();
+
     initLogSystem();
 
     QThread Thread;
@@ -75,7 +44,7 @@ int main(int argc, char *argv[])
     QObject::connect(&Thread, SIGNAL(finished()), &Interactive, SLOT(slot_stopInteractive()));
 
     PrototypeClient PClient;
-    errors::error_code Error = PClient.connect("127.0.0.1", 32112);
+    errors::error_code Error = PClient.connect(Host, Port);
 
     if (Error)
         LOG_ERROR(Error.message_qstr());
