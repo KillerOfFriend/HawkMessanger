@@ -8,19 +8,28 @@
 namespace net
 {
 //-----------------------------------------------------------------------------
-/**
- * @brief strToBinaryJson - Функция преобразует строку в бинарную последовательность Json
- * @param inStr - Преобразуемая строка
- * @return Вернёт бинарную последовательность Json
- */
-[[nodiscard]] nlohmann::json strToBinaryJson(const std::string& inStr);
+///**
+// * @brief strToBinaryJson - Функция преобразует строку в бинарную последовательность Json
+// * @param inStr - Преобразуемая строка
+// * @return Вернёт бинарную последовательность Json
+// */
+//[[nodiscard]] nlohmann::json strToBinaryJson(const std::string& inStr);
+////-----------------------------------------------------------------------------
+///**
+// * @brief binaryJsonToStr - Функция преобразует бинарную последовательность Json в строку
+// * @param inJson - Бинарная последовательность Json
+// * @return Вернё строку
+// */
+//[[nodiscard]] std::string binaryJsonToStr(const nlohmann::json& inJson);
 //-----------------------------------------------------------------------------
 /**
- * @brief binaryJsonToStr - Функция преобразует бинарную последовательность Json в строку
- * @param inJson - Бинарная последовательность Json
- * @return Вернё строку
+ * @brief getWrapAndMessageData - Иетод из
+ * @param inTextData - "Обёрнутые" данные в текстовом представлении
+ * @param outWrapInfo - Информация об обёртке
+ * @param outMessageData - "Обёрнутое" сообщение
+ * @return Вернёт признак успеха операции
  */
-[[nodiscard]] std::string binaryJsonToStr(const nlohmann::json& inJson);
+[[nodiscard]] bool getWrapAndMessageData(const std::string& inTextData, nlohmann::json& outWrapInfo, std::string& outMessageData);
 //-----------------------------------------------------------------------------
 /**
  * @brief wrap - Функция "обернёт" отправляемые данные в безопастный для отправки вид

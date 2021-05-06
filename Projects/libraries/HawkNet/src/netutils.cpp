@@ -24,60 +24,76 @@ std::string makeMark(const char inRepSymbol, std::uint8_t inRepeats)
     return "{" + Result + "}"; // Формируем последовательность замещения
 }
 //-----------------------------------------------------------------------------
-nlohmann::json makeJsonWrap(const std::string& inReplacedStrData, const std::string& inReplaceSequence, const std::uint64_t inReplaceCount)
+nlohmann::json makeJsonWrap(const std::string& inReplaceSequence, const std::uint64_t inReplaceCount)
 {
     nlohmann::json Json;  // Формируемая обёртка Json
 
     // Формируем заголовок
-    Json["HEAD"]["replace_sequence"] = inReplaceSequence; // Заменяющая последовательность
-    Json["HEAD"]["replace_count"] = inReplaceCount; // Количество замен
-    // Формируем данные
-    Json["DATA"] = net::strToBinaryJson(inReplacedStrData); // Данные
+    Json[net::C_WRAP_HEAD][net::C_WRAP_SEQUENCE] = inReplaceSequence; // Заменяющая последовательность
+    Json[net::C_WRAP_HEAD][net::C_WRAP_COUNT] = inReplaceCount; // Количество замен
 
     return Json;
 }
 //-----------------------------------------------------------------------------
 bool isJsonWrap(const nlohmann::json& inWrap)
 {
-    return inWrap.find("HEAD") != inWrap.end() ||
-            !inWrap["HEAD"].is_null() ||
-            inWrap["HEAD"].is_object() ||
-            inWrap["HEAD"].find("replace_sequence") != inWrap["HEAD"].end() ||
-            inWrap["HEAD"]["replace_sequence"].is_string() ||
-            inWrap["HEAD"].find("replace_count") != inWrap["HEAD"].end() ||
-            inWrap["HEAD"]["replace_count"].is_number_unsigned() ||
-            inWrap.find("DATA") != inWrap.end() ||
-            !inWrap["DATA"].is_null() ||
-            inWrap["DATA"].is_array();
+    return inWrap.find(net::C_WRAP_HEAD) != inWrap.end() ||
+            !inWrap[net::C_WRAP_HEAD].is_null() ||
+            inWrap[net::C_WRAP_HEAD].is_object() ||
+            inWrap[net::C_WRAP_HEAD].find(net::C_WRAP_SEQUENCE) != inWrap[net::C_WRAP_HEAD].end() ||
+            inWrap[net::C_WRAP_HEAD][net::C_WRAP_SEQUENCE].is_string() ||
+            inWrap[net::C_WRAP_HEAD].find(net::C_WRAP_COUNT) != inWrap[net::C_WRAP_HEAD].end() ||
+            inWrap[net::C_WRAP_HEAD][net::C_WRAP_COUNT].is_number_unsigned();
 }
 //-----------------------------------------------------------------------------
-nlohmann::json net::strToBinaryJson(const std::string& inStr)
-{
-    nlohmann::json Result;
+//nlohmann::json net::strToBinaryJson(const std::string& inStr)
+//{
+//    nlohmann::json Result;
 
-    if (!inStr.empty())
-    {
-        std::vector<std::uint8_t> BinarVector(inStr.size());
-        std::transform(inStr.cbegin(), inStr.cend(), BinarVector.begin(), [](const char& Char){ return static_cast<std::uint8_t>(Char); });
-        Result = BinarVector;
-    }
+//    if (!inStr.empty())
+//    {
+//        std::vector<std::uint8_t> BinarVector(inStr.size());
+//        std::transform(inStr.cbegin(), inStr.cend(), BinarVector.begin(), [](const char& Char){ return static_cast<std::uint8_t>(Char); });
+//        Result = BinarVector;
+//    }
 
-    return Result;
-}
+//    return Result;
+//}
+////-----------------------------------------------------------------------------
+//std::string net::binaryJsonToStr(const nlohmann::json& inJson)
+//{
+//    std::string Result = "";
+
+//    if (!inJson.empty() && inJson.is_array())
+//    {
+//        std::vector<std::uint8_t> BinarVector = inJson.get<std::vector<std::uint8_t>>();
+
+//        if (!BinarVector.empty())
+//        {
+//            //Result.reserve(BinarVector.size());
+//            std::transform(BinarVector.cbegin(), BinarVector.cend(),  std::back_inserter(Result), [](const std::uint8_t& Byte){ return static_cast<char>(Byte); });
+//        }
+//    }
+
+//    return Result;
+//}
 //-----------------------------------------------------------------------------
-std::string net::binaryJsonToStr(const nlohmann::json& inJson)
+bool net::getWrapAndMessageData(const std::string& inTextData, nlohmann::json& outWrapInfo, std::string& outMessageData)
 {
-    std::string Result = "";
+    bool Result = true;
 
-    if (!inJson.empty() && inJson.is_array())
+    std::string::size_type WrapEndFindRes = inTextData.find(net::C_DATA_WRAP_END);
+
+    if (WrapEndFindRes == std::string::npos) // Разделитель обёртки не найден
+        Result = false;
+    else // Если найден символ разделиетель обёртки
     {
-        std::vector<std::uint8_t> BinarVector = inJson.get<std::vector<std::uint8_t>>();
+        outWrapInfo = nlohmann::json::parse(inTextData.substr(0, WrapEndFindRes), nullptr, false); // Пытаемся распарсить обёртку
 
-        if (!BinarVector.empty())
-        {
-            //Result.reserve(BinarVector.size());
-            std::transform(BinarVector.cbegin(), BinarVector.cend(),  std::back_inserter(Result), [](const std::uint8_t& Byte){ return static_cast<char>(Byte); });
-        }
+        if (outWrapInfo.is_discarded() || !isJsonWrap(outWrapInfo)) // Ошибка парсинга или обёртка не соответствует
+            Result = false;
+        else // Если парсинг прошёл успешно и JSON является заголовком обёртки
+            outMessageData = inTextData.substr(WrapEndFindRes + 1); // Возвращаем данные
     }
 
     return Result;
@@ -115,44 +131,55 @@ net::oByteStream net::wrap(oByteStream&& inData)
             SeparatorFindResult = StrData.find(C_DATA_SEPARATOR, SeparatorFindResult); // Снова разделитель в потоке передаваемых данных (начиная с позиции последней замены)
         }
         while (SeparatorFindResult != std::string::npos); // Пока найден разделитель в потоке передаваемых данных и это не последний символ
+
+        // Формируем обёрнутую последовательность {JSON WRAP DATA}{WRAP SEPARATOR}{REPLACED STR DATA}
+        inData = oByteStream(makeJsonWrap(ReplaceSequence, ReplaceCount).dump() + C_DATA_WRAP_END + StrData);
     }
 
-    return oByteStream(makeJsonWrap(StrData, ReplaceSequence, ReplaceCount).dump());
+    /*
+     * Сценарии:
+     * 1) Если в отправляемой последовательности присутствует запрещённый символ "разделитель потока"
+     * то вернём "обёртку" в формате {JSON WRAP DATA}{WRAP SEPARATOR}{REPLACED STR DATA}
+     * 2) Если запрещённый символ не найден, то вернём данные без изменений
+     */
+    return std::move(inData);
 }
 //-----------------------------------------------------------------------------
 net::iByteStream net::unwrap(iByteStream&& inData)
 {
-    iByteStream Result;
-    // "Приёмник" обёртки
-    nlohmann::json Json = nlohmann::json::parse(inData.str(), nullptr, false); // Пытаемся распарсить обёртку
+    nlohmann::json JsonWrapData; // Данные обёртки
+    std::string WrapedData = ""; // "Обёрнутые" данные сообщения
 
-    if (Json.is_discarded() || !isJsonWrap(Json) ) // Если при парсинге произошла ошибка или данные не являются обёрткой
-        Result = std::move(inData); // Вернём как есть
-    else // Обёртка распаршена успешно
+    if (getWrapAndMessageData(inData.str(), JsonWrapData, WrapedData)) // Если получены данные обёртки и "обёрнутые" данные
     {
-        std::string StrData = binaryJsonToStr(Json["DATA"]); // Получаем обёрнутые данные
-
-        if (Json["HEAD"]["replace_count"] > 0) // Если были замещения
+        if (JsonWrapData[C_WRAP_HEAD][C_WRAP_COUNT] > 0) // Если были замещения
         {   // Нужно развернуть обратно
             std::uint64_t ReplaceCount = 0; // Количество произведённых обратных замен
-            std::string ReplaceSequence = Json["HEAD"]["replace_sequence"].get<std::string>(); // Замещающая последовательность
-            std::string::size_type ReplacerFindResult = StrData.find(ReplaceSequence); // Результат поиска замещающей последовательности
+            std::string ReplaceSequence = JsonWrapData[C_WRAP_HEAD][C_WRAP_SEQUENCE].get<std::string>(); // Замещающая последовательность
+            std::string::size_type ReplacerFindResult = WrapedData.find(ReplaceSequence); // Результат поиска замещающей последовательности
 
             while (ReplacerFindResult != std::string::npos) // Восстанавливаем, пока замещающая последоваетльность не перестанет встречаться в потоке
             {
                 ReplaceCount++; // Увеличиваем счётчик подбора
                 // Обратно заменим замещающую последовательность на разделитель потока даннх
-                StrData.replace(ReplacerFindResult, ReplaceSequence.size(), { C_DATA_SEPARATOR });
+                WrapedData.replace(ReplacerFindResult, ReplaceSequence.size(), { C_DATA_SEPARATOR });
 
-                ReplacerFindResult = StrData.find(ReplaceSequence); // Ищим замещающую последоваетльность
+                ReplacerFindResult = WrapedData.find(ReplaceSequence); // Ищим замещающую последоваетльность
             }
 
-            assert(ReplaceCount == Json["HEAD"]["replace_count"].get<std::uint64_t>()); // Количество замещений и востановлений должно совпасть
+            assert(ReplaceCount == JsonWrapData[C_WRAP_HEAD][C_WRAP_COUNT].get<std::uint64_t>()); // Количество замещений и востановлений должно совпасть
         }
 
-        Result = iByteStream(StrData);
+        inData = iByteStream(WrapedData);
     }
 
-    return Result;
+    /*
+     * Сценарии:
+     * 1) Если удалось получить данные обёртки то производим разворачивание
+     * и вернём восстановленны данные
+     * 2) Если данныз обёртки не обнаружено, то вернём как есть
+     */
+    return std::move(inData);
 }
 //-----------------------------------------------------------------------------
+
