@@ -5,12 +5,12 @@
 
 @IF "%TARGET_PATH%" == "" (
     :: Если путь к месту назначению не задан то файлы создадим в текущей директории
-	@SET CERT_FILE_NAME=certificate.crt
-	@SET PRKEY_FILE_NAME=privateKey.key
+	SET CERT_FILE_NAME=certificate.crt
+	SET PRKEY_FILE_NAME=privateKey.key
 ) ELSE (
     :: Если путь к месту назначению задан создадим в по месту назначения
-    @SET CERT_FILE_NAME=%TARGET_PATH%/certificate.crt
-    @SET PRKEY_FILE_NAME=%$TARGET_PATH%/privateKey.key
+    SET CERT_FILE_NAME=%TARGET_PATH%/certificate.crt
+    SET PRKEY_FILE_NAME=%$TARGET_PATH%/privateKey.key
     :: Если директория места назначения не существует то создадим её
     IF NOT EXIST "%TARGET_PATH%" (
         mkdir -p "%TARGET_PATH%"
