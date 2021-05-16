@@ -1,6 +1,11 @@
 #ifndef HMQTABSTRACTASYNCSERVER_H
 #define HMQTABSTRACTASYNCSERVER_H
 
+/**
+ * @file qtabstractasyncserver.h
+ * @brief Содержит описание абстрактного асинхронного сервера Qt
+ */
+
 #include <memory>
 
 #include <QObject>

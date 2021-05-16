@@ -1,6 +1,11 @@
 #ifndef HMQTABSTRACTASYNCCONNECTION_H
 #define HMQTABSTRACTASYNCCONNECTION_H
 
+/**
+ * @file qtabstractasyncconnection.h
+ * @brief Содержит описание абстрактного асинхронного соединения Qt
+ */
+
 #include <memory>
 
 #include <QTcpSocket>

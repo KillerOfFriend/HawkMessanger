@@ -1,6 +1,12 @@
 #ifndef HMABSTRACTASYNCCONNECTION_H
 #define HMABSTRACTASYNCCONNECTION_H
 
+
+/**
+ * @file abstractasyncconnection.h
+ * @brief Содержит описание абстрактного асинхронного соединения
+ */
+
 #include <queue>
 #include <mutex>
 #include <future>

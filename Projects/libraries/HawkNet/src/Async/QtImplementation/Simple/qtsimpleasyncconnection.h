@@ -1,6 +1,11 @@
 #ifndef HMQTSIMPLEASYNCCONNECTION_H
 #define HMQTSIMPLEASYNCCONNECTION_H
 
+/**
+ * @file qtsimpleasyncconnection.h
+ * @brief Содержит описание прстого асинхронного соединения Qt
+ */
+
 #include <memory>
 
 #include <QTcpSocket>

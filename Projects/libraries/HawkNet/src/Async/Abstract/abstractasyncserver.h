@@ -1,6 +1,11 @@
 #ifndef HMABSTRACTASYNCSERVER_H
 #define HMABSTRACTASYNCSERVER_H
 
+/**
+ * @file abstractasyncserver.h
+ * @brief Содержит описание абстрактного асинхронного сервера
+ */
+
 #include "Abstract/abstractserver.h"
 #include "abstractasyncconnection.h"
 

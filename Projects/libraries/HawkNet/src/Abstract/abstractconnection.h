@@ -1,6 +1,11 @@
 #ifndef HMABSTRACTCONNECTION_H
 #define HMABSTRACTCONNECTION_H
 
+/**
+ * @file abstractconnection.h
+ * @brief Содержит описание абстрактного соединения
+ */
+
 #include <atomic>
 
 #include "Interface/connection.h"

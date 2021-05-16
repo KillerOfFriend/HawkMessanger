@@ -1,6 +1,11 @@
 #ifndef QSSLSERVER_H
 #define QSSLSERVER_H
 
+/**
+ * @file qsslserver.h
+ * @brief Содержит описание Qt сервера, устанавливающего SSL соединение
+ */
+
 // https://github.com/GuiTeK/Qt-SslServer
 // https://github.com/Skycoder42/QSslServer
 

@@ -9,6 +9,7 @@
 #include <chrono>
 
 #include <errorcode.h>
+#include <HawkCommon.h>
 
 #include "nettypes.h"
 
@@ -21,7 +22,7 @@ namespace net
  * @authors Alekseev_s
  * @date 24.01.2021
  */
-class HMConnection
+class HMConnection : public hmcommon::HMNotCopyable
 {
 public:
 

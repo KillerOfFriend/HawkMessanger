@@ -1,6 +1,11 @@
 #ifndef HMQTSSLASYNCCONNECTION_H
 #define HMQTSSLASYNCCONNECTION_H
 
+/**
+ * @file qtsslasyncconnection.h
+ * @brief Содержит описание защищённого асинхронного соединения Qt(Ssl)
+ */
+
 #include <QSslSocket>
 #include <QSslPreSharedKeyAuthenticator>
 

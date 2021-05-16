@@ -1,6 +1,11 @@
 #ifndef HMSSLFUNCS_H
 #define HMSSLFUNCS_H
 
+/**
+ * @file sslfuncs.h
+ * @brief Содержит функции для работы с сертификатами и ключами SSL (Qt)
+ */
+
 #include <QSslKey>
 #include <QSslCertificate>
 #include <QSslConfiguration>

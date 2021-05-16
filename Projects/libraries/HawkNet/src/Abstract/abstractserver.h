@@ -1,6 +1,11 @@
 #ifndef HMABSTRACTSERVER_H
 #define HMABSTRACTSERVER_H
 
+/**
+ * @file abstractserver.h
+ * @brief Содержит описание абстрактного сервера
+ */
+
 #include <set>
 #include <list>
 #include <mutex>

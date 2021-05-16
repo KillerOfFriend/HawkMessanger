@@ -1,6 +1,11 @@
 #ifndef HMQTSSLASYNCSERVER_H
 #define HMQTSSLASYNCSERVER_H
 
+/**
+ * @file qtsslasyncserver.h
+ * @brief Содержит описание защищённого асинхронного сервера Qt(Ssl)
+ */
+
 #include <QObject>
 #include <QSslConfiguration>
 

@@ -10,4 +10,6 @@
 #include "userlist.h"
 #include "groupmessage.h"
 
+#include "notcopyable.h"
+
 #endif // HAWKCOMMON_H

@@ -1,6 +1,11 @@
 #ifndef HMQTSIMPLEASYNCSERVER_H
 #define HMQTSIMPLEASYNCSERVER_H
 
+/**
+ * @file qtsimpleasyncserver.h
+ * @brief Содержит описание простого асинхронного сервера Qt
+ */
+
 #include <QTcpServer>
 
 #include "Async/QtImplementation/Abstract/qtabstractasyncserver.h"
@@ -9,7 +14,7 @@ namespace net
 {
 //-----------------------------------------------------------------------------
 /**
- * @brief The HMQtSimpleAsyncServer class - Класс, описывающий простой асинхронный TCP сервер
+ * @brief The HMQtSimpleAsyncServer class - Класс, описывающий простой асинхронный TCP сервер Qt
  *
  * @authors Alekseev_s
  * @date 12.04.2021
