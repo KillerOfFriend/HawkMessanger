@@ -5,6 +5,9 @@ project(HawkConsolServer VERSION ${HM_VERSION} LANGUAGES CXX)
 #====================================================================
 set(CMAKE_INCLUDE_CURRENT_DIR ON) # Разрешаем работу с собственной папкой
 #====================================================================
+include(${CONFIG_PATH}/VersionMaker.cmake)  # Подключаем функционал формирования версии
+MakeVersion()                               # Формируем класс версии
+#====================================================================
 # Ищим хидеры
 file(GLOB_RECURSE BIN_HEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/src/*.h

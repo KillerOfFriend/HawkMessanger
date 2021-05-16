@@ -5,6 +5,9 @@ project(HawkNet VERSION ${HM_VERSION} LANGUAGES CXX)
 #====================================================================
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)    # Разрешаем автоматический экспорт всех символов
 #====================================================================
+include(${CONFIG_PATH}/VersionMaker.cmake)  # Подключаем функционал формирования версии
+MakeVersion()                               # Формируем класс версии
+#====================================================================
 # Ищим хидеры
 file(GLOB_RECURSE LIB_HEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/src/*.h

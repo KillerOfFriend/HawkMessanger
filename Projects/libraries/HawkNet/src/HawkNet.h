@@ -1,6 +1,8 @@
 #ifndef HAWKNET_H
 #define HAWKNET_H
 
+#include "HawkNetVersion.h"
+
 #include "nettypes.h"
 #include "netutils.h"
 
