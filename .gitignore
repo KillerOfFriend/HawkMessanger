@@ -1,6 +1,9 @@
-
+# Игнорировать директорию сборки QtCreator
 QtBuilds/
-
+# Игнорировать результаты сборки
 Projects/Build/
-
+# Игнорировать настройки проекта QtCreator
 Projects/CMakeLists.txt.user
+# Игнорировать автоматически сгенерированные файлы версий
+*Version.h
+*Version.cpp
